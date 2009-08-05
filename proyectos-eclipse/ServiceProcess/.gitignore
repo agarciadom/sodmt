@@ -1,0 +1,12 @@
+bin
+META-INF
+src/serviceProcess
+*.properties
+plugin.xml
+*.ecore
+*.genmodel
+*.trace
+*.gmfmap
+*.gmfgraph
+*.gmftool
+*.gmfgen

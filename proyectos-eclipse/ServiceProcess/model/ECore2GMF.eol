@@ -1,0 +1,17 @@
+removeFeatureLabel('InitialNodeLabel');
+removeFeatureLabel('FinalNodeLabel');
+removeFeatureLabel('ForkNodeLabel');
+removeFeatureLabel('JoinNodeLabel');
+
+operation removeFeatureLabel(diagramLabelName : String) {
+  -- no label for InitialNode
+  var initialNode_diagLabel
+    = GmfGraph!DiagramLabel.all.selectOne(r|r.name = diagramLabelName);
+  var initialNode_featureLabel
+    = GmfMap!FeatureLabelMapping.all.selectOne(r | r.diagramLabel = initialNode_diagLabel);
+
+  delete initialNode_featureLabel;
+  delete initialNode_diagLabel.accessor.figure;
+  delete initialNode_diagLabel.accessor;
+  delete initialNode_diagLabel;
+}

@@ -1,0 +1,83 @@
+@namespace(uri="http://serviceProcess", prefix="serviceProcess")
+package serviceProcess;
+
+@gmf.diagram(onefile="true")
+class ServiceProcess {
+  val Activity[*] activity;
+  val ActivityEdge[*] edge;
+}
+
+@gmf.node(label="name")
+abstract class NamedElement {
+   attr String[1] name;
+}
+
+abstract class Activity {
+  @gmf.compartment(layout="free")
+  val ActivityNode[*]#activity nodes;
+}
+
+abstract class ActivityNode {
+  ref Activity[1]#nodes activity;
+  ref ActivityEdge[*]#target incoming;
+  ref ActivityEdge[*]#source outgoing;
+}
+
+@gmf.link(source="source", target="target", target.decoration="arrow", width="3")
+abstract class ActivityEdge {
+  ref ActivityNode[1]#incoming target;
+  ref ActivityNode[1]#outgoing source;
+}
+
+/* ACTIVITIES */
+class ServiceActivity extends Activity, NamedElement {
+}
+
+/* EDGES */
+
+@gmf.link(style="dash")
+class ObjectFlow extends ActivityEdge {
+}
+
+class ControlFlow extends ActivityEdge {
+}
+
+/* NODES */
+
+abstract class ControlNode extends ActivityNode {
+}
+
+@gmf.node(figure="figures.LabeledEllipse", label.icon="false")
+class ExecutableNode extends ControlNode, NamedElement {
+}
+
+@gmf.node(figure="figures.InitialNodeFigure")
+class InitialNode extends ControlNode {
+}
+
+@gmf.node(figure="figures.FinalNodeFigure")
+class FinalNode extends ControlNode {
+}
+
+@gmf.node(figure="figures.ForkJoinNodeFigure")
+class ForkNode extends ControlNode {
+}
+
+@gmf.node(figure="figures.ForkJoinNodeFigure")
+class JoinNode extends ControlNode {
+}
+
+@gmf.node(figure="figures.DiamondFigure",
+          label="language,condition",
+          label.icon="false",
+          label.pattern="<<{1}>> : {0}",
+          label.placement="external")
+class DecisionNode extends ControlNode {
+    attr String[1] condition;
+    attr ExpressionLanguage language;
+}
+
+enum ExpressionLanguage {
+   OCL;
+   JML;
+}
