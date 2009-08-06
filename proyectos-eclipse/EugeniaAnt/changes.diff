@@ -1,0 +1,43 @@
+--- ant/org/eclipse/epsilon/workflow/tasks/.svn/text-base/ExecutableModuleTask.java.svn-base	2009-08-06 20:43:23.000000000 +0200
++++ ant/org/eclipse/epsilon/workflow/tasks/ExecutableModuleTask.java	2009-08-06 20:51:01.000000000 +0200
+@@ -13,6 +13,7 @@
+ import java.io.File;
+ import java.io.PrintWriter;
+ import java.io.StringWriter;
++import java.net.URI;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -47,6 +48,7 @@
+ 	protected List<VariableNestedElement> exportsVariableNestedElements = new ArrayList();
+ 	protected List<ParameterNestedElement> parameterNestedElements = new ArrayList();
+ 	protected File src;
++	protected URI uri;
+ 	protected String code = "";
+ 	protected IEolExecutableModule module;
+ 	protected boolean assertions = true;
+@@ -81,6 +83,9 @@
+ 			if (src!=null) {
+ 				module.parse(src);
+ 			}
++			else if (uri!=null) {
++				module.parse(uri);
++			}
+ 			else {
+ 				module.parse(code);
+ 			}
+@@ -170,6 +175,14 @@
+ 		this.src = src;
+ 	}
+ 	
++	public URI getUri() {
++		return uri;
++	}
++	
++	public void setUri(String sUri) {
++		this.uri = URI.create(getProject().replaceProperties(sUri));
++	}
++	
+ 	protected void populateModelRepository() throws EolModelNotFoundException {
+ 		ModelRepository repository = module.getContext().getModelRepository();
+ 		ModelRepository projectRepository = getProjectRepository();
