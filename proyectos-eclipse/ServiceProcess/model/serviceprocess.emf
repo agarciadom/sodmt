@@ -1,15 +1,16 @@
 @namespace(uri="http://serviceProcess", prefix="serviceProcess")
 package serviceProcess;
 
-@gmf.diagram(onefile="true")
+@gmf.diagram(foo="bar")
 class ServiceProcess {
   val Activity[*] activity;
   val ActivityEdge[*] edge;
+  val Annotation[*] annotations;
 }
 
 @gmf.node(label="name")
 abstract class NamedElement {
-   attr String[1] name;
+   attr String name;
 }
 
 abstract class Activity {
@@ -18,15 +19,37 @@ abstract class Activity {
 }
 
 abstract class ActivityNode {
-  ref Activity[1]#nodes activity;
+  ref Activity#nodes activity;
   ref ActivityEdge[*]#target incoming;
   ref ActivityEdge[*]#source outgoing;
 }
 
 @gmf.link(source="source", target="target", target.decoration="arrow", width="3")
 abstract class ActivityEdge {
-  ref ActivityNode[1]#incoming target;
-  ref ActivityNode[1]#outgoing source;
+  ref ActivityNode#incoming target;
+  ref ActivityNode#outgoing source;
+}
+
+abstract class Annotation {
+}
+
+/* ANNOTATIONS */
+
+@gmf.node(label.pattern="p = {0}", label="probability", figure="rectangle", size="60,30")
+class ProbabilityAnnotation extends Annotation {
+   attr Double probability;
+
+   @gmf.link(foo="bar")
+   ref ConditionalControlFlow#annotation condition;
+}
+
+@gmf.node(label="transactionsPerSec,secsTimeLimit", label.pattern="{0} transactions @ {1}", figure="rectangle")
+class PerformanceAnnotation extends Annotation {
+   attr Integer transactionsPerSec;
+   attr Double secsTimeLimit;
+
+   @gmf.link(label="Annotate ExecutableNode")
+   ref ExecutableNode#annotation execNode;
 }
 
 /* ACTIVITIES */
@@ -42,6 +65,16 @@ class ObjectFlow extends ActivityEdge {
 class ControlFlow extends ActivityEdge {
 }
 
+/* condition = else -> default flow */
+@gmf.link(label="language,condition",
+          label.icon="false",
+          label.pattern="<<{1}>> : [{0}]")
+class ConditionalControlFlow extends ControlFlow {
+    attr String condition;
+    attr ExpressionLanguage language;
+    ref ProbabilityAnnotation#condition annotation;
+}
+
 /* NODES */
 
 abstract class ControlNode extends ActivityNode {
@@ -49,6 +82,7 @@ abstract class ControlNode extends ActivityNode {
 
 @gmf.node(figure="figures.LabeledEllipse", label.icon="false")
 class ExecutableNode extends ControlNode, NamedElement {
+  ref PerformanceAnnotation#execNode annotation;
 }
 
 @gmf.node(figure="figures.InitialNodeFigure")
@@ -67,15 +101,11 @@ class ForkNode extends ControlNode {
 class JoinNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.DiamondFigure",
-          label="language,condition",
-          label.icon="false",
-          label.pattern="<<{1}>> : {0}",
-          label.placement="external")
+@gmf.node(figure="figures.DiamondFigure")
 class DecisionNode extends ControlNode {
-    attr String[1] condition;
-    attr ExpressionLanguage language;
 }
+
+/* DATATYPES */
 
 enum ExpressionLanguage {
    OCL;
