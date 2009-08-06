@@ -1,4 +1,10 @@
+.metadata
+ServiceProcess/src
 ServiceProcess.edit
+!ServiceProcess.edit/customsrc
 ServiceProcess.editor
+!ServiceProcess.editor/customsrc
 ServiceProcess.diagram
+!ServiceProcess.diagram/customsrc
 ServiceProcess.tests
+!ServiceProcess.tests/customsrc
