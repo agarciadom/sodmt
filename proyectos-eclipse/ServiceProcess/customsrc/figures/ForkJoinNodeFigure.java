@@ -5,17 +5,17 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 
 /*
- * Filled black circle for the final node in a service process diagram. 
+ * Black-filled rectangle for fork and join nodes.
  * 
  * @author Antonio García Domínguez
  * @version 1.0
  * */
-public class FinalNodeFigure extends Figure {
+public class ForkJoinNodeFigure extends Figure {
 
 	@Override
 	public void paintFigure(Graphics g) {
-		g.setBackgroundColor(ColorConstants.black);
-		g.fillOval(getBounds());
+		g.setBackgroundColor(g.getForegroundColor());
+		g.fillRectangle(getBounds());
 	}
 
 }

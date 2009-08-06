@@ -36,10 +36,6 @@ public class DiamondFigure extends Figure {
     pointList.addPoint(p3);
     pointList.addPoint(p4);
 
-    // Set the colors
-    graphics.setForegroundColor(ColorConstants.black);
-    graphics.setBackgroundColor(ColorConstants.white);
-
     // Fill the shape
     graphics.fillPolygon(pointList);
     

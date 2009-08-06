@@ -24,9 +24,7 @@ public class InitialNodeFigure extends Figure {
 		r.width -= LINE_WIDTH*2;
 		r.height -= LINE_WIDTH*2;
 
-		g.setBackgroundColor(ColorConstants.white);
 		g.fillOval(r);
-		g.setForegroundColor(ColorConstants.black);
 		g.setLineWidth(LINE_WIDTH);
 		g.drawOval(r);
 
@@ -34,7 +32,7 @@ public class InitialNodeFigure extends Figure {
 		r.x += (r.width  - innerDiameter)/2;
 		r.y += (r.height - innerDiameter)/2;
 		r.width = r.height = innerDiameter;
-		g.setBackgroundColor(ColorConstants.black);
+		g.setBackgroundColor(g.getForegroundColor());
 		g.fillOval(r);
 	}
 
