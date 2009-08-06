@@ -1,0 +1,158 @@
+context ServiceProcess {
+  constraint ExactlyOneInitialNode {
+    check : InitialNode.all.size = 1
+    message : 'There must be exactly one initial node'
+  }
+
+  constraint ExactlyOneFinalNode {
+    check : FinalNode.all.size = 1
+    message : 'There must be exactly one final node'
+  }
+}
+
+context ExecutableNode {
+  constraint NameMustNotBeEmpty {
+    check : self.name <> ''
+    message : 'The name of an executable node must not be empty'
+  }
+}
+
+context DecisionNode {
+  constraint NameMustNotBeEmpty {
+    check : self.condition <> ''
+    message : 'The condition of a decision node must not be empty'
+  }
+}
+
+context ActivityEdge {
+
+  constraint BothEndsDefined {
+    check : self.source.isDefined() and self.target.isDefined()
+    message : 'Source and target of an edge must be defined'
+  }
+
+  constraint NoCycles {
+    check : self.source <> self.target
+    message : 'Source and target of an edge must not be the same'
+    fix {
+      title : 'Remove link from model'
+      do {
+        delete self;
+      }
+    }
+  }
+
+  constraint AtLeastOneActivityNodeBetweenInitialAndFinalNodes {
+    check : self.source.isTypeOf(InitialNode) implies not self.target.isTypeOf(FinalNode)
+    message : 'There must be at least one activity node between the initial node and the final node'
+    fix {
+      title : 'Add dummy executable node'
+      do {
+        var newExec = new ExecutableNode;
+        newExec.activity := self.source.activity;
+        newExec.name := 'Do something';
+
+        var newEdge := new ControlFlow;
+        newEdge.source := newExec;
+        newEdge.target := self.target;
+        self.target := newExec;
+      }
+    }
+  }
+}
+
+context ActivityNode {
+
+  constraint OnlyTwoOutgoingBranchesForDecisionNode {
+    guard : self.isTypeOf(DecisionNode)
+    check : self.outgoing.size = 2
+    message : 'All decision nodes must only have two branches'
+  }
+  
+  constraint NoIncomingForInitialNode {
+    guard : self.isTypeOf(InitialNode)
+    check : self.incoming.isEmpty
+    message : 'The initial node must not have any incoming edges'
+    fix {
+      title : 'Remove incoming edges from initial node'
+      do {
+        for (e in self.incoming.clone()) {
+          delete e;
+        }
+      }
+    }
+  }
+  
+  constraint NoOutgoingForFinalNode {
+    guard : self.isTypeOf(FinalNode)
+    check : self.outgoing.isEmpty
+    message : 'The final node must not have any outgoing edges'
+    fix {
+      title : 'Remove outgoing edges from final node'
+      do {
+        for (e in self.outgoing.clone()) {
+          delete e;
+        }
+      }
+    }
+  }
+
+  -- We use two constraints for the incoming count (min, max) so we only
+  -- propose the join fix in the right situations. This would be much easier if
+  -- fixes had guards like in the Epsilon book, but it works.
+  constraint MinimumOneIncoming {
+    guard : not self.isTypeOf(JoinNode) and not self.isTypeOf(InitialNode)
+    check : self.incoming.size >= 1
+    message : 'All activity nodes except joins and initial nodes must have '
+              + 'exactly one incoming edge'
+  }
+
+  constraint MaximumOneIncoming {
+    guard : not self.isTypeOf(JoinNode) and not self.isTypeOf(InitialNode)
+    check : self.incoming.size <= 1
+    message : 'All activity nodes except joins and initial nodes must have '
+              + 'exactly one incoming edge'
+    fix {
+      title : 'Add join node in the middle'
+      do {
+        var newJoin := new JoinNode;
+        newJoin.activity := self.activity;
+                
+        var newEdge := new ActivityEdge;
+        for (e in self.incoming) {
+          e.target := newJoin; 
+        } 
+        newEdge.source := newJoin;
+        newEdge.target := self;
+      }
+    }      
+  }
+  
+  -- See above comment for an explanation of why we use both min and max
+  -- constraints instead of just one
+  constraint MinimumOneOutgoing {
+    guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
+    check : self.outgoing.size >= 1
+    message : 'All activity nodes except forks and final nodes must have exactly one outgoing edge'
+  }
+
+  constraint MaximumOneOutgoing {
+    guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
+    check : self.outgoing.size <= 1
+    message : 'All activity nodes except forks and final nodes must have exactly one outgoing edge'
+    fix {
+      title : 'Add fork node in the middle'
+      do {
+        var newFork := new ForkNode;
+        newFork.activity := self.activity;
+        
+        var newEdge := new ActivityEdge;
+        for (e in self.outgoing) {
+          e.source := newFork;
+        }
+        newEdge.source := self;
+        newEdge.target := newFork;
+      }
+    }
+  }
+}
