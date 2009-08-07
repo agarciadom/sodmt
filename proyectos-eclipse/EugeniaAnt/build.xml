@@ -25,7 +25,7 @@
 		   metamodeluri="http://www.eclipse.org/gmf/2008/mappings"
 		   read="false" store="true"/>
 		
-		<epsilon.eol uri="platform:/plugin/org.eclipse.epsilon.eugenia/transformations/ECore2GMF.el">
+		<epsilon.eol uri="platform:/plugin/org.eclipse.epsilon.eugenia/transformations/ECore2GMF.eol">
 			<model ref="ECore" as="ECore"/>
 			<model ref="GmfGraph" as="GmfGraph"/>
 			<model ref="GmfTool" as="GmfTool"/>
