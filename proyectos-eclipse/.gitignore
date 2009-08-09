@@ -8,3 +8,6 @@ ServiceProcess.diagram
 !ServiceProcess.diagram/customsrc
 ServiceProcess.tests
 !ServiceProcess.tests/customsrc
+org.eclipse.*
+es.uca.modeling.ant/bin
+es.uca.modeling.ant/lib
