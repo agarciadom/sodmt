@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2009 Antonio García Domínguez.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ *
+ * Contributors:
+ *    Antonio García Domínguez - initial API and implementation
+ *******************************************************************************/
 package es.uca.modeling.ant.gmfgen;
 
 import org.apache.tools.ant.BuildException;
