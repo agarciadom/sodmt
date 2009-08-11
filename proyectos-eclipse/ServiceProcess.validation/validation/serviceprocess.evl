@@ -2,12 +2,12 @@
 
 context ServiceProcess {
   constraint ExactlyOneInitialNode {
-    check : InitialNode.all.size = 1
+    check : InitialNode.all.size() = 1
     message : 'There must be exactly one initial node'
   }
 
   constraint ExactlyOneFinalNode {
-    check : FinalNode.all.size = 1
+    check : FinalNode.all.size() = 1
     message : 'There must be exactly one final node'
   }
 }
@@ -33,8 +33,8 @@ context ActivityEdge {
   }
 
   constraint AtLeastOneActivityNodeBetweenInitialAndFinalNodes {
-    check : self.source.isTypeOf(InitialNode)
-            implies not self.target.isTypeOf(FinalNode)
+    check : self.source.isKindOf(InitialNode)
+            implies not self.target.isKindOf(FinalNode)
     message : 'There must be at least one activity node between the initial '
               + 'node and the final node'
     fix {
@@ -44,7 +44,7 @@ context ActivityEdge {
         newExec.activity := self.source.activity;
         newExec.name := 'Do something';
 
-        var newEdge := new ControlFlow;
+        var newEdge := createControlFlow();
         newEdge.source := newExec;
         newEdge.target := self.target;
         self.target := newExec;
@@ -55,59 +55,31 @@ context ActivityEdge {
 
 context ActivityNode {
 
-  constraint NoIncomingForInitialNode {
-    guard : self.isTypeOf(InitialNode)
-    check : self.incoming.isEmpty
-    message : 'The initial node must not have any incoming edges'
-    fix {
-      title : 'Remove incoming edges from initial node'
-      do {
-        for (e in self.incoming.clone()) {
-          delete e;
-        }
-      }
-    }
-  }
-
-  constraint NoOutgoingForFinalNode {
-    guard : self.isTypeOf(FinalNode)
-    check : self.outgoing.isEmpty
-    message : 'The final node must not have any outgoing edges'
-    fix {
-      title : 'Remove outgoing edges from final node'
-      do {
-        for (e in self.outgoing.clone()) {
-          delete e;
-        }
-      }
-    }
-  }
-
   -- We use two constraints for the incoming count (min, max) so we only
   -- propose the join fix in the right situations. This would be much easier if
   -- fixes had guards like in the Epsilon book, but it works.
   constraint MinimumOneIncoming {
-    guard : not self.isTypeOf(JoinNode) and not self.isTypeOf(InitialNode)
-    check : self.incoming.size >= 1
-    message : 'All activity nodes except joins and initial nodes must have '
-              + 'exactly one incoming edge'
+    guard : not self.isTypeOf(InitialNode)
+    check : self.incoming.size() >= 1
+    message : 'All activity nodes except initial nodes must have at least one incoming edge'
   }
 
   constraint MaximumOneIncoming {
-    guard : not self.isTypeOf(JoinNode) and not self.isTypeOf(InitialNode)
-    check : self.incoming.size <= 1
-    message : 'All activity nodes except joins and initial nodes must have '
-              + 'exactly one incoming edge'
+    guard : not self.isTypeOf(JoinNode)
+            and InitialNode.all.first().satisfies('NoCyclesCompleteGraph')
+            and self.satisfies('SameFlowTypeForAllIncoming')
+    check : self.incoming.size() <= 1
+    message : 'All activity nodes except joins must have at most one incoming edge'
     fix {
       title : 'Add join node in the middle'
       do {
         var newJoin := new JoinNode;
         newJoin.activity := self.activity;
 
-        var newEdge := createEdgeSimilarTo(self.incoming.first.isOfType);
-        for (e in self.incoming) {
-          e.target := newJoin; 
-        } 
+        var newEdge := createEdgeSimilarTo(self.incoming.first());
+        for (e in self.incoming.clone()) {
+          e.target := newJoin;
+        }
         newEdge.source := newJoin;
         newEdge.target := self;
       }
@@ -117,31 +89,50 @@ context ActivityNode {
   -- See above comment for an explanation of why we use both min and max
   -- constraints instead of just one
   constraint MinimumOneOutgoing {
-    guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
-    check : self.outgoing.size >= 1
-    message : 'All activity nodes except forks and final nodes must have '
-              + 'exactly one outgoing edge'
+    guard : not self.isTypeOf(FinalNode)
+    check : self.outgoing.size() >= 1
+    message : 'All activity nodes except final nodes must have at least one outgoing edge'
   }
 
   constraint MaximumOneOutgoing {
-    guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
-    check : self.outgoing.size <= 1
-    message : 'All activity nodes except forks and final nodes must have '
-              + 'exactly one outgoing edge'
+    guard : not self.isTypeOf(ForkNode)
+            and InitialNode.all.first().satisfies('NoCyclesCompleteGraph')
+            and self.satisfies('SameFlowTypeForAllOutgoing')
+    check : self.outgoing.size() <= 1
+    message : 'All activity nodes except forks must have at most one outgoing edge'
     fix {
       title : 'Add fork node in the middle'
       do {
         var newFork := new ForkNode;
         newFork.activity := self.activity;
         
-        var newEdge := createEdgeSimilarTo(self.incoming.first.isOfType);
-        for (e in self.outgoing) {
+        var newEdge := createEdgeSimilarTo(self.outgoing.first());
+        for (e in self.outgoing.clone()) {
           e.source := newFork;
         }
         newEdge.source := self;
         newEdge.target := newFork;
       }
     }
+  }
+  
+  constraint SameFlowTypeForAllIncoming {
+    guard : self.satisfies('MinimumOneIncoming')
+    check : self.incoming.forAll(r|r.type() == self.incoming.first().type())
+    message : 'All incoming links should be of the same type'
+  }
+  
+  constraint SameFlowTypeForAllOutgoing {
+    guard : self.satisfies('MinimumOneOutgoing')
+    check : self.outgoing.forAll(r|r.type() == self.outgoing.first().type())
+    message : 'All outgoing links should be of the same type'
+  }
+  
+  constraint SameFlowTypeForAllIncomingAndOutgoing {
+    guard : self.satisfies('SameFlowTypeForAllIncoming')
+            and self.satisfies('SameFlowTypeForAllOutgoing')
+    check : self.incoming.forAll(r|r.type() == self.outgoing.first().type())
+    message : 'All incoming and outgoing links should be of the same type'
   }
 }
 
@@ -154,7 +145,7 @@ context EdgeCondition {
               + 'DecisionNode'
   }
   constraint OnlyFromDecisionNode {
-    check : self.edge.source.isOfType(DecisionNode)
+    check : self.edge.source.isTypeOf(DecisionNode)
     message : 'Condition applied to edge which does not start from '
               + 'a DecisionNode'
   }
@@ -179,13 +170,66 @@ context PerformanceAnnotation {
               + 'greater than 0'
   }
   constraint IsLinkedToNodeOrActivity {
-    check : self.execNode.isDefined() or self.activity.isDefined()
-    message : 'The annotation must be linked to an Activity or an '
-              + 'Executable Node'
+    check : self.execNode.isDefined() xor self.activity.isDefined()
+    message : 'The annotation must be linked either to an Activity '
+              + 'or to an Executable Node'
+  }
+  constraint LinkedNodeIsDecisionNode {
+    guard : self.execNode.isDefined()
+    check : self.execNode.isKindOf(ExecutableNode)
+    message : 'The linked activity node must be an executable node'
   }
 }
 
 -- Node constraints -----------------------------
+
+context InitialNode {
+  constraint NoIncomingForInitialNode {
+    check : self.incoming.isEmpty()
+    message : 'The initial node must not have any incoming edges'
+    fix {
+      title : 'Remove incoming edges from initial node'
+      do {
+        for (e in self.incoming.clone()) {
+          delete e;
+        }
+      }
+    }
+  }
+  
+  -- TODO: add support for loops to the propagation algorithm,
+  -- using some probability threshold configurable by the user.
+  -- The NoCycles constraint in the ActivityEdge context is still
+  -- useful, as it is easier to understand for the user. This
+  -- constraint might be removed in the future.
+  constraint NoCyclesCompleteGraph {
+    check : graphIsAcyclic(self)
+    message : 'Starting from the initial node, the graph cannot contain any cycles'
+    fix {
+      title : 'Remove one of the edges of the cycle'
+      do {
+        delete self.~firstEdgeProducingCycle;
+      }
+    }
+    
+  }
+}
+
+context FinalNode {
+  constraint NoOutgoingForFinalNode {
+    guard : self.isTypeOf(FinalNode)
+    check : self.outgoing.isEmpty()
+    message : 'The final node must not have any outgoing edges'
+    fix {
+      title : 'Remove outgoing edges from final node'
+      do {
+        for (e in self.outgoing.clone()) {
+          delete e;
+        }
+      }
+    }
+  }
+}
 
 context ExecutableNode {
   constraint NameMustNotBeEmpty {
@@ -194,10 +238,102 @@ context ExecutableNode {
   }
 }
 
-operation createEdgeSimilarTo(e : ActivityEdge) {
-  if (e.isOfType(ControlFlow)) {
-    return new ControlFlow;
-  } else {
-    return new ObjectFlow;
+context ForkNode {
+  constraint MoreThanOneOutgoingFlowWithFix {
+    guard : self.satisfies('MinimumOneIncoming')
+            and self.satisfies('MinimumOneOutgoing') 
+    check : self.outgoing.size() > 1
+    message : 'A fork node must have more than one outgoing edge'
+    fix {
+      title : 'Convert fork node and edges into a single edge'      
+      do {
+        self.incoming.first.target := self.outgoing.first.target;
+        delete self.outgoing.first;
+        delete self;
+      }
+    }
   }
+}
+
+context JoinNode {
+  constraint MoreThanOneIncomingFlowWithFix {
+    guard : self.satisfies('MinimumOneIncoming')
+            and self.satisfies('MinimumOneOutgoing')   
+    check : self.incoming.size() > 1
+    message : 'A join node must have more than one incoming edge'
+    fix {
+      title : 'Convert join node and edges into a single edge'
+      do {
+        self.incoming.first.target := self.outgoing.first.target;
+        delete self.outgoing.first;
+        delete self;
+      }
+    }
+  }
+}
+
+context DecisionNode {
+  constraint AllOutgoingEdgesMustHaveCondition {
+    check : self.outgoing.forAll(r|r.condition.isDefined())
+    message : 'All outgoing edges from a decision node must have conditions'
+  }
+}
+
+-- Operations -----------------------------------
+
+-- Edge creation
+
+operation createEdgeSimilarTo(e : ActivityEdge) {
+  assert(e.isDefined(), 'the edge e should be defined');
+  if (e.isKindOf(ControlFlow)) {
+    return createControlFlow();
+  } else {
+    return createObjectFlow();
+  }
+}
+
+operation createObjectFlow() {
+  var newOF := new ObjectFlow;
+  ServiceProcess.all.first.edge.add(newOF);
+  return newOF;
+}
+
+operation createControlFlow() {
+  var newCF := new ControlFlow;
+  ServiceProcess.all.first.edge.add(newCF);
+  return newCF;
+}
+
+-- Cycle testing
+
+operation graphIsAcyclic(start : ActivityNode) {
+  -- Mark all vertices as not visited
+  for (v in ActivityNode.all) {
+    v.~visitStatus := VisitStatus#NOT_VISITED;
+  }
+  start.~firstEdgeProducingCycle
+    := getFirstEdgeProducingCycle(start);
+  return start.~firstEdgeProducingCycle.isUndefined();
+}
+
+operation getFirstEdgeProducingCycle(node : ActivityNode) {
+  -- All ancestors already visited: nothing to do
+  if (node.~visitStatus = VisitStatus#VISITED) {
+    return;
+  }
+  assert(node.~visitStatus = VisitStatus#NOT_VISITED,
+         'Edges to nodes which are already being visited should not be crossed over');
+
+  node.~visitStatus := VisitStatus#VISITING;
+  for (edge in node.outgoing) {
+    if (edge.target.~visitStatus = VisitStatus#VISITING) {
+      return edge;
+    }
+
+    var firstEdgeProducingCycle := getFirstEdgeProducingCycle(edge.target);
+    if (firstEdgeProducingCycle.isDefined()) {
+      return firstEdgeProducingCycle;
+    }
+  }
+  node.~visitStatus := VisitStatus#VISITED;
 }

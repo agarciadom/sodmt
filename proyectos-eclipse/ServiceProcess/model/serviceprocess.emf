@@ -110,3 +110,11 @@ enum ExpressionLanguage {
    OCL;
    JML;
 }
+
+/* Visit status for nodes: needed for the colored depth-first search
+   used to detect cycles in the graph in the EVL script. */
+enum VisitStatus {
+   NOT_VISITED;
+   VISITING;
+   VISITED;
+}
