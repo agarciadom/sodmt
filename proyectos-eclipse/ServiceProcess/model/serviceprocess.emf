@@ -85,23 +85,23 @@ class ExecutableNode extends ControlNode, NamedElement {
   ref PerformanceAnnotation#execNode annotation;
 }
 
-@gmf.node(figure="figures.InitialNodeFigure")
+@gmf.node(figure="figures.FgBgFilledCircleFigure", border.color="0,0,0", size="30,30")
 class InitialNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.FinalNodeFigure")
+@gmf.node(figure="figures.FgFilledCircleFigure", border.color="0,0,0", size="30,30")
 class FinalNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.ForkJoinNodeFigure")
+@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0", size="15,30")
 class ForkNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.ForkJoinNodeFigure")
+@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0", size="15,30")
 class JoinNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.DiamondFigure")
+@gmf.node(figure="figures.DiamondFigure", border.color="0,0,0", size="30,30")
 class DecisionNode extends ControlNode {
 }
 

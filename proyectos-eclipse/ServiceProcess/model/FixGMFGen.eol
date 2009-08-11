@@ -1,16 +1,16 @@
 -- Make InitialNode not resizable
-makeNotResizable('figures.InitialNodeFigure');
-setDefaultSize('figures.InitialNodeFigure', 30, 30);
+for (name in Sequence {'InitialNode', 'FinalNode', 'ForkNode', 'JoinNode', 'DecisionNode'}) {
+  makeNotResizable(name + 'Figure');
+}
 
-makeNotResizable('figures.FinalNodeFigure');
-setDefaultSize('figures.FinalNodeFigure', 30, 30);
-
-makeNotResizable('figures.ForkJoinNodeFigure');
-setDefaultSize('figures.ForkJoinNodeFigure', 5, 30);
+-- Use dynamic templates
+var genEditorGen := GmfGen!GenEditorGenerator.all.first();
+genEditorGen.dynamicTemplates := true;
+genEditorGen.templateDirectory := '/ServiceProcess/templates/';
 
 operation makeNotResizable(figureClass : String) {
-  var figure_viewmaps = GmfGen!FigureViewmap.all
-    .select(r|r.figureQualifiedClassName = figureClass);
+  var figure_viewmaps = GmfGen!InnerClassViewmap.all
+    .select(r|r.className = figureClass);
   
   for (figure_viewmap in figure_viewmaps) {
     -- Check whether the constraint was already added
@@ -26,23 +26,5 @@ operation makeNotResizable(figureClass : String) {
     resizeconstraint_not_resizable.nonResizeHandles := 31;
 
     figure_viewmap.attributes.add(resizeconstraint_not_resizable);
-  }
-}
-
-operation setDefaultSize(figureClass : String, width : Integer, height : Integer) {
-  var figure_viewmaps = GmfGen!FigureViewmap.all
-    .select(r|r.figureQualifiedClassName = figureClass);
-  
-  for (figure_viewmap in figure_viewmaps) {
-    if (figure_viewmap
-        .attributes
-        .exists(r : GmfGen!DefaultSizeAttributes | true)) {
-        continue;
-     }
-     
-     var default_size = new GmfGen!DefaultSizeAttributes;
-     default_size.width := width;
-     default_size.height := height;
-     figure_viewmap.attributes.add(default_size);
   }
 }

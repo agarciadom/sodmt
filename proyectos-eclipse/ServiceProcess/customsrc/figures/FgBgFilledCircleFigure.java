@@ -6,12 +6,15 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 /*
- * Figure for the initial node in a service process. It's 
+ * Circle with a wide border using the foreground color, which
+ * surrounds another circle with a wide border using the background
+ * color and then a circle filled with the foregroudn color.
+ * Useful for the initial node. 
  * 
  * @author Antonio García Domínguez
  * @version 1.0
  * */
-public class InitialNodeFigure extends Figure {
+public class FgBgFilledCircleFigure extends Figure {
 
 	private final static int LINE_WIDTH = 2;
 	private final static double RADIUS_INNER_RATIO = 0.7;
