@@ -1,0 +1,96 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::editor::Utils»
+
+«REM»
+
+ I only wanted to add that last validation line, but the original
+ template included the whole method inside its DEFINE block, instead of having
+ only its body. Therefore, I had to replace the whole template, by using an AROUND
+ element with no targetDef.proceed() expansion.
+     
+«ENDREM»
+
+«AROUND doSaveDocument FOR gmfgen::GenDiagram-»
+	«EXPAND xpt::Common::generatedMemberComment»
+protected void doSaveDocument(org.eclipse.core.runtime.IProgressMonitor monitor, Object element, org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument document, boolean overwrite) throws org.eclipse.core.runtime.CoreException {
+	ResourceSetInfo info = getResourceSetInfo(element);
+	if (info != null) {
+		if (!overwrite && !info.isSynchronized()) {
+			throw new org.eclipse.core.runtime.CoreException(new org.eclipse.core.runtime.Status(org.eclipse.core.runtime.IStatus.ERROR, «editorGen.plugin.getActivatorQualifiedClassName()».ID, 
+				«IF null = editorGen.application»org.eclipse.core.resources.IResourceStatus.OUT_OF_SYNC_LOCAL«ELSE»org.eclipse.core.runtime.IStatus.ERROR«ENDIF», 
+				«EXPAND xpt::Externalizer::accessorCall(i18nKeyForDocumentUnsynchronizedFileSaveError(self)) FOR editorGen», 
+				null));
+		}
+	«IF null = editorGen.application-»
+		info.stopResourceListening();
+	«ENDIF-»
+		fireElementStateChanging(element);
+		try {
+			monitor.beginTask(«EXPAND xpt::Externalizer::accessorCall(i18nKeyForDocumentSaveDiagramTask(self)) FOR editorGen», info.getResourceSet().getResources().size() + 1); //"Saving diagram"
+			for (java.util.Iterator/*<org.eclipse.emf.ecore.resource.Resource>*/ it = info.getLoadedResourcesIterator(); it.hasNext();) {
+				org.eclipse.emf.ecore.resource.Resource nextResource = (org.eclipse.emf.ecore.resource.Resource) it.next();
+				monitor.setTaskName(org.eclipse.osgi.util.NLS.bind(
+						«EXPAND xpt::Externalizer::accessorCall(i18nKeyForDocumentSaveNextResourceTask(self)) FOR editorGen», 
+						nextResource.getURI()));
+				if (nextResource.isLoaded() && !info.getEditingDomain().isReadOnly(nextResource)) {
+					try {
+						nextResource.save(«EXPAND xpt::Common::getSaveOptions»);
+					} catch (java.io.IOException e) {
+						fireElementStateChangeFailed(element);
+						throw new org.eclipse.core.runtime.CoreException(new org.eclipse.core.runtime.Status(org.eclipse.core.runtime.IStatus.ERROR, «editorGen.plugin.getActivatorQualifiedClassName()».ID, org.eclipse.gmf.runtime.diagram.ui.resources.editor.internal.EditorStatusCodes.RESOURCE_FAILURE, e.getLocalizedMessage(), null));
+					}
+				}
+				monitor.worked(1);
+			}
+			monitor.done();
+			info.setModificationStamp(computeModificationStamp(info));
+		} catch (RuntimeException x) {
+			fireElementStateChangeFailed(element);
+			throw x;
+		} «IF null = editorGen.application» finally {
+			info.startResourceListening();
+		} «ENDIF»
+	} else {
+		org.eclipse.emf.common.util.URI newResoruceURI;
+		java.util.List affectedFiles = null;
+		«IF null = editorGen.application»if (element instanceof «EXPAND xpt::editor::DocumentProvider::fileEditorInputClassFQName») {
+			org.eclipse.core.resources.IFile newFile = ((«EXPAND xpt::editor::DocumentProvider::fileEditorInputClassFQName») element).getFile();
+			affectedFiles = java.util.Collections.singletonList(newFile);
+			newResoruceURI = org.eclipse.emf.common.util.URI.createPlatformResourceURI(newFile.getFullPath().toString(), true);
+		} else «ENDIF»if(element instanceof «EXPAND xpt::editor::DocumentProvider::uriEditorInputClassFQName») {
+			newResoruceURI = ((«EXPAND xpt::editor::DocumentProvider::uriEditorInputClassFQName») element).getURI();
+		} else {
+			fireElementStateChangeFailed(element);
+			«EXPAND xpt::editor::DocumentProvider::throwIncorrectInputException-»
+		}
+		if (false == document instanceof org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument) {
+			fireElementStateChangeFailed(element);
+			throw new org.eclipse.core.runtime.CoreException(new org.eclipse.core.runtime.Status(org.eclipse.core.runtime.IStatus.ERROR, «editorGen.plugin.getActivatorQualifiedClassName()».ID, 0,
+			"Incorrect document used: " + document + " instead of org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument", null));«EXPAND xpt::Common::nonNLS(1)»«EXPAND xpt::Common::nonNLS(2)»
+		}
+		org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument diagramDocument = (org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument) document;
+		final org.eclipse.emf.ecore.resource.Resource newResource = diagramDocument.getEditingDomain().getResourceSet().createResource(newResoruceURI);
+		final org.eclipse.gmf.runtime.notation.Diagram diagramCopy = (org.eclipse.gmf.runtime.notation.Diagram) org.eclipse.emf.ecore.util.EcoreUtil.copy(diagramDocument.getDiagram());
+		try {
+			new org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand(diagramDocument.getEditingDomain(), org.eclipse.osgi.util.NLS.bind(«EXPAND xpt::Externalizer::accessorCall(i18nKeyForDocumentSaveAs(self)) FOR editorGen», diagramCopy.getName()), affectedFiles) {
+				protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info) throws org.eclipse.core.commands.ExecutionException {
+					newResource.getContents().add(diagramCopy);					
+					return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult();
+				}
+			}.execute(monitor, null);
+			newResource.save(«EXPAND xpt::Common::getSaveOptions»);
+		} catch (org.eclipse.core.commands.ExecutionException e) {
+			fireElementStateChangeFailed(element);
+			throw new org.eclipse.core.runtime.CoreException(new org.eclipse.core.runtime.Status(org.eclipse.core.runtime.IStatus.ERROR, «editorGen.plugin.getActivatorQualifiedClassName()».ID, 0, e.getLocalizedMessage(), null));
+		} catch (java.io.IOException e) {
+			fireElementStateChangeFailed(element);
+			throw new org.eclipse.core.runtime.CoreException(new org.eclipse.core.runtime.Status(org.eclipse.core.runtime.IStatus.ERROR, «editorGen.plugin.getActivatorQualifiedClassName()».ID, 0, e.getLocalizedMessage(), null));
+		}
+		newResource.unload();
+	}
+	ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)document.getContent());
+}
+«ENDAROUND»
+
+
+
