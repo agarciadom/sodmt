@@ -140,3 +140,10 @@ enum VisitStatus {
    VISITING;
    VISITED;
 }
+
+/* Node side: useful for operations which need to distinguish between the
+   incoming side and the outgoing side */
+enum NodeSide {
+   INCOMING;
+   OUTGOING;
+}

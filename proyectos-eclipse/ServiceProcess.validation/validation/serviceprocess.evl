@@ -31,26 +31,6 @@ context ActivityEdge {
       }
     }
   }
-
-  constraint AtLeastOneActivityNodeBetweenInitialAndFinalNodes {
-    check : self.source.isKindOf(InitialNode)
-            implies not self.target.isKindOf(FinalNode)
-    message : 'There must be at least one activity node between the initial '
-              + 'node and the final node'
-    fix {
-      title : 'Add dummy executable node'
-      do {
-        var newExec = new ExecutableNode;
-        newExec.activity := self.source.activity;
-        newExec.name := 'Do something';
-
-        var newEdge := createControlFlow();
-        newEdge.source := newExec;
-        newEdge.target := self.target;
-        self.target := newExec;
-      }
-    }
-  }
 }
 
 context ActivityNode {
@@ -75,15 +55,9 @@ context ActivityNode {
       do {
         var newJoin := new JoinNode;
         newJoin.activity := self.activity;
-
-        var newEdge := createEdgeSimilarTo(self.incoming.first());
-        for (e in self.incoming.clone()) {
-          e.target := newJoin;
-        }
-        newEdge.source := newJoin;
-        newEdge.target := self;
+        self.placeNodeBetween(newJoin, NodeSide#INCOMING);
       }
-    }      
+    }
   }
 
   -- See above comment for an explanation of why we use both min and max
@@ -96,22 +70,25 @@ context ActivityNode {
 
   constraint MaximumOneOutgoing {
     guard : not self.isTypeOf(ForkNode)
+            and not self.isTypeOf(DecisionNode)
             and InitialNode.all.first().satisfies('NoCyclesCompleteGraph')
             and self.satisfies('SameFlowTypeForAllOutgoing')
     check : self.outgoing.size() <= 1
-    message : 'All activity nodes except forks must have at most one outgoing edge'
+    message : 'All activity nodes except forks and decisions must have at most one outgoing edge'
     fix {
       title : 'Add fork node in the middle'
       do {
         var newFork := new ForkNode;
         newFork.activity := self.activity;
-        
-        var newEdge := createEdgeSimilarTo(self.outgoing.first());
-        for (e in self.outgoing.clone()) {
-          e.source := newFork;
-        }
-        newEdge.source := self;
-        newEdge.target := newFork;
+        self.placeNodeBetween(newFork, NodeSide#OUTGOING);
+      }
+    }
+    fix {
+      title : 'Add decision node in the middle'
+      do {
+        var newDecision := new DecisionNode;
+        newDecision.activity := self.activity;
+        self.placeNodeBetween(newDecision, NodeSide#OUTGOING);
       }
     }
   }
@@ -131,20 +108,22 @@ context ActivityNode {
   constraint SameFlowTypeForAllIncomingAndOutgoing {
     guard : self.satisfies('SameFlowTypeForAllIncoming')
             and self.satisfies('SameFlowTypeForAllOutgoing')
+            and not self.isKindOf(ExecutableNode)
     check : self.incoming.forAll(r|r.type() == self.outgoing.first().type())
-    message : 'All incoming and outgoing links should be of the same type'
+    message : 'All incoming and outgoing links should be of the same type, except for executable nodes'
   }
 }
 
 -- Annotation constraints -------------------------
 
 context EdgeCondition {
-  constraint EdgeIsDesigned {
+  constraint EdgeIsDefined {
     check : self.edge.isDefined()
     message : 'Condition must be linked to an edge starting from a '
               + 'DecisionNode'
   }
   constraint OnlyFromDecisionNode {
+    guard : self.satisfies('EdgeIsDefined')
     check : self.edge.source.isTypeOf(DecisionNode)
     message : 'Condition applied to edge which does not start from '
               + 'a DecisionNode'
@@ -196,7 +175,23 @@ context InitialNode {
       }
     }
   }
-  
+
+  constraint AtLeastOneActivityNodeBetweenInitialAndFinalNodes {
+    guard : self.satisfies('MaximumOneOutgoing')
+    check : self.outgoing.forAll(e| not e.target.isKindOf(FinalNode))
+    message : 'There must be at least one activity node between the initial '
+              + 'node and the final node'
+    fix {
+      title : 'Add dummy executable node'
+      do {
+        var newExec = new ExecutableNode;
+        newExec.activity := self.activity;
+        newExec.name := 'Do something';
+        self.placeNodeBetween(newExec, NodeSide#OUTGOING);
+      }
+    }
+  }
+
   -- TODO: add support for loops to the propagation algorithm,
   -- using some probability threshold configurable by the user.
   -- The NoCycles constraint in the ActivityEdge context is still
@@ -277,14 +272,27 @@ context DecisionNode {
     check : self.outgoing.forAll(r|r.condition.isDefined())
     message : 'All outgoing edges from a decision node must have conditions'
   }
+  constraint TotalProbabilityIsOne {
+    guard : self.satisfies('AllOutgoingEdgesMustHaveCondition')
+            and self.outgoing.forAll(r|r.condition.satisfies('ValidProbability'))
+    check {
+      var totalPercentage := 0;
+      for (cond in self.outgoing.collect(r|r.condition)) {
+        totalPercentage := totalPercentage + cond.probability;
+      }
+      var delta := (1 - totalPercentage).abs();
+      return delta <= 0.001;
+    }
+    message : 'The sum of the probabilities of all the decision outcomes must be equal to 1'
+  }
 }
 
 -- Operations -----------------------------------
 
 -- Edge creation
 
-operation createEdgeSimilarTo(e : ActivityEdge) {
-  assert(e.isDefined(), 'the edge e should be defined');
+$"pre" e.isDefined()
+operation createEdgeSimilarTo(e : ControlNodeEdge) {
   if (e.isKindOf(ControlFlow)) {
     return createControlFlow();
   } else {
@@ -304,6 +312,29 @@ operation createControlFlow() {
   return newCF;
 }
 
+-- Adds another node between a node and its direct ancestors or descendants
+-- FIXME: Cannot use "NodeSide" as the parameter type (Eclipse Bugzilla #286412)
+$"pre"  newNode.isDefined() and side.isDefined()
+$"pre"  (side = NodeSide#OUTGOING and self.outgoing.size() >= 1) or (side = NodeSide#INCOMING and self.incoming.size() >= 1)
+$"post" (side = NodeSide#OUTGOING and self.outgoing.size() = 1) or (side = NodeSide#INCOMING and self.incoming.size() = 1)
+operation ActivityNode placeNodeBetween(newNode : ActivityNode, side : Any) {
+  if (side = NodeSide#OUTGOING) {
+    var newEdge := createEdgeSimilarTo(self.outgoing.first());
+    for (e in self.outgoing.clone()) {
+       e.source := newNode;
+    }
+    newEdge.source := self;
+    newEdge.target := newNode;
+  } else {
+    var newEdge := createEdgeSimilarTo(self.incoming.first());
+    for (e in self.incoming.clone()) {
+      e.target := newNode;
+    }
+    newEdge.source := newNode;
+    newEdge.target := self;
+  }
+}
+
 -- Cycle testing
 
 operation graphIsAcyclic(start : ActivityNode) {
@@ -316,13 +347,12 @@ operation graphIsAcyclic(start : ActivityNode) {
   return start.~firstEdgeProducingCycle.isUndefined();
 }
 
+$"pre" node.~visitStatus <> VisitStatus#VISITING
 operation getFirstEdgeProducingCycle(node : ActivityNode) {
   -- All ancestors already visited: nothing to do
   if (node.~visitStatus = VisitStatus#VISITED) {
     return;
   }
-  assert(node.~visitStatus = VisitStatus#NOT_VISITED,
-         'Edges to nodes which are already being visited should not be crossed over');
 
   node.~visitStatus := VisitStatus#VISITING;
   for (edge in node.outgoing) {
