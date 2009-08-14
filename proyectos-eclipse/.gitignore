@@ -1,13 +1,9 @@
 .metadata
 ServiceProcess/src
-ServiceProcess.edit
-!ServiceProcess.edit/customsrc
-ServiceProcess.editor
-!ServiceProcess.editor/customsrc
-ServiceProcess.diagram
-!ServiceProcess.diagram/customsrc
+ServiceProcess.edit/src
+ServiceProcess.editor/src
+ServiceProcess.diagram/src
 ServiceProcess.tests
-!ServiceProcess.tests/customsrc
 org.eclipse.*
 es.uca.modeling.ant/bin
 es.uca.modeling.ant/lib
