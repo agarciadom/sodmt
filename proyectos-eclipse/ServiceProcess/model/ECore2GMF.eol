@@ -1,9 +1,8 @@
 for (n in Sequence {
             'InitialNodeLabel', 'FinalNodeLabel',
             'ForkNodeLabel', 'JoinNodeLabel',
-            'DecisionNodeLabel',
-            'ProbabilityAnnotationConditionExternalLabel',
-            'PerformanceAnnotationExecNodeExternalLabel'}) {
+            'DecisionNodeLabel'
+          }) {
    removeLabel(n);
 }
 

@@ -1,4 +1,4 @@
-@namespace(uri="http://serviceProcess", prefix="serviceProcess")
+@namespace(uri="http://www.uca.es/modeling/serviceProcess", prefix="sp")
 package serviceProcess;
 
 @gmf.diagram(foo="bar")
@@ -28,31 +28,39 @@ abstract class ActivityNode {
 abstract class ActivityEdge {
   ref ActivityNode#incoming target;
   ref ActivityNode#outgoing source;
+  @gmf.link(tool="Link Condition")
+  ref EdgeCondition#edge condition;
 }
 
 abstract class Annotation {
+   attr boolean manuallyAdded = true;
 }
 
 /* ANNOTATIONS */
 
-@gmf.node(label.pattern="p = {0}", label="probability", figure="rectangle", size="60,30")
-class ProbabilityAnnotation extends Annotation {
-   attr Double probability;
-
-   @gmf.link(foo="bar")
-   ref ConditionalControlFlow#annotation condition;
+/* condition = 'else' -> default flow */
+@gmf.node(label="probability,language,condition",
+          label.pattern="<<{1}>> : [{0}], p = {2}",
+          tool.name="Edge Condition")
+class EdgeCondition extends Annotation {
+    ref ActivityEdge#condition edge;
+    attr String condition;
+    attr ExpressionLanguage language;
+    attr Double probability;
 }
 
-@gmf.node(label="transactionsPerSec,secsTimeLimit", label.pattern="{0} transactions @ {1}", figure="rectangle")
+@gmf.node(label="transactionsPerSec,secsTimeLimit",
+          label.pattern="{0} transactions @ {1}",
+          figure="rectangle",
+          tool.name="Performance Constraint")
 class PerformanceAnnotation extends Annotation {
    attr Integer transactionsPerSec;
    attr Double secsTimeLimit;
-
-   @gmf.link(label="Annotate ExecutableNode")
    ref ExecutableNode#annotation execNode;
 }
 
 /* ACTIVITIES */
+
 class ServiceActivity extends Activity, NamedElement {
 }
 
@@ -65,16 +73,6 @@ class ObjectFlow extends ActivityEdge {
 class ControlFlow extends ActivityEdge {
 }
 
-/* condition = else -> default flow */
-@gmf.link(label="language,condition",
-          label.icon="false",
-          label.pattern="<<{1}>> : [{0}]")
-class ConditionalControlFlow extends ControlFlow {
-    attr String condition;
-    attr ExpressionLanguage language;
-    ref ProbabilityAnnotation#condition annotation;
-}
-
 /* NODES */
 
 abstract class ControlNode extends ActivityNode {
@@ -82,6 +80,7 @@ abstract class ControlNode extends ActivityNode {
 
 @gmf.node(figure="figures.LabeledEllipse", label.icon="false")
 class ExecutableNode extends ControlNode, NamedElement {
+  @gmf.link(tool.name="Link Performance Annotation")
   ref PerformanceAnnotation#execNode annotation;
 }
 

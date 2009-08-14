@@ -1,3 +1,5 @@
+-- Diagram constraints --------------------------
+
 context ServiceProcess {
   constraint ExactlyOneInitialNode {
     check : InitialNode.all.size = 1
@@ -10,19 +12,7 @@ context ServiceProcess {
   }
 }
 
-context ExecutableNode {
-  constraint NameMustNotBeEmpty {
-    check : self.name <> ''
-    message : 'The name of an executable node must not be empty'
-  }
-}
-
-context DecisionNode {
-  constraint NameMustNotBeEmpty {
-    check : self.condition <> ''
-    message : 'The condition of a decision node must not be empty'
-  }
-}
+-- Abstract class constraints -------------------
 
 context ActivityEdge {
 
@@ -43,8 +33,10 @@ context ActivityEdge {
   }
 
   constraint AtLeastOneActivityNodeBetweenInitialAndFinalNodes {
-    check : self.source.isTypeOf(InitialNode) implies not self.target.isTypeOf(FinalNode)
-    message : 'There must be at least one activity node between the initial node and the final node'
+    check : self.source.isTypeOf(InitialNode)
+            implies not self.target.isTypeOf(FinalNode)
+    message : 'There must be at least one activity node between the initial '
+              + 'node and the final node'
     fix {
       title : 'Add dummy executable node'
       do {
@@ -63,12 +55,6 @@ context ActivityEdge {
 
 context ActivityNode {
 
-  constraint OnlyTwoOutgoingBranchesForDecisionNode {
-    guard : self.isTypeOf(DecisionNode)
-    check : self.outgoing.size = 2
-    message : 'All decision nodes must only have two branches'
-  }
-  
   constraint NoIncomingForInitialNode {
     guard : self.isTypeOf(InitialNode)
     check : self.incoming.isEmpty
@@ -82,7 +68,7 @@ context ActivityNode {
       }
     }
   }
-  
+
   constraint NoOutgoingForFinalNode {
     guard : self.isTypeOf(FinalNode)
     check : self.outgoing.isEmpty
@@ -117,8 +103,8 @@ context ActivityNode {
       do {
         var newJoin := new JoinNode;
         newJoin.activity := self.activity;
-                
-        var newEdge := new ActivityEdge;
+
+        var newEdge := createEdgeSimilarTo(self.incoming.first.isOfType);
         for (e in self.incoming) {
           e.target := newJoin; 
         } 
@@ -127,26 +113,28 @@ context ActivityNode {
       }
     }      
   }
-  
+
   -- See above comment for an explanation of why we use both min and max
   -- constraints instead of just one
   constraint MinimumOneOutgoing {
     guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
     check : self.outgoing.size >= 1
-    message : 'All activity nodes except forks and final nodes must have exactly one outgoing edge'
+    message : 'All activity nodes except forks and final nodes must have '
+              + 'exactly one outgoing edge'
   }
 
   constraint MaximumOneOutgoing {
     guard : not self.isTypeOf(ForkNode) and not self.isTypeOf(FinalNode)
     check : self.outgoing.size <= 1
-    message : 'All activity nodes except forks and final nodes must have exactly one outgoing edge'
+    message : 'All activity nodes except forks and final nodes must have '
+              + 'exactly one outgoing edge'
     fix {
       title : 'Add fork node in the middle'
       do {
         var newFork := new ForkNode;
         newFork.activity := self.activity;
         
-        var newEdge := new ActivityEdge;
+        var newEdge := createEdgeSimilarTo(self.incoming.first.isOfType);
         for (e in self.outgoing) {
           e.source := newFork;
         }
@@ -154,5 +142,62 @@ context ActivityNode {
         newEdge.target := newFork;
       }
     }
+  }
+}
+
+-- Annotation constraints -------------------------
+
+context EdgeCondition {
+  constraint EdgeIsDesigned {
+    check : self.edge.isDefined()
+    message : 'Condition must be linked to an edge starting from a '
+              + 'DecisionNode'
+  }
+  constraint OnlyFromDecisionNode {
+    check : self.edge.source.isOfType(DecisionNode)
+    message : 'Condition applied to edge which does not start from '
+              + 'a DecisionNode'
+  }
+  constraint NonEmptyCondition {
+    check : self.condition <> ''
+    message : 'Condition cannot be empty'
+  }
+  constraint ValidProbability {
+    check : self.probability > 0 and self.probability < 1
+    message : 'Condition must be true with probability > 0 and < 1'
+  }
+}
+
+context PerformanceAnnotation {
+  constraint ValidTransactionsPerSec {
+    check : self.transactionsPerSec > 0
+    message : 'Transactions per sec must be a natural number'
+  }
+  constraint ValidTimeLimit {
+    check : self.secsTimeLimit > 0
+    message : 'The time limit for a single transaction must be '
+              + 'greater than 0'
+  }
+  constraint IsLinkedToNodeOrActivity {
+    check : self.execNode.isDefined() or self.activity.isDefined()
+    message : 'The annotation must be linked to an Activity or an '
+              + 'Executable Node'
+  }
+}
+
+-- Node constraints -----------------------------
+
+context ExecutableNode {
+  constraint NameMustNotBeEmpty {
+    check : self.name <> ''
+    message : 'The name of an executable node must not be empty'
+  }
+}
+
+operation createEdgeSimilarTo(e : ActivityEdge) {
+  if (e.isOfType(ControlFlow)) {
+    return new ControlFlow;
+  } else {
+    return new ObjectFlow;
   }
 }
