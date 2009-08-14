@@ -1,3 +1,5 @@
+-- Remove labels from nodes which don't need them ------------------
+
 for (n in Sequence {
             'InitialNodeLabel', 'FinalNodeLabel',
             'ForkNodeLabel', 'JoinNodeLabel',
@@ -16,23 +18,36 @@ for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
 }
 
 operation removeLabel(diagramLabelName : String) {
-  -- no label for InitialNode
-  var diagLabel
-    = GmfGraph!DiagramLabel.all.selectOne(r|r.name = diagramLabelName);
-  var labelMapping
-    = GmfMap!LabelMapping.all.selectOne(r | r.diagramLabel = diagLabel);
-  
-  if (labelMapping.isDefined()) {
-    delete labelMapping;
+  var diagLabels    := findDiagramLabelsByName(diagramLabelName);
+  var labelMappings := findLabelMappingsByDiagramLabels(diagLabels);
+
+  for (labelMapping in labelMappings) {
+    if (labelMapping.isDefined()) {
+      delete labelMapping;
+    }
   }
-  if (diagLabel.accessor.isDefined()) {
-    -- Composite figure: we only want to remove the child label
-    delete diagLabel.accessor.figure;
-    delete diagLabel.accessor;
+  for (diagLabel in diagLabels) {
+    if (diagLabel.accessor.isDefined()) {
+      -- Composite figure: we only want to remove the child label
+      delete diagLabel.accessor.figure;
+      delete diagLabel.accessor;
+    }
+    else {
+      -- The whole figure is the label: remove it
+      delete diagLabel.figure;
+    }
+    delete diagLabel;
   }
-  else {
-    -- The whole figure is the label: remove it
-    delete diagLabel.figure;
-  }
-  delete diagLabel;
+}
+
+operation findDiagramLabelsByName(labelName : String) : Collection {
+  return GmfGraph!DiagramLabel.all.select(r|r.name = labelName);
+}
+
+operation findLabelMappingsByDiagramLabels(diagramLabels : Collection) : GmfMap!LabelMapping {
+  return GmfMap!LabelMapping.all.select(r|diagramLabels.includes(r.diagramLabel));
+}
+
+operation findLabelMappingsByName(diagramLabelName : String) : GmfMap!LabelMapping {
+  return findLabelMappingsByDiagramLabels(findDiagramLabelsByName(diagramLabelName));
 }
