@@ -28,40 +28,54 @@ abstract class ActivityNode {
 abstract class ActivityEdge {
   ref ActivityNode#incoming target;
   ref ActivityNode#outgoing source;
-  @gmf.link(tool="Link Condition")
+  @gmf.link(label="condition", style="dash", tool.name="Link Edge Condition")
   ref EdgeCondition#edge condition;
 }
 
 abstract class Annotation {
+   @gmf.label(label.readOnly="true")
    attr boolean manuallyAdded = true;
 }
 
 /* ANNOTATIONS */
 
 /* condition = 'else' -> default flow */
-@gmf.node(label="probability,language,condition",
-          label.pattern="<<{1}>> : [{0}], p = {2}",
+@gmf.node(label="condition",
+          label.pattern="<<condition>>",
+          figure="rectangle",
           tool.name="Edge Condition")
 class EdgeCondition extends Annotation {
-    ref ActivityEdge#condition edge;
-    attr String condition;
+    ref ControlNodeEdge#condition edge;
+
+    @gmf.label(foo="bar")
+    attr String condition = "true";
+    @gmf.label(foo="bar")
     attr ExpressionLanguage language;
-    attr Double probability;
+    @gmf.label(foo="bar")
+    attr Double probability = 1;
 }
 
-@gmf.node(label="transactionsPerSec,secsTimeLimit",
-          label.pattern="{0} transactions @ {1}",
+@gmf.node(label="transactionsPerSec",
+          label.pattern="<<performance>>",
           figure="rectangle",
           tool.name="Performance Constraint")
 class PerformanceAnnotation extends Annotation {
-   attr Integer transactionsPerSec;
-   attr Double secsTimeLimit;
    ref ExecutableNode#annotation execNode;
+
+   @gmf.label(foo="bar")
+   attr Long transactionsPerSec = 1;
+   @gmf.label(foo="bar")
+   attr Double secsTimeLimit = 1;
 }
 
 /* ACTIVITIES */
 
+@gmf.node(tool.name="Service Activity")
 class ServiceActivity extends Activity, NamedElement {
+  @gmf.label(foo="bar")
+  attr Long transactionsPerSec = 1;
+  @gmf.label(foo="bar")
+  attr Double secsTimeLimit = 1;
 }
 
 /* EDGES */
@@ -80,7 +94,8 @@ abstract class ControlNode extends ActivityNode {
 
 @gmf.node(figure="figures.LabeledEllipse", label.icon="false")
 class ExecutableNode extends ControlNode, NamedElement {
-  @gmf.link(tool.name="Link Performance Annotation")
+  @gmf.link(label="performance", style="dash",
+            tool.name="Link Performance Annotation")
   ref PerformanceAnnotation#execNode annotation;
 }
 

@@ -1,9 +1,18 @@
 for (n in Sequence {
             'InitialNodeLabel', 'FinalNodeLabel',
             'ForkNodeLabel', 'JoinNodeLabel',
-            'DecisionNodeLabel'
-          }) {
+            'DecisionNodeLabel',
+            'ControlNodeEdgeConditionExternalLabel',
+            'ExecutableNodeAnnotationExternalLabel'}) {
    removeLabel(n);
+}
+
+for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
+                       'ServiceActivitySecsTimeLimitLabelFigure'}) {
+  var label := GmfGraph!Label.all.selectOne(r | r.name=name);
+  label.maximumSize := new GmfGraph!Dimension;
+  label.maximumSize.dx := 10000;
+  label.maximumSize.dy := 50;
 }
 
 operation removeLabel(diagramLabelName : String) {
