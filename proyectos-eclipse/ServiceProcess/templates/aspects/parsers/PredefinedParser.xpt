@@ -1,0 +1,18 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«AROUND parser_getParseCommandMethod FOR gmfgen::PredefinedParser»
+   «IF className != 'NumbersToDoubleParser'»
+     «targetDef.proceed()»
+   «ELSE»
+     «EXPAND xpt::Common::generatedMemberComment»
+     public org.eclipse.gmf.runtime.common.core.command.ICommand getParseCommand(org.eclipse.core.runtime.IAdaptable adapter, String newString, int flags) {
+                Object[] values = getEditorProcessor().parse(newString, new java.text.ParsePosition(0));
+                for (int i = 0; i < values.length; ++i) {
+                  if (values[i] instanceof Number) {
+                    values[i] = new Double(((Number)values[i]).doubleValue());
+                  }
+                }
+                return getParseCommand(adapter, values, flags);
+     }
+   «ENDIF»
+«ENDAROUND»

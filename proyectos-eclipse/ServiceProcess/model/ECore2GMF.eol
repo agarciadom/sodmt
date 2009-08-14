@@ -9,12 +9,74 @@ for (n in Sequence {
    removeLabel(n);
 }
 
+-- Define maximum sizes for ServiceActivity's labels ---------------
+
 for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
                        'ServiceActivitySecsTimeLimitLabelFigure'}) {
   var label := GmfGraph!Label.all.selectOne(r | r.name=name);
   label.maximumSize := new GmfGraph!Dimension;
   label.maximumSize.dx := 10000;
   label.maximumSize.dy := 50;
+}
+
+-- Label edit and view patterns -------------------------------------
+
+var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT.instance;
+var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE.instance;
+for (entry in Sequence {
+                Sequence {'AnnotationManuallyAddedLabel', 'manual'},
+                Sequence {'EdgeConditionConditionLabel', 'condition'},
+                Sequence {'EdgeConditionLanguageLabel', 'language'},
+                Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
+                  'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
+                Sequence {'ServiceActivityTransactionsPerSecLabel',
+                  'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
+                Sequence {'EdgeConditionProbabilityLabel', 'probability',
+                  NATIVE_METHOD, '{0,number}'},
+                Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
+                  'timeLimit', NATIVE_METHOD, '{0,number}'},
+                Sequence {'ServiceActivitySecsTimeLimitLabel', 'timeLimit',
+                  NATIVE_METHOD, '{0,number}'}}) {
+  var labelName      := entry.at(0);
+  var viewPatternLHS := entry.at(1);
+  var editMethod     := MSGFMT_METHOD;
+  var editPattern    := '{0}';
+  if (entry.size() > 2) {
+    editMethod  = entry.at(2);
+    editPattern = entry.at(3);
+  }
+
+  setFeatureLabelPatterns(labelName,
+                          editMethod, editPattern,
+                          MSGFMT_METHOD, (viewPatternLHS + ' = {0}'));
+}
+
+-- Make some labels read only ---------------------------------------
+
+for (n in Sequence {'EdgeConditionLabel',
+                    'AnnotationManuallyAddedLabel',
+                    'PerformanceAnnotationLabel'}) {
+  makeReadOnly(n);
+}
+
+-- OPERATIONS -------------------------------------------------------
+
+operation makeReadOnly(diagramLabelName : String) {
+  for (labelMapping in findLabelMappingsByName(diagramLabelName)) {
+    labelMapping.readOnly := true;
+  }
+}
+
+operation setFeatureLabelPatterns(diagramLabelName : String,
+                                  editMethod : Any, editPattern : String,
+                                  viewMethod : Any, viewPattern : String) {
+  for (labelMapping in findLabelMappingsByName(diagramLabelName)) {
+    labelMapping.editMethod    := editMethod;
+    labelMapping.editPattern   := editPattern;
+    labelMapping.editorPattern := editPattern;
+    labelMapping.viewMethod  := viewMethod;
+    labelMapping.viewPattern := viewPattern;
+  }
 }
 
 operation removeLabel(diagramLabelName : String) {

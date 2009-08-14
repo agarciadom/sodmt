@@ -8,6 +8,23 @@ var genEditorGen := GmfGen!GenEditorGenerator.all.first();
 genEditorGen.dynamicTemplates := true;
 genEditorGen.templateDirectory := '/ServiceProcess/templates/';
 
+-- Use a customized parser for the Double attributes
+var OLD_DOUBLE_PARSER_NAME := 'MessageFormatMessageFormatParser';
+var NEW_DOUBLE_PARSER_NAME := 'NumbersToDoubleParser';
+var doubleParser := findPredefinedParser(OLD_DOUBLE_PARSER_NAME);
+if (not doubleParser.isDefined()) {
+  doubleParser := findPredefinedParser(NEW_DOUBLE_PARSER_NAME);
+  assert(doubleParser.isDefined(),
+         'If the Double parser does not exist with the old name, it must exist with the new name');
+}
+doubleParser.className := NEW_DOUBLE_PARSER_NAME;
+
+-- OPERATIONS -------------------------------------------------------
+
+operation findPredefinedParser(parserName : String) : GmfGen!PredefinedParser {
+  return GmfGen!PredefinedParser.all.selectOne(r|r.className=parserName);
+}
+
 operation makeNotResizable(figureClass : String) {
   var figure_viewmaps = GmfGen!InnerClassViewmap.all
     .select(r|r.className = figureClass);
