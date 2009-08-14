@@ -1,0 +1,2 @@
+var genModel := GenModel!GenModel.all.first();
+genModel.modelName := 'Service Process';
