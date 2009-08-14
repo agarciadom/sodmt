@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BuildServiceAnt" default="build-jar">
+	<target name="build-jar">
+		<echo>Building ANT jar</echo>
+		<mkdir dir="lib"/>
+		<jar destfile="lib/serviceprocess.ant.jar" basedir="bin"/>
+	</target>
+</project>
