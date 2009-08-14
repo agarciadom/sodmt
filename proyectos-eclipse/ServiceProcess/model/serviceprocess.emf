@@ -80,10 +80,11 @@ class ServiceActivity extends Activity, NamedElement {
 
 /* EDGES */
 
-@gmf.link(style="dash")
+@gmf.link(style="dash",target.decoration="arrow",tool.name="Object Flow")
 class ObjectFlow extends ActivityEdge {
 }
 
+@gmf.link(target.decoration="arrow", tool.name="Control Flow")
 class ControlFlow extends ActivityEdge {
 }
 
@@ -92,30 +93,36 @@ class ControlFlow extends ActivityEdge {
 abstract class ControlNode extends ActivityNode {
 }
 
-@gmf.node(figure="figures.LabeledEllipse", label.icon="false")
+@gmf.node(figure="figures.LabeledEllipse", label.icon="false",
+          tool.name="Executable Node")
 class ExecutableNode extends ControlNode, NamedElement {
   @gmf.link(label="performance", style="dash",
             tool.name="Link Performance Annotation")
   ref PerformanceAnnotation#execNode annotation;
 }
 
-@gmf.node(figure="figures.FgBgFilledCircleFigure", border.color="0,0,0", size="30,30")
+@gmf.node(figure="figures.FgBgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Start")
 class InitialNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.FgFilledCircleFigure", border.color="0,0,0", size="30,30")
+@gmf.node(figure="figures.FgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Finish")
 class FinalNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0", size="15,30")
+@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Fork")
 class ForkNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0", size="15,30")
+@gmf.node(figure="figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Join")
 class JoinNode extends ControlNode {
 }
 
-@gmf.node(figure="figures.DiamondFigure", border.color="0,0,0", size="30,30")
+@gmf.node(figure="figures.DiamondFigure", border.color="0,0,0", size="30,30",
+          tool.name="Decision")
 class DecisionNode extends ControlNode {
 }
 
