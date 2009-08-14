@@ -14,7 +14,7 @@ context ServiceProcess {
 
 -- Abstract class constraints -------------------
 
-context ActivityEdge {
+context ControlNodeEdge {
 
   constraint BothEndsDefined {
     check : self.source.isDefined() and self.target.isDefined()
@@ -33,7 +33,7 @@ context ActivityEdge {
   }
 }
 
-context ActivityNode {
+context ControlNode {
 
   -- We use two constraints for the incoming count (min, max) so we only
   -- propose the join fix in the right situations. This would be much easier if
@@ -148,10 +148,9 @@ context PerformanceAnnotation {
     message : 'The time limit for a single transaction must be '
               + 'greater than 0'
   }
-  constraint IsLinkedToNodeOrActivity {
-    check : self.execNode.isDefined() xor self.activity.isDefined()
-    message : 'The annotation must be linked either to an Activity '
-              + 'or to an Executable Node'
+  constraint IsLinkedToNode {
+    check : self.execNode.isDefined()
+    message : 'The annotation must be linked to an Executable Node'
   }
   constraint LinkedNodeIsDecisionNode {
     guard : self.execNode.isDefined()
@@ -194,7 +193,7 @@ context InitialNode {
 
   -- TODO: add support for loops to the propagation algorithm,
   -- using some probability threshold configurable by the user.
-  -- The NoCycles constraint in the ActivityEdge context is still
+  -- The NoCycles constraint in the ControlNodeEdge context is still
   -- useful, as it is easier to understand for the user. This
   -- constraint might be removed in the future.
   constraint NoCyclesCompleteGraph {

@@ -4,8 +4,7 @@ package serviceProcess;
 @gmf.diagram(foo="bar")
 class ServiceProcess {
   val Activity[*] activity;
-  val ActivityEdge[*] edge;
-  val Annotation[*] annotations;
+  val ControlNodeEdge[*] edge;
 }
 
 @gmf.node(label="name")
@@ -20,14 +19,17 @@ abstract class Activity {
 
 abstract class ActivityNode {
   ref Activity#nodes activity;
-  ref ActivityEdge[*]#target incoming;
-  ref ActivityEdge[*]#source outgoing;
 }
 
-@gmf.link(source="source", target="target", target.decoration="arrow", width="3")
-abstract class ActivityEdge {
-  ref ActivityNode#incoming target;
-  ref ActivityNode#outgoing source;
+abstract class ControlNode extends ActivityNode {
+  ref ControlNodeEdge[*]#target incoming;
+  ref ControlNodeEdge[*]#source outgoing;
+}
+
+@gmf.link(source="source", target="target", width="3")
+abstract class ControlNodeEdge {
+  ref ControlNode#incoming target;
+  ref ControlNode#outgoing source;
   @gmf.link(label="condition", style="dash", tool.name="Link Edge Condition")
   ref EdgeCondition#edge condition;
 }
@@ -44,7 +46,7 @@ abstract class Annotation {
           label.pattern="<<condition>>",
           figure="rectangle",
           tool.name="Edge Condition")
-class EdgeCondition extends Annotation {
+class EdgeCondition extends Annotation, ActivityNode {
     ref ControlNodeEdge#condition edge;
 
     @gmf.label(foo="bar")
@@ -59,7 +61,7 @@ class EdgeCondition extends Annotation {
           label.pattern="<<performance>>",
           figure="rectangle",
           tool.name="Performance Constraint")
-class PerformanceAnnotation extends Annotation {
+class PerformanceAnnotation extends Annotation, ActivityNode {
    ref ExecutableNode#annotation execNode;
 
    @gmf.label(foo="bar")
@@ -81,17 +83,14 @@ class ServiceActivity extends Activity, NamedElement {
 /* EDGES */
 
 @gmf.link(style="dash",target.decoration="arrow",tool.name="Object Flow")
-class ObjectFlow extends ActivityEdge {
+class ObjectFlow extends ControlNodeEdge {
 }
 
 @gmf.link(target.decoration="arrow", tool.name="Control Flow")
-class ControlFlow extends ActivityEdge {
+class ControlFlow extends ControlNodeEdge {
 }
 
 /* NODES */
-
-abstract class ControlNode extends ActivityNode {
-}
 
 @gmf.node(figure="figures.LabeledEllipse", label.icon="false",
           tool.name="Executable Node")
