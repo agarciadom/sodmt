@@ -1,6 +1,8 @@
 defineNotResizableNodes();
 useDynamicTemplates('/ServiceProcess/templates/');
 useCustomizedParser();
+addPlugin('es.uca.modeling.figures');
+addPlugin('es.uca.modeling.serviceprocess.edit');
 
 -- MAIN BODY OPERATIONS -------------------------------------------------------
 
@@ -28,6 +30,11 @@ operation useCustomizedParser() {
            'If the Double parser does not exist with the old name, it must exist with the new name');
   }
   doubleParser.className := NEW_DOUBLE_PARSER_NAME;
+}
+
+operation addPlugin(pluginName : String) {
+  var genPlugin := GmfGen!GenPlugin.all.first();
+  genPlugin.requiredPlugins.add(pluginName);
 }
 
 -- UTILITY OPERATIONS ---------------------------------------------------------
