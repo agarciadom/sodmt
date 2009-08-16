@@ -1,15 +1,10 @@
-package figures;
+package es.uca.modeling.figures;
 
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-
-// This import makes sure that the indirectly referenced org.eclipse.swt
-// bundle is part of the Eclipse project classpath. Do not remove!
-import org.eclipse.swt.graphics.Color;
 
 public class DiamondFigure extends Figure {
 	

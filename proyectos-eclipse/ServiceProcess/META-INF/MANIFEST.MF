@@ -6,8 +6,7 @@ Bundle-Version: 1.0.0
 Bundle-ClassPath: bin/
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: figures,
- serviceProcess,
+Export-Package: serviceProcess,
  serviceProcess.impl,
  serviceProcess.util
 Require-Bundle: org.eclipse.core.runtime,

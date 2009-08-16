@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Modeling Figures
+Bundle-SymbolicName: es.uca.modeling.figures
+Bundle-Version: 1.0.0.qualifier
+Export-Package: es.uca.modeling.figures
+Require-Bundle: org.eclipse.draw2d;bundle-version="3.5.0",
+ org.eclipse.gmf.runtime.draw2d.ui;bundle-version="1.2.0"
+Bundle-Vendor: UCA SPIFM
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

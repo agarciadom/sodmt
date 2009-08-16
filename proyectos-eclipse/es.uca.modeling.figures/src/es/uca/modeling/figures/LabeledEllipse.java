@@ -1,4 +1,4 @@
-package figures;
+package es.uca.modeling.figures;
 
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.Graphics;
