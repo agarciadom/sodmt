@@ -1,4 +1,4 @@
-@namespace(uri="http://www.uca.es/modeling/serviceProcess", prefix="sp")
+@namespace(uri="www.uca.es/modeling/serviceProcess", prefix="sp")
 package serviceProcess;
 
 @gmf.diagram(foo="bar")
