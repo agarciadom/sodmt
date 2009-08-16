@@ -5,7 +5,11 @@
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
             constraints="validation/serviceprocess.evl"
-            namespaceURI="http://serviceProcess">
+            namespaceURI="www.uca.es/modeling/serviceProcess">
+      </constraintsBinding>
+      <constraintsBinding
+            constraints="validation/serviceprocess.evl"
+            namespaceURI="www.uca.es/modeling/serviceComposition">
       </constraintsBinding>
    </extension>
    <extension
@@ -17,6 +21,10 @@
       <markerResolutionGenerator
             class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
             markerType="org.eclipse.emf.ecore.diagnostic">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="serviceprocess.validation.MarkerResolutionGenerator1"
+            markerType="ServiceComposition.diagram.diagnostic">
       </markerResolutionGenerator>
    </extension>
 

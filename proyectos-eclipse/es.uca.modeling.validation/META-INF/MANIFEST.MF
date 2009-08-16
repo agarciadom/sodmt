@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ServiceProcess Validation
-Bundle-SymbolicName: ServiceProcess.validation;singleton:=true
+Bundle-SymbolicName: es.uca.modeling.validation;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Vendor: UCA
 Require-Bundle: org.eclipse.ui.ide;bundle-version="3.5.0",
