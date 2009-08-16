@@ -1,2 +1,7 @@
-var genModel := GenModel!GenModel.all.first();
-genModel.modelName := 'Service Process';
+setModelName('Service Process');
+
+operation setModelName(modelName : String) {
+  var genModel := GenModel!GenModel.all.first();
+  genModel.modelName := modelName;
+}
+

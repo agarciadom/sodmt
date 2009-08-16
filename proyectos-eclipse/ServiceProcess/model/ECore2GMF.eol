@@ -1,65 +1,85 @@
--- Remove labels from nodes which don't need them ------------------
+-*
+  We could simply run everything outside of any operations. However,
+  we wouldn't be able to reuse this code by importing it from another
+  EOL script: it appears that importing a module only gives us the
+  operations defined therein.
+*-
+serviceProcessMainBody();
 
-for (n in Sequence {
-            'InitialNodeLabel', 'FinalNodeLabel',
-            'ForkNodeLabel', 'JoinNodeLabel',
-            'DecisionNodeLabel',
-            'ControlNodeEdgeConditionExternalLabel',
-            'ExecutableNodeAnnotationExternalLabel'}) {
-   removeLabel(n);
+-- Main body of the script -----------------------------------------
+operation serviceProcessMainBody() {
+  removeUselessLabels();
+  defineMaximumSizes();
+  defineEditAndViewPatterns();
+  defineReadOnlyLabels();
+}
+
+-- Remove labels from nodes which don't need them ------------------
+operation removeUselessLabels() {
+  for (n in Sequence {
+              'InitialNodeLabel', 'FinalNodeLabel',
+              'ForkNodeLabel', 'JoinNodeLabel',
+              'DecisionNodeLabel',
+              'ControlNodeEdgeConditionExternalLabel',
+              'ExecutableNodeAnnotationExternalLabel'}) {
+     removeLabel(n);
+  }
 }
 
 -- Define maximum sizes for ServiceActivity's labels ---------------
-
-for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
-                       'ServiceActivitySecsTimeLimitLabelFigure'}) {
-  var label := GmfGraph!Label.all.selectOne(r | r.name=name);
-  label.maximumSize := new GmfGraph!Dimension;
-  label.maximumSize.dx := 10000;
-  label.maximumSize.dy := 50;
+operation defineMaximumSizes() {
+  for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
+                         'ServiceActivitySecsTimeLimitLabelFigure'}) {
+    var label := GmfGraph!Label.all.selectOne(r | r.name=name);
+    label.maximumSize := new GmfGraph!Dimension;
+    label.maximumSize.dx := 10000;
+    label.maximumSize.dy := 50;
+  }
 }
 
 -- Label edit and view patterns -------------------------------------
+operation defineEditAndViewPatterns() {
+  var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT.instance;
+  var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE.instance;
+  for (entry in Sequence {
+                  Sequence {'AnnotationManuallyAddedLabel', 'manual'},
+                  Sequence {'EdgeConditionConditionLabel', 'condition'},
+                  Sequence {'EdgeConditionLanguageLabel', 'language'},
+                  Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
+                    'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
+                  Sequence {'ServiceActivityTransactionsPerSecLabel',
+                    'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
+                  Sequence {'EdgeConditionProbabilityLabel', 'probability',
+                    NATIVE_METHOD, '{0,number}'},
+                  Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
+                    'timeLimit', NATIVE_METHOD, '{0,number}'},
+                  Sequence {'ServiceActivitySecsTimeLimitLabel', 'timeLimit',
+                    NATIVE_METHOD, '{0,number}'}}) {
+    var labelName      := entry.at(0);
+    var viewPatternLHS := entry.at(1);
+    var editMethod     := MSGFMT_METHOD;
+    var editPattern    := '{0}';
+    if (entry.size() > 2) {
+      editMethod  = entry.at(2);
+      editPattern = entry.at(3);
+    }
 
-var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT.instance;
-var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE.instance;
-for (entry in Sequence {
-                Sequence {'AnnotationManuallyAddedLabel', 'manual'},
-                Sequence {'EdgeConditionConditionLabel', 'condition'},
-                Sequence {'EdgeConditionLanguageLabel', 'language'},
-                Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
-                  'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
-                Sequence {'ServiceActivityTransactionsPerSecLabel',
-                  'transactionsPerSec', MSGFMT_METHOD, '{0,number,integer}'},
-                Sequence {'EdgeConditionProbabilityLabel', 'probability',
-                  NATIVE_METHOD, '{0,number}'},
-                Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
-                  'timeLimit', NATIVE_METHOD, '{0,number}'},
-                Sequence {'ServiceActivitySecsTimeLimitLabel', 'timeLimit',
-                  NATIVE_METHOD, '{0,number}'}}) {
-  var labelName      := entry.at(0);
-  var viewPatternLHS := entry.at(1);
-  var editMethod     := MSGFMT_METHOD;
-  var editPattern    := '{0}';
-  if (entry.size() > 2) {
-    editMethod  = entry.at(2);
-    editPattern = entry.at(3);
+    setFeatureLabelPatterns(labelName,
+                            editMethod, editPattern,
+                            MSGFMT_METHOD, (viewPatternLHS + ' = {0}'));
   }
-
-  setFeatureLabelPatterns(labelName,
-                          editMethod, editPattern,
-                          MSGFMT_METHOD, (viewPatternLHS + ' = {0}'));
 }
 
 -- Make some labels read only ---------------------------------------
-
-for (n in Sequence {'EdgeConditionLabel',
-                    'AnnotationManuallyAddedLabel',
-                    'PerformanceAnnotationLabel'}) {
-  makeReadOnly(n);
+operation defineReadOnlyLabels() {
+  for (n in Sequence {'EdgeConditionLabel',
+                      'AnnotationManuallyAddedLabel',
+                      'PerformanceAnnotationLabel'}) {
+    makeReadOnly(n);
+  }
 }
 
--- OPERATIONS -------------------------------------------------------
+-- UTILITY OPERATIONS -----------------------------------------------
 
 operation makeReadOnly(diagramLabelName : String) {
   for (labelMapping in findLabelMappingsByName(diagramLabelName)) {

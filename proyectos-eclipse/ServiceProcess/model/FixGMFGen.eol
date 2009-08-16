@@ -1,25 +1,36 @@
--- Make InitialNode not resizable
-for (name in Sequence {'InitialNode', 'FinalNode', 'ForkNode', 'JoinNode', 'DecisionNode'}) {
-  makeNotResizable(name + 'Figure');
+defineNotResizableNodes();
+useDynamicTemplates('/ServiceProcess/templates/');
+useCustomizedParser();
+
+-- MAIN BODY OPERATIONS -------------------------------------------------------
+
+operation defineNotResizableNodes() {
+  for (name in Sequence {'InitialNode', 'FinalNode', 'ForkNode',
+                         'JoinNode', 'DecisionNode'}) {
+    makeNotResizable(name + 'Figure');
+  }
 }
 
--- Use dynamic templates
-var genEditorGen := GmfGen!GenEditorGenerator.all.first();
-genEditorGen.dynamicTemplates := true;
-genEditorGen.templateDirectory := '/ServiceProcess/templates/';
+operation useDynamicTemplates(templateDir : String) {
+  var genEditorGen := GmfGen!GenEditorGenerator.all.first();
+  genEditorGen.dynamicTemplates := true;
+  genEditorGen.templateDirectory := templateDir;
+}
 
 -- Use a customized parser for the Double attributes
-var OLD_DOUBLE_PARSER_NAME := 'MessageFormatMessageFormatParser';
-var NEW_DOUBLE_PARSER_NAME := 'NumbersToDoubleParser';
-var doubleParser := findPredefinedParser(OLD_DOUBLE_PARSER_NAME);
-if (not doubleParser.isDefined()) {
-  doubleParser := findPredefinedParser(NEW_DOUBLE_PARSER_NAME);
-  assert(doubleParser.isDefined(),
-         'If the Double parser does not exist with the old name, it must exist with the new name');
+operation useCustomizedParser() {
+  var OLD_DOUBLE_PARSER_NAME := 'MessageFormatMessageFormatParser';
+  var NEW_DOUBLE_PARSER_NAME := 'NumbersToDoubleParser';
+  var doubleParser := findPredefinedParser(OLD_DOUBLE_PARSER_NAME);
+  if (not doubleParser.isDefined()) {
+    doubleParser := findPredefinedParser(NEW_DOUBLE_PARSER_NAME);
+    assert(doubleParser.isDefined(),
+           'If the Double parser does not exist with the old name, it must exist with the new name');
+  }
+  doubleParser.className := NEW_DOUBLE_PARSER_NAME;
 }
-doubleParser.className := NEW_DOUBLE_PARSER_NAME;
 
--- OPERATIONS -------------------------------------------------------
+-- UTILITY OPERATIONS ---------------------------------------------------------
 
 operation findPredefinedParser(parserName : String) : GmfGen!PredefinedParser {
   return GmfGen!PredefinedParser.all.selectOne(r|r.className=parserName);
