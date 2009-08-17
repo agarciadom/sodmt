@@ -1,0 +1,81 @@
+Index: src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolutionGenerator.java
+===================================================================
+--- src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolutionGenerator.java	(revisión: 524)
++++ src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolutionGenerator.java	(copia de trabajo)
+@@ -36,6 +36,8 @@
+ 	
+ 	protected HashMap<EvlFixInstance, String> modelNames = new HashMap<EvlFixInstance, String>();
+ 	
++	protected HashMap<EvlFixInstance, String> ePackageUris = new HashMap<EvlFixInstance, String>();
++	
+ 	public IMarkerResolution[] getResolutions(IMarker marker) {
+ 		
+ 		if (this != INSTANCE) return INSTANCE.getResolutions(marker);
+@@ -52,7 +54,7 @@
+ 			if (this.resolutions.get(elementId) != null) {
+ 				for (EvlFixInstance fix : this.resolutions.get(elementId)) {
+ 					if (message.equals(messages.get(fix))) {
+-						resolutions.add(new EvlMarkerResolution(elementId, fix, modelNames.get(fix)));
++						resolutions.add(new EvlMarkerResolution(elementId, fix, modelNames.get(fix), ePackageUris.get(fix)));
+ 					}
+ 				}
+ 			}
+@@ -106,11 +109,12 @@
+ 		return EcoreUtil.getURI((EObject) instance).toString();
+ 	}
+ 	
+-	public void addResolution(String message, EvlFixInstance fix, String modelName) {
++	public void addResolution(String message, EvlFixInstance fix, String modelName, String ePackageUri) {
+ 
+ 		
+ 		messages.put(fix, message);
+ 		modelNames.put(fix, modelName);
++		ePackageUris.put(fix, ePackageUri);
+ 		
+ 		String elementId = getEObjectId(fix.getSelf());
+ 		Collection<EvlFixInstance> fixes;
+Index: src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolution.java
+===================================================================
+--- src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolution.java	(revisión: 524)
++++ src/org/eclipse/epsilon/evl/emf/validation/EvlMarkerResolution.java	(copia de trabajo)
+@@ -23,13 +24,15 @@
+ 	protected EvlFixInstance fix;
+ 	protected String elementId;
+ 	protected String modelName;
++	protected String ePackageUri;
+ 	
+-	public EvlMarkerResolution(String elementId, EvlFixInstance fix, String modelName) {
++	public EvlMarkerResolution(String elementId, EvlFixInstance fix, String modelName, String ePackageUri) {
+ 		try {
+ 			this.label = fix.getTitle();
+ 			this.fix = fix;
+ 			this.elementId = elementId;
+ 			this.modelName = modelName;
++			this.ePackageUri = ePackageUri;
+ 		} catch (EolRuntimeException e) {
+ 			e.printStackTrace();
+ 		}
+@@ -44,9 +47,8 @@
+ 		EObject self = EvlMarkerResolverManager.INSTANCE.resolve(marker); //getEObject(elementId);
+ 		
+ 		try {
+-			
+ 			fix.setSelf(self);
+-			InMemoryEmfModel model = new InMemoryEmfModel(modelName, self.eResource());
++			InMemoryEmfModel model = new InMemoryEmfModel(modelName, self.eResource(), ePackageUri);
+ 			fix.getContext().getModelRepository().addModel(model);
+ 			
+ 			EvlMarkerResolverManager.INSTANCE.getEditingDomain(marker).getCommandStack().execute(new ExecuteEvlFixCommand(fix, model));
+Index: src/org/eclipse/epsilon/evl/emf/validation/EvlValidator.java
+===================================================================
+--- src/org/eclipse/epsilon/evl/emf/validation/EvlValidator.java	(revisión: 524)
++++ src/org/eclipse/epsilon/evl/emf/validation/EvlValidator.java	(copia de trabajo)
+@@ -82,7 +82,7 @@
+ 			for (EvlUnsatisfiedConstraint unsatisfied : unsatisfiedConstraints) {
+ 				diagnostics.add(createDiagnostic(unsatisfied));
+ 				for (Object fix : unsatisfied.getFixes()) {
+-					EvlMarkerResolutionGenerator.INSTANCE.addResolution(unsatisfied.getMessage(),(EvlFixInstance) fix, modelName);
++					EvlMarkerResolutionGenerator.INSTANCE.addResolution(unsatisfied.getMessage(),(EvlFixInstance) fix, modelName, ePackageUri);
+ 				}
+ 			}
+ 			return false;
