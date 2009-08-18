@@ -1,0 +1,6 @@
+bin
+src
+model/*.ecore
+model/*.gmf*
+model/*.genmodel
+model/*.trace

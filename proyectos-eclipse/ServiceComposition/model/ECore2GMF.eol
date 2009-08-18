@@ -1,0 +1,2 @@
+import '../../ServiceProcess/model/ECore2GMF.eol';
+serviceProcessMainBody();

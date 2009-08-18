@@ -1,0 +1,37 @@
+<project name="serviceComposition" default="default">
+  <description>
+    <![CDATA[
+       Ant buildfile for the Service Composition model. See generate-code.xml
+       in the ServiceProcess project for more details. This buildfile mostly
+       relies on the old buildfile to do everything, and simply customizes the
+       most important properties.
+    ]]>
+  </description>
+
+  <!-- Basic project info -->
+  <property name="project.name"   value="ServiceComposition" />
+  <property name="model.basename" value="servicecomposition" />
+
+  <!-- ServiceProcess project info (same names, prefixed by 'sp.') -->
+  <property name="sp.project.name" value="ServiceProcess"/>
+  <property name="sp.model.basename" value="serviceprocess"/>
+  <import file="../${sp.project.name}/generate-code.xml"/>
+  <dirname property="sp.modelProject.location" file="${ant.file.serviceProcess}"/>
+  <property name="sp.ecore.location" location="${sp.modelProject.location}/${model.dir}/${sp.model.basename}.ecore"/>
+  <property name="etl.location" location="${model.dir}/SProcessToSComposition.etl"/>
+
+  <target name="generateECore" depends="init">
+    <echo>Transforming Service Process Ecore into Service Composition Ecore</echo>
+    <epsilon.emf.loadRegisteredMetamodel name="ECoreMeta" metamodeluri="${ecore.nsuri}"/>
+    <epsilon.emf.loadModel name="Source" modelFile="${sp.ecore.location}" metamodeluri="${ecore.nsuri}" read="true" store="false"/>
+    <epsilon.emf.loadModel name="Target" modelFile="${ecore.location}" metamodeluri="${ecore.nsuri}" read="false" store="true"/>
+    <epsilon.etl src="${etl.location}">
+      <model ref="ECoreMeta" as="ECore"/>
+      <model ref="Source"/>
+      <model ref="Target"/>
+    </epsilon.etl>
+    <epsilon.disposeModel model="ECoreMeta"/>
+    <epsilon.disposeModel model="Source"/>
+    <epsilon.disposeModel model="Target"/>
+  </target>
+</project>

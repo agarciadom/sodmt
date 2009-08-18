@@ -1,0 +1,2 @@
+import '../../ServiceProcess/model/FixGMFGen.eol';
+serviceProcessMainBody('ServiceComposition', 'Service Composition');
