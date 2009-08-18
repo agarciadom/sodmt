@@ -12,9 +12,8 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://serviceProcess"
-            class="serviceProcess.ServiceProcessPackage"
-            genModel="model/serviceprocess.genmodel"/>
+            uri="www.uca.es/modeling/serviceProcess"
+            class="serviceProcess.ServiceProcessPackage"/>
    </extension>
 
 </plugin>
