@@ -1,8 +1,15 @@
-defineNotResizableNodes();
-useDynamicTemplates('/ServiceProcess/templates/');
-useCustomizedParser();
-addPlugin('es.uca.modeling.figures');
-addPlugin('es.uca.modeling.serviceprocess.edit');
+serviceProcessMainBody('ServiceProcess', 'Service Process');
+
+operation serviceProcessMainBody(pluginPrefix : String,
+                                 longModelName : String) {
+  defineNotResizableNodes();
+  useDynamicTemplates('/ServiceProcess/templates/');
+  useCustomizedParser();
+  addPlugin('es.uca.modeling.figures');
+  addPlugin(pluginPrefix + '.edit');
+  setPreferencePageName(longModelName + ' Diagram');
+  setPluginInfo(longModelName + ' Diagram Editor', 'UCA SPIFM');
+}
 
 -- MAIN BODY OPERATIONS -------------------------------------------------------
 
@@ -35,6 +42,17 @@ operation useCustomizedParser() {
 operation addPlugin(pluginName : String) {
   var genPlugin := GmfGen!GenPlugin.all.first();
   genPlugin.requiredPlugins.add(pluginName);
+}
+
+operation setPluginInfo(pluginName : String, providerName : String) {
+  var genPlugin := GmfGen!GenPlugin.all.first();
+  genPlugin.name := pluginName;
+  genPlugin.provider := providerName;
+}
+
+operation setPreferencePageName(name : String) {
+  var genPage := GmfGen!GenStandardPreferencePage.all.first();
+  genPage.name := name;
 }
 
 -- UTILITY OPERATIONS ---------------------------------------------------------
