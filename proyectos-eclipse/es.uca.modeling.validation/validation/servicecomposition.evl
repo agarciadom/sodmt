@@ -1,6 +1,6 @@
 -- Diagram constraints --------------------------
 
-context ServiceProcess {
+context ServiceComposition {
   constraint ExactlyOneInitialNode {
     check : InitialNode.all.size() = 1
     message : 'There must be exactly one initial node'

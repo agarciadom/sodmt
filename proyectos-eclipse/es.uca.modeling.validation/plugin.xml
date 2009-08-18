@@ -4,11 +4,19 @@
    <extension
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
-            constraints="validation/serviceprocess.evl"
+            constraints="validation/common.evl"
             namespaceURI="www.uca.es/modeling/serviceProcess">
       </constraintsBinding>
       <constraintsBinding
             constraints="validation/serviceprocess.evl"
+            namespaceURI="www.uca.es/modeling/serviceProcess">
+      </constraintsBinding>
+      <constraintsBinding
+            constraints="validation/common.evl"
+            namespaceURI="www.uca.es/modeling/serviceComposition">
+      </constraintsBinding>
+      <constraintsBinding
+            constraints="validation/servicecomposition.evl"
             namespaceURI="www.uca.es/modeling/serviceComposition">
       </constraintsBinding>
    </extension>
@@ -16,14 +24,14 @@
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
             class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecore.diagnostic">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
             markerType="ServiceProcess.diagram.diagnostic">
       </markerResolutionGenerator>
       <markerResolutionGenerator
             class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
-            markerType="org.eclipse.emf.ecore.diagnostic">
-      </markerResolutionGenerator>
-      <markerResolutionGenerator
-            class="serviceprocess.validation.MarkerResolutionGenerator1"
             markerType="ServiceComposition.diagram.diagnostic">
       </markerResolutionGenerator>
    </extension>
