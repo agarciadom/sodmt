@@ -1,9 +1,6 @@
 .metadata
-ServiceProcess/src
-ServiceProcess.edit/src
-ServiceProcess.editor/src
-ServiceProcess.diagram/src
-ServiceProcess.tests
-org.eclipse.*
+ServiceProcess.diagram
+ServiceComposition.diagram
 es.uca.modeling.ant/bin
 es.uca.modeling.ant/lib
+org.eclipse.*
