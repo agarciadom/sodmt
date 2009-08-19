@@ -65,7 +65,7 @@ class PerformanceAnnotation extends Annotation, ActivityNode {
    ref ExecutableNode#annotation execNode;
 
    @gmf.label(foo="bar")
-   attr Long transactionsPerSec = 1;
+   attr Double transactionsPerSec = 1;
    @gmf.label(foo="bar")
    attr Double secsTimeLimit = 1;
 }
@@ -75,7 +75,7 @@ class PerformanceAnnotation extends Annotation, ActivityNode {
 @gmf.node(tool.name="Service Activity")
 class ServiceActivity extends Activity, NamedElement {
   @gmf.label(foo="bar")
-  attr Long transactionsPerSec = 1;
+  attr Double transactionsPerSec = 1;
   @gmf.label(foo="bar")
   attr Double secsTimeLimit = 1;
 }
