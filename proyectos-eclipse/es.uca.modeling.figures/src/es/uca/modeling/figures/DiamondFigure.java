@@ -7,13 +7,13 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 public class DiamondFigure extends Figure {
-	
-	private final static int LINE_WIDTH = 2; 
+
+  private final static int LINE_WIDTH = 2;
 
   @Override
   public void paint(Graphics graphics) {
     Rectangle r = getBounds().getCopy();
-    
+
     r.x += LINE_WIDTH;
     r.y += LINE_WIDTH;
     r.width  -= LINE_WIDTH;
@@ -33,7 +33,7 @@ public class DiamondFigure extends Figure {
 
     // Fill the shape
     graphics.fillPolygon(pointList);
-    
+
     // Draw the outline
     graphics.setLineWidth(LINE_WIDTH);
     graphics.drawLine(p1, p2);
