@@ -42,16 +42,15 @@ abstract class Annotation {
 /* ANNOTATIONS */
 
 /* condition = 'else' -> default flow */
-@gmf.node(label="condition",
-          label.pattern="<<condition>>",
+@gmf.node(label="language",
+          label.pattern="<<{0}>>",
           figure="rectangle",
           tool.name="Edge Condition")
-class EdgeCondition extends Annotation, ActivityNode {
+class EdgeCondition extends ActivityNode {
     ref ControlNodeEdge#condition edge;
 
     @gmf.label(foo="bar")
     attr String condition = "true";
-    @gmf.label(foo="bar")
     attr ExpressionLanguage language;
     @gmf.label(foo="bar")
     attr Double probability = 1;

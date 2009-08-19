@@ -43,13 +43,11 @@ operation defineEditAndViewPatterns() {
   var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE.instance;
   for (entry in Sequence {
                   Sequence {'AnnotationManuallyAddedLabel', 'manual'},
-                  Sequence {'EdgeConditionConditionLabel', 'condition'},
-                  Sequence {'EdgeConditionLanguageLabel', 'language'},
                   Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
                     'transactionsPerSec', NATIVE_METHOD, '{0,number}'},
                   Sequence {'ServiceActivityTransactionsPerSecLabel',
                     'transactionsPerSec', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'EdgeConditionProbabilityLabel', 'probability',
+                  Sequence {'EdgeConditionProbabilityLabel', 'prob',
                     NATIVE_METHOD, '{0,number}'},
                   Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
                     'timeLimit', NATIVE_METHOD, '{0,number}'},
