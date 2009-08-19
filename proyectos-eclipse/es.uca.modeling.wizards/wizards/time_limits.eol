@@ -1,0 +1,257 @@
+-*
+  Heuristic algorithm for computing the time limits in seconds for
+  each activity node in the ServiceComposition and ServiceProcess
+  models.
+
+  Copyright (c) 2009 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Common Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/cpl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+
+  This algorithm annotates every executable node with an estimation of
+  the maximum time that it can take to run so the whole service
+  activity is completed before a specific time interval has
+  elapsed. If the node already has a manual restriction applied to it,
+  it will also make sure that a consistent solution can be achieved.
+  Unless explicitly told otherwise, it assumes that all executable
+  nodes in the path should take the same time.
+
+  IMPORTANT: the model must have been validated with the EVL script in
+  es.uca.modeling.validation and pass with no errors.
+
+  We need to define the concept of a "free node". A free node is an
+  executable node that doesn't have a manual performance annotation
+  set to it. In addition, free nodes can be updatable to a new time
+  limit iff the new limit is lower or equal than the old one.
+
+  The algorithm is an iterative process with transactional semantics
+  (either it completes successfully and performs all changes or it
+  aborts and does nothing). Its steps are as follows:
+
+  - Relax all automatic restrictions set in place from the previous
+    run of this algorithm with an absurdly high time limit. We cannot
+    just remove them, as they would be removed from the diagrams and
+    the user would have to properly place them again.
+
+  - Obtain a list of all paths between the initial node and the start
+    node. It would be impossible to get a finite list out of a graph
+    with cycles, but the EVL validation script actually makes sure the
+    graph is acyclic, precisely for this reason.
+
+  - Sort the list in descending order by the sum of the time limits
+    which the user has set manually. Otherwise, results would vary
+    depending on what path were checked first.
+
+  - For each path in the list:
+
+    * Calculate the initial slack as the difference between the global
+      time limit and the sum of the manually set time limits in the
+      path.
+
+    * If the slack is negative, report an error and abort. The sum of
+      the manual annotations exceeded the time limit which had been
+      set for the whole path in the Service Activity.
+
+    * If the slack is zero and there exist free nodes in the path,
+      report an error and abort. Every node needs to have a time limit
+      greater than zero.
+
+    * Otherwise, if there are free nodes in the path, split up the slack
+      between them. The process is slightly involved, so we describe
+      it more in detail below.
+
+  If no previous restrictions have been inferred in any node in the
+  path, splitting up the slack between all the free nodes is easy
+  enough: just set their time limits to slack/free node count.
+
+  However, it might be that some of them already have stricter
+  restrictions from a previous path, so they are not updatable. We can
+  reuse the slack that couldn't be assigned to those stricter nodes to
+  infer more relaxed restrictions on the rest. However, if we relax
+  the restrictions to be applied to the rest of the nodes, new
+  non-updatable nodes might appear, so we'll relax the restrictions
+  for the rest again, and so on.
+
+  Therefore, the real process needs to be iterative, and stop when the
+  situation stabilizes. It can be described as follows:
+
+  1. Compute how many free nodes are in the path, and what would be
+     the new time limit for each of them. These are our first
+     estimates for the updatable node count and new time limit for the
+     updatable nodes.
+
+  2. Count how many of the free nodes in the path can be really
+     updated to the current estimation of the new limit.
+
+  3. If there are no updatable nodes in the path, skip this path and
+     start processing the next one normally.
+
+  4. If the actual updatable node count agrees with the estimation, go
+     to step 6. Otherwise, update our estimated updatable node count
+     to the actual count, and then update the estimated new time limit
+     for the updatable nodes to (path time limit - sum of time limits
+     for non-updatable nodes in the path)/(updatable node count).
+
+  5. If the absolute value of the difference between the previous
+     estimation of the final time limit and the new final time limit
+     is smaller than 0.01, go to step 6. This avoids endless loops due
+     to floating-point rounding errors. Otherwise, go back to step 2.
+
+  6. Set the time limit for all updatable nodes to the new value. This
+     new time limit will be always stricter than the old one. This
+     requirement is part of the preconditions for the setTimeLimit()
+     method.
+
+*-
+
+import 'common.eol';
+
+-- Current assumptions: acyclic graph with only one service activity
+$pre start.isDefined() and finish.isDefined()
+operation annotateTimeLimits(start : ActivityNode, finish : ActivityNode) {
+  var paths        := getAllPathsBetween(start, finish);
+  var global_limit;
+  if (start.hasProperty('activity')) {
+    global_limit := start.activity.secsTimeLimit;
+  } else {
+    global_limit := start.swimlane.activity.secsTimeLimit;
+  }
+
+  -- Cache all manual time limits and relax all automatic constraints
+  for (path in paths) {
+    path.~manualSum := getFixedTimeLimitSum(path, 0);
+    for (node in path.select(r:ExecutableNode | r.hasAutomaticPerformanceAnnotation())) {
+      node.annotation.secsTimeLimit := 100000.0d;
+    }
+  }
+
+  -- Use the paths to establish the constraints, using the most restrictive
+  -- paths first. Otherwise, results would vary depending on what path got
+  -- evaluated first.
+  for (path in paths.sortBy(p | -p.~manualSum)) {
+    var slack     := global_limit - path.~manualSum;
+    var freeCount := countUpdatableNodes(path, 0);
+
+    -- slack = 0 is too fickle: better use small floating-point values
+    if (slack >= -0.0001 and slack <= 0.0001) {
+      if (freeCount > 0) {
+        System.user.inform('Nodes with manual restrictions in path '
+          + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
+          + ' left no slack to establish the automatic restrictions (had '
+          + global_limit + ' seconds)');
+      }
+    } else if (slack < 0) {
+      System.user.inform('Nodes with manual restrictions in path '
+        + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
+        + ' have used up more than the available time ('
+        + path.~manualSum + ', with ' + global_limit + ' available)');
+    } else if (freeCount > 0) {
+      splitSlackOverFreeNodes(path, global_limit, slack, freeCount);
+    }
+  }
+}
+
+$pre freeCount > 0 and slack > 0 and path.isDefined() and path.notEmpty()
+operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real, slack : Real, freeCount : Integer) {
+  -- We try to distribute the slack evenly over all free nodes. Some of them
+  -- won't be able to use all of it, since they have stricter restrictions.
+  -- We'll reuse that slack on the remaining nodes, updating the limit
+  -- to be newly assigned to them as appropiate. This check may have to be
+  -- repeated until the number of updatable nodes or the new limit to be
+  -- applied stabilize or the number of updatable nodes becomes 0.
+  var oldLimit := -1;
+  var newLimit := slack/freeCount;
+  var oldUpdatableCount := -1;
+  var newUpdatableCount := freeCount;
+  while (oldUpdatableCount <> newUpdatableCount
+         and (oldLimit - newLimit).abs() >= 0.01) {
+    oldLimit          := newLimit;
+    oldUpdatableCount := newUpdatableCount;
+    newUpdatableCount := countUpdatableNodes(path, newLimit);
+    if (newUpdatableCount = 0) {
+      -- No nodes can be updated in the end: just return, to avoid
+      -- a division by zero error in the calculation of the new limit
+      return;
+    }
+    newLimit := (global_limit - getFixedTimeLimitSum(path, newLimit))/newUpdatableCount;
+  }
+
+  for (node : ExecutableNode in path) {
+    if (node.canBeUpdatedTo(newLimit)) {
+      node.setTimeLimit(newLimit);
+    }
+  }
+}
+
+-- Returns the sum of the time limits of the nodes which cannot be updated within
+-- a specific path to a specific new limit. If the limit is 0, returns the sum
+-- of the time limits set manually by the user.
+operation getFixedTimeLimitSum(path : Sequence, newLimit : Real) : Real {
+  return path.select(node : ExecutableNode | not node.canBeUpdatedTo(newLimit))
+             .collect(r|r.getTimeLimit()).sum();
+}
+
+-- Counts how many executable nodes can be updated in the path to a new limit.
+-- With 0, counts how many nodes do not have manual restrictions set in place.
+$pre path.isDefined() and newLimit >= 0
+operation countUpdatableNodes(path : Sequence, newLimit : Real) : Integer {
+  return path.select(node : ExecutableNode | node.canBeUpdatedTo(newLimit)).size();
+}
+
+-- Returns whether a node can have its time limit updated or not to the new limit.
+-- With 0, returns whether a node has a manual restriction or not.
+$pre newLimit >= 0
+operation ExecutableNode canBeUpdatedTo(newLimit : Real) : Boolean {
+  return not self.annotation.isDefined()
+         or (not self.annotation.manuallyAdded
+             and newLimit < self.getTimeLimit());
+}
+
+-- Returns the time limit for this node, be it either manual or automatic, if set.
+$pre self.annotation.isDefined()
+operation ExecutableNode getTimeLimit() : Real {
+  return self.annotation.secsTimeLimit;
+}
+
+-- Sets an automatic time limit restriction for this node. Restrictions can only
+-- be made stricter, and not relaxed.
+$pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
+operation ExecutableNode setTimeLimit(newLimit : Real) {
+  if (self.annotation.isUndefined()) {
+    self.createPerformanceAnnotation();
+  }
+  self.annotation.secsTimeLimit := newLimit;
+}
+
+----- ALL PATHS BETWEEN TWO NODES ---------------------------------------------
+
+-- Obtains all the paths between two nodes in the graph
+-- (if they're the same, reports an empty set of paths)
+operation getAllPathsBetween(start : ActivityNode, finish : ActivityNode) {
+  if (start = finish) {
+    return Sequence {};
+  }
+  else {
+    return auxPathsTo(Sequence { start }, finish);
+  }
+}
+
+operation auxPathsTo(partialPath : Sequence, finish : ActivityNode) {
+  var last_elem := partialPath.last();
+
+  if (last_elem = finish) {
+    return Sequence { partialPath };
+  }
+
+  var results := new Sequence;
+  for (descendant in last_elem.outgoing.collect(r|r.target)) {
+    var newPartialPath := partialPath.clone();
+    newPartialPath.add(descendant);
+    results.addAll(auxPathsTo(newPartialPath, finish));
+  }
+  return results;
+}

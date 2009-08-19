@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.epsilon.ewl.emf.wizards">
+      <wizards
+            file="wizards/diagramWizards.ewl"
+            namespaceURI="www.uca.es/modeling/serviceProcess">
+      </wizards>
+      <wizards
+            file="wizards/diagramWizards.ewl"
+            namespaceURI="www.uca.es/modeling/serviceComposition">
+      </wizards>
+   </extension>
+
+</plugin>
