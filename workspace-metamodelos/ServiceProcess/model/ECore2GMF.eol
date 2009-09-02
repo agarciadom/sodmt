@@ -39,8 +39,8 @@ operation defineMaximumSizes() {
 
 -- Label edit and view patterns -------------------------------------
 operation defineEditAndViewPatterns() {
-  var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT.instance;
-  var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE.instance;
+  var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
+  var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
   for (entry in Sequence {
                   Sequence {'AnnotationManuallyAddedLabel', 'manual'},
                   Sequence {'PerformanceAnnotationTransactionsPerSecLabel',

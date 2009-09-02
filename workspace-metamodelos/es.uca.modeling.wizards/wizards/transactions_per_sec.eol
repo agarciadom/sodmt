@@ -101,14 +101,18 @@ operation annotateTransactionsPerSec() {
     }
     for (node in ExecutableNode.all.sortBy(r|r.getDepth())) {
       var auto := node.getAutoTransactionsPerSec();
-      if (node.hasManualPerformanceAnnotation()
-          and node.getTransactionsPerSec() < auto
-          and not System.user.confirm('The manual restriction of '
-            + node.getTransactionsPerSec()
-            + 'transactions per second in ' + node
-            + ' is set too low. Update to ' + auto
-            + '? Otherwise, the wizard will be aborted.')) {
+      if (node.hasManualPerformanceAnnotation()) {
+        if (node.getTransactionsPerSec() < auto
+            and not System.user.confirm('The manual restriction of '
+              + node.getTransactionsPerSec()
+              + ' transactions per second in ' + node
+              + ' is set too low. Update to ' + auto
+              + '? Otherwise, the wizard will be aborted.')) {
            abort; return;
+        }
+        else if (node.getTransactionsPerSec() >= auto) {
+          continue;
+        }
       }
       node.setTransactionsPerSec(auto);
     }
