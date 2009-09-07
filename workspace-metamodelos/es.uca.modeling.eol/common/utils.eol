@@ -45,7 +45,7 @@ operation getLCA(nodeA : ControlNode, nodeB : ControlNode) : ControlNode {
 
   if (common.isEmpty()) {
     System.user.inform(nodeA + ' and ' + nodeB + ' do not have a common ancestor');
-    return;  
+    return;
   }
 
   return common.asSequence().sortBy(r|-r.getDepth()).first();
