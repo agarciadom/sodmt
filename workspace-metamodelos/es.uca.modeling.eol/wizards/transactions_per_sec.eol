@@ -52,10 +52,12 @@
 
   For instance, if they split at a DecisionNode, we'll have to sum
   their transactions per sec limits. However, if they split at a
-  ForkNode, we'll just use the maximum value. We do not check all
-  pairs, however: we simply perform this calculation with the first
-  and second path, then with its result and that of the third path,
-  and so on. The idea is that if we're handling this graph:
+  ForkNode, we'll just use the minimum value (we previously used the
+  maximum value, but as Paco said, it didn't make sense). We do not
+  check all pairs, however: we simply perform this calculation with
+  the first and second path, then with its result and that of the
+  third path, and so on. The idea is that if we're handling this
+  graph:
 
     A --> Decision --> Fork --> B --> Join --> C
                     |        \> D -/
@@ -65,7 +67,7 @@
   the same:
 
     A --> Decision --> Fork --> B --> Join --> Join --> C
-                    |        \> D           |
+                    |        \> D -/        |
                     \---------> E ----------/
 
   Knowing where B and D or B and E split off is a well-known problem
@@ -77,7 +79,7 @@
   enough for now: we only need to do this at join nodes, and graphs
   don't tend to get large enough.
 
-  Finally, by using Epsilon EMC's facilities, the whole annotating
+  Finally, by using Epsilon EMC's facilities, the whole annotation
   process is performed with transactional semantics. If it is aborted
   in the middle, all changes will be rolled back. Undo and redo also
   work as usual.
@@ -171,7 +173,7 @@ operation JoinNode getTransactionsPerSec() : Real {
       result := result + parent.getTransactionsPerSec();
     }
     else if (lca.isKindOf(ForkNode)) {
-      if (parent.getTransactionsPerSec() > result) {
+      if (parent.getTransactionsPerSec() < result) {
         result := parent.getTransactionsPerSec();
       }
     } else {
