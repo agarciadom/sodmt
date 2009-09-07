@@ -167,7 +167,7 @@ context LocalPerformanceAnnotation {
 context InitialNode {
   -- There is also a diagram-wide constraint for the number
   -- of initial nodes. Using this constraint allows us to have
-  -- a per-initial node 
+  -- a per-initial node
   constraint ExactlyOneInitialNode {
     check : InitialNode.all.size() = 1
     message : 'There must be exactly one initial node'
@@ -184,7 +184,7 @@ context InitialNode {
     check : getAllPathsFrom(InitialNode.all.first()).forAll(r|r.last().isKindOf(FinalNode))
     message : 'There must be at least one final node'
   }
-  
+
   constraint NoIncomingForInitialNode {
     check : self.incoming.isEmpty()
     message : 'The initial node must not have any incoming edges'
