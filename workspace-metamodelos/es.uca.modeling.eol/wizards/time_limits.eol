@@ -108,18 +108,13 @@
 
 *-
 
-import 'common.eol';
+import '../common/utils.eol';
 
 -- Current assumptions: acyclic graph with only one service activity
-$pre start.isDefined() and finish.isDefined()
-operation annotateTimeLimits(start : ActivityNode, finish : ActivityNode) {
-  var paths        := getAllPathsBetween(start, finish);
-  var global_limit;
-  if (start.hasProperty('activity')) {
-    global_limit := start.activity.secsTimeLimit;
-  } else {
-    global_limit := start.swimlane.activity.secsTimeLimit;
-  }
+$pre start.isDefined()
+operation annotateTimeLimits(start : ActivityNode) {
+  var paths        := getAllPathsFrom(start);
+  var global_limit := GlobalPerformanceAnnotation.all.first().secsTimeLimit;
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
@@ -225,33 +220,4 @@ operation ExecutableNode setTimeLimit(newLimit : Real) {
     self.createPerformanceAnnotation();
   }
   self.annotation.secsTimeLimit := newLimit;
-}
-
------ ALL PATHS BETWEEN TWO NODES ---------------------------------------------
-
--- Obtains all the paths between two nodes in the graph
--- (if they're the same, reports an empty set of paths)
-operation getAllPathsBetween(start : ActivityNode, finish : ActivityNode) {
-  if (start = finish) {
-    return Sequence {};
-  }
-  else {
-    return auxPathsTo(Sequence { start }, finish);
-  }
-}
-
-operation auxPathsTo(partialPath : Sequence, finish : ActivityNode) {
-  var last_elem := partialPath.last();
-
-  if (last_elem = finish) {
-    return Sequence { partialPath };
-  }
-
-  var results := new Sequence;
-  for (descendant in last_elem.outgoing.collect(r|r.target)) {
-    var newPartialPath := partialPath.clone();
-    newPartialPath.add(descendant);
-    results.addAll(auxPathsTo(newPartialPath, finish));
-  }
-  return results;
 }

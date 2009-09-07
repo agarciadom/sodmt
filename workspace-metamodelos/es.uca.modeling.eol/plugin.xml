@@ -35,5 +35,17 @@
             markerType="ServiceComposition.diagram.diagnostic">
       </markerResolutionGenerator>
    </extension>
+   <extension
+         point="org.eclipse.epsilon.ewl.emf.wizards">
+      <wizards
+            file="wizards/diagramWizards.ewl"
+            namespaceURI="www.uca.es/modeling/serviceProcess">
+      </wizards>
+      <wizards
+            file="wizards/diagramWizards.ewl"
+            namespaceURI="www.uca.es/modeling/serviceComposition">
+      </wizards>
+   </extension>
+   
 
 </plugin>

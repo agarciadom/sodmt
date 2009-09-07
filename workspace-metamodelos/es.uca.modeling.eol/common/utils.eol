@@ -1,0 +1,113 @@
+-- PERFORMANCE ANNOTATIONS ----------------------------------------------------
+operation ExecutableNode hasManualPerformanceAnnotation() : Boolean {
+  return self.annotation.isDefined() and self.annotation.manuallyAdded;
+}
+
+operation ExecutableNode hasAutomaticPerformanceAnnotation() : Boolean {
+  return self.annotation.isDefined() and not self.annotation.manuallyAdded;
+}
+
+operation ExecutableNode createPerformanceAnnotation() {
+  self.annotation := new Model!LocalPerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  if (self.annotation.hasProperty('activity')) {
+    self.annotation.activity := self.activity;
+    self.annotation.activity.nodes.add(self.annotation);
+  } else {
+    self.annotation.swimlane := self.swimlane;
+    self.annotation.swimlane.nodes.add(self.annotation);
+  }
+}
+
+-- GRAPH PREPROCESSING --------------------------------------------------------
+
+@cached
+$post _result >= 0
+operation ControlNode getDepth() : Integer {
+  if (self.incoming.isEmpty()) {
+    return 0;
+  }
+  else {
+    return self.incoming.collect(r|r.source.getDepth()).max() + 1;
+  }
+}
+
+-- LOWEST COMMON ANCESTOR -----------------------------------------------------
+
+@cached
+$pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
+operation getLCA(nodeA : ControlNode, nodeB : ControlNode) : ControlNode {
+  var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
+  var maxDepth   := depths.min();
+  var ancestorsA := nodeA.getAncestors(maxDepth);
+  var ancestorsB := nodeB.getAncestors(maxDepth);
+  var common := ancestorsA.intersect(ancestorsB);
+
+  if (common.isEmpty()) {
+    System.user.inform(nodeA + ' and ' + nodeB + ' do not have a common ancestor');
+    return;  
+  }
+
+  return common.asSequence().sortBy(r|-r.getDepth()).first();
+}
+
+$pre maxDepth >= 0
+operation ControlNode getAncestors(maxDepth : Integer) : Set {
+  var results := new Set;
+  self.addAllAncestors(maxDepth, results);
+  return results;
+}
+
+$pre maxDepth >= 0 and results.isDefined()
+operation ControlNode addAllAncestors(maxDepth : Integer, results : Collection) {
+  if (self.getDepth() <= maxDepth) {
+    results.add(self);
+  }
+  for (parent in self.incoming.collect(r|r.source)) {
+    parent.addAllAncestors(maxDepth, results);
+  }
+}
+
+$pre otherSet.isDefined()
+operation Set intersect(otherSet : Set) : Set {
+  if (otherSet.size() < self.size()) {
+    return otherSet.intersect(self);
+  }
+
+  var results : Set;
+  for (element in self.select(r|otherSet.includes(r))) {
+    results.add(element);
+  }
+  return results;
+}
+
+----- ALL PATHS BETWEEN TWO NODES ---------------------------------------------
+
+-- Obtains all the paths starting from a node in the graph
+-- to every final node (if the starting node is a FinalNode,
+-- reports an empty set of paths)
+@cached
+operation getAllPathsFrom(start : ActivityNode) {
+  if (start.isKindOf(FinalNode)) {
+    return Sequence {};
+  }
+  else {
+    return auxPathsTo(Sequence { start });
+  }
+}
+
+operation auxPathsTo(partialPath : Sequence) {
+  var last_elem := partialPath.last();
+
+  if (last_elem.isKindOf(FinalNode)) {
+    return Sequence { partialPath };
+  }
+
+  var results := new Sequence;
+  for (descendant in last_elem.outgoing.collect(r|r.target)) {
+    var newPartialPath := partialPath.clone();
+    newPartialPath.add(descendant);
+    results.addAll(auxPathsTo(newPartialPath));
+  }
+  return results;
+}

@@ -1,5 +1,7 @@
 -- Abstract class constraints -------------------
 
+import '../common/utils.eol';
+
 context ControlNodeEdge {
   constraint BothEndsDefined {
     check : self.source.isDefined() and self.target.isDefined()
@@ -133,12 +135,28 @@ context PerformanceAnnotation {
     message : 'The time limit for a single transaction must be '
               + 'greater than 0'
   }
+}
+
+context GlobalPerformanceAnnotation {
+  constraint ExactlyOnePerformanceAnnotation {
+    check : GlobalPerformanceAnnotation.all.size() = 1
+    message : 'There must be exactly one global performance annotation'
+    fix {
+      title : 'Remove this performance annotation'
+      do {
+        delete self;
+      }
+    }
+  }
+}
+
+context LocalPerformanceAnnotation {
   constraint IsLinkedToNode {
     check : self.execNode.isDefined()
-    message : 'The annotation must be linked to an Executable Node'
+    message : 'The annotation must be linked to an executable node'
   }
-  constraint LinkedNodeIsDecisionNode {
-    guard : self.execNode.isDefined()
+  constraint LinkedNodeIsExecutableNode {
+    guard : self.satisfies('IsLinkedToNode')
     check : self.execNode.isKindOf(ExecutableNode)
     message : 'The linked activity node must be an executable node'
   }
@@ -147,6 +165,26 @@ context PerformanceAnnotation {
 -- Node constraints -----------------------------
 
 context InitialNode {
+  -- There is also a diagram-wide constraint for the number
+  -- of initial nodes. Using this constraint allows us to have
+  -- a per-initial node 
+  constraint ExactlyOneInitialNode {
+    check : InitialNode.all.size() = 1
+    message : 'There must be exactly one initial node'
+    fix {
+      title : 'Delete this initial node'
+      do {
+        delete self;
+      }
+    }
+  }
+
+  constraint AllPathsFromInitialNodeMustEndInFinalNode {
+    guard : self.satisfies('ExactlyOneInitialNode')
+    check : getAllPathsFrom(InitialNode.all.first()).forAll(r|r.last().isKindOf(FinalNode))
+    message : 'There must be at least one final node'
+  }
+  
   constraint NoIncomingForInitialNode {
     check : self.incoming.isEmpty()
     message : 'The initial node must not have any incoming edges'
@@ -235,7 +273,7 @@ context ForkNode {
 }
 
 context JoinNode {
-  constraint MoreThanOneIncomingFlowWithFix {
+  constraint MoreThanOneIncomingFlow {
     guard : self.satisfies('MinimumOneIncoming')
             and self.satisfies('MinimumOneOutgoing')   
     check : self.incoming.size() > 1
@@ -248,6 +286,23 @@ context JoinNode {
         delete self;
       }
     }
+  }
+  constraint JoinedBranchesMustHaveSameLCA {
+    guard : self.satisfies('MoreThanOneIncomingFlow')
+    check {
+      var parents := self.incoming.collect(r|r.source);
+      var firstParent := parents.first();
+      var lca;
+      for (currentParent in parents.excluding(firstParent)) {
+        var currentLca := getLCA(firstParent, currentParent);
+        if (lca.isDefined() and lca <> currentLca) {
+          return false;
+        }
+        lca := currentLca;
+      }
+      return true;
+    }
+    message : 'A join node must only join branches which diverge from the exact same node'
   }
 }
 

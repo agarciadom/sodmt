@@ -84,7 +84,7 @@
 
 *-
 
-import 'common.eol';
+import '../common/utils.eol';
 
 -*
   This wizard operation can ask the user if they want to update existing
@@ -144,12 +144,7 @@ operation ControlNodeEdge getTransactionsPerSec() : Real {
 
 @cached
 operation InitialNode getTransactionsPerSec() : Real {
-  -- Duck-typing check to reuse this code in the SP and SC models
-  if (self.hasProperty('activity')) {
-    return self.activity.transactionsPerSec;
-  } else {
-    return self.swimlane.activity.transactionsPerSec;
-  }
+  return GlobalPerformanceAnnotation.all.first().transactionsPerSec;
 }
 
 @cached
@@ -209,66 +204,4 @@ operation ExecutableNode setTransactionsPerSec(newValue : Real) {
     self.createPerformanceAnnotation();
   }
   self.annotation.transactionsPerSec := newValue;
-}
-
--- GRAPH PREPROCESSING --------------------------------------------------------
-
-@cached
-$post _result >= 0
-operation ControlNode getDepth() : Integer {
-  if (self.incoming.isEmpty()) {
-    return 0;
-  }
-  else {
-    return self.incoming.collect(r|r.source.getDepth()).max() + 1;
-  }
-}
-
--- LOWEST COMMON ANCESTOR -----------------------------------------------------
-
-@cached
-$pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
-operation getLCA(nodeA : ControlNode, nodeB : ControlNode) : ControlNode {
-  var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
-  var maxDepth   := depths.min();
-  var ancestorsA := nodeA.getAncestors(maxDepth);
-  var ancestorsB := nodeB.getAncestors(maxDepth);
-  var common := ancestorsA.intersect(ancestorsB);
-
-  if (common.isEmpty()) {
-    System.user.inform(nodeA + ' and ' + nodeB + ' do not have a common ancestor');
-    return;  
-  }
-
-  return common.asSequence().sortBy(r|-r.getDepth()).first();
-}
-
-$pre maxDepth >= 0
-operation ControlNode getAncestors(maxDepth : Integer) : Set {
-  var results := new Set;
-  self.addAllAncestors(maxDepth, results);
-  return results;
-}
-
-$pre maxDepth >= 0 and results.isDefined()
-operation ControlNode addAllAncestors(maxDepth : Integer, results : Collection) {
-  if (self.getDepth() <= maxDepth) {
-    results.add(self);
-  }
-  for (parent in self.incoming.collect(r|r.source)) {
-    parent.addAllAncestors(maxDepth, results);
-  }
-}
-
-$pre otherSet.isDefined()
-operation Set intersect(otherSet : Set) : Set {
-  if (otherSet.size() < self.size()) {
-    return otherSet.intersect(self);
-  }
-
-  var results : Set;
-  for (element in self.select(r|otherSet.includes(r))) {
-    results.add(element);
-  }
-  return results;
 }
