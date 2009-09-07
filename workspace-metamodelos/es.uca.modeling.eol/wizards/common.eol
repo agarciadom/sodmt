@@ -1,0 +1,19 @@
+operation ExecutableNode hasManualPerformanceAnnotation() : Boolean {
+  return self.annotation.isDefined() and self.annotation.manuallyAdded;
+}
+
+operation ExecutableNode hasAutomaticPerformanceAnnotation() : Boolean {
+  return self.annotation.isDefined() and not self.annotation.manuallyAdded;
+}
+
+operation ExecutableNode createPerformanceAnnotation() {
+  self.annotation := new Model!PerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  if (self.annotation.hasProperty('activity')) {
+    self.annotation.activity := self.activity;
+    self.annotation.activity.nodes.add(self.annotation);
+  } else {
+    self.annotation.swimlane := self.swimlane;
+    self.annotation.swimlane.nodes.add(self.annotation);
+  }
+}

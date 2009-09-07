@@ -1,18 +1,18 @@
 -- Diagram constraints --------------------------
 
 context ServiceProcess {
-  -- See InitialNode#ExactlyOneInitialNode
   constraint ExactlyOneInitialNode {
-    check : not InitialNode.all.isEmpty()
+    check : InitialNode.all.size() = 1
     message : 'There must be exactly one initial node'
   }
-  constraint MinimumOneFinalNode {
-    check : not FinalNode.all.isEmpty()
-    message : 'There must be at least one final node'
+
+  constraint ExactlyOneFinalNode {
+    check : FinalNode.all.size() = 1
+    message : 'There must be exactly one final node'
   }
-  -- See GlobalPerformanceAnnotation#ExactlyOnePerformanceAnnotation
-  constraint ExactlyOneGlobalPerformanceAnnotation {
-    check : not GlobalPerformanceAnnotation.all.isEmpty()
-    message : 'There must be exactly one performance annotation'
+
+  critique ExactlyOneServiceActivity {
+    check : ServiceActivity.all.size() = 1
+    message : 'Currently, constraint propagation only works 100% when there is a single Service Activity'
   }
 }
