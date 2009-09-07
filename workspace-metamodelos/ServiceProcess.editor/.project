@@ -3,6 +3,7 @@
 	<name>ServiceProcess.editor</name>
 	<comment></comment>
 	<projects>
+		<project>ServiceProcess</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

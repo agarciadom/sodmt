@@ -3,6 +3,8 @@
 	<name>ServiceComposition.editor</name>
 	<comment></comment>
 	<projects>
+		<project>ServiceComposition</project>
+		<project>ServiceComposition.edit</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
