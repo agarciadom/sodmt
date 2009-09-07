@@ -5,6 +5,7 @@ package serviceProcess;
 class ServiceProcess {
   val Activity[*] activity;
   val ControlNodeEdge[*] edge;
+  val GlobalPerformanceAnnotation globalPerformance;
 }
 
 @gmf.node(label="name")
@@ -34,9 +35,11 @@ abstract class ControlNodeEdge {
   ref EdgeCondition#edge condition;
 }
 
-abstract class Annotation {
-   @gmf.label(label.readOnly="true")
-   attr boolean manuallyAdded = true;
+abstract class PerformanceAnnotation {
+   @gmf.label(foo="bar")
+   attr Double transactionsPerSec = 1;
+   @gmf.label(foo="bar")
+   attr Double secsTimeLimit = 1;
 }
 
 /* ANNOTATIONS */
@@ -59,25 +62,23 @@ class EdgeCondition extends ActivityNode {
 @gmf.node(label="transactionsPerSec",
           label.pattern="<<performance>>",
           figure="rectangle",
-          tool.name="Performance Constraint")
-class PerformanceAnnotation extends Annotation, ActivityNode {
+          tool.name="Local Performance Constraint")
+class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
    ref ExecutableNode#annotation execNode;
-
-   @gmf.label(foo="bar")
-   attr Double transactionsPerSec = 1;
-   @gmf.label(foo="bar")
-   attr Double secsTimeLimit = 1;
+   @gmf.label(label.readOnly="true")
+   attr boolean manuallyAdded = true;
 }
+
+@gmf.node(label="transactionsPerSec",
+          label.pattern="<<performance>>",
+          figure="rectangle",
+          tool.name="Global Performance Constraint")
+class GlobalPerformanceAnnotation extends PerformanceAnnotation {}
 
 /* ACTIVITIES */
 
 @gmf.node(tool.name="Service Activity")
-class ServiceActivity extends Activity, NamedElement {
-  @gmf.label(foo="bar")
-  attr Double transactionsPerSec = 1;
-  @gmf.label(foo="bar")
-  attr Double secsTimeLimit = 1;
-}
+class ServiceActivity extends Activity, NamedElement {}
 
 /* EDGES */
 
@@ -96,15 +97,15 @@ class ControlFlow extends ControlNodeEdge {
 class ExecutableNode extends ControlNode, NamedElement {
   @gmf.link(label="performance", style="dash",
             tool.name="Link Performance Annotation")
-  ref PerformanceAnnotation#execNode annotation;
+  ref LocalPerformanceAnnotation#execNode annotation;
 }
 
-@gmf.node(figure="es.uca.modeling.figures.FgBgFilledCircleFigure", border.color="0,0,0",
+@gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
           size="30,30", tool.name="Start")
 class InitialNode extends ControlNode {
 }
 
-@gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
+@gmf.node(figure="es.uca.modeling.figures.FgBgFilledCircleFigure", border.color="0,0,0",
           size="30,30", tool.name="Finish")
 class FinalNode extends ControlNode {
 }

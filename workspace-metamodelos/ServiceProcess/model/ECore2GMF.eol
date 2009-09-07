@@ -9,7 +9,6 @@ serviceProcessMainBody();
 -- Main body of the script -----------------------------------------
 operation serviceProcessMainBody() {
   removeUselessLabels();
-  defineMaximumSizes();
   defineEditAndViewPatterns();
   defineReadOnlyLabels();
 }
@@ -26,32 +25,17 @@ operation removeUselessLabels() {
   }
 }
 
--- Define maximum sizes for ServiceActivity's labels ---------------
-operation defineMaximumSizes() {
-  for (name in Sequence {'ServiceActivityTransactionsPerSecLabelFigure',
-                         'ServiceActivitySecsTimeLimitLabelFigure'}) {
-    var label := GmfGraph!Label.all.selectOne(r | r.name=name);
-    label.maximumSize := new GmfGraph!Dimension;
-    label.maximumSize.dx := 10000;
-    label.maximumSize.dy := 50;
-  }
-}
-
 -- Label edit and view patterns -------------------------------------
 operation defineEditAndViewPatterns() {
   var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
   var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
   for (entry in Sequence {
-                  Sequence {'AnnotationManuallyAddedLabel', 'manual'},
+                  Sequence {'LocalPerformanceAnnotationManuallyAddedLabel', 'manual'},
                   Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
-                    'transactionsPerSec', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'ServiceActivityTransactionsPerSecLabel',
-                    'transactionsPerSec', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'EdgeConditionProbabilityLabel', 'prob',
-                    NATIVE_METHOD, '{0,number}'},
+                    'transactionsPerSec', NATIVE_METHOD, '{0,number}'},                  
                   Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
                     'timeLimit', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'ServiceActivitySecsTimeLimitLabel', 'timeLimit',
+                  Sequence {'EdgeConditionProbabilityLabel', 'prob',
                     NATIVE_METHOD, '{0,number}'}}) {
     var labelName      := entry.at(0);
     var viewPatternLHS := entry.at(1);
@@ -71,8 +55,9 @@ operation defineEditAndViewPatterns() {
 -- Make some labels read only ---------------------------------------
 operation defineReadOnlyLabels() {
   for (n in Sequence {'EdgeConditionLabel',
-                      'AnnotationManuallyAddedLabel',
-                      'PerformanceAnnotationLabel'}) {
+                      'LocalPerformanceAnnotationManuallyAddedLabel',
+                      'LocalPerformanceAnnotationLabel',
+                      'GlobalPerformanceAnnotationLabel'}) {
     makeReadOnly(n);
   }
 }
