@@ -30,17 +30,17 @@ operation defineEditAndViewPatterns() {
   var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
   var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
   for (entry in Sequence {
-                  Sequence {'LocalPerformanceAnnotationManuallyAddedLabel', 'manual'},
+                  Sequence {'LocalPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
                   Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
-                    'transactionsPerSec', NATIVE_METHOD, '{0,number}'},                  
+                    'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
                   Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
-                    'timeLimit', NATIVE_METHOD, '{0,number}'},
+                    'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
                   Sequence {'EdgeConditionProbabilityLabel', 'prob',
                     NATIVE_METHOD, '{0,number}'}}) {
-    var labelName      := entry.at(0);
-    var viewPatternLHS := entry.at(1);
-    var editMethod     := MSGFMT_METHOD;
-    var editPattern    := '{0}';
+    var labelName   := entry.at(0);
+    var viewPattern := entry.at(1);
+    var editMethod  := MSGFMT_METHOD;
+    var editPattern := '{0}';
     if (entry.size() > 2) {
       editMethod  = entry.at(2);
       editPattern = entry.at(3);
@@ -48,7 +48,7 @@ operation defineEditAndViewPatterns() {
 
     setFeatureLabelPatterns(labelName,
                             editMethod, editPattern,
-                            MSGFMT_METHOD, (viewPatternLHS + ' = {0}'));
+                            MSGFMT_METHOD, viewPattern);
   }
 }
 
