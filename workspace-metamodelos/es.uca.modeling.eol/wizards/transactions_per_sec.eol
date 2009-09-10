@@ -158,23 +158,25 @@ operation ControlNode getTransactionsPerSec() : Real {
 @cached
 $pre self.incoming.notEmpty()
 operation JoinNode getTransactionsPerSec() : Real {
-  var parents := self.incoming.collect(r|r.source).asSet();
   var firstParent;
   var result;
-  for (parent in parents) {
+
+  for (incomingEdge in self.incoming) {
+    var parent := incomingEdge.source;
+
     if (firstParent.isUndefined()) {
       firstParent := parent;
-      result      := firstParent.getTransactionsPerSec();
+      result      := incomingEdge.getTransactionsPerSec();
       continue;
     }
 
     var lca := getLCA(firstParent, parent);
     if (lca.isKindOf(DecisionNode)) {
-      result := result + parent.getTransactionsPerSec();
+      result := result + incomingEdge.getTransactionsPerSec();
     }
     else if (lca.isKindOf(ForkNode)) {
-      if (parent.getTransactionsPerSec() < result) {
-        result := parent.getTransactionsPerSec();
+      if (incomingEdge.getTransactionsPerSec() < result) {
+        result := incomingEdge.getTransactionsPerSec();
       }
     } else {
       System.user.inform('BUG: LCA ' + lca + ' of ' + firstParent
