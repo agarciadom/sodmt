@@ -287,22 +287,30 @@ context JoinNode {
       }
     }
   }
-  constraint JoinedBranchesMustHaveSameLCA {
+  constraint JoinedBranchesMustPairwiseHaveSameLCA {
     guard : self.satisfies('MoreThanOneIncomingFlow')
     check {
       var parents := self.incoming.collect(r|r.source);
-      var firstParent := parents.first();
+      var nElems  := parents.size();
+      var iFirst  := 0;
       var lca;
-      for (currentParent in parents.excluding(firstParent)) {
-        var currentLca := getLCA(firstParent, currentParent);
-        if (lca.isDefined() and lca <> currentLca) {
-          return false;
+      while (iFirst < nElems) {
+        var first   := parents.at(iFirst);
+        var iSecond := iFirst + 1;
+        while (iSecond < nElems) {
+          var second := parents.at(iSecond);
+          var currentLca := getLCA(first, second);
+          if (lca.isDefined() and lca <> currentLca) {
+            return false;
+          }
+          lca     := currentLca;
+          iSecond := iSecond + 1;
         }
-        lca := currentLca;
+        iFirst := iFirst + 1;
       }
       return true;
     }
-    message : 'A join node must only join branches which diverge from the exact same node'
+    message : 'A join node must only join branches which split off from the exact same node'
   }
 }
 
