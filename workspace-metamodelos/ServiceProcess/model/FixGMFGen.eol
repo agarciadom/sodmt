@@ -4,7 +4,8 @@ operation serviceProcessMainBody(pluginPrefix : String,
                                  longModelName : String) {
   defineNotResizableNodes();
   useDynamicTemplates('/ServiceProcess/templates/');
-  useCustomizedParser();
+  useCustomizedParserForDoubles();
+  useCustomizedParserForControlFlows();
   addPlugin('es.uca.modeling.figures');
   addPlugin(pluginPrefix + '.edit');
   setPreferencePageName(longModelName + ' Diagram');
@@ -27,7 +28,7 @@ operation useDynamicTemplates(templateDir : String) {
 }
 
 -- Use a customized parser for the Double attributes
-operation useCustomizedParser() {
+operation useCustomizedParserForDoubles() {
   var OLD_DOUBLE_PARSER_NAME := 'MessageFormatMessageFormatParser';
   var NEW_DOUBLE_PARSER_NAME := 'NumbersToDoubleParser';
   var doubleParser := findPredefinedParser(OLD_DOUBLE_PARSER_NAME);
@@ -38,6 +39,24 @@ operation useCustomizedParser() {
   }
   doubleParser.className := NEW_DOUBLE_PARSER_NAME;
 }
+
+-- Use a custom parser for control flow labels, which works like
+-- the NumbersToDoubleParser, except that it doesn't show anything
+-- if the first attribute is not set or empty
+operation useCustomizedParserForControlFlows() {
+  -- Create the new parser
+  var newParser := new GmfGen!PredefinedParser;
+  newParser.className := 'ControlFlowLabelParser';
+  newParser.editMethod := GmfGen!LabelTextAccessMethod#NATIVE;
+  GmfGen!GenParsers.all.first().implementations.add(newParser);
+
+  -- Change the control flow labels to this parser
+  var featureLabelModelFacet :=
+    getFeatureLabelModelFacetByEditPartClassName('ControlFlowEditPart');
+  featureLabelModelFacet.parser := newParser;
+}
+
+-- UTILITY OPERATIONS ---------------------------------------------------------
 
 operation addPlugin(pluginName : String) {
   var genPlugin := GmfGen!GenPlugin.all.first();
@@ -54,8 +73,6 @@ operation setPreferencePageName(name : String) {
   var genPage := GmfGen!GenStandardPreferencePage.all.first();
   genPage.name := name;
 }
-
--- UTILITY OPERATIONS ---------------------------------------------------------
 
 operation findPredefinedParser(parserName : String) : GmfGen!PredefinedParser {
   return GmfGen!PredefinedParser.all.selectOne(r|r.className=parserName);
@@ -80,4 +97,9 @@ operation makeNotResizable(figureClass : String) {
 
     figure_viewmap.attributes.add(resizeconstraint_not_resizable);
   }
+}
+
+operation getFeatureLabelModelFacetByEditPartClassName(name : String) {
+  return GmfGen!GenLink.all.selectOne(r|r.editPartClassName = name)
+                       .labels.first().modelFacet;
 }

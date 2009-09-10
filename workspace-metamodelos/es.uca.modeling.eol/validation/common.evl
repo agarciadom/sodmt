@@ -101,29 +101,55 @@ context ControlNode {
   }
 }
 
--- Annotation constraints -------------------------
+-- Flow constraints -------------------------------
 
-context EdgeCondition {
-  constraint EdgeIsDefined {
-    check : self.edge.isDefined()
-    message : 'Condition must be linked to an edge starting from a '
-              + 'DecisionNode'
+context ControlFlow {
+  constraint ConditionsOnlyFromDecisionNode {
+    check : self.condition <> '' implies self.source.isTypeOf(DecisionNode)
+    message : 'Conditions can only be applied to edges starting from a decision node'
+    fix {
+      title : 'Remove condition'
+      do {
+        self.condition := '';
+      }
+    }
   }
-  constraint OnlyFromDecisionNode {
-    guard : self.satisfies('EdgeIsDefined')
-    check : self.edge.source.isTypeOf(DecisionNode)
-    message : 'Condition applied to edge which does not start from '
-              + 'a DecisionNode'
+
+  constraint ConditionsAlwaysFromDecisionNode {
+    check : self.source.isTypeOf(DecisionNode) implies self.condition <> ''
+    message : 'Conditions must be applied to edges starting from a decision node'
+    fix {
+      title : 'Add dummy condition'
+      do {
+        self.condition := 'dummy';
+      }
+    }
   }
-  constraint NonEmptyCondition {
-    check : self.condition <> ''
-    message : 'Condition cannot be empty'
-  }
-  constraint ValidProbability {
+
+  constraint ValidProbabilityWithCondition {
+    guard : self.satisfies('ConditionsOnlyFromDecisionNode')
+            and self.satisfies('ConditionsAlwaysFromDecisionNode')
+            and self.condition <> ''
     check : self.probability > 0 and self.probability < 1
     message : 'Condition must be true with probability > 0 and < 1'
   }
+
+  constraint ValidProbabilityWithoutCondition {
+    guard : self.satisfies('ConditionsOnlyFromDecisionNode')
+            and self.satisfies('ConditionsAlwaysFromDecisionNode')
+            and self.condition = ''
+    check : (self.probability - 1).abs() <= 0.00001
+    message : 'Unconditional control flows should have probability equal to 1'
+    fix {
+      title : 'Set probability to 1'
+      do {
+        self.probability = 1.0d;
+      }
+    }
+  }
 }
+
+-- Annotation constraints -------------------------
 
 context PerformanceAnnotation {
   constraint ValidTransactionsPerSec {
@@ -315,18 +341,10 @@ context JoinNode {
 }
 
 context DecisionNode {
-  constraint AllOutgoingEdgesMustHaveCondition {
-    check : self.outgoing.forAll(r|r.condition.isDefined())
-    message : 'All outgoing edges from a decision node must have conditions'
-  }
   constraint TotalProbabilityIsOne {
-    guard : self.satisfies('AllOutgoingEdgesMustHaveCondition')
-            and self.outgoing.forAll(r|r.condition.satisfies('ValidProbability'))
+    guard : self.outgoing.forAll(r|r.satisfies('ValidProbabilityWithCondition'))
     check {
-      var totalPercentage := 0;
-      for (cond in self.outgoing.collect(r|r.condition)) {
-        totalPercentage := totalPercentage + cond.probability;
-      }
+      var totalPercentage := self.outgoing.collect(r|r.probability).sum();
       var delta := (1 - totalPercentage).abs();
       return delta <= 0.001;
     }

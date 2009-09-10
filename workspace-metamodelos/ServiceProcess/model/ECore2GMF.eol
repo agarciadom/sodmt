@@ -11,6 +11,7 @@ operation serviceProcessMainBody() {
   removeUselessLabels();
   defineEditAndViewPatterns();
   defineReadOnlyLabels();
+  setDefaultTextForLabel('ControlFlowLabelLabel', '');
 }
 
 -- Remove labels from nodes which don't need them ------------------
@@ -35,8 +36,9 @@ operation defineEditAndViewPatterns() {
                     'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
                   Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
                     'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'EdgeConditionProbabilityLabel', 'prob',
-                    NATIVE_METHOD, '{0,number}'}}) {
+                  Sequence {'ControlFlowLabel', '[{0}] (p = {1})',
+                            NATIVE_METHOD, '{0} : {1,number}'}
+                  }) {
     var labelName   := entry.at(0);
     var viewPattern := entry.at(1);
     var editMethod  := MSGFMT_METHOD;
@@ -63,6 +65,10 @@ operation defineReadOnlyLabels() {
 }
 
 -- UTILITY OPERATIONS -----------------------------------------------
+
+operation setDefaultTextForLabel(name : String, value : String) {
+  GmfGraph!Label.all.selectOne(r|r.name=name).text := value;
+}
 
 operation makeReadOnly(diagramLabelName : String) {
   for (labelMapping in findLabelMappingsByName(diagramLabelName)) {

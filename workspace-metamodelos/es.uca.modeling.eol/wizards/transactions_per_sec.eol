@@ -34,8 +34,7 @@
     then the formulas are as follows:
 
     * T(initial node) = T(its ServiceActivity)
-    * T(edge) = P(edge) * T(source). P(edge) = 1 if it does not have
-      any condition set, otherwise use the condition's probability.
+    * T(edge) = P(edge) * T(source)
     * T(node, except JoinNode) = T(only incoming edge)
     * T(JoinNode): described more in detail below.
 
@@ -137,11 +136,13 @@ operation annotateTransactionsPerSec() {
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
 operation ControlNodeEdge getTransactionsPerSec() : Real {
-  var probability := 1;
-  if (self.condition.isDefined()) {
-    probability := self.condition.probability;
-  }
-  return probability * self.source.getTransactionsPerSec();
+  return self.source.getTransactionsPerSec();
+}
+
+@cached
+$pre self.source.isDefined() and self.target.isDefined()
+operation ControlFlow getTransactionsPerSec() : Real {
+  return self.probability * self.source.getTransactionsPerSec();
 }
 
 @cached

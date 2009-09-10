@@ -31,8 +31,6 @@ abstract class ControlNode extends ActivityNode {
 abstract class ControlNodeEdge {
   ref ControlNode#incoming target;
   ref ControlNode#outgoing source;
-  @gmf.link(label="condition", style="dash", tool.name="Link Edge Condition")
-  ref EdgeCondition#edge condition;
 }
 
 abstract class PerformanceAnnotation {
@@ -43,21 +41,6 @@ abstract class PerformanceAnnotation {
 }
 
 /* ANNOTATIONS */
-
-/* condition = 'else' -> default flow */
-@gmf.node(label="language",
-          label.pattern="<<{0}>>",
-          figure="rectangle",
-          tool.name="Edge Condition")
-class EdgeCondition extends ActivityNode {
-    ref ControlNodeEdge#condition edge;
-
-    @gmf.label(foo="bar")
-    attr String condition = "true";
-    attr ExpressionLanguage language;
-    @gmf.label(foo="bar")
-    attr Double probability = 1;
-}
 
 @gmf.node(label="transactionsPerSec",
           label.pattern="<<performance>>",
@@ -86,8 +69,12 @@ class ServiceActivity extends Activity, NamedElement {}
 class ObjectFlow extends ControlNodeEdge {
 }
 
-@gmf.link(target.decoration="arrow", tool.name="Control Flow")
+@gmf.link(target.decoration="arrow",
+          tool.name="Control Flow",
+          label="condition,probability")
 class ControlFlow extends ControlNodeEdge {
+    attr String condition = "";
+    attr Double probability = 1;
 }
 
 /* NODES */
