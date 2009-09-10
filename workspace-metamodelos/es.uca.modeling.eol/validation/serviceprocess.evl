@@ -6,13 +6,14 @@ context ServiceProcess {
     message : 'There must be exactly one initial node'
   }
 
-  constraint ExactlyOneFinalNode {
-    check : FinalNode.all.size() = 1
-    message : 'There must be exactly one final node'
-  }
-
-  critique ExactlyOneServiceActivity {
-    check : ServiceActivity.all.size() = 1
-    message : 'Currently, constraint propagation only works 100% when there is a single Service Activity'
+  constraint ExactlyOneGPC {
+    check : GlobalPerformanceAnnotation.all.size() = 1
+    message : 'There must be exactly one global performance constraint'
+    fix {
+      title : 'Create a default global performance constraint'
+      do {
+        self.globalPerformance := new GlobalPerformanceAnnotation;
+      }
+    }
   }
 }
