@@ -118,7 +118,8 @@ operation annotateTimeLimits(start : ActivityNode) {
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
-    path.~manualSum := getFixedTimeLimitSum(path, 0);
+    path.~manualSum     := getFixedTimeLimitSum(path, 0);
+    path.~startingSlack := global_limit - path.~manualSum;
     for (node in path.select(r:ExecutableNode | r.hasAutomaticPerformanceAnnotation())) {
       node.annotation.secsTimeLimit := 100000.0d;
     }
@@ -127,8 +128,8 @@ operation annotateTimeLimits(start : ActivityNode) {
   -- Use the paths to establish the constraints, using the most restrictive
   -- paths first. Otherwise, results would vary depending on what path got
   -- evaluated first.
-  for (path in paths.sortBy(p | -p.~manualSum)) {
-    var slack     := global_limit - path.~manualSum;
+  for (path in paths.sortBy(p | p.~startingSlack/(1 + countFreeNodes(p)))) {
+    var slack     := path.~startingSlack;
     var freeCount := countUpdatableNodes(path, 0);
 
     -- slack = 0 is too fickle: better use small floating-point values
@@ -190,8 +191,14 @@ operation getFixedTimeLimitSum(path : Sequence, newLimit : Real) : Real {
              .collect(r|r.getTimeLimit()).sum();
 }
 
+operation countFreeNodes(path : Sequence) : Integer {
+  return countUpdatableNodes(path, 0);
+}
+
 -- Counts how many executable nodes can be updated in the path to a new limit.
--- With 0, counts how many nodes do not have manual restrictions set in place.
+-- With 0, counts how many nodes do not have manual restrictions set in place
+-- (i.e. free nodes).
+@cached
 $pre path.isDefined() and newLimit >= 0
 operation countUpdatableNodes(path : Sequence, newLimit : Real) : Integer {
   return path.select(node : ExecutableNode | node.canBeUpdatedTo(newLimit)).size();
