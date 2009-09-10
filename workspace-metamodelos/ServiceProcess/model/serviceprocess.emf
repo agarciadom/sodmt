@@ -100,6 +100,9 @@ class ExecutableNode extends ControlNode, NamedElement {
   ref LocalPerformanceAnnotation#execNode annotation;
 }
 
+@gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
+class ObjectNode extends ControlNode, NamedElement {}
+
 @gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
           size="30,30", tool.name="Start")
 class InitialNode extends ControlNode {
