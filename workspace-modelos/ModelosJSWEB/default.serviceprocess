@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess">
+  <activity xsi:type="sp:ServiceActivity" name="Atender pedido">
+    <nodes xsi:type="sp:InitialNode" outgoing="//@edge.2"/>
+    <nodes xsi:type="sp:FinalNode" incoming="//@edge.11"/>
+    <nodes xsi:type="sp:ExecutableNode" incoming="//@edge.2" outgoing="//@edge.3" name="Evaluar pedido" annotation="//@activity.0/@nodes.12"/>
+    <nodes xsi:type="sp:ExecutableNode" incoming="//@edge.10" outgoing="//@edge.11" name="Cerrar pedido" annotation="//@activity.0/@nodes.14"/>
+    <nodes xsi:type="sp:ExecutableNode" incoming="//@edge.6" outgoing="//@edge.8" name="Crear orden de envío" annotation="//@activity.0/@nodes.13"/>
+    <nodes xsi:type="sp:ExecutableNode" incoming="//@edge.7" outgoing="//@edge.0" name="Hacer factura" annotation="//@activity.0/@nodes.15"/>
+    <nodes xsi:type="sp:ExecutableNode" incoming="//@edge.1" outgoing="//@edge.9" name="Realizar pago" annotation="//@activity.0/@nodes.16"/>
+    <nodes xsi:type="sp:ObjectNode" incoming="//@edge.0" outgoing="//@edge.1" name="Factura"/>
+    <nodes xsi:type="sp:DecisionNode" incoming="//@edge.3" outgoing="//@edge.4 //@edge.5"/>
+    <nodes xsi:type="sp:ForkNode" incoming="//@edge.4" outgoing="//@edge.6 //@edge.7"/>
+    <nodes xsi:type="sp:JoinNode" incoming="//@edge.5 //@edge.12" outgoing="//@edge.10"/>
+    <nodes xsi:type="sp:JoinNode" incoming="//@edge.9 //@edge.8" outgoing="//@edge.12"/>
+    <nodes xsi:type="sp:LocalPerformanceAnnotation" transactionsPerSec="20.0" secsTimeLimit="1.25" execNode="//@activity.0/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sp:LocalPerformanceAnnotation" transactionsPerSec="16.0" secsTimeLimit="2.5" execNode="//@activity.0/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sp:LocalPerformanceAnnotation" transactionsPerSec="20.0" secsTimeLimit="1.25" execNode="//@activity.0/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sp:LocalPerformanceAnnotation" transactionsPerSec="16.0" secsTimeLimit="1.25" execNode="//@activity.0/@nodes.5" manuallyAdded="false"/>
+    <nodes xsi:type="sp:LocalPerformanceAnnotation" transactionsPerSec="16.0" secsTimeLimit="1.25" execNode="//@activity.0/@nodes.6" manuallyAdded="false"/>
+  </activity>
+  <edge xsi:type="sp:ObjectFlow" target="//@activity.0/@nodes.7" source="//@activity.0/@nodes.5"/>
+  <edge xsi:type="sp:ObjectFlow" target="//@activity.0/@nodes.6" source="//@activity.0/@nodes.7"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.2" source="//@activity.0/@nodes.0"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.8" source="//@activity.0/@nodes.2"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.9" source="//@activity.0/@nodes.8" condition="evaluacion.aceptado" probability="0.8"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.10" source="//@activity.0/@nodes.8" condition="not evaluacion.aceptado" probability="0.2"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.4" source="//@activity.0/@nodes.9"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.5" source="//@activity.0/@nodes.9"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.11" source="//@activity.0/@nodes.4"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.11" source="//@activity.0/@nodes.6"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.3" source="//@activity.0/@nodes.10"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.1" source="//@activity.0/@nodes.3"/>
+  <edge xsi:type="sp:ControlFlow" target="//@activity.0/@nodes.10" source="//@activity.0/@nodes.11"/>
+  <globalPerformance transactionsPerSec="20.0" secsTimeLimit="5.0"/>
+</sp:ServiceProcess>
