@@ -38,11 +38,11 @@
    <extension
          point="org.eclipse.epsilon.ewl.emf.wizards">
       <wizards
-            file="wizards/diagramWizards.ewl"
+            file="wizards/processWizards.ewl"
             namespaceURI="www.uca.es/modeling/serviceProcess">
       </wizards>
       <wizards
-            file="wizards/diagramWizards.ewl"
+            file="wizards/compositionWizards.ewl"
             namespaceURI="www.uca.es/modeling/serviceComposition">
       </wizards>
    </extension>

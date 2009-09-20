@@ -1,0 +1,19 @@
+import 'time_limits.eol';
+import 'transactions_per_sec.eol';
+
+wizard InferPerformanceAnnotations {
+  title : 'Infer performance annotations'
+  do {
+    annotateTimeLimits(ActivityStart.all.first());
+    annotateTransactionsPerSec();
+  }
+}
+
+wizard RemoveAllInferredAnnotations {
+  title : 'Remove all inferred annotations'
+  do {
+    for (constraint in ActionPerformanceAnnotation.all.select(r|not r.manuallyAdded)) {
+      delete constraint;
+    }
+  }
+}

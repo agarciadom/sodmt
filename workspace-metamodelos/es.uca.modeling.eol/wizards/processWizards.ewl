@@ -4,7 +4,7 @@ import 'transactions_per_sec.eol';
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
-    annotateTimeLimits(InitialNode.all.first());
+    annotateTimeLimits(ProcessStart.all.first());
     annotateTransactionsPerSec();
   }
 }
