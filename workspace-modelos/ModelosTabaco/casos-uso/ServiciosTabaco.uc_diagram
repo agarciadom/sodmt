@@ -7,26 +7,26 @@
         <children xmi:type="notation:Node" xmi:id="_jzRmMKOpEd6aP8rMzDSdqw" type="4001"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_jzQ_IaOpEd6aP8rMzDSdqw" fontName="Sans"/>
         <element xmi:type="UC:BusinessService" href="ServiciosTabaco.uc#//@modelingUseCases.0/@ownedUseCase.0"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzQ_IqOpEd6aP8rMzDSdqw" x="45" y="6"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzQ_IqOpEd6aP8rMzDSdqw" x="45" y="6" width="231"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_jzRmMaOpEd6aP8rMzDSdqw" type="2001">
         <children xmi:type="notation:Node" xmi:id="_jzSNQKOpEd6aP8rMzDSdqw" type="4001"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_jzRmMqOpEd6aP8rMzDSdqw" fontName="Sans"/>
         <element xmi:type="UC:BusinessService" href="ServiciosTabaco.uc#//@modelingUseCases.0/@ownedUseCase.1"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzRmM6OpEd6aP8rMzDSdqw" x="45" y="124"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzRmM6OpEd6aP8rMzDSdqw" x="45" y="124" width="236"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_jzS0UKOpEd6aP8rMzDSdqw" type="2001">
         <children xmi:type="notation:Node" xmi:id="_jzTbYKOpEd6aP8rMzDSdqw" type="4001"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_jzS0UaOpEd6aP8rMzDSdqw" fontName="Sans"/>
         <element xmi:type="UC:BusinessService" href="ServiciosTabaco.uc#//@modelingUseCases.0/@ownedUseCase.2"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzS0UqOpEd6aP8rMzDSdqw" x="45" y="235"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzS0UqOpEd6aP8rMzDSdqw" x="45" y="235" width="241"/>
       </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_jzKRcqOpEd6aP8rMzDSdqw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_jzKRc6OpEd6aP8rMzDSdqw"/>
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_jzJqYaOpEd6aP8rMzDSdqw" fontName="Sans"/>
     <element xmi:type="UC:Classifier" href="ServiciosTabaco.uc#//@modelingUseCases.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzJqYqOpEd6aP8rMzDSdqw" x="220" height="336"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jzJqYqOpEd6aP8rMzDSdqw" x="220" width="311" height="336"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_jzK4gKOpEd6aP8rMzDSdqw" type="1002">
     <children xmi:type="notation:Node" xmi:id="_jzLfkKOpEd6aP8rMzDSdqw" type="4003">

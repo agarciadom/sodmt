@@ -4,8 +4,8 @@
   <modelingActors name="Plantas empaquetadoras" useCase="//@modelingUseCases.0/@ownedUseCase.1"/>
   <modelingActors name="Plantas de pretratado" useCase="//@modelingUseCases.0/@ownedUseCase.0"/>
   <modelingUseCases name="SOA Tabaco">
-    <ownedUseCase xsi:type="UC:BusinessService" name="Compra de tabaco sin tratar" actor="//@modelingActors.2"/>
-    <ownedUseCase xsi:type="UC:BusinessService" name="Compra de tabaco pretratado" actor="//@modelingActors.1"/>
-    <ownedUseCase xsi:type="UC:BusinessService" name="Compra de tabaco empaquetado" actor="//@modelingActors.0"/>
+    <ownedUseCase xsi:type="UC:BusinessService" name="Obtener tabaco sin tratar" actor="//@modelingActors.2"/>
+    <ownedUseCase xsi:type="UC:BusinessService" name="Obtener tabaco pretratado" actor="//@modelingActors.1"/>
+    <ownedUseCase xsi:type="UC:BusinessService" name="Obtener tabaco empaquetado" actor="//@modelingActors.0"/>
   </modelingUseCases>
 </UC:UseCasesModel>

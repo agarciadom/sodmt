@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EUC:ExtendedUseCasesModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EUC="http://kybele.es/EUC">
-  <actors name="Distribuidora mayorista" useCase="//@classifier.0/@ownedUseCase.3"/>
+  <actors name="Distribuidora mayorista" useCase="//@classifier.0/@ownedUseCase.2"/>
   <classifier name="SOA Tabaco">
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Realizar pedido"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Realizar pago"/>
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Recibir tabaco empaquetado"/>
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Comprar tabaco empaquetado" actors="//@actors.0">
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Obtener tabaco empaquetado" actors="//@actors.0">
       <include addition="//@classifier.0/@ownedUseCase.0"/>
       <include addition="//@classifier.0/@ownedUseCase.1"/>
-      <include addition="//@classifier.0/@ownedUseCase.2"/>
     </ownedUseCase>
   </classifier>
 </EUC:ExtendedUseCasesModel>

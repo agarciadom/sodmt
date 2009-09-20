@@ -6,7 +6,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_ow6yoaOuEd6aP8rMzDSdqw" fontName="Sans"/>
     <element xmi:type="EUC:Actor" href="CompraTabacoSinTratar.euc#//@actors.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ow6yoqOuEd6aP8rMzDSdqw" x="85" y="270"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ow6yoqOuEd6aP8rMzDSdqw" x="75" y="265"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_qH3-gKOuEd6aP8rMzDSdqw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_qH4lkKOuEd6aP8rMzDSdqw" type="4003"/>
@@ -35,28 +35,22 @@
         <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.3"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0eGygqOuEd6aP8rMzDSdqw" x="370" y="229"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_212tAKOuEd6aP8rMzDSdqw" type="2002">
-        <children xmi:type="notation:Node" xmi:id="_213UEKOuEd6aP8rMzDSdqw" type="4002"/>
-        <styles xmi:type="notation:ShapeStyle" xmi:id="_212tAaOuEd6aP8rMzDSdqw" fontName="Sans"/>
-        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.4"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_212tAqOuEd6aP8rMzDSdqw" x="240" y="297" width="201"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_4mngAKOuEd6aP8rMzDSdqw" type="2002">
         <children xmi:type="notation:Node" xmi:id="_4moHEKOuEd6aP8rMzDSdqw" type="4002"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_4mngAaOuEd6aP8rMzDSdqw" fontName="Sans"/>
-        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.5"/>
+        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.4"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4mngAqOuEd6aP8rMzDSdqw" x="520" y="7" width="171"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_5fm9gKOuEd6aP8rMzDSdqw" type="2002">
         <children xmi:type="notation:Node" xmi:id="_5fnkkKOuEd6aP8rMzDSdqw" type="4002"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_5fm9gaOuEd6aP8rMzDSdqw" fontName="Sans"/>
-        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6"/>
+        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.5"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5fm9gqOuEd6aP8rMzDSdqw" x="520" y="77" width="169"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_9F3SgKOuEd6aP8rMzDSdqw" type="2002">
         <children xmi:type="notation:Node" xmi:id="_9F35kKOuEd6aP8rMzDSdqw" type="4002"/>
         <styles xmi:type="notation:ShapeStyle" xmi:id="_9F3SgaOuEd6aP8rMzDSdqw" fontName="Sans"/>
-        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7"/>
+        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9F3SgqOuEd6aP8rMzDSdqw" x="10" y="196" width="166"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_qH4lkqOuEd6aP8rMzDSdqw"/>
@@ -65,7 +59,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_qH3-gaOuEd6aP8rMzDSdqw" fontName="Sans"/>
     <element xmi:type="EUC:Classifier" href="CompraTabacoSinTratar.euc#//@classifier.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qH3-gqOuEd6aP8rMzDSdqw" x="255" y="25" width="706" height="406"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qH3-gqOuEd6aP8rMzDSdqw" x="255" y="25" width="706" height="331"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_xIiaUaOtEd6aP8rMzDSdqw"/>
   <element xmi:type="EUC:ExtendedUseCasesModel" href="CompraTabacoSinTratar.euc#/"/>
@@ -82,7 +76,7 @@
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_P5fJkaOvEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_P5fJkqOvEd6aP8rMzDSdqw" fontName="Sans"/>
-    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7/@include.0"/>
+    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6/@include.0"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P5fJk6OvEd6aP8rMzDSdqw" points="[12, -17, -112, 155]$[83, -166, -41, 6]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P5hl0KOvEd6aP8rMzDSdqw" id="(0.7650602409638554,0.34)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P5hl0aOvEd6aP8rMzDSdqw" id="(0.02912621359223301,0.34)"/>
@@ -93,7 +87,7 @@
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_QQmCAaOvEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_QQmpEKOvEd6aP8rMzDSdqw" fontName="Sans"/>
-    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7/@include.1"/>
+    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6/@include.1"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QQmpEaOvEd6aP8rMzDSdqw" points="[31, -19, -153, 95]$[158, -89, -26, 25]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QQpFUKOvEd6aP8rMzDSdqw" id="(0.7891566265060241,0.38)"/>
   </edges>
@@ -103,7 +97,7 @@
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_QpY8gaOvEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_QpY8gqOvEd6aP8rMzDSdqw" fontName="Sans"/>
-    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7/@include.2"/>
+    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6/@include.2"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QpZjkKOvEd6aP8rMzDSdqw" points="[27, -6, -211, 30]$[215, -61, -23, -25]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Qpb_0KOvEd6aP8rMzDSdqw" id="(0.9698795180722891,0.52)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6wbdcKO0Ed6aP8rMzDSdqw" id="(0.05185185185185185,0.5)"/>
@@ -114,21 +108,10 @@
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_RUM0EaOvEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_RUM0EqOvEd6aP8rMzDSdqw" fontName="Sans"/>
-    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7/@include.3"/>
+    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.6/@include.3"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RUM0E6OvEd6aP8rMzDSdqw" points="[32, 24, -111, -71]$[76, 94, -67, -1]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RUP3YKOvEd6aP8rMzDSdqw" id="(0.963855421686747,0.42)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fQDq8KOvEd6aP8rMzDSdqw" id="(0.05925925925925926,0.52)"/>
-  </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_Rv2OQKOvEd6aP8rMzDSdqw" type="3003" source="_9F3SgKOuEd6aP8rMzDSdqw" target="_212tAKOuEd6aP8rMzDSdqw">
-    <children xmi:type="notation:Node" xmi:id="_Rv21UKOvEd6aP8rMzDSdqw" type="4006">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_Rv21UaOvEd6aP8rMzDSdqw" x="19" y="-19"/>
-    </children>
-    <styles xmi:type="notation:RoutingStyle" xmi:id="_Rv2OQaOvEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_Rv2OQqOvEd6aP8rMzDSdqw" fontName="Sans"/>
-    <element xmi:type="EUC:Include" href="CompraTabacoSinTratar.euc#//@classifier.0/@ownedUseCase.7/@include.4"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Rv2OQ6OvEd6aP8rMzDSdqw" points="[25, 25, -130, -130]$[127, 150, -28, -5]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kKFU8KOvEd6aP8rMzDSdqw" id="(0.9216867469879518,0.76)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Rv5RkKOvEd6aP8rMzDSdqw" id="(0.022222222222222223,0.56)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_SxWukKOvEd6aP8rMzDSdqw" type="3002" source="_4mngAKOuEd6aP8rMzDSdqw" target="_s7-d0KOuEd6aP8rMzDSdqw">
     <children xmi:type="notation:Node" xmi:id="_SxXVoKOvEd6aP8rMzDSdqw" type="4005">
