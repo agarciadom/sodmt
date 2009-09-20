@@ -15,8 +15,8 @@ operation serviceProcessMainBody(pluginPrefix : String,
 -- MAIN BODY OPERATIONS -------------------------------------------------------
 
 operation defineNotResizableNodes() {
-  for (name in Sequence {'InitialNode', 'FinalNode', 'ForkNode',
-                         'JoinNode', 'DecisionNode'}) {
+  for (name in Sequence {'ProcessStart', 'ProcessFinish', 'ProcessFork',
+                         'ProcessJoin', 'ProcessDecision'}) {
     makeNotResizable(name + 'Figure');
   }
 }
@@ -52,7 +52,7 @@ operation useCustomizedParserForControlFlows() {
 
   -- Change the control flow labels to this parser
   var featureLabelModelFacet :=
-    getFeatureLabelModelFacetByEditPartClassName('ControlFlowEditPart');
+    getFeatureLabelModelFacetByEditPartClassName('ProcessControlFlowEditPart');
   featureLabelModelFacet.parser := newParser;
 }
 

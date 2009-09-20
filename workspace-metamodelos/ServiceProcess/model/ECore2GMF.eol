@@ -11,17 +11,17 @@ operation serviceProcessMainBody() {
   removeUselessLabels();
   defineEditAndViewPatterns();
   defineReadOnlyLabels();
-  setDefaultTextForLabel('ControlFlowLabelLabel', '');
+  setDefaultTextForLabel('ProcessControlFlowLabelLabel', '');
 }
 
 -- Remove labels from nodes which don't need them ------------------
 operation removeUselessLabels() {
   for (n in Sequence {
-              'InitialNodeLabel', 'FinalNodeLabel',
-              'ForkNodeLabel', 'JoinNodeLabel',
-              'DecisionNodeLabel',
-              'ControlNodeEdgeConditionExternalLabel',
-              'ExecutableNodeAnnotationExternalLabel'}) {
+              'ProcessStartLabel', 'ProcessFinishLabel',
+              'ProcessForkLabel', 'ProcessJoinLabel',
+              'ProcessDecisionLabel',
+              'ControlFlowConditionExternalLabel',
+              'ServiceActivityAnnotationExternalLabel'}) {
      removeLabel(n);
   }
 }
@@ -31,12 +31,12 @@ operation defineEditAndViewPatterns() {
   var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
   var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
   for (entry in Sequence {
-                  Sequence {'LocalPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
+                  Sequence {'ActivityPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
                   Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
                     'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
                   Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
                     'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'ControlFlowLabel', '[{0}] (p = {1})',
+                  Sequence {'ProcessControlFlowLabel', '[{0}] (p = {1})',
                             NATIVE_METHOD, '{0} : {1,number}'}
                   }) {
     var labelName   := entry.at(0);
@@ -56,10 +56,10 @@ operation defineEditAndViewPatterns() {
 
 -- Make some labels read only ---------------------------------------
 operation defineReadOnlyLabels() {
-  for (n in Sequence {'EdgeConditionLabel',
-                      'LocalPerformanceAnnotationManuallyAddedLabel',
-                      'LocalPerformanceAnnotationLabel',
-                      'GlobalPerformanceAnnotationLabel'}) {
+  for (n in Sequence {'ControlFlowConditionLabel',
+                      'ActivityPerformanceAnnotationManuallyAddedLabel',
+                      'ActivityPerformanceAnnotationLabel',
+                      'ProcessPerformanceAnnotationLabel'}) {
     makeReadOnly(n);
   }
 }

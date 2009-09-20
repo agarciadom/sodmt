@@ -3,117 +3,48 @@ package serviceProcess;
 
 @gmf.diagram(foo="bar")
 class ServiceProcess {
-  val Activity[*] activity;
-  val ControlNodeEdge[*] edge;
-  val GlobalPerformanceAnnotation globalPerformance;
-}
-
-@gmf.node(label="name")
-abstract class NamedElement {
-   attr String name;
-}
-
-abstract class Activity {
-  @gmf.compartment(layout="free")
-  val ActivityNode[*]#activity nodes;
-}
-
-abstract class ActivityNode {
-  ref Activity#nodes activity;
-}
-
-abstract class ControlNode extends ActivityNode {
-  ref ControlNodeEdge[*]#target incoming;
-  ref ControlNodeEdge[*]#source outgoing;
+  val ProcessFlowNode[*] nodes;
+  val ProcessFlowEdge[*] edges;
+  val ActivityPerformanceAnnotation[*] activityPerformance;
+  val ProcessPerformanceAnnotation processPerformance;
 }
 
 @gmf.link(source="source", target="target", width="3")
-abstract class ControlNodeEdge {
-  ref ControlNode#incoming target;
-  ref ControlNode#outgoing source;
-}
+abstract class ProcessFlowEdge extends FlowEdge {}
 
-abstract class PerformanceAnnotation {
-   @gmf.label(foo="bar")
-   attr Double transactionsPerSec = 1;
-   @gmf.label(foo="bar")
-   attr Double secsTimeLimit = 1;
-}
+abstract class ProcessFlowNode extends FlowNode {}
 
 /* ANNOTATIONS */
 
-@gmf.node(label="transactionsPerSec",
-          label.pattern="<<performance>>",
-          figure="rectangle",
-          tool.name="Local Performance Constraint")
-class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
-   ref ExecutableNode#annotation execNode;
+@gmf.node(label.pattern="<<sapc>>",
+          tool.name="Service Activity Performance Constraint")
+class ActivityPerformanceAnnotation extends PerformanceAnnotation {
+   ref ServiceActivity#annotation execNode;
    @gmf.label(label.readOnly="true")
    attr boolean manuallyAdded = true;
 }
 
-@gmf.node(label="transactionsPerSec",
-          label.pattern="<<performance>>",
-          figure="rectangle",
-          tool.name="Global Performance Constraint")
-class GlobalPerformanceAnnotation extends PerformanceAnnotation {}
-
-/* ACTIVITIES */
-
-@gmf.node(tool.name="Service Activity")
-class ServiceActivity extends Activity, NamedElement {}
+@gmf.node(label.pattern="<<sppc>>",          
+          tool.name="Service Process Performance Constraint")
+class ProcessPerformanceAnnotation extends PerformanceAnnotation {}
 
 /* EDGES */
 
-@gmf.link(style="dash",target.decoration="arrow",tool.name="Object Flow")
-class ObjectFlow extends ControlNodeEdge {
-}
-
-@gmf.link(target.decoration="arrow",
-          tool.name="Control Flow",
-          label="condition,probability")
-class ControlFlow extends ControlNodeEdge {
-    attr String condition = "";
-    attr Double probability = 1;
-}
+class ProcessControlFlow extends ProcessFlowEdge, ControlFlow {}
 
 /* NODES */
 
-@gmf.node(figure="es.uca.modeling.figures.LabeledEllipse", label.icon="false",
-          tool.name="Executable Node")
-class ExecutableNode extends ControlNode, NamedElement {
+@gmf.node(tool.name="Service Activity")
+class ServiceActivity extends ProcessFlowNode, ExecutableNode {
   @gmf.link(label="performance", style="dash",
             tool.name="Link Performance Annotation")
-  ref LocalPerformanceAnnotation#execNode annotation;
+  ref ActivityPerformanceAnnotation#execNode annotation;
 }
-
-@gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
-class ObjectNode extends ControlNode, NamedElement {}
-
-@gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
-          size="30,30", tool.name="Start")
-class InitialNode extends ControlNode {
-}
-
-@gmf.node(figure="es.uca.modeling.figures.FgBgFilledCircleFigure", border.color="0,0,0",
-          size="30,30", tool.name="Finish")
-class FinalNode extends ControlNode {
-}
-
-@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
-          size="15,30", tool.name="Fork")
-class ForkNode extends ControlNode {
-}
-
-@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
-          size="15,30", tool.name="Join")
-class JoinNode extends ControlNode {
-}
-
-@gmf.node(figure="es.uca.modeling.figures.DiamondFigure", border.color="0,0,0", size="30,30",
-          tool.name="Decision")
-class DecisionNode extends ControlNode {
-}
+class ProcessStart    extends ProcessFlowNode, InitialNode {}
+class ProcessFinish   extends ProcessFlowNode, FinalNode {}
+class ProcessDecision extends ProcessFlowNode, DecisionNode {}
+class ProcessFork     extends ProcessFlowNode, ForkNode {}
+class ProcessJoin     extends ProcessFlowNode, JoinNode {}
 
 /* DATATYPES */
 
@@ -136,3 +67,72 @@ enum NodeSide {
    INCOMING;
    OUTGOING;
 }
+
+/****** ABSTRACT ANNOTATED CONTROL GRAPH MODEL *******************************/
+
+/* PERFORMANCE ANNOTATIONS */
+
+@gmf.node(label="transactionsPerSec",figure="rectangle")
+abstract class PerformanceAnnotation {
+   @gmf.label(foo="bar")
+   attr Double transactionsPerSec = 1;
+   @gmf.label(foo="bar")
+   attr Double secsTimeLimit = 1;
+}
+
+/* EDGES */
+
+abstract class FlowNode {
+  ref FlowEdge[*]#target incoming;
+  ref FlowEdge[*]#source outgoing;
+}
+
+abstract class FlowEdge {
+  ref FlowNode#incoming target;
+  ref FlowNode#outgoing source;
+}
+
+@gmf.link(target.decoration="arrow",
+          tool.name="Control Flow",
+          label="condition,probability")
+abstract class ControlFlow extends FlowEdge {
+    attr String condition = "";
+    attr Double probability = 1;
+}
+
+@gmf.link(style="dash",target.decoration="arrow",tool.name="Object Flow")
+abstract class ObjectFlow extends FlowEdge {}
+
+/* NODES */
+
+@gmf.node(label="name")
+abstract class NamedElement {
+   attr String name;
+}
+
+@gmf.node(figure="es.uca.modeling.figures.LabeledEllipse",
+          label.icon="false", tool.name="Executable Node")
+abstract class ExecutableNode extends FlowNode, NamedElement {}
+
+@gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
+abstract class ObjectNode extends FlowNode, NamedElement {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Start")
+abstract class InitialNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgBgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Finish")
+abstract class FinalNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Fork")
+abstract class ForkNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Join")
+abstract class JoinNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.DiamondFigure", border.color="0,0,0", size="30,30",
+          tool.name="Decision")
+abstract class DecisionNode extends FlowNode {}

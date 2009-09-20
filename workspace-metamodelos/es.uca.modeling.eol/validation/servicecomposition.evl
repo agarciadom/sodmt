@@ -1,19 +1,15 @@
 -- Diagram constraints --------------------------
 
 context ServiceComposition {
-  constraint ExactlyOneInitialNode {
-    check : InitialNode.all.size() = 1
-    message : 'There must be exactly one initial node'
+  constraint ExactlyOneCompositionStart {
+    check : CompositionStart.all.size() = 1
+    message : 'There must be exactly one initial node for the whole composition'
   }
+}
 
-  constraint ExactlyOneGPC {
-    check : GlobalPerformanceAnnotation.all.size() = 1
-    message : 'There must be exactly one global performance constraint'
-    fix {
-      title : 'Create a default global performance constraint'
-      do {
-        self.globalPerformance := new GlobalPerformanceAnnotation;
-      }
-    }
+context ServiceActivity {
+  constraint PerformanceConstraintMustBeDefined {
+    check : self.annotation.isDefined()
+    message : 'Every service activity must include a performance constraint derived from its service process model'
   }
 }

@@ -1,47 +1,26 @@
--- Abstract class constraints -------------------
-
 import '../common/utils.eol';
 
-context ControlNodeEdge {
-  constraint BothEndsDefined {
-    check : self.source.isDefined() and self.target.isDefined()
-    message : 'Source and target of an edge must be defined'
-  }
-
-  constraint NoCycles {
-    check : self.source <> self.target
-    message : 'Source and target of an edge must not be the same'
-    fix {
-      title : 'Remove link from model'
-      do {
-        delete self;
-      }
-    }
-  }
-}
-
-context ControlNode {
+context FlowNode {
 
   -- We use two constraints for the incoming count (min, max) so we only
   -- propose the join fix in the right situations. This would be much easier if
   -- fixes had guards like in the Epsilon book, but it works.
   constraint MinimumOneIncoming {
-    guard : not self.isTypeOf(InitialNode)
+    guard : not self.isKindOf(InitialNode)
     check : self.incoming.size() >= 1
     message : 'All activity nodes except initial nodes must have at least one incoming edge'
   }
 
   constraint MaximumOneIncoming {
-    guard : not self.isTypeOf(JoinNode)
-            and InitialNode.all.first().satisfies('NoCyclesCompleteGraph')
+    guard : not self.isKindOf(JoinNode)
+            and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
             and self.satisfies('SameFlowTypeForAllIncoming')
     check : self.incoming.size() <= 1
     message : 'All activity nodes except joins must have at most one incoming edge'
     fix {
       title : 'Add join node in the middle'
       do {
-        var newJoin := new JoinNode;
-        assignSameContainerAs(newJoin, self);
+        var newJoin := self.newJoinNode();
         self.placeNodeBetween(newJoin, NodeSide#INCOMING);
       }
     }
@@ -50,31 +29,29 @@ context ControlNode {
   -- See above comment for an explanation of why we use both min and max
   -- constraints instead of just one
   constraint MinimumOneOutgoing {
-    guard : not self.isTypeOf(FinalNode)
+    guard : not self.isKindOf(FinalNode)
     check : self.outgoing.size() >= 1
     message : 'All activity nodes except final nodes must have at least one outgoing edge'
   }
 
   constraint MaximumOneOutgoing {
-    guard : not self.isTypeOf(ForkNode)
-            and not self.isTypeOf(DecisionNode)
-            and InitialNode.all.first().satisfies('NoCyclesCompleteGraph')
+    guard : not self.isKindOf(ForkNode)
+            and not self.isKindOf(DecisionNode)
+            and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
             and self.satisfies('SameFlowTypeForAllOutgoing')
     check : self.outgoing.size() <= 1
     message : 'All activity nodes except forks and decisions must have at most one outgoing edge'
     fix {
       title : 'Add fork node in the middle'
       do {
-        var newFork := new ForkNode;
-        assignSameContainerAs(newFork, self);
+        var newFork := self.newForkNode();
         self.placeNodeBetween(newFork, NodeSide#OUTGOING);
       }
     }
     fix {
       title : 'Add decision node in the middle'
       do {
-        var newDecision := new DecisionNode;
-        assignSameContainerAs(newDecision, self);
+        var newDecision := self.newDecisionNode();
         self.placeNodeBetween(newDecision, NodeSide#OUTGOING);
       }
     }
@@ -103,9 +80,27 @@ context ControlNode {
 
 -- Flow constraints -------------------------------
 
+context FlowEdge {
+  constraint BothEndsDefined {
+    check : self.source.isDefined() and self.target.isDefined()
+    message : 'Source and target of an edge must be defined'
+  }
+
+  constraint NoCycles {
+    check : self.source <> self.target
+    message : 'Source and target of an edge must not be the same'
+    fix {
+      title : 'Remove link from model'
+      do {
+        delete self;
+      }
+    }
+  }
+}
+
 context ControlFlow {
   constraint ConditionsOnlyFromDecisionNode {
-    check : self.condition <> '' implies self.source.isTypeOf(DecisionNode)
+    check : self.condition <> '' implies self.source.isKindOf(DecisionNode)
     message : 'Conditions can only be applied to edges starting from a decision node'
     fix {
       title : 'Remove condition'
@@ -116,7 +111,7 @@ context ControlFlow {
   }
 
   constraint ConditionsAlwaysFromDecisionNode {
-    check : self.source.isTypeOf(DecisionNode) implies self.condition <> ''
+    check : self.source.isKindOf(DecisionNode) implies self.condition <> ''
     message : 'Conditions must be applied to edges starting from a decision node'
     fix {
       title : 'Add dummy condition'
@@ -163,20 +158,7 @@ context PerformanceAnnotation {
   }
 }
 
-context GlobalPerformanceAnnotation {
-  constraint ExactlyOnePerformanceAnnotation {
-    check : GlobalPerformanceAnnotation.all.size() = 1
-    message : 'There must be exactly one global performance annotation'
-    fix {
-      title : 'Remove this performance annotation'
-      do {
-        delete self;
-      }
-    }
-  }
-}
-
-context LocalPerformanceAnnotation {
+context ActivityPerformanceAnnotation {
   constraint IsLinkedToNode {
     check : self.execNode.isDefined()
     message : 'The annotation must be linked to an executable node'
@@ -191,24 +173,11 @@ context LocalPerformanceAnnotation {
 -- Node constraints -----------------------------
 
 context InitialNode {
-  -- There is also a diagram-wide constraint for the number
-  -- of initial nodes. Using this constraint allows us to have
-  -- a per-initial node
-  constraint ExactlyOneInitialNode {
-    check : InitialNode.all.size() = 1
-    message : 'There must be exactly one initial node'
-    fix {
-      title : 'Delete this initial node'
-      do {
-        delete self;
-      }
-    }
-  }
 
   constraint AllPathsFromInitialNodeMustEndInFinalNode {
-    guard : self.satisfies('ExactlyOneInitialNode')
-    check : getAllPathsFrom(InitialNode.all.first()).forAll(r|r.last().isKindOf(FinalNode))
-    message : 'There must be at least one final node'
+    guard : self.satisfies('NoCyclesCompleteGraph')
+    check : getAllPathsFrom(self).forAll(r|r.last().isKindOf(FinalNode))
+    message : 'All paths from an initial node must end in a final node'
   }
 
   constraint NoIncomingForInitialNode {
@@ -232,8 +201,7 @@ context InitialNode {
     fix {
       title : 'Add dummy executable node'
       do {
-        var newExec = new ExecutableNode;
-        assignSameContainerAs(newExec, self);
+        var newExec = self.newExecutableNode();
         newExec.name := 'Do something';
         self.placeNodeBetween(newExec, NodeSide#OUTGOING);
       }
@@ -242,7 +210,7 @@ context InitialNode {
 
   -- TODO: add support for loops to the propagation algorithm,
   -- using some probability threshold configurable by the user.
-  -- The NoCycles constraint in the ControlNodeEdge context is still
+  -- The NoCycles constraint in the FlowEdge context is still
   -- useful, as it is easier to understand for the user. This
   -- constraint might be removed in the future.
   constraint NoCyclesCompleteGraph {
@@ -254,13 +222,11 @@ context InitialNode {
         delete self.~firstEdgeProducingCycle;
       }
     }
-    
   }
 }
 
 context FinalNode {
   constraint NoOutgoingForFinalNode {
-    guard : self.isTypeOf(FinalNode)
     check : self.outgoing.isEmpty()
     message : 'The final node must not have any outgoing edges'
     fix {
@@ -315,6 +281,7 @@ context JoinNode {
   }
   constraint JoinedBranchesMustPairwiseHaveSameLCA {
     guard : self.satisfies('MoreThanOneIncomingFlow')
+            and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
     check {
       var parents := self.incoming.collect(r|r.source);
       var nElems  := parents.size();
@@ -354,44 +321,21 @@ context DecisionNode {
 
 -- Operations -----------------------------------
 
--- Parent assignment for control nodes
-
-operation assignSameContainerAs(dst : ActivityNode, src : ActivityNode) {
-  if (src.hasProperty('activity')) {
-    dst.activity := src.activity;
-  } else {
-    dst.swimlane := src.swimlane;
-  }
-}
-
 -- Edge creation
 
 $"pre" e.isDefined()
-operation createEdgeSimilarTo(e : ControlNodeEdge) {
-  if (e.isKindOf(ControlFlow)) {
-    return createControlFlow();
-  } else {
-    return createObjectFlow();
-  }
+operation createEdgeSimilarTo(e : FlowEdge) {
+  var utilsTool := new Native('es.uca.modeling.eol.tools.ECoreUtilsTool');
+  var newEdge := utilsTool.copy(e);
+  addEdge(newEdge);
+  return newEdge;
 }
 
-operation createObjectFlow() {
-  var newOF := new ObjectFlow;
-  addEdge(newOF);
-  return newOF;
-}
-
-operation createControlFlow() {
-  var newCF := new ControlFlow;
-  addEdge(newCF);
-  return newCF;
-}
-
-operation addEdge(e : ControlNodeEdge) {
+operation addEdge(e : FlowEdge) {
   if (e.eClass.ePackage.name = 'serviceProcess') {
-    ServiceProcess.all.first().edge.add(e);
+    ServiceProcess.all.first().edges.add(e);
   } else {
-    ServiceComposition.all.first().edge.add(e);
+    ServiceComposition.all.first().edges.add(e);
   }
 }
 
@@ -400,7 +344,7 @@ operation addEdge(e : ControlNodeEdge) {
 $"pre"  newNode.isDefined() and side.isDefined()
 $"pre"  (side = NodeSide#OUTGOING and self.outgoing.size() >= 1) or (side = NodeSide#INCOMING and self.incoming.size() >= 1)
 $"post" (side = NodeSide#OUTGOING and self.outgoing.size() = 1) or (side = NodeSide#INCOMING and self.incoming.size() = 1)
-operation ActivityNode placeNodeBetween(newNode : ActivityNode, side : Any) {
+operation FlowNode placeNodeBetween(newNode : FlowNode, side : Any) {
   if (side = NodeSide#OUTGOING) {
     var newEdge := createEdgeSimilarTo(self.outgoing.first());
     for (e in self.outgoing.clone()) {
@@ -420,18 +364,17 @@ operation ActivityNode placeNodeBetween(newNode : ActivityNode, side : Any) {
 
 -- Cycle testing
 
-operation graphIsAcyclic(start : ActivityNode) {
+operation graphIsAcyclic(start : FlowNode) {
   -- Mark all vertices as not visited
-  for (v in ActivityNode.all) {
+  for (v in FlowNode.all) {
     v.~visitStatus := VisitStatus#NOT_VISITED;
   }
-  start.~firstEdgeProducingCycle
-    := getFirstEdgeProducingCycle(start);
+  start.~firstEdgeProducingCycle := getFirstEdgeProducingCycle(start);
   return start.~firstEdgeProducingCycle.isUndefined();
 }
 
 $"pre" node.~visitStatus <> VisitStatus#VISITING
-operation getFirstEdgeProducingCycle(node : ActivityNode) {
+operation getFirstEdgeProducingCycle(node : FlowNode) {
   -- All ancestors already visited: nothing to do
   if (node.~visitStatus = VisitStatus#VISITED) {
     return;

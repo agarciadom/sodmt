@@ -1,21 +1,22 @@
 -- PERFORMANCE ANNOTATIONS ----------------------------------------------------
-operation ExecutableNode hasManualPerformanceAnnotation() : Boolean {
-  return self.annotation.isDefined() and self.annotation.manuallyAdded;
+
+operation FlowNode hasManualPerformanceAnnotation() : Boolean {
+  return self.hasProperty('annotation') and self.annotation.isDefined() and self.annotation.manuallyAdded;
 }
 
-operation ExecutableNode hasAutomaticPerformanceAnnotation() : Boolean {
-  return self.annotation.isDefined() and not self.annotation.manuallyAdded;
+operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
+  return self.hasProperty('annotation') and self.annotation.isDefined() and not self.annotation.manuallyAdded;
 }
 
 operation ExecutableNode createPerformanceAnnotation() {
-  self.annotation := new Model!LocalPerformanceAnnotation;
+  self.annotation := new Model!ActivityPerformanceAnnotation;
   self.annotation.manuallyAdded := false;
-  if (self.annotation.hasProperty('activity')) {
-    self.annotation.activity := self.activity;
-    self.annotation.activity.nodes.add(self.annotation);
-  } else {
+  if (self.annotation.hasProperty('swimlane')) {
     self.annotation.swimlane := self.swimlane;
     self.annotation.swimlane.nodes.add(self.annotation);
+  } else {
+    var sp := ServiceProcess.all.first();
+    sp.activityPerformance.add(self.annotation);
   }
 }
 
@@ -23,7 +24,7 @@ operation ExecutableNode createPerformanceAnnotation() {
 
 @cached
 $post _result >= 0
-operation ControlNode getDepth() : Integer {
+operation FlowNode getDepth() : Integer {
   if (self.incoming.isEmpty()) {
     return 0;
   }
@@ -36,7 +37,7 @@ operation ControlNode getDepth() : Integer {
 
 @cached
 $pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
-operation getLCA(nodeA : ControlNode, nodeB : ControlNode) : ControlNode {
+operation getLCA(nodeA : FlowNode, nodeB : FlowNode) : FlowNode {
   var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
   var maxDepth   := depths.min();
   var ancestorsA := nodeA.getAncestors(maxDepth);
@@ -52,14 +53,14 @@ operation getLCA(nodeA : ControlNode, nodeB : ControlNode) : ControlNode {
 }
 
 $pre maxDepth >= 0
-operation ControlNode getAncestors(maxDepth : Integer) : Set {
+operation FlowNode getAncestors(maxDepth : Integer) : Set {
   var results := new Set;
   self.addAllAncestors(maxDepth, results);
   return results;
 }
 
 $pre maxDepth >= 0 and results.isDefined()
-operation ControlNode addAllAncestors(maxDepth : Integer, results : Collection) {
+operation FlowNode addAllAncestors(maxDepth : Integer, results : Collection) {
   if (self.getDepth() <= maxDepth) {
     results.add(self);
   }
@@ -87,7 +88,7 @@ operation Set intersect(otherSet : Set) : Set {
 -- to every final node (if the starting node is a FinalNode,
 -- reports an empty set of paths)
 @cached
-operation getAllPathsFrom(start : ActivityNode) {
+operation getAllPathsFrom(start : FlowNode) {
   if (start.isKindOf(FinalNode)) {
     return Sequence {};
   }
@@ -110,4 +111,36 @@ operation auxPathsTo(partialPath : Sequence) {
     results.addAll(auxPathsTo(newPartialPath));
   }
   return results;
+}
+
+----- SAME FAMILY ELEMENT CREATION --------------------------------------------
+
+-- SERVICE PROCESSES ----------------------------
+
+operation ProcessFlowNode newExecutableNode() {
+  var newElement := new ServiceActivity;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newForkNode() {
+  var newElement := new ProcessFork;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newJoinNode() {
+  var newElement := new ProcessJoin;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newDecisionNode() {
+  var newElement := new ProcessDecision;
+  self.addSibling(newElement);
+  return new newElement;
+}
+
+operation ProcessFlowNode addSibling(node : ProcessFlowNode) {
+  ServiceProcess.all.first().nodes.add(node);
 }

@@ -1,18 +1,31 @@
 -- Diagram constraints --------------------------
 
 context ServiceProcess {
-  constraint ExactlyOneInitialNode {
-    check : InitialNode.all.size() = 1
-    message : 'There must be exactly one initial node'
+  constraint ExactlyOneProcessStart {
+    check : ProcessStart.all.size() = 1
+    message : 'There must be exactly one initial node for the whole service process'
   }
 
-  constraint ExactlyOneGPC {
-    check : GlobalPerformanceAnnotation.all.size() = 1
-    message : 'There must be exactly one global performance constraint'
+  constraint ProcessPerformanceMustBeDefined {
+    check : self.processPerformance.isDefined()
+    message : 'The performance constraints for the process must be defined'
     fix {
       title : 'Create a default global performance constraint'
       do {
-        self.globalPerformance := new GlobalPerformanceAnnotation;
+        self.processPerformance := new ProcessPerformanceAnnotation;
+      }
+    }
+  }
+}
+
+context ProcessPerformanceAnnotation {
+  constraint ExactlyOnePerformanceAnnotation {
+    check : ProcessPerformanceAnnotation.all.size() = 1
+    message : 'There must be exactly one performance annotation for the whole service process'
+    fix {
+      title : 'Remove this performance annotation'
+      do {
+        delete self;
       }
     }
   }

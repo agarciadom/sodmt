@@ -135,7 +135,7 @@ operation annotateTransactionsPerSec() {
 
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
-operation ControlNodeEdge getTransactionsPerSec() : Real {
+operation FlowEdge getTransactionsPerSec() : Real {
   return self.source.getTransactionsPerSec();
 }
 
@@ -146,13 +146,13 @@ operation ControlFlow getTransactionsPerSec() : Real {
 }
 
 @cached
-operation InitialNode getTransactionsPerSec() : Real {
-  return GlobalPerformanceAnnotation.all.first().transactionsPerSec;
+operation ProcessStart getTransactionsPerSec() : Real {
+  return ProcessPerformanceAnnotation.all.first().transactionsPerSec;
 }
 
 @cached
 $pre self.incoming.size() = 1
-operation ControlNode getTransactionsPerSec() : Real {
+operation FlowNode getTransactionsPerSec() : Real {
   return self.incoming.first().getTransactionsPerSec();
 }
 

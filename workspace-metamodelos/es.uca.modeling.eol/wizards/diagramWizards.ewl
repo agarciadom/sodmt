@@ -12,7 +12,7 @@ wizard InferPerformanceAnnotations {
 wizard RemoveAllInferredAnnotations {
   title : 'Remove all inferred annotations'
   do {
-    for (constraint in LocalPerformanceAnnotation.all.select(r|not r.manuallyAdded)) {
+    for (constraint in ActivityPerformanceAnnotation.all.select(r|not r.manuallyAdded)) {
       delete constraint;
     }
   }
