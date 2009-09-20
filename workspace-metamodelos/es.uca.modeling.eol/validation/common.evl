@@ -311,8 +311,11 @@ context DecisionNode {
   constraint TotalProbabilityIsOne {
     guard : self.outgoing.forAll(r|r.satisfies('ValidProbabilityWithCondition'))
     check {
-      var totalPercentage := self.outgoing.collect(r|r.probability).sum();
-      var delta := (1 - totalPercentage).abs();
+      var totalProb := 0;
+      for (out in self.outgoing) {
+        totalProb := totalProb + out.probability;
+      }
+      var delta := (1 - totalProb).abs();
       return delta <= 0.001;
     }
     message : 'The sum of the probabilities of all the decision outcomes must be equal to 1'
