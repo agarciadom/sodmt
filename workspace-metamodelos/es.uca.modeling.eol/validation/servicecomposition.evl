@@ -12,6 +12,42 @@ context ServiceActivity {
   constraint PerformanceConstraintMustBeDefined {
     check : self.annotation.isDefined()
     message : 'Every service activity must include a performance constraint derived from its service process model'
+    fix {
+      title : 'Add default performance constraint'
+      do {
+        var newAnnotation := new ActivityPerformanceAnnotation;
+        ServiceComposition.all.first().activityPerformance.add(newAnnotation);
+        self.annotation   := newAnnotation;
+      }
+    }
+  }
+  constraint AtLeastOneStartNode {
+    check : self.nodes.select(r|r.isKindOf(ActivityStart)).notEmpty()
+    message : 'Every service activity must have at least one initial node'
+    fix {
+      title : 'Add initial node to the activity'
+      do {
+        self.nodes.add(new ActivityStart);
+      }
+    }
+  }
+  constraint AtMostOneStartNode {
+    guard : self.satisfies('AtLeastOneStartNode')
+    check : self.nodes.select(r|r.isKindOf(ActivityStart)).size() = 1
+    message : 'Every service activity must have at most one initial node'
+  }
+}
+
+context ActivityFlowEdge {
+  constraint SameActivity {
+    check : self.source.activity = self.target.activity
+    message : 'Activity edges should only link elements in the same activity'
+    fix {
+      title : 'Delete edge'
+      do {
+        delete self;
+      }
+    }
   }
 }
 
