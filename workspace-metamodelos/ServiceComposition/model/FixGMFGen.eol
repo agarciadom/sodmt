@@ -1,2 +1,11 @@
 import '../../ServiceProcess/model/FixGMFGen.eol';
-serviceProcessMainBody('ServiceComposition', 'Service Composition');
+
+serviceProcessMainBody(
+  'ServiceComposition',
+  'Service Composition',
+  Sequence {'CompositionStart', 'CompositionFinish', 'CompositionFork',
+            'CompositionJoin', 'CompositionDecision',
+            'ActivityStart', 'ActivityFinish', 'ActivityFork',
+            'ActivityJoin', 'ActivityDecision'},
+  Sequence {'CompositionControlFlowEditPart',
+            'ActivityControlFlowEditPart'});

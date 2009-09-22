@@ -1,11 +1,20 @@
-serviceProcessMainBody('ServiceProcess', 'Service Process');
+serviceProcessMainBody(
+  'ServiceProcess',
+  'Service Process',
+  Sequence {'ProcessStart', 'ProcessFinish', 'ProcessFork',
+            'ProcessJoin', 'ProcessDecision'},
+  Sequence {'ProcessControlFlowEditPart'});
 
 operation serviceProcessMainBody(pluginPrefix : String,
-                                 longModelName : String) {
-  defineNotResizableNodes();
+                                 longModelName : String,
+                                 notResizableNodes : Collection,
+                                 controlFlows : Collection) {
+  defineNotResizableNodes(notResizableNodes);
+
   useDynamicTemplates('/ServiceProcess/templates/');
   useCustomizedParserForDoubles();
-  useCustomizedParserForControlFlows();
+  useCustomizedParserForControlFlows(controlFlows);
+
   addPlugin('es.uca.modeling.figures');
   addPlugin(pluginPrefix + '.edit');
   setPreferencePageName(longModelName + ' Diagram');
@@ -14,10 +23,9 @@ operation serviceProcessMainBody(pluginPrefix : String,
 
 -- MAIN BODY OPERATIONS -------------------------------------------------------
 
-operation defineNotResizableNodes() {
-  for (name in Sequence {'ProcessStart', 'ProcessFinish', 'ProcessFork',
-                         'ProcessJoin', 'ProcessDecision'}) {
-    makeNotResizable(name + 'Figure');
+operation defineNotResizableNodes(nodeNames : Collection) {
+  for (nodeName in nodeNames) {
+    makeNotResizable(nodeName + 'Figure');
   }
 }
 
@@ -43,7 +51,7 @@ operation useCustomizedParserForDoubles() {
 -- Use a custom parser for control flow labels, which works like
 -- the NumbersToDoubleParser, except that it doesn't show anything
 -- if the first attribute is not set or empty
-operation useCustomizedParserForControlFlows() {
+operation useCustomizedParserForControlFlows(controlFlowEditParts : Collection) {
   -- Create the new parser
   var newParser := new GmfGen!PredefinedParser;
   newParser.className := 'ControlFlowLabelParser';
@@ -51,9 +59,11 @@ operation useCustomizedParserForControlFlows() {
   GmfGen!GenParsers.all.first().implementations.add(newParser);
 
   -- Change the control flow labels to this parser
-  var featureLabelModelFacet :=
-    getFeatureLabelModelFacetByEditPartClassName('ProcessControlFlowEditPart');
-  featureLabelModelFacet.parser := newParser;
+  for (controlFlowEditPart in controlFlowEditParts) {
+    var featureLabelModelFacet :=
+      getFeatureLabelModelFacetByEditPartClassName(controlFlowEditPart);
+    featureLabelModelFacet.parser := newParser;
+  }
 }
 
 -- UTILITY OPERATIONS ---------------------------------------------------------

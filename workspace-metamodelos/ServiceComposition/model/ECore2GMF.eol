@@ -1,2 +1,37 @@
 import '../../ServiceProcess/model/ECore2GMF.eol';
-serviceProcessMainBody();
+
+var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
+var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
+
+serviceProcessMainBody(Sequence {
+    'CompositionStartLabel', 'CompositionFinishLabel',
+    'CompositionForkLabel', 'CompositionJoinLabel',
+    'CompositionDecisionLabel',
+    'ActivityStartLabel', 'ActivityFinishLabel',
+    'ActivityForkLabel', 'ActivityJoinLabel',
+    'ActivityDecisionLabel',
+    'ControlFlowConditionExternalLabel',
+    'ServiceActivityAnnotationExternalLabel',
+    'ActivityActionAnnotationExternalLabel'
+  },
+  Sequence {
+    Sequence {'ActionPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
+    Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
+      'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
+      'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'CompositionControlFlowLabel', '[{0}] (p = {1})',
+      NATIVE_METHOD, '{0} : {1,number}'},
+    Sequence {'ActivityControlFlowLabel', '[{0}] (p = {1})',
+      NATIVE_METHOD, '{0} : {1,number}'}
+  },
+  Sequence {
+    'ControlFlowConditionLabel',
+    'ActivityPerformanceAnnotationLabel',
+    'ActionPerformanceAnnotationLabel',
+    'ActionPerformanceAnnotationManuallyAddedLabel'
+  },
+  Sequence {
+    'CompositionControlFlowLabelLabel',
+    'ActivityControlFlowLabelLabel'
+});

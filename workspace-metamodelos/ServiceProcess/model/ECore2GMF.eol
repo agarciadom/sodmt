@@ -4,41 +4,58 @@
   EOL script: it appears that importing a module only gives us the
   operations defined therein.
 *-
-serviceProcessMainBody();
+
+var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
+var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
+
+serviceProcessMainBody(
+  Sequence {
+    'ProcessStartLabel', 'ProcessFinishLabel',
+    'ProcessForkLabel', 'ProcessJoinLabel',
+    'ProcessDecisionLabel',
+    'ControlFlowConditionExternalLabel',
+    'ServiceActivityAnnotationExternalLabel'},
+  Sequence {
+    Sequence {'ActivityPerformanceAnnotationManuallyAddedLabel',
+      'manual = {0}'},
+    Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
+     'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
+     'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'ProcessControlFlowLabel', '[{0}] (p = {1})',
+     NATIVE_METHOD, '{0} : {1,number}'}},
+  Sequence {
+    'ControlFlowConditionLabel',
+    'ActivityPerformanceAnnotationManuallyAddedLabel',
+    'ActivityPerformanceAnnotationLabel',
+    'ProcessPerformanceAnnotationLabel'},
+  Sequence { 'ProcessControlFlowLabelLabel' });
+
+setSymmetricLinkConstraintsForLinkMapping('ProcessControlFlow', 'self <> oppositeEnd');
 
 -- Main body of the script -----------------------------------------
-operation serviceProcessMainBody() {
-  removeUselessLabels();
-  defineEditAndViewPatterns();
-  defineReadOnlyLabels();
-  setDefaultTextForLabel('ProcessControlFlowLabelLabel', '');
+operation serviceProcessMainBody(uselessLabels : Collection,
+                                 editViewPatterns : Collection,
+                                 readOnlyLabels : Collection,
+                                 defaultEmptyLabels : Collection) {
+  removeUselessLabels(uselessLabels);
+  defineEditAndViewPatterns(editViewPatterns);
+  defineReadOnlyLabels(readOnlyLabels);
+  for (label in defaultEmptyLabels) {
+    setDefaultTextForLabel(label, '');
+  }
 }
 
 -- Remove labels from nodes which don't need them ------------------
-operation removeUselessLabels() {
-  for (n in Sequence {
-              'ProcessStartLabel', 'ProcessFinishLabel',
-              'ProcessForkLabel', 'ProcessJoinLabel',
-              'ProcessDecisionLabel',
-              'ControlFlowConditionExternalLabel',
-              'ServiceActivityAnnotationExternalLabel'}) {
-     removeLabel(n);
+operation removeUselessLabels(labels : Collection) {
+  for (label in labels) {
+     removeLabel(label);
   }
 }
 
 -- Label edit and view patterns -------------------------------------
-operation defineEditAndViewPatterns() {
-  var MSGFMT_METHOD := GmfMap!LabelTextAccessMethod#MESSAGE_FORMAT;
-  var NATIVE_METHOD := GmfMap!LabelTextAccessMethod#NATIVE;
-  for (entry in Sequence {
-                  Sequence {'ActivityPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
-                  Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
-                    'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
-                    'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
-                  Sequence {'ProcessControlFlowLabel', '[{0}] (p = {1})',
-                            NATIVE_METHOD, '{0} : {1,number}'}
-                  }) {
+operation defineEditAndViewPatterns(entries : Collection) {
+  for (entry in entries) {
     var labelName   := entry.at(0);
     var viewPattern := entry.at(1);
     var editMethod  := MSGFMT_METHOD;
@@ -55,11 +72,8 @@ operation defineEditAndViewPatterns() {
 }
 
 -- Make some labels read only ---------------------------------------
-operation defineReadOnlyLabels() {
-  for (n in Sequence {'ControlFlowConditionLabel',
-                      'ActivityPerformanceAnnotationManuallyAddedLabel',
-                      'ActivityPerformanceAnnotationLabel',
-                      'ProcessPerformanceAnnotationLabel'}) {
+operation defineReadOnlyLabels(labels : Collection) {
+  for (n in labels) {
     makeReadOnly(n);
   }
 }
