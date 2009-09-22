@@ -126,7 +126,7 @@ operation annotateTransactionsPerSec() {
   All nodes and edges have a minimum number of transactions per sec
   that they can handle. However, only the executable nodes can have performance
   restrictions manually assigned to them. That's why though all edges and nodes
-  have the getTransactionsPerSec method, only ExecutableNodes have the
+  have the getTransactionsPerSec method, but only ExecutableNodes have the
   getAutoTransactionsPerSec method.
 
   This way, the wizard can compare the user's manual restrictions with the
