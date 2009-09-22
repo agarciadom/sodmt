@@ -133,13 +133,12 @@ operation annotateTransactionsPerSec(start : FlowNode) {
 
   This way, the wizard can compare the user's manual restrictions with the
   automatically computed values and make them stricter if needed.
-*-
 
-@cached
-$pre self.source.isDefined() and self.target.isDefined()
-operation FlowEdge getTransactionsPerSec() : Real {
-  return self.source.getTransactionsPerSec();
-}
+  Note: for some reason, Epsilon (as of r597) doesn't use the most specific
+  operation for a particular class, but rather the first applicable operation.
+  Therefore, the getTransactionsPerSec operations below MUST be ordered from
+  least to most specific: first the edges, and then the nodes.
+*-
 
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
@@ -147,11 +146,10 @@ operation ControlFlow getTransactionsPerSec() : Real {
   return self.probability * self.source.getTransactionsPerSec();
 }
 
-
 @cached
-$pre self.incoming.size() = 1
-operation FlowNode getTransactionsPerSec() : Real {
-  return self.incoming.first().getTransactionsPerSec();
+$pre self.source.isDefined() and self.target.isDefined()
+operation FlowEdge getTransactionsPerSec() : Real {
+  return self.source.getTransactionsPerSec();
 }
 
 @cached
@@ -192,6 +190,12 @@ operation ExecutableNode getTransactionsPerSec() : Real {
   } else {
     return self.getAutoTransactionsPerSec();
   }
+}
+
+@cached
+$pre self.incoming.size() = 1
+operation FlowNode getTransactionsPerSec() : Real {
+  return self.incoming.first().getTransactionsPerSec();
 }
 
 @cached
