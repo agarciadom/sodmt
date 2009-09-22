@@ -35,3 +35,14 @@ serviceProcessMainBody(Sequence {
     'CompositionControlFlowLabelLabel',
     'ActivityControlFlowLabelLabel'
 });
+
+setSymmetricLinkConstraintsForLinkMapping('CompositionControlFlow',
+  'self.oclIsKindOf(serviceComposition::CompositionFlowNode) and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+  + ' and self <> oppositeEnd');
+setSymmetricLinkConstraintsForLinkMapping('ActivityControlFlow',
+  'self.oclIsKindOf(serviceComposition::ActivityFlowNode) and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+  + ' and self <> oppositeEnd');
+setSymmetricLinkConstraintsForLinkMapping('ActivityObjectFlow',
+  '(self.oclIsKindOf(serviceComposition::ActivityFlowNode) and oppositeEnd.oclIsKindOf(serviceComposition::ObjectNode))'
+  + ' or (self.oclIsKindOf(serviceComposition::ObjectNode) and oppositeEnd.oclIsKindOf(serviceComposition::ActivityFlowNode))'
+  + ' and self <> oppositeEnd');

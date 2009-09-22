@@ -136,3 +136,24 @@ operation findLabelMappingsByDiagramLabels(diagramLabels : Collection) : Collect
 operation findLabelMappingsByName(diagramLabelName : String) : Collection {
   return findLabelMappingsByDiagramLabels(findDiagramLabelsByName(diagramLabelName));
 }
+
+operation findLinkMappingsByLabelMapping(labelMapping : GmfMap!LabelMapping) : Collection {
+  return GmfMap!LinkMapping.all.select(r|r.labelMappings.includes(labelMapping));
+}
+
+operation findLinkMappingsByDiagramLinkName(diagLinkName : String) : Collection {
+  return GmfMap!LinkMapping.all.select(r|r.diagramLink.name = diagLinkName);
+}
+
+operation setLinkConstraintsForLinkMapping(diagLinkName : String, sourceEndConstraint : String, targetEndConstraint : String) {
+  var linkMapping := findLinkMappingsByDiagramLinkName(diagLinkName).first();
+  linkMapping.creationConstraints := new GmfMap!LinkConstraints;
+  linkMapping.creationConstraints.sourceEnd := new GmfMap!Constraint;
+  linkMapping.creationConstraints.sourceEnd.body := sourceEndConstraint;
+  linkMapping.creationConstraints.targetEnd := new GmfMap!Constraint;
+  linkMapping.creationConstraints.targetEnd.body := targetEndConstraint;
+}
+
+operation setSymmetricLinkConstraintsForLinkMapping(diagLinkName : String, endConstraint : String) {
+  return setLinkConstraintsForLinkMapping(diagLinkName, endConstraint, endConstraint);
+}
