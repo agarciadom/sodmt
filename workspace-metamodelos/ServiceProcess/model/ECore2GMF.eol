@@ -115,10 +115,10 @@ operation findDiagramLabelsByName(labelName : String) : Collection {
   return GmfGraph!DiagramLabel.all.select(r|r.name = labelName);
 }
 
-operation findLabelMappingsByDiagramLabels(diagramLabels : Collection) : GmfMap!LabelMapping {
+operation findLabelMappingsByDiagramLabels(diagramLabels : Collection) : Collection {
   return GmfMap!LabelMapping.all.select(r|diagramLabels.includes(r.diagramLabel));
 }
 
-operation findLabelMappingsByName(diagramLabelName : String) : GmfMap!LabelMapping {
+operation findLabelMappingsByName(diagramLabelName : String) : Collection {
   return findLabelMappingsByDiagramLabels(findDiagramLabelsByName(diagramLabelName));
 }
