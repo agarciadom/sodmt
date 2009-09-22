@@ -4,16 +4,8 @@
    <extension
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
-            constraints="validation/common.evl"
-            namespaceURI="www.uca.es/modeling/serviceProcess">
-      </constraintsBinding>
-      <constraintsBinding
             constraints="validation/serviceprocess.evl"
             namespaceURI="www.uca.es/modeling/serviceProcess">
-      </constraintsBinding>
-      <constraintsBinding
-            constraints="validation/common.evl"
-            namespaceURI="www.uca.es/modeling/serviceComposition">
       </constraintsBinding>
       <constraintsBinding
             constraints="validation/servicecomposition.evl"

@@ -17,3 +17,18 @@ wizard RemoveAllInferredAnnotations {
     }
   }
 }
+
+operation ActivityAction createPerformanceAnnotation() {
+  self.annotation := new ActionPerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  self.activity.nodes.add(self.annotation);
+}
+
+operation ActivityStart getGlobalTimeLimit() {
+  return self.activity.annotation.secsTimeLimit;
+}
+
+@cached
+operation ActivityStart getTransactionsPerSec() : Real {
+  return self.activity.annotation.transactionsPerSec;
+}

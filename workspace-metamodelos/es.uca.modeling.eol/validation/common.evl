@@ -334,14 +334,6 @@ operation createEdgeSimilarTo(e : FlowEdge) {
   return newEdge;
 }
 
-operation addEdge(e : FlowEdge) {
-  if (e.eClass.ePackage.name = 'serviceProcess') {
-    ServiceProcess.all.first().edges.add(e);
-  } else {
-    ServiceComposition.all.first().edges.add(e);
-  }
-}
-
 -- Adds another node between a node and its direct ancestors or descendants
 -- FIXME: Cannot use "NodeSide" as the parameter type (Eclipse Bugzilla #286412)
 $"pre"  newNode.isDefined() and side.isDefined()

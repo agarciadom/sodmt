@@ -17,3 +17,18 @@ wizard RemoveAllInferredAnnotations {
     }
   }
 }
+
+operation ServiceActivity createPerformanceAnnotation() {
+  self.annotation := new ActivityPerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  ServiceProcess.all.first().activityPerformance.add(self.annotation);
+}
+
+operation ProcessStart getGlobalTimeLimit() {
+  return ProcessPerformanceAnnotation.all.first().secsTimeLimit;
+}
+
+@cached
+operation ProcessStart getTransactionsPerSec() : Real {
+  return ProcessPerformanceAnnotation.all.first().transactionsPerSec;
+}

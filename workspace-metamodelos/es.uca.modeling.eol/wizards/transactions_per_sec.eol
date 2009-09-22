@@ -145,10 +145,6 @@ operation ControlFlow getTransactionsPerSec() : Real {
   return self.probability * self.source.getTransactionsPerSec();
 }
 
-@cached
-operation ProcessStart getTransactionsPerSec() : Real {
-  return ProcessPerformanceAnnotation.all.first().transactionsPerSec;
-}
 
 @cached
 $pre self.incoming.size() = 1

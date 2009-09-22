@@ -1,5 +1,7 @@
 -- Diagram constraints --------------------------
 
+import 'common.evl';
+
 context ServiceProcess {
   constraint ExactlyOneProcessStart {
     check : ProcessStart.all.size() = 1
@@ -29,4 +31,38 @@ context ProcessPerformanceAnnotation {
       }
     }
   }
+}
+
+--- OPERATIONS REQUIRED BY THE SHARED EVL CODE
+
+operation ProcessFlowNode newExecutableNode() {
+  var newElement := new ServiceActivity;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newForkNode() {
+  var newElement := new ProcessFork;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newJoinNode() {
+  var newElement := new ProcessJoin;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode newDecisionNode() {
+  var newElement := new ProcessDecision;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ProcessFlowNode addSibling(node : ProcessFlowNode) {
+  ServiceProcess.all.first().nodes.add(node);
+}
+
+operation addEdge(e : ProcessFlowEdge) {
+  ServiceProcess.all.first().edges.add(e);
 }

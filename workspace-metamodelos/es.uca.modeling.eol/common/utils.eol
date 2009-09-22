@@ -8,18 +8,6 @@ operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
   return self.hasProperty('annotation') and self.annotation.isDefined() and not self.annotation.manuallyAdded;
 }
 
-operation ExecutableNode createPerformanceAnnotation() {
-  self.annotation := new Model!ActivityPerformanceAnnotation;
-  self.annotation.manuallyAdded := false;
-  if (self.annotation.hasProperty('swimlane')) {
-    self.annotation.swimlane := self.swimlane;
-    self.annotation.swimlane.nodes.add(self.annotation);
-  } else {
-    var sp := ServiceProcess.all.first();
-    sp.activityPerformance.add(self.annotation);
-  }
-}
-
 -- GRAPH PREPROCESSING --------------------------------------------------------
 
 @cached
@@ -111,36 +99,4 @@ operation auxPathsTo(partialPath : Sequence) {
     results.addAll(auxPathsTo(newPartialPath));
   }
   return results;
-}
-
------ SAME FAMILY ELEMENT CREATION --------------------------------------------
-
--- SERVICE PROCESSES ----------------------------
-
-operation ProcessFlowNode newExecutableNode() {
-  var newElement := new ServiceActivity;
-  self.addSibling(newElement);
-  return newElement;
-}
-
-operation ProcessFlowNode newForkNode() {
-  var newElement := new ProcessFork;
-  self.addSibling(newElement);
-  return newElement;
-}
-
-operation ProcessFlowNode newJoinNode() {
-  var newElement := new ProcessJoin;
-  self.addSibling(newElement);
-  return newElement;
-}
-
-operation ProcessFlowNode newDecisionNode() {
-  var newElement := new ProcessDecision;
-  self.addSibling(newElement);
-  return new newElement;
-}
-
-operation ProcessFlowNode addSibling(node : ProcessFlowNode) {
-  ServiceProcess.all.first().nodes.add(node);
 }

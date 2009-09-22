@@ -1,4 +1,5 @@
 -- Diagram constraints --------------------------
+import 'common.evl';
 
 context ServiceComposition {
   constraint ExactlyOneCompositionStart {
@@ -12,4 +13,70 @@ context ServiceActivity {
     check : self.annotation.isDefined()
     message : 'Every service activity must include a performance constraint derived from its service process model'
   }
+}
+
+-- OPERATIONS REQUIRED BY THE SHARED EVL CODE
+
+operation CompositionFlowNode newExecutableNode() {
+  var newElement := new ServiceActivity;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation CompositionFlowNode newForkNode() {
+  var newElement := new CompositionFork;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation CompositionFlowNode newJoinNode() {
+  var newElement := new CompositionJoin;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation CompositionFlowNode newDecisionNode() {
+  var newElement := new CompositionDecision;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation CompositionFlowNode addSibling(node : CompositionFlowNode) {
+  ServiceComposition.all.first().nodes.add(node);
+}
+
+operation ActivityFlowNode newExecutableNode() {
+  var newElement := new ActivityAction;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ActivityFlowNode newForkNode() {
+  var newElement := new ActivityFork;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ActivityFlowNode newJoinNode() {
+  var newElement := new ActivityJoin;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ActivityFlowNode newDecisionNode() {
+  var newElement := new ActivityDecision;
+  self.addSibling(newElement);
+  return newElement;
+}
+
+operation ActivityFlowNode addSibling(node : ActivityFlowNode) {
+  self.activity.nodes.add(node);
+}
+
+operation addEdge(e : CompositionFlowEdge) {
+  ServiceComposition.all.first().compositionEdges.add(e);
+}
+
+operation addEdge(e : ActivityFlowEdge) {
+  ServiceComposition.all.first().activityEdges.add(e);
 }
