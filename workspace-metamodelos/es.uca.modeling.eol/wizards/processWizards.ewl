@@ -5,7 +5,7 @@ wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
     annotateTimeLimits(ProcessStart.all.first());
-    annotateTransactionsPerSec();
+    annotateTransactionsPerSec(ProcessStart.all.first());
   }
 }
 

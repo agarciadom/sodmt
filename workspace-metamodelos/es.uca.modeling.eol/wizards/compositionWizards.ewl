@@ -4,8 +4,10 @@ import 'transactions_per_sec.eol';
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
-    annotateTimeLimits(ActivityStart.all.first());
-    annotateTransactionsPerSec();
+    for (activityStart in ActivityStart.all) {
+      annotateTimeLimits(activityStart);
+      annotateTransactionsPerSec(activityStart);
+    }
   }
 }
 

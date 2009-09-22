@@ -94,14 +94,16 @@ import '../common/utils.eol';
   We will go through all ExecutableNodes, sorting them by depth in ascending
   order.
 *-
-operation annotateTransactionsPerSec() {
+operation annotateTransactionsPerSec(start : FlowNode) {
   transaction {
+    var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(ExecutableNode));
+
     -- Relax all automatic constraints before continuing
-    for (node in ExecutableNode.all.select(r|r.hasAutomaticPerformanceAnnotation())) {
+    for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
       node.annotation.transactionsPerSec := 0.0d;
     }
-    for (node in ExecutableNode.all.sortBy(r|r.getDepth())) {
-      var auto := node.getAutoTransactionsPerSec();
+    for (node in allNodes.sortBy(r|r.getDepth())) {
+	  var auto := node.getAutoTransactionsPerSec();
       if (node.hasManualPerformanceAnnotation()) {
         if (node.getTransactionsPerSec() < auto
             and not System.user.confirm('The manual restriction of '

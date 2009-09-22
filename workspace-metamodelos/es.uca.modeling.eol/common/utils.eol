@@ -72,6 +72,17 @@ operation Set intersect(otherSet : Set) : Set {
 
 ----- ALL PATHS BETWEEN TWO NODES ---------------------------------------------
 
+-- Obtains all the nodes reachable from a node in the graph, in no
+-- particular order. Returns a Sequence, as sets cannot be sorted with sortBy.
+@cached
+operation FlowNode getAllReachableNodes() : Sequence {
+  var nodeSet := new Set;
+  nodeSet.addAll(getAllPathsFrom(self).flatten());
+  var nodeList := new Sequence;
+  nodeList.addAll(nodeSet);
+  return nodeList;
+}
+
 -- Obtains all the paths starting from a node in the graph
 -- to every final node (if the starting node is a FinalNode,
 -- reports an empty set of paths)
