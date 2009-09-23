@@ -12,7 +12,8 @@ serviceProcessMainBody(Sequence {
     'ActivityDecisionLabel',
     'ControlFlowConditionExternalLabel',
     'ServiceActivityAnnotationExternalLabel',
-    'ActivityActionAnnotationExternalLabel'
+    'ActivityActionAnnotationExternalLabel',
+    'SwimlaneContainerLabel'
   },
   Sequence {
     Sequence {'ActionPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},

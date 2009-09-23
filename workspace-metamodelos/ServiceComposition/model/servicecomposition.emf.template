@@ -12,6 +12,7 @@ class ServiceComposition {
   val CompositionFlowNode[*] nodes;
   val CompositionFlowEdge[*] compositionEdges;
   val ActivityFlowEdge[*]    activityEdges;
+  val SwimlaneContainer swimlanes;
   val ActivityPerformanceAnnotation[*] activityPerformance;
 }
 
@@ -24,6 +25,13 @@ abstract class CompositionFlowEdge extends FlowEdge {}
 abstract class CompositionFlowNode extends FlowNode {}
 abstract class ActivityFlowEdge    extends FlowEdge {}
 abstract class ActivityFlowNode    extends ActivityElement, FlowNode {}
+
+/* SWIMLANES */
+
+@gmf.node(label="swimlanes",figure="es.uca.modeling.figures.SwimlanesFigure",tool.name="Swimlanes")
+class SwimlaneContainer {
+  attr String[*] swimlaneNames;
+}
 
 /* ANNOTATIONS */
 
