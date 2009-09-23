@@ -12,8 +12,9 @@
   <property name="project.name"   value="ServiceComposition" />
   <property name="model.basename" value="servicecomposition" />
 
-  <!-- ServiceProcess project info (same names, prefixed by 'sp.') -->
+  <!-- ServiceProcess project info and overridden properties -->
   <property name="sp.project.name" value="ServiceProcess"/>
+  <property name="common.fragment.location" value="../${sp.project.name}/model/common.emf.fragment" />
   <import file="../${sp.project.name}/generate-code.xml"/>
 
 </project>

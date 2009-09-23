@@ -37,6 +37,8 @@
 
 	<!-- File locations -->
 	<property name="copyright.location" value="${model.dir}/copyright.txt" />
+	<property name="common.fragment.location" value="${model.dir}/common.emf.fragment" />
+	<property name="emfatic.template.location" value="${model.dir}/${model.basename}.emf.template" />
 	<property name="emfatic.location" value="${model.dir}/${model.basename}.emf" />
 	<property name="ecore.location" value="${model.dir}/${model.basename}.ecore" />
 	<property name="genmodel.location" value="${model.dir}/${model.basename}.genmodel" />
@@ -91,7 +93,16 @@
 	<target name="init">
 		<tstamp />
 	</target>
-	<target name="generateECore" depends="init">
+	<target name="generateEmfatic" depends="init">
+		<echo>Generating Emfatic source ${emfatic.location} from its template</echo>
+		<loadfile srcFile="${common.fragment.location}" property="common.fragment.contents" />
+		<copy file="${emfatic.template.location}" tofile="${emfatic.location}">
+		  <filterset begintoken="/*@" endtoken="@*/" recurse="false">
+		    <filter token="COMMON_FRAGMENT" value="${common.fragment.contents}"/>
+	          </filterset>
+		</copy>
+    </target>
+	<target name="generateECore" depends="generateEmfatic">
 		<echo>Generating ${ecore.location} file from Emfatic source ${emfatic.location}</echo>
 		<emfatic.generate src="${emfatic.location}" />
 	</target>
@@ -203,6 +214,7 @@
 			<fileset dir="${modelProject.location}" includes="${gmfgraph.location}"/>
 			<fileset dir="${modelProject.location}" includes="${gmfgen.location}"/>
 			<fileset dir="${modelProject.location}" includes="${ecore.location}"/>
+			<fileset dir="${modelProject.location}" includes="${emfatic.location}"/>
 			<fileset dir="${editProject.location}" includes="src/**/*"/>
 			<fileset dir="${editProject.location}" includes="bin/**/*"/>
 			<fileset dir="${editorProject.location}" includes="src/**/*"/>

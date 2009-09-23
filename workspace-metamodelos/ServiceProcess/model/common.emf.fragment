@@ -1,52 +1,7 @@
-@namespace(uri="www.uca.es/modeling/serviceProcess", prefix="sp")
-package serviceProcess;
-
-@gmf.diagram(foo="bar")
-class ServiceProcess {
-  val ProcessFlowNode[*] nodes;
-  val ProcessFlowEdge[*] edges;
-  val ActivityPerformanceAnnotation[*] activityPerformance;
-  val ProcessPerformanceAnnotation processPerformance;
-}
-
-@gmf.link(source="source", target="target", width="3")
-abstract class ProcessFlowEdge extends FlowEdge {}
-
-abstract class ProcessFlowNode extends FlowNode {}
-
-/* ANNOTATIONS */
-
-@gmf.node(label.pattern="<<sapc>>",
-          tool.name="Service Activity Performance Constraint")
-class ActivityPerformanceAnnotation extends PerformanceAnnotation {
-   ref ServiceActivity#annotation execNode;
-   @gmf.label(label.readOnly="true")
-   attr boolean manuallyAdded = true;
-}
-
-@gmf.node(label.pattern="<<sppc>>",          
-          tool.name="Service Process Performance Constraint")
-class ProcessPerformanceAnnotation extends PerformanceAnnotation {}
-
-/* EDGES */
-
-class ProcessControlFlow extends ProcessFlowEdge, ControlFlow {}
-
-/* NODES */
-
-@gmf.node(tool.name="Service Activity")
-class ServiceActivity extends ProcessFlowNode, ExecutableNode {
-  @gmf.link(label="performance", style="dash",
-            tool.name="Link Performance Annotation")
-  ref ActivityPerformanceAnnotation#execNode annotation;
-}
-class ProcessStart    extends ProcessFlowNode, InitialNode {}
-class ProcessFinish   extends ProcessFlowNode, FinalNode {}
-class ProcessDecision extends ProcessFlowNode, DecisionNode {}
-class ProcessFork     extends ProcessFlowNode, ForkNode {}
-class ProcessJoin     extends ProcessFlowNode, JoinNode {}
-
-/****** COMMON PART WITH SERVICECOMPOSITION - MODIFY IN BOTH PLACES **********/
+/********************************************************************
+  common.emf.fragment: shared Emfatic code to be included in the
+  ServiceProcess and ServiceComposition models.
+ ********************************************************************/
 
 /* DATATYPES */
 
