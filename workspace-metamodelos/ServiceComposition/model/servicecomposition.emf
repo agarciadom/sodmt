@@ -1,0 +1,204 @@
+@namespace(uri="www.uca.es/modeling/serviceComposition", prefix="sc")
+package serviceComposition;
+
+/*
+  NOTE: after generating code from this .emf, don't forget to add
+  the serviceProcess packages to this plugin project's MANIFEST.MF
+  file. This will make all the other ServiceComposition.* plugins
+  work again.
+
+  This is a temporary solution, while I look for a way to actually
+  copy the classes over to this package, without incurring into the
+  headache that a complete ETL mapping represents.
+*/
+
+@gmf.diagram(foo="bar")
+class ServiceComposition {
+  val CompositionFlowNode[*] nodes;
+  val CompositionFlowEdge[*] compositionEdges;
+  val ActivityFlowEdge[*]    activityEdges;
+  val ActivityPerformanceAnnotation[*] activityPerformance;
+}
+
+/* Marker class for all nested elements in an activity */
+abstract class ActivityElement {
+  ref ServiceActivity#nodes activity;
+}
+
+abstract class CompositionFlowEdge extends FlowEdge {}
+abstract class CompositionFlowNode extends FlowNode {}
+abstract class ActivityFlowEdge    extends FlowEdge {}
+abstract class ActivityFlowNode    extends ActivityElement, FlowNode {}
+
+/* ANNOTATIONS */
+
+@gmf.node(label.pattern="<<sapc>>",
+          tool.name="Service Activity Performance Constraint")
+class ActivityPerformanceAnnotation extends PerformanceAnnotation {
+   ref ServiceActivity#annotation execNode;
+}
+
+@gmf.node(label.pattern="<<apc>>",          
+          tool.name="Action Performance Constraint")
+class ActionPerformanceAnnotation extends ActivityElement, PerformanceAnnotation {
+  ref ActivityAction#annotation action;
+  @gmf.label(label.readOnly="true")
+  attr boolean manuallyAdded = true;
+}
+
+/* EDGES */
+
+@gmf.link(tool.name="Composition Control Flow")
+class CompositionControlFlow extends CompositionFlowEdge, ControlFlow {}
+
+@gmf.link(tool.name="Activity Control Flow")
+class ActivityControlFlow    extends ActivityFlowEdge, ControlFlow {}
+
+@gmf.link(tool.name="Activity Object Flow")
+class ActivityObjectFlow     extends ActivityFlowEdge, ObjectFlow {}
+
+/* OUTER NODES */
+
+@gmf.node(tool.name="Service Activity", figure="rounded")
+class ServiceActivity extends CompositionFlowNode, ExecutableNode {
+  @gmf.link(label="performance", style="dash",
+            tool.name="Link Activity Performance Annotation")
+  ref ActivityPerformanceAnnotation#execNode annotation;
+  
+  @gmf.compartment(layout="free")
+  val ActivityElement[*]#activity nodes;
+}
+
+@gmf.node(tool.name="Composition Start")
+class CompositionStart    extends CompositionFlowNode, InitialNode {}
+
+@gmf.node(tool.name="Composition Finish")
+class CompositionFinish   extends CompositionFlowNode, FinalNode {}
+
+@gmf.node(tool.name="Composition Decision")
+class CompositionDecision extends CompositionFlowNode, DecisionNode {}
+
+@gmf.node(tool.name="Composition Fork")
+class CompositionFork     extends CompositionFlowNode, ForkNode {}
+
+@gmf.node(tool.name="Composition Join")
+class CompositionJoin     extends CompositionFlowNode, JoinNode {}
+
+/* INNER NODES */
+
+@gmf.node(tool.name="Activity Action")
+class ActivityAction extends ActivityFlowNode, ExecutableNode {
+   @gmf.link(label="performance", style="dash",
+            tool.name="Link Action Performance Annotation")
+  ref ActionPerformanceAnnotation#action annotation;
+}
+
+@gmf.node(tool.name="Activity Start")
+class ActivityStart    extends ActivityFlowNode, InitialNode {}
+
+@gmf.node(tool.name="Activity Finish")
+class ActivityFinish   extends ActivityFlowNode, FinalNode {}
+
+@gmf.node(tool.name="Activity Decision")
+class ActivityDecision extends ActivityFlowNode, DecisionNode {}
+
+@gmf.node(tool.name="Activity Fork")
+class ActivityFork     extends ActivityFlowNode, ForkNode {}
+
+@gmf.node(tool.name="Activity Join")
+class ActivityJoin     extends ActivityFlowNode, JoinNode {}
+
+@gmf.node(tool.name="Activity Object Node")
+class ActivityObjectNode     extends ActivityFlowNode, ObjectNode {}
+
+/* DATATYPES */
+
+enum ExpressionLanguage {
+   OCL;
+   JML;
+}
+
+/* Visit status for nodes: needed for the colored depth-first search
+   used to detect cycles in the graph in the EVL script. */
+enum VisitStatus {
+   NOT_VISITED;
+   VISITING;
+   VISITED;
+}
+
+/* Node side: useful for operations which need to distinguish between the
+   incoming side and the outgoing side */
+enum NodeSide {
+   INCOMING;
+   OUTGOING;
+}
+
+/****** ABSTRACT ANNOTATED CONTROL GRAPH MODEL *******************************/
+
+/* PERFORMANCE ANNOTATIONS */
+
+@gmf.node(label="transactionsPerSec",figure="rectangle")
+abstract class PerformanceAnnotation {
+   @gmf.label(foo="bar")
+   attr Double transactionsPerSec = 1;
+   @gmf.label(foo="bar")
+   attr Double secsTimeLimit = 1;
+}
+
+/* EDGES */
+
+abstract class FlowNode {
+  ref FlowEdge[*]#target incoming;
+  ref FlowEdge[*]#source outgoing;
+}
+
+@gmf.link(source="source", target="target", width="3")
+abstract class FlowEdge {
+  ref FlowNode#incoming target;
+  ref FlowNode#outgoing source;
+}
+
+@gmf.link(target.decoration="arrow",
+          tool.name="Control Flow",
+          label="condition,probability")
+abstract class ControlFlow extends FlowEdge {
+    attr String condition = "";
+    attr Double probability = 1;
+}
+
+@gmf.link(style="dash",target.decoration="arrow",tool.name="Object Flow")
+abstract class ObjectFlow extends FlowEdge {}
+
+/* NODES */
+
+@gmf.node(label="name")
+abstract class NamedElement {
+   attr String name;
+}
+
+@gmf.node(figure="es.uca.modeling.figures.LabeledEllipse",
+          label.icon="false", tool.name="Executable Node")
+abstract class ExecutableNode extends FlowNode, NamedElement {}
+
+@gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
+abstract class ObjectNode extends FlowNode, NamedElement {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Start")
+abstract class InitialNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgBgFilledCircleFigure", border.color="0,0,0",
+          size="30,30", tool.name="Finish")
+abstract class FinalNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Fork")
+abstract class ForkNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.FgFilledRectangleFigure", border.color="0,0,0",
+          size="15,30", tool.name="Join")
+abstract class JoinNode extends FlowNode {}
+
+@gmf.node(figure="es.uca.modeling.figures.DiamondFigure", border.color="0,0,0", size="30,30",
+          tool.name="Decision")
+abstract class DecisionNode extends FlowNode {}

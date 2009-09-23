@@ -46,6 +46,8 @@ class ProcessDecision extends ProcessFlowNode, DecisionNode {}
 class ProcessFork     extends ProcessFlowNode, ForkNode {}
 class ProcessJoin     extends ProcessFlowNode, JoinNode {}
 
+/****** COMMON PART WITH SERVICECOMPOSITION - MODIFY IN BOTH PLACES **********/
+
 /* DATATYPES */
 
 enum ExpressionLanguage {
@@ -87,6 +89,7 @@ abstract class FlowNode {
   ref FlowEdge[*]#source outgoing;
 }
 
+@gmf.link(source="source", target="target", width="3")
 abstract class FlowEdge {
   ref FlowNode#incoming target;
   ref FlowNode#outgoing source;
