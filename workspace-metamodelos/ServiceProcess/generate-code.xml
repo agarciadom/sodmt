@@ -34,6 +34,7 @@
 	<property name="project.name" value="ServiceProcess" />
 	<property name="model.dir" value="model" />
 	<property name="model.basename" value="serviceprocess" />
+	<property name="templates.dir" value="templates"/>
 
 	<!-- File locations -->
 	<property name="copyright.location" value="${model.dir}/copyright.txt" />
@@ -102,7 +103,11 @@
 	          </filterset>
 		</copy>
     </target>
-	<target name="generateECore" depends="generateEmfatic">
+    <target name="refreshEmfatic" if="eclipse.application">
+        <echo>Refreshing the project directory under Eclipse</echo>
+        <eclipse.refreshLocal resource="/${project.name}" depth="infinite"/>
+    </target>
+    <target name="generateECore" depends="generateEmfatic,refreshEmfatic">
 		<echo>Generating ${ecore.location} file from Emfatic source ${emfatic.location}</echo>
 		<emfatic.generate src="${emfatic.location}" />
 	</target>

@@ -11,7 +11,7 @@ operation serviceProcessMainBody(pluginPrefix : String,
                                  controlFlows : Collection) {
   defineNotResizableNodes(notResizableNodes);
 
-  useDynamicTemplates('/ServiceProcess/templates/');
+  useDynamicTemplates('/' + pluginPrefix + '/templates/');
   useCustomizedParserForDoubles();
   useCustomizedParserForControlFlows(controlFlows);
 
