@@ -8,3 +8,4 @@ src/serviceProcess
 *.gmfgraph
 *.gmftool
 *.gmfgen
+*.emf
