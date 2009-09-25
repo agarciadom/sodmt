@@ -1,107 +1,92 @@
 rule CopyServiceProcess
-        transform s : Source!"ServiceProcess"
-        to t : Target!"ServiceComposition" {
-        t."activity" ::= s."activity";
-        t."edge" ::= s."edge";
+  transform s : Source!ServiceProcess
+  to t : Target!ServiceComposition {
+
+  var equivalents := s.nodes.equivalents().flatten();
+  var equivNodes  := equivalents.select(r|r.isKindOf(Target!CompositionFlowNode));
+  var equivAEdges := equivalents.select(r|r.isKindOf(Target!ActivityFlowEdge));
+
+  t.nodes            := equivNodes;
+  t.compositionEdges ::= s.edges;
+  t.activityEdges    := equivAEdges;
+  t.swimlanes := new Target!SwimlaneContainer;
+  t.swimlanes.swimlaneNames.add('Main');
+  t.activityPerformance ::= s.activityPerformance;
 }
 
-rule CopyEdgeCondition
-        transform s : Source!"EdgeCondition"
-        to t : Target!"EdgeCondition" {
-        t."condition" := s."condition";
-        t."language" := s."language".instance;
-        t."probability" := s."probability";
-        t.swimlane := s.getDefaultSwimlane();
-        t."edge" ::= s."edge";
+rule CopyActivityPerformanceAnnotation
+  transform s : Source!ActivityPerformanceAnnotation
+  to t : Target!ActivityPerformanceAnnotation {
+  t.transactionsPerSec := s.transactionsPerSec;
+  t.secsTimeLimit := s.secsTimeLimit;
+  t.execNode ::= s.execNode;
 }
 
-rule CopyPerformanceAnnotation
-        transform s : Source!"PerformanceAnnotation"
-        to t : Target!"PerformanceAnnotation" {
-        t."manuallyAdded" := s."manuallyAdded";
-        t."transactionsPerSec" := s."transactionsPerSec";
-        t."secsTimeLimit" := s."secsTimeLimit";
-        t.swimlane := s.getDefaultSwimlane();
-        t."execNode" ::= s."execNode";
+rule CopyProcessControlFlow
+  transform s : Source!ProcessControlFlow
+  to t : Target!CompositionControlFlow {
+  t.condition := s.condition;
+  t.probability := s.probability;
+  t.target ::= s.target;
+  t.source ::= s.source;
 }
 
 rule CopyServiceActivity
-        transform s : Source!"ServiceActivity"
-        to t : Target!"ServiceActivity" {
-        t."name" := s."name";
-        t."transactionsPerSec" := s."transactionsPerSec";
-        t."secsTimeLimit" := s."secsTimeLimit";
-        t.swimlanes := Sequence { new Target!Swimlane };
-        t.swimlanes.first().name := 'default';
-        t.swimlanes.first().activity := t;
+  transform s : Source!ServiceActivity
+  to t  : Target!ServiceActivity,
+     e1 : Target!ActivityControlFlow,
+     e2 : Target!ActivityControlFlow {
+   t.name := s.name;
+   t.annotation ::= s.annotation;
+   t.incoming ::= s.incoming;
+   t.outgoing ::= s.outgoing;
+
+   var acStart   := new Target!ActivityStart;
+   var acFinish  := new Target!ActivityFinish;
+   var acAction  := new Target!ActivityAction;
+   acAction.name := s.name;
+
+   t.nodes.add(acStart);
+   t.nodes.add(acFinish);
+   t.nodes.add(acAction);
+
+    e1.source := acStart;
+    e1.target := acAction;
+    e2.source := acAction;
+    e2.target := acFinish;
 }
 
-rule CopyObjectFlow
-        transform s : Source!"ObjectFlow"
-        to t : Target!"ObjectFlow" {
-        t."target" ::= s."target";
-        t."source" ::= s."source";
-        t."condition" ::= s."condition";
+rule CopyProcessStart
+  transform s : Source!ProcessStart
+  to t : Target!CompositionStart {
+  t.incoming ::= s.incoming;
+  t.outgoing ::= s.outgoing;
 }
 
-rule CopyControlFlow
-        transform s : Source!"ControlFlow"
-        to t : Target!"ControlFlow" {
-        t."target" ::= s."target";
-        t."source" ::= s."source";
-        t."condition" ::= s."condition";
+rule CopyProcessFinish
+  transform s : Source!ProcessFinish
+  to t : Target!CompositionFinish {
+  t.incoming ::= s.incoming;
+  t.outgoing ::= s.outgoing;
 }
 
-rule CopyExecutableNode
-        transform s : Source!"ExecutableNode"
-        to t : Target!"ExecutableNode" {
-        t."name" := s."name";
-        t.swimlane := s.getDefaultSwimlane();
-        t."annotation" ::= s."annotation";
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
+rule CopyProcessDecision
+  transform s : Source!ProcessDecision
+  to t : Target!CompositionDecision {
+  t.incoming ::= s.incoming;
+  t.outgoing ::= s.outgoing;
 }
 
-rule CopyInitialNode
-        transform s : Source!"InitialNode"
-        to t : Target!"InitialNode" {
-        t.swimlane := s.getDefaultSwimlane();
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
+rule CopyProcessFork
+  transform s : Source!ProcessFork
+  to t : Target!CompositionFork {
+  t.incoming ::= s.incoming;
+  t.outgoing ::= s.outgoing;
 }
 
-rule CopyFinalNode
-        transform s : Source!"FinalNode"
-        to t : Target!"FinalNode" {
-        t.swimlane := s.getDefaultSwimlane();
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
-}
-
-rule CopyForkNode
-        transform s : Source!"ForkNode"
-        to t : Target!"ForkNode" {
-        t.swimlane := s.getDefaultSwimlane();
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
-}
-
-rule CopyJoinNode
-        transform s : Source!"JoinNode"
-        to t : Target!"JoinNode" {
-        t.swimlane := s.getDefaultSwimlane();
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
-}
-
-rule CopyDecisionNode
-        transform s : Source!"DecisionNode"
-        to t : Target!"DecisionNode" {
-        t.swimlane := s.getDefaultSwimlane();
-        t."incoming" ::= s."incoming";
-        t."outgoing" ::= s."outgoing";
-}
-
-operation Source!ActivityNode getDefaultSwimlane() : Target!Swimlane {
-  return self.activity.equivalent().swimlanes.first();
+rule CopyProcessJoin
+  transform s : Source!ProcessJoin
+  to t : Target!CompositionJoin {
+  t.incoming ::= s.incoming;
+  t.outgoing ::= s.outgoing;
 }
