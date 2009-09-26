@@ -35,6 +35,7 @@
 	<property name="model.dir" value="model" />
 	<property name="model.basename" value="serviceprocess" />
 	<property name="templates.dir" value="templates"/>
+	<property name="templates.gmfgraph.dir" value="templates-gmfgraph"/>
 
 	<!-- File locations -->
 	<property name="copyright.location" value="${model.dir}/copyright.txt" />
@@ -181,7 +182,7 @@
 	</target>
 	<target name="generateGMFGenModel" depends="saveGMFFiles">
 		<echo>Generating and synchronizing GMFGen model ${gmfgen.location} from GMFMap model</echo>
-		<gmfgen.fromGmfmap projectName="${project.name}" destFile="${gmfgen.location}" genModel="${genmodel.location}" mapModel="${gmfmap.location}" />
+		<gmfgen.fromGmfmap projectName="${project.name}" destFile="${gmfgen.location}" genModel="${genmodel.location}" mapModel="${gmfmap.location}" templatesDir="${templates.gmfgraph.dir}"/>
 		<epsilon.emf.loadModel name="GmfGen" modelFile="${gmfgen.location}" metamodeluri="${gmfgen.nsuri}" read="true" store="true" />
 		<epsilon.eol uri="${epsilon.fixgengmf.uri}">
 			<parameter name="copyright" value="${copyright.contents}" />

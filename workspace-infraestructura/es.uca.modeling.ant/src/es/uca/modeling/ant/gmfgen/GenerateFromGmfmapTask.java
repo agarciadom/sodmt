@@ -10,9 +10,10 @@
  *******************************************************************************/
 package es.uca.modeling.ant.gmfgen;
 
+import java.net.URL;
+
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -36,7 +37,7 @@ import org.eclipse.gmf.internal.bridge.transform.TransformToGenModelOperation;
 @SuppressWarnings("restriction")
 public class GenerateFromGmfmapTask extends Task {
 
-  private String destFile, genModel, mapModel, projectName;
+  private String destFile, genModel, mapModel, projectName, templatesDir;
 
   public void setDestFile(String f) {
     this.destFile = f;
@@ -69,7 +70,15 @@ public class GenerateFromGmfmapTask extends Task {
   public String getProjectName() {
     return projectName;
   }
-  
+
+  public void setTemplatesDir(String templatesDir) {
+    this.templatesDir = templatesDir;
+  }
+
+  public String getTemplatesDir() {
+    return templatesDir;
+  }
+
   @Override
   public void execute() throws BuildException {
     checkAttributes();
@@ -87,6 +96,12 @@ public class GenerateFromGmfmapTask extends Task {
       op.loadMappingModel(uriMapModel, null);
       op.loadGenModel(uriGenModel, null);
       op.setGenURI(uriGmfgenModel);
+      if (getTemplatesDir() != null) {
+        final String pathTemplatesDir = String.format("/%s/%s", getProjectName(), getTemplatesDir());
+        URI templatesDirUri = URI.createPlatformResourceURI(pathTemplatesDir, true);
+        log("Using dynamic templates URI: " + templatesDirUri);
+        op.getOptions().setFigureTemplatesPath(new URL(templatesDirUri.toString()));
+      }
       
       IStatus status = op.executeTransformation(null);
       if (!status.isOK()) {
@@ -102,7 +117,7 @@ public class GenerateFromGmfmapTask extends Task {
         throw new BuildException("GMFGen model failed validation");
       }
     }
-    catch (CoreException e) {
+    catch (Exception e) {
       e.printStackTrace();
       throw new BuildException(e);
     }
