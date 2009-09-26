@@ -28,7 +28,7 @@ abstract class ActivityFlowNode    extends ActivityElement, FlowNode {}
 
 /* SWIMLANES */
 
-@gmf.node(label="swimlanes",figure="es.uca.modeling.figures.SwimlanesFigure",tool.name="Swimlanes")
+@gmf.node(label="swimlanes",figure="es.uca.modeling.figures.SwimlanesFigure",tool.name="Swimlanes",size="600,300")
 class SwimlaneContainer {
   attr String[*] swimlaneNames;
 }
