@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="es.uca.modeling.eol.contextmenu.contribution"
+            nameFilter="*.serviceprocess"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="es.uca.modeling.eol.contextmenu.popup.actions.MapToServiceCompositionAction"
+               enablesFor="1"
+               id="es.uca.modeling.eol.contextmenu.newAction"
+               label="Map to Service Composition"
+               menubarPath="additions"
+               tooltip="Maps this Service Process to a Service Composition">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
