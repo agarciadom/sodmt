@@ -33,7 +33,6 @@ operation getLCA(nodeA : FlowNode, nodeB : FlowNode) : FlowNode {
   var common := ancestorsA.intersect(ancestorsB);
 
   if (common.isEmpty()) {
-    System.user.inform(nodeA + ' and ' + nodeB + ' do not have a common ancestor');
     return;
   }
 
