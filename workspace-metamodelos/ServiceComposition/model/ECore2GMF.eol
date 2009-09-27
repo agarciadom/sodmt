@@ -38,12 +38,24 @@ serviceProcessMainBody(Sequence {
 });
 
 setSymmetricLinkConstraintsForLinkMapping('CompositionControlFlow',
-  'self.oclIsKindOf(serviceComposition::CompositionFlowNode) and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+  'self.oclIsKindOf(serviceComposition::CompositionFlowNode)'
+  + ' and not self.oclIsKindOf(serviceComposition::ObjectNode)'
   + ' and self <> oppositeEnd');
 setSymmetricLinkConstraintsForLinkMapping('ActivityControlFlow',
-  'self.oclIsKindOf(serviceComposition::ActivityFlowNode) and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+  'self.oclIsKindOf(serviceComposition::ActivityFlowNode)'
+  + ' and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+  + ' and self <> oppositeEnd');
+setSymmetricLinkConstraintsForLinkMapping('CompositionObjectFlow',
+  '(self.oclIsKindOf(serviceComposition::CompositionFlowNode)'
+    + ' and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+    + ' and oppositeEnd.oclIsKindOf(serviceComposition::CompositionObjectNode))'
+  + ' or (self.oclIsKindOf(serviceComposition::CompositionObjectNode)'
+    + ' and oppositeEnd.oclIsKindOf(serviceComposition::CompositionFlowNode))'
   + ' and self <> oppositeEnd');
 setSymmetricLinkConstraintsForLinkMapping('ActivityObjectFlow',
-  '(self.oclIsKindOf(serviceComposition::ActivityFlowNode) and oppositeEnd.oclIsKindOf(serviceComposition::ObjectNode))'
-  + ' or (self.oclIsKindOf(serviceComposition::ObjectNode) and oppositeEnd.oclIsKindOf(serviceComposition::ActivityFlowNode))'
+  '(self.oclIsKindOf(serviceComposition::ActivityFlowNode)'
+    + ' and not self.oclIsKindOf(serviceComposition::ObjectNode)'
+    + ' and oppositeEnd.oclIsKindOf(serviceComposition::ActivityObjectNode))'
+  + ' or (self.oclIsKindOf(serviceComposition::ActivityObjectNode)'
+    + ' and oppositeEnd.oclIsKindOf(serviceComposition::ActivityFlowNode))'
   + ' and self <> oppositeEnd');

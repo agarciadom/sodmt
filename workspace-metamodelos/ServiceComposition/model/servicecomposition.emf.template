@@ -54,6 +54,9 @@ class ActionPerformanceAnnotation extends ActivityElement, PerformanceAnnotation
 @gmf.link(tool.name="Composition Control Flow")
 class CompositionControlFlow extends CompositionFlowEdge, ControlFlow {}
 
+@gmf.link(tool.name="Composition Object Flow")
+class CompositionObjectFlow extends CompositionFlowEdge, ObjectFlow {}
+
 @gmf.link(tool.name="Activity Control Flow")
 class ActivityControlFlow    extends ActivityFlowEdge, ControlFlow {}
 
@@ -86,6 +89,9 @@ class CompositionFork     extends CompositionFlowNode, ForkNode {}
 
 @gmf.node(tool.name="Composition Join")
 class CompositionJoin     extends CompositionFlowNode, JoinNode {}
+
+@gmf.node(tool.name="Composition Object Node")
+class CompositionObjectNode  extends CompositionFlowNode, ObjectNode {}
 
 /* INNER NODES */
 
