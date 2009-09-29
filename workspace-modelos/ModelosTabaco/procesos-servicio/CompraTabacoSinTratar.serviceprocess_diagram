@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_w9WIIKzbEd6MjPd9igqmdw" type="Serviceprocess" name="CompraTabacoSinTratar.serviceprocess_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_1y6I4KzbEd6MjPd9igqmdw" type="2004">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_1y6I4azbEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_1y6I4qzbEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_1y6I46zbEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessStart" href="CompraTabacoSinTratar.serviceprocess#//@nodes.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1y6I5KzbEd6MjPd9igqmdw" x="15" y="203"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_343IwKzbEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_343v0KzbEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_343IwazbEd6MjPd9igqmdw" x="121" y="195" width="116" height="45"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_7pycsKzbEd6MjPd9igqmdw" type="2006">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_7pycsazbEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_7pycsqzbEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_7pycs6zbEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessDecision" href="CompraTabacoSinTratar.serviceprocess#//@nodes.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7pyctKzbEd6MjPd9igqmdw" x="308" y="203"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_BeeYIKzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Bee_MKzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BeeYIazcEd6MjPd9igqmdw" x="409" y="143" width="155" height="56"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_DhEiAKzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_DhFwIKzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DhEiAazcEd6MjPd9igqmdw" x="409" y="231" width="155" height="56"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_J9yGwKzcEd6MjPd9igqmdw" type="2008">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_J9yGwazcEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_J9yGwqzcEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_J9yGw6zcEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessJoin" href="CompraTabacoSinTratar.serviceprocess#//@nodes.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J9yGxKzcEd6MjPd9igqmdw" x="615" y="203"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_MVpWAKzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MVp9EKzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MVpWAazcEd6MjPd9igqmdw" x="638" y="297" width="133" height="45"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_WdqH0KzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Wdr9AKzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WdqH0azcEd6MjPd9igqmdw" x="649" y="485" width="110"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Z7EC0KzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Z7Ep4KzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Z7EC0azcEd6MjPd9igqmdw" x="451" y="485" width="110"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_cx4e8KzcEd6MjPd9igqmdw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_cx5tEKzcEd6MjPd9igqmdw" type="5019"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoSinTratar.serviceprocess#//@nodes.9"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cx5GAKzcEd6MjPd9igqmdw" x="451" y="550" width="110" height="46"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_fY7ZsKzcEd6MjPd9igqmdw" type="2005">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_fY7ZsazcEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_fY7ZsqzcEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_fY7Zs6zcEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessFinish" href="CompraTabacoSinTratar.serviceprocess#//@nodes.10"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fY7ZtKzcEd6MjPd9igqmdw" x="792" y="396"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_jxQE0KzcEd6MjPd9igqmdw" type="2006">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_jxQE0azcEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_jxQr4KzcEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_jxQr4azcEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessDecision" href="CompraTabacoSinTratar.serviceprocess#//@nodes.11"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jxQr4qzcEd6MjPd9igqmdw" x="693" y="396"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_NL8PYKzdEd6MjPd9igqmdw" type="2005">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_NL8PYazdEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NL8PYqzdEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_NL8PY6zdEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessFinish" href="CompraTabacoSinTratar.serviceprocess#//@nodes.12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NL8PZKzdEd6MjPd9igqmdw" x="264" y="490"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_s7rssKzfEd6MjPd9igqmdw" type="2010" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_s7s60KzfEd6MjPd9igqmdw" type="5024"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s7s60azfEd6MjPd9igqmdw" type="5025"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s7s60qzfEd6MjPd9igqmdw" type="5026"/>
+    <element xmi:type="sp:ProcessPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@processPerformance"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s7rssazfEd6MjPd9igqmdw" x="759" y="88"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_EuSM8KzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EuSM8qzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_EuS0AKzlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_EuS0AazlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_EuS0AqzlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EuSM8azlEd6MjPd9igqmdw" x="99" y="33"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_LsIKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_MTMKzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_MTMazlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_MTMqzlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_MTM6zlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_LsIazlEd6MjPd9igqmdw" x="407" y="33"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_M6QKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_NhUKzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_NhUazlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_NhUqzlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_NhU6zlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_M6QazlEd6MjPd9igqmdw" x="814" y="275"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_OIYKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_OvcKzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_OvcazlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_OvcqzlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_Ovc6zlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_OIYazlEd6MjPd9igqmdw" x="616" y="616"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_PWgKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_PWgqzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_P9kKzlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_P9kazlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_P9kqzlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_PWgazlEd6MjPd9igqmdw" x="209" y="330"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_QkoKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_QkoqzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_RLsKzlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_RLsazlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_RLsqzlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_QkoazlEd6MjPd9igqmdw" x="418" y="616"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_M_RywKzlEd6MjPd9igqmdw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_TA4KzlEd6MjPd9igqmdw" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_TA4azlEd6MjPd9igqmdw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_TA4qzlEd6MjPd9igqmdw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_M_TA46zlEd6MjPd9igqmdw" type="5023"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoSinTratar.serviceprocess#//@activityPerformance.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M_RywazlEd6MjPd9igqmdw" x="407" y="330"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_LseRoKzmEd6MjPd9igqmdw" type="2007">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_LseRoazmEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_LseRoqzmEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_LseRo6zmEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessFork" href="CompraTabacoSinTratar.serviceprocess#//@nodes.13"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LseRpKzmEd6MjPd9igqmdw" x="605" y="490"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_WuPV8KzmEd6MjPd9igqmdw" type="2008">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_WuPV8azmEd6MjPd9igqmdw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_WuPV8qzmEd6MjPd9igqmdw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_WuPV86zmEd6MjPd9igqmdw"/>
+    <element xmi:type="sp:ProcessJoin" href="CompraTabacoSinTratar.serviceprocess#//@nodes.14"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WuPV9KzmEd6MjPd9igqmdw" x="374" y="490"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_w9WIIazbEd6MjPd9igqmdw"/>
+  <element xmi:type="sp:ServiceProcess" href="CompraTabacoSinTratar.serviceprocess#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_36C0gKzbEd6MjPd9igqmdw" type="4005" source="_1y6I4KzbEd6MjPd9igqmdw" target="_343IwKzbEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_36ECoKzbEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_36ECoazbEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_36C0gazbEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_36C0gqzbEd6MjPd9igqmdw" points="[0, 0, 100, 227]$[-100, -227, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_8_E0oKzbEd6MjPd9igqmdw" type="4005" source="_343IwKzbEd6MjPd9igqmdw" target="_7pycsKzbEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_8_FbsKzbEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_8_FbsazbEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_8_E0oazbEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8_E0oqzbEd6MjPd9igqmdw" points="[15, 2, -86, -3]$[99, -10, -2, -15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8_JtIKzbEd6MjPd9igqmdw" id="(0.8706896551724138,0.4666666666666667)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GXmqQKzcEd6MjPd9igqmdw" type="4005" source="_7pycsKzbEd6MjPd9igqmdw" target="_BeeYIKzcEd6MjPd9igqmdw" routing="Rectilinear">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GXmqQ6zcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GXnRUKzcEd6MjPd9igqmdw" x="32" y="-54"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GXmqQazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.2"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GXmqQqzcEd6MjPd9igqmdw" points="[15, -8, -106, 52]$[95, -60, -26, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zzRLYKzmEd6MjPd9igqmdw" id="(0.7666666666666667,0.5666666666666667)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GXriwKzcEd6MjPd9igqmdw" id="(0.03870967741935484,0.4642857142857143)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_G24AMKzcEd6MjPd9igqmdw" type="4005" source="_7pycsKzbEd6MjPd9igqmdw" target="_DhEiAKzcEd6MjPd9igqmdw" routing="Rectilinear">
+    <children xmi:type="notation:DecorationNode" xmi:id="_G24AM6zcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_G24ANKzcEd6MjPd9igqmdw" x="33" y="61"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_G24AMazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.3"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_G24AMqzcEd6MjPd9igqmdw" points="[15, 5, -82, -29]$[84, 33, -13, -1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0VEQ4KzmEd6MjPd9igqmdw" id="(0.8333333333333334,0.4666666666666667)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_G284sKzcEd6MjPd9igqmdw" id="(0.05161290322580645,0.5357142857142857)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_KaAvwKzcEd6MjPd9igqmdw" type="4005" source="_BeeYIKzcEd6MjPd9igqmdw" target="_J9yGwKzcEd6MjPd9igqmdw" routing="Rectilinear">
+    <children xmi:type="notation:DecorationNode" xmi:id="_KaBW0KzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_KaBW0azcEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_KaAvwazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.4"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KaAvwqzcEd6MjPd9igqmdw" points="[45, 20, -102, -47]$[145, 52, -2, -15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eCwh4KzlEd6MjPd9igqmdw" id="(0.9483870967741935,0.39285714285714285)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_K2TqMKzcEd6MjPd9igqmdw" type="4005" source="_DhEiAKzcEd6MjPd9igqmdw" target="_J9yGwKzcEd6MjPd9igqmdw" routing="Rectilinear">
+    <children xmi:type="notation:DecorationNode" xmi:id="_K2URQKzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_K2URQazcEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_K2TqMazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.5"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_K2TqMqzcEd6MjPd9igqmdw" points="[37, -14, -59, 23]$[94, -22, -2, 15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_K2YisKzcEd6MjPd9igqmdw" id="(0.9548387096774194,0.5714285714285714)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IBXcYKznEd6MjPd9igqmdw" id="(0.13333333333333333,0.4666666666666667)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_S4qXEKzcEd6MjPd9igqmdw" type="4005" source="_J9yGwKzcEd6MjPd9igqmdw" target="_MVpWAKzcEd6MjPd9igqmdw" routing="Rectilinear">
+    <children xmi:type="notation:DecorationNode" xmi:id="_S4rlMKzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_S4rlMazcEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_S4q-IKzcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.6"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_S4q-IazcEd6MjPd9igqmdw" points="[8, -1, -129, 8]$[71, 10, -66, 19]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ySEeYKzmEd6MjPd9igqmdw" id="(0.4,0.2)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FxcXQKzeEd6MjPd9igqmdw" id="(0.5714285714285714,0.24444444444444444)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Wd4xUKzcEd6MjPd9igqmdw" type="4005" source="_MVpWAKzcEd6MjPd9igqmdw" target="_jxQE0KzcEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Wd5YYKzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Wd5YYazcEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Wd4xUazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.7"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Wd4xUqzcEd6MjPd9igqmdw" points="[2, 2, 0, -81]$[2, 56, 0, -27]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WeFloKzcEd6MjPd9igqmdw" id="(0.5112781954887218,0.9555555555555556)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_kaJQ0KzcEd6MjPd9igqmdw" id="(0.5,0.9)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_m6BMkKzcEd6MjPd9igqmdw" type="4005" source="_jxQE0KzcEd6MjPd9igqmdw" target="_fY7ZsKzcEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_m6BzoKzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_m6BzoazcEd6MjPd9igqmdw" x="78" y="25"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_m6BMkazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.8"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_m6BMkqzcEd6MjPd9igqmdw" points="[-15, 6, 43, -18]$[-43, 23, 15, -1]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_nadnMKzcEd6MjPd9igqmdw" type="4005" source="_jxQE0KzcEd6MjPd9igqmdw" target="_WdqH0KzcEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_naeOQKzcEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_naeOQazcEd6MjPd9igqmdw" x="13" y="-105"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_nadnMazcEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.9"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nadnMqzcEd6MjPd9igqmdw" points="[-15, -12, 48, 35]$[-51, -39, 12, 8]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_naifsKzcEd6MjPd9igqmdw" id="(0.5545454545454546,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_MPvs4KzdEd6MjPd9igqmdw" type="4005" source="_WdqH0KzcEd6MjPd9igqmdw" target="_LseRoKzmEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MPvs46zdEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MPvs5KzdEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_MPvs4azdEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.10"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MPvs4qzdEd6MjPd9igqmdw" points="[-47, -3, 102, 8]$[-107, 4, 42, 15]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Nn_SMKzdEd6MjPd9igqmdw" type="4005" source="_cx4e8KzcEd6MjPd9igqmdw" target="_WuPV8KzmEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Nn_SM6zdEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Nn_SNKzdEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Nn_SMazdEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.11"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Nn_SMqzdEd6MjPd9igqmdw" points="[-60, 27, 76, -36]$[-135, 48, 1, -15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NoDjoKzdEd6MjPd9igqmdw" id="(0.08695652173913043,0.4782608695652174)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_KIEVEKzlEd6MjPd9igqmdw" type="4006" source="_343IwKzbEd6MjPd9igqmdw" target="_EuSM8KzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_KIEVEazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KIEVEqzlEd6MjPd9igqmdw" points="[-2, -22, -12, 141]$[-37, -120, -47, 43]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_oYEKzlEd6MjPd9igqmdw" type="4006" source="_BeeYIKzcEd6MjPd9igqmdw" target="_M_LsIKzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_oYEazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_oYEqzlEd6MjPd9igqmdw" points="[-77, -28, 462, 165]$[-539, -193, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_qNQKzlEd6MjPd9igqmdw" type="4006" source="_DhEiAKzcEd6MjPd9igqmdw" target="_M_RywKzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_qNQazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_qNQqzlEd6MjPd9igqmdw" points="[-52, -28, 487, 264]$[-539, -292, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_sCcKzlEd6MjPd9igqmdw" type="4006" source="_MVpWAKzcEd6MjPd9igqmdw" target="_M_M6QKzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_sCcazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_sCcqzlEd6MjPd9igqmdw" points="[-48, -22, 711, 330]$[-759, -352, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_uesKzlEd6MjPd9igqmdw" type="4006" source="_WdqH0KzcEd6MjPd9igqmdw" target="_M_OIYKzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_uesazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_uesqzlEd6MjPd9igqmdw" points="[-24, -20, 515, 444]$[-539, -464, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_wT4KzlEd6MjPd9igqmdw" type="4006" source="_Z7EC0KzcEd6MjPd9igqmdw" target="_M_PWgKzlEd6MjPd9igqmdw" routing="Tree">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_wT4azlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_wT4qzlEd6MjPd9igqmdw" points="[-18, -20, 389, 444]$[-407, -464, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M_yJEKzlEd6MjPd9igqmdw" type="4006" source="_cx4e8KzcEd6MjPd9igqmdw" target="_M_QkoKzlEd6MjPd9igqmdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M_yJEazlEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M_yJEqzlEd6MjPd9igqmdw" points="[-13, -23, 240, 441]$[-253, -464, 0, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_OwjGoKzmEd6MjPd9igqmdw" type="4005" source="_LseRoKzmEd6MjPd9igqmdw" target="_Z7EC0KzcEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OwjtsKzmEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OwjtsazmEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_OwjGoazmEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.12"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OwjGoqzmEd6MjPd9igqmdw" points="[-7, 0, 77, -5]$[-29, 1, 55, -4]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Rz3GoKzmEd6MjPd9igqmdw" type="4005" source="_LseRoKzmEd6MjPd9igqmdw" target="_cx4e8KzcEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Rz3tsKzmEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Rz3tsazmEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Rz3GoazmEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.13"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Rz3GoqzmEd6MjPd9igqmdw" points="[-3, 1, 99, -60]$[-64, 38, 38, -23]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Rz9NQKzmEd6MjPd9igqmdw" id="(0.2,0.7333333333333333)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sGBy4KzmEd6MjPd9igqmdw" id="(0.9727272727272728,0.5652173913043478)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_X39-IKzmEd6MjPd9igqmdw" type="4005" source="_Z7EC0KzcEd6MjPd9igqmdw" target="_WuPV8KzmEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_X3-lMKzmEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_X3-lMazmEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_X39-IazmEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.14"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_X39-IqzmEd6MjPd9igqmdw" points="[-17, 1, 121, -8]$[-139, -3, -1, -12]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_X4CPkKzmEd6MjPd9igqmdw" id="(0.08181818181818182,0.525)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_aP8iIKzmEd6MjPd9igqmdw" type="4005" source="_WuPV8KzmEd6MjPd9igqmdw" target="_NL8PYKzdEd6MjPd9igqmdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_aP9JMKzmEd6MjPd9igqmdw" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_aP9JMazmEd6MjPd9igqmdw" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_aP8iIazmEd6MjPd9igqmdw" fontName="Sans"/>
+    <element xmi:type="sp:ProcessControlFlow" href="CompraTabacoSinTratar.serviceprocess#//@edges.15"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aP8iIqzmEd6MjPd9igqmdw" points="[-6, 0, 145, -5]$[-152, 16, -1, 11]"/>
+  </edges>
+</notation:Diagram>
