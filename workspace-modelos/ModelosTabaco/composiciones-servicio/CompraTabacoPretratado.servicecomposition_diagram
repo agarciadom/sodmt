@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sc="www.uca.es/modeling/serviceComposition" xmi:id="_HccEMK91Ed6XOJHhM_Urlw" type="Servicecomposition" measurementUnit="Pixel">
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_HccEMa91Ed6XOJHhM_Urlw"/>
+  <element xmi:type="sc:ServiceComposition" href="CompraTabacoPretratado.servicecomposition#/"/>
+</notation:Diagram>
