@@ -105,15 +105,15 @@ operation annotateTransactionsPerSec(start : FlowNode) {
     for (node in allNodes.sortBy(r|r.getDepth())) {
 	  var auto := node.getAutoTransactionsPerSec();
       if (node.hasManualPerformanceAnnotation()) {
-        if (node.getTransactionsPerSec() < auto
+        if (node.getManualTransactionsPerSec() < auto
             and not System.user.confirm('The manual restriction of '
-              + node.getTransactionsPerSec()
+              + node.getManualTransactionsPerSec()
               + ' transactions per second in ' + node
               + ' is set too low. Update to ' + auto
               + '? Otherwise, the wizard will be aborted.')) {
            abort; return;
         }
-        else if (node.getTransactionsPerSec() >= auto) {
+        else if (node.getManualTransactionsPerSec() >= auto) {
           continue;
         }
       }
@@ -128,8 +128,8 @@ operation annotateTransactionsPerSec(start : FlowNode) {
   All nodes and edges have a minimum number of transactions per sec
   that they can handle. However, only the executable nodes can have performance
   restrictions manually assigned to them. That's why though all edges and nodes
-  have the getTransactionsPerSec method, but only ExecutableNodes have the
-  getAutoTransactionsPerSec method.
+  have the getTransactionsPerSec method, only ExecutableNodes have the
+  getManualTransactionsPerSec method.
 
   This way, the wizard can compare the user's manual restrictions with the
   automatically computed values and make them stricter if needed.
@@ -184,12 +184,10 @@ operation JoinNode getTransactionsPerSec() : Real {
   return result;
 }
 
+@cached
+$pre self.incoming.size() = 1
 operation ExecutableNode getTransactionsPerSec() : Real {
-  if (self.hasManualPerformanceAnnotation()) {
-    return self.annotation.transactionsPerSec;
-  } else {
-    return self.getAutoTransactionsPerSec();
-  }
+  return self.incoming.first().getTransactionsPerSec();
 }
 
 @cached
@@ -198,10 +196,16 @@ operation FlowNode getTransactionsPerSec() : Real {
   return self.incoming.first().getTransactionsPerSec();
 }
 
-@cached
-$pre self.incoming.size() = 1
-operation ExecutableNode getAutoTransactionsPerSec() : Real {
-  return self.incoming.first().getTransactionsPerSec();
+-- Returns the number of transactions per second that the
+-- executable node should be able to process, according to
+-- the user. If no manual performance constraint has been
+-- defined, returns 0.
+operation ExecutableNode getManualTransactionsPerSec() : Real {
+  if (self.hasManualPerformanceAnnotation()) {
+    return self.annotation.transactionsPerSec;
+  } else {
+    return 0;
+  }
 }
 
 $pre newValue >= 0
