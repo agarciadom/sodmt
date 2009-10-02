@@ -5,21 +5,14 @@ wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
     transaction {
-      var success := true;
-
-      for (activityStart in ActivityStart.all) {
-        if (not annotateTimeLimits(activityStart)
-            or not annotateTransactionsPerSec(activityStart))) {
-           success := false;
-           break;
+      for (start in ActivityStart.all) {
+        if (not annotateTimeLimits(start)
+            or not annotateTransactionsPerSec(start)) {
+          abort;
+          return;
         }
       }
-
-      if (not success) {
-        System.user.inform('The  performance annotation failed. Rolling back...');
-        abort;
-      }
-    }
+    } -- transaction
   }
 }
 

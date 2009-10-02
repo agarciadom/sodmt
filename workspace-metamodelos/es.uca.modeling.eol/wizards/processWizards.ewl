@@ -4,8 +4,15 @@ import 'transactions_per_sec.eol';
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
-    annotateTimeLimits(ProcessStart.all.first());
-    annotateTransactionsPerSec(ProcessStart.all.first());
+    transaction {
+      for (start in ProcessStart.all) {
+        if (not annotateTimeLimits(start)
+            or not annotateTransactionsPerSec(start)) {
+          abort;
+          return;
+        }
+      }
+    } -- transaction
   }
 }
 
