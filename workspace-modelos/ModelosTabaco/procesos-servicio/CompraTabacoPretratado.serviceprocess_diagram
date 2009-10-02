@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_3G-fMK9UEd6DOqsbRHWSqw" type="Serviceprocess" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_3KiwkK9UEd6DOqsbRHWSqw" type="2004">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_3Kiwka9UEd6DOqsbRHWSqw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_3Kiwkq9UEd6DOqsbRHWSqw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_3KjXoK9UEd6DOqsbRHWSqw"/>
+    <element xmi:type="sp:ProcessStart" href="CompraTabacoPretratado.serviceprocess#//@nodes.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KjXoa9UEd6DOqsbRHWSqw" x="170" y="1060"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3Klz4K9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3KnCAK9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Klz4a9UEd6DOqsbRHWSqw" x="115" y="960"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_3KoQIK9UEd6DOqsbRHWSqw" type="2006">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_3KoQIa9UEd6DOqsbRHWSqw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_3KoQIq9UEd6DOqsbRHWSqw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_3KoQI69UEd6DOqsbRHWSqw"/>
+    <element xmi:type="sp:ProcessDecision" href="CompraTabacoPretratado.serviceprocess#//@nodes.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KoQJK9UEd6DOqsbRHWSqw" x="250" y="815"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3KpeQK9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3KqsYK9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KpeQa9UEd6DOqsbRHWSqw" x="305" y="715"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3KqsYa9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3Kr6gK9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KrTcK9UEd6DOqsbRHWSqw" x="50" y="715"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_3KshkK9UEd6DOqsbRHWSqw" type="2008">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_3Kshka9UEd6DOqsbRHWSqw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_3Kshkq9UEd6DOqsbRHWSqw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_3Kshk69UEd6DOqsbRHWSqw"/>
+    <element xmi:type="sp:ProcessJoin" href="CompraTabacoPretratado.serviceprocess#//@nodes.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KshlK9UEd6DOqsbRHWSqw" x="260" y="570"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3KtvsK9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3Ku90K9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Ktvsa9UEd6DOqsbRHWSqw" x="220" y="470"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3Ku90a9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3KwL8K9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Kvk4K9UEd6DOqsbRHWSqw" x="315" y="320"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3KwzAK9UEd6DOqsbRHWSqw" type="2003" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3KxaEK9UEd6DOqsbRHWSqw" type="5020"/>
+    <element xmi:type="sp:ServiceActivity" href="CompraTabacoPretratado.serviceprocess#//@nodes.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KwzAa9UEd6DOqsbRHWSqw" x="165" y="175"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_3KyBIK9UEd6DOqsbRHWSqw" type="2005">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_3KyoMK9UEd6DOqsbRHWSqw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_3KyoMa9UEd6DOqsbRHWSqw" fontName="Sans"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_3KyoMq9UEd6DOqsbRHWSqw"/>
+    <element xmi:type="sp:ProcessFinish" href="CompraTabacoPretratado.serviceprocess#//@nodes.9"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3KyoM69UEd6DOqsbRHWSqw" x="155" y="35"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3Kz2UK9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K0dYK9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K1EcK9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K1Eca9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K1Ecq9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Kz2Ua9UEd6DOqsbRHWSqw" x="40" y="570"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3K1rgK9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K25oK9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K25oa9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K25oq9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K3gsK9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3K1rga9UEd6DOqsbRHWSqw" x="30" y="815"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3K4HwK9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K4u0K9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K4u0a9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K5V4K9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K5V4a9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3K4Hwa9UEd6DOqsbRHWSqw" x="335" y="570"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3K588K9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K7LEK9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K7LEa9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K7LEq9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K7yIK9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3K588a9UEd6DOqsbRHWSqw" x="100" y="320"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3K8ZMK9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K9AQK9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K9nUK9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K9nUa9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K9nUq9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3K8ZMa9UEd6DOqsbRHWSqw" x="385" y="175"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3K-OYK9UEd6DOqsbRHWSqw" type="2009" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K_cgK9UEd6DOqsbRHWSqw" type="5021"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3K_cga9UEd6DOqsbRHWSqw" type="5022"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3LADkK9UEd6DOqsbRHWSqw" type="5023"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3LADka9UEd6DOqsbRHWSqw" type="5024"/>
+    <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3K-OYa9UEd6DOqsbRHWSqw" x="245" y="30"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_3LAqoK9UEd6DOqsbRHWSqw" type="2010" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3LB4wK9UEd6DOqsbRHWSqw" type="5025"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3LB4wa9UEd6DOqsbRHWSqw" type="5026"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_3LB4wq9UEd6DOqsbRHWSqw" type="5027"/>
+    <element xmi:type="sp:ProcessPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@processPerformance"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3LAqoa9UEd6DOqsbRHWSqw" x="460" y="30"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_3G_GQK9UEd6DOqsbRHWSqw"/>
+  <element xmi:type="sp:ServiceProcess" href="CompraTabacoPretratado.serviceprocess#/"/>
+</notation:Diagram>
