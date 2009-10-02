@@ -33,7 +33,7 @@
     any node and P(e) the traversal probability annotated on an edge,
     then the formulas are as follows:
 
-    * T(initial node) = T(its ServiceActivity)
+    * T(initial node) = T(only ProcessPerformanceAnnotation)
     * T(edge) = P(edge) * T(source)
     * T(node, except JoinNode) = T(only incoming edge)
     * T(JoinNode): described more in detail below.
@@ -52,7 +52,7 @@
   For instance, if they split at a DecisionNode, we'll have to sum
   their transactions per sec limits. However, if they split at a
   ForkNode, we'll just use the minimum value (we previously used the
-  maximum value, but as Paco said, it didn't make sense). We do not
+  maximum value, but as Francisco said, it didn't make sense). We do not
   check all pairs, however: we simply perform this calculation with
   the first and second path, then with its result and that of the
   third path, and so on. The idea is that if we're handling this
@@ -88,7 +88,7 @@
 import '../common/utils.eol';
 
 -*
-  This wizard operation can ask the user if they want to update existing
+  This operation can ask the user if they want to update existing
   constraints to make them stricter if they're set too lax. However, this means
   that we need to walk the graph so these updates reach all the affected nodes.
   We will go through all ExecutableNodes, sorting them by depth in ascending
