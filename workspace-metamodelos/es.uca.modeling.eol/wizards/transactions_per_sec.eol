@@ -93,33 +93,35 @@ import '../common/utils.eol';
   that we need to walk the graph so these updates reach all the affected nodes.
   We will go through all ExecutableNodes, sorting them by depth in ascending
   order.
-*-
-operation annotateTransactionsPerSec(start : FlowNode) {
-  transaction {
-    var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(ExecutableNode));
 
-    -- Relax all automatic constraints before continuing
-    for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
-      node.annotation.transactionsPerSec := 0.0d;
-    }
-    for (node in allNodes.sortBy(r|r.getDepth())) {
-	  var auto := node.getAutoTransactionsPerSec();
-      if (node.hasManualPerformanceAnnotation()) {
-        if (node.getManualTransactionsPerSec() < auto
-            and not System.user.confirm('The manual restriction of '
-              + node.getManualTransactionsPerSec()
-              + ' transactions per second in ' + node
-              + ' is set too low. Update to ' + auto
-              + '? Otherwise, the wizard will be aborted.')) {
-           abort; return;
-        }
-        else if (node.getManualTransactionsPerSec() >= auto) {
-          continue;
-        }
-      }
-      node.setTransactionsPerSec(auto);
-    }
+  This operation returns true if all nodes reachable from the starting node
+  have been successfully annotated, and false otherwise.
+*-
+operation annotateTransactionsPerSec(start : FlowNode) : Boolean {
+  var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(ExecutableNode));
+
+  -- Relax all automatic constraints before continuing
+  for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
+    node.annotation.transactionsPerSec := 0.0d;
   }
+  for (node in allNodes.sortBy(r|r.getDepth())) {
+	var auto := node.getTransactionsPerSec();
+    if (node.hasManualPerformanceAnnotation()) {
+      if (node.getManualTransactionsPerSec() < auto
+          and not System.user.confirm('The manual restriction of '
+            + node.getManualTransactionsPerSec()
+            + ' transactions per second in ' + node
+            + ' is set too low. Update to ' + auto
+            + '? Otherwise, the wizard will be aborted.')) {
+         return false;
+      }
+      else if (node.getManualTransactionsPerSec() >= auto) {
+        continue;
+      }
+    }
+    node.setTransactionsPerSec(auto);
+  }
+  return true;
 }
 
 -- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------

@@ -4,9 +4,21 @@ import 'transactions_per_sec.eol';
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
   do {
-    for (activityStart in ActivityStart.all) {
-      annotateTimeLimits(activityStart);
-      annotateTransactionsPerSec(activityStart);
+    transaction {
+      var success := true;
+
+      for (activityStart in ActivityStart.all) {
+        if (not annotateTimeLimits(activityStart)
+            or not annotateTransactionsPerSec(activityStart))) {
+           success := false;
+           break;
+        }
+      }
+
+      if (not success) {
+        System.user.inform('The  performance annotation failed. Rolling back...');
+        abort;
+      }
     }
   }
 }

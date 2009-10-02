@@ -28,9 +28,9 @@
   set to it. In addition, free nodes can be updatable to a new time
   limit iff the new limit is lower or equal than the old one.
 
-  The algorithm is an iterative process with transactional semantics
-  (either it completes successfully and performs all changes or it
-  aborts and does nothing). Its steps are as follows:
+  The algorithm is an iterative process, which may fail in some cases
+  (i.e. conflicting manual performance annotations). Its steps are as
+  follows:
 
   - Relax all automatic restrictions set in place from the previous
     run of this algorithm with an absurdly high time limit. We cannot
@@ -109,9 +109,13 @@
 *-
 import '../common/utils.eol';
 
--- Current assumptions: acyclic graph with only one service activity
+-*
+   Current assumptions: acyclic graph with only one service activity
+   Output: returns true when all nodes reachable from the starting node
+           are successfully annotated, false otherwise.
+*-
 $pre start.isDefined()
-operation annotateTimeLimits(start : FlowNode) {
+operation annotateTimeLimits(start : FlowNode) : Boolean {
   var paths        := getAllPathsFrom(start);
   var global_limit := start.getGlobalTimeLimit();
 
@@ -138,16 +142,20 @@ operation annotateTimeLimits(start : FlowNode) {
           + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
           + ' left no slack to establish the automatic restrictions (had '
           + global_limit + ' seconds)');
+        return false;
       }
     } else if (slack < 0) {
       System.user.inform('Nodes with manual restrictions in path '
         + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
         + ' have used up more than the available time ('
         + path.~manualSum + ', with ' + global_limit + ' available)');
+      return false;
     } else if (freeCount > 0) {
       splitSlackOverFreeNodes(path, global_limit, slack, freeCount);
     }
   }
+
+  return true;
 }
 
 $pre freeCount > 0 and slack > 0 and path.isDefined() and path.notEmpty()
