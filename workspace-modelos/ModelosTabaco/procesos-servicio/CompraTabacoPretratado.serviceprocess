@@ -6,25 +6,32 @@
   <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.2" outgoing="//@edges.4" name="Buscar por variedad exacta" annotation="//@activityPerformance.2"/>
   <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.3" outgoing="//@edges.5" name="Buscar por variedad aproximada" annotation="//@activityPerformance.0"/>
   <nodes xsi:type="sp:ProcessJoin" incoming="//@edges.4 //@edges.5" outgoing="//@edges.6"/>
-  <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.6" outgoing="//@edges.7" name="Realizar pedido" annotation="//@activityPerformance.3"/>
+  <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.11" outgoing="//@edges.7" name="Realizar pedido" annotation="//@activityPerformance.3"/>
   <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.7" outgoing="//@edges.8" name="Realizar pago" annotation="//@activityPerformance.4"/>
   <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.8" outgoing="//@edges.9" name="Obtener tabaco pretratado" annotation="//@activityPerformance.5"/>
   <nodes xsi:type="sp:ProcessFinish" incoming="//@edges.9"/>
+  <nodes xsi:type="sp:ServiceActivity" incoming="//@edges.6" outgoing="//@edges.10" name="Realizar control de calidad externo" annotation="//@activityPerformance.6"/>
+  <nodes xsi:type="sp:ProcessDecision" incoming="//@edges.10" outgoing="//@edges.11 //@edges.12"/>
+  <nodes xsi:type="sp:ProcessFinish" incoming="//@edges.12"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.1" source="//@nodes.0"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.2" source="//@nodes.1"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.3" source="//@nodes.2" condition="tipo = exacta" probability="0.4"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.4" source="//@nodes.2" condition="tipo = aproximada" probability="0.6"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.5" source="//@nodes.3"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.5" source="//@nodes.4"/>
-  <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.6" source="//@nodes.5"/>
+  <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.10" source="//@nodes.5"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.7" source="//@nodes.6"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.8" source="//@nodes.7"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.9" source="//@nodes.8"/>
-  <activityPerformance transactionsPerSec="12.0" secsTimeLimit="200.0" execNode="//@nodes.4"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="24.0" execNode="//@nodes.1" manuallyAdded="false"/>
-  <activityPerformance transactionsPerSec="8.0" secsTimeLimit="24.0" execNode="//@nodes.3" manuallyAdded="false"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="24.0" execNode="//@nodes.6" manuallyAdded="false"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="24.0" execNode="//@nodes.7" manuallyAdded="false"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="24.0" execNode="//@nodes.8" manuallyAdded="false"/>
+  <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.11" source="//@nodes.10"/>
+  <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.6" source="//@nodes.11" condition="control superado" probability="0.9"/>
+  <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.12" source="//@nodes.11" condition="control no superado" probability="0.1"/>
+  <activityPerformance transactionsPerSec="12.0" secsTimeLimit="30.0" execNode="//@nodes.4"/>
+  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="18.0" execNode="//@nodes.1" manuallyAdded="false"/>
+  <activityPerformance transactionsPerSec="8.0" secsTimeLimit="30.0" execNode="//@nodes.3" manuallyAdded="false"/>
+  <activityPerformance transactionsPerSec="18.0" secsTimeLimit="18.0" execNode="//@nodes.6" manuallyAdded="false"/>
+  <activityPerformance transactionsPerSec="18.0" secsTimeLimit="18.0" execNode="//@nodes.7" manuallyAdded="false"/>
+  <activityPerformance transactionsPerSec="18.0" secsTimeLimit="18.0" execNode="//@nodes.8" manuallyAdded="false"/>
+  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="18.0" execNode="//@nodes.10" manuallyAdded="false"/>
   <processPerformance transactionsPerSec="20.0" secsTimeLimit="120.0"/>
 </sp:ServiceProcess>

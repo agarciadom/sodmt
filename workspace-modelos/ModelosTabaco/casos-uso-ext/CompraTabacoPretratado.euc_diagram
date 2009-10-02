@@ -6,7 +6,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_leh8MKOrEd6aP8rMzDSdqw" fontName="Sans"/>
     <element xmi:type="EUC:Actor" href="CompraTabacoPretratado.euc#//@actors.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_leh8MaOrEd6aP8rMzDSdqw" x="100" y="285"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_leh8MaOrEd6aP8rMzDSdqw" x="100" y="290"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_m03dAKOrEd6aP8rMzDSdqw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_m04EEKOrEd6aP8rMzDSdqw" type="4003"/>
@@ -47,13 +47,19 @@
         <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoPretratado.euc#//@classifier.0/@ownedUseCase.5"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TSemAqOsEd6aP8rMzDSdqw" x="15" y="209" width="196"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_LGLu4K9xEd6XOJHhM_Urlw" type="2002">
+        <children xmi:type="notation:Node" xmi:id="_LGNkEK9xEd6XOJHhM_Urlw" type="4002"/>
+        <styles xmi:type="notation:ShapeStyle" xmi:id="_LGLu4a9xEd6XOJHhM_Urlw" fontName="Sans"/>
+        <element xmi:type="EUC:FunctionalBasicUseCase" href="CompraTabacoPretratado.euc#//@classifier.0/@ownedUseCase.6"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LGLu4q9xEd6XOJHhM_Urlw" x="250" y="310" width="286"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_m04EEqOrEd6aP8rMzDSdqw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_m04EE6OrEd6aP8rMzDSdqw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_m04EFKOrEd6aP8rMzDSdqw"/>
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_m03dAaOrEd6aP8rMzDSdqw" fontName="Sans"/>
     <element xmi:type="EUC:Classifier" href="CompraTabacoPretratado.euc#//@classifier.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m03dAqOrEd6aP8rMzDSdqw" x="260" y="25" width="806" height="341"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m03dAqOrEd6aP8rMzDSdqw" x="260" y="25" width="806" height="426"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_Plz8caOrEd6aP8rMzDSdqw"/>
   <element xmi:type="EUC:ExtendedUseCasesModel" href="CompraTabacoPretratado.euc#/"/>
@@ -88,7 +94,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_e5bbAKOsEd6aP8rMzDSdqw" type="3003" source="_TSemAKOsEd6aP8rMzDSdqw" target="_oPgPAKOrEd6aP8rMzDSdqw">
     <children xmi:type="notation:Node" xmi:id="_e5cCEKOsEd6aP8rMzDSdqw" type="4006">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_e5cCEaOsEd6aP8rMzDSdqw" x="33" y="4"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_e5cCEaOsEd6aP8rMzDSdqw" x="17" y="55"/>
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_e5bbAaOsEd6aP8rMzDSdqw" routing="Rectilinear" avoidObstructions="true"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_e5bbAqOsEd6aP8rMzDSdqw" fontName="Sans"/>
@@ -117,5 +123,15 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_f-jQA6OsEd6aP8rMzDSdqw" points="[98, 17, -79, -14]$[127, 27, -50, -4]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XZUJcKO1Ed6aP8rMzDSdqw" id="(0.9948979591836735,0.5)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f-mTUKOsEd6aP8rMzDSdqw" id="(0.023696682464454975,0.62)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_Y2mx0K9xEd6XOJHhM_Urlw" type="3003" source="_TSemAKOsEd6aP8rMzDSdqw" target="_LGLu4K9xEd6XOJHhM_Urlw">
+    <children xmi:type="notation:Node" xmi:id="_Y2n_8K9xEd6XOJHhM_Urlw" type="4006">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Y2n_8a9xEd6XOJHhM_Urlw" x="34" y="13"/>
+    </children>
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_Y2mx0a9xEd6XOJHhM_Urlw" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Y2mx0q9xEd6XOJHhM_Urlw" fontName="Sans"/>
+    <element xmi:type="EUC:Include" href="CompraTabacoPretratado.euc#//@classifier.0/@ownedUseCase.5/@include.3"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Y2mx069xEd6XOJHhM_Urlw" points="[41, 25, -133, -79]$[127, 105, -47, 1]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Y2sRYK9xEd6XOJHhM_Urlw" id="(0.0078125,0.62)"/>
   </edges>
 </notation:Diagram>
