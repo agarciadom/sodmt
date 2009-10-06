@@ -3,111 +3,102 @@
   <nodes xsi:type="sc:CompositionStart" outgoing="//@compositionEdges.0"/>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.0" outgoing="//@compositionEdges.1" name="Seleccionar tipo de búsqueda" annotation="//@activityPerformance.0">
     <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.0"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.12"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.0" outgoing="//@activityEdges.1" name="Autenticar usuario para búsquedas" annotation="//@nodes.1/@nodes.4"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.1" outgoing="//@activityEdges.12" name="Escoger tipo de búsqueda entre las existentes" annotation="//@nodes.1/@nodes.5"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="2.5" action="//@nodes.1/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="2.5" action="//@nodes.1/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.10"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.0" outgoing="//@activityEdges.48" name="Introducir credenciales de identificación"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.51" outgoing="//@activityEdges.10" name="Escoger tipo de búsqueda entre las existentes"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.49" outgoing="//@activityEdges.50" name="Confirmar credenciales e iniciar sesión"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.48" outgoing="//@activityEdges.49" name="Credenciales"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.50" outgoing="//@activityEdges.51" name="Sesión"/>
   </nodes>
   <nodes xsi:type="sc:CompositionDecision" incoming="//@compositionEdges.1" outgoing="//@compositionEdges.2 //@compositionEdges.3"/>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.2" outgoing="//@compositionEdges.4" name="Buscar agricultor por variedad exacta" annotation="//@activityPerformance.1">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.2"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.27"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.2" outgoing="//@activityEdges.3" name="Introducir patrón de búsqueda sobre nombres de variedades" annotation="//@nodes.3/@nodes.5"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.3" outgoing="//@activityEdges.26" name="Seleccionar variedad a partir de coincidencias" annotation="//@nodes.3/@nodes.6"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.26" outgoing="//@activityEdges.27" name="Seleccionar agricultor de entre los disponibles" annotation="//@nodes.3/@nodes.7"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="9.583333333333334" action="//@nodes.3/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="9.583333333333334" action="//@nodes.3/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="9.583333333333334" action="//@nodes.3/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.1"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.24"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.1" outgoing="//@activityEdges.52" name="Introducir patrón de búsqueda sobre nombres de variedades"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.55" outgoing="//@activityEdges.56" name="Seleccionar variedad a partir de coincidencias"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.59" outgoing="//@activityEdges.24" name="Seleccionar agricultor de entre los disponibles"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.52" outgoing="//@activityEdges.53" name="Patrón de búsquedas"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.53" outgoing="//@activityEdges.54" name="Generar listado de variedades coincidentes"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.54" outgoing="//@activityEdges.55" name="Listado de variedades"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.56" outgoing="//@activityEdges.57" name="Variedad seleccionada"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.57" outgoing="//@activityEdges.58" name="Generar listado de agricultores coincidentes"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.58" outgoing="//@activityEdges.59" name="Listado de agricultores"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.3" outgoing="//@compositionEdges.5" name="Buscar agricultor por variedad aproximada" annotation="//@activityPerformance.6">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.4"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.25"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.4" outgoing="//@activityEdges.5" name="Especificar criterios de búsqueda" annotation="//@nodes.4/@nodes.13"/>
-    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.5" outgoing="//@activityEdges.13 //@activityEdges.14"/>
-    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.14 //@activityEdges.15" outgoing="//@activityEdges.16"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.13" outgoing="//@activityEdges.15" name="Filtrar por tipo de presentación" annotation="//@nodes.4/@nodes.14"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.17" outgoing="//@activityEdges.18" name="Filtrar por curado" annotation="//@nodes.4/@nodes.15"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.21" outgoing="//@activityEdges.22" name="Filtrar por tipo de hoja" annotation="//@nodes.4/@nodes.16"/>
-    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.16" outgoing="//@activityEdges.17 //@activityEdges.19"/>
-    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.18 //@activityEdges.19" outgoing="//@activityEdges.20"/>
-    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.20" outgoing="//@activityEdges.21 //@activityEdges.23"/>
-    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.22 //@activityEdges.23" outgoing="//@activityEdges.24"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.24" outgoing="//@activityEdges.25" name="Seleccionar agricultor entre resultados finales" annotation="//@nodes.4/@nodes.17"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="5.75" action="//@nodes.4/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="5.75" action="//@nodes.4/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="5.75" action="//@nodes.4/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="5.75" action="//@nodes.4/@nodes.7" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="5.75" action="//@nodes.4/@nodes.12" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.2"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.23"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.2" outgoing="//@activityEdges.3" name="Especificar criterios de búsqueda"/>
+    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.3" outgoing="//@activityEdges.11 //@activityEdges.12"/>
+    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.12 //@activityEdges.13" outgoing="//@activityEdges.14"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.11" outgoing="//@activityEdges.13" name="Filtrar por tipo de presentación"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.15" outgoing="//@activityEdges.16" name="Filtrar por curado"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.19" outgoing="//@activityEdges.20" name="Filtrar por tipo de hoja"/>
+    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.14" outgoing="//@activityEdges.15 //@activityEdges.17"/>
+    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.16 //@activityEdges.17" outgoing="//@activityEdges.18"/>
+    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.18" outgoing="//@activityEdges.19 //@activityEdges.21"/>
+    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.20 //@activityEdges.21" outgoing="//@activityEdges.22"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.63" outgoing="//@activityEdges.23" name="Seleccionar agricultor entre resultados finales"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.60" outgoing="//@activityEdges.61" name="Criterios acumulados"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.61" outgoing="//@activityEdges.62" name="Generar listado de agricultores coincidentes"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.62" outgoing="//@activityEdges.63" name="Listado de agricultores"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.22" outgoing="//@activityEdges.60" name="Enviar petición de búsqueda"/>
   </nodes>
   <nodes xsi:type="sc:CompositionJoin" incoming="//@compositionEdges.4 //@compositionEdges.5" outgoing="//@compositionEdges.6"/>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.6" outgoing="//@compositionEdges.7" name="Realizar control de calidad in situ" annotation="//@activityPerformance.2">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.6"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.30"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.37" outgoing="//@activityEdges.29" name="Seleccionar planificación de entre las propuestas" annotation="//@nodes.6/@nodes.8"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.29" outgoing="//@activityEdges.30" name="Recoger resultados del control de calidad" annotation="//@nodes.6/@nodes.9"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.6" outgoing="//@activityEdges.28" name="Autenticar usuario para gestión de controles de calidad" annotation="//@nodes.6/@nodes.6"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.28" outgoing="//@activityEdges.37" name="Listar planificaciones factibles para la vista" annotation="//@nodes.6/@nodes.7"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="7.1875" action="//@nodes.6/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="7.1875" action="//@nodes.6/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="7.1875" action="//@nodes.6/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="7.1875" action="//@nodes.6/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.4"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.75"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.69" outgoing="//@activityEdges.70" name="Seleccionar planificación de entre las propuestas"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.72" outgoing="//@activityEdges.73" name="Realizar control de calidad en fecha seleccionada"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.67" outgoing="//@activityEdges.68" name="Generar listado de fechas factibles para visita"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.4" outgoing="//@activityEdges.64" name="Introducir credenciales de identificación para gestión de controles de calidad"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.65" outgoing="//@activityEdges.66" name="Confirmar credenciales e iniciar sesión"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.64" outgoing="//@activityEdges.65" name="Credenciales"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.66" outgoing="//@activityEdges.67" name="Sesión"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.68" outgoing="//@activityEdges.69" name="Fechas factibles"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.71" outgoing="//@activityEdges.72" name="Registrar fecha de visita"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.70" outgoing="//@activityEdges.71" name="Fecha seleccionada"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.73" outgoing="//@activityEdges.74" name="Resultados del control de calidad"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.74" outgoing="//@activityEdges.75" name="Registrar resultados del control de calidad"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.9" outgoing="//@compositionEdges.10" name="Realizar pedido" annotation="//@activityPerformance.3">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.7"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.36"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.39" outgoing="//@activityEdges.8" name="Enviar pedido" annotation="//@nodes.7/@nodes.11"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.8" outgoing="//@activityEdges.31" name="Confirmar disponibilidad" annotation="//@nodes.7/@nodes.12"/>
-    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.31" outgoing="//@activityEdges.32 //@activityEdges.33"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.32" outgoing="//@activityEdges.34" name="Revisar fecha de salida" annotation="//@nodes.7/@nodes.13"/>
-    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.33 //@activityEdges.34" outgoing="//@activityEdges.35"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.38" outgoing="//@activityEdges.36" name="Confirmar aceptación pedido" annotation="//@nodes.7/@nodes.15"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.35" outgoing="//@activityEdges.38" name="Consultar fecha de entrega" annotation="//@nodes.7/@nodes.14"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.7" outgoing="//@activityEdges.39" name="Autenticar usuario para gestión de pedidos" annotation="//@nodes.7/@nodes.10"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.9" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="0.9" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.8" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="4.791666666666667" action="//@nodes.7/@nodes.7" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.5"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.30"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.79" outgoing="//@activityEdges.6" name="Crear pedido"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.6" outgoing="//@activityEdges.25" name="Confirmar disponibilidad"/>
+    <nodes xsi:type="sc:ActivityDecision" incoming="//@activityEdges.25" outgoing="//@activityEdges.26 //@activityEdges.27"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.26" outgoing="//@activityEdges.28" name="Revisar fecha de salida"/>
+    <nodes xsi:type="sc:ActivityJoin" incoming="//@activityEdges.27 //@activityEdges.28" outgoing="//@activityEdges.29"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.31" outgoing="//@activityEdges.30" name="Confirmar aceptación pedido"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.29" outgoing="//@activityEdges.31" name="Consultar fecha de entrega"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.5" outgoing="//@activityEdges.76" name="Introducir credenciales de identificación para gestión de pedidos"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.77" outgoing="//@activityEdges.78" name="Confirmar credenciales e iniciar sesión"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.76" outgoing="//@activityEdges.77" name="Credenciales"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.78" outgoing="//@activityEdges.79" name="Sesión"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.12" outgoing="//@compositionEdges.14" name="Realizar pago" annotation="//@activityPerformance.4">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.9"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.55"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.9" outgoing="//@activityEdges.10" name="Autenticar emisor para gestión financiera" annotation="//@nodes.8/@nodes.16"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.10" outgoing="//@activityEdges.44" name="Crear factura" annotation="//@nodes.8/@nodes.17"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.43" outgoing="//@activityEdges.46" name="Autenticar receptor para gestión financiera" annotation="//@nodes.8/@nodes.19"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.45" outgoing="//@activityEdges.43" name="Recibir factura" annotation="//@nodes.8/@nodes.18"/>
-    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.44" outgoing="//@activityEdges.45" name="Factura"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.46" outgoing="//@activityEdges.47" name="Generación orden bancaria" annotation="//@nodes.8/@nodes.20"/>
-    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.47" outgoing="//@activityEdges.48" name="Transferencia"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.48" outgoing="//@activityEdges.49" name="Recepción y ejecución orden" annotation="//@nodes.8/@nodes.21"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.49" outgoing="//@activityEdges.50" name="Envío de confirmación" annotation="//@nodes.8/@nodes.22"/>
-    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.50" outgoing="//@activityEdges.51" name="Confirmación pago"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.51" outgoing="//@activityEdges.52" name="Registro del pago recibido" annotation="//@nodes.8/@nodes.23"/>
-    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.53" outgoing="//@activityEdges.54" name="Confirmación pago"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.52" outgoing="//@activityEdges.53" name="Reenvío de confirmación" annotation="//@nodes.8/@nodes.24"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.54" outgoing="//@activityEdges.55" name="Registro del pago enviado" annotation="//@nodes.8/@nodes.25"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.7" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.9" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.10" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.12" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.14" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.15" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.7"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.47"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.7" outgoing="//@activityEdges.8" name="Autenticar emisor para gestión financiera"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.8" outgoing="//@activityEdges.36" name="Crear factura"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.35" outgoing="//@activityEdges.38" name="Autenticar receptor para gestión financiera"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.37" outgoing="//@activityEdges.35" name="Recibir factura"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.36" outgoing="//@activityEdges.37" name="Factura"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.38" outgoing="//@activityEdges.39" name="Generación orden bancaria"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.39" outgoing="//@activityEdges.40" name="Transferencia"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.40" outgoing="//@activityEdges.41" name="Recepción y ejecución orden"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.41" outgoing="//@activityEdges.42" name="Envío de confirmación"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.42" outgoing="//@activityEdges.43" name="Confirmación pago"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.43" outgoing="//@activityEdges.44" name="Registro del pago recibido"/>
+    <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.45" outgoing="//@activityEdges.46" name="Confirmación pago"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.44" outgoing="//@activityEdges.45" name="Reenvío de confirmación"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.46" outgoing="//@activityEdges.47" name="Registro del pago enviado"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.13" outgoing="//@compositionEdges.11" name="Obtener tabaco sin tratar" annotation="//@activityPerformance.5">
-    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.11"/>
-    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.42"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.11" outgoing="//@activityEdges.40" name="Autenticar usuario para gestión de entradas de inventario" annotation="//@nodes.9/@nodes.5"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.40" outgoing="//@activityEdges.41" name="Registrar entrada en almacén" annotation="//@nodes.9/@nodes.6"/>
-    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.41" outgoing="//@activityEdges.42" name="Actualizar existencias" annotation="//@nodes.9/@nodes.7"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="9.583333333333334" action="//@nodes.9/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="9.583333333333334" action="//@nodes.9/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="9.583333333333334" action="//@nodes.9/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.9"/>
+    <nodes xsi:type="sc:ActivityFinish" incoming="//@activityEdges.34"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.9" outgoing="//@activityEdges.32" name="Autenticar usuario para gestión de entradas de inventario"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.32" outgoing="//@activityEdges.33" name="Registrar entrada en almacén"/>
+    <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.33" outgoing="//@activityEdges.34" name="Actualizar existencias"/>
   </nodes>
   <nodes xsi:type="sc:CompositionFinish" incoming="//@compositionEdges.8"/>
   <nodes xsi:type="sc:CompositionDecision" incoming="//@compositionEdges.7" outgoing="//@compositionEdges.8 //@compositionEdges.9"/>
@@ -131,12 +122,10 @@
   <compositionEdges xsi:type="sc:CompositionControlFlow" target="//@nodes.14" source="//@nodes.8"/>
   <compositionEdges xsi:type="sc:CompositionControlFlow" target="//@nodes.12" source="//@nodes.14"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.1/@nodes.2" source="//@nodes.1/@nodes.0"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.1/@nodes.3" source="//@nodes.1/@nodes.2"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.3/@nodes.2" source="//@nodes.3/@nodes.0"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.3/@nodes.3" source="//@nodes.3/@nodes.2"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.2" source="//@nodes.4/@nodes.0"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.3" source="//@nodes.4/@nodes.2"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.4" source="//@nodes.6/@nodes.0"/>
+  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.5" source="//@nodes.6/@nodes.0"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.9" source="//@nodes.7/@nodes.0"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.3" source="//@nodes.7/@nodes.2"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.8/@nodes.2" source="//@nodes.8/@nodes.0"/>
@@ -154,22 +143,16 @@
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.7" source="//@nodes.4/@nodes.10" condition="criterios tiene &quot;tipo de hoja&quot;" probability="0.5"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.11" source="//@nodes.4/@nodes.7"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.11" source="//@nodes.4/@nodes.10" condition="criterios no tiene &quot;tipo de hoja&quot;" probability="0.5"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.12" source="//@nodes.4/@nodes.11"/>
+  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.16" source="//@nodes.4/@nodes.11"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.4/@nodes.1" source="//@nodes.4/@nodes.12"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.3/@nodes.4" source="//@nodes.3/@nodes.3"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.3/@nodes.1" source="//@nodes.3/@nodes.4"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.5" source="//@nodes.6/@nodes.4"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.3" source="//@nodes.6/@nodes.2"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.1" source="//@nodes.6/@nodes.3"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.4" source="//@nodes.7/@nodes.3"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.5" source="//@nodes.7/@nodes.4" condition="fecha está retrasada" probability="0.2"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.6" source="//@nodes.7/@nodes.4" condition="fecha coincide" probability="0.8"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.6" source="//@nodes.7/@nodes.5"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.8" source="//@nodes.7/@nodes.6"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.1" source="//@nodes.7/@nodes.7"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.2" source="//@nodes.6/@nodes.5"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.7" source="//@nodes.7/@nodes.8"/>
-  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.7/@nodes.2" source="//@nodes.7/@nodes.9"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.9/@nodes.3" source="//@nodes.9/@nodes.2"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.9/@nodes.4" source="//@nodes.9/@nodes.3"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.9/@nodes.1" source="//@nodes.9/@nodes.4"/>
@@ -186,12 +169,54 @@
   <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.8/@nodes.13" source="//@nodes.8/@nodes.14"/>
   <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.8/@nodes.15" source="//@nodes.8/@nodes.13"/>
   <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.8/@nodes.1" source="//@nodes.8/@nodes.15"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.1/@nodes.5" source="//@nodes.1/@nodes.2"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.1/@nodes.4" source="//@nodes.1/@nodes.5"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.1/@nodes.6" source="//@nodes.1/@nodes.4"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.1/@nodes.3" source="//@nodes.1/@nodes.6"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.5" source="//@nodes.3/@nodes.2"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.6" source="//@nodes.3/@nodes.5"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.7" source="//@nodes.3/@nodes.6"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.3" source="//@nodes.3/@nodes.7"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.8" source="//@nodes.3/@nodes.3"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.9" source="//@nodes.3/@nodes.8"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.10" source="//@nodes.3/@nodes.9"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.3/@nodes.4" source="//@nodes.3/@nodes.10"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.4/@nodes.13" source="//@nodes.4/@nodes.16"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.4/@nodes.14" source="//@nodes.4/@nodes.13"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.4/@nodes.15" source="//@nodes.4/@nodes.14"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.4/@nodes.12" source="//@nodes.4/@nodes.15"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.7" source="//@nodes.6/@nodes.5"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.6" source="//@nodes.6/@nodes.7"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.8" source="//@nodes.6/@nodes.6"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.4" source="//@nodes.6/@nodes.8"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.9" source="//@nodes.6/@nodes.4"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.2" source="//@nodes.6/@nodes.9"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.11" source="//@nodes.6/@nodes.2"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.10" source="//@nodes.6/@nodes.11"/>
+  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.3" source="//@nodes.6/@nodes.10"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.12" source="//@nodes.6/@nodes.3"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.6/@nodes.13" source="//@nodes.6/@nodes.12"/>
+  <activityEdges xsi:type="sc:ActivityControlFlow" target="//@nodes.6/@nodes.1" source="//@nodes.6/@nodes.13"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.7/@nodes.11" source="//@nodes.7/@nodes.9"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.7/@nodes.10" source="//@nodes.7/@nodes.11"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.7/@nodes.12" source="//@nodes.7/@nodes.10"/>
+  <activityEdges xsi:type="sc:ActivityObjectFlow" target="//@nodes.7/@nodes.2" source="//@nodes.7/@nodes.12"/>
   <swimlanes>
     <swimlaneNames>Sistema</swimlaneNames>
     <swimlaneNames>Pl. pretratado</swimlaneNames>
-    <swimlaneNames>Logística</swimlaneNames>
-    <swimlaneNames>Agricultores</swimlaneNames>
-    <swimlaneNames>Entidad financiera</swimlaneNames>
+  </swimlanes>
+  <swimlanes>
+    <swimlaneNames>Sistema</swimlaneNames>
+    <swimlaneNames>Pl. pretratado</swimlaneNames>
+  </swimlanes>
+  <swimlanes>
+    <swimlaneNames>Sistema</swimlaneNames>
+    <swimlaneNames>Pl. pretratado</swimlaneNames>
+  </swimlanes>
+  <swimlanes>
+    <swimlaneNames>Sistema</swimlaneNames>
+    <swimlaneNames>Pl. pretratado</swimlaneNames>
+    <swimlaneNames>Agricultor</swimlaneNames>
   </swimlanes>
   <activityPerformance transactionsPerSec="5.0" secsTimeLimit="5.0" execNode="//@nodes.1"/>
   <activityPerformance transactionsPerSec="2.0" secsTimeLimit="28.75" execNode="//@nodes.3"/>
