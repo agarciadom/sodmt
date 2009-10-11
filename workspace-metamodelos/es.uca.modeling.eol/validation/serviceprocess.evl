@@ -18,6 +18,11 @@ context ServiceProcess {
       }
     }
   }
+
+  constraint MinimumOneFinalNode {
+    check : not FinalNode.all.isEmpty()
+    message : 'There must be at least one final node'
+  }
 }
 
 context ProcessPerformanceAnnotation {

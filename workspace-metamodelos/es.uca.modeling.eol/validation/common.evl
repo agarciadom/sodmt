@@ -133,7 +133,7 @@ context ControlFlow {
     guard : self.satisfies('ConditionsOnlyFromDecisionNode')
             and self.satisfies('ConditionsAlwaysFromDecisionNode')
             and self.condition = ''
-    check : (self.probability - 1).abs() <= 0.00001
+    check : (self.probability - 1).abs() <= 0.001
     message : 'Unconditional control flows should have probability equal to 1'
     fix {
       title : 'Set probability to 1'
@@ -141,6 +141,32 @@ context ControlFlow {
         self.probability = 1.0d;
       }
     }
+  }
+
+  constraint SourceMustNotBeObjectNode {
+    guard : self.source.isDefined()
+    check : not self.source.isKindOf(ObjectNode)
+    message : 'The source of a control flow cannot be an object node'
+  }
+
+  constraint TargetMustNotBeObjectNode {
+    guard : self.target.isDefined()
+    check : not self.target.isKindOf(ObjectNode)
+    message : 'The target of a control flow cannot be an object node'
+  }
+}
+
+context ObjectFlow {
+  constraint EitherSourceOrTargetMustBeObjectNode {
+    guard : self.source.isDefined() and self.target.isDefined()
+    check : self.source.isKindOf(ObjectNode) xor self.target.isKindOf(ObjectNode)
+    message : 'Either the source or the target of an object flow must be an object node, but not both'
+  }
+
+  constraint EitherSourceOrTargetMustBeExecutableNode {
+    guard : self.source.isDefined() and self.target.isDefined()
+    check : self.source.isKindOf(ExecutableNode) xor self.target.isKindOf(ExecutableNode)
+    message : 'Either the source or the target of an object flow must be an executable node, but not both'
   }
 }
 
@@ -240,10 +266,10 @@ context FinalNode {
   }
 }
 
-context ExecutableNode {
+context NamedElement {
   constraint NameMustNotBeEmpty {
     check : self.name <> ''
-    message : 'The name of an executable node must not be empty'
+    message : 'The name of a named element must not be empty'
   }
 }
 

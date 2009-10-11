@@ -49,6 +49,32 @@ context ActivityFlowEdge {
       }
     }
   }
+
+  constraint SourceMustBeActivityFlowNode {
+    guard : self.source.isDefined()
+    check : self.source.isKindOf(ActivityFlowNode)
+    message : 'The source of an activity flow edge must be an activity flow node'
+  }
+
+  constraint TargetMustBeActivityFlowNode {
+    guard : self.target.isDefined()
+    check : self.target.isKindOf(ActivityFlowNode)
+    message : 'The target of an activity flow edge must be an activity flow node'
+  }
+}
+
+context CompositionFlowEdge {
+  constraint SourceMustBeCompositionFlowNode {
+    guard : self.source.isDefined()
+    check : self.source.isKindOf(CompositionFlowNode)
+    message : 'The source of a composition flow edge must be a composition flow node'
+  }
+
+  constraint TargetMustBeCompositionFlowNode {
+    guard : self.target.isDefined()
+    check : self.target.isKindOf(CompositionFlowNode)
+    message : 'The target of a composition flow edge must be a composition flow node'
+  }
 }
 
 -- OPERATIONS REQUIRED BY THE SHARED EVL CODE
