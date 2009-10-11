@@ -43,6 +43,7 @@ $pre maxDepth >= 0
 operation FlowNode getAncestors(maxDepth : Integer) : Set {
   var results := new Set;
   self.addAllAncestors(maxDepth, results);
+  --results.println('ancestors of ' + self + ', which has depth = ' + self.getDepth() + ', with maxdepth = ' + maxDepth + ': ');
   return results;
 }
 

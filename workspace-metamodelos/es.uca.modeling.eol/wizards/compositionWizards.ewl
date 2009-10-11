@@ -37,5 +37,5 @@ operation ActivityStart getGlobalTimeLimit() {
 
 @cached
 operation ActivityStart getTransactionsPerSec() : Real {
-  return self.activity.annotation.transactionsPerSec;
+  return self.activity.annotation.concurrentUsers;
 }

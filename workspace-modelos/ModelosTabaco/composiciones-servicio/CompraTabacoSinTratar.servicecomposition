@@ -9,9 +9,9 @@
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.37" outgoing="//@activityEdges.38" name="Confirmar credenciales e iniciar sesión" annotation="//@nodes.1/@nodes.8"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.36" outgoing="//@activityEdges.37" name="Credenciales"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.38" outgoing="//@activityEdges.39" name="Sesión"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="1.6666666666666667" action="//@nodes.1/@nodes.3" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:CompositionDecision" incoming="//@compositionEdges.1" outgoing="//@compositionEdges.2 //@compositionEdges.3"/>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.2" outgoing="//@compositionEdges.4" name="Buscar agricultor por variedad exacta" annotation="//@activityPerformance.1">
@@ -26,11 +26,11 @@
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.44" outgoing="//@activityEdges.45" name="Variedad seleccionada"/>
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.45" outgoing="//@activityEdges.46" name="Generar listado de agricultores coincidentes" annotation="//@nodes.3/@nodes.14"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.46" outgoing="//@activityEdges.47" name="Listado de agricultores"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.9" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.9" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="2.0" secsTimeLimit="5.75" action="//@nodes.3/@nodes.4" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.3" outgoing="//@compositionEdges.5" name="Buscar agricultor por variedad aproximada" annotation="//@activityPerformance.6">
     <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.2"/>
@@ -50,13 +50,13 @@
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.49" outgoing="//@activityEdges.50" name="Generar listado de agricultores coincidentes" annotation="//@nodes.4/@nodes.22"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.50" outgoing="//@activityEdges.51" name="Listado de agricultores"/>
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.20" outgoing="//@activityEdges.48" name="Enviar petición de búsqueda" annotation="//@nodes.4/@nodes.21"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.7" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.16" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.14" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.12" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.5" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="1.5" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.7" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.16" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.14" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="3.0" secsTimeLimit="4.107142857142857" action="//@nodes.4/@nodes.12" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:CompositionJoin" incoming="//@compositionEdges.4 //@compositionEdges.5" outgoing="//@compositionEdges.6"/>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.6" outgoing="//@compositionEdges.7" name="Realizar control de calidad in situ" annotation="//@activityPerformance.2">
@@ -74,13 +74,13 @@
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.58" outgoing="//@activityEdges.59" name="Fecha seleccionada"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.61" outgoing="//@activityEdges.62" name="Resultados del control de calidad"/>
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.62" outgoing="//@activityEdges.63" name="Registrar resultados del control de calidad" annotation="//@nodes.6/@nodes.20"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.10" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.13" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.5" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.10" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="5.0" secsTimeLimit="4.107142857142857" action="//@nodes.6/@nodes.13" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.9" outgoing="//@compositionEdges.10" name="Realizar pedido" annotation="//@activityPerformance.3">
     <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.5"/>
@@ -102,15 +102,15 @@
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.76" outgoing="//@activityEdges.77" name="Fechas salida y entrega"/>
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.79" outgoing="//@activityEdges.23" name="Visualizar confirmación" annotation="//@nodes.7/@nodes.27"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.78" outgoing="//@activityEdges.79" name="Confirmación pedido"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.7" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.11" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.15" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.17" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.7" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.11" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.15" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.5" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="3.1944444444444446" action="//@nodes.7/@nodes.17" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.12" outgoing="//@compositionEdges.14" name="Realizar pago" annotation="//@activityPerformance.4">
     <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.6"/>
@@ -132,16 +132,16 @@
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.82" outgoing="//@activityEdges.83" name="Sesión"/>
     <nodes xsi:type="sc:ActivityAction" incoming="//@activityEdges.83" outgoing="//@activityEdges.84" name="Elaborar petición de creación de factura" annotation="//@nodes.8/@nodes.21"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.84" outgoing="//@activityEdges.85" name="Datos de petición"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.15" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.17" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.4" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.8" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.10" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.12" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.13" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.15" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.17" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.8" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.10" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.12" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="2.875" action="//@nodes.8/@nodes.13" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:ServiceActivity" incoming="//@compositionEdges.13" outgoing="//@compositionEdges.11" name="Obtener tabaco sin tratar" annotation="//@activityPerformance.5">
     <nodes xsi:type="sc:ActivityStart" outgoing="//@activityEdges.7"/>
@@ -154,11 +154,11 @@
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.87" outgoing="//@activityEdges.88" name="Credenciales"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.89" outgoing="//@activityEdges.90" name="Sesión"/>
     <nodes xsi:type="sc:ActivityObjectNode" incoming="//@activityEdges.91" outgoing="//@activityEdges.92" name="Existencias recibidas"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.5" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.2" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.6" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.3" manuallyAdded="false"/>
-    <nodes xsi:type="sc:ActionPerformanceAnnotation" transactionsPerSec="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.4" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.5" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.2" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.6" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.3" manuallyAdded="false"/>
+    <nodes xsi:type="sc:ActionPerformanceAnnotation" concurrentUsers="4.5" secsTimeLimit="5.75" action="//@nodes.9/@nodes.4" manuallyAdded="false"/>
   </nodes>
   <nodes xsi:type="sc:CompositionFinish" incoming="//@compositionEdges.8"/>
   <nodes xsi:type="sc:CompositionDecision" incoming="//@compositionEdges.7" outgoing="//@compositionEdges.8 //@compositionEdges.9"/>
@@ -307,11 +307,11 @@
     <swimlaneNames>Sistema</swimlaneNames>
     <swimlaneNames>Pl. pretratado</swimlaneNames>
   </swimlanes>
-  <activityPerformance transactionsPerSec="5.0" secsTimeLimit="5.0" execNode="//@nodes.1"/>
-  <activityPerformance transactionsPerSec="2.0" secsTimeLimit="28.75" execNode="//@nodes.3"/>
-  <activityPerformance transactionsPerSec="5.0" secsTimeLimit="28.75" execNode="//@nodes.6"/>
-  <activityPerformance transactionsPerSec="4.5" secsTimeLimit="28.75" execNode="//@nodes.7"/>
-  <activityPerformance transactionsPerSec="4.5" secsTimeLimit="28.75" execNode="//@nodes.8"/>
-  <activityPerformance transactionsPerSec="4.5" secsTimeLimit="28.75" execNode="//@nodes.9"/>
-  <activityPerformance transactionsPerSec="3.0" secsTimeLimit="28.75" execNode="//@nodes.4"/>
+  <activityPerformance concurrentUsers="5.0" secsTimeLimit="5.0" execNode="//@nodes.1"/>
+  <activityPerformance concurrentUsers="2.0" secsTimeLimit="28.75" execNode="//@nodes.3"/>
+  <activityPerformance concurrentUsers="5.0" secsTimeLimit="28.75" execNode="//@nodes.6"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="28.75" execNode="//@nodes.7"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="28.75" execNode="//@nodes.8"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="28.75" execNode="//@nodes.9"/>
+  <activityPerformance concurrentUsers="3.0" secsTimeLimit="28.75" execNode="//@nodes.4"/>
 </sc:ServiceComposition>

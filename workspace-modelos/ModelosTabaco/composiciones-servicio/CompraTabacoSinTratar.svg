@@ -4868,7 +4868,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath20)"
      xml:space="preserve"
      id="text2009"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="214"
      y="548"
@@ -4930,7 +4930,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath26)"
      xml:space="preserve"
      id="text2023"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="569"
      y="313"
@@ -4992,7 +4992,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath32)"
      xml:space="preserve"
      id="text2037"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="439"
      y="548"
@@ -5438,7 +5438,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath62)"
      xml:space="preserve"
      id="text2163"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1095"
      y="466"
@@ -5500,7 +5500,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath68)"
      xml:space="preserve"
      id="text2177"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1010"
      y="158"
@@ -5562,7 +5562,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath74)"
      xml:space="preserve"
      id="text2191"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1295"
      y="466"
@@ -5624,7 +5624,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath80)"
      xml:space="preserve"
      id="text2205"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1515"
      y="157"
@@ -5686,7 +5686,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath86)"
      xml:space="preserve"
      id="text2219"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1520"
      y="466"
@@ -6292,7 +6292,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath121)"
      xml:space="preserve"
      id="text2371"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 3</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 3</text>
   <text
      x="1010"
      y="1048"
@@ -6354,7 +6354,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath127)"
      xml:space="preserve"
      id="text2385"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 1,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 1,5</text>
   <text
      x="1190"
      y="1048"
@@ -6416,7 +6416,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath133)"
      xml:space="preserve"
      id="text2399"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 1,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 1,5</text>
   <text
      x="1435"
      y="1048"
@@ -6478,7 +6478,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath139)"
      xml:space="preserve"
      id="text2413"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 1,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 1,5</text>
   <text
      x="1700"
      y="1048"
@@ -6540,7 +6540,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath145)"
      xml:space="preserve"
      id="text2427"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 3</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 3</text>
   <text
      x="1915"
      y="1048"
@@ -6602,7 +6602,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath151)"
      xml:space="preserve"
      id="text2441"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 3</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 3</text>
   <text
      x="1675"
      y="688"
@@ -6664,7 +6664,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath157)"
      xml:space="preserve"
      id="text2455"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 3</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 3</text>
   <text
      x="2085"
      y="1048"
@@ -7180,7 +7180,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath193)"
      xml:space="preserve"
      id="text2595"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2450"
      y="463"
@@ -7242,7 +7242,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath199)"
      xml:space="preserve"
      id="text2609"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2450"
      y="193"
@@ -7304,7 +7304,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath205)"
      xml:space="preserve"
      id="text2623"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2440"
      y="633"
@@ -7366,7 +7366,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath211)"
      xml:space="preserve"
      id="text2637"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2895"
      y="458"
@@ -7428,7 +7428,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath217)"
      xml:space="preserve"
      id="text2651"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2795"
      y="193"
@@ -7490,7 +7490,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath223)"
      xml:space="preserve"
      id="text2665"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="3065"
      y="458"
@@ -7552,7 +7552,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath229)"
      xml:space="preserve"
      id="text2679"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="3065"
      y="193"
@@ -8178,7 +8178,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath274)"
      xml:space="preserve"
      id="text2863"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="2480"
      y="1328"
@@ -8240,7 +8240,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath280)"
      xml:space="preserve"
      id="text2877"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="2345"
      y="1078"
@@ -8302,7 +8302,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath286)"
      xml:space="preserve"
      id="text2891"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="2805"
      y="1278"
@@ -8364,7 +8364,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath292)"
      xml:space="preserve"
      id="text2905"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="3025"
      y="1078"
@@ -8426,7 +8426,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath298)"
      xml:space="preserve"
      id="text2919"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="2695"
      y="1463"
@@ -8488,7 +8488,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath304)"
      xml:space="preserve"
      id="text2933"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="3295"
      y="1273"
@@ -8550,7 +8550,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath310)"
      xml:space="preserve"
      id="text2947"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="3015"
      y="1663"
@@ -8612,7 +8612,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath316)"
      xml:space="preserve"
      id="text2961"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="3225"
      y="1078"
@@ -8674,7 +8674,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath322)"
      xml:space="preserve"
      id="text2975"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="3700"
      y="1273"
@@ -9315,7 +9315,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath367)"
      xml:space="preserve"
      id="text3161"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="940"
      y="2023"
@@ -9377,7 +9377,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath373)"
      xml:space="preserve"
      id="text3175"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1100"
      y="1828"
@@ -9439,7 +9439,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath379)"
      xml:space="preserve"
      id="text3189"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1345"
      y="2023"
@@ -9501,7 +9501,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath385)"
      xml:space="preserve"
      id="text3203"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1280"
      y="2313"
@@ -9563,7 +9563,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath391)"
      xml:space="preserve"
      id="text3217"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1520"
      y="2023"
@@ -9625,7 +9625,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath397)"
      xml:space="preserve"
      id="text3231"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1690"
      y="2023"
@@ -9687,7 +9687,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath403)"
      xml:space="preserve"
      id="text3245"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1530"
      y="2537"
@@ -9749,7 +9749,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath409)"
      xml:space="preserve"
      id="text3259"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1728"
      y="2313"
@@ -9811,7 +9811,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath415)"
      xml:space="preserve"
      id="text3273"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1899"
      y="2313"
@@ -9873,7 +9873,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath421)"
      xml:space="preserve"
      id="text3287"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1785"
      y="1828"
@@ -10282,7 +10282,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath448)"
      xml:space="preserve"
      id="text3397"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1165"
      y="1567"
@@ -10344,7 +10344,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath454)"
      xml:space="preserve"
      id="text3411"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1360"
      y="1567"
@@ -10406,7 +10406,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath460)"
      xml:space="preserve"
      id="text3425"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1370"
      y="1240"
@@ -10468,7 +10468,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath466)"
      xml:space="preserve"
      id="text3439"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1575"
      y="1568"
@@ -10530,7 +10530,7 @@ AAAAAElFTkSuQmCC"
      clip-path="url(#clipPath472)"
      xml:space="preserve"
      id="text3453"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="1690"
      y="1243"
@@ -10719,7 +10719,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath483)"
      xml:space="preserve"
      id="text3495"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="120"
      y="193"
@@ -10774,7 +10774,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath488)"
      xml:space="preserve"
      id="text3507"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 2</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 2</text>
   <text
      x="1850"
      y="113"
@@ -10829,7 +10829,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath493)"
      xml:space="preserve"
      id="text3519"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 5</text>
   <text
      x="2770"
      y="68"
@@ -10884,7 +10884,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath498)"
      xml:space="preserve"
      id="text3531"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="2355"
      y="928"
@@ -10939,7 +10939,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath503)"
      xml:space="preserve"
      id="text3543"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="720"
      y="2568"
@@ -10994,7 +10994,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath508)"
      xml:space="preserve"
      id="text3555"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 4,5</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 4,5</text>
   <text
      x="885"
      y="1213"
@@ -11049,7 +11049,7 @@ AElFTkSuQmCC"
      clip-path="url(#clipPath513)"
      xml:space="preserve"
      id="text3567"
-     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">transactionsPerSec = 3</text>
+     style="fill:#000000;stroke:none;stroke-width:1.10000002;stroke-linecap:butt">concurrentUsers = 3</text>
   <text
      x="1830"
      y="503"

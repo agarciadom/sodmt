@@ -29,10 +29,10 @@ enum NodeSide {
 
 /* PERFORMANCE ANNOTATIONS */
 
-@gmf.node(label="transactionsPerSec",figure="rectangle")
+@gmf.node(label="concurrentUsers",figure="rectangle")
 abstract class PerformanceAnnotation {
    @gmf.label(foo="bar")
-   attr Double transactionsPerSec = 1;
+   attr Double concurrentUsers = 1;
    @gmf.label(foo="bar")
    attr Double secsTimeLimit = 1;
 }

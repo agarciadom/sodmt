@@ -37,5 +37,5 @@ operation ProcessStart getGlobalTimeLimit() {
 
 @cached
 operation ProcessStart getTransactionsPerSec() : Real {
-  return ProcessPerformanceAnnotation.all.first().transactionsPerSec;
+  return ProcessPerformanceAnnotation.all.first().concurrentUsers;
 }

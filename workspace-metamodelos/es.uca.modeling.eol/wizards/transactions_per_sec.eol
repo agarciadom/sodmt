@@ -102,7 +102,7 @@ operation annotateTransactionsPerSec(start : FlowNode) : Boolean {
 
   -- Relax all automatic constraints before continuing
   for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
-    node.annotation.transactionsPerSec := 0.0d;
+    node.annotation.concurrentUsers := 0.0d;
   }
   for (node in allNodes.sortBy(r|r.getDepth())) {
 	var auto := node.getTransactionsPerSec();
@@ -204,17 +204,17 @@ operation FlowNode getTransactionsPerSec() : Real {
 -- defined, returns 0.
 operation ExecutableNode getManualTransactionsPerSec() : Real {
   if (self.hasManualPerformanceAnnotation()) {
-    return self.annotation.transactionsPerSec;
+    return self.annotation.concurrentUsers;
   } else {
     return 0;
   }
 }
 
 $pre newValue >= 0
-$pre self.annotation.isUndefined() or self.annotation.transactionsPerSec <= newValue
+$pre self.annotation.isUndefined() or self.annotation.concurrentUsers <= newValue
 operation ExecutableNode setTransactionsPerSec(newValue : Real) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }
-  self.annotation.transactionsPerSec := newValue;
+  self.annotation.concurrentUsers := newValue;
 }

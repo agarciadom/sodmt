@@ -18,7 +18,7 @@ serviceProcessMainBody(Sequence {
   Sequence {
     Sequence {'ActionPerformanceAnnotationManuallyAddedLabel', 'manual = {0}'},
     Sequence {'PerformanceAnnotationTransactionsPerSecLabel',
-      'transactionsPerSec = {0}', NATIVE_METHOD, '{0,number}'},
+      'concurrentUsers = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
       'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'CompositionControlFlowLabel', '[{0}] (p = {1})',

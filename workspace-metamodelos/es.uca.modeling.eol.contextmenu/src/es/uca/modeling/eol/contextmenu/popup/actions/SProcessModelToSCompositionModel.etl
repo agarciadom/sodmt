@@ -17,7 +17,7 @@ rule CopyServiceProcess
 rule CopyActivityPerformanceAnnotation
   transform s : Source!ActivityPerformanceAnnotation
   to t : Target!ActivityPerformanceAnnotation {
-  t.transactionsPerSec := s.transactionsPerSec;
+  t.concurrentUsers := s.concurrentUsers;
   t.secsTimeLimit := s.secsTimeLimit;
   t.execNode ::= s.execNode;
 }

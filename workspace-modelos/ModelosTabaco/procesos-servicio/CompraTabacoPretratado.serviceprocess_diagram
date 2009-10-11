@@ -80,7 +80,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_Tu01Iq9wEd6XOJHhM_Urlw" type="5031"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_Tu01I69wEd6XOJHhM_Urlw" type="5032"/>
     <element xmi:type="sp:ActivityPerformanceAnnotation" href="CompraTabacoPretratado.serviceprocess#//@activityPerformance.2"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Tu0OFa9wEd6XOJHhM_Urlw" x="375" y="825"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Tu0OFa9wEd6XOJHhM_Urlw" x="400" y="825"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_Tu1cMK9wEd6XOJHhM_Urlw" type="2017" fontName="Sans">
     <children xmi:type="notation:DecorationNode" xmi:id="_Tu1cMq9wEd6XOJHhM_Urlw" type="5029"/>

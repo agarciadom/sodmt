@@ -7,7 +7,7 @@
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.1" source="//@nodes.0"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.2" source="//@nodes.1"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.3" source="//@nodes.2"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="100000.0" execNode="//@nodes.1" manuallyAdded="false"/>
-  <activityPerformance transactionsPerSec="20.0" secsTimeLimit="5.0" execNode="//@nodes.2"/>
-  <processPerformance transactionsPerSec="20.0" secsTimeLimit="5.0"/>
+  <activityPerformance concurrentUsers="20.0" secsTimeLimit="100000.0" execNode="//@nodes.1" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="20.0" secsTimeLimit="5.0" execNode="//@nodes.2"/>
+  <processPerformance concurrentUsers="20.0" secsTimeLimit="5.0"/>
 </sp:ServiceProcess>
