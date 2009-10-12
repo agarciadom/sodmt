@@ -188,12 +188,6 @@ operation JoinNode getTransactionsPerSec() : Real {
 
 @cached
 $pre self.incoming.size() = 1
-operation ExecutableNode getTransactionsPerSec() : Real {
-  return self.incoming.first().getTransactionsPerSec();
-}
-
-@cached
-$pre self.incoming.size() = 1
 operation FlowNode getTransactionsPerSec() : Real {
   return self.incoming.first().getTransactionsPerSec();
 }
