@@ -1,5 +1,5 @@
 -*
-  Heuristic algorithm for computing the transactions per sec required
+  Heuristic algorithm for computing the concurrent users expected
   for each activity node in the ServiceComposition and ServiceProcess
   models.
 
@@ -12,7 +12,7 @@
   Contributors:
      Antonio García Domínguez - initial API and implementation
 
-  The algorithm computes the transactions per second of every node and
+  The algorithm computes the concurrent users of every node and
   edge, but only adds annotation model elements to the executabl
   nodes. IMPORTANT: the model must have been validated with the EVL
   script in es.uca.modeling.validation and pass with no errors.
@@ -20,7 +20,7 @@
   The algorithm follows these steps:
 
   - Reset all automatically inferred performance annotations by
-    relaxing them to 0 transactions per minute. We can't just delete
+    relaxing them to 0 concurrent users. We can't just delete
     them, as that'd remove them from any diagrams they were in, and
     the user would have to place them again in the right part of the
     diagram.
@@ -28,15 +28,15 @@
   - Starting from the initial node, we perform a breadth-first
     traversal of the graph, making sure that each node is only visited
     once all its ancestors have been visited (i.e. annotated with the
-    computed transactions per second). The computed value depends on
-    the kind of node visited. If T(x) is the transactions per sec for
+    computed concurrent users). The computed value depends on
+    the kind of node visited. If C(x) is the concurrent users for
     any node and P(e) the traversal probability annotated on an edge,
     then the formulas are as follows:
 
-    * T(initial node) = T(only ProcessPerformanceAnnotation)
-    * T(edge) = P(edge) * T(source)
-    * T(node, except JoinNode) = T(only incoming edge)
-    * T(JoinNode): described more in detail below.
+    * C(initial node) = T(only ProcessPerformanceAnnotation)
+    * C(edge) = P(edge) * T(source)
+    * C(node, except JoinNode) = T(only incoming edge)
+    * C(JoinNode): described more in detail below.
 
     We compute these values even for nodes which have manual
     annotations. It might happen that the user has set a lower value
@@ -45,12 +45,12 @@
     prompted if they want the node to be updated. If the node cannot
     be updated, the execution of the algorithm will be aborted.
 
-  JoinNodes have to be handled in a different way. Their transactions
-  per sec depend on how each pair of the paths joined split off
+  JoinNodes have to be handled in a different way. Their concurrent
+  user counts depend on how each pair of the paths joined split off
   originally.
 
   For instance, if they split at a DecisionNode, we'll have to sum
-  their transactions per sec limits. However, if they split at a
+  their concurrent user limits. However, if they split at a
   ForkNode, we'll just use the minimum value (we previously used the
   maximum value, but as Francisco said, it didn't make sense). We do not
   check all pairs, however: we simply perform this calculation with
@@ -97,7 +97,7 @@ import '../common/utils.eol';
   This operation returns true if all nodes reachable from the starting node
   have been successfully annotated, and false otherwise.
 *-
-operation annotateTransactionsPerSec(start : FlowNode) : Boolean {
+operation annotateConcurrentUsers(start : FlowNode) : Boolean {
   var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(ExecutableNode));
 
   -- Relax all automatic constraints before continuing
@@ -105,21 +105,21 @@ operation annotateTransactionsPerSec(start : FlowNode) : Boolean {
     node.annotation.concurrentUsers := 0.0d;
   }
   for (node in allNodes.sortBy(r|r.getDepth())) {
-	var auto := node.getTransactionsPerSec();
+	var auto := node.getConcurrentUsers();
     if (node.hasManualPerformanceAnnotation()) {
-      if (node.getManualTransactionsPerSec() < auto
+      if (node.getManualConcurrentUsers() < auto
           and not System.user.confirm('The manual restriction of '
-            + node.getManualTransactionsPerSec()
-            + ' transactions per second in ' + node
+            + node.getManualConcurrentUsers()
+            + ' concurrent users in ' + node
             + ' is set too low. Update to ' + auto
             + '? Otherwise, the wizard will be aborted.')) {
          return false;
       }
-      else if (node.getManualTransactionsPerSec() >= auto) {
+      else if (node.getManualConcurrentUsers() >= auto) {
         continue;
       }
     }
-    node.setTransactionsPerSec(auto);
+    node.setConcurrentUsers(auto);
   }
   return true;
 }
@@ -127,36 +127,36 @@ operation annotateTransactionsPerSec(start : FlowNode) : Boolean {
 -- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
 
 -*
-  All nodes and edges have a minimum number of transactions per sec
+  All nodes and edges have a minimum number of concurrent users
   that they can handle. However, only the executable nodes can have performance
   restrictions manually assigned to them. That's why though all edges and nodes
-  have the getTransactionsPerSec method, only ExecutableNodes have the
-  getManualTransactionsPerSec method.
+  have the getConcurrentUsers method, only ExecutableNodes have the
+  getManualConcurrentUsers method.
 
   This way, the wizard can compare the user's manual restrictions with the
   automatically computed values and make them stricter if needed.
 
   Note: for some reason, Epsilon (as of r597) doesn't use the most specific
   operation for a particular class, but rather the first applicable operation.
-  Therefore, the getTransactionsPerSec operations below MUST be ordered from
+  Therefore, the getConcurrentUsers operations below MUST be ordered from
   least to most specific: first the edges, and then the nodes.
 *-
 
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
-operation ControlFlow getTransactionsPerSec() : Real {
-  return self.probability * self.source.getTransactionsPerSec();
+operation ControlFlow getConcurrentUsers() : Real {
+  return self.probability * self.source.getConcurrentUsers();
 }
 
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
-operation FlowEdge getTransactionsPerSec() : Real {
-  return self.source.getTransactionsPerSec();
+operation FlowEdge getConcurrentUsers() : Real {
+  return self.source.getConcurrentUsers();
 }
 
 @cached
 $pre self.incoming.notEmpty()
-operation JoinNode getTransactionsPerSec() : Real {
+operation JoinNode getConcurrentUsers() : Real {
   var firstParent;
   var result;
 
@@ -165,17 +165,17 @@ operation JoinNode getTransactionsPerSec() : Real {
 
     if (firstParent.isUndefined()) {
       firstParent := parent;
-      result      := incomingEdge.getTransactionsPerSec();
+      result      := incomingEdge.getConcurrentUsers();
       continue;
     }
 
     var lca := getLCA(firstParent, parent);
     if (lca.isKindOf(DecisionNode)) {
-      result := result + incomingEdge.getTransactionsPerSec();
+      result := result + incomingEdge.getConcurrentUsers();
     }
     else if (lca.isKindOf(ForkNode)) {
-      if (incomingEdge.getTransactionsPerSec() < result) {
-        result := incomingEdge.getTransactionsPerSec();
+      if (incomingEdge.getConcurrentUsers() < result) {
+        result := incomingEdge.getConcurrentUsers();
       }
     } else {
       System.user.inform('BUG: LCA ' + lca + ' of ' + firstParent
@@ -188,15 +188,15 @@ operation JoinNode getTransactionsPerSec() : Real {
 
 @cached
 $pre self.incoming.size() = 1
-operation FlowNode getTransactionsPerSec() : Real {
-  return self.incoming.first().getTransactionsPerSec();
+operation FlowNode getConcurrentUsers() : Real {
+  return self.incoming.first().getConcurrentUsers();
 }
 
--- Returns the number of transactions per second that the
+-- Returns the number of concurrent users that the
 -- executable node should be able to process, according to
 -- the user. If no manual performance constraint has been
 -- defined, returns 0.
-operation ExecutableNode getManualTransactionsPerSec() : Real {
+operation ExecutableNode getManualConcurrentUsers() : Real {
   if (self.hasManualPerformanceAnnotation()) {
     return self.annotation.concurrentUsers;
   } else {
@@ -206,7 +206,7 @@ operation ExecutableNode getManualTransactionsPerSec() : Real {
 
 $pre newValue >= 0
 $pre self.annotation.isUndefined() or self.annotation.concurrentUsers <= newValue
-operation ExecutableNode setTransactionsPerSec(newValue : Real) {
+operation ExecutableNode setConcurrentUsers(newValue : Real) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }

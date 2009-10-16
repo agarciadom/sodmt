@@ -1,5 +1,5 @@
 import 'time_limits.eol';
-import 'transactions_per_sec.eol';
+import 'concurrent_users.eol';
 
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
@@ -7,7 +7,7 @@ wizard InferPerformanceAnnotations {
     transaction {
       for (start in ProcessStart.all) {
         if (not annotateTimeLimits(start)
-            or not annotateTransactionsPerSec(start)) {
+            or not annotateConcurrentUsers(start)) {
           abort;
           return;
         }
@@ -36,6 +36,6 @@ operation ProcessStart getGlobalTimeLimit() {
 }
 
 @cached
-operation ProcessStart getTransactionsPerSec() : Real {
+operation ProcessStart getConcurrentUsers() : Real {
   return ProcessPerformanceAnnotation.all.first().concurrentUsers;
 }

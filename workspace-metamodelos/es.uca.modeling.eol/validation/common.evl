@@ -173,7 +173,7 @@ context ObjectFlow {
 -- Annotation constraints -------------------------
 
 context PerformanceAnnotation {
-  constraint ValidTransactionsPerSec {
+  constraint ValidConcurrentUsers {
     check : self.concurrentUsers > 0
     message : 'Transactions per sec must be a natural number'
   }
