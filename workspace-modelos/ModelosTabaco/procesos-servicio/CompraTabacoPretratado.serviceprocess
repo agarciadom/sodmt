@@ -26,12 +26,12 @@
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.11" source="//@nodes.10"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.6" source="//@nodes.11" condition="control superado" probability="0.9"/>
   <edges xsi:type="sp:ProcessControlFlow" target="//@nodes.12" source="//@nodes.11" condition="control no superado" probability="0.1"/>
-  <activityPerformance secsTimeLimit="30.0" execNode="//@nodes.4"/>
-  <activityPerformance secsTimeLimit="18.0" execNode="//@nodes.1" manuallyAdded="false"/>
-  <activityPerformance secsTimeLimit="30.0" execNode="//@nodes.3" manuallyAdded="false"/>
-  <activityPerformance secsTimeLimit="18.0" execNode="//@nodes.6" manuallyAdded="false"/>
-  <activityPerformance secsTimeLimit="18.0" execNode="//@nodes.7" manuallyAdded="false"/>
-  <activityPerformance secsTimeLimit="18.0" execNode="//@nodes.8" manuallyAdded="false"/>
-  <activityPerformance secsTimeLimit="18.0" execNode="//@nodes.10" manuallyAdded="false"/>
-  <processPerformance secsTimeLimit="120.0"/>
+  <activityPerformance concurrentUsers="3.0" secsTimeLimit="30.0" execNode="//@nodes.4"/>
+  <activityPerformance concurrentUsers="5.0" secsTimeLimit="18.0" execNode="//@nodes.1" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="2.0" secsTimeLimit="30.0" execNode="//@nodes.3" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="18.0" execNode="//@nodes.6" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="18.0" execNode="//@nodes.7" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="4.5" secsTimeLimit="18.0" execNode="//@nodes.8" manuallyAdded="false"/>
+  <activityPerformance concurrentUsers="5.0" secsTimeLimit="18.0" execNode="//@nodes.10" manuallyAdded="false"/>
+  <processPerformance concurrentUsers="5.0" secsTimeLimit="120.0"/>
 </sp:ServiceProcess>
