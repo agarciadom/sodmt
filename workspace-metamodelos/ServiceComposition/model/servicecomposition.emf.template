@@ -66,7 +66,7 @@ class ActivityObjectFlow     extends ActivityFlowEdge, ObjectFlow {}
 /* OUTER NODES */
 
 @gmf.node(tool.name="Service Activity", figure="rounded")
-class ServiceActivity extends CompositionFlowNode, ExecutableNode {
+class ServiceActivity extends CompositionFlowNode, Activity {
   @gmf.link(label="performance", style="dash",
             tool.name="Link Activity Performance Annotation")
   ref ActivityPerformanceAnnotation#execNode annotation;
@@ -96,7 +96,7 @@ class CompositionObjectNode  extends CompositionFlowNode, ObjectNode {}
 /* INNER NODES */
 
 @gmf.node(tool.name="Activity Action")
-class ActivityAction extends ActivityFlowNode, ExecutableNode {
+class ActivityAction extends ActivityFlowNode, Activity {
    @gmf.link(label="performance", style="dash",
             tool.name="Link Action Performance Annotation")
   ref ActionPerformanceAnnotation#action annotation;

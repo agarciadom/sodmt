@@ -40,7 +40,7 @@ class ProcessControlFlow extends ProcessFlowEdge, ControlFlow {}
 /* NODES */
 
 @gmf.node(tool.name="Service Activity")
-class ServiceActivity extends ProcessFlowNode, ExecutableNode {
+class ServiceActivity extends ProcessFlowNode, Activity {
   @gmf.link(label="performance", style="dash",
             tool.name="Link Performance Annotation")
   ref ActivityPerformanceAnnotation#execNode annotation;

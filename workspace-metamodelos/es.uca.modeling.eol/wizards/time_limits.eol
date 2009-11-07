@@ -123,7 +123,7 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
   for (path in paths) {
     path.~manualSum     := getFixedTimeLimitSum(path, 0);
     path.~startingSlack := global_limit - path.~manualSum;
-    for (node in path.select(r:ExecutableNode | r.hasAutomaticPerformanceAnnotation())) {
+    for (node in path.select(r:Activity | r.hasAutomaticPerformanceAnnotation())) {
       node.annotation.secsTimeLimit := 100000.0d;
     }
   }
@@ -139,14 +139,14 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
     if (slack >= -0.0001 and slack <= 0.0001) {
       if (freeCount > 0) {
         System.user.inform('Nodes with manual restrictions in path '
-          + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
+          + path.select(r:Activity|true).collect(r|r.name).asString()
           + ' left no slack to establish the automatic restrictions (had '
           + global_limit + ' seconds)');
         return false;
       }
     } else if (slack < 0) {
       System.user.inform('Nodes with manual restrictions in path '
-        + path.select(r:ExecutableNode|true).collect(r|r.name).asString()
+        + path.select(r:Activity|true).collect(r|r.name).asString()
         + ' have used up more than the available time ('
         + path.~manualSum + ', with ' + global_limit + ' available)');
       return false;
@@ -183,7 +183,7 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real, slack : 
     newLimit := (global_limit - getFixedTimeLimitSum(path, newLimit))/newUpdatableCount;
   }
 
-  for (node : ExecutableNode in path) {
+  for (node : Activity in path) {
     if (node.canBeUpdatedTo(newLimit)) {
       node.setTimeLimit(newLimit);
     }
@@ -194,7 +194,7 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real, slack : 
 -- a specific path to a specific new limit. If the limit is 0, returns the sum
 -- of the time limits set manually by the user.
 operation getFixedTimeLimitSum(path : Sequence, newLimit : Real) : Real {
-  return path.select(node : ExecutableNode | not node.canBeUpdatedTo(newLimit))
+  return path.select(node : Activity | not node.canBeUpdatedTo(newLimit))
              .collect(r|r.getTimeLimit()).sum();
 }
 
@@ -208,13 +208,13 @@ operation countFreeNodes(path : Sequence) : Integer {
 @cached
 $pre path.isDefined() and newLimit >= 0
 operation countUpdatableNodes(path : Sequence, newLimit : Real) : Integer {
-  return path.select(node : ExecutableNode | node.canBeUpdatedTo(newLimit)).size();
+  return path.select(node : Activity | node.canBeUpdatedTo(newLimit)).size();
 }
 
 -- Returns whether a node can have its time limit updated or not to the new limit.
 -- With 0, returns whether a node has a manual restriction or not.
 $pre newLimit >= 0
-operation ExecutableNode canBeUpdatedTo(newLimit : Real) : Boolean {
+operation Activity canBeUpdatedTo(newLimit : Real) : Boolean {
   return not self.annotation.isDefined()
          or (not self.annotation.manuallyAdded
              and newLimit < self.getTimeLimit());
@@ -222,14 +222,14 @@ operation ExecutableNode canBeUpdatedTo(newLimit : Real) : Boolean {
 
 -- Returns the time limit for this node, be it either manual or automatic, if set.
 $pre self.annotation.isDefined()
-operation ExecutableNode getTimeLimit() : Real {
+operation Activity getTimeLimit() : Real {
   return self.annotation.secsTimeLimit;
 }
 
 -- Sets an automatic time limit restriction for this node. Restrictions can only
 -- be made stricter, and not relaxed.
 $pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
-operation ExecutableNode setTimeLimit(newLimit : Real) {
+operation Activity setTimeLimit(newLimit : Real) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }

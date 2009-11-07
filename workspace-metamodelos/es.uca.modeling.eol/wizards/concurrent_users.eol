@@ -91,14 +91,14 @@ import '../common/utils.eol';
   This operation can ask the user if they want to update existing
   constraints to make them stricter if they're set too lax. However, this means
   that we need to walk the graph so these updates reach all the affected nodes.
-  We will go through all ExecutableNodes, sorting them by depth in ascending
+  We will go through all Activities, sorting them by depth in ascending
   order.
 
   This operation returns true if all nodes reachable from the starting node
   have been successfully annotated, and false otherwise.
 *-
 operation annotateConcurrentUsers(start : FlowNode) : Boolean {
-  var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(ExecutableNode));
+  var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(Activity));
 
   -- Relax all automatic constraints before continuing
   for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
@@ -130,7 +130,7 @@ operation annotateConcurrentUsers(start : FlowNode) : Boolean {
   All nodes and edges have a minimum number of concurrent users
   that they can handle. However, only the executable nodes can have performance
   restrictions manually assigned to them. That's why though all edges and nodes
-  have the getConcurrentUsers method, only ExecutableNodes have the
+  have the getConcurrentUsers method, only Activities have the
   getManualConcurrentUsers method.
 
   This way, the wizard can compare the user's manual restrictions with the
@@ -196,7 +196,7 @@ operation FlowNode getConcurrentUsers() : Real {
 -- executable node should be able to process, according to
 -- the user. If no manual performance constraint has been
 -- defined, returns 0.
-operation ExecutableNode getManualConcurrentUsers() : Real {
+operation Activity getManualConcurrentUsers() : Real {
   if (self.hasManualPerformanceAnnotation()) {
     return self.annotation.concurrentUsers;
   } else {
@@ -206,7 +206,7 @@ operation ExecutableNode getManualConcurrentUsers() : Real {
 
 $pre newValue >= 0
 $pre self.annotation.isUndefined() or self.annotation.concurrentUsers <= newValue
-operation ExecutableNode setConcurrentUsers(newValue : Real) {
+operation Activity setConcurrentUsers(newValue : Real) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }

@@ -79,7 +79,7 @@ context CompositionFlowEdge {
 
 -- OPERATIONS REQUIRED BY THE SHARED EVL CODE
 
-operation CompositionFlowNode newExecutableNode() {
+operation CompositionFlowNode newActivity() {
   var newElement := new ServiceActivity;
   self.addSibling(newElement);
   return newElement;
@@ -107,7 +107,7 @@ operation CompositionFlowNode addSibling(node : CompositionFlowNode) {
   ServiceComposition.all.first().nodes.add(node);
 }
 
-operation ActivityFlowNode newExecutableNode() {
+operation ActivityFlowNode newActivity() {
   var newElement := new ActivityAction;
   self.addSibling(newElement);
   return newElement;

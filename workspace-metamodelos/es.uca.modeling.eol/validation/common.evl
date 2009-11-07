@@ -72,7 +72,7 @@ context FlowNode {
   constraint SameFlowTypeForAllIncomingAndOutgoing {
     guard : self.satisfies('SameFlowTypeForAllIncoming')
             and self.satisfies('SameFlowTypeForAllOutgoing')
-            and not self.isKindOf(ExecutableNode)
+            and not self.isKindOf(Activity)
     check : self.incoming.forAll(r|r.type() == self.outgoing.first().type())
     message : 'All incoming and outgoing links should be of the same type, except for executable nodes'
   }
@@ -163,9 +163,9 @@ context ObjectFlow {
     message : 'Either the source or the target of an object flow must be an object node, but not both'
   }
 
-  constraint EitherSourceOrTargetMustBeExecutableNode {
+  constraint EitherSourceOrTargetMustBeActivity {
     guard : self.source.isDefined() and self.target.isDefined()
-    check : self.source.isKindOf(ExecutableNode) xor self.target.isKindOf(ExecutableNode)
+    check : self.source.isKindOf(Activity) xor self.target.isKindOf(Activity)
     message : 'Either the source or the target of an object flow must be an executable node, but not both'
   }
 }
@@ -189,9 +189,9 @@ context ActivityPerformanceAnnotation {
     check : self.execNode.isDefined()
     message : 'The annotation must be linked to an executable node'
   }
-  constraint LinkedNodeIsExecutableNode {
+  constraint LinkedNodeIsActivity {
     guard : self.satisfies('IsLinkedToNode')
-    check : self.execNode.isKindOf(ExecutableNode)
+    check : self.execNode.isKindOf(Activity)
     message : 'The linked activity node must be an executable node'
   }
 }
@@ -227,7 +227,7 @@ context InitialNode {
     fix {
       title : 'Add dummy executable node'
       do {
-        var newExec = self.newExecutableNode();
+        var newExec = self.newActivity();
         newExec.name := 'Do something';
         self.placeNodeBetween(newExec, NodeSide#OUTGOING);
       }

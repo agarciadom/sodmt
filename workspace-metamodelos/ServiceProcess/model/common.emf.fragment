@@ -70,7 +70,7 @@ abstract class NamedElement {
 
 @gmf.node(figure="es.uca.modeling.figures.CapsuleFigure",
           label.icon="false", tool.name="Executable Node")
-abstract class ExecutableNode extends FlowNode, NamedElement {}
+abstract class Activity extends FlowNode, NamedElement {}
 
 @gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
 abstract class ObjectNode extends FlowNode, NamedElement {}
