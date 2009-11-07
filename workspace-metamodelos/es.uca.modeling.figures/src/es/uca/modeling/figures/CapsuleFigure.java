@@ -1,11 +1,18 @@
 package es.uca.modeling.figures;
 
-import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 
-public class LabeledEllipse extends Ellipse {
+public class CapsuleFigure extends RoundedRectangle {
+  
+  final int CORNER_SIZE = 20;
+  
+  public CapsuleFigure() {
+    this.setCornerDimensions(new Dimension(CORNER_SIZE, CORNER_SIZE));
+  }
 
   @Override
   public void paintFigure(Graphics g) {

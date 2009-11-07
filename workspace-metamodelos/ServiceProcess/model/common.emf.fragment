@@ -68,7 +68,7 @@ abstract class NamedElement {
    attr String name;
 }
 
-@gmf.node(figure="es.uca.modeling.figures.LabeledEllipse",
+@gmf.node(figure="es.uca.modeling.figures.CapsuleFigure",
           label.icon="false", tool.name="Executable Node")
 abstract class ExecutableNode extends FlowNode, NamedElement {}
 
