@@ -3,7 +3,6 @@ src
 *.properties
 *.ecore
 *.genmodel
-*.trace
 *.gmfmap
 *.gmfgraph
 *.gmftool

@@ -4,6 +4,5 @@ model/*.emf
 model/*.ecore
 model/*.gmf*
 model/*.genmodel
-model/*.trace
 templates
 .settings
