@@ -111,3 +111,70 @@ operation auxPathsTo(partialPath : Sequence) {
   }
   return results;
 }
+
+-- UTILITY OPERATIONS FOR VALIDATION --
+
+-- Edge creation
+
+$pre e.isDefined()
+operation createEdgeSimilarTo(e : FlowEdge) {
+  var utilsTool := new Native('es.uca.modeling.eol.tools.ECoreUtilsTool');
+  var newEdge := utilsTool.copy(e);
+  addEdge(newEdge);
+  return newEdge;
+}
+
+-- Adds another node between a node and its direct ancestors or descendants
+-- FIXME: Cannot use "NodeSide" as the parameter type (Eclipse Bugzilla #286412)
+$pre  newNode.isDefined() and side.isDefined()
+$pre  (side = NodeSide#OUTGOING and self.outgoing.size() >= 1) or (side = NodeSide#INCOMING and self.incoming.size() >= 1)
+$post (side = NodeSide#OUTGOING and self.outgoing.size() = 1) or (side = NodeSide#INCOMING and self.incoming.size() = 1)
+operation FlowNode placeNodeBetween(newNode : FlowNode, side : Any) {
+  if (side = NodeSide#OUTGOING) {
+    var newEdge := createEdgeSimilarTo(self.outgoing.first());
+    for (e in self.outgoing.clone()) {
+       e.source := newNode;
+    }
+    newEdge.source := self;
+    newEdge.target := newNode;
+  } else {
+    var newEdge := createEdgeSimilarTo(self.incoming.first());
+    for (e in self.incoming.clone()) {
+      e.target := newNode;
+    }
+    newEdge.source := newNode;
+    newEdge.target := self;
+  }
+}
+
+-- Cycle testing
+
+operation graphIsAcyclic(start : FlowNode) {
+  -- Mark all vertices as not visited
+  for (v in FlowNode.all) {
+    v.~visitStatus := VisitStatus#NOT_VISITED;
+  }
+  start.~firstEdgeProducingCycle := getFirstEdgeProducingCycle(start);
+  return start.~firstEdgeProducingCycle.isUndefined();
+}
+
+$pre node.~visitStatus <> VisitStatus#VISITING
+operation getFirstEdgeProducingCycle(node : FlowNode) {
+  -- All ancestors already visited: nothing to do
+  if (node.~visitStatus = VisitStatus#VISITED) {
+    return;
+  }
+
+  node.~visitStatus := VisitStatus#VISITING;
+  for (edge in node.outgoing) {
+    if (edge.target.~visitStatus = VisitStatus#VISITING) {
+      return edge;
+    }
+
+    var firstEdgeProducingCycle := getFirstEdgeProducingCycle(edge.target);
+    if (firstEdgeProducingCycle.isDefined()) {
+      return firstEdgeProducingCycle;
+    }
+  }
+  node.~visitStatus := VisitStatus#VISITED;
+}
