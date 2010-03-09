@@ -1,0 +1,3 @@
+[submodule "workspace-infraestructura/epsilon"]
+	path = workspace-infraestructura/epsilon
+	url = https://neptuno.uca.es/git/epsilon-mirror
