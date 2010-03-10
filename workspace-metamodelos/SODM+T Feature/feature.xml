@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uca.modeling.sodmt"
+      label="SODM+T Toolset"
+      version="1.0.0.qualifier"
+      provider-name="University of Cadiz">
+
+   <description url="https://neptuno.uca.es/redmine/projects/sodmt/">
+      Toolset for the SODM+T model-driven SOA methodology, which extends
+the SODM methodology developed at the
+Kybele research group of the University of Rey Juan Carlos (Madrid)
+to take testing aspects into account. Extensions have been done
+through reimplementation of the affected parts of the methodology.
+   </description>
+
+   <copyright>
+      Copyright (C) 2009-2010 Antonio García-Domínguez
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html.">
+      Please note that this license only applies to the source code
+of the parts of SODM that were reimplemented and extended in
+SODM+T at the University of Cadiz, and does not affect IN ANY
+WAY WHATSOEVER the intellectual property of the Kybele research
+group at the University of Rey Juan Carlos, or the intellectual
+property of any of the other bundled.
+/*******************************************************************************
+* Copyright (c) 2009-2010 Antonio García-Domínguez
+*
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License
+* v1.0 which accompanies this distribution, and is available
+* at http://www.eclipse.org/legal/epl-v10.html.
+*
+* Contributors:
+*   Antonio García-Domínguez - initial API and implementation
+*******************************************************************************/
+   </license>
+
+   <url>
+      <discovery label="Personal homepage of the original author" url="http://neptuno.uca.es/~agarcia"/>
+      <discovery label="Project homepage" url="https://neptuno.uca.es/redmine/projects/sodmt/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.apache.ant" version="1.7.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.emfatic.core" version="0.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ant.core" version="3.2.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.bridge.ui" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.codegen.ecore" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.map" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.evl.emf.validation" version="0.8.6" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.epsilon.etl.engine" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.erl.engine" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.common.dt" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.draw2d" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.draw2d.ui" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.ui.navigator.resources"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.ui.properties"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.printing"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.printing.render"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.render"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
+      <import plugin="org.eclipse.ocl.ecore"/>
+      <import plugin="org.eclipse.emf.validation"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.emf.edit"/>
+   </requires>
+
+   <plugin
+         id="es.uca.modeling.ant"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="es.uca.modeling.eol"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="es.uca.modeling.eol.contextmenu"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.modeling.eol.tools"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.modeling.figures"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceComposition"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceComposition.diagram"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceComposition.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceComposition.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceProcess"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceProcess.diagram"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceProcess.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ServiceProcess.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
