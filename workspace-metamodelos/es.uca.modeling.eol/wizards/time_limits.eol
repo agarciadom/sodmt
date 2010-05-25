@@ -18,7 +18,9 @@
   elapsed. If the node already has a manual restriction applied to it,
   it will also make sure that a consistent solution can be achieved.
   Unless explicitly told otherwise, it assumes that all executable
-  nodes in the path should take the same time.
+  nodes in the path should take around the same time. The actual time
+  will vary depending on the structure of the graph and the manual
+  time constraints.
 
   IMPORTANT: the model must have been validated with the EVL script in
   es.uca.modeling.validation and pass with no errors.
@@ -39,12 +41,15 @@
 
   - Obtain a list of all paths between the initial node and the start
     node. It would be impossible to get a finite list out of a graph
-    with cycles, but the EVL validation script actually makes sure the
-    graph is acyclic, precisely for this reason.
+    with cycles, but the EVL validation script ensures the graph is
+    acyclic, precisely for this reason.
 
-  - Sort the list in descending order by the sum of the time limits
-    which the user has set manually. Otherwise, results would vary
-    depending on what path were checked first.
+  - Sort the list in descending order by an estimation of the time
+    which would be assigned to each node in the path in absence of
+    other paths. This ensures the algorithm produces correct results
+    and saves us from having to look at previous paths while annotating
+    some path, since the previous paths are always at least as restrictive
+    as the current one.
 
   - For each path in the list:
 
@@ -61,56 +66,17 @@
       greater than zero.
 
     * Otherwise, if there are free nodes in the path, split up the slack
-      between them. The process is slightly involved, so we describe
-      it more in detail below.
-
-  If no previous restrictions have been inferred in any node in the
-  path, splitting up the slack between all the free nodes is easy
-  enough: just set their time limits to slack/free node count.
-
-  However, it might be that some of them already have stricter
-  restrictions from a previous path, so they are not updatable. We can
-  reuse the slack that couldn't be assigned to those stricter nodes to
-  infer more relaxed restrictions on the rest. However, if we relax
-  the restrictions to be applied to the rest of the nodes, new
-  non-updatable nodes might appear, so we'll relax the restrictions
-  for the rest again, and so on.
-
-  Therefore, the real process needs to be iterative, and stop when the
-  situation stabilizes. It can be described as follows:
-
-  1. Compute how many free nodes are in the path, and what would be
-     the new time limit for each of them. These are our first
-     estimates for the updatable node count and new time limit for the
-     updatable nodes.
-
-  2. Count how many of the free nodes in the path can be really
-     updated to the current estimation of the new limit.
-
-  3. If there are no updatable nodes in the path, skip this path and
-     start processing the next one normally.
-
-  4. If the actual updatable node count agrees with the estimation, go
-     to step 6. Otherwise, update our estimated updatable node count
-     to the actual count, and then update the estimated new time limit
-     for the updatable nodes to (path time limit - sum of time limits
-     for non-updatable nodes in the path)/(updatable node count).
-
-  5. If the absolute value of the difference between the previous
-     estimation of the final time limit and the new final time limit
-     is smaller than 0.01, go to step 6. This avoids endless loops due
-     to floating-point rounding errors. Otherwise, go back to step 2.
-
-  6. Set the time limit for all updatable nodes to the new value. This
-     new time limit will be always stricter than the old one. This
-     requirement is part of the preconditions for the setTimeLimit()
-     method.
-
+      between them. If this is the first path, no free nodes will be annotated,
+      so all the slack can be distributed. Otherwise, some free nodes will be
+      already annotated from the previous paths. Since the previous paths were
+      at least as restrictive as this one, we can subtract their annotated time
+      limits and split the remaining slack among the nodes which have not been
+      annotated yet.
 *-
 import '../common/utils.eol';
 
 -*
-   Current assumptions: acyclic graph with only one service activity
+   Current assumptions: acyclic graph with only one initial node
    Output: returns true when all nodes reachable from the starting node
            are successfully annotated, false otherwise.
 *-
@@ -124,16 +90,16 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
     path.~manualSum     := getFixedTimeLimitSum(path, 0);
     path.~startingSlack := global_limit - path.~manualSum;
     for (node in path.select(r:Activity | r.hasAutomaticPerformanceAnnotation())) {
-      node.annotation.secsTimeLimit := 100000.0d;
+      node.annotation.secsTimeLimit := global_limit;
     }
   }
 
   -- Use the paths to establish the constraints, using the most restrictive
   -- paths first. Otherwise, results would vary depending on what path got
-  -- evaluated first.
+  -- evaluated first, and would be inconsistent.
   for (path in paths.sortBy(p | p.~startingSlack/(1 + countFreeNodes(p)))) {
     var slack     := path.~startingSlack;
-    var freeCount := countUpdatableNodes(path, 0);
+    var freeCount := countFreeNodes(path);
 
     if (isApproximatelyEqual(slack, 0, 0.0001)) {
       if (freeCount > 0) {
@@ -150,44 +116,36 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
         + path.~manualSum + ', with ' + global_limit + ' available)');
       return false;
     } else if (freeCount > 0) {
-      splitSlackOverFreeNodes(path, global_limit, slack, freeCount);
+      splitSlackOverFreeNodes(path, global_limit);
     }
   }
 
   return true;
 }
 
-$pre freeCount > 0 and slack > 0 and path.isDefined() and path.notEmpty()
-operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real, slack : Real, freeCount : Integer) {
-  -- We try to distribute the slack evenly over all free nodes. Some of them
-  -- won't be able to use all of it, since they have stricter restrictions.
-  -- We'll reuse that slack on the remaining nodes, updating the limit
-  -- to be newly assigned to them as appropiate. This check may have to be
-  -- repeated until the number of updatable nodes or the new limit to be
-  -- applied stabilize or the number of updatable nodes becomes 0.
-  var oldLimit := -1;
-  var newLimit := slack/freeCount;
-  var oldUpdatableCount := -1;
-  var newUpdatableCount := freeCount;
-  while (oldUpdatableCount <> newUpdatableCount
-         and (oldLimit - newLimit).abs() >= 0.001) {
-    oldLimit          := newLimit;
-    oldUpdatableCount := newUpdatableCount;
-    newUpdatableCount := countUpdatableNodes(path, newLimit);
-    if (newUpdatableCount = 0) {
-      -- No nodes can be updated in the end: just return, to avoid
-      -- a division by zero error in the calculation of the new limit
-      return;
-    }
-    newLimit := (global_limit - getFixedTimeLimitSum(path, newLimit))/newUpdatableCount;
-  }
+$pre path.isDefined() and path.notEmpty() and global_limit > 0
+operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
+  -*
+    There are two possibilities:
+     * this is the first path in the graph, so all free nodes can be updated
+       to the new time limit.
+     * some free nodes were already annotated by paths which were at least as
+       restrictive as this one, so we can safely ignore them. Use the remaining
+       slack for the nodes which have not been annotated yet.
+  *-
+  var unrestricted := getUnrestrictedNodes(path, global_limit);
+  if (unrestricted.notEmpty()) {
+    var restricted := getRestrictedNodes(path, global_limit);
+    var usedTime   := restricted.collect(node : Activity | node.getTimeLimit()).sum();
+    var limit      := (global_limit - usedTime) / unrestricted.size();
 
-  for (node : Activity in path) {
-    if (node.canBeUpdatedTo(newLimit)) {
-      node.setTimeLimit(newLimit);
+    for (node : Activity in unrestricted) {
+        node.setTimeLimit(limit);
     }
   }
 }
+
+-- TIME LIMITS: QUERIES AND UPDATES -------------
 
 -- Returns the sum of the time limits of the nodes which cannot be updated within
 -- a specific path to a specific new limit. If the limit is 0, returns the sum
@@ -198,16 +156,14 @@ operation getFixedTimeLimitSum(path : Sequence, newLimit : Real) : Real {
 }
 
 operation countFreeNodes(path : Sequence) : Integer {
-  return countUpdatableNodes(path, 0);
+  return getUpdatableNodes(path, 0).size();
 }
 
--- Counts how many executable nodes can be updated in the path to a new limit.
--- With 0, counts how many nodes do not have manual restrictions set in place
--- (i.e. free nodes).
-@cached
+-- Returns all nodes which can be updated to a new limit. With 0, counts how
+-- many nodes do not have manual restrictions set in place (i.e. free nodes).
 $pre path.isDefined() and newLimit >= 0
-operation countUpdatableNodes(path : Sequence, newLimit : Real) : Integer {
-  return path.select(node : Activity | node.canBeUpdatedTo(newLimit)).size();
+operation getUpdatableNodes(path : Sequence, newLimit : Real) : Sequence {
+  return path.select(node : Activity | node.canBeUpdatedTo(newLimit));
 }
 
 -- Returns whether a node can have its time limit updated or not to the new limit.
@@ -233,4 +189,26 @@ operation Activity setTimeLimit(newLimit : Real) {
     self.createPerformanceAnnotation();
   }
   self.annotation.secsTimeLimit := newLimit;
+}
+
+-- RESTRICTED/UNRESTRICTED NODES ----------------
+
+-- Returns all nodes in the path which do not have a performance restriction yet.
+operation getUnrestrictedNodes(path : Sequence, global_limit : Real) : Sequence {
+  return path.select(node : Activity | not node.isRestricted(global_limit));
+}
+
+-- Returns all nodes in the path which already have a performance restriction.
+operation getRestrictedNodes(path : Sequence, global_limit : Real) : Sequence {
+  return path.select(node : Activity | node.isRestricted(global_limit));
+}
+
+-- Returns true if the node has a performance restriction, either manual or
+-- automatic. Automatic restrictions which are equal to the specified dummy
+-- value are considered not to exist.
+$pre dummy_value > 0
+operation Activity isRestricted(dummy_value : Real) : Boolean {
+  return self.annotation.isDefined()
+         and (self.annotation.manuallyAdded
+              or not isApproximatelyEqual(self.getTimeLimit(), dummy_value, 0.01));
 }
