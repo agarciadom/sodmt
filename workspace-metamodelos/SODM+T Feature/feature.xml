@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.sodmt"
       label="SODM+T Toolset"
-      version="1.0.0.qualifier"
+      version="1.0.1.qualifier"
       provider-name="University of Cadiz">
 
    <description url="https://neptuno.uca.es/redmine/projects/sodmt/">
@@ -23,7 +23,7 @@ of the parts of SODM that were reimplemented and extended in
 SODM+T at the University of Cadiz, and does not affect IN ANY
 WAY WHATSOEVER the intellectual property of the Kybele research
 group at the University of Rey Juan Carlos, or the intellectual
-property of any of the other bundled.
+property of any of the other bundles.
 /*******************************************************************************
 * Copyright (c) 2009-2010 Antonio García-Domínguez
 *
@@ -98,7 +98,7 @@ property of any of the other bundled.
          id="es.uca.modeling.eol"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"/>
+         version="1.0.1.qualifier"/>
 
    <plugin
          id="es.uca.modeling.eol.contextmenu"

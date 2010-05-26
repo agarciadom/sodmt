@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/es.uca.modeling.sodmt_1.0.0.201003101841.jar" id="es.uca.modeling.sodmt" version="1.0.0.201003101841">
-      <category name="es.uca.webservices.sodmt.updatesite.soa"/>
-   </feature>
    <feature url="features/ca.ecliptical.gmf.ant_1.1.0.20090717033226.jar" id="ca.ecliptical.gmf.ant" version="1.1.0.20090717033226">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
@@ -12,16 +9,16 @@
    <feature url="features/ca.ecliptical.gmf.ant.source_1.1.0.20090717033226.jar" id="ca.ecliptical.gmf.ant.source" version="1.1.0.20090717033226">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
-   <feature url="features/org.eclipse.epsilon.eugenia.feature_0.8.8.201003101841.jar" id="org.eclipse.epsilon.eugenia.feature" version="0.8.8.201003101841">
+   <feature url="features/org.eclipse.epsilon.eugenia.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.eugenia.feature" version="0.8.8.201005261111">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
-   <feature url="features/org.eclipse.epsilon.evl.emf.validation.feature_0.8.8.201003101841.jar" id="org.eclipse.epsilon.evl.emf.validation.feature" version="0.8.8.201003101841">
+   <feature url="features/org.eclipse.epsilon.evl.emf.validation.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.evl.emf.validation.feature" version="0.8.8.201005261111">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
-   <feature url="features/org.eclipse.epsilon.feature_0.8.8.201003101841.jar" id="org.eclipse.epsilon.feature" version="0.8.8.201003101841">
+   <feature url="features/org.eclipse.epsilon.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.feature" version="0.8.8.201005261111">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
-   <feature url="features/org.eclipse.epsilon.gmf.feature_0.8.8.201003101841.jar" id="org.eclipse.epsilon.gmf.feature" version="0.8.8.201003101841">
+   <feature url="features/org.eclipse.epsilon.gmf.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.gmf.feature" version="0.8.8.201005261111">
       <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
    </feature>
    <feature url="features/org.antlr_2.7.7.jar" id="org.antlr" version="2.7.7">
@@ -32,6 +29,9 @@
    </feature>
    <feature url="features/org.eclipse.emf.emfatic_feature_0.3.0.200810132307.jar" id="org.eclipse.emf.emfatic_feature" version="0.3.0.200810132307">
       <category name="es.uca.webservices.sodmt.updatesite.emfatic"/>
+   </feature>
+   <feature url="features/es.uca.modeling.sodmt_1.0.1.201005261221.jar" id="es.uca.modeling.sodmt" version="1.0.1.201005261221">
+      <category name="es.uca.webservices.sodmt.updatesite.soa"/>
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.soa" label="SOA Modeling Tools"/>
    <category-def name="es.uca.webservices.sodmt.updatesite.emfatic" label="EMFatic"/>
