@@ -178,3 +178,11 @@ operation getFirstEdgeProducingCycle(node : FlowNode) {
   }
   node.~visitStatus := VisitStatus#VISITED;
 }
+
+-- COMPARISON OF REAL NUMBERS -----------------------------
+
+$pre epsilon > 0
+operation isApproximatelyEqual(a : Real, b : Real, epsilon : Real) : Boolean {
+  var delta := a - b;
+  return delta <= epsilon and delta >= -epsilon;
+}

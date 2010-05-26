@@ -135,8 +135,7 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
     var slack     := path.~startingSlack;
     var freeCount := countUpdatableNodes(path, 0);
 
-    -- slack = 0 is too fickle: better use small floating-point values
-    if (slack >= -0.0001 and slack <= 0.0001) {
+    if (isApproximatelyEqual(slack, 0, 0.0001)) {
       if (freeCount > 0) {
         System.user.inform('Nodes with manual restrictions in path '
           + path.select(r:Activity|true).collect(r|r.name).asString()
