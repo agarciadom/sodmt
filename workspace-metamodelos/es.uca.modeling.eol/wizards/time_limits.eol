@@ -18,7 +18,7 @@
   elapsed. If the node already has a manual restriction applied to it,
   it will also make sure that a consistent solution can be achieved.
   Unless explicitly told otherwise, it assumes that all executable
-  nodes in the path should take around the same time. The actual time
+  nodes in every path should take around the same time. The actual time
   will vary depending on the structure of the graph and the manual
   time constraints.
 
@@ -39,8 +39,8 @@
     just remove them, as they would be removed from the diagrams and
     the user would have to properly place them again.
 
-  - Obtain a list of all paths between the initial node and the start
-    node. It would be impossible to get a finite list out of a graph
+  - Obtain a list of all paths between the initial node and the final
+    nodes. It would be impossible to get a finite list out of a graph
     with cycles, but the EVL validation script ensures the graph is
     acyclic, precisely for this reason.
 
@@ -48,7 +48,7 @@
     which would be assigned to each node in the path in absence of
     other paths. This ensures the algorithm produces correct results
     and saves us from having to look at previous paths while annotating
-    some path, since the previous paths are always at least as restrictive
+    some path, since the previous paths were always at least as restrictive
     as the current one.
 
   - For each path in the list:
@@ -70,8 +70,8 @@
       so all the slack can be distributed. Otherwise, some free nodes will be
       already annotated from the previous paths. Since the previous paths were
       at least as restrictive as this one, we can subtract their annotated time
-      limits and split the remaining slack among the nodes which have not been
-      annotated yet.
+      limits from the slack and split the remaining slack among the nodes which
+      have not been annotated yet.
 *-
 import '../common/utils.eol';
 
