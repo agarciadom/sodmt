@@ -87,19 +87,20 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
-    path.~manualSum     := getFixedTimeLimitSum(path, 0);
-    path.~startingSlack := global_limit - path.~manualSum;
     for (node in path.select(r:Activity | r.hasAutomaticPerformanceAnnotation())) {
       node.annotation.secsTimeLimit := global_limit;
     }
+    path.~manualSum     := getManualTimeLimitSum(path);
+    path.~startingSlack := global_limit - path.~manualSum;
+    path.~freeCount     := countFreeNodes(path);
   }
 
   -- Use the paths to establish the constraints, using the most restrictive
   -- paths first. Otherwise, results would vary depending on what path got
   -- evaluated first, and would be inconsistent.
-  for (path in paths.sortBy(p | p.~startingSlack/(1 + countFreeNodes(p)))) {
+  for (path in paths.sortBy(p | p.~startingSlack/(1 + p.~freeCount))) {
     var slack     := path.~startingSlack;
-    var freeCount := countFreeNodes(path);
+    var freeCount := path.~freeCount;
 
     if (isApproximatelyEqual(slack, 0, 0.0001)) {
       if (freeCount > 0) {
@@ -147,32 +148,14 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
 
 -- TIME LIMITS: QUERIES AND UPDATES -------------
 
--- Returns the sum of the time limits of the nodes which cannot be updated within
--- a specific path to a specific new limit. If the limit is 0, returns the sum
--- of the time limits set manually by the user.
-operation getFixedTimeLimitSum(path : Sequence, newLimit : Real) : Real {
-  return path.select(node : Activity | not node.canBeUpdatedTo(newLimit))
+-- Returns the sum of the time limits of the nodes which have manual time limts.
+operation getManualTimeLimitSum(path : Sequence) : Real {
+  return path.select(node : Activity | node.hasManualPerformanceAnnotation())
              .collect(r|r.getTimeLimit()).sum();
 }
 
 operation countFreeNodes(path : Sequence) : Integer {
-  return getUpdatableNodes(path, 0).size();
-}
-
--- Returns all nodes which can be updated to a new limit. With 0, counts how
--- many nodes do not have manual restrictions set in place (i.e. free nodes).
-$pre path.isDefined() and newLimit >= 0
-operation getUpdatableNodes(path : Sequence, newLimit : Real) : Sequence {
-  return path.select(node : Activity | node.canBeUpdatedTo(newLimit));
-}
-
--- Returns whether a node can have its time limit updated or not to the new limit.
--- With 0, returns whether a node has a manual restriction or not.
-$pre newLimit >= 0
-operation Activity canBeUpdatedTo(newLimit : Real) : Boolean {
-  return not self.annotation.isDefined()
-         or (not self.annotation.manuallyAdded
-             and newLimit < self.getTimeLimit());
+  return path.select(node : Activity | not node.hasManualPerformanceAnnotation()).size();
 }
 
 -- Returns the time limit for this node, be it either manual or automatic, if set.
