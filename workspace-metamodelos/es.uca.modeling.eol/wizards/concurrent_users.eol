@@ -98,7 +98,9 @@ import '../common/utils.eol';
   have been successfully annotated, and false otherwise.
 *-
 operation annotateConcurrentUsers(start : FlowNode) : Boolean {
-  var allNodes := start.getAllReachableNodes().select(r|r.isKindOf(Activity));
+  -- Since the precondition must hold, all activities are reachable from the
+  -- initial node
+  var allNodes := Activity.all;
 
   -- Relax all automatic constraints before continuing
   for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
