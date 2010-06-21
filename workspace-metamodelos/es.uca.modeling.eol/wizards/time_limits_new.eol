@@ -29,8 +29,27 @@ import '../common/utils.eol';
 *-
 $pre start.isDefined()
 operation annotateTimeLimitsNew(start : FlowNode) : Boolean {
-  var rootSupernode := condenseGraph(start);
-  return expandGraph(rootSupernode, start.getGlobalTimeLimit());
+  var global_limit  := start.getGlobalTimeLimit();
+  var rootSupernode := condenseGraph(start, global_limit);
+  var manualTimeLimitSum := rootSupernode.at(1);
+  var weightSum := rootSupernode.last();
+
+  var slack := global_limit - manualTimeLimitSum;
+  if (isApproximatelyEqual(slack, 0, 0.0001) and weightSum > 0.0d) {
+      System.user.inform('Nodes with manual restrictions left no slack '
+        + 'to establish the automatic restrictions (had '
+        + global_limit + ' seconds)');
+      return false;
+  } else if (slack < 0) {
+    System.user.inform('Nodes with manual restrictions'
+      + ' have used up more than the available time ('
+      + manualTimeLimitSum + ', with ' + global_limit + ' available)');
+    return false;
+  }
+
+  printTree(rootSupernode, '');
+  expandGraph(rootSupernode, start.getGlobalTimeLimit());
+  return true;
 }
 
 -*
@@ -46,8 +65,11 @@ operation annotateTimeLimitsNew(start : FlowNode) : Boolean {
   are, respectively, the sum of the manual time limits and the sum of the
   weights of the activities of the most restrictive path in the matching
   subgraph of the original graph.
+
+  Side effects: automatic time limit constraints are relaxed on every node that
+  is reachable from the starting node.
 *-
-operation condenseGraph(start : FlowNode) : Sequence {
+operation condenseGraph(start : FlowNode, resetValue : Real) : Sequence {
   var children  := Sequence {};
   var weightSum := 0.0d;
   var manualTimeLimitSum := 0.0d;
@@ -55,14 +77,13 @@ operation condenseGraph(start : FlowNode) : Sequence {
   var currentNode := start;
   while (not currentNode.isKindOf(FinalNode)) {
     if (currentNode.outgoing.size() > 1) { -- fork/decision
-      var branches       := condenseBranches(currentNode);
+      var branches       := condenseBranches(currentNode, resetValue);
       var maxLimitWeight := getMaxConstraintsFromAllBranches(branches);
       var maxLimit       := maxLimitWeight.first();
       var maxWeight      := maxLimitWeight.last();
 
-      children.add(branches);
-      return Sequence { children,
-        manualTimeLimitSum + maxLimit, weightSum + maxWeight };
+      children.add(Sequence { branches, maxLimit, maxWeight });
+      return Sequence { children, manualTimeLimitSum + maxLimit, weightSum + maxWeight };
     }
     else if (currentNode.incoming.size() > 1) { -- join/merge
       var thisBranch := Sequence {children, manualTimeLimitSum, weightSum};
@@ -80,9 +101,11 @@ operation condenseGraph(start : FlowNode) : Sequence {
         var maxLimit  := maxLimitWeight.first();
         var maxWeight := maxLimitWeight.last();
 
-        children.add(Sequence { currentNode.~visitedBranches, maxLimit, maxWeight });
-        manualTimeLimitSum := manualTimeLimitSum + maxLimit;
-        weightSum := weightSum + maxWeight;
+        -- Replace current values with those from the supernode
+        var mergedSupernode := Sequence { currentNode.~visitedBranches, maxLimit, maxWeight };
+        children := Sequence { mergedSupernode };
+        manualTimeLimitSum := maxLimit;
+        weightSum := maxWeight;
       }
       else {
         -- No: return a special value for condenseBranches
@@ -94,6 +117,9 @@ operation condenseGraph(start : FlowNode) : Sequence {
       if (currentNode.hasManualPerformanceAnnotation()) {
         manualTimeLimitSum := manualTimeLimitSum + currentNode.getTimeLimit();
       } else {
+        if (currentNode.hasAutomaticPerformanceAnnotation()) {
+          currentNode.annotation.secsTimeLimit := resetValue;
+        }
         weightSum := weightSum + currentNode.getWeight();
       }
     }
@@ -110,10 +136,10 @@ operation condenseGraph(start : FlowNode) : Sequence {
   node. Sets of branches which are later merged are considered as a
   single branch.
 *-
-operation condenseBranches(start : FlowNode) : Sequence {
+operation condenseBranches(start : FlowNode, resetValue : Real) : Sequence {
   var branches := Sequence {};
   for (branchStart in start.outgoing.collect(r|r.target)) {
-    var condensedBranch := condenseGraph(branchStart);
+    var condensedBranch := condenseGraph(branchStart, resetValue);
     -- Condensed branch may be empty if it ends at a merge node which still
     -- has branches left to visit.
     if (not condensedBranch.isEmpty()) { 
@@ -161,6 +187,57 @@ operation getMaxConstraintsFromAllBranches(branches : Sequence) : Sequence {
   Returns true if successful, and false if not. The algorithm will fail if the
   user has specified inconsistent manual time limits. 
 *-
+$pre root.isDefined() and root.size() == 3 and global_limit >= 0.0d
 operation expandGraph(root : Sequence, global_limit : Real) : Boolean {
-  return true;
+
+  // Split supernode into components
+  var children           := root.first();
+  var manualTimeLimitSum := root.at(1);
+  var weightSum          := root.last();
+
+  // Distribute equally the slack among the children
+  var slack := global_limit - manualTimeLimitSum;
+  System.user.println('Distributing (' + global_limit + ' - ' + manualTimeLimitSum + ') = ' + slack + ' among ' + weightSum + ' activities');
+  for (child in children) {
+    if (child.isKindOf(Sequence)) {
+      -- Every child supernode will need enough time for its own manual time
+      -- limits, and will receive in addition its part of the slack.
+      var childTimeLimitSum := child.at(1);
+      var childWeightSum    := child.last();
+
+      if (weightSum > 0.0d) {
+        var childRatioSlack   := childWeightSum/weightSum;
+        var childSlack        := slack * childRatioSlack;
+        expandGraph(child, childTimeLimitSum + childSlack);
+      } else {
+        expandGraph(child, childTimeLimitSum);
+      }
+    }
+    else if (not child.hasManualPerformanceAnnotation()) {
+      -- Free activity: set its time limit
+      var ratio := child.getWeight()/weightSum;
+      child.setTimeLimit(slack * ratio);
+    }
+  }
+}
+
+-- UTILITY/DEBUGGING
+
+operation printTree(root : Sequence, indent : String) {
+  if (root.size() == 3) {
+    System.user.println(indent + 'Supernode: ');
+  } else {
+    System.user.println(indent + 'Children: ');
+  }
+  for (child in root) {
+    printTree(child, indent + '  ');
+  }
+}
+
+operation printTree(act : Activity, indent : String) {
+  System.user.println(indent + 'Activity : ' + act.name);
+}
+
+operation printTree(elem, indent : String) {
+  System.user.println(indent + 'Other : ' + elem);
 }
