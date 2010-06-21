@@ -158,22 +158,6 @@ operation countFreeNodes(path : Sequence) : Integer {
   return path.select(node : Activity | not node.hasManualPerformanceAnnotation()).size();
 }
 
--- Returns the time limit for this node, be it either manual or automatic, if set.
-$pre self.annotation.isDefined()
-operation Activity getTimeLimit() : Real {
-  return self.annotation.secsTimeLimit;
-}
-
--- Sets an automatic time limit restriction for this node. Restrictions can only
--- be made stricter, and not relaxed.
-$pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
-operation Activity setTimeLimit(newLimit : Real) {
-  if (self.annotation.isUndefined()) {
-    self.createPerformanceAnnotation();
-  }
-  self.annotation.secsTimeLimit := newLimit;
-}
-
 -- RESTRICTED/UNRESTRICTED NODES ----------------
 
 -- Returns all nodes in the path which do not have a performance restriction yet.

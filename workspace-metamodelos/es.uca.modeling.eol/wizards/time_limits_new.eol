@@ -1,0 +1,166 @@
+-*
+  Algorithm for computing the time limits in seconds for each activity node
+  in the ServiceComposition and ServiceProcess models. This is an alternative
+  formulation which does not need to list all the paths in the graph.
+
+  Copyright (c) 2010 Antonio García Domínguez.  All rights reserved. This
+  program and the accompanying materials are made available under the terms
+  of the Eclipse Public License v1.0 which accompanies this distribution, and
+  is available at http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+*-
+
+import '../common/utils.eol';
+
+-*
+  Preconditions: the start node is defined and is the only initial node of an
+  acyclic and weakly connected graph, for which all constraints in the EVL
+  scripts in this plug-in hold.
+
+  Postconditions: updates or creates the performance annotations in each
+  activity with the proper values, so the composition QoS is achieved and the
+  load is split equally across the system, giving more slack to noncritical
+  activities.
+
+  Returns true when all nodes reachable from the starting node are
+  successfully annotated, and false otherwise.
+*-
+$pre start.isDefined()
+operation annotateTimeLimitsNew(start : FlowNode) : Boolean {
+  var rootSupernode := condenseGraph(start);
+  return expandGraph(rootSupernode, start.getGlobalTimeLimit());
+}
+
+-*
+  Condenses a graph into a tree of supernodes.
+
+  Preconditions: the start node is defined and is the only initial node of a
+  valid graph.
+
+  Postconditions: returns the root supernode, which condenses the whole graph
+  into a single node. Each supernode is a sequence {n,t,w}, where n is a
+  sequence with its children (which may be sequences of the same form for
+  child supernodes or standalone Activity objects for leaf nodes) and t and w
+  are, respectively, the sum of the manual time limits and the sum of the
+  weights of the activities of the most restrictive path in the matching
+  subgraph of the original graph.
+*-
+operation condenseGraph(start : FlowNode) : Sequence {
+  var children  := Sequence {};
+  var weightSum := 0.0d;
+  var manualTimeLimitSum := 0.0d;
+
+  var currentNode := start;
+  while (not currentNode.isKindOf(FinalNode)) {
+    if (currentNode.outgoing.size() > 1) { -- fork/decision
+      var branches       := condenseBranches(currentNode);
+      var maxLimitWeight := getMaxConstraintsFromAllBranches(branches);
+      var maxLimit       := maxLimitWeight.first();
+      var maxWeight      := maxLimitWeight.last();
+
+      children.add(branches);
+      return Sequence { children,
+        manualTimeLimitSum + maxLimit, weightSum + maxWeight };
+    }
+    else if (currentNode.incoming.size() > 1) { -- join/merge
+      var thisBranch := Sequence {children, manualTimeLimitSum, weightSum};
+      -- Add this branch to the list of visited branches
+      if (currentNode.~visitedBranches.isDefined()) {
+        currentNode.~visitedBranches.add(thisBranch);
+      } else {
+        currentNode.~visitedBranches := Sequence { thisBranch };
+      }
+      -- Have we visited all branches?
+      if (currentNode.~visitedBranches.size() == currentNode.incoming.size()) {
+        -- Yes: join the branches into a single node and add it to this supernode.
+        -- Continue with the next node.
+        var maxLimitWeight := getMaxConstraintsFromAllBranches(currentNode.~visitedBranches);
+        var maxLimit  := maxLimitWeight.first();
+        var maxWeight := maxLimitWeight.last();
+
+        children.add(Sequence { currentNode.~visitedBranches, maxLimit, maxWeight });
+        manualTimeLimitSum := manualTimeLimitSum + maxLimit;
+        weightSum := weightSum + maxWeight;
+      }
+      else {
+        -- No: return a special value for condenseBranches
+        return Sequence {};
+      }
+    }
+    else if (currentNode.isKindOf(Activity)) {
+      children.add(currentNode);
+      if (currentNode.hasManualPerformanceAnnotation()) {
+        manualTimeLimitSum := manualTimeLimitSum + currentNode.getTimeLimit();
+      } else {
+        weightSum := weightSum + currentNode.getWeight();
+      }
+    }
+
+    -- Go to the next node
+    currentNode := currentNode.outgoing.first().target;
+  }
+
+  return Sequence { children, manualTimeLimitSum, weightSum };
+}
+
+-*
+  Returns a sequence of supernodes for all branches which start at a
+  node. Sets of branches which are later merged are considered as a
+  single branch.
+*-
+operation condenseBranches(start : FlowNode) : Sequence {
+  var branches := Sequence {};
+  for (branchStart in start.outgoing.collect(r|r.target)) {
+    var condensedBranch := condenseGraph(branchStart);
+    -- Condensed branch may be empty if it ends at a merge node which still
+    -- has branches left to visit.
+    if (not condensedBranch.isEmpty()) { 
+      branches.add(condensedBranch);
+    }
+  }
+  return branches;
+}
+
+-*
+  Returns a {t, w} sequence, where t is the sum of all manual time limits and
+  w is the sum of all the weights from the most restrictive branch among all
+  branches.
+*-
+$pre not branches.isEmpty()
+$post _result.forAll(r|r>=0.0d)
+operation getMaxConstraintsFromAllBranches(branches : Sequence) : Sequence {
+  var maxLimit  := 0.0d;
+  var maxWeight := 0.0d;
+  for (branch in branches) {
+    var branchLimit  := branch.at(1);
+    var branchWeight := branch.last();
+    if (branchLimit > maxLimit) {
+      maxLimit  := branchLimit;
+      maxWeight := branchWeight;
+    }
+    else if (isApproximatelyEqual(branchLimit, maxLimit, 0.001)
+             and branchWeight > maxWeight) {
+      maxWeight := branchWeight;
+    }
+  }
+  return Sequence { maxLimit, maxWeight };
+}
+
+-*
+  Expands a supernode tree and assigns time limits to the free activities.
+  
+  Precondition: root is the root supernode of the tree returned by condenseGraph.
+  
+  Postcondition: each leaf node in the tree is annotated with a time limit
+  so all paths meet the composition's QoS, the load is distributed equally
+  across the composition and the noncritical activities receive as much slack
+  as possible.
+
+  Returns true if successful, and false if not. The algorithm will fail if the
+  user has specified inconsistent manual time limits. 
+*-
+operation expandGraph(root : Sequence, global_limit : Real) : Boolean {
+  return true;
+}

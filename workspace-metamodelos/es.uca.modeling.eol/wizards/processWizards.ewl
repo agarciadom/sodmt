@@ -1,4 +1,5 @@
 import 'time_limits.eol';
+import 'time_limits_new.eol';
 import 'concurrent_users.eol';
 
 wizard InferPerformanceAnnotations {
@@ -14,6 +15,20 @@ wizard InferPerformanceAnnotations {
       }
     } -- transaction
   }
+}
+
+wizard InferTimeLimitsNew {
+  title : 'Infer time limits (new algorithm)'
+  do {
+    transaction {
+      for (start in ProcessStart.all) {
+        if (not annotateTimeLimitsNew(start)) {
+          abort;
+          return;
+        }
+      }
+    } -- transaction
+  } -- do
 }
 
 wizard RemoveAllInferredAnnotations {

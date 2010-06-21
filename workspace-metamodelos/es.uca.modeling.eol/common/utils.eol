@@ -8,6 +8,28 @@ operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
   return self.hasProperty('annotation') and self.annotation.isDefined() and not self.annotation.manuallyAdded;
 }
 
+-- Returns the weight of this node, or the default value if it has not been set.
+-- TODO: extend the model to allow the user to define the weight.
+operation Activity getWeight() : Real {
+  return 1.0d;
+}
+
+-- Returns the time limit for this node, be it either manual or automatic, if set.
+$pre self.annotation.isDefined()
+operation Activity getTimeLimit() : Real {
+  return self.annotation.secsTimeLimit;
+}
+
+-- Sets an automatic time limit restriction for this node. Restrictions can only
+-- be made stricter, and not relaxed.
+$pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
+operation Activity setTimeLimit(newLimit : Real) {
+  if (self.annotation.isUndefined()) {
+    self.createPerformanceAnnotation();
+  }
+  self.annotation.secsTimeLimit := newLimit;
+}
+
 -- GRAPH PREPROCESSING --------------------------------------------------------
 
 @cached
@@ -196,6 +218,5 @@ operation getFirstEdgeProducingCycle(node : FlowNode) {
 
 $pre epsilon > 0
 operation isApproximatelyEqual(a : Real, b : Real, epsilon : Real) : Boolean {
-  var delta := a - b;
-  return delta <= epsilon and delta >= -epsilon;
+  return (a - b).abs() <= epsilon;
 }
