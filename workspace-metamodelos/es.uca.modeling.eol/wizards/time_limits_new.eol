@@ -47,7 +47,6 @@ operation annotateTimeLimitsNew(start : FlowNode) : Boolean {
     return false;
   }
 
-  printTree(rootSupernode, '');
   expandGraph(rootSupernode, start.getGlobalTimeLimit());
   return true;
 }
@@ -195,28 +194,40 @@ operation expandGraph(root : Sequence, global_limit : Real) : Boolean {
   var manualTimeLimitSum := root.at(1);
   var weightSum          := root.last();
 
-  // Distribute equally the slack among the children
-  var slack := global_limit - manualTimeLimitSum;
-  System.user.println('Distributing (' + global_limit + ' - ' + manualTimeLimitSum + ') = ' + slack + ' among ' + weightSum + ' activities');
-  for (child in children) {
-    if (child.isKindOf(Sequence)) {
-      -- Every child supernode will need enough time for its own manual time
-      -- limits, and will receive in addition its part of the slack.
-      var childTimeLimitSum := child.at(1);
-      var childWeightSum    := child.last();
+  if (weightSum > 0.0d) {
+    -- We can distribute slack among the children, as we have a nonzero weight sum
+    var slack := global_limit - manualTimeLimitSum;
+    for (child in children) {
+      if (child.isKindOf(Sequence)) {
+        -- Every child supernode will need enough time for its own manual time
+        -- limits, and will receive in addition its part of the slack.
+        var childTimeLimitSum := child.at(1);
+        var childWeightSum    := child.last();
 
-      if (weightSum > 0.0d) {
         var childRatioSlack   := childWeightSum/weightSum;
         var childSlack        := slack * childRatioSlack;
         expandGraph(child, childTimeLimitSum + childSlack);
-      } else {
-        expandGraph(child, childTimeLimitSum);
+      }
+      else if (not child.hasManualPerformanceAnnotation()) {
+        -- Free activity: set its time limit
+        var ratio := child.getWeight()/weightSum;
+        child.setTimeLimit(slack * ratio);
       }
     }
-    else if (not child.hasManualPerformanceAnnotation()) {
-      -- Free activity: set its time limit
-      var ratio := child.getWeight()/weightSum;
-      child.setTimeLimit(slack * ratio);
+  }
+  else {
+    -- We cannot distribute slack among the children, as this supernode must
+    -- finish in a fixed time. For instance, there might be a branch which only
+    -- has manual time limits and the rest do not have any time limits. We will
+    -- force all branches to run under the time limit of that branch, to ensure
+    -- that the inferred values meet the composition QoS.
+    for (child in children) {
+      if (child.isKindOf(Sequence)) {
+        expandGraph(child, manualTimeLimitSum);
+      }
+      else if (not child.hasManualPerformanceAnnotation()) {
+        child.setTimeLimit(manualTimeLimitSum);
+      }
     }
   }
 }
