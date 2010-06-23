@@ -92,7 +92,7 @@ operation Set intersect(otherSet : Set) : Set {
   return results;
 }
 
------ ALL PATHS BETWEEN TWO NODES ---------------------------------------------
+----- REACHABLE NODES ---------------------------------------------------------
 
 -- Obtains all the nodes reachable from a node in the graph, in no
 -- particular order. Returns a Set: to convert it to a sequence, use asSequence().
@@ -118,33 +118,30 @@ operation addAllReachableNodes(node : FlowNode, nodeSet : Set) {
   }
 }
 
+----- ALL PATHS BETWEEN TWO NODES ---------------------------------------------
+
 -- Obtains all the paths starting from a node in the graph
 -- to every final node (if the starting node is a FinalNode,
 -- reports an empty set of paths)
 @cached
 operation getAllPathsFrom(start : FlowNode) {
-  if (start.isKindOf(FinalNode)) {
-    return Sequence {};
-  }
-  else {
-    return auxPathsTo(Sequence { start });
-  }
+  var allPaths := Sequence {};
+  auxPathsTo(Sequence { start }, allPaths);
+  return allPaths;
 }
 
-operation auxPathsTo(partialPath : Sequence) {
+operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   var last_elem := partialPath.last();
 
   if (last_elem.isKindOf(FinalNode)) {
-    return Sequence { partialPath };
+    allPaths.add(partialPath.clone());
   }
 
-  var results := new Sequence;
   for (descendant in last_elem.outgoing.collect(r|r.target)) {
-    var newPartialPath := partialPath.clone();
-    newPartialPath.add(descendant);
-    results.addAll(auxPathsTo(newPartialPath));
+    partialPath.add(descendant);
+    auxPathsTo(partialPath, allPaths);
+    partialPath.remove(partialPath.size()-1);
   }
-  return results;
 }
 
 -- UTILITY OPERATIONS FOR VALIDATION --

@@ -100,7 +100,7 @@ import '../common/utils.eol';
 operation annotateConcurrentUsers(start : FlowNode) : Boolean {
   -- Since the precondition must hold, all activities are reachable from the
   -- initial node. Get all reachable nodes and filter only the activities.
-  var allNodes := start.getAllReachableNodes().asSequence().select(r:Activity|r);
+  var allNodes := start.getAllReachableNodes().asSequence().select(r|r.isKindOf(Activity));
 
   -- Relax all automatic constraints before continuing
   for (node in allNodes.select(r|r.hasAutomaticPerformanceAnnotation())) {
