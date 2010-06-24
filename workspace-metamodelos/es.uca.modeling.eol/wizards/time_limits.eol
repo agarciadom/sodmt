@@ -87,7 +87,7 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
-    for (node in path.select(r:Activity | r.hasAutomaticPerformanceAnnotation())) {
+    for (node in path.select(r|r.isKindOf(Activity) and r.hasAutomaticPerformanceAnnotation())) {
       node.annotation.secsTimeLimit := global_limit;
     }
     path.~manualSum     := getManualTimeLimitSum(path);
@@ -105,14 +105,14 @@ operation annotateTimeLimits(start : FlowNode) : Boolean {
     if (isApproximatelyEqual(slack, 0, 0.0001)) {
       if (freeCount > 0) {
         System.user.inform('Nodes with manual restrictions in path '
-          + path.select(r:Activity|true).collect(r|r.name).asString()
+          + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
           + ' left no slack to establish the automatic restrictions (had '
           + global_limit + ' seconds)');
         return false;
       }
     } else if (slack < 0) {
       System.user.inform('Nodes with manual restrictions in path '
-        + path.select(r:Activity|true).collect(r|r.name).asString()
+        + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
         + ' have used up more than the available time ('
         + path.~manualSum + ', with ' + global_limit + ' available)');
       return false;
@@ -137,10 +137,11 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
   var unrestricted := getUnrestrictedNodes(path, global_limit);
   if (unrestricted.notEmpty()) {
     var restricted := getRestrictedNodes(path, global_limit);
-    var usedTime   := restricted.collect(node : Activity | node.getTimeLimit()).sum();
-    var limit      := (global_limit - usedTime) / unrestricted.size();
+    var usedTime   := restricted.collect(node | node.getTimeLimit()).sum();
+    var slack      := global_limit - usedTime;
+    var limit      := slack / unrestricted.size();
 
-    for (node : Activity in unrestricted) {
+    for (node  in unrestricted) {
         node.setTimeLimit(limit);
     }
   }
@@ -150,24 +151,24 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
 
 -- Returns the sum of the time limits of the nodes which have manual time limts.
 operation getManualTimeLimitSum(path : Sequence) : Real {
-  return path.select(node : Activity | node.hasManualPerformanceAnnotation())
+  return path.select(node | node.isKindOf(Activity) and node.hasManualPerformanceAnnotation())
              .collect(r|r.getTimeLimit()).sum();
 }
 
 operation countFreeNodes(path : Sequence) : Integer {
-  return path.select(node : Activity | not node.hasManualPerformanceAnnotation()).size();
+  return path.select(node | node.isKindOf(Activity) and not node.hasManualPerformanceAnnotation()).size();
 }
 
 -- RESTRICTED/UNRESTRICTED NODES ----------------
 
 -- Returns all nodes in the path which do not have a performance restriction yet.
 operation getUnrestrictedNodes(path : Sequence, global_limit : Real) : Sequence {
-  return path.select(node : Activity | not node.isRestricted(global_limit));
+  return path.select(node | node.isKindOf(Activity) and not node.isRestricted(global_limit));
 }
 
 -- Returns all nodes in the path which already have a performance restriction.
 operation getRestrictedNodes(path : Sequence, global_limit : Real) : Sequence {
-  return path.select(node : Activity | node.isRestricted(global_limit));
+  return path.select(node | node.isKindOf(Activity) and node.isRestricted(global_limit));
 }
 
 -- Returns true if the node has a performance restriction, either manual or
