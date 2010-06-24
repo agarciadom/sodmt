@@ -140,7 +140,7 @@ operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   for (descendant in last_elem.outgoing.collect(r|r.target)) {
     partialPath.add(descendant);
     auxPathsTo(partialPath, allPaths);
-    partialPath.remove(partialPath.size()-1);
+    partialPath.removeLast();
   }
 }
 
