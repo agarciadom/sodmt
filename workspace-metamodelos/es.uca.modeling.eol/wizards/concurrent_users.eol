@@ -208,7 +208,7 @@ operation Activity getManualConcurrentUsers() : Real {
 
 $pre newValue >= 0
 $pre self.annotation.isUndefined() or self.annotation.concurrentUsers <= newValue
-operation Activity setConcurrentUsers(newValue : Real) {
+operation Activity setConcurrentUsers(newValue) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }

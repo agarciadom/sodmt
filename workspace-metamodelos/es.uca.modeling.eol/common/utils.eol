@@ -23,7 +23,7 @@ operation Activity getTimeLimit() : Real {
 -- Sets an automatic time limit restriction for this node. Restrictions can only
 -- be made stricter, and not relaxed.
 $pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
-operation Activity setTimeLimit(newLimit : Real) {
+operation Activity setTimeLimit(newLimit) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();
   }
@@ -140,7 +140,7 @@ operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   for (descendant in last_elem.outgoing.collect(r|r.target)) {
     partialPath.add(descendant);
     auxPathsTo(partialPath, allPaths);
-    partialPath.removeLast();
+    partialPath.remove(partialPath.size()-1);
   }
 }
 
@@ -214,6 +214,6 @@ operation getFirstEdgeProducingCycle(node : FlowNode) {
 -- COMPARISON OF REAL NUMBERS -----------------------------
 
 $pre epsilon > 0
-operation isApproximatelyEqual(a : Real, b : Real, epsilon : Real) : Boolean {
+operation isApproximatelyEqual(a, b, epsilon) : Boolean {
   return (a - b).abs() <= epsilon;
 }
