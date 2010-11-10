@@ -1,7 +1,7 @@
 «IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
 
 «AROUND cons FOR gmfgen::PredefinedParser»
-    «IF className != 'NumbersToDoubleParser' and className != 'ControlFlowLabelParser'»
+    «IF className <> 'NumbersToDoubleParser' and className <> 'ControlFlowLabelParser'»
       «targetDef.proceed()»
     «ELSE»
         «EXPAND xpt::Common::generatedMemberComment»
@@ -17,7 +17,7 @@
 «ENDAROUND»
 
 «AROUND parser_getParseCommandMethod FOR gmfgen::PredefinedParser»
-   «IF className != 'NumbersToDoubleParser' and className != 'ControlFlowLabelParser'»
+   «IF className <> 'NumbersToDoubleParser' and className <> 'ControlFlowLabelParser'»
      «targetDef.proceed()»
    «ELSE»
      «EXPAND xpt::Common::generatedMemberComment»
@@ -34,7 +34,7 @@
 «ENDAROUND»
 
 «AROUND parser_getPrintStringMethod FOR gmfgen::PredefinedParser-»
-  «IF className != 'ControlFlowLabelParser'»
+  «IF className <> 'ControlFlowLabelParser'»
     «targetDef.proceed()»
   «ELSE»
      «EXPAND xpt::Common::generatedMemberComment»

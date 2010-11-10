@@ -29,6 +29,5 @@
 }
 «ENDIF-»
 «EXPAND Extras::extraMethods»
-«EXPAND Extras::localCoordinates»
 «EXPAND additions-»
 «ENDDEFINE»
