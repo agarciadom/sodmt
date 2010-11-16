@@ -12,18 +12,18 @@ operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
 -- TODO: let the user specify the weight.
 operation FlowNode getWeight() : Real {
   if (self.hasManualPerformanceAnnotation() or not self.hasProperty('annotation')) {
-    return 0;
+    return 0.0d;
   } else {
-    return 1;
+    return 1.0d;
   }
 }
 
 -- If set, returns the time limit for this node. Otherwise, returns 0.
 operation FlowNode getTimeLimit() : Real {
   if (self.hasProperty('annotation') and self.annotation.isDefined()) {
-    return self.annotation.secsTimeLimit;
+    return self.annotation.secsTimeLimit * 1.0d;
   } else {
-    return 0;
+    return 0.0d;
   }
 }
 

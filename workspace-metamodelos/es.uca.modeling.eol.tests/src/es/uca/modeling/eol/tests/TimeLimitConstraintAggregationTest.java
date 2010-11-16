@@ -11,7 +11,6 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
-import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.types.EolSequence;
 import org.junit.Before;
@@ -30,9 +29,13 @@ public class TimeLimitConstraintAggregationTest {
 	private EolModule mEolModule;
 
 	@Test
-	public void minimalGraphHasZeroConstraints() throws URISyntaxException,
-			Exception {
-		assertConstraintEquals("minimal.model");
+	public void minimalGraphHasZeroConstraints() throws EolRuntimeException {
+		assertConstraintEquals("minimal.model", 0, 0);
+	}
+
+	@Test
+	public void sequenceGraphCombinesManualAndAutomaticConstraints() throws EolRuntimeException {
+		assertConstraintEquals("sequence.model", 0.3, 1);
 	}
 
 	@Before
@@ -43,20 +46,19 @@ public class TimeLimitConstraintAggregationTest {
 		mEolModule.execute();
 	}
 
-	private void assertConstraintEquals(EolSequence res, int time, int weight) {
+	private void assertConstraintEquals(EolSequence res, double time, double weight) {
 		assertNotNull(res);
 		assertEquals(2, res.size());
-		assertEquals(time, res.get(0));
-		assertEquals(weight, res.get(1));
+		assertEquals(time, (Double)res.get(0), 0.001);
+		assertEquals(weight, (Double)res.get(1), 0.001);
 	}
 
-	private void assertConstraintEquals(String name)
-			throws EolModelLoadingException, EolRuntimeException,
-			EolModelElementTypeNotFoundException {
+	private void assertConstraintEquals(String name, double time, double weight)
+		throws EolRuntimeException {
 		EmfModel model  = loadModel(name);
 		EolSequence res = (EolSequence) callOperation("aggregateConstraints",
 				1, model.getAllOfKind("ProcessFinish"));
-		assertConstraintEquals(res, 0, 0);
+		assertConstraintEquals(res, time, weight);
 	}
 
 	private Object callOperation(String name, Object... args)
