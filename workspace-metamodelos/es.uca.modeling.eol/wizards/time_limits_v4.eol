@@ -49,7 +49,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequen
     -- Select the strictest constraint, if existing
     var strictestOutConstraint = Sequence {0, 0};
     if (not edgeConstraints.isEmpty()) {
-      strictestOutConstraint = edgeConstraints.first();
+      strictestOutConstraint = edgeConstraints.first().clone();
     }
 
     -- Generate the constraint for this node and its incoming edges, annotating them

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_gVfGkPGnEd-WVeBAYwAeXA">
+  <nodes xsi:type="sp:ProcessStart" xmi:id="_hCldIPGnEd-WVeBAYwAeXA" outgoing="_-2WA0PGnEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessFinish" xmi:id="_h8m1YPGnEd-WVeBAYwAeXA" incoming="_HFyHcPGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessDecision" xmi:id="_kQ0TsPGnEd-WVeBAYwAeXA" incoming="_Czd9sPGoEd-WVeBAYwAeXA" outgoing="_DL_LYPGoEd-WVeBAYwAeXA _DstS0PGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessDecision" xmi:id="_kt_-8PGnEd-WVeBAYwAeXA" incoming="_EilK4PGoEd-WVeBAYwAeXA" outgoing="_EvqkoPGoEd-WVeBAYwAeXA _FYkXsPGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessJoin" xmi:id="_lNmFAPGnEd-WVeBAYwAeXA" incoming="_DcMxoPGoEd-WVeBAYwAeXA _EIIDgPGoEd-WVeBAYwAeXA" outgoing="_EVLoEPGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessJoin" xmi:id="_l2oa8PGnEd-WVeBAYwAeXA" incoming="_FKKIQPGoEd-WVeBAYwAeXA _GvMMYPGoEd-WVeBAYwAeXA" outgoing="_G6qckPGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_z2N7QPGnEd-WVeBAYwAeXA" incoming="_-2WA0PGnEd-WVeBAYwAeXA" outgoing="_Czd9sPGoEd-WVeBAYwAeXA" name="A"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_0K6Y4PGnEd-WVeBAYwAeXA" incoming="_DL_LYPGoEd-WVeBAYwAeXA" outgoing="_DcMxoPGoEd-WVeBAYwAeXA" name="B" annotation="_yBpJ0PGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_0f80wPGnEd-WVeBAYwAeXA" incoming="_DstS0PGoEd-WVeBAYwAeXA" outgoing="_D6_mcPGoEd-WVeBAYwAeXA" name="C"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_00s8wPGnEd-WVeBAYwAeXA" incoming="_D6_mcPGoEd-WVeBAYwAeXA" outgoing="_EIIDgPGoEd-WVeBAYwAeXA" name="D"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_1NR00PGnEd-WVeBAYwAeXA" incoming="_EVLoEPGoEd-WVeBAYwAeXA" outgoing="_EilK4PGoEd-WVeBAYwAeXA" name="E"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_1l_20PGnEd-WVeBAYwAeXA" incoming="_EvqkoPGoEd-WVeBAYwAeXA" outgoing="_E8uwQPGoEd-WVeBAYwAeXA" name="F"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_2CVNgPGnEd-WVeBAYwAeXA" incoming="_E8uwQPGoEd-WVeBAYwAeXA" outgoing="_FKKIQPGoEd-WVeBAYwAeXA" name="G" annotation="_xgtnAPGoEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_3iYD8PGnEd-WVeBAYwAeXA" incoming="_FYkXsPGoEd-WVeBAYwAeXA" outgoing="_GvMMYPGoEd-WVeBAYwAeXA" name="H"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_38udoPGnEd-WVeBAYwAeXA" incoming="_G6qckPGoEd-WVeBAYwAeXA" outgoing="_HFyHcPGoEd-WVeBAYwAeXA" name="I"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_-2WA0PGnEd-WVeBAYwAeXA" target="_z2N7QPGnEd-WVeBAYwAeXA" source="_hCldIPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_Czd9sPGoEd-WVeBAYwAeXA" target="_kQ0TsPGnEd-WVeBAYwAeXA" source="_z2N7QPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_DL_LYPGoEd-WVeBAYwAeXA" target="_0K6Y4PGnEd-WVeBAYwAeXA" source="_kQ0TsPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_DcMxoPGoEd-WVeBAYwAeXA" target="_lNmFAPGnEd-WVeBAYwAeXA" source="_0K6Y4PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_DstS0PGoEd-WVeBAYwAeXA" target="_0f80wPGnEd-WVeBAYwAeXA" source="_kQ0TsPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_D6_mcPGoEd-WVeBAYwAeXA" target="_00s8wPGnEd-WVeBAYwAeXA" source="_0f80wPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_EIIDgPGoEd-WVeBAYwAeXA" target="_lNmFAPGnEd-WVeBAYwAeXA" source="_00s8wPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_EVLoEPGoEd-WVeBAYwAeXA" target="_1NR00PGnEd-WVeBAYwAeXA" source="_lNmFAPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_EilK4PGoEd-WVeBAYwAeXA" target="_kt_-8PGnEd-WVeBAYwAeXA" source="_1NR00PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_EvqkoPGoEd-WVeBAYwAeXA" target="_1l_20PGnEd-WVeBAYwAeXA" source="_kt_-8PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_E8uwQPGoEd-WVeBAYwAeXA" target="_2CVNgPGnEd-WVeBAYwAeXA" source="_1l_20PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_FKKIQPGoEd-WVeBAYwAeXA" target="_l2oa8PGnEd-WVeBAYwAeXA" source="_2CVNgPGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_FYkXsPGoEd-WVeBAYwAeXA" target="_3iYD8PGnEd-WVeBAYwAeXA" source="_kt_-8PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_GvMMYPGoEd-WVeBAYwAeXA" target="_l2oa8PGnEd-WVeBAYwAeXA" source="_3iYD8PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_G6qckPGoEd-WVeBAYwAeXA" target="_38udoPGnEd-WVeBAYwAeXA" source="_l2oa8PGnEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_HFyHcPGoEd-WVeBAYwAeXA" target="_h8m1YPGnEd-WVeBAYwAeXA" source="_38udoPGnEd-WVeBAYwAeXA"/>
+  <activityPerformance xmi:id="_yBpJ0PGoEd-WVeBAYwAeXA" secsTimeLimit="20.0" execNode="_0K6Y4PGnEd-WVeBAYwAeXA"/>
+  <activityPerformance xmi:id="_xgtnAPGoEd-WVeBAYwAeXA" secsTimeLimit="30.0" execNode="_2CVNgPGnEd-WVeBAYwAeXA"/>
+  <processPerformance xmi:id="_tFjqUPGoEd-WVeBAYwAeXA" secsTimeLimit="100.0"/>
+</sp:ServiceProcess>

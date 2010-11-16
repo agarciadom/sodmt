@@ -29,13 +29,25 @@ public class TimeLimitConstraintAggregationTest {
 	private EolModule mEolModule;
 
 	@Test
-	public void minimalGraphHasZeroConstraints() throws EolRuntimeException {
-		assertConstraintEquals("minimal.model", 0, 0);
+	public void minimal() throws EolRuntimeException {
+		assertConstraintEquals("minimal.model", 1, 0, 0);
 	}
 
 	@Test
-	public void sequenceGraphCombinesManualAndAutomaticConstraints() throws EolRuntimeException {
-		assertConstraintEquals("sequence.model", 0.3, 1);
+	public void sequence() throws EolRuntimeException {
+		assertConstraintEquals("sequence.model", 1, 0.3, 1);
+	}
+
+	// There are two test cases with the two dipole graph, as the
+	// most restrictive path depends on the selected global limit.
+	@Test
+	public void twoDipolesWithLimit100() throws EolRuntimeException {
+		assertConstraintEquals("two-dipoles.model", 100, 30, 6);
+	}
+
+	@Test
+	public void twoDipolesWithLimit60() throws EolRuntimeException {
+		assertConstraintEquals("two-dipoles.model", 60, 50, 4);
 	}
 
 	@Before
@@ -53,11 +65,11 @@ public class TimeLimitConstraintAggregationTest {
 		assertEquals(weight, (Double)res.get(1), 0.001);
 	}
 
-	private void assertConstraintEquals(String name, double time, double weight)
+	private void assertConstraintEquals(String name, double globalLimit, double time, double weight)
 		throws EolRuntimeException {
 		EmfModel model  = loadModel(name);
 		EolSequence res = (EolSequence) callOperation("aggregateConstraints",
-				1, model.getAllOfKind("ProcessFinish"));
+				globalLimit, model.getAllOfKind("ProcessFinish"));
 		assertConstraintEquals(res, time, weight);
 	}
 
