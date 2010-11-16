@@ -9,15 +9,22 @@ operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
 }
 
 -- Returns the weight of this node, or the default value if it has not been set.
--- TODO: extend the model to allow the user to define the weight.
-operation Activity getWeight() : Real {
-  return 1.0d;
+-- TODO: let the user specify the weight.
+operation FlowNode getWeight() : Real {
+  if (self.hasManualPerformanceAnnotation() or not self.hasProperty('annotation')) {
+    return 0;
+  } else {
+    return 1;
+  }
 }
 
--- Returns the time limit for this node, be it either manual or automatic, if set.
-$pre self.annotation.isDefined()
-operation Activity getTimeLimit() : Real {
-  return self.annotation.secsTimeLimit;
+-- If set, returns the time limit for this node. Otherwise, returns 0.
+operation FlowNode getTimeLimit() : Real {
+  if (self.hasProperty('annotation') and self.annotation.isDefined()) {
+    return self.annotation.secsTimeLimit;
+  } else {
+    return 0;
+  }
 }
 
 -- Sets an automatic time limit restriction for this node. Restrictions can only
@@ -216,4 +223,12 @@ operation getFirstEdgeProducingCycle(node : FlowNode) {
 $pre epsilon > 0
 operation isApproximatelyEqual(a, b, epsilon) : Boolean {
   return (a - b).abs() <= epsilon;
+}
+
+-- LIST UTILITIES -----------------------------------------
+
+operation Sequence popLast() : Any {
+  var elem = self.last();
+  self.remove(self.size()-1);
+  return elem;
 }

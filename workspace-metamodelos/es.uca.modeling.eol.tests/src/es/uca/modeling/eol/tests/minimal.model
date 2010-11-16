@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_naod8fGfEd-WVeBAYwAeXA">
+  <nodes xsi:type="sp:ProcessStart" xmi:id="_vUWMMPGfEd-WVeBAYwAeXA" outgoing="_ywKLwPGfEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessFinish" xmi:id="_yDdd0PGfEd-WVeBAYwAeXA" incoming="_ywKLwPGfEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_ywKLwPGfEd-WVeBAYwAeXA" target="_yDdd0PGfEd-WVeBAYwAeXA" source="_vUWMMPGfEd-WVeBAYwAeXA"/>
+  <processPerformance xmi:id="_1DVIQPGfEd-WVeBAYwAeXA"/>
+</sp:ServiceProcess>

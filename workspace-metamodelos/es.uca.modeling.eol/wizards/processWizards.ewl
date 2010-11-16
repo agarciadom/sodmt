@@ -1,5 +1,4 @@
 import 'time_limits.eol';
-import 'time_limits_new.eol';
 import 'concurrent_users.eol';
 
 wizard InferPerformanceAnnotations {

@@ -1,0 +1,80 @@
+-*
+  Heuristic algorithm for computing local time limits from global
+  time limits. Uses an alternative formulation to the first version
+  which does not require all paths to be enumerated. 
+
+  Copyright (c) 2010 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+*-
+
+import '../common/utils.eol';
+
+-*********** CONSTRAINT AGGREGATION ***********-
+
+-*
+  Aggregates the constraints from each node in the graph, returning
+  a pair (t, w) with the constraints of the strictest path in the graph.
+  Each vertex and edge has been annotated with the constraints of the
+  strictest path they are part of. If the initial node (node with no
+  incoming edges) does not exist, displays an error message and returns
+  null. 
+*-
+$pre globalLimit > 0
+$pre not endNodes.isEmpty()
+$pre endNodes.forAll(e|e.outgoing.isEmpty())
+$post _result = null or (_result.size() = 2 and _result.forAll(e|e>=0))
+operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequence {
+
+  -- Create stack for traversing the nodes with backtracking
+  var stack : Sequence = endNodes.clone();
+
+  while (not stack.isEmpty()) {
+    -- Take the top of the stack
+    var currentNode : FlowNode = stack.popLast();
+
+    -- Skip this node for now if not all outgoing edges have been visited yet.
+    -- We will visit it later through another edge.
+    if (currentNode.outgoing.exists(e|not e.~constraint.isDefined())) {
+      continue;
+    }
+
+    -- Collect constraints from its outgoing edges, sorting them from most to least restrictive
+    var edgeConstraints = currentNode.outgoing.collect(e|e.~constraint).sortBy(e|e.computeEstimate(globalLimit));
+    -- Select the strictest constraint, if existing
+    var strictestOutConstraint = Sequence {0, 0};
+    if (not edgeConstraints.isEmpty()) {
+      strictestOutConstraint = edgeConstraints.first();
+    }
+
+    -- Generate the constraint for this node and its incoming edges, annotating them
+    var nodeConstraint = strictestOutConstraint;
+    nodeConstraint.set(0, nodeConstraint.get(0) + currentNode.getTimeLimit());
+    nodeConstraint.set(1, nodeConstraint.get(1) + currentNode.getWeight());
+    currentNode.~constraint = nodeConstraint;
+    for (incoming in currentNode.incoming) {
+      incoming.~constraint = nodeConstraint;
+      stack.add(incoming.source);
+    }
+
+    -- Check if we're done or not
+    if (currentNode.incoming.isEmpty()) {
+      -- Current node is the initial one and all outgoing edges have been visited: we are done.
+      return currentNode.~constraint;
+    }
+  }
+
+  System.user.inform("ERROR: no initial node found");
+  return null;
+}
+
+operation Sequence computeEstimate(limit : Real) {
+  var time   = self.first();
+  var weight = self.last();
+  return (limit - time)/(1 + weight);
+}
