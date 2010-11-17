@@ -225,9 +225,15 @@ operation isApproximatelyEqual(a, b, epsilon) : Boolean {
   return (a - b).abs() <= epsilon;
 }
 
--- LIST UTILITIES -----------------------------------------
+-- COLLECTION UTILITIES -----------------------------------
 
 operation Sequence popLast() : Any {
+  var elem = self.last();
+  self.removeAt(self.size()-1);
+  return elem;
+}
+
+operation OrderedSet popLast() : Any {
   var elem = self.last();
   self.removeAt(self.size()-1);
   return elem;

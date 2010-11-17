@@ -15,23 +15,147 @@
 
 import '../common/utils.eol';
 
+-*********** TIME DISTRIBUTION ***********-
+
+operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
+  -- Aggregate constraints all over the graph and get the initial node
+  var aggregateResults = aggregateConstraints(globalLimit, endNodes);
+  var initial = aggregateResults.first();
+  initial.distributeTime(globalLimit);
+
+  -- Create stack for traversing the edges
+  var stack : OrderedSet = initial.getOutEdgesFromLeastToMostStrict(globalLimit);
+
+  -- Keep iterating until the stack is empty
+  while (not stack.isEmpty()) {
+    var edge      = stack.popLast();
+    var target    = edge.target;
+    var available = edge.~distributedTime;
+    ("Current edge: " + edge).println();
+    ("Current edge source: " + edge.source).println();
+    ("Current edge target: " + edge.target).println();
+
+    -- Has a previous edge reached the target?
+    var prevEdges = target.incoming.select(e|e <> edge and e.~distributedTime.isDefined());
+    if (not prevEdges.isEmpty()) {
+      -- Another edge from a previous and stricter path has reached the target before:
+      -- do we need to reflow some extra time back, or not?
+      var previousTime = prevEdges.first().~distributedTime;
+      if (isApproximatelyEqual(previousTime, available, 0.001)) {
+        -- Equal times: just annotate the distributed time
+        edge.~distributedTime = previousTime;
+      }
+      else if (previousTime < available) {
+        -- We have some extra time: we can try to reuse it, starting from the source of
+        -- the current edge and going back up the graph.
+        reflowExtraTime(available - previousTime, edge.source);
+        -- Ensure all incoming edges of the target are consistent with each other
+        edge.~distributedTime = previousTime;
+      }
+      else {
+        -- This shouldn't happen: it would point to a defect in the algorithm
+        System.user.inform("BUG: " + previousTime + "s were distributed before " + available + "s");
+        return false;
+      }
+    }
+    else {
+      -- This edge is part of the strictest path which reaches that node. Distribute
+      -- the available time through its outgoing edges and add them to our traversal
+      -- list (the algorithm follows a greedy approach).
+      stack.addAll(target.getOutEdgesFromLeastToMostStrict(available));
+      if (not target.distributeTime(available)) {
+        -- Could not distribute enough time
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+-- Backs up starting at a node, trying to reuse extra time without disturbing other paths.
+operation reflowExtraTime(available : Real, start : FlowNode) {
+  var backNodes : Sequence;
+  var totalWeight = 0;
+  var current = start;
+
+  -- We can only add a node if it has only 1 outgoing edge, and we can only
+  -- back up if the previous node has only 1 incoming edge, though. Otherwise,
+  -- we risk getting inconsistent results.
+  while (current.outgoing.size() = 1) {
+    if (current.getWeight() > 0) {
+      backNodes.add(current);
+      totalWeight = totalWeight + current.getWeight();
+    }
+    if (current.incoming.size() = 1) {
+      current = current.incoming.first().source;
+    }
+    else {
+      break;
+    }
+  }
+
+  -- Distribute the time according to the weights of each node.
+  for (node in backNodes) {
+    node.setTimeLimit(node.getTimeLimit() + node.getWeight()/totalWeight * slack);
+  }
+}
+
+-- Returns a list of the outgoing edges that have not contributed any time yet,
+-- sorted from least to most restrictive.
+operation FlowNode getOutEdgesFromLeastToMostStrict(globalLimit : Real) : OrderedSet {
+  return self.outgoing
+             .sortBy(e | -e.~constraint.computeEstimate(globalLimit));
+}
+
+-- Increases the time limit of the current node according to its local
+-- constraint and the constraint of the strictest path which contains it.
+-- Annotates the node's outgoing edges with the distributed time. Returns
+-- true or false depending on whether time could be distributed or not.
+operation FlowNode distributeTime(total : Real) : Boolean {
+  var cons   = self.~constraint;
+  var time   = cons.first();
+  var weight = cons.last();
+
+  -- We need to avoid a divide by zero error, and we also have to avoid nodes
+  -- with zero weight (setTimeLimit might not be defined for some of them)
+  if (weight > 0 and self.getWeight() > 0) {
+    var newLimit = self.getWeight() * (total - time)/weight + self.getTimeLimit();
+    self.setTimeLimit(newLimit);
+  }
+
+  -- Check that there is still enough time remaining for the subgraph starting at this node
+  var remainTime = total - self.getTimeLimit();
+  var remainWeight = weight - self.getWeight();
+  if (remainTime < 0 or isApproximatelyEqual(remainTime, 0, 0.0001) and remainWeight > 0) {
+    System.user.println("Not enough time left to distribute");
+    return false;
+  }
+
+  -- Distribute the remaining time limit
+  for (edge in self.outgoing) {
+    edge.~distributedTime = remainTime;
+  }
+  return true;
+}
+
 -*********** CONSTRAINT AGGREGATION ***********-
 
 -*
-  Aggregates the constraints from each node in the graph, returning
-  a pair (t, w) with the constraints of the strictest path in the graph.
-  Each vertex and edge has been annotated with the constraints of the
-  strictest path they are part of. If the initial node (node with no
-  incoming edges) does not exist, displays an error message and returns
-  null. 
+  Aggregates the constraints from each node in the graph, returning a pair
+  (n_i, (t, w)), where n_i is the initial node and (t, w) are the constraints
+  of the strictest path in the graph. Each vertex and edge has been annotated
+  with the constraints of the strictest path they are part of. If the initial
+  node (node with no incoming edges) does not exist, displays an error message
+  and returns null.
 *-
 $pre globalLimit > 0
 $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.outgoing.isEmpty())
-$post _result = null or (_result.size() = 2 and _result.forAll(e|e>=0))
+$post _result = null or (_result.size() = 2 and _result.first().isKindOf(FlowNode) and _result.last().forAll(e|e>=0))
 operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequence {
 
-  -- Create stack for traversing the nodes with backtracking
+  -- Create stack for traversing the nodes
   var stack : Sequence = endNodes.clone();
 
   while (not stack.isEmpty()) {
@@ -65,7 +189,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequen
     -- Check if we're done or not
     if (currentNode.incoming.isEmpty()) {
       -- Current node is the initial one and all outgoing edges have been visited: we are done.
-      return currentNode.~constraint;
+      return Sequence { currentNode, currentNode.~constraint };
     }
   }
 

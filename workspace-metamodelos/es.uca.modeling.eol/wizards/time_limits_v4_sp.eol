@@ -1,0 +1,34 @@
+-*
+  Heuristic algorithm for computing local time limits from global
+  time limits. Uses an alternative formulation to the first version
+  which does not require all paths to be enumerated. 
+
+  Copyright (c) 2010 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+
+  This file only defines the parts of the inference algorithm that
+  are specific to the ServiceProcess metamodel.
+*-
+
+import 'time_limits_v4.eol';
+
+operation ServiceActivity createPerformanceAnnotation() {
+  self.annotation := new ActivityPerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  ServiceProcess.all.first().activityPerformance.add(self.annotation);
+}
+
+operation ProcessStart getGlobalTimeLimit() {
+  return ProcessPerformanceAnnotation.all.first().secsTimeLimit;
+}
+
+@cached
+operation ProcessStart getConcurrentUsers() : Real {
+  return ProcessPerformanceAnnotation.all.first().concurrentUsers;
+}
