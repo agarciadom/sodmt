@@ -36,6 +36,22 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		assertActivityHasTimeLimit(mapN2A, "B", 0.7);
 	}
 
+	@Test
+	public void sequenceNotEnoughTime() throws EolRuntimeException {
+		// There is a manual time constraint asking for 0.3 seconds:
+		// the algorithm should fail, as there is not enough time even
+		// for the manual constraint
+		inferTimeLimits(0.2, false, "sequence.model");
+	}
+
+	@Test
+	public void sequenceAllTimeUsedByManual() throws EolRuntimeException {
+		// There is a manual time constraint asking for 0.3 seconds:
+		// the algorithm should fail, as all the available time has been
+		// used up by the manual constraints
+		inferTimeLimits(0.3, false, "sequence.model");
+	}
+
 	private void assertActivityHasTimeLimit(
 			Map<String, ServiceActivity> mapNameToActivity, String name,
 			double expected) {
@@ -43,7 +59,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 			mapNameToActivity.get(name).getAnnotation().getSecsTimeLimit(), 0.001);
 	}
 
-	private Map<String, ServiceActivity> inferTimeLimits(int globalLimit,
+	private Map<String, ServiceActivity> inferTimeLimits(double globalLimit,
 			boolean shouldSucceed, String modelPath)
 			throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException, EolRuntimeException {

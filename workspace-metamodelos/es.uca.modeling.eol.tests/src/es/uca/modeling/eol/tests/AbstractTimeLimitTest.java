@@ -14,6 +14,7 @@ import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.types.EolSequence;
+import org.junit.After;
 import org.junit.Before;
 
 import serviceProcess.ServiceProcessPackage;
@@ -67,6 +68,11 @@ public class AbstractTimeLimitTest {
 	public void setUp() throws URISyntaxException, Exception {
 		String name = "/wizards/time_limits_v4_sp.eol";
 		loadModule(name);
+	}
+
+	@After
+	public void cleanUp() {
+		mEolModule.getContext().getModelRepository().dispose();
 	}
 
 	private void loadModule(String name) throws URISyntaxException, Exception,

@@ -21,7 +21,9 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
   -- Aggregate constraints all over the graph and get the initial node
   var aggregateResults = aggregateConstraints(globalLimit, endNodes);
   var initial = aggregateResults.first();
-  initial.distributeTime(globalLimit);
+  if (not initial.distributeTime(globalLimit)) {
+    return false;
+  }
 
   -- Create stack for traversing the edges
   var stack : OrderedSet = initial.getOutEdgesFromLeastToMostStrict(globalLimit);
@@ -127,8 +129,12 @@ operation FlowNode distributeTime(total : Real) : Boolean {
   -- Check that there is still enough time remaining for the subgraph starting at this node
   var remainTime = total - self.getTimeLimit();
   var remainWeight = weight - self.getWeight();
-  if (remainTime < 0 or isApproximatelyEqual(remainTime, 0, 0.0001) and remainWeight > 0) {
-    System.user.println("Not enough time left to distribute");
+  if (remainTime < 0 or total < time) {
+    System.user.inform("The sum of the manual time limits is greater than the available time");
+    return false;
+  }
+  else if (isApproximatelyEqual(remainTime, 0, 0.0001) and remainWeight > 0) {
+    System.user.inform("The manual time limits have used up all the time");
     return false;
   }
 
