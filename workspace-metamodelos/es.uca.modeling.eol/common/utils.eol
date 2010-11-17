@@ -147,7 +147,7 @@ operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   for (descendant in last_elem.outgoing.collect(r|r.target)) {
     partialPath.add(descendant);
     auxPathsTo(partialPath, allPaths);
-    partialPath.remove(partialPath.size()-1);
+    partialPath.removeAt(partialPath.size()-1);
   }
 }
 
@@ -229,6 +229,6 @@ operation isApproximatelyEqual(a, b, epsilon) : Boolean {
 
 operation Sequence popLast() : Any {
   var elem = self.last();
-  self.remove(self.size()-1);
+  self.removeAt(self.size()-1);
   return elem;
 }
