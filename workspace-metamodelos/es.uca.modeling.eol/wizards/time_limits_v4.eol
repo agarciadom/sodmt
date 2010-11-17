@@ -21,21 +21,22 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
   -- Aggregate constraints all over the graph and get the initial node
   var aggregateResults = aggregateConstraints(globalLimit, endNodes);
   var initial = aggregateResults.first();
-  if (not initial.distributeTime(globalLimit)) {
-    return false;
-  }
 
   -- Create stack for traversing the edges
   var stack : OrderedSet = initial.getOutEdgesFromLeastToMostStrict(globalLimit);
+
+  -- Distribute time over the initial node
+  var initialConstraint = stack.last().~constraint.addConstraint(
+    initial.getTimeLimit(), initial.getWeight());
+  if (not initial.distributeTime(globalLimit, initialConstraint)) {
+    return false;
+  }
 
   -- Keep iterating until the stack is empty
   while (not stack.isEmpty()) {
     var edge      = stack.popLast();
     var target    = edge.target;
     var available = edge.~distributedTime;
-    ("Current edge: " + edge).println();
-    ("Current edge source: " + edge.source).println();
-    ("Current edge target: " + edge.target).println();
 
     -- Has a previous edge reached the target?
     if (target.outgoing.exists(e|e.~distributedTime.isDefined())) {
@@ -60,9 +61,11 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
     else {
       -- This edge is part of the strictest path which reaches that node. Distribute
       -- the available time through its outgoing edges and add them to our traversal
-      -- list (the algorithm follows a greedy approach).
-      stack.addAll(target.getOutEdgesFromLeastToMostStrict(available));
-      if (not target.distributeTime(available)) {
+      -- list (the algorithm follows a greedy approach). We need to use the same constraint
+      -- we used to select this edge.
+      var outEdges = target.getOutEdgesFromLeastToMostStrict(available);
+      stack.addAll(outEdges);
+      if (not target.distributeTime(available, edge.~constraint)) {
         -- Could not distribute enough time
         return false;
       }
@@ -96,23 +99,30 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
 
   -- Distribute the time according to the weights of each node.
   for (node in backNodes) {
+    -- We cannot use setTimeLimit here, as we'd violate its precondition that
+    -- the time limit should never be increased
     node.annotation.secsTimeLimit = node.getTimeLimit() + node.getWeight()/totalWeight * slack;
   }
 }
 
--- Returns a list of the outgoing edges that have not contributed any time yet,
--- sorted from least to most restrictive.
+-*
+  Returns the outgoing edges of the current node, sorted from least to most restrictive.
+  For each edge, edge.~constraint is set to its strictest constraint, according to the
+  available time.
+*-
+$pre self.outgoing.forAll(e|not e.~constraint.isDefined())
 operation FlowNode getOutEdgesFromLeastToMostStrict(globalLimit : Real) : OrderedSet {
-  return self.outgoing
-             .sortBy(e | -e.~constraint.computeEstimate(globalLimit));
+  for (edge in self.outgoing) {
+    edge.~constraint = edge.~constraints.sortBy(c|c.computeEstimate(globalLimit)).first();
+  }
+  return self.outgoing.sortBy(e | -e.~constraint.computeEstimate(globalLimit));
 }
 
 -- Increases the time limit of the current node according to its local
 -- constraint and the constraint of the strictest path which contains it.
 -- Annotates the node's outgoing edges with the distributed time. Returns
 -- true or false depending on whether time could be distributed or not.
-operation FlowNode distributeTime(total : Real) : Boolean {
-  var cons   = self.~constraint;
+operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
   var time   = cons.first();
   var weight = cons.last();
 
@@ -146,16 +156,16 @@ operation FlowNode distributeTime(total : Real) : Boolean {
 
 -*
   Aggregates the constraints from each node in the graph, returning a pair
-  (n_i, (t, w)), where n_i is the initial node and (t, w) are the constraints
-  of the strictest path in the graph. Each vertex and edge has been annotated
-  with the constraints of the strictest path they are part of. If the initial
-  node (node with no incoming edges) does not exist, displays an error message
-  and returns null.
+  (n_i, [(t_1, w_1)...]), where n_i is the initial node and [(t, w)] are the
+  constraints of the strictest path(s) in the graph (some paths may not be
+  comparable until we apply a global limit). Each vertex and edge has
+  been annotated with the constraints of the strictest paths they are part of.
+  If the initial node (node with no incoming edges) does not exist, displays
+  an error message and returns null.
 *-
-$pre globalLimit > 0
 $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.outgoing.isEmpty())
-$post _result = null or (_result.size() = 2 and _result.first().isKindOf(FlowNode) and _result.last().forAll(e|e>=0))
+$post _result = null or (_result.size() = 2 and _result.first().isKindOf(FlowNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
 operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequence {
 
   -- Create stack for traversing the nodes
@@ -167,43 +177,190 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequen
 
     -- Skip this node for now if not all outgoing edges have been visited yet.
     -- We will visit it later through another edge.
-    if (currentNode.outgoing.exists(e|not e.~constraint.isDefined())) {
+    if (currentNode.outgoing.exists(e|not e.~constraints.isDefined())) {
       continue;
     }
 
-    -- Collect constraints from its outgoing edges, sorting them from most to least restrictive
-    var edgeConstraints = currentNode
-      .outgoing
-      .collect(e | e.~constraint.addConstraint(
-        currentNode.getTimeLimit(),
-        currentNode.getWeight()))
-      .sortBy(e | e.computeEstimate(globalLimit));
+    -- Collect constraints from its outgoing edges, keeping only the strictest
+    -- constraints. There may be more than one, as some may not be directly
+    -- comparable until we have more information.
+    var constraints : Sequence;
+    for (edge in currentNode.outgoing) {
+      for (edgeConstraint in edge.~constraints) {
+        var constraint = edgeConstraint.addConstraint(
+          currentNode.getTimeLimit(), currentNode.getWeight());
+        var cmp = 0;
 
-    -- Select the strictest constraint, if existing
-    var nodeConstraint;
-    if (not edgeConstraints.isEmpty()) {
-      nodeConstraint = edgeConstraints.first().clone();
-    }
-    else {
-      nodeConstraint = Sequence { currentNode.getTimeLimit(), currentNode.getWeight() };
+        -- We cannot use a for loop, as we're filtering and traversing
+        -- the constraints at the same time
+        var i = 0;
+        while (cmp <> 1 and i < constraints.size()) {
+          -*
+             Comparison results:
+             0 -> not comparable (both should be kept)
+            -1 -> first one is stricter  (remove second one from list)
+             1 -> second one is stricter (do not add this constraint)
+          *-
+          cmp = compareConstraints(globalLimit, constraint, constraints.get(i));
+          if (cmp = -1) {
+            constraints.removeAt(i);
+          }
+          else {
+            i = i + 1;
+          }
+        }
+        -- If no constraint is always stricter than this one, add it
+        if (cmp <> 1) {
+          constraints.add(constraint);
+        }
+      } -- for (edge)
+    } -- for (constraint)
+    if (constraints.isEmpty()) {
+      constraints.add(Sequence {currentNode.getTimeLimit(), currentNode.getWeight()});
     }
 
-    -- Generate the constraint for this node and its incoming edges, annotating them
-    currentNode.~constraint = nodeConstraint;
+    -- Propagate the constraints to the edges
     for (incoming in currentNode.incoming) {
-      incoming.~constraint = nodeConstraint;
+      incoming.~constraints = constraints;
       stack.add(incoming.source);
     }
 
     -- Check if we're done or not
     if (currentNode.incoming.isEmpty()) {
       -- Current node is the initial one and all outgoing edges have been visited: we are done.
-      return Sequence { currentNode, currentNode.~constraint };
+      return Sequence { currentNode, constraints };
     }
   }
 
   System.user.inform("ERROR: no initial node found");
   return null;
+}
+
+-* Compares two constraints. Returns -1 if the first constraint is stricter
+   than the second one, 0 if they are not comparable, and 1 if the first
+   constraint is less or just as strict as the second one. *-
+$pre first.forAll(e|e>=0)
+$pre second.forAll(e|e>=0)
+$pre globalLimit >= 0
+$post _result >= -1
+$post _result <=  1
+operation compareConstraints(globalLimit : Real, first : Sequence, second : Sequence) : Integer {
+
+  -- We will compare [total_min_time=a, total_weight=b] and [c, d]
+  var a = first.get(0);
+  var b = first.get(1);
+  var c = second.get(0);
+  var d = second.get(1);
+
+  -- If the times or the weights are equal, we only have to compare the other part
+  if (a = c) {
+    if (b > d) {
+      return -1;
+    }
+    else {
+      return 1;
+    }
+  }
+  else if (b = d) {
+    if (a > c) {
+      return -1;
+    }
+    else {
+      return 1;
+    }
+  }
+  else if (b > 0 and d > 0){
+    -*
+      And this is the hard case: a <> c and b <> d, and b, c > 0
+      (we cannot compare a constraint with zero weight with another
+      with non-zero weight). In general, [a, b] and [c, d] are not
+      comparable, but we can be a bit clever about it sometimes.
+
+      If the available time for this subgraph during inference is x
+      and the global time limit is G, we know that x >= max(a,b),
+      and x <= G.
+
+      We are interested in knowing if (x-a)/b < (x-c)/d for x in the
+      range [max(a,b),G]. In that case, we can safely assert that [a,b]
+      is stricter than [c,d] in this context. Let's play a bit with
+      inequations:
+
+      (x-a)/b < (x-c)/d iff d (x - a) / b < x - c
+                        iff     d (x - a) < b (x-c)
+                        iff       dx - da < bx - bc
+                        iff       dx - bx < ad - bc
+                        iff     (d - b) x < ad - bc
+                        iff             x < (ad - bc)/(d - b) { assuming that d > b }
+
+      The previous assumption means that we have to swap the values if d < b,
+      and then flip the sign of the result. Do that now.
+     *-
+     var flip = 1;
+     if (d < b) {
+       flip = -1;
+       var tmp;
+       tmp = a; a = c; c = tmp;
+       tmp = d; d = b; b = tmp;
+     }
+
+     -* TODO: simplificar
+
+      We have to be careful: even if [a,b] is stricter than [c,d] now, that
+      might change as we go back up in the graph. That is to say, it does
+      does not necessarily mean that [a+dt, b+dw] will be stricter or not than
+      [c+dt, b+dw], for all dt, dw >= 0. The same can be said for [a,b] being
+      less strict than [c, d]. We must perform a few more checks first.
+
+      First, let l(a, b, c, d) = (ad - bc)/(d - b). After operating a bit, we
+      know that:
+
+        l(a + dt, b + dw, c + dt, d + dw) = l(a,b,c,d) + dt + dw (a-c)/(d-b)
+
+      Assuming dt, dw >= 0 (there are no negative times or weights):
+
+      - if l(a,b,c,d) > G, then [a,b] will be always stricter than [c,d] in
+        this subgraph. For [a+dt, b+dw] to be always stricter than [c+dt, d+dw]
+        in any supergraph, it must be that
+
+          l(a+dt,b+dw,c+dt,d+dw) > l(a,b,c,d) iff dt + dw (a-c)/(d-b) > 0
+
+        We know that dt >= 0, dw >= 0 and d > b. If a > c, then it is easy to
+        see that dt + dw (a-c)/(d-b) > 0.
+
+        If a < c, then it must be that
+
+          dt - dw (c-a)/(d-b) > 0 iff dt > dw (c-a)/(d-b)
+                                  iff dt/dw > (c-a)/(d-b)
+                                  iff min(dt/dw) > (c-a)/(d-b)
+
+        However, min(dt/dw) is undefined, as dw might be 0, so we do not know
+        anything in this case.
+
+      - if l(a,b,c,d) < max(a,b), then [a,b] will be always less or just as
+        strict as [c,d] in this subgraph. For that to be the case in any valid
+        supergraph, it must be that:
+
+          dt + dw (a-c)/(d-b) <= 0
+
+        If a > c, it only holds when dt = dw = 0, which is not useful. Otherwise:
+
+          dt - dw (c-a)/(d-b) <= 0 iff dt <= dw (c-a)/(d-b)
+                                   iff dt/dw <= (c-a)/(d-b)
+                                   iff max(dt/dw) <= (c-a)/(d-b)
+
+        Likewise, max(dt/dw) would only only well defined if dw >= 1. We can't
+        conclude anything in that case, either.
+
+     - l(a,b,c,d) in [max(a, b), G]. The constraints are not comparable.
+    *-
+
+    var l = (a*d - b*c)/(d - b);
+    if (l > globalLimit and a > c) {
+      return -1 * flip;
+    }
+  }
+
+  return 0;
 }
 
 -- Adds an unpacked constraint to another, generating a new one

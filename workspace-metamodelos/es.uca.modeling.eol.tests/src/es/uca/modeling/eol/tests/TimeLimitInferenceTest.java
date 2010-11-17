@@ -74,10 +74,25 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		assertActivityHasTimeLimit(mapN2A, "H", 41.666);
 	}
 
+	@Test
+	public void twoDipolesA40Successful() throws EolRuntimeException {
+		Map<String, ServiceActivity> mapN2A
+			= inferTimeLimits(100, true, "two-dipoles-Aneeds40.model");
+		assertActivityHasTimeLimit(mapN2A, "A", 40);
+		assertActivityHasTimeLimit(mapN2A, "B", 20);
+		assertActivityHasTimeLimit(mapN2A, "C", 10);
+		assertActivityHasTimeLimit(mapN2A, "D", 10);
+		assertActivityHasTimeLimit(mapN2A, "E", 3.333);
+		assertActivityHasTimeLimit(mapN2A, "F", 3.333);
+		assertActivityHasTimeLimit(mapN2A, "G", 30);
+		assertActivityHasTimeLimit(mapN2A, "H", 33.333);
+		assertActivityHasTimeLimit(mapN2A, "I", 3.333);
+	}
+
 	private void assertActivityHasTimeLimit(
 			Map<String, ServiceActivity> mapNameToActivity, String name,
 			double expected) {
-		assertEquals(expected,
+		assertEquals("Activity " + name + " should have expected time limit", expected,
 			mapNameToActivity.get(name).getAnnotation().getSecsTimeLimit(), 0.001);
 	}
 

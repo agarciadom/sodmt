@@ -27,23 +27,28 @@ import serviceProcess.ServiceProcessPackage;
  */
 public class AbstractTimeLimitTest {
 
-	public static void assertConstraintEquals(EolSequence res, double time, double weight) {
+	public static void assertConstraintsEquals(String msg, EolSequence res, double[]... expectedConstraints) {
 		assertNotNull(res);
 		assertNotNull((EObject)res.get(0));
-		EolSequence constraint = (EolSequence)res.get(1);
-		assertEquals(2, constraint.size());
-		assertEquals(time, (Double)constraint.get(0), 0.001);
-		assertEquals(weight, (Double)constraint.get(1), 0.001);
+		EolSequence constraints = (EolSequence)res.get(1);
+		for (int i = 0; i < expectedConstraints.length; ++i) {
+			final double[] expected = expectedConstraints[i];
+			final EolSequence constraint = (EolSequence)constraints.get(i);
+			assertEquals(msg + ": the " + (i+1) + "-th constraint has the correct length", expected.length, constraint.size());
+			for (int j = 0; j < expected.length; j++) {
+				assertEquals(msg + ": the " + (j+1) + "-th component has value " + expected[j], expected[j], (Double)constraint.get(j), 0.001);
+			}
+		}
 	}
 
 	private EolModule mEolModule;
 
-	public void assertConstraintEquals(String name, double globalLimit,
-			double time, double weight) throws EolRuntimeException {
+	public void assertConstraintsEquals(String name, double globalLimit,
+			double[]... expected) throws EolRuntimeException {
 		EmfModel model = loadModel(name);
 		EolSequence res = (EolSequence) callOperation(
 				"aggregateConstraints", globalLimit, model.getAllOfKind("ProcessFinish"));
-		assertConstraintEquals(res, time, weight);
+		assertConstraintsEquals("Activity " + name + " has the expected constraints", res, expected);
 	}
 
 	public Object callOperation(String name, Object... args)
