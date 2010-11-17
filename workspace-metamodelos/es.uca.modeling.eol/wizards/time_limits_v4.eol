@@ -38,10 +38,10 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
     ("Current edge target: " + edge.target).println();
 
     -- Has a previous edge reached the target?
-    var prevEdges = target.incoming.select(e|e <> edge and e.~distributedTime.isDefined());
-    if (not prevEdges.isEmpty()) {
+    if (target.outgoing.exists(e|e.~distributedTime.isDefined())) {
       -- Another edge from a previous and stricter path has reached the target before:
       -- do we need to reflow some extra time back, or not?
+      var prevEdges = target.incoming.select(e|e <> edge and e.~distributedTime.isDefined());
       var previousTime = prevEdges.first().~distributedTime;
       if (isApproximatelyEqual(previousTime, available, 0.001)) {
         -- Equal times: just annotate the distributed time
@@ -54,11 +54,8 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
         -- Ensure all incoming edges of the target are consistent with each other
         edge.~distributedTime = previousTime;
       }
-      else {
-        -- This shouldn't happen: it would point to a defect in the algorithm
-        System.user.inform("BUG: " + previousTime + "s were distributed before " + available + "s");
-        return false;
-      }
+      -- If previousTime > available, we do nothing: the previous edge was from a
+      -- stricter path, that's all.
     }
     else {
       -- This edge is part of the strictest path which reaches that node. Distribute

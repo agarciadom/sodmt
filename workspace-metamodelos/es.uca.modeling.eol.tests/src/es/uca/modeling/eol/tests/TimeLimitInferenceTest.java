@@ -52,6 +52,16 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		inferTimeLimits(0.3, false, "sequence.model");
 	}
 
+	@Test
+	public void denseDAG() throws EolRuntimeException {
+		final int globalLimit = 20;
+		Map<String, ServiceActivity> mapN2A
+			= inferTimeLimits(globalLimit, true, "dense.model");
+		for (String a : mapN2A.keySet()) {
+			assertActivityHasTimeLimit(mapN2A, a, globalLimit/mapN2A.size());
+		}
+	}
+
 	private void assertActivityHasTimeLimit(
 			Map<String, ServiceActivity> mapNameToActivity, String name,
 			double expected) {
