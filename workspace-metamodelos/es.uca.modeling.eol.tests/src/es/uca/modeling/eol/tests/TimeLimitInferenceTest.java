@@ -62,6 +62,18 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		}
 	}
 
+	@Test
+	public void twoDipolesSuccessful() throws EolRuntimeException {
+		Map<String, ServiceActivity> mapN2A
+			= inferTimeLimits(100, true, "two-dipoles.model");
+		for (String a : new String[]{"A", "C", "D", "E", "F", "I"}) {
+			assertActivityHasTimeLimit(mapN2A, a, 11.666);
+		}
+		assertActivityHasTimeLimit(mapN2A, "B", 20);
+		assertActivityHasTimeLimit(mapN2A, "G", 30);
+		assertActivityHasTimeLimit(mapN2A, "H", 41.666);
+	}
+
 	private void assertActivityHasTimeLimit(
 			Map<String, ServiceActivity> mapNameToActivity, String name,
 			double expected) {

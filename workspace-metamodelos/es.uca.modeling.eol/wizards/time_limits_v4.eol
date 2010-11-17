@@ -73,7 +73,7 @@ operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
 }
 
 -- Backs up starting at a node, trying to reuse extra time without disturbing other paths.
-operation reflowExtraTime(available : Real, start : FlowNode) {
+operation reflowExtraTime(slack : Real, start : FlowNode) {
   var backNodes : Sequence;
   var totalWeight = 0;
   var current = start;
@@ -96,7 +96,7 @@ operation reflowExtraTime(available : Real, start : FlowNode) {
 
   -- Distribute the time according to the weights of each node.
   for (node in backNodes) {
-    node.setTimeLimit(node.getTimeLimit() + node.getWeight()/totalWeight * slack);
+    node.annotation.secsTimeLimit = node.getTimeLimit() + node.getWeight()/totalWeight * slack;
   }
 }
 
@@ -172,17 +172,23 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequen
     }
 
     -- Collect constraints from its outgoing edges, sorting them from most to least restrictive
-    var edgeConstraints = currentNode.outgoing.collect(e|e.~constraint).sortBy(e|e.computeEstimate(globalLimit));
+    var edgeConstraints = currentNode
+      .outgoing
+      .collect(e | e.~constraint.addConstraint(
+        currentNode.getTimeLimit(),
+        currentNode.getWeight()))
+      .sortBy(e | e.computeEstimate(globalLimit));
+
     -- Select the strictest constraint, if existing
-    var strictestOutConstraint = Sequence {0, 0};
+    var nodeConstraint;
     if (not edgeConstraints.isEmpty()) {
-      strictestOutConstraint = edgeConstraints.first().clone();
+      nodeConstraint = edgeConstraints.first().clone();
+    }
+    else {
+      nodeConstraint = Sequence { currentNode.getTimeLimit(), currentNode.getWeight() };
     }
 
     -- Generate the constraint for this node and its incoming edges, annotating them
-    var nodeConstraint = strictestOutConstraint;
-    nodeConstraint.set(0, nodeConstraint.get(0) + currentNode.getTimeLimit());
-    nodeConstraint.set(1, nodeConstraint.get(1) + currentNode.getWeight());
     currentNode.~constraint = nodeConstraint;
     for (incoming in currentNode.incoming) {
       incoming.~constraint = nodeConstraint;
@@ -200,8 +206,27 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequen
   return null;
 }
 
+-- Adds an unpacked constraint to another, generating a new one
+$pre self.size() = 2
+$post _result.size() = 2
+operation Sequence addConstraint(time : Real, weight : Real) : Sequence {
+  var sum = self.clone();
+  sum.set(0, sum.get(0) + time);
+  sum.set(1, sum.get(1) + weight);
+  return sum;
+}
+
 operation Sequence computeEstimate(limit : Real) {
   var time   = self.first();
   var weight = self.last();
-  return (limit - time)/(1 + weight);
+
+  if (weight = 0) {
+    -- Use a very large value: we only want fully-manual paths
+    -- for checking that the manual time limits do not overcome
+    -- the global constraint
+    return 1000000;
+  }
+
+  var value = (limit - time)/weight;
+  return value;
 }
