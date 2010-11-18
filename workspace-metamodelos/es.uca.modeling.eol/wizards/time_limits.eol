@@ -81,9 +81,8 @@ import '../common/utils.eol';
            are successfully annotated, false otherwise.
 *-
 $pre start.isDefined()
-operation annotateTimeLimits(start : FlowNode) : Boolean {
+operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
   var paths        := getAllPathsFrom(start);
-  var global_limit := start.getGlobalTimeLimit();
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {

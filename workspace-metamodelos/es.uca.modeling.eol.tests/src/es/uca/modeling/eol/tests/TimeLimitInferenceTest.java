@@ -2,8 +2,10 @@ package es.uca.modeling.eol.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -13,6 +15,7 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundExce
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.junit.Test;
 
+import serviceProcess.FlowNode;
 import serviceProcess.ServiceActivity;
 
 /**
@@ -30,7 +33,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 
 	@Test
 	public void sequenceSucessful() throws EolRuntimeException {
-		Map<String, ServiceActivity> mapN2A
+		Map<String, Double> mapN2A
 			= inferTimeLimits(1, true, "sequence.model");
 		assertActivityHasTimeLimit(mapN2A, "A", 0.3);
 		assertActivityHasTimeLimit(mapN2A, "B", 0.7);
@@ -55,7 +58,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 	@Test
 	public void denseDAG() throws EolRuntimeException {
 		final int globalLimit = 20;
-		Map<String, ServiceActivity> mapN2A
+		Map<String, Double> mapN2A
 			= inferTimeLimits(globalLimit, true, "dense.model");
 		for (String a : mapN2A.keySet()) {
 			assertActivityHasTimeLimit(mapN2A, a, globalLimit/mapN2A.size());
@@ -64,7 +67,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 
 	@Test
 	public void twoDipolesSuccessful() throws EolRuntimeException {
-		Map<String, ServiceActivity> mapN2A
+		Map<String, Double> mapN2A
 			= inferTimeLimits(100, true, "two-dipoles.model");
 		for (String a : new String[]{"A", "C", "D", "E", "F", "I"}) {
 			assertActivityHasTimeLimit(mapN2A, a, 11.666);
@@ -76,44 +79,90 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 
 	@Test
 	public void twoDipolesA40Successful() throws EolRuntimeException {
-		Map<String, ServiceActivity> mapN2A
-			= inferTimeLimits(100, true, "two-dipoles-Aneeds40.model");
-		assertActivityHasTimeLimit(mapN2A, "A", 40);
-		assertActivityHasTimeLimit(mapN2A, "B", 20);
-		assertActivityHasTimeLimit(mapN2A, "C", 10);
-		assertActivityHasTimeLimit(mapN2A, "D", 10);
-		assertActivityHasTimeLimit(mapN2A, "E", 3.333);
-		assertActivityHasTimeLimit(mapN2A, "F", 3.333);
-		assertActivityHasTimeLimit(mapN2A, "G", 30);
-		assertActivityHasTimeLimit(mapN2A, "H", 33.333);
-		assertActivityHasTimeLimit(mapN2A, "I", 3.333);
+		assertOldAndNewResultsAreEqual(100, true, "two-dipoles-Aneeds40.model");
 	}
 
 	private void assertActivityHasTimeLimit(
-			Map<String, ServiceActivity> mapNameToActivity, String name,
+			Map<String, Double> mapNameToActivity, String name,
 			double expected) {
 		assertEquals("Activity " + name + " should have expected time limit", expected,
-			mapNameToActivity.get(name).getAnnotation().getSecsTimeLimit(), 0.001);
+			mapNameToActivity.get(name), 0.001);
 	}
 
-	private Map<String, ServiceActivity> inferTimeLimits(double globalLimit,
+	private void assertOldAndNewResultsAreEqual(double globalLimit,
+			boolean shouldSucceed, String modelPath) throws EolRuntimeException {
+		Map<String, Double> oldResults = inferTimeLimitsWithOldAlgorithm(
+				globalLimit, shouldSucceed, modelPath);
+		Map<String, Double> newResults = inferTimeLimits(globalLimit,
+				shouldSucceed, modelPath);
+		assertEquals(
+				"Both old and new results report the same number of constraints",
+				oldResults.size(), newResults.size());
+		for (String key : oldResults.keySet()) {
+			final Double oldResult = oldResults.get(key);
+			final Double newResult = newResults.get(key);
+			assertEquals("Constraint for activity " + key
+					+ "should be the same for the old and new algorithms",
+					oldResult, newResult, 0.001);
+		}
+	}
+
+	private Map<String, Double> buildTimeLimitMapFromModel(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
+		Collection<EObject> activities = model.getAllOfKind("ServiceActivity");
+		Map<String, Double> mapNameToActivity = new HashMap<String, Double>();
+		for (EObject o : activities) {
+			ServiceActivity a = (ServiceActivity) o;
+			if (a.getAnnotation() != null) {
+				mapNameToActivity.put(a.getName(), a.getAnnotation()
+						.getSecsTimeLimit());
+			}
+		}
+		clearModels();
+
+		return mapNameToActivity;
+	}
+
+	private List<EObject> getEndNodes(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
+		Collection<EObject> flowNodes = model.getAllOfKind("FlowNode");
+		List<EObject> endNodes = new ArrayList<EObject>();
+		for (EObject o : flowNodes) {
+			final FlowNode node = (FlowNode) o;
+			if (node.getOutgoing().isEmpty()) {
+				endNodes.add(node);
+			}
+		}
+		return endNodes;
+	}
+
+	private FlowNode getStartNode(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
+		Collection<EObject> flowNodes = model.getAllOfKind("FlowNode");
+		FlowNode startNode = null;
+		for (EObject o : flowNodes) {
+			final FlowNode node = (FlowNode)o;
+			if (node.getIncoming().isEmpty()) {
+				startNode = node;
+			}
+		}
+		return startNode;
+	}
+
+	private Map<String, Double> inferTimeLimits(double globalLimit,
 			boolean shouldSucceed, String modelPath)
 			throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException, EolRuntimeException {
 		EmfModel model = loadModel(modelPath);
-		Collection<EObject> endNodes = model.getAllOfKind("ProcessFinish");
-		boolean success = (Boolean) callOperation("distributeTime", globalLimit, endNodes);
-		assertEquals(shouldSucceed, success);
+		List<EObject> endNodes = getEndNodes(model);
+		assertEquals(shouldSucceed, (Boolean) callOperation("distributeTime", globalLimit, endNodes));
+		return buildTimeLimitMapFromModel(model);
+	}
 
-		Collection<EObject> activities
-			= model.getAllOfKind("ServiceActivity");
-		Map<String, ServiceActivity> mapNameToActivity
-			= new HashMap<String, ServiceActivity>();
-		for (EObject o : activities) {
-			ServiceActivity a = (ServiceActivity) o;
-			mapNameToActivity.put(a.getName(), a);
-		}
-
-		return mapNameToActivity;
+	private Map<String, Double> inferTimeLimitsWithOldAlgorithm(double globalLimit, boolean shouldSucceed, String modelPath) throws EolRuntimeException {
+		EmfModel model = loadModel(modelPath);
+		FlowNode startNode = getStartNode(model);
+		assertEquals(shouldSucceed, (Boolean) callOperation("annotateTimeLimits", globalLimit, startNode));
+		return buildTimeLimitMapFromModel(model);
 	}
 }

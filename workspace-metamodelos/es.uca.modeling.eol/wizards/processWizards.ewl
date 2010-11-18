@@ -6,7 +6,7 @@ wizard InferPerformanceAnnotations {
   do {
     transaction {
       for (start in ProcessStart.all) {
-        if (not annotateTimeLimits(start)
+        if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;
@@ -21,7 +21,7 @@ wizard InferTimeLimitsNew {
   do {
     transaction {
       for (start in ProcessStart.all) {
-        if (not annotateTimeLimitsNew(start)) {
+        if (not distributeTime(start.getGlobalTimeLimit(), ProcessFinish.all)) {
           abort;
           return;
         }

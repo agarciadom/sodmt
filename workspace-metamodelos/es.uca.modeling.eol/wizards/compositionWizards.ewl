@@ -6,7 +6,7 @@ wizard InferPerformanceAnnotations {
   do {
     transaction {
       for (start in ActivityStart.all) {
-        if (not annotateTimeLimits(start)
+        if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;
