@@ -29,7 +29,6 @@ operation FlowNode getTimeLimit() : Real {
 
 -- Sets an automatic time limit restriction for this node. Restrictions can only
 -- be made stricter, and not relaxed.
-$pre self.annotation.isUndefined() or (not self.annotation.manuallyAdded and self.annotation.secsTimeLimit >= newLimit)
 operation Activity setTimeLimit(newLimit) {
   if (self.annotation.isUndefined()) {
     self.createPerformanceAnnotation();

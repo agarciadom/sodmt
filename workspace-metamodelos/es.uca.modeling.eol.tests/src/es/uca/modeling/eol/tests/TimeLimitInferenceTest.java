@@ -53,6 +53,12 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 	}
 
 	@Test
+	public void sequenceAutomaticRestrictionsAreIgnored() throws EolRuntimeException {
+		// Automatic restrictions should be ignored by the algorithm
+		assertOldAndNewResultsAreEqual(1.0, true, "sequence-w_auto_constraint.model");
+	}
+
+	@Test
 	public void denseDAG() throws EolRuntimeException {
 		assertOldAndNewResultsAreEqual(20, true, "dense.model");
 	}

@@ -182,6 +182,11 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
       continue;
     }
 
+    -- Reset any existing automatic constraints
+    if (currentNode.hasAutomaticPerformanceAnnotation()) {
+      currentNode.setTimeLimit(0.0d);
+    }
+
     -- Collect constraints from its outgoing edges, keeping only the strictest
     -- constraints. There may be more than one, as some may not be directly
     -- comparable until we have more information.
