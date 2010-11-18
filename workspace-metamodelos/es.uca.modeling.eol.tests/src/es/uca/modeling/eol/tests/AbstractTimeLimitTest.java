@@ -34,9 +34,13 @@ public class AbstractTimeLimitTest {
 		for (int i = 0; i < expectedConstraints.length; ++i) {
 			final double[] expected = expectedConstraints[i];
 			final EolSequence constraint = (EolSequence)constraints.get(i);
-			assertEquals(msg + ": the " + (i+1) + "-th constraint has the correct length", expected.length, constraint.size());
+			assertEquals(msg + ": the " + (i + 1)
+					+ "-th constraint has the correct length", expected.length,
+					constraint.size());
 			for (int j = 0; j < expected.length; j++) {
-				assertEquals(msg + ": the " + (j+1) + "-th component has value " + expected[j], expected[j], (Double)constraint.get(j), 0.001);
+				assertEquals(msg + ": the " + (j + 1)
+						+ "-th component has value " + expected[j],
+						expected[j], (Double) constraint.get(j), 0.001);
 			}
 		}
 	}
@@ -48,7 +52,8 @@ public class AbstractTimeLimitTest {
 		EmfModel model = loadModel(name);
 		EolSequence res = (EolSequence) callOperation(
 				"aggregateConstraints", globalLimit, model.getAllOfKind("ProcessFinish"));
-		assertConstraintsEquals("Activity " + name + " has the expected constraints", res, expected);
+		assertConstraintsEquals("Activity " + name
+				+ " has the expected constraints", res, expected);
 	}
 
 	public Object callOperation(String name, Object... args)
@@ -81,7 +86,8 @@ public class AbstractTimeLimitTest {
 
 	private void loadModule(String name) throws URISyntaxException, Exception,
 			EolRuntimeException {
-		java.net.URI uri = TimeLimitConstraintAggregationTest.class.getResource(name).toURI();
+		java.net.URI uri = TimeLimitConstraintAggregationTest.class
+				.getResource(name).toURI();
 		mEolModule = new EolModule();
 		mEolModule.parse(uri);
 		mEolModule.execute();

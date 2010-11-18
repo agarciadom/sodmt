@@ -28,15 +28,12 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 
 	@Test
 	public void minimal() throws EolRuntimeException {
-		inferTimeLimits(1, true, "minimal.model");
+		assertOldAndNewResultsAreEqual(1, true, "minimal.model");
 	}
 
 	@Test
 	public void sequenceSucessful() throws EolRuntimeException {
-		Map<String, Double> mapN2A
-			= inferTimeLimits(1, true, "sequence.model");
-		assertActivityHasTimeLimit(mapN2A, "A", 0.3);
-		assertActivityHasTimeLimit(mapN2A, "B", 0.7);
+		assertOldAndNewResultsAreEqual(1, true, "sequence.model");
 	}
 
 	@Test
@@ -44,7 +41,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		// There is a manual time constraint asking for 0.3 seconds:
 		// the algorithm should fail, as there is not enough time even
 		// for the manual constraint
-		inferTimeLimits(0.2, false, "sequence.model");
+		assertOldAndNewResultsAreEqual(0.2, false, "sequence.model");
 	}
 
 	@Test
@@ -52,41 +49,22 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 		// There is a manual time constraint asking for 0.3 seconds:
 		// the algorithm should fail, as all the available time has been
 		// used up by the manual constraints
-		inferTimeLimits(0.3, false, "sequence.model");
+		assertOldAndNewResultsAreEqual(0.3, false, "sequence.model");
 	}
 
 	@Test
 	public void denseDAG() throws EolRuntimeException {
-		final int globalLimit = 20;
-		Map<String, Double> mapN2A
-			= inferTimeLimits(globalLimit, true, "dense.model");
-		for (String a : mapN2A.keySet()) {
-			assertActivityHasTimeLimit(mapN2A, a, globalLimit/mapN2A.size());
-		}
+		assertOldAndNewResultsAreEqual(20, true, "dense.model");
 	}
 
 	@Test
 	public void twoDipolesSuccessful() throws EolRuntimeException {
-		Map<String, Double> mapN2A
-			= inferTimeLimits(100, true, "two-dipoles.model");
-		for (String a : new String[]{"A", "C", "D", "E", "F", "I"}) {
-			assertActivityHasTimeLimit(mapN2A, a, 11.666);
-		}
-		assertActivityHasTimeLimit(mapN2A, "B", 20);
-		assertActivityHasTimeLimit(mapN2A, "G", 30);
-		assertActivityHasTimeLimit(mapN2A, "H", 41.666);
+		assertOldAndNewResultsAreEqual(100, true, "two-dipoles.model");
 	}
 
 	@Test
 	public void twoDipolesA40Successful() throws EolRuntimeException {
 		assertOldAndNewResultsAreEqual(100, true, "two-dipoles-Aneeds40.model");
-	}
-
-	private void assertActivityHasTimeLimit(
-			Map<String, Double> mapNameToActivity, String name,
-			double expected) {
-		assertEquals("Activity " + name + " should have expected time limit", expected,
-			mapNameToActivity.get(name), 0.001);
 	}
 
 	private void assertOldAndNewResultsAreEqual(double globalLimit,
@@ -102,7 +80,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 			final Double oldResult = oldResults.get(key);
 			final Double newResult = newResults.get(key);
 			assertEquals("Constraint for activity " + key
-					+ "should be the same for the old and new algorithms",
+					+ " should be the same for the old and new algorithms",
 					oldResult, newResult, 0.001);
 		}
 	}
