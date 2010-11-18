@@ -1,4 +1,4 @@
-import 'time_limits.eol';
+import 'time_limits_co.eol';
 import 'concurrent_users.eol';
 
 wizard InferPerformanceAnnotations {
@@ -6,7 +6,8 @@ wizard InferPerformanceAnnotations {
   do {
     transaction {
       for (start in ActivityStart.all) {
-        if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)
+        var global_limit = start.activity.annotation.secsTimeLimit;
+        if (not annotateTimeLimits(global_limit, start)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;
@@ -16,6 +17,21 @@ wizard InferPerformanceAnnotations {
   }
 }
 
+wizard InferTimeLimitsNew {
+  title : 'Infer time limits (new algorithm)'
+  do {
+    transaction {
+      for (activity in ServiceActivity.all) {
+        var ends = activity.nodes.select(e|e.isKindOf(ActivityFinish));
+        if (not distributeTime(activity.annotation.secsTimeLimit, ends)) {
+          abort;
+          return;
+        }
+      }
+    } -- transaction
+  } -- do
+}
+
 wizard RemoveAllInferredAnnotations {
   title : 'Remove all inferred annotations'
   do {
@@ -23,19 +39,4 @@ wizard RemoveAllInferredAnnotations {
       delete constraint;
     }
   }
-}
-
-operation ActivityAction createPerformanceAnnotation() {
-  self.annotation := new ActionPerformanceAnnotation;
-  self.annotation.manuallyAdded := false;
-  self.activity.nodes.add(self.annotation);
-}
-
-operation ActivityStart getGlobalTimeLimit() {
-  return self.activity.annotation.secsTimeLimit;
-}
-
-@cached
-operation ActivityStart getConcurrentUsers() : Real {
-  return self.activity.annotation.concurrentUsers;
 }

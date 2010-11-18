@@ -71,12 +71,11 @@ public class AbstractTimeLimitTest {
 
 	@Before
 	public void setUp() throws URISyntaxException, Exception {
-		String name = "/wizards/time_limits_v4_sp.eol";
-		loadModule(name);
+		loadModule("/wizards/time_limits_sp.eol");
 	}
 
 	@After
-	public void cleanUp() {
+	public void clearModels() {
 		mEolModule.getContext().getModelRepository().dispose();
 	}
 

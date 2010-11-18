@@ -17,8 +17,8 @@ import '../common/utils.eol';
 
 -*********** TIME DISTRIBUTION ***********-
 
-operation distributeTime(globalLimit : Real, endNodes : Sequence) : Boolean {
-  -- Aggregate constraints all over the graph and get the initial node
+operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
+  -- Aggregate constraints (relaxing the automatic ones) all over the graph and get the initial node
   var aggregateResults = aggregateConstraints(globalLimit, endNodes);
   var initial = aggregateResults.first();
 
@@ -166,10 +166,11 @@ operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
 $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.outgoing.isEmpty())
 $post _result = null or (_result.size() = 2 and _result.first().isKindOf(FlowNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
-operation aggregateConstraints(globalLimit : Real, endNodes : Sequence) : Sequence {
+operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequence {
 
   -- Create stack for traversing the nodes
-  var stack : Sequence = endNodes.clone();
+  var stack : Sequence;
+  stack.addAll(endNodes);
 
   while (not stack.isEmpty()) {
     -- Take the top of the stack

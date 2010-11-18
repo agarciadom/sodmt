@@ -1,4 +1,4 @@
-import 'time_limits.eol';
+import 'time_limits_sp.eol';
 import 'concurrent_users.eol';
 
 wizard InferPerformanceAnnotations {
@@ -37,19 +37,4 @@ wizard RemoveAllInferredAnnotations {
       delete constraint;
     }
   }
-}
-
-operation ServiceActivity createPerformanceAnnotation() {
-  self.annotation := new ActivityPerformanceAnnotation;
-  self.annotation.manuallyAdded := false;
-  ServiceProcess.all.first().activityPerformance.add(self.annotation);
-}
-
-operation ProcessStart getGlobalTimeLimit() {
-  return ProcessPerformanceAnnotation.all.first().secsTimeLimit;
-}
-
-@cached
-operation ProcessStart getConcurrentUsers() : Real {
-  return ProcessPerformanceAnnotation.all.first().concurrentUsers;
 }

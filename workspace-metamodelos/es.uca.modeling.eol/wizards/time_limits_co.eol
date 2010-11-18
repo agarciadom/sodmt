@@ -1,0 +1,30 @@
+-*
+  Main file for the two time limit inference algorithms, to be
+  imported from the ServiceComposition wizards.
+
+  Copyright (c) 2010 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+
+  This file only defines the parts of the inference algorithm that
+  are specific to the ServiceComposition metamodel.
+*-
+
+import 'time_limits_new.eol';
+import 'time_limits.eol';
+
+operation ActivityAction createPerformanceAnnotation() {
+  self.annotation := new ActionPerformanceAnnotation;
+  self.annotation.manuallyAdded := false;
+  self.activity.nodes.add(self.annotation);
+}
+
+@cached
+operation ActivityStart getConcurrentUsers() : Real {
+  return self.activity.annotation.concurrentUsers;
+}

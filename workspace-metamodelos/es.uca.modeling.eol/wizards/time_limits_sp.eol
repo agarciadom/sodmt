@@ -1,7 +1,6 @@
 -*
-  Heuristic algorithm for computing local time limits from global
-  time limits. Uses an alternative formulation to the first version
-  which does not require all paths to be enumerated. 
+  Main file for the two time limit inference algorithms, to be
+  imported from the ServiceProcess wizards.
 
   Copyright (c) 2010 Antonio García Domínguez.  All rights
   reserved. This program and the accompanying materials are made
@@ -16,7 +15,8 @@
   are specific to the ServiceProcess metamodel.
 *-
 
-import 'time_limits_v4.eol';
+import 'time_limits_new.eol';
+import 'time_limits.eol';
 
 operation ServiceActivity createPerformanceAnnotation() {
   self.annotation := new ActivityPerformanceAnnotation;
