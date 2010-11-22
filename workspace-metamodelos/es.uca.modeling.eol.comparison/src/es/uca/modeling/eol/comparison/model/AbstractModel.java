@@ -3,7 +3,7 @@ package es.uca.modeling.eol.comparison.model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class AbstractModel {
+public abstract class AbstractModel {
 
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 

@@ -38,8 +38,12 @@ public class DenseCaseStudy implements ICaseStudy {
 
 	@Override
 	public void setParameter(String name, String value) {
-		if (PARAM_MAXSIZE.equals(name)) {
-			fMaxSize = Integer.valueOf(value);
+		try {
+			if (PARAM_MAXSIZE.equals(name)) {
+				fMaxSize = Integer.valueOf(value);
+			}
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException(ex);
 		}
 	}
 

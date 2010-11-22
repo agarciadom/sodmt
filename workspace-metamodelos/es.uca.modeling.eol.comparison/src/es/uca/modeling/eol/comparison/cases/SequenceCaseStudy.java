@@ -39,11 +39,14 @@ public class SequenceCaseStudy implements ICaseStudy {
 
 	@Override
 	public void setParameter(String name, String value) {
-		if (PARAM_MAXSIZE.equals(name)) {
-			fMaxSize = Integer.valueOf(value);
-		}
-		else if (PARAM_MINSIZE.equals(name)) {
-			fMinSize = Integer.valueOf(value);
+		try {
+			if (PARAM_MAXSIZE.equals(name)) {
+				fMaxSize = Integer.valueOf(value);
+			} else if (PARAM_MINSIZE.equals(name)) {
+				fMinSize = Integer.valueOf(value);
+			}
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException(ex);
 		}
 	}
 

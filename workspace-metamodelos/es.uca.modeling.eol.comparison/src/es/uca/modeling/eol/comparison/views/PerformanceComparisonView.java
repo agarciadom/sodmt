@@ -8,11 +8,12 @@ import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -31,6 +32,7 @@ import org.jfree.experimental.chart.swt.ChartComposite;
 import es.uca.modeling.eol.comparison.Activator;
 import es.uca.modeling.eol.comparison.charts.TimeChartFactory;
 import es.uca.modeling.eol.comparison.model.CaseStudyConfigurationModel;
+import es.uca.modeling.eol.comparison.model.ParameterProxy;
 
 /**
  * Eclipse view for selecting a case study, configuring its parameters and
@@ -42,6 +44,18 @@ public class PerformanceComparisonView extends ViewPart {
 	@SuppressWarnings("unused")
 	private DataBindingContext m_bindingContext;
 
+	private final class ParameterProxyValueLabelProvider extends ColumnLabelProvider {
+		@Override
+		public String getText(Object element) {
+			return ((ParameterProxy)element).getParameterValue();
+		}
+	}
+	private final class ParameterProxyNameLabelProvider extends ColumnLabelProvider {
+		@Override
+		public String getText(Object element) {
+			return ((ParameterProxy)element).getParameterName();
+		}
+	}
 	private static class CaseStudyLabelProvider extends LabelProvider {
 		public Image getImage(Object element) {
 			return super.getImage(element);
@@ -58,28 +72,12 @@ public class PerformanceComparisonView extends ViewPart {
 		public void dispose() {}
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
 	}
-	private class ParameterLabelProvider extends LabelProvider implements ITableLabelProvider {
-		public Image getColumnImage(Object element, int columnIndex) {
-			return null;
-		}
-		public String getColumnText(Object element, int columnIndex) {
-			final String paramName = (String) element;
-			switch (columnIndex) {
-			case 0:
-				return paramName;
-			case 1:
-				return fModel.getParameter(paramName);
-			default:
-				return "";
-			}
-		}
-	}
 	private static class ParameterContentProvider implements IStructuredContentProvider, PropertyChangeListener {
 		private Viewer fViewer;
 
 		public Object[] getElements(Object inputElement) {
 			final CaseStudyConfigurationModel model = (CaseStudyConfigurationModel)inputElement;
-			return model.getParameters().keySet().toArray();
+			return model.getParameters().toArray();
 		}
 
 		public void dispose() {}
@@ -179,14 +177,19 @@ public class PerformanceComparisonView extends ViewPart {
 		tblParams.setLinesVisible(true);
 		tblParams.setSelection(0);
 
-		TableColumn tblcolName = new TableColumn(tblParams, SWT.LEFT);
+		TableViewerColumn tblcolviewName = new TableViewerColumn(tblviewParams, SWT.LEFT);
+		TableColumn tblcolName = tblcolviewName.getColumn();
 		tblcolName.setWidth(118);
 		tblcolName.setText("Name");
+		tblcolviewName.setLabelProvider(new ParameterProxyNameLabelProvider());
 
-		TableColumn tblclmnValue = new TableColumn(tblParams, SWT.LEFT);
+		TableViewerColumn tblcolviewValue = new TableViewerColumn(tblviewParams, SWT.LEFT);
+		TableColumn tblclmnValue = tblcolviewValue.getColumn();
 		tblclmnValue.setWidth(100);
 		tblclmnValue.setText("Value");
-		tblviewParams.setLabelProvider(new ParameterLabelProvider());
+		tblcolviewValue.setLabelProvider(new ParameterProxyValueLabelProvider());
+		tblcolviewValue.setEditingSupport(new ParamValueEditingSupport(tblviewParams));
+
 		tblviewParams.setContentProvider(new ParameterContentProvider());
 		tblviewParams.setInput(fModel);
 	}

@@ -29,13 +29,15 @@ public interface ICaseStudy {
 
 	/**
 	 * Changes the value of a specific parameter.
+	 * @throws IllegalArgumentException Invalid parameter, or invalid value for the parameter.
 	 */
-	void setParameter(String name, String value);
+	void setParameter(String name, String value) throws IllegalArgumentException;
 
 	/**
 	 * Runs the case study and returns a set of results to be displayed in the chart.
+	 * @throws IllegalArgumentException The case study was not correctly configured.
 	 */
-	Dataset run();
+	Dataset run() throws IllegalArgumentException;
 
 	/**
 	 * Returns the raw text to be displayed.
