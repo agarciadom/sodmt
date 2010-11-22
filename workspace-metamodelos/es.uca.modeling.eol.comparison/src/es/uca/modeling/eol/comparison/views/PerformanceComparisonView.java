@@ -1,93 +1,210 @@
 package es.uca.modeling.eol.comparison.views;
 
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.grouplayout.GroupLayout;
 import org.eclipse.swt.layout.grouplayout.LayoutStyle;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
+import es.uca.modeling.eol.comparison.Activator;
 import es.uca.modeling.eol.comparison.charts.TimeChartFactory;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
+import es.uca.modeling.eol.comparison.model.CaseStudyConfigurationModel;
 
 /**
- * This sample class demonstrates how to plug-in a new
- * workbench view. The view shows data obtained from the
- * model. The sample creates a dummy model on the fly,
- * but a real implementation would connect to the model
- * available either in this or another plug-in (e.g. the workspace).
- * The view is connected to the model using a content provider.
- * <p>
- * The view uses a label provider to define how model
- * objects should be presented in the view. Each
- * view can present the same model objects using
- * different labels and icons, if needed. Alternatively,
- * a single label provider can be shared between views
- * in order to ensure that objects of the same type are
- * presented in the same way everywhere.
- * <p>
+ * Eclipse view for selecting a case study, configuring its parameters and
+ * presenting the results.
+ * 
+ * @author Antonio García-Domínguez
  */
 public class PerformanceComparisonView extends ViewPart {
+	@SuppressWarnings("unused")
+	private DataBindingContext m_bindingContext;
+
+	private static class CaseStudyLabelProvider extends LabelProvider {
+		public Image getImage(Object element) {
+			return super.getImage(element);
+		}
+		public String getText(Object element) {
+			return super.getText(element);
+		}
+	}
+	private static class CaseStudyContentProvider implements IStructuredContentProvider {
+		public Object[] getElements(Object inputElement) {
+			final CaseStudyConfigurationModel model = (CaseStudyConfigurationModel)inputElement;
+			return model.getCaseStudies().toArray();
+		}
+		public void dispose() {}
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
+	}
+	private class ParameterLabelProvider extends LabelProvider implements ITableLabelProvider {
+		public Image getColumnImage(Object element, int columnIndex) {
+			return null;
+		}
+		public String getColumnText(Object element, int columnIndex) {
+			final String paramName = (String) element;
+			switch (columnIndex) {
+			case 0:
+				return paramName;
+			case 1:
+				return fModel.getParameter(paramName);
+			default:
+				return "";
+			}
+		}
+	}
+	private static class ParameterContentProvider implements IStructuredContentProvider, PropertyChangeListener {
+		private Viewer fViewer;
+
+		public Object[] getElements(Object inputElement) {
+			final CaseStudyConfigurationModel model = (CaseStudyConfigurationModel)inputElement;
+			return model.getParameters().keySet().toArray();
+		}
+
+		public void dispose() {}
+
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			fViewer = viewer;
+			if (oldInput != null) {
+				((CaseStudyConfigurationModel)oldInput).removePropertyChangeListener(this);
+			}
+			if (newInput != null) {
+				((CaseStudyConfigurationModel)newInput).addPropertyChangeListener(
+						CaseStudyConfigurationModel.PROPEV_NAME, this);
+			}
+		}
+
+		@Override
+		public void propertyChange(PropertyChangeEvent evt) {
+			fViewer.refresh();
+		}
+	}
 
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
 	public static final String ID = "es.uca.modeling.eol.comparison.views.PerformanceComparisonView";
+
+	// The model bean
+	private CaseStudyConfigurationModel fModel;
+
+	// GUI controls and viewers 
+	private Label lblParams;
 	private Table tblParams;
+	private TableViewer tblviewParams;
+
+	private Label lblOutput;
 	private Text txtRawOutput;
+
+	private Label lblCase;
+	private Combo cmbCaseStudy;
+	private ComboViewer cmbViewer;
+
+	private Button btnRun;
+	private Button btnSaveRaw;
+	private Button btnSaveChart;
+
+	private ChartComposite chartComposite;
 
 	/**
 	 * The constructor.
 	 */
-	public PerformanceComparisonView() {}
+	public PerformanceComparisonView() {
+		fModel = new CaseStudyConfigurationModel(Activator.getDefault().getRegistry());
+	}
 
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
-		
-		Label lblCase = new Label(parent, SWT.NONE);
+		initCaseSelection(parent);
+		initLaunchers(parent);
+		initParameterTable(parent);
+		initRawOutput(parent);
+		initChart(parent);
+		m_bindingContext = initDataBindings();
+		initLayout(parent);
+	}
+
+	private void initLaunchers(Composite parent) {
+		btnRun = new Button(parent, SWT.NONE);
+		btnRun.setText("Run");
+
+		btnSaveRaw = new Button(parent, SWT.NONE);
+		btnSaveRaw.setText("Save Raw...");
+
+		btnSaveChart = new Button(parent, SWT.NONE);
+		btnSaveChart.setText("Save Chart...");
+	}
+
+	private void initChart(Composite parent) {
+		chartComposite = TimeChartFactory.createChart(parent);
+	}
+
+	private void initRawOutput(Composite parent) {
+		lblOutput = new Label(parent, SWT.NONE);
+		lblOutput.setText("Raw output");
+		txtRawOutput = new Text(parent, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+	}
+
+	private void initParameterTable(Composite parent) {
+		lblParams = new Label(parent, SWT.NONE);
+		lblParams.setText("Parameters");
+
+		tblviewParams = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
+		tblParams = tblviewParams.getTable();
+		tblParams.setHeaderVisible(true);
+		tblParams.setLinesVisible(true);
+		tblParams.setSelection(0);
+
+		TableColumn tblcolName = new TableColumn(tblParams, SWT.LEFT);
+		tblcolName.setWidth(118);
+		tblcolName.setText("Name");
+
+		TableColumn tblclmnValue = new TableColumn(tblParams, SWT.LEFT);
+		tblclmnValue.setWidth(100);
+		tblclmnValue.setText("Value");
+		tblviewParams.setLabelProvider(new ParameterLabelProvider());
+		tblviewParams.setContentProvider(new ParameterContentProvider());
+		tblviewParams.setInput(fModel);
+	}
+
+	private void initCaseSelection(Composite parent) {
+		lblCase = new Label(parent, SWT.NONE);
 		lblCase.setAlignment(SWT.RIGHT);
 		lblCase.setText("Case study:");
-		
-		ComboViewer comboViewer = new ComboViewer(parent, SWT.NONE);
-		Combo cmbCaseStudy = comboViewer.getCombo();
-		cmbCaseStudy.setItems(new String[] {"Sequence", "Dense"});
-		cmbCaseStudy.select(0);
-		
-		Label lblParams = new Label(parent, SWT.NONE);
-		lblParams.setText("Parameters");
-		
-		TableViewer tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
-		tblParams = tableViewer.getTable();
-		
-		Button btnRun = new Button(parent, SWT.NONE);
-		btnRun.setText("Run");
-		
-		Label lblOutput = new Label(parent, SWT.NONE);
-		lblOutput.setText("Raw output");
-		
-				txtRawOutput = new Text(parent, SWT.BORDER);
-		
-		Button btnSaveRaw = new Button(parent, SWT.NONE);
-		btnSaveRaw.setText("Save Raw...");
-		
-		Button btnSaveChart = new Button(parent, SWT.NONE);
-		btnSaveChart.setText("Save Chart...");
-		
-		ChartComposite chartComposite = TimeChartFactory.createChart(parent);
 
+		cmbViewer = new ComboViewer(parent, SWT.READ_ONLY);
+		cmbCaseStudy = cmbViewer.getCombo();
+		cmbViewer.setLabelProvider(new CaseStudyLabelProvider());
+		cmbViewer.setContentProvider(new CaseStudyContentProvider());
+		cmbViewer.setInput(fModel);
+		cmbCaseStudy.select(0);
+	}
+
+	private void initLayout(Composite parent) {
 		GroupLayout gl_parent = new GroupLayout(parent);
 		gl_parent.setHorizontalGroup(
 			gl_parent.createParallelGroup(GroupLayout.LEADING)
@@ -148,5 +265,15 @@ public class PerformanceComparisonView extends ViewPart {
 	 */
 	public void setFocus() {
 		tblParams.setFocus();
+	}
+
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		IObservableValue cmbViewerObserveSingleSelection = ViewersObservables.observeSingleSelection(cmbViewer);
+		IObservableValue fModelCaseStudyNameObserveValue = BeansObservables.observeValue(fModel, "caseStudyName");
+		bindingContext.bindValue(cmbViewerObserveSingleSelection, fModelCaseStudyNameObserveValue, null, null);
+		//
+		return bindingContext;
 	}
 }

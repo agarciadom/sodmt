@@ -4,6 +4,10 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import es.uca.modeling.eol.comparison.cases.DenseCaseStudy;
+import es.uca.modeling.eol.comparison.cases.SequenceCaseStudy;
+import es.uca.modeling.eol.comparison.model.CaseStudyRegistry;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -14,6 +18,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+
+	private CaseStudyRegistry fRegistry;
 	
 	/**
 	 * The constructor
@@ -28,6 +34,10 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+
+		fRegistry = new CaseStudyRegistry();
+		fRegistry.register(new SequenceCaseStudy());
+		fRegistry.register(new DenseCaseStudy());
 	}
 
 	/*
@@ -57,5 +67,12 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	/**
+	 * Returns the case study registry for this plugin.
+	 */
+	public CaseStudyRegistry getRegistry() {
+		return fRegistry;
 	}
 }
