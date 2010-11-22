@@ -1,33 +1,54 @@
 package es.uca.modeling.eol.comparison.views;
 
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ComboViewer;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.grouplayout.GroupLayout;
 import org.eclipse.swt.layout.grouplayout.LayoutStyle;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.Dataset;
 import org.jfree.experimental.chart.swt.ChartComposite;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.DefaultFontMapper;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfTemplate;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import es.uca.modeling.eol.comparison.Activator;
 import es.uca.modeling.eol.comparison.charts.TimeChartFactory;
@@ -44,6 +65,79 @@ public class PerformanceComparisonView extends ViewPart {
 	@SuppressWarnings("unused")
 	private DataBindingContext m_bindingContext;
 
+	private final class RunSelectionListener extends SelectionAdapter {
+		@Override
+		public void widgetSelected(SelectionEvent event) {
+			final Dataset dataset = new DefaultCategoryDataset();
+			Job runJob = new Job("Run Comparison") {
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					return fModel.getCaseStudy().run(dataset, monitor);
+				}
+			};
+			runJob.setUser(true);
+			runJob.setPriority(Job.LONG);
+			runJob.addJobChangeListener(new JobChangeAdapter() {
+				@Override
+				public void done(IJobChangeEvent event) {
+					updateResults(dataset);
+				}
+			});
+			runJob.schedule();
+		}
+
+		@Override
+		public void widgetDefaultSelected(SelectionEvent event) {
+			widgetSelected(event);
+		}
+	}
+	private final class SaveChartSelectionListener extends SelectionAdapter {
+		private final Composite parent;
+
+		private SaveChartSelectionListener(Composite parent) {
+			this.parent = parent;
+		}
+
+		@Override
+		public void widgetDefaultSelected(SelectionEvent e) {
+			widgetSelected(e);
+		}
+
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			FileDialog dlg = new FileDialog(parent.getShell());
+			dlg.setFilterNames(new String[]{"PDF"});
+			dlg.setFilterExtensions(new String[]{"*.pdf"});
+			dlg.setOverwrite(true);
+			final String path = dlg.open();
+			if (path != null) {
+				saveChartToPDF(parent, path);
+			}
+		}
+	}
+	private final class SaveRawSelectionListener extends SelectionAdapter {
+		private final Composite parent;
+
+		private SaveRawSelectionListener(Composite parent) {
+			this.parent = parent;
+		}
+
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			FileDialog dlg = new FileDialog(parent.getShell(), SWT.SAVE);
+			String path = dlg.open();
+			dlg.setFilterNames(new String[]{"*.txt","*.*"});
+			dlg.setOverwrite(true);
+			if (path != null) {
+				saveRawToFile(parent, path);
+			}
+		}
+
+		@Override
+		public void widgetDefaultSelected(SelectionEvent e) {
+			widgetSelected(e);
+		}
+	}
 	private final class ParameterProxyValueLabelProvider extends ColumnLabelProvider {
 		@Override
 		public String getText(Object element) {
@@ -54,48 +148,6 @@ public class PerformanceComparisonView extends ViewPart {
 		@Override
 		public String getText(Object element) {
 			return ((ParameterProxy)element).getParameterName();
-		}
-	}
-	private static class CaseStudyLabelProvider extends LabelProvider {
-		public Image getImage(Object element) {
-			return super.getImage(element);
-		}
-		public String getText(Object element) {
-			return super.getText(element);
-		}
-	}
-	private static class CaseStudyContentProvider implements IStructuredContentProvider {
-		public Object[] getElements(Object inputElement) {
-			final CaseStudyConfigurationModel model = (CaseStudyConfigurationModel)inputElement;
-			return model.getCaseStudies().toArray();
-		}
-		public void dispose() {}
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
-	}
-	private static class ParameterContentProvider implements IStructuredContentProvider, PropertyChangeListener {
-		private Viewer fViewer;
-
-		public Object[] getElements(Object inputElement) {
-			final CaseStudyConfigurationModel model = (CaseStudyConfigurationModel)inputElement;
-			return model.getParameters().toArray();
-		}
-
-		public void dispose() {}
-
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-			fViewer = viewer;
-			if (oldInput != null) {
-				((CaseStudyConfigurationModel)oldInput).removePropertyChangeListener(this);
-			}
-			if (newInput != null) {
-				((CaseStudyConfigurationModel)newInput).addPropertyChangeListener(
-						CaseStudyConfigurationModel.PROPEV_NAME, this);
-			}
-		}
-
-		@Override
-		public void propertyChange(PropertyChangeEvent evt) {
-			fViewer.refresh();
 		}
 	}
 
@@ -146,14 +198,17 @@ public class PerformanceComparisonView extends ViewPart {
 		initLayout(parent);
 	}
 
-	private void initLaunchers(Composite parent) {
+	private void initLaunchers(final Composite parent) {
 		btnRun = new Button(parent, SWT.NONE);
+		btnRun.addSelectionListener(new RunSelectionListener());
 		btnRun.setText("Run");
 
 		btnSaveRaw = new Button(parent, SWT.NONE);
+		btnSaveRaw.addSelectionListener(new SaveRawSelectionListener(parent));
 		btnSaveRaw.setText("Save Raw...");
 
 		btnSaveChart = new Button(parent, SWT.NONE);
+		btnSaveChart.addSelectionListener(new SaveChartSelectionListener(parent));
 		btnSaveChart.setText("Save Chart...");
 	}
 
@@ -164,7 +219,11 @@ public class PerformanceComparisonView extends ViewPart {
 	private void initRawOutput(Composite parent) {
 		lblOutput = new Label(parent, SWT.NONE);
 		lblOutput.setText("Raw output");
-		txtRawOutput = new Text(parent, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+		txtRawOutput = new Text(parent,
+				SWT.BORDER | SWT.READ_ONLY | SWT.WRAP |
+				SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL |
+				SWT.MULTI);
+		txtRawOutput.setText("this is a test");
 	}
 
 	private void initParameterTable(Composite parent) {
@@ -266,11 +325,12 @@ public class PerformanceComparisonView extends ViewPart {
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
+	@Override
 	public void setFocus() {
 		tblParams.setFocus();
 	}
 
-	protected DataBindingContext initDataBindings() {
+	private DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
 		IObservableValue cmbViewerObserveSingleSelection = ViewersObservables.observeSingleSelection(cmbViewer);
@@ -278,5 +338,54 @@ public class PerformanceComparisonView extends ViewPart {
 		bindingContext.bindValue(cmbViewerObserveSingleSelection, fModelCaseStudyNameObserveValue, null, null);
 		//
 		return bindingContext;
+	}
+
+	private void saveRawToFile(final Composite parent, String path) {
+		final File file = new File(path);
+		final String txt = txtRawOutput.getText();
+		try {
+			Writer writer = new BufferedWriter(new FileWriter(file));
+			writer.write(txt);
+			writer.close();
+		} catch (IOException ex) {
+			ErrorDialog.openError(
+					parent.getShell(),
+					"Exception while saving raw output",
+					"Could not save raw output to " + path
+						+ ":\n" + ex.getLocalizedMessage(),
+					new Status(IStatus.ERROR, ID, IStatus.OK,
+							"Could not save raw output", ex));
+		}
+	}
+
+	private void saveChartToPDF(final Composite parent, final String path) {
+		final File file = new File(path);
+		final int width = 640;
+		final int height = 480;
+
+		Document document = new Document(new Rectangle(width, height));
+		try {
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
+			document.open();
+			PdfContentByte cb = writer.getDirectContent();
+			PdfTemplate tp = cb.createTemplate(width, height);
+			Graphics2D g2d = tp.createGraphics(width, height, new DefaultFontMapper());
+			Rectangle2D r2d = new Rectangle2D.Double(0, 0, width, height);
+			chartComposite.getChart().draw(g2d, r2d);
+			g2d.dispose();
+			cb.addTemplate(tp, 0, 0);
+			document.close();
+		} catch (Exception e) {
+			ErrorDialog.openError(parent.getShell(),
+					"Exception while generating PDF for chart",
+					"Could not save chart to " + path + ":\n" + e.getLocalizedMessage(),
+					new Status(IStatus.ERROR, ID, IStatus.OK,
+							"Could not generate PDF from chart", e));
+		}
+	}
+
+	// Updates the raw output and graph with the dataset from the last completed job
+	private void updateResults(Dataset dataset) {
+		// TODO implement
 	}
 }

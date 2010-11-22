@@ -2,6 +2,9 @@ package es.uca.modeling.eol.comparison.model;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.jfree.data.general.Dataset;
 
 /**
@@ -35,17 +38,11 @@ public interface ICaseStudy {
 
 	/**
 	 * Runs the case study and returns a set of results to be displayed in the chart.
+	 * @param dataset Dataset to which results should be added.
+	 * @param monitor Progress monitor for the Eclipse job.
+	 * @return {@link Status#OK_STATUS} if everything went well, {@link Status#CANCEL_STATUS} if it was cancelled.
 	 * @throws IllegalArgumentException The case study was not correctly configured.
 	 */
-	Dataset run() throws IllegalArgumentException;
+	IStatus run(Dataset dataset, IProgressMonitor monitor) throws IllegalArgumentException;
 
-	/**
-	 * Returns the raw text to be displayed.
-	 */
-	String getText();
-
-	/**
-	 * Changes the text to be displayed.
-	 */
-	void setText(String text);
 }

@@ -3,6 +3,9 @@ package es.uca.modeling.eol.comparison.cases;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.jfree.data.general.Dataset;
 
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
@@ -48,20 +51,10 @@ public class DenseCaseStudy implements ICaseStudy {
 	}
 
 	@Override
-	public Dataset run() {
+	public IStatus run(Dataset dataset, IProgressMonitor monitor)
+			throws IllegalArgumentException {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setText(String text) {
-		// TODO Auto-generated method stub
+		return Status.OK_STATUS;
 	}
 
 }
