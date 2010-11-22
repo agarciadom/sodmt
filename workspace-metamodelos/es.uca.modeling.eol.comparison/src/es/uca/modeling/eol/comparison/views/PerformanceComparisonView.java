@@ -13,7 +13,6 @@ import java.io.Writer;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
@@ -39,8 +38,10 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.Dataset;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
 import com.itextpdf.text.Document;
@@ -51,8 +52,8 @@ import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import es.uca.modeling.eol.comparison.Activator;
-import es.uca.modeling.eol.comparison.charts.TimeChartFactory;
 import es.uca.modeling.eol.comparison.model.CaseStudyConfigurationModel;
+import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ParameterProxy;
 
 /**
@@ -66,21 +67,24 @@ public class PerformanceComparisonView extends ViewPart {
 	private DataBindingContext m_bindingContext;
 
 	private final class RunSelectionListener extends SelectionAdapter {
+
 		@Override
 		public void widgetSelected(SelectionEvent event) {
-			final Dataset dataset = new DefaultCategoryDataset();
-			Job runJob = new Job("Run Comparison") {
-				@Override
-				protected IStatus run(IProgressMonitor monitor) {
-					return fModel.getCaseStudy().run(dataset, monitor);
-				}
-			};
+			final CaseStudyExecutionJob runJob
+				= new CaseStudyExecutionJob("Run Comparison", fModel.getCaseStudy());
 			runJob.setUser(true);
 			runJob.setPriority(Job.LONG);
 			runJob.addJobChangeListener(new JobChangeAdapter() {
 				@Override
-				public void done(IJobChangeEvent event) {
-					updateResults(dataset);
+				public void done(final IJobChangeEvent event) {
+					if (event.getResult().isOK()) {
+						PerformanceComparisonView.this.chartComposite.getDisplay().syncExec(new Runnable(){
+							public void run() {
+								final CaseStudyExecutionJob job = (CaseStudyExecutionJob)event.getJob();
+								updateResults(job.getCaseStudyResult());
+							}
+						});
+					}
 				}
 			});
 			runJob.schedule();
@@ -213,7 +217,15 @@ public class PerformanceComparisonView extends ViewPart {
 	}
 
 	private void initChart(Composite parent) {
-		chartComposite = TimeChartFactory.createChart(parent);
+		chartComposite = createEmptyChart(parent);
+	}
+
+	private ChartComposite createEmptyChart(Composite parent) {
+		XYSeriesCollection coll = new XYSeriesCollection();
+		JFreeChart chart = ChartFactory.createXYLineChart(
+			"Execution times", "Size", "Time (secs)", coll,
+			PlotOrientation.VERTICAL, true, true, false);
+		return new ChartComposite(parent, 0, chart);
 	}
 
 	private void initRawOutput(Composite parent) {
@@ -384,8 +396,14 @@ public class PerformanceComparisonView extends ViewPart {
 		}
 	}
 
-	// Updates the raw output and graph with the dataset from the last completed job
-	private void updateResults(Dataset dataset) {
+	/**
+	 * Updates the raw output and graph with the dataset from the last completed
+	 * job. Note: this method should be called from the SWT thread!
+	 */
+	private void updateResults(CaseStudyResult caseStudyResult) {
 		// TODO implement
+		chartComposite.setChart(caseStudyResult.getChart());
+		chartComposite.forceRedraw();
+		txtRawOutput.setText(caseStudyResult.getRawText());
 	}
 }

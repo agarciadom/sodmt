@@ -4,10 +4,13 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.jfree.data.general.Dataset;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
+import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
 
 /**
@@ -54,10 +57,23 @@ public class SequenceCaseStudy implements ICaseStudy {
 	}
 
 	@Override
-	public IStatus run(Dataset dataset, IProgressMonitor monitor)
+	public CaseStudyResult run(IProgressMonitor monitor)
 			throws IllegalArgumentException {
+
+		XYSeries series = new XYSeries("new");
+		series.add(1, 1);
+		series.add(2, 2.5);
+		series.add(3, 5.3);
+		XYSeriesCollection collection = new XYSeriesCollection();
+		collection.addSeries(series);
+
+		JFreeChart chart = ChartFactory.createXYLineChart(
+			"Execution times", "Size", "Time (secs)", collection,
+			PlotOrientation.VERTICAL, true, true, false);
+
 		// TODO Auto-generated method stub
-		return Status.OK_STATUS;
+
+		return new CaseStudyResult(true, "hi ho", chart);
 	}
 
 }
