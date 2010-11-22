@@ -7,6 +7,12 @@ import org.eclipse.jface.viewers.TextCellEditor;
 
 import es.uca.modeling.eol.comparison.model.ParameterProxy;
 
+/**
+ * Cell editor for the Value column of the parameter table.
+ *
+ * @author Antonio García-Domínguez
+ * @version 1.0
+ */
 public class ParamValueEditingSupport extends EditingSupport {
 
 	private TableViewer fViewer;

@@ -8,7 +8,7 @@ import org.jfree.chart.JFreeChart;
  * @author Antonio García-Domínguez
  * @version 1.0
  */
-public class CaseStudyResult {
+public class CaseStudyResult extends AbstractModel {
 
 	private boolean fSuccessful = false;
 	private String fRawText = "";
@@ -24,12 +24,23 @@ public class CaseStudyResult {
 		return fSuccessful;
 	}
 
+	public void setSuccessful(boolean newValue) {
+		firePropertyChange("successful", fSuccessful, fSuccessful = newValue);
+	}
+
 	public String getRawText() {
 		return fRawText;
+	}
+
+	public void setRawText(String newValue) {
+		firePropertyChange("rawText", fRawText, fRawText = newValue);
 	}
 
 	public JFreeChart getChart() {
 		return fChart;
 	}
 
+	public void setChart(JFreeChart newValue) {
+		firePropertyChange("chart", fChart, fChart = newValue);
+	}
 }

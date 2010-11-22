@@ -8,6 +8,12 @@ import org.eclipse.core.runtime.jobs.Job;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
 
+/**
+ * Eclipse background job for running the case study.
+ *
+ * @author Antonio García-Domínguez
+ * @version 1.0
+ */
 final class CaseStudyExecutionJob extends Job {
 	private ICaseStudy fCaseStudy;
 	private CaseStudyResult fResult;

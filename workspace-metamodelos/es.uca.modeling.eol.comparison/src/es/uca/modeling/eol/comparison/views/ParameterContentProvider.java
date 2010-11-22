@@ -8,6 +8,12 @@ import org.eclipse.jface.viewers.Viewer;
 
 import es.uca.modeling.eol.comparison.model.CaseStudyConfigurationModel;
 
+/**
+ * Content provider for the parameter table.
+ *
+ * @author Antonio García-Domínguez
+ * @version 1.0
+ */
 class ParameterContentProvider implements IStructuredContentProvider, PropertyChangeListener {
 	private Viewer fViewer;
 

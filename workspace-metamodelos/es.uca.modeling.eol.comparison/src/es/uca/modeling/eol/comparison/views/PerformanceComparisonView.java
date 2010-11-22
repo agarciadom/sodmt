@@ -12,16 +12,19 @@ import java.io.Writer;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.PojoObservables;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
@@ -38,10 +41,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.experimental.chart.swt.ChartComposite;
 
 import com.itextpdf.text.Document;
@@ -53,12 +52,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import es.uca.modeling.eol.comparison.Activator;
 import es.uca.modeling.eol.comparison.model.CaseStudyConfigurationModel;
-import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ParameterProxy;
 
 /**
  * Eclipse view for selecting a case study, configuring its parameters and
- * presenting the results.
+ * presenting its results.
  * 
  * @author Antonio García-Domínguez
  */
@@ -78,12 +76,8 @@ public class PerformanceComparisonView extends ViewPart {
 				@Override
 				public void done(final IJobChangeEvent event) {
 					if (event.getResult().isOK()) {
-						PerformanceComparisonView.this.chartComposite.getDisplay().syncExec(new Runnable(){
-							public void run() {
-								final CaseStudyExecutionJob job = (CaseStudyExecutionJob)event.getJob();
-								updateResults(job.getCaseStudyResult());
-							}
-						});
+						final CaseStudyExecutionJob job = (CaseStudyExecutionJob)event.getJob();
+						fModel.setLastResult(job.getCaseStudyResult());
 					}
 				}
 			});
@@ -217,15 +211,7 @@ public class PerformanceComparisonView extends ViewPart {
 	}
 
 	private void initChart(Composite parent) {
-		chartComposite = createEmptyChart(parent);
-	}
-
-	private ChartComposite createEmptyChart(Composite parent) {
-		XYSeriesCollection coll = new XYSeriesCollection();
-		JFreeChart chart = ChartFactory.createXYLineChart(
-			"Execution times", "Size", "Time (secs)", coll,
-			PlotOrientation.VERTICAL, true, true, false);
-		return new ChartComposite(parent, 0, chart);
+		chartComposite = new AutoRedrawChartComposite(parent, 0);
 	}
 
 	private void initRawOutput(Composite parent) {
@@ -272,7 +258,7 @@ public class PerformanceComparisonView extends ViewPart {
 
 		cmbViewer = new ComboViewer(parent, SWT.READ_ONLY);
 		cmbCaseStudy = cmbViewer.getCombo();
-		cmbViewer.setLabelProvider(new CaseStudyLabelProvider());
+		cmbViewer.setLabelProvider(new LabelProvider());
 		cmbViewer.setContentProvider(new CaseStudyContentProvider());
 		cmbViewer.setInput(fModel);
 		cmbCaseStudy.select(0);
@@ -342,16 +328,6 @@ public class PerformanceComparisonView extends ViewPart {
 		tblParams.setFocus();
 	}
 
-	private DataBindingContext initDataBindings() {
-		DataBindingContext bindingContext = new DataBindingContext();
-		//
-		IObservableValue cmbViewerObserveSingleSelection = ViewersObservables.observeSingleSelection(cmbViewer);
-		IObservableValue fModelCaseStudyNameObserveValue = BeansObservables.observeValue(fModel, "caseStudyName");
-		bindingContext.bindValue(cmbViewerObserveSingleSelection, fModelCaseStudyNameObserveValue, null, null);
-		//
-		return bindingContext;
-	}
-
 	private void saveRawToFile(final Composite parent, String path) {
 		final File file = new File(path);
 		final String txt = txtRawOutput.getText();
@@ -396,14 +372,21 @@ public class PerformanceComparisonView extends ViewPart {
 		}
 	}
 
-	/**
-	 * Updates the raw output and graph with the dataset from the last completed
-	 * job. Note: this method should be called from the SWT thread!
-	 */
-	private void updateResults(CaseStudyResult caseStudyResult) {
-		// TODO implement
-		chartComposite.setChart(caseStudyResult.getChart());
-		chartComposite.forceRedraw();
-		txtRawOutput.setText(caseStudyResult.getRawText());
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		IObservableValue cmbViewerObserveSingleSelection = ViewersObservables.observeSingleSelection(cmbViewer);
+		IObservableValue fModelCaseStudyNameObserveValue = BeansObservables.observeValue(fModel, "caseStudyName");
+		bindingContext.bindValue(cmbViewerObserveSingleSelection, fModelCaseStudyNameObserveValue, null, null);
+		//
+		IObservableValue txtRawOutputObserveTextObserveWidget = SWTObservables.observeText(txtRawOutput, SWT.Modify);
+		IObservableValue fModelLastResultrawTextObserveValue = BeansObservables.observeValue(fModel, "lastResult.rawText");
+		bindingContext.bindValue(txtRawOutputObserveTextObserveWidget, fModelLastResultrawTextObserveValue, null, null);
+		//
+		IObservableValue chartCompositeChartObserveValue = PojoObservables.observeValue(chartComposite, "chart");
+		IObservableValue fModelLastResultchartObserveValue = BeansObservables.observeValue(fModel, "lastResult.chart");
+		bindingContext.bindValue(chartCompositeChartObserveValue, fModelLastResultchartObserveValue, null, null);
+		//
+		return bindingContext;
 	}
 }

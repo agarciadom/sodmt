@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeriesCollection;
+
 /**
  * Model bean for selecting and configuring a case study.
  * 
@@ -13,13 +18,18 @@ import java.util.List;
 public class CaseStudyConfigurationModel extends AbstractModel {
 
 	public static final String PROPEV_NAME = "name";
+
 	private CaseStudyRegistry fRegistry;
 	private String fCaseName = "";
+	private CaseStudyResult fLastResult;
 
 	public CaseStudyConfigurationModel(CaseStudyRegistry reg) {
 		fRegistry = reg;
 		fCaseName = fRegistry.get(fRegistry.list().iterator().next()).getName();
+		fLastResult = new CaseStudyResult(true, "", createEmptyChart());
 	}
+
+	/* CASE STUDIES */
 
 	public Collection<String> getCaseStudies() {
 		return fRegistry.list();
@@ -38,6 +48,8 @@ public class CaseStudyConfigurationModel extends AbstractModel {
 		return fRegistry.get(fCaseName);
 	}
 
+	/* PARAMETERS FOR THE CURRENT CASE STUDY */
+
 	public List<ParameterProxy> getParameters() {
 		List<ParameterProxy> proxies = new ArrayList<ParameterProxy>();
 		final ICaseStudy currentCase = getCaseStudy();
@@ -53,6 +65,25 @@ public class CaseStudyConfigurationModel extends AbstractModel {
 
 	public void setParameter(String name, String value) {
 		getCaseStudy().setParameter(name, value);
+	}
+
+	/* RESULTS */
+
+	public void setLastResult(CaseStudyResult res) {
+		firePropertyChange("lastResult", fLastResult, this.fLastResult = res);
+	}
+
+	public CaseStudyResult getLastResult() {
+		return fLastResult;
+	}
+
+	/* UTILITY METHODS */
+
+	private JFreeChart createEmptyChart() {
+		XYSeriesCollection coll = new XYSeriesCollection();
+		return ChartFactory.createXYLineChart(
+			"Execution times", "Size", "Time (secs)", coll,
+			PlotOrientation.VERTICAL, true, true, false);
 	}
 
 }
