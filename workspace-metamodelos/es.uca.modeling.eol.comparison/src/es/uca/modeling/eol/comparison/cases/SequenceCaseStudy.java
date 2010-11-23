@@ -1,22 +1,16 @@
 package es.uca.modeling.eol.comparison.cases;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
+import java.util.List;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.EmfModelFactory;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
 import serviceProcess.FlowNode;
 import serviceProcess.ProcessControlFlow;
@@ -25,8 +19,6 @@ import serviceProcess.ProcessStart;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
-import es.uca.modeling.eol.comparison.model.CaseStudyResult;
-import es.uca.modeling.eol.comparison.model.ICaseStudy;
 
 /**
  * Case study for a sequential graph.
@@ -34,14 +26,11 @@ import es.uca.modeling.eol.comparison.model.ICaseStudy;
  * @author Antonio García-Domínguez
  * @version 1.0
  */
-public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
+public class SequenceCaseStudy extends AbstractCaseStudy {
 
 	private static final String PARAM_MINSIZE = "minSize";
 	private static final String PARAM_MAXSIZE = "maxSize";
-	private static final String PARAM_GLOBALLIMIT = "globalLimit";
-	private static final String PARAM_ITERATIONS = "iterationsPerSize";
-	private int fMinSize = 0, fMaxSize = 10, fIterations = 5;
-	double fGlobalLimit = 100;
+	private int fMinSize = 0, fMaxSize = 10;
 
 	@Override
 	public String getName() {
@@ -54,55 +43,16 @@ public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
 			return Integer.toString(fMaxSize);
 		} else if (PARAM_MINSIZE.equals(name)) {
 			return Integer.toString(fMinSize);
-		} else if (PARAM_GLOBALLIMIT.equals(name)) {
-			return Double.toString(fGlobalLimit);
-		} else if (PARAM_ITERATIONS.equals(name)) {
-			return Integer.toString(fIterations);
-		} else return null;
+		} else return super.getParameter(name);
 	}
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_MINSIZE, PARAM_MAXSIZE, PARAM_GLOBALLIMIT, PARAM_ITERATIONS);
-	}
-
-	@Override
-	public void run(IProgressMonitor monitor, CaseStudyResult result) throws Exception {
-		validateConfiguration();
-		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
-		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
-
-		final XYSeries newAlgoSeries = new XYSeries("Collapsed paths");
-		final XYSeries oldAlgoSeries = new XYSeries("All paths");
-		initXYLineChart(result, newAlgoSeries, oldAlgoSeries);
-
-		monitor.beginTask("Comparing execution times", fMaxSize - fMinSize + 1);
-		for (int size = fMinSize; size <= fMaxSize; ++size) {
-			if (monitor.isCanceled()) {
-				result.setSuccessful(false);
-				return;
-			}
-
-			// Build the model, which will be reused by both algorithms
-			EmfModel model = buildModel(size);
-
-			final Map<String, Double> annotationsOld
-				= oldAlgo.timeAndRun(fIterations, model, fGlobalLimit, getStartNode(model));
-			final Map<String, Double> annotationsNew
-				= newAlgo.timeAndRun(fIterations, model, fGlobalLimit, getEndNodes(model));
-
-			// If the results are not the same, the algorithms are not comparable
-			model.dispose();
-			checkResultsMatch(annotationsNew, annotationsOld);
-
-			// Update the current results
-			addToSeries(newAlgoSeries, size, oldAlgo.getAverageTime());
-			addToSeries(oldAlgoSeries, size, newAlgo.getAverageTime());
-			updateRawText(result, size, newAlgo.getAverageTime(), oldAlgo.getAverageTime());
-			monitor.worked(1);
-		}
-		monitor.done();
-		result.setSuccessful(true);
+		List<String> names = new ArrayList<String>();
+		names.addAll(super.getParameterNames());
+		names.add(PARAM_MINSIZE);
+		names.add(PARAM_MAXSIZE);
+		return names;
 	}
 
 	@Override
@@ -112,15 +62,30 @@ public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
 				fMaxSize = Integer.valueOf(value);
 			} else if (PARAM_MINSIZE.equals(name)) {
 				fMinSize = Integer.valueOf(value);
-			} else if (PARAM_GLOBALLIMIT.equals(name)) {
-				fGlobalLimit = Double.valueOf(value);
-			} else if (PARAM_ITERATIONS.equals(name)) {
-				fIterations = Integer.valueOf(value);
-			} else {
-				throw new IllegalArgumentException("Unknown parameter: " + name);
-			}
+			} else super.setParameter(name, value);
 		} catch (NumberFormatException ex) {
 			throw new IllegalArgumentException(ex);
+		}
+	}
+
+	@Override
+	protected List<EmfModel> buildModels()
+		throws EolModelLoadingException,
+			EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException
+	{
+		List<EmfModel> models = new ArrayList<EmfModel>();
+		for (int i = fMinSize; i <= fMaxSize; ++i) {
+			models.add(buildModel(i));
+		}
+		return models;
+	}
+
+	@Override
+	protected void validateConfiguration() {
+		super.validateConfiguration();
+		if (fMinSize > fMaxSize) {
+			throw new IllegalArgumentException(PARAM_MINSIZE + " must be smaller than " + PARAM_MAXSIZE);
 		}
 	}
 
@@ -169,37 +134,6 @@ public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
 		lastEdge.setTarget(finish);
 
 		return model;
-	}
-
-	private void initXYLineChart(CaseStudyResult result, final XYSeries... allSeries) {
-		XYSeriesCollection collection = new XYSeriesCollection();
-		StringBuilder headerBuilder = new StringBuilder();
-		headerBuilder.append("size");
-		for (XYSeries series : allSeries) {
-			collection.addSeries(series);
-			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
-			headerBuilder.append(series.getKey());
-		}
-		headerBuilder.append('\n');
-
-		JFreeChart chart = ChartFactory.createXYLineChart(
-				"Average execution times (over " + fIterations + " iterations)",
-				"Size", "Time (secs)", collection,
-				PlotOrientation.VERTICAL, true, true, false);
-		result.setRawText(headerBuilder.toString());
-		result.setChart(chart);
-	}
-
-	private void validateConfiguration() {
-		if (fMinSize > fMaxSize) {
-			throw new IllegalArgumentException(PARAM_MINSIZE + " must be smaller than " + PARAM_MAXSIZE);
-		}
-		if (fGlobalLimit <= 0) {
-			throw new IllegalArgumentException(PARAM_GLOBALLIMIT + " must be greater than 0");
-		}
-		if (fIterations <= 0) {
-			throw new IllegalArgumentException(PARAM_ITERATIONS + " must be greater than 0");
-		}
 	}
 
 }

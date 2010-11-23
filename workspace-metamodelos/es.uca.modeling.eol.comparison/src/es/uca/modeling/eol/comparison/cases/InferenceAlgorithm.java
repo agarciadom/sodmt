@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.execute.context.IEolContext;
 
 import serviceProcess.ServiceActivity;
@@ -41,39 +42,38 @@ public class InferenceAlgorithm {
 		fOperation = operationName;
 	}
 
-	public Map<String, Double> run(EmfModel model, Object... args) throws Exception {
+	public void run(EmfModel model, Object... args) throws Exception {
 		final EolModule module = getModule();
 		final IEolContext context = module.getContext();
-		context.getModelRepository().addModel(model);
 
+		context.getModelRepository().addModel(model);
 		final EolOperation operation = module.getOperations().getOperation(fOperation);
 		operation.execute(null, Arrays.asList(args), context);
+		context.getModelRepository().removeModel(model);
 		context.getExtendedProperties().clear();
+	}
 
+	private Map<String, Double> computeAnnotationMap(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
 		final Map<String, Double> mapResults = new HashMap<String, Double>();
 		for (EObject o : model.getAllOfKind("ServiceActivity")) {
 			ServiceActivity node = (ServiceActivity) o;
-			mapResults.put(node.getName(), node.getAnnotation()
-					.getSecsTimeLimit());
+			if (node.getAnnotation() != null) {
+				mapResults.put(node.getName(), node.getAnnotation().getSecsTimeLimit());
+			}
 		}
-
-		context.getModelRepository().removeModel(model);
-		context.getExtendedProperties().clear();
-		return mapResults;		
+		return mapResults;
 	}
 
 	public Map<String, Double> timeAndRun(int iterations, EmfModel model, Object... args)
 		throws Exception
 	{
 		final long startMillis = System.currentTimeMillis();
-
-		Map<String, Double> result = null;
 		for (int i = 0; i < iterations; ++i) {
-			result = run(model, args);
+			run(model, args);
 		}
-
 		fAverageTime = (System.currentTimeMillis() - startMillis)/(iterations * 1000.0);
-		return result;		
+		return computeAnnotationMap(model);
 	}
 
 	public double getAverageTime() {
