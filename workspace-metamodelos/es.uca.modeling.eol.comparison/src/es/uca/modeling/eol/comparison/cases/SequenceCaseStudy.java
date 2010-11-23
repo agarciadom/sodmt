@@ -9,7 +9,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.EmfModelFactory;
-import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
@@ -69,9 +68,9 @@ public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
 
 	@Override
 	public void run(IProgressMonitor monitor, CaseStudyResult result) throws Exception {
-
 		validateConfiguration();
-		final EolModule eolModule = loadModule();
+		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
+		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
 
 		final XYSeries newAlgoSeries = new XYSeries("Collapsed paths");
 		final XYSeries oldAlgoSeries = new XYSeries("All paths");
@@ -86,32 +85,20 @@ public class SequenceCaseStudy extends AbstractCaseStudy implements ICaseStudy {
 
 			// Build the model, which will be reused by both algorithms
 			EmfModel model = buildModel(size);
-			eolModule.getContext().getModelRepository().addModel(model);
 
-			// Run both algorithms and measure their running times
-			final long startOld = System.currentTimeMillis();
-			Map<String, Double> resultsOld = null;
-			for (int i = 0; i < fIterations; ++i) {
-				resultsOld = runOldAlgorithm(eolModule, model, fGlobalLimit);
-			}
-			final double oldTime = (System.currentTimeMillis() - startOld)/(fIterations * 1000.0);
-
-			final long startNew = System.currentTimeMillis();
-			Map<String, Double> resultsNew = null;
-			for (int i = 0; i < fIterations; ++i) {
-				resultsNew = runNewAlgorithm(eolModule, model, fGlobalLimit);
-			}
-			final double newTime = (System.currentTimeMillis() - startNew)/(fIterations * 1000.0);
+			final Map<String, Double> annotationsOld
+				= oldAlgo.timeAndRun(fIterations, model, fGlobalLimit, getStartNode(model));
+			final Map<String, Double> annotationsNew
+				= newAlgo.timeAndRun(fIterations, model, fGlobalLimit, getEndNodes(model));
 
 			// If the results are not the same, the algorithms are not comparable
-			eolModule.getContext().getModelRepository().removeModel(model);
 			model.dispose();
-			checkResultsMatch(resultsNew, resultsOld);
+			checkResultsMatch(annotationsNew, annotationsOld);
 
 			// Update the current results
-			addToSeries(newAlgoSeries, size, newTime);
-			addToSeries(oldAlgoSeries, size, oldTime);
-			updateRawText(result, size, newTime, oldTime);
+			addToSeries(newAlgoSeries, size, oldAlgo.getAverageTime());
+			addToSeries(oldAlgoSeries, size, newAlgo.getAverageTime());
+			updateRawText(result, size, newAlgo.getAverageTime(), oldAlgo.getAverageTime());
 			monitor.worked(1);
 		}
 		monitor.done();
