@@ -199,11 +199,11 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 		JFreeChart chart = ChartFactory.createXYLineChart(
 				"Average execution times for case " + getName(),
-				"Size", "Time (secs)", collection,
+				"Size (number of ServiceActivities)", "Time (secs)", collection,
 				PlotOrientation.VERTICAL, true, true, false);
-		chart.setSubtitles(
-			Arrays.asList(
-				new ShortTextTitle("Using " + fIterations + " samples, with global limit = " + fGlobalLimit)));
+		chart.addSubtitle(new ShortTextTitle(
+				"Using " + fIterations + " samples, " +
+				"with global limit = " + fGlobalLimit));
 		result.setRawText(headerBuilder.toString());
 		result.setChart(chart);
 	}
