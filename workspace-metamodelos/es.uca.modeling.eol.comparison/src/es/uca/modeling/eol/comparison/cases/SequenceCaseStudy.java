@@ -52,7 +52,8 @@ public class SequenceCaseStudy implements ICaseStudy {
 	private static final String PARAM_MINSIZE = "minSize";
 	private static final String PARAM_MAXSIZE = "maxSize";
 	private static final String PARAM_GLOBALLIMIT = "globalLimit";
-	private int fMinSize = 0, fMaxSize = 10;
+	private static final String PARAM_ITERATIONS = "iterationsPerSize";
+	private int fMinSize = 0, fMaxSize = 10, fIterations = 5;
 	private double fGlobalLimit = 100;
 
 	@Override
@@ -68,12 +69,14 @@ public class SequenceCaseStudy implements ICaseStudy {
 			return Integer.toString(fMinSize);
 		} else if (PARAM_GLOBALLIMIT.equals(name)) {
 			return Double.toString(fGlobalLimit);
+		} else if (PARAM_ITERATIONS.equals(name)) {
+			return Integer.toString(fIterations);
 		} else return null;
 	}
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_MINSIZE, PARAM_MAXSIZE, PARAM_GLOBALLIMIT);
+		return Arrays.asList(PARAM_MINSIZE, PARAM_MAXSIZE, PARAM_GLOBALLIMIT, PARAM_ITERATIONS);
 	}
 
 	@Override
@@ -99,12 +102,18 @@ public class SequenceCaseStudy implements ICaseStudy {
 
 			// Run both algorithms and measure their running times
 			final long startOld = System.currentTimeMillis();
-			final Map<String, Double> resultsOld = runOldAlgorithm(eolModule, model);
-			final double oldTime = (System.currentTimeMillis() - startOld)/1000.0;
+			Map<String, Double> resultsOld = null;
+			for (int i = 0; i < fIterations; ++i) {
+				resultsOld = runOldAlgorithm(eolModule, model);
+			}
+			final double oldTime = (System.currentTimeMillis() - startOld)/(fIterations * 1000.0);
 
 			final long startNew = System.currentTimeMillis();
-			final Map<String, Double> resultsNew = runNewAlgorithm(eolModule, model);
-			final double newTime = (System.currentTimeMillis() - startNew)/1000.0;
+			Map<String, Double> resultsNew = null;
+			for (int i = 0; i < fIterations; ++i) {
+				resultsNew = runNewAlgorithm(eolModule, model);
+			}
+			final double newTime = (System.currentTimeMillis() - startNew)/(fIterations * 1000.0);
 
 			// If the results are not the same, the algorithms are not comparable
 			eolModule.getContext().getModelRepository().removeModel(model);
@@ -130,6 +139,8 @@ public class SequenceCaseStudy implements ICaseStudy {
 				fMinSize = Integer.valueOf(value);
 			} else if (PARAM_GLOBALLIMIT.equals(name)) {
 				fGlobalLimit = Double.valueOf(value);
+			} else if (PARAM_ITERATIONS.equals(name)) {
+				fIterations = Integer.valueOf(value);
 			} else {
 				throw new IllegalArgumentException("Unknown parameter: " + name);
 			}
@@ -277,7 +288,8 @@ public class SequenceCaseStudy implements ICaseStudy {
 		headerBuilder.append('\n');
 
 		JFreeChart chart = ChartFactory.createXYLineChart(
-				"Execution times", "Size", "Time (secs)", collection,
+				"Average execution times (over " + fIterations + " iterations)",
+				"Size", "Time (secs)", collection,
 				PlotOrientation.VERTICAL, true, true, false);
 		result.setRawText(headerBuilder.toString());
 		result.setChart(chart);
@@ -317,6 +329,9 @@ public class SequenceCaseStudy implements ICaseStudy {
 		}
 		if (fGlobalLimit <= 0) {
 			throw new IllegalArgumentException(PARAM_GLOBALLIMIT + " must be greater than 0");
+		}
+		if (fIterations <= 0) {
+			throw new IllegalArgumentException(PARAM_ITERATIONS + " must be greater than 0");
 		}
 	}
 
