@@ -136,7 +136,7 @@ operation Sequence getLimitEstimateForFreeNodes() {
 }
 
 $pre path.isDefined() and path.notEmpty() and global_limit > 0
-operation splitSlackOverFreeNodes(path : Sequence, global_limit) {
+operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
   -*
     There are two possibilities:
      * this is the first path in the graph, so all free nodes can be updated
@@ -150,7 +150,7 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit) {
     var restricted := getRestrictedNodes(path, global_limit);
     var usedTime   := restricted.collect(node | node.getTimeLimit()).sum();
     var slack      := global_limit - usedTime;
-    var limit      := slack / unrestricted.size();
+    var limit      := slack / (unrestricted.size() * 1.0d);
 
     for (node  in unrestricted) {
         node.setTimeLimit(limit);

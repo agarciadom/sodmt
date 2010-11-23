@@ -45,10 +45,8 @@ public interface ICaseStudy {
 	 * @param fResult
 	 * Object which should be periodically updated with the obtained results.
 	 * @return Results of the case study.
-	 * @throws IllegalArgumentException
-	 *             The case study was not correctly configured.
+	 * @throws Exception There was a problem while running the case study.
 	 */
-	void run(IProgressMonitor monitor, CaseStudyResult fResult)
-			throws IllegalArgumentException;
+	void run(IProgressMonitor monitor, CaseStudyResult fResult) throws Exception;
 
 }

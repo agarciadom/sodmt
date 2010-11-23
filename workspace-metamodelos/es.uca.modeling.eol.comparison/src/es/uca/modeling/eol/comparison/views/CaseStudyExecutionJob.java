@@ -26,7 +26,12 @@ final class CaseStudyExecutionJob extends Job {
 
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
-		fCaseStudy.run(monitor, fResult);
+		try {
+			fCaseStudy.run(monitor, fResult);
+		} catch (Exception e) {
+			return new Status(IStatus.ERROR, PerformanceComparisonView.ID, IStatus.OK,
+					"Exception while running case study", e);
+		}
 		return fResult.isSuccessful() ? Status.OK_STATUS : Status.CANCEL_STATUS;
 	}
 
