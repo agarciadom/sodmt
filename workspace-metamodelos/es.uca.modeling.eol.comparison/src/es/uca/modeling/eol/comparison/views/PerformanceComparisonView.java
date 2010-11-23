@@ -16,9 +16,7 @@ import org.eclipse.core.databinding.beans.PojoObservables;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -69,18 +67,9 @@ public class PerformanceComparisonView extends ViewPart {
 		@Override
 		public void widgetSelected(SelectionEvent event) {
 			final CaseStudyExecutionJob runJob
-				= new CaseStudyExecutionJob("Run Comparison", fModel.getCaseStudy());
+				= new CaseStudyExecutionJob("Run Comparison", fModel.getCaseStudy(), fModel.getLastResult());
 			runJob.setUser(true);
 			runJob.setPriority(Job.LONG);
-			runJob.addJobChangeListener(new JobChangeAdapter() {
-				@Override
-				public void done(final IJobChangeEvent event) {
-					if (event.getResult().isOK()) {
-						final CaseStudyExecutionJob job = (CaseStudyExecutionJob)event.getJob();
-						fModel.setLastResult(job.getCaseStudyResult());
-					}
-				}
-			});
 			runJob.schedule();
 		}
 

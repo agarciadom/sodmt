@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.swt.widgets.Display;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -17,9 +18,11 @@ import es.uca.modeling.eol.comparison.model.ICaseStudy;
  * Case study for a sequential graph.
  * 
  * @author Antonio García-Domínguez
+ * @version 1.0
  */
 public class SequenceCaseStudy implements ICaseStudy {
 
+	private static final String RAW_TEXT_HEADER = "size new old\n";
 	private static final String PARAM_MINSIZE = "minSize";
 	private static final String PARAM_MAXSIZE = "maxSize";
 	private int fMinSize, fMaxSize;
@@ -57,23 +60,66 @@ public class SequenceCaseStudy implements ICaseStudy {
 	}
 
 	@Override
-	public CaseStudyResult run(IProgressMonitor monitor)
+	public void run(IProgressMonitor monitor, CaseStudyResult result)
 			throws IllegalArgumentException {
 
-		XYSeries series = new XYSeries("new");
-		series.add(1, 1);
-		series.add(2, 2.5);
-		series.add(3, 5.3);
-		XYSeriesCollection collection = new XYSeriesCollection();
-		collection.addSeries(series);
+		validateConfiguration();
 
-		JFreeChart chart = ChartFactory.createXYLineChart(
-			"Execution times", "Size", "Time (secs)", collection,
-			PlotOrientation.VERTICAL, true, true, false);
+		final XYSeries newAlgoSeries = new XYSeries("new");
+		final XYSeries oldAlgoSeries = new XYSeries("old");
+		initResults(result, newAlgoSeries, oldAlgoSeries);
 
-		// TODO Auto-generated method stub
+		monitor.beginTask("Comparing execution times", fMaxSize - fMinSize + 1);
+		for (int size = fMinSize; size <= fMaxSize; ++size) {
+			if (monitor.isCanceled()) {
+				result.setSuccessful(false);
+				return;
+			}
 
-		return new CaseStudyResult(true, "hi ho", chart);
+			final double newTime = size * 1.5;
+			final double oldTime = size * 2;
+
+			addToSeries(newAlgoSeries, size, newTime);
+			addToSeries(oldAlgoSeries, size, oldTime);
+			updateRawText(result, size, newTime, oldTime);
+			monitor.worked(1);
+		}
+		monitor.done();
+		result.setSuccessful(true);
 	}
 
+	private void updateRawText(CaseStudyResult result, int size,
+			final double newTime, final double oldTime) {
+		result.setRawText(result.getRawText() + String.format("%d %g %g\n", size, newTime, oldTime));
+	}
+
+	private void validateConfiguration() {
+		if (fMinSize > fMaxSize) {
+			throw new IllegalArgumentException("minSize cannot be larger than maxSize: aborting");
+		}
+	}
+
+	private void initResults(CaseStudyResult result,
+			final XYSeries newAlgoSeries, final XYSeries oldAlgoSeries) {
+		XYSeriesCollection collection = new XYSeriesCollection();
+		collection.addSeries(oldAlgoSeries);
+		collection.addSeries(newAlgoSeries);
+		JFreeChart chart = ChartFactory.createXYLineChart(
+				"Execution times", "Size", "Time (secs)", collection,
+				PlotOrientation.VERTICAL, true, true, false);
+		result.setRawText(RAW_TEXT_HEADER);
+		result.setChart(chart);
+	}
+
+	/**
+	 * Adds a value to a series. Ensures the addition is done in the SWT
+	 * thread, so the chart is properly updated.
+	 */
+	private void addToSeries(final XYSeries series, final double x, final double y) {
+		Display.getDefault().syncExec(new Runnable(){
+			public void run() {
+				series.add(x, y);
+			}
+		});
+	}
 }

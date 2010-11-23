@@ -49,10 +49,9 @@ public class DenseCaseStudy implements ICaseStudy {
 	}
 
 	@Override
-	public CaseStudyResult run(IProgressMonitor monitor)
+	public void run(IProgressMonitor monitor, CaseStudyResult res)
 			throws IllegalArgumentException {
 		// TODO Auto-generated method stub
-		return new CaseStudyResult(false, "", null);
 	}
 
 }

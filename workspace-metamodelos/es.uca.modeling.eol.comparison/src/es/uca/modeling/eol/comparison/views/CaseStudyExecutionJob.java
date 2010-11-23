@@ -18,18 +18,16 @@ final class CaseStudyExecutionJob extends Job {
 	private ICaseStudy fCaseStudy;
 	private CaseStudyResult fResult;
 
-	CaseStudyExecutionJob(String name, ICaseStudy caseStudy) {
+	CaseStudyExecutionJob(String name, ICaseStudy caseStudy, CaseStudyResult caseStudyResult) {
 		super(name);
 		fCaseStudy = caseStudy;
+		fResult = caseStudyResult;
 	}
 
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
-		fResult = fCaseStudy.run(monitor);
+		fCaseStudy.run(monitor, fResult);
 		return fResult.isSuccessful() ? Status.OK_STATUS : Status.CANCEL_STATUS;
 	}
 
-	public CaseStudyResult getCaseStudyResult() {
-		return fResult;
-	}
 }

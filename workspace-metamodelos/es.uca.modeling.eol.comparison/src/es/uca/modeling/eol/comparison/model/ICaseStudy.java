@@ -42,11 +42,13 @@ public interface ICaseStudy {
 	 *
 	 * @param monitor
 	 *            Progress monitor for the Eclipse job.
+	 * @param fResult
+	 * Object which should be periodically updated with the obtained results.
 	 * @return Results of the case study.
 	 * @throws IllegalArgumentException
 	 *             The case study was not correctly configured.
 	 */
-	CaseStudyResult run(IProgressMonitor monitor)
+	void run(IProgressMonitor monitor, CaseStudyResult fResult)
 			throws IllegalArgumentException;
 
 }
