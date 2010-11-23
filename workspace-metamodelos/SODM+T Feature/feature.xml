@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.sodmt"
       label="SODM+T Toolset"
-      version="1.0.1.qualifier"
+      version="1.1.0.qualifier"
       provider-name="University of Cadiz">
 
    <description url="https://neptuno.uca.es/redmine/projects/sodmt/">
@@ -92,89 +92,89 @@ property of any of the other bundles.
          id="es.uca.modeling.ant"
          download-size="0"
          install-size="0"
-         version="1.0.1.qualifier"/>
+         version="0.0.0"/>
 
    <plugin
          id="es.uca.modeling.eol"
          download-size="0"
          install-size="0"
-         version="1.0.1.qualifier"/>
+         version="0.0.0"/>
 
    <plugin
          id="es.uca.modeling.eol.contextmenu"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="es.uca.modeling.eol.tools"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="es.uca.modeling.figures"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceComposition"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceComposition.diagram"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceComposition.edit"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceComposition.editor"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceProcess"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceProcess.diagram"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceProcess.edit"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ServiceProcess.editor"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
