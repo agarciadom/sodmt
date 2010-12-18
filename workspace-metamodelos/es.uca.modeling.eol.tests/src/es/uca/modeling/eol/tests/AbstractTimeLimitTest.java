@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -12,11 +15,13 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
+import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.types.EolSequence;
 import org.junit.After;
 import org.junit.Before;
 
+import serviceProcess.FlowNode;
 import serviceProcess.ServiceProcessPackage;
 
 /**
@@ -51,7 +56,7 @@ public class AbstractTimeLimitTest {
 			double[]... expected) throws EolRuntimeException {
 		EmfModel model = loadModel(name);
 		EolSequence res = (EolSequence) callOperation(
-				"aggregateConstraints", globalLimit, model.getAllOfKind("ProcessFinish"));
+				"aggregateConstraints", globalLimit, getEndNodes(model));
 		assertConstraintsEquals("Activity " + name
 				+ " has the expected constraints", res, expected);
 	}
@@ -91,6 +96,19 @@ public class AbstractTimeLimitTest {
 		mEolModule = new EolModule();
 		mEolModule.parse(uri);
 		mEolModule.execute();
+	}
+
+	private List<EObject> getEndNodes(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
+		Collection<EObject> flowNodes = model.getAllOfKind("FlowNode");
+		List<EObject> endNodes = new ArrayList<EObject>();
+		for (EObject o : flowNodes) {
+			final FlowNode node = (FlowNode) o;
+			if (node.getOutgoing().isEmpty()) {
+				endNodes.add(node);
+			}
+		}
+		return endNodes;
 	}
 
 }
