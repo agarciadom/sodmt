@@ -3,6 +3,8 @@ package es.uca.modeling.eol.comparison.cases;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.epsilon.emc.emf.EmfModel;
@@ -10,6 +12,7 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundExce
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
+import serviceProcess.ActivityPerformanceAnnotation;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
 
@@ -103,6 +106,33 @@ public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
 		*/
 
 		return model;
+	}
+
+	@Override
+	protected void configureRandomManualAnnotations(EmfModel model, Random rnd,
+			Map<String, ActivityPerformanceAnnotation> annotations, double globalLimit, double maxWeight) {
+		double available = globalLimit;
+		for (Map.Entry<String, ActivityPerformanceAnnotation> entry : annotations.entrySet()) {
+			final String name = entry.getKey();
+			final ActivityPerformanceAnnotation ann = entry.getValue();
+			if (ann.getSecsTimeLimit() > 0) continue;
+
+			final double timeLimit = rnd.nextDouble() * available;
+			ann.setSecsTimeLimit(timeLimit);
+			available -= timeLimit;
+
+			// Ensure that the generated graphs are valid
+			if (name.startsWith("B")) {
+				final String branchPrefix = name.substring(0, name.length()-1);
+				for (Map.Entry<String, ActivityPerformanceAnnotation> subentry : annotations.entrySet()) {
+					if (subentry.getKey().startsWith(branchPrefix)) {
+						final double subTimeLimit = rnd.nextDouble() * timeLimit;
+						subentry.getValue().setSecsTimeLimit(subTimeLimit);
+						annotations.remove(subentry.getKey());
+					}
+				}
+			}
+		}
 	}
 
 }

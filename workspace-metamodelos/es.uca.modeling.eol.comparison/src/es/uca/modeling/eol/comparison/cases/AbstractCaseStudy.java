@@ -4,9 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -24,9 +26,11 @@ import org.jfree.chart.title.ShortTextTitle;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import serviceProcess.ActivityPerformanceAnnotation;
 import serviceProcess.FlowNode;
 import serviceProcess.ProcessControlFlow;
 import serviceProcess.ServiceActivity;
+import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
@@ -89,8 +93,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
 				long totalOld = 0, totalNew = 0;
+				final Random rnd = new Random(fRandomSeed);
 				for (int i = 0; i < fIterations; ++i) {
-					addRandomManualAnnotations(model);
+					addRandomManualAnnotations(model, rnd);
 
 					totalOld += oldAlgo.runAndTimeMillis(model, fGlobalLimit, startNode);
 					final Map<String, Double> annotationsOld = computeAnnotationMap(model);
@@ -136,6 +141,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			}
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(e);
+		}
+	}
+
+	protected void configureRandomManualAnnotations(
+			EmfModel model, Random rnd,
+			Map<String, ActivityPerformanceAnnotation> annotationMap,
+			final double globalLimit, final double maxWeight) {
+		// TODO: generate weights
+		double available = globalLimit;
+		for (ActivityPerformanceAnnotation ann : annotationMap.values()) {
+			final double timeLimit = rnd.nextDouble() * available;
+			ann.setSecsTimeLimit(timeLimit);
+			available -= timeLimit;
 		}
 	}
 
@@ -299,8 +317,38 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	}
 
 
-	private void addRandomManualAnnotations(EmfModel model) {
-		// TODO Auto-generated method stub
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void addRandomManualAnnotations(EmfModel model, Random rnd) throws EolModelElementTypeNotFoundException, EolNotInstantiableModelElementTypeException {
+		// Remove all manual annotations
+		final List<EObject> manualAnnotations = new ArrayList<EObject>(model.getAllOfType("ActivityPerformanceAnnotation"));
+		for (EObject o : manualAnnotations) {
+			model.deleteElement(o);
+		}
+
+		// Select the service activities to be annotated at random
+		final List<EObject> shuffledNodes = new ArrayList<EObject>(model.getAllOfKind("ServiceActivity"));
+		Collections.shuffle(shuffledNodes, rnd);
+		final long nShuffled = Math.round(shuffledNodes.size() / 100.0d * fPercentageManual);
+		final List<EObject> annotatedNodes = shuffledNodes.subList(0, (int)nShuffled);
+
+		// Create their manual annotations
+		final ServiceProcess process = (ServiceProcess)model.getAllOfKind("ServiceProcess").iterator().next();
+		final EList annotations = process.getActivityPerformance();
+		final Map<String, ActivityPerformanceAnnotation> annotationMap
+			= new HashMap<String, ActivityPerformanceAnnotation>();
+		for (EObject node : annotatedNodes) {
+			final ServiceActivity activity = (ServiceActivity)node;
+
+			ActivityPerformanceAnnotation ann
+				= (ActivityPerformanceAnnotation)model.createInstance("ActivityPerformanceAnnotation");
+			ann.setManuallyAdded(true);
+			ann.setExecNode(activity);
+			annotations.add(ann);
+			annotationMap.put(activity.getName(), ann);
+		}
+
+		// Hand annotations to method in the subclass
+		configureRandomManualAnnotations(model, rnd, annotationMap, fGlobalLimit, fMaxWeight);
 	}
 
 }
