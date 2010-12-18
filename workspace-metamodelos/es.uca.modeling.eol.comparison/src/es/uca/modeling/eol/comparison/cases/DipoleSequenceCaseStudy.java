@@ -100,10 +100,6 @@ public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
 
 			previous = joinNode;
 		}
-		/*
-		ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
-		addEdge(model, edges, previous, finish);
-		*/
 
 		return model;
 	}
