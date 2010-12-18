@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,8 +36,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private static final String RAWTEXT_FIELD_SEPARATOR = "; ";
 	private static final String PARAM_GLOBALLIMIT = "globalLimit";
 	private static final String PARAM_ITERATIONS = "iterationsPerSize";
+	private static final String PARAM_PERCENTAGE_MANUAL = "percentageManual";
+	private static final String PARAM_MAX_WEIGHT = "maxManualWeight";
+	private static final String PARAM_RANDOM_SEED = "randomSeed";
 
 	private int fIterations = 5;
+	private int fPercentageManual = 20;
+	private int fRandomSeed = 0;
+	private double fMaxWeight = 10;
 	private double fGlobalLimit = 100;
 
 	@Override
@@ -45,12 +52,18 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			return Double.toString(fGlobalLimit);
 		} else if (PARAM_ITERATIONS.equals(name)) {
 			return Integer.toString(fIterations);
+		} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
+			return Integer.toString(fPercentageManual);
+		} else if (PARAM_MAX_WEIGHT.equals(name)) {
+			return Double.toString(fMaxWeight);
+		} else if (PARAM_RANDOM_SEED.equals(name)) {
+			return Integer.toString(fRandomSeed);
 		} else return null;
 	}
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_ITERATIONS, PARAM_GLOBALLIMIT);
+		return Arrays.asList(PARAM_GLOBALLIMIT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
 	}
 
 	@Override
@@ -73,19 +86,29 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				}
 
 				// Build the model, which will be reused by both algorithms
-				final int size = getModelSize(model);
-				final Map<String, Double> annotationsOld = oldAlgo.timeAndRun(
-						fIterations, model, fGlobalLimit, getStartNode(model));
-				final Map<String, Double> annotationsNew = newAlgo.timeAndRun(
-						fIterations, model, fGlobalLimit, getEndNodes(model));
+				final FlowNode startNode = getStartNode(model);
+				final List<EObject> endNodes = getEndNodes(model);
+				long totalOld = 0, totalNew = 0;
+				for (int i = 0; i < fIterations; ++i) {
+					addRandomManualAnnotations(model);
 
-				// If the results are not the same, the algorithms are not comparable
-				checkResultsMatch(annotationsNew, annotationsOld);
+					totalOld += oldAlgo.runAndTimeMillis(model, fGlobalLimit, startNode);
+					final Map<String, Double> annotationsOld = computeAnnotationMap(model);
+
+					totalNew += newAlgo.runAndTimeMillis(model, fGlobalLimit, endNodes);
+					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
+
+					// If the results are not the same, the algorithms are not comparable
+					checkResultsMatch(annotationsNew, annotationsOld);
+				}
+				final double averageTimeNew = totalNew/(fIterations*1000.0d);
+				final double averageTimeOld = totalOld/(fIterations*1000.0d);
 
 				// Update the current results
-				addToSeries(newAlgoSeries, size, newAlgo.getAverageTime());
-				addToSeries(oldAlgoSeries, size, oldAlgo.getAverageTime());
-				updateRawText(result, size, newAlgo.getAverageTime(), oldAlgo.getAverageTime());
+				final int size = getModelSize(model);
+				addToSeries(newAlgoSeries, size, averageTimeNew);
+				addToSeries(oldAlgoSeries, size, averageTimeOld);
+				updateRawText(result, size, averageTimeNew, averageTimeOld);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -102,6 +125,12 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				fGlobalLimit = Double.valueOf(value);
 			} else if (PARAM_ITERATIONS.equals(name)) {
 				fIterations = Integer.valueOf(value);
+			} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
+				fPercentageManual = Integer.valueOf(value);
+			} else if (PARAM_MAX_WEIGHT.equals(name)) {
+				fMaxWeight = Double.valueOf(value);
+			} else if (PARAM_RANDOM_SEED.equals(name)) {
+				fRandomSeed = Integer.valueOf(value);
 			} else {
 				throw new IllegalArgumentException("Unknown parameter: " + name);
 			}
@@ -129,7 +158,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		EmfModel model = EmfModelFactory.getInstance().createEmfModel("",
 				new File(basename + ".model"), ServiceProcessPackage.eINSTANCE);
 		model.setReadOnLoad(false);
-		model.setStoredOnDisposal(true);
+		model.setStoredOnDisposal(false);
 		model.load();
 		return model;
 	}
@@ -171,6 +200,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private boolean approximatelyEqual(double x, double y, double relativeError) {
 		final double max = Math.max(x, y);
 		return Math.abs((x - y) / max) <= relativeError;
+	}
+
+	private Map<String, Double> computeAnnotationMap(EmfModel model)
+			throws EolModelElementTypeNotFoundException {
+		final Map<String, Double> mapResults = new HashMap<String, Double>();
+		for (EObject o : model.getAllOfKind("ServiceActivity")) {
+			ServiceActivity node = (ServiceActivity) o;
+			if (node.getAnnotation() != null) {
+				mapResults.put(node.getName(), node.getAnnotation()
+						.getSecsTimeLimit());
+			}
+		}
+		return mapResults;
 	}
 
 	private void checkResultsMatch(final Map<String, Double> resultsNew,
@@ -254,6 +296,11 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				+ String.format("%d%s%g%s%g\n", size,
 						RAWTEXT_FIELD_SEPARATOR, newTime,
 						RAWTEXT_FIELD_SEPARATOR, oldTime));
+	}
+
+
+	private void addRandomManualAnnotations(EmfModel model) {
+		// TODO Auto-generated method stub
 	}
 
 }

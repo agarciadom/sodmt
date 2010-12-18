@@ -2,18 +2,12 @@ package es.uca.modeling.eol.comparison.cases;
 
 import java.net.URI;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
-import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.execute.context.IEolContext;
-
-import serviceProcess.ServiceActivity;
 
 public class InferenceAlgorithm {
 
@@ -36,7 +30,6 @@ public class InferenceAlgorithm {
 	}
 
 	private String fOperation;
-	private double fAverageTime;
 
 	public InferenceAlgorithm(String operationName) {
 		fOperation = operationName;
@@ -53,30 +46,11 @@ public class InferenceAlgorithm {
 		context.getExtendedProperties().clear();
 	}
 
-	private Map<String, Double> computeAnnotationMap(EmfModel model)
-			throws EolModelElementTypeNotFoundException {
-		final Map<String, Double> mapResults = new HashMap<String, Double>();
-		for (EObject o : model.getAllOfKind("ServiceActivity")) {
-			ServiceActivity node = (ServiceActivity) o;
-			if (node.getAnnotation() != null) {
-				mapResults.put(node.getName(), node.getAnnotation().getSecsTimeLimit());
-			}
-		}
-		return mapResults;
-	}
-
-	public Map<String, Double> timeAndRun(int iterations, EmfModel model, Object... args)
+	public long runAndTimeMillis(EmfModel model, Object... args)
 		throws Exception
 	{
 		final long startMillis = System.currentTimeMillis();
-		for (int i = 0; i < iterations; ++i) {
-			run(model, args);
-		}
-		fAverageTime = (System.currentTimeMillis() - startMillis)/(iterations * 1000.0);
-		return computeAnnotationMap(model);
-	}
-
-	public double getAverageTime() {
-		return fAverageTime;
+		run(model, args);
+		return System.currentTimeMillis() - startMillis;
 	}
 }

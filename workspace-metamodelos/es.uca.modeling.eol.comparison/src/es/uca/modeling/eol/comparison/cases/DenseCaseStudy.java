@@ -87,6 +87,7 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
+		@SuppressWarnings("unused")
 		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
 		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
 
