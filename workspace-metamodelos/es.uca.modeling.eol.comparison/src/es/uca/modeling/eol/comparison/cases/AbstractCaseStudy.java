@@ -1,5 +1,6 @@
 package es.uca.modeling.eol.comparison.cases;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -7,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.emc.emf.EmfModelFactory;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
@@ -21,6 +24,9 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import serviceProcess.FlowNode;
+import serviceProcess.ProcessControlFlow;
+import serviceProcess.ServiceActivity;
+import serviceProcess.ServiceProcessPackage;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
 
@@ -60,27 +66,30 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 		monitor.beginTask("Comparing execution times", models.size());
 		for (EmfModel model : models) {
-			if (monitor.isCanceled()) {
-				result.setSuccessful(false);
-				return;
+			try {
+				if (monitor.isCanceled()) {
+					result.setSuccessful(false);
+					return;
+				}
+
+				// Build the model, which will be reused by both algorithms
+				final int size = getModelSize(model);
+				final Map<String, Double> annotationsOld = oldAlgo.timeAndRun(
+						fIterations, model, fGlobalLimit, getStartNode(model));
+				final Map<String, Double> annotationsNew = newAlgo.timeAndRun(
+						fIterations, model, fGlobalLimit, getEndNodes(model));
+
+				// If the results are not the same, the algorithms are not comparable
+				checkResultsMatch(annotationsNew, annotationsOld);
+
+				// Update the current results
+				addToSeries(newAlgoSeries, size, newAlgo.getAverageTime());
+				addToSeries(oldAlgoSeries, size, oldAlgo.getAverageTime());
+				updateRawText(result, size, newAlgo.getAverageTime(), oldAlgo.getAverageTime());
+				monitor.worked(1);
+			} finally {
+				model.dispose();
 			}
-
-			// Build the model, which will be reused by both algorithms
-			final int size = getModelSize(model);
-			final Map<String, Double> annotationsOld
-				= oldAlgo.timeAndRun(fIterations, model, fGlobalLimit, getStartNode(model));
-			final Map<String, Double> annotationsNew
-				= newAlgo.timeAndRun(fIterations, model, fGlobalLimit, getEndNodes(model));
-
-			// If the results are not the same, the algorithms are not comparable
-			model.dispose();
-			checkResultsMatch(annotationsNew, annotationsOld);
-
-			// Update the current results
-			addToSeries(newAlgoSeries, size, newAlgo.getAverageTime());
-			addToSeries(oldAlgoSeries, size, oldAlgo.getAverageTime());
-			updateRawText(result, size, newAlgo.getAverageTime(), oldAlgo.getAverageTime());
-			monitor.worked(1);
 		}
 		monitor.done();
 		result.setSuccessful(true);
@@ -113,6 +122,37 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		if (fIterations <= 0) {
 			throw new IllegalArgumentException(PARAM_ITERATIONS + " must be greater than 0");
 		}
+	}
+
+	protected static EmfModel createModel(final String basename)
+			throws EolModelLoadingException {
+		EmfModel model = EmfModelFactory.getInstance().createEmfModel("",
+				new File(basename + ".model"), ServiceProcessPackage.eINSTANCE);
+		model.setReadOnLoad(false);
+		model.setStoredOnDisposal(true);
+		model.load();
+		return model;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	protected static FlowNode addNode(EmfModel model, final EList nodes, String type)
+			throws EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException {
+		final FlowNode node = (FlowNode) model.createInstance(type);
+		nodes.add(node);
+		return node;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	protected static void addEdge(EmfModel model, final EList edges,
+			FlowNode source, final FlowNode target)
+			throws EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException {
+		final ProcessControlFlow edge = (ProcessControlFlow) model
+				.createInstance("ProcessControlFlow");
+		edge.setSource(source);
+		edge.setTarget(target);
+		edges.add(edge);
 	}
 
 	/**

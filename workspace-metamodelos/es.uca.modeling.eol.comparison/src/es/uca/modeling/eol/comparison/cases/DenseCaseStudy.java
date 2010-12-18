@@ -1,24 +1,20 @@
 package es.uca.modeling.eol.comparison.cases;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.epsilon.emc.emf.EmfModel;
-import org.eclipse.epsilon.emc.emf.EmfModelFactory;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
 import serviceProcess.FlowNode;
-import serviceProcess.ProcessControlFlow;
 import serviceProcess.ProcessFinish;
 import serviceProcess.ProcessStart;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
-import serviceProcess.ServiceProcessPackage;
 
 /**
  * Case study for a dense DAG.
@@ -79,32 +75,25 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 		return models;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings("rawtypes")
 	private EmfModel buildModel(int size)
 		throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException
 	{
-		EmfModel model
-			= EmfModelFactory.getInstance().createEmfModel("",
-				new File("dense" + size + ".model"), ServiceProcessPackage.eINSTANCE);
-		model.setReadOnLoad(false);
-		model.setStoredOnDisposal(false);
-		model.load();
+		EmfModel model = createModel("dense" + size);
 
 		final ServiceProcess process = (ServiceProcess)model.createInstance("ServiceProcess");
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		final ProcessStart start = (ProcessStart)model.createInstance("ProcessStart");
-		final ProcessFinish finish = (ProcessFinish)model.createInstance("ProcessFinish");
-		nodes.add(start);
-		nodes.add(finish);
+		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
+		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
 
 		for (int i = 0; i <= size; ++i) {
 			FlowNode target;
 			if (i < size) {
-				final ServiceActivity activity = (ServiceActivity)model.createInstance("ServiceActivity");
+				final ServiceActivity activity = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
 				activity.setName("A" + i);
 				target = activity;
 			} else {
@@ -112,16 +101,9 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 			}
 
 			for (Object o : nodes) {
-				if (!(o instanceof ProcessFinish)) {
-					final ProcessControlFlow edge = (ProcessControlFlow)model.createInstance("ProcessControlFlow");
-					edge.setSource((FlowNode)o);
-					edge.setTarget(target);
-					edges.add(edge);
+				if (!(o instanceof ProcessFinish) && o != target) {
+					addEdge(model, edges, (FlowNode)o, target);
 				}
-			}
-
-			if (i < size) {
-				nodes.add(target);
 			}
 		}
 
