@@ -248,125 +248,32 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
    constraint is less or just as strict as the second one. *-
 $pre first.forAll(e|e>=0)
 $pre second.forAll(e|e>=0)
-$pre globalLimit >= 0
+$pre L >= 0
 $post _result >= -1
 $post _result <=  1
-operation compareConstraints(globalLimit : Real, first : Sequence, second : Sequence) : Integer {
+operation compareConstraints(L : Real, first : Sequence, second : Sequence) : Integer {
 
-  -- We will compare [total_min_time=a, total_weight=b] and [c, d]
+  -- Extract components from each constraint
   var a = first.get(0);
   var b = first.get(1);
   var c = second.get(0);
   var d = second.get(1);
 
-  -- If the times or the weights are equal, we only have to compare the other part
-  if (a = c) {
-    if (b > d) {
-      return -1;
-    }
-    else {
-      return 1;
-    }
-  }
-  else if (b = d) {
-    if (a > c) {
-      return -1;
-    }
-    else {
-      return 1;
-    }
-  }
-  else if (b > 0 and d > 0){
-    -*
-      And this is the hard case: a <> c and b <> d, and b, c > 0
-      (we cannot compare a constraint with zero weight with another
-      with non-zero weight). In general, [a, b] and [c, d] are not
-      comparable, but we can be a bit clever about it sometimes.
+  -- Precompute two useful values for the two constraints
+  var leftCmpExpr  = (b-d)*L;
+  var rightCmpExpr = b*c-a*d;
 
-      If the available time for this subgraph during inference is x
-      and the global time limit is G, we know that x >= max(a,b),
-      and x <= G.
-
-      We are interested in knowing if (x-a)/b < (x-c)/d for x in the
-      range [max(a,b),G]. In that case, we can safely assert that [a,b]
-      is stricter than [c,d] in this context. Let's play a bit with
-      inequations:
-
-      (x-a)/b < (x-c)/d iff d (x - a) / b < x - c
-                        iff     d (x - a) < b (x-c)
-                        iff       dx - da < bx - bc
-                        iff       dx - bx < ad - bc
-                        iff     (d - b) x < ad - bc
-                        iff             x < (ad - bc)/(d - b) { assuming that d > b }
-
-      The previous assumption means that we have to swap the values if d < b,
-      and then flip the sign of the result. Do that now.
-     *-
-     var flip = 1;
-     if (d < b) {
-       flip = -1;
-       var tmp;
-       tmp = a; a = c; c = tmp;
-       tmp = d; d = b; b = tmp;
-     }
-
-     -* TODO: simplificar
-
-      We have to be careful: even if [a,b] is stricter than [c,d] now, that
-      might change as we go back up in the graph. That is to say, it does
-      does not necessarily mean that [a+dt, b+dw] will be stricter or not than
-      [c+dt, b+dw], for all dt, dw >= 0. The same can be said for [a,b] being
-      less strict than [c, d]. We must perform a few more checks first.
-
-      First, let l(a, b, c, d) = (ad - bc)/(d - b). After operating a bit, we
-      know that:
-
-        l(a + dt, b + dw, c + dt, d + dw) = l(a,b,c,d) + dt + dw (a-c)/(d-b)
-
-      Assuming dt, dw >= 0 (there are no negative times or weights):
-
-      - if l(a,b,c,d) > G, then [a,b] will be always stricter than [c,d] in
-        this subgraph. For [a+dt, b+dw] to be always stricter than [c+dt, d+dw]
-        in any supergraph, it must be that
-
-          l(a+dt,b+dw,c+dt,d+dw) > l(a,b,c,d) iff dt + dw (a-c)/(d-b) > 0
-
-        We know that dt >= 0, dw >= 0 and d > b. If a > c, then it is easy to
-        see that dt + dw (a-c)/(d-b) > 0.
-
-        If a < c, then it must be that
-
-          dt - dw (c-a)/(d-b) > 0 iff dt > dw (c-a)/(d-b)
-                                  iff dt/dw > (c-a)/(d-b)
-                                  iff min(dt/dw) > (c-a)/(d-b)
-
-        However, min(dt/dw) is undefined, as dw might be 0, so we do not know
-        anything in this case.
-
-      - if l(a,b,c,d) < max(a,b), then [a,b] will be always less or just as
-        strict as [c,d] in this subgraph. For that to be the case in any valid
-        supergraph, it must be that:
-
-          dt + dw (a-c)/(d-b) <= 0
-
-        If a > c, it only holds when dt = dw = 0, which is not useful. Otherwise:
-
-          dt - dw (c-a)/(d-b) <= 0 iff dt <= dw (c-a)/(d-b)
-                                   iff dt/dw <= (c-a)/(d-b)
-                                   iff max(dt/dw) <= (c-a)/(d-b)
-
-        Likewise, max(dt/dw) would only only well defined if dw >= 1. We can't
-        conclude anything in that case, either.
-
-     - l(a,b,c,d) in [max(a, b), G]. The constraints are not comparable.
-    *-
-
-    var l = (a*d - b*c)/(d - b);
-    if (l > globalLimit and a > c) {
-      return -1 * flip;
-    }
+  -- ¿(a,b) <= (c,d)?
+  if (a <= c and (b <= d or (a < L and b > d and leftCmpExpr <= rightCmpExpr))) {
+    return 1;
   }
 
+  -- (a,b) <= (c,d) is false, and <= is antisymmetric: if (c,d) <= (a,b), then (c,d) < (a,b)
+  if(c <= a and (d <= b or (c < L and d > b and -leftCmpExpr <= -rightCmpExpr))) {
+    return -1;
+  }
+
+  -- Neither: the two pairs are not comparable
   return 0;
 }
 
