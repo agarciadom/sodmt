@@ -44,25 +44,26 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
       -- do we need to reflow some extra time back, or not?
       var prevEdges = target.incoming.select(e|e <> edge and e.~distributedTime.isDefined());
       var previousTime = prevEdges.first().~distributedTime;
-      if (isApproximatelyEqual(previousTime, available, 0.001)) {
-        -- Equal times: just annotate the distributed time
-        edge.~distributedTime = previousTime;
-      }
-      else if (previousTime < available) {
+      if (previousTime < available) {
         -- We have some extra time: we can try to reuse it, starting from the source of
         -- the current edge and going back up the graph.
         reflowExtraTime(available - previousTime, edge.source);
-        -- Ensure all incoming edges of the target are consistent with each other
-        edge.~distributedTime = previousTime;
       }
-      -- If previousTime > available, we do nothing: the previous edge was from a
-      -- stricter path, that's all.
+      -- If previousTime >= available, we do nothing: the previous edge was from a
+      -- stricter or just as strict path, that's all.
+
+      -- Ensure all visted incoming edges of the target report the same
+      -- distributed time.
+      edge.~distributedTime = previousTime;
     }
     else {
       -- This edge is part of the strictest path which reaches that node. Distribute
       -- the available time through its outgoing edges and add them to our traversal
       -- list (the algorithm follows a greedy approach). We need to use the same constraint
       -- we used to select this edge.
+
+      -- Should we sort the edges on the remaining time after the
+      -- target, or with the time available to the target?
       var outEdges = target.getOutEdgesFromLeastToMostStrict(available);
       stack.addAll(outEdges);
       if (not target.distributeTime(available, edge.~constraint)) {
