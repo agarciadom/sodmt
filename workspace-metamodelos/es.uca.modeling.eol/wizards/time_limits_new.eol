@@ -26,8 +26,13 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
   var stack : OrderedSet = initial.getOutEdgesFromLeastToMostStrict(globalLimit);
 
   -- Distribute time over the initial node
-  var initialConstraint = stack.last().~constraint.addConstraint(
-    initial.getTimeLimit(), initial.getWeight());
+  var initialConstraint;
+  if (stack.isEmpty()) {
+    initialConstraint = Sequence {initial.getTimeLimit(), initial.getWeight()};
+  } else {
+    initialConstraint = stack.last().~constraint.addConstraint(
+      initial.getTimeLimit(), initial.getWeight());
+  }
   if (not initial.distributeTime(globalLimit, initialConstraint)) {
     return false;
   }

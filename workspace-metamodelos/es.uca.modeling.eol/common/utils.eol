@@ -138,7 +138,7 @@ operation getAllPathsFrom(start : FlowNode) {
 operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   var last_elem := partialPath.last();
 
-  if (last_elem.isKindOf(FinalNode)) {
+  if (last_elem.outgoing.isEmpty()) {
     allPaths.add(partialPath.clone());
   }
 

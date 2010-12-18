@@ -27,6 +27,11 @@ import serviceProcess.ServiceActivity;
 public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 
 	@Test
+	public void singleNode() throws EolRuntimeException {
+		assertOldAndNewResultsAreEqual(1, true, "single-node.model");
+	}
+
+	@Test
 	public void minimal() throws EolRuntimeException {
 		assertOldAndNewResultsAreEqual(1, true, "minimal.model");
 	}
