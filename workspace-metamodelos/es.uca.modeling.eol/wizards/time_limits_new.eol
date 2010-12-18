@@ -43,8 +43,8 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
     var target    = edge.target;
     var available = edge.~distributedTime;
 
-    -- Has a previous edge reached the target?
-    if (target.outgoing.exists(e|e.~distributedTime.isDefined())) {
+    -- Has a previous edge from a stricter path reached the target?
+    if (target.~visited.isDefined()) {
       -- Another edge from a previous and stricter path has reached the target before:
       -- do we need to reflow some extra time back, or not?
       var prevEdges = target.incoming.select(e|e <> edge and e.~distributedTime.isDefined());
@@ -155,6 +155,7 @@ operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
   for (edge in self.outgoing) {
     edge.~distributedTime = remainTime;
   }
+  self.~visited = true;
   return true;
 }
 

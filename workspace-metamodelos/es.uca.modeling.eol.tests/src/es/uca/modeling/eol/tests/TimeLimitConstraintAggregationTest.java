@@ -27,6 +27,11 @@ public class TimeLimitConstraintAggregationTest extends AbstractTimeLimitTest {
 		assertConstraintsEquals("sequence.model", 1, pair(0.3, 1));
 	}
 
+	@Test
+	public void singleDipole() throws EolRuntimeException {
+		assertConstraintsEquals("single-dipole.model", 1, pair(0, 4));
+	}
+
 	// There are two test cases with the two dipole graph, as the
 	// strictest paths depend on the selected global limit.
 	@Test
