@@ -1,12 +1,16 @@
 package es.uca.modeling.eol.comparison.cases;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.io.File;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -21,10 +25,13 @@ import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementT
 import org.eclipse.swt.widgets.Display;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.DeviationRenderer;
 import org.jfree.chart.title.ShortTextTitle;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.xy.YIntervalSeries;
+import org.jfree.data.xy.YIntervalSeriesCollection;
 
 import serviceProcess.ActivityPerformanceAnnotation;
 import serviceProcess.FlowNode;
@@ -34,6 +41,7 @@ import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
+import es.uca.modeling.eol.comparison.stats.SeriesStatistics;
 
 public abstract class AbstractCaseStudy implements ICaseStudy {
 
@@ -75,9 +83,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		validateConfiguration();
 		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
 		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
-		final XYSeries newAlgoSeries = new XYSeries("Collapsed paths");
-		final XYSeries oldAlgoSeries = new XYSeries("All paths");
-		initXYLineChart(result, newAlgoSeries, oldAlgoSeries);
+		final YIntervalSeries
+			seriesNew = new YIntervalSeries("Collapsed paths"),
+			seriesOld = new YIntervalSeries("All paths");
+		initXYLineChart(result, seriesNew, seriesOld);
 
 		List<EmfModel> models = buildModels();
 
@@ -89,31 +98,38 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					return;
 				}
 
-				// Build the model, which will be reused by both algorithms
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
-				long totalOld = 0, totalNew = 0;
+				final SeriesStatistics oldTimes = new SeriesStatistics(),
+					newTimes = new SeriesStatistics();
 				final Random rnd = new Random(fRandomSeed);
+
+				// "Warm up" with a dummy run, so everything needed by Epsilon is loaded
+				// already by the time we measure the times.
+				oldAlgo.run(model, fGlobalLimit, startNode);
+				newAlgo.run(model, fGlobalLimit, endNodes);
+
 				for (int i = 0; i < fIterations; ++i) {
 					addRandomManualAnnotations(model, rnd);
 
-					totalOld += oldAlgo.runAndTimeMillis(model, fGlobalLimit, startNode);
+					final long oldTime = oldAlgo.runAndTimeMillis(model, fGlobalLimit, startNode);
 					final Map<String, Double> annotationsOld = computeAnnotationMap(model);
 
-					totalNew += newAlgo.runAndTimeMillis(model, fGlobalLimit, endNodes);
+					final long newTime = newAlgo.runAndTimeMillis(model, fGlobalLimit, endNodes);
 					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
 
 					// If the results are not the same, the algorithms are not comparable
 					checkResultsMatch(annotationsNew, annotationsOld);
+
+					oldTimes.addSample(oldTime);
+					newTimes.addSample(newTime);
 				}
-				final double averageTimeNew = totalNew/(fIterations*1000.0d);
-				final double averageTimeOld = totalOld/(fIterations*1000.0d);
 
 				// Update the current results
 				final int size = getModelSize(model);
-				addToSeries(newAlgoSeries, size, averageTimeNew);
-				addToSeries(oldAlgoSeries, size, averageTimeOld);
-				updateRawText(result, size, averageTimeNew, averageTimeOld);
+				addToSeries(seriesNew, size, newTimes);
+				addToSeries(seriesOld, size, oldTimes);
+				updateRawText(result, size, newTimes.getAverage()/1000.0d, oldTimes.getAverage()/1000.0d);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -148,7 +164,6 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			EmfModel model, Random rnd,
 			Map<String, ActivityPerformanceAnnotation> annotationMap,
 			final double globalLimit, final double maxWeight) {
-		// TODO: generate weights
 		double available = globalLimit;
 		for (ActivityPerformanceAnnotation ann : annotationMap.values()) {
 			final double timeLimit = rnd.nextDouble() * available;
@@ -207,11 +222,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	 * Adds a value to a series. Ensures the addition is done in the SWT thread,
 	 * so the chart is properly updated.
 	 */
-	private void addToSeries(final XYSeries series, final double x,
-			final double y) {
+	private void addToSeries(final YIntervalSeries series, final double x, final SeriesStatistics stats) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
-				series.add(x, y);
+				series.add(x, stats.getAverage()/1000, stats.getMinimum()/1000, stats.getMaximum()/1000);
 			}
 		});
 	}
@@ -287,11 +301,11 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		return startNode;
 	}
 
-	private void initXYLineChart(CaseStudyResult result, final XYSeries... allSeries) {
-		XYSeriesCollection collection = new XYSeriesCollection();
+	private void initXYLineChart(CaseStudyResult result, final YIntervalSeries... allSeries) {
+		YIntervalSeriesCollection collection = new YIntervalSeriesCollection();
 		StringBuilder headerBuilder = new StringBuilder();
 		headerBuilder.append("size");
-		for (XYSeries series : allSeries) {
+		for (YIntervalSeries series : allSeries) {
 			collection.addSeries(series);
 			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
 			headerBuilder.append(series.getKey());
@@ -299,12 +313,33 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		headerBuilder.append('\n');
 
 		JFreeChart chart = ChartFactory.createXYLineChart(
-				"Average execution times for case " + getName(),
+				"Execution times for case " + getName(),
 				"Size (number of ServiceActivities)", "Time (secs)", collection,
 				PlotOrientation.VERTICAL, true, true, false);
+
+		final XYPlot plot = (XYPlot)chart.getPlot();
+		plot.setBackgroundPaint(Color.WHITE);
+
+		final NumberAxis yAxis = (NumberAxis)plot.getRangeAxis();
+		yAxis.setNumberFormatOverride(NumberFormat.getInstance(Locale.ENGLISH));
+
+		final NumberAxis xAxis = (NumberAxis)plot.getDomainAxis();
+		xAxis.setNumberFormatOverride(NumberFormat.getInstance(Locale.ENGLISH));
+
+		DeviationRenderer deviationrenderer = new DeviationRenderer(true, false);
+		final BasicStroke strokeThickDashed = new BasicStroke(3F, 1, 1, 1.0f, new float[]{5,5}, 0.0f);
+		final BasicStroke strokeThick = new BasicStroke(3F, 1, 1);
+		deviationrenderer.setSeriesStroke(0, strokeThickDashed);
+		deviationrenderer.setSeriesStroke(1, strokeThick);
+		deviationrenderer.setSeriesPaint(1, new Color(0,150,0));
+		deviationrenderer.setSeriesFillPaint(0, new Color(255, 200, 200));
+		deviationrenderer.setSeriesFillPaint(1, new Color(50, 150, 50));
+		plot.setRenderer(deviationrenderer);
+
 		chart.addSubtitle(new ShortTextTitle(
-				"Using " + fIterations + " samples, " +
-				"with global limit = " + fGlobalLimit));
+			String.format(Locale.ENGLISH,
+				"%d samples (%d%% annotated nodes, seed %d, maximum weight %g), with global limit = %g",
+					fIterations, fPercentageManual, fRandomSeed, fMaxWeight, fGlobalLimit)));;
 		result.setRawText(headerBuilder.toString());
 		result.setChart(chart);
 	}
