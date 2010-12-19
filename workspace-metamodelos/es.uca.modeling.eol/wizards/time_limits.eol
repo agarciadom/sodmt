@@ -158,7 +158,6 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
 
     for (node  in unrestricted) {
         var newLimit := node.getMinimumTime() + node.getWeight() * slackPerWU;
-        ("Setting limit to " + newLimit + " in " + node).println();
         node.setTimeLimit(newLimit);
     }
   }

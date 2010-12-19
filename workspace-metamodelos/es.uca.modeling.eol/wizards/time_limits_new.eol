@@ -108,9 +108,7 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
 
   -- Distribute the time according to the weights of each node.
   for (node in backNodes) {
-    -- We cannot use setTimeLimit here, as we'd violate its precondition that
-    -- the time limit should never be increased
-    node.annotation.secsTimeLimit = node.annotation.secsTimeLimit + node.getWeight()/totalWeight * slack;
+    node.setTimeLimit(node.getTimeLimit() + node.getWeight()/totalWeight * slack);
   }
 }
 
@@ -146,7 +144,7 @@ operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
   -- Check that there is still enough time remaining for the subgraph starting at this node
   var remainTime = total - newLimit;
   var remainWeight = weight - self.getWeight();
-  if (remainTime < 0 or total < time) {
+  if (remainTime + 0.0001 < 0 or total + 0.0001 < time) {
     System.user.inform("The sum of the manual time limits is greater than the available time");
     return false;
   }
