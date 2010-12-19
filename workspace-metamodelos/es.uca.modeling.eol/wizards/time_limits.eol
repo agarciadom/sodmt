@@ -115,7 +115,7 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
         + ' have used up more than the available time ('
         + path.~minSum + ', with ' + global_limit + ' available)');
       return false;
-    } else if (totalWeight > 0) {
+    } else {
       splitSlackOverFreeNodes(path, global_limit);
     }
   }
