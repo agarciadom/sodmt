@@ -30,6 +30,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.DeviationRenderer;
 import org.jfree.chart.title.ShortTextTitle;
+import org.jfree.data.statistics.BoxAndWhiskerCalculator;
+import org.jfree.data.statistics.BoxAndWhiskerItem;
 import org.jfree.data.xy.YIntervalSeries;
 import org.jfree.data.xy.YIntervalSeriesCollection;
 
@@ -41,7 +43,6 @@ import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
 import es.uca.modeling.eol.comparison.model.ICaseStudy;
-import es.uca.modeling.eol.comparison.stats.SeriesStatistics;
 
 public abstract class AbstractCaseStudy implements ICaseStudy {
 
@@ -100,14 +101,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
-				final SeriesStatistics oldTimes = new SeriesStatistics(),
-					newTimes = new SeriesStatistics();
 				final Random rnd = new Random(fRandomSeed);
-
-				// "Warm up" with a dummy run, so everything needed by Epsilon is loaded
-				// already by the time we measure the times.
-				oldAlgo.run(model, fGlobalLimit, startNode);
-				newAlgo.run(model, fGlobalLimit, endNodes);
+				final List<Long> lOldTimes = new ArrayList<Long>();
+				final List<Long> lNewTimes = new ArrayList<Long>();
 
 				for (int i = 0; i < fIterations; ++i) {
 					addRandomManualAnnotations(model, rnd);
@@ -121,15 +117,21 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					// If the results are not the same, the algorithms are not comparable
 					checkResultsMatch(annotationsNew, annotationsOld);
 
-					oldTimes.addSample(oldTime);
-					newTimes.addSample(newTime);
+					lOldTimes.add(oldTime);
+					lNewTimes.add(newTime);
 				}
 
 				// Update the current results
 				final int size = getModelSize(model);
-				addToSeries(seriesNew, size, newTimes);
-				addToSeries(seriesOld, size, oldTimes);
-				updateRawText(result, size, newTimes.getAverage()/1000.0d, oldTimes.getAverage()/1000.0d);
+				final BoxAndWhiskerItem newStats
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewTimes);
+				final BoxAndWhiskerItem oldStats
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldTimes);
+				addToSeries(seriesNew, size, newStats);
+				addToSeries(seriesOld, size, oldStats);
+				updateRawText(result, size,
+					newStats.getMedian().doubleValue()/1000,
+					oldStats.getMedian().doubleValue()/1000);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -222,10 +224,13 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	 * Adds a value to a series. Ensures the addition is done in the SWT thread,
 	 * so the chart is properly updated.
 	 */
-	private void addToSeries(final YIntervalSeries series, final double x, final SeriesStatistics stats) {
+	private void addToSeries(final YIntervalSeries series, final double x, final BoxAndWhiskerItem stats) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
-				series.add(x, stats.getAverage()/1000, stats.getMinimum()/1000, stats.getMaximum()/1000);
+				series.add(x,
+					stats.getMedian().doubleValue()/1000,
+					stats.getMinRegularValue().doubleValue()/1000,
+					stats.getMaxRegularValue().doubleValue()/1000);
 			}
 		});
 	}
