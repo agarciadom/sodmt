@@ -255,22 +255,25 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 	private void checkResultsMatch(final Map<String, Double> resultsNew,
 			final Map<String, Double> resultsOld) {
-		boolean bEqual = resultsNew.size() == resultsOld.size();
+		String firstNotEqualKey = null;
 
-		if (bEqual) {
-			for (String key : resultsOld.keySet()) {
-				if (!resultsNew.containsKey(key)
-						|| !approximatelyEqual(resultsOld.get(key),
-								resultsNew.get(key), 0.001)) {
-					bEqual = false;
-					break;
-				}
+		for (String key : resultsOld.keySet()) {
+			// The new method is more efficient, but more sensitive to the
+			// approximation error from the usage of floating-point math.
+			//
+			// TODO: switch algorithms to use integer times/weights. Times
+			// should be in the millisecond range.
+			if (!resultsNew.containsKey(key)
+					|| !approximatelyEqual(resultsOld.get(key),
+							resultsNew.get(key), 0.125)) {
+				firstNotEqualKey = key;
+				break;
 			}
 		}
 
-		if (!bEqual) {
+		if (firstNotEqualKey != null) {
 			throw new IllegalStateException(
-					"Results from the old and the new algorithm do not match."
+					"Results from the old and the new algorithm do not match, starting from key " + firstNotEqualKey + "."
 							+ "\nOld algorithm: " + resultsOld.toString()
 							+ "\nNew algorithm: " + resultsNew.toString());
 		}
