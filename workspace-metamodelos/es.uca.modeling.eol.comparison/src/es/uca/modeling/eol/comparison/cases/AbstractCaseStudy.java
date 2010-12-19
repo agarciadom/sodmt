@@ -293,7 +293,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	}
 
 	private int getModelSize(EmfModel model) throws EolModelElementTypeNotFoundException {
-		return model.getAllOfKind("ServiceActivity").size();
+		ServiceProcess process = (ServiceProcess)model.getAllOfType("ServiceProcess").iterator().next();
+		int size = 0;
+		for (Object o : process.getNodes()) {
+			if (o instanceof ServiceActivity) {
+				++size;
+			}
+		}
+		return size;
 	}
 
 	private FlowNode getStartNode(EmfModel model)
