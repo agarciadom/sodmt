@@ -33,8 +33,12 @@ enum NodeSide {
 abstract class PerformanceAnnotation {
    @gmf.label(foo="bar")
    attr Double concurrentUsers = 1;
+   @gmf.label(label.readOnly="true")
+   attr Double secsTimeLimit = 0;
    @gmf.label(foo="bar")
-   attr Double secsTimeLimit = 1;
+   attr Double minimumTime = 1;
+   @gmf.label(foo="bar")
+   attr Double weight = 0;
 }
 
 /* EDGES */

@@ -21,6 +21,8 @@ import 'time_limits.eol';
 operation ActivityAction createPerformanceAnnotation() {
   self.annotation := new ActionPerformanceAnnotation;
   self.annotation.manuallyAdded := false;
+  self.annotation.minimumTime := 0.0d;
+  self.annotation.weight := 1.0d;
   self.activity.nodes.add(self.annotation);
 }
 

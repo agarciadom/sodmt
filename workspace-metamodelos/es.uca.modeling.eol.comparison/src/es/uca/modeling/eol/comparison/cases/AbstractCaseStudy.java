@@ -153,6 +153,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		for (ActivityPerformanceAnnotation ann : annotationMap.values()) {
 			final double timeLimit = rnd.nextDouble() * available;
 			ann.setSecsTimeLimit(timeLimit);
+			ann.setWeight(rnd.nextDouble()*maxWeight);
 			available -= timeLimit;
 		}
 	}

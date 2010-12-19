@@ -21,6 +21,8 @@ import 'time_limits.eol';
 operation ServiceActivity createPerformanceAnnotation() {
   self.annotation := new ActivityPerformanceAnnotation;
   self.annotation.manuallyAdded := false;
+  self.annotation.minimumTime := 0.0d;
+  self.annotation.weight := 1.0d;
   ServiceProcess.all.first().activityPerformance.add(self.annotation);
 }
 

@@ -177,10 +177,13 @@ context PerformanceAnnotation {
     check : self.concurrentUsers > 0
     message : 'Transactions per sec must be a natural number'
   }
-  constraint ValidTimeLimit {
-    check : self.secsTimeLimit > 0
-    message : 'The time limit for a single transaction must be '
-              + 'greater than 0'
+  constraint ValidMinTime {
+    check : self.minimumTime >= 0
+    message : 'The minimum time for a single activity must be greater or equal than 0'
+  }
+  constraint ValidWeight {
+    check : self.weight >= 0
+    message : 'The weight for a single activity must be greater or equal than 0'
   }
 }
 

@@ -28,10 +28,10 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
   -- Distribute time over the initial node
   var initialConstraint;
   if (stack.isEmpty()) {
-    initialConstraint = Sequence {initial.getTimeLimit(), initial.getWeight()};
+    initialConstraint = Sequence {initial.getMinimumTime(), initial.getWeight()};
   } else {
     initialConstraint = stack.last().~constraint.addConstraint(
-      initial.getTimeLimit(), initial.getWeight());
+      initial.getMinimumTime(), initial.getWeight());
   }
   if (not initial.distributeTime(globalLimit, initialConstraint)) {
     return false;
@@ -102,12 +102,15 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
       break;
     }
   }
+  if (isApproximatelyEqual(totalWeight, 0, 0.0001)) {
+    return;
+  }
 
   -- Distribute the time according to the weights of each node.
   for (node in backNodes) {
     -- We cannot use setTimeLimit here, as we'd violate its precondition that
     -- the time limit should never be increased
-    node.annotation.secsTimeLimit = node.getTimeLimit() + node.getWeight()/totalWeight * slack;
+    node.annotation.secsTimeLimit = node.annotation.secsTimeLimit + node.getWeight()/totalWeight * slack;
   }
 }
 
@@ -134,13 +137,14 @@ operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
 
   -- We need to avoid a divide by zero error, and we also have to avoid nodes
   -- with zero weight (setTimeLimit might not be defined for some of them)
-  if (weight > 0 and self.getWeight() > 0) {
-    var newLimit = self.getWeight() * (total - time)/weight + self.getTimeLimit();
-    self.setTimeLimit(newLimit);
+  var slackPerWU := 0;
+  if (weight > 0) {
+    slackPerWU := (total-time)/weight;
   }
+  var newLimit = self.getWeight() * slackPerWU + self.getMinimumTime();
 
   -- Check that there is still enough time remaining for the subgraph starting at this node
-  var remainTime = total - self.getTimeLimit();
+  var remainTime = total - newLimit;
   var remainWeight = weight - self.getWeight();
   if (remainTime < 0 or total < time) {
     System.user.inform("The sum of the manual time limits is greater than the available time");
@@ -155,6 +159,7 @@ operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
   for (edge in self.outgoing) {
     edge.~distributedTime = remainTime;
   }
+  self.setTimeLimit(newLimit);
   self.~visited = true;
   return true;
 }
@@ -189,10 +194,8 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
       continue;
     }
 
-    -- Reset any existing automatic constraints
-    if (currentNode.hasAutomaticPerformanceAnnotation()) {
-      currentNode.setTimeLimit(0.0d);
-    }
+    -- Reset any existing constraints
+    currentNode.setTimeLimit(0.0d);
 
     -- Collect constraints from its outgoing edges, keeping only the strictest
     -- constraints. There may be more than one, as some may not be directly
@@ -201,7 +204,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
     for (edge in currentNode.outgoing) {
       for (edgeConstraint in edge.~constraints) {
         var constraint = edgeConstraint.addConstraint(
-          currentNode.getTimeLimit(), currentNode.getWeight());
+          currentNode.getMinimumTime(), currentNode.getWeight());
         var cmp = 0;
 
         -- We cannot use a for loop, as we're filtering and traversing
@@ -229,7 +232,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
       } -- for (edge)
     } -- for (constraint)
     if (constraints.isEmpty()) {
-      constraints.add(Sequence {currentNode.getTimeLimit(), currentNode.getWeight()});
+      constraints.add(Sequence {currentNode.getMinimumTime(), currentNode.getWeight()});
     }
 
     -- Propagate the constraints to the edges

@@ -86,12 +86,12 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
-    for (node in path.select(r|r.isKindOf(Activity) and r.hasAutomaticPerformanceAnnotation())) {
-      node.annotation.secsTimeLimit := global_limit;
+    for (node in path) {
+      node.setTimeLimit(0.0d);
     }
-    path.~manualSum     := getManualTimeLimitSum(path);
-    path.~startingSlack := global_limit - path.~manualSum;
-    path.~freeCount     := countFreeNodes(path);
+    path.~minSum     := getMinTimeSum(path);
+    path.~startingSlack := global_limit - path.~minSum;
+    path.~totalWeight   := getWeightSum(path);
   }
 
   -- Use the paths to establish the constraints, using the most restrictive
@@ -99,10 +99,10 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
   -- evaluated first, and would be inconsistent.
   for (path in paths.sortBy(p | p.getLimitEstimateForFreeNodes())) {
     var slack := path.~startingSlack;
-    var freeCount := path.~freeCount;
+    var totalWeight := path.~totalWeight;
 
     if (isApproximatelyEqual(slack, 0.0, 0.0001)) {
-      if (freeCount > 0) {
+      if (totalWeight > 0) {
         System.user.inform('Nodes with manual restrictions in path '
           + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
           + ' left no slack to establish the automatic restrictions (had '
@@ -113,9 +113,9 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
       System.user.inform('Nodes with manual restrictions in path '
         + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
         + ' have used up more than the available time ('
-        + path.~manualSum + ', with ' + global_limit + ' available)');
+        + path.~minSum + ', with ' + global_limit + ' available)');
       return false;
-    } else if (freeCount > 0) {
+    } else if (totalWeight > 0) {
       splitSlackOverFreeNodes(path, global_limit);
     }
   }
@@ -131,7 +131,7 @@ operation Sequence getLimitEstimateForFreeNodes() {
   if (self.~freeCount = 0) {
     return 1000000;
   } else {
-    return self.~startingSlack/self.~freeCount;
+    return self.~startingSlack/self.~totalWeight;
   }
 }
 
@@ -147,13 +147,19 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
   *-
   var unrestricted := getUnrestrictedNodes(path, global_limit);
   if (unrestricted.notEmpty()) {
-    var restricted := getRestrictedNodes(path, global_limit);
-    var usedTime   := restricted.collect(node | node.getTimeLimit()).sum();
-    var slack      := global_limit - usedTime;
-    var limit      := slack / (unrestricted.size() * 1.0d);
+    var prevLimitsSum := path.collect(node | node.getTimeLimit()).sum();
+    var minTimeSum := getMinTimeSum(unrestricted);
+    var weightSum  := getWeightSum(unrestricted) * 1.0d;
+    var slack      := global_limit - (prevLimitsSum + minTimeSum);
+    var slackPerWU := 0;
+    if (weightSum > 0) {
+      slackPerWU := slack / weightSum;
+    }
 
     for (node  in unrestricted) {
-        node.setTimeLimit(limit);
+        var newLimit := node.getMinimumTime() + node.getWeight() * slackPerWU;
+        ("Setting limit to " + newLimit + " in " + node).println();
+        node.setTimeLimit(newLimit);
     }
   }
 }
@@ -161,13 +167,12 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
 -- TIME LIMITS: QUERIES AND UPDATES -------------
 
 -- Returns the sum of the time limits of the nodes which have manual time limts.
-operation getManualTimeLimitSum(path : Sequence) : Real {
-  return path.select(node | node.isKindOf(Activity) and node.hasManualPerformanceAnnotation())
-             .collect(r|r.getTimeLimit()).sum();
+operation getMinTimeSum(path : Sequence) : Real {
+  return path.select(node | node.isKindOf(Activity)).collect(r|r.getMinimumTime()).sum();
 }
 
-operation countFreeNodes(path : Sequence) : Integer {
-  return path.select(node | node.isKindOf(Activity) and not node.hasManualPerformanceAnnotation()).size();
+operation getWeightSum(path : Sequence) : Real {
+  return path.select(node | node.isKindOf(Activity)).collect(r|r.getWeight()).sum();
 }
 
 -- RESTRICTED/UNRESTRICTED NODES ----------------
@@ -187,7 +192,5 @@ operation getRestrictedNodes(path : Sequence, global_limit) : Sequence {
 -- value are considered not to exist.
 $pre dummy_value > 0
 operation Activity isRestricted(dummy_value) : Boolean {
-  return self.annotation.isDefined()
-         and (self.annotation.manuallyAdded
-              or not isApproximatelyEqual(self.getTimeLimit(), dummy_value, 0.01));
+  return self.annotation.isDefined() and self.annotation.secsTimeLimit > 0;
 }

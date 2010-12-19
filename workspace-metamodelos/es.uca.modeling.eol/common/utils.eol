@@ -9,12 +9,21 @@ operation FlowNode hasAutomaticPerformanceAnnotation() : Boolean {
 }
 
 -- Returns the weight of this node, or the default value if it has not been set.
--- TODO: let the user specify the weight.
 operation FlowNode getWeight() : Real {
-  if (self.hasManualPerformanceAnnotation() or not self.hasProperty('annotation')) {
+  if (not self.hasProperty('annotation')) {
     return 0.0d;
+  } else if (self.annotation.isDefined()){
+    return self.annotation.weight * 1.0d;
   } else {
     return 1.0d;
+  }
+}
+
+operation FlowNode getMinimumTime() : Real {
+  if (self.hasProperty('annotation') and self.annotation.isDefined()) {
+    return self.annotation.minimumTime * 1.0d;
+  } else {
+    return 0.0d;
   }
 }
 
@@ -28,12 +37,15 @@ operation FlowNode getTimeLimit() : Real {
 }
 
 -- Sets an automatic time limit restriction for this node. Restrictions can only
--- be made stricter, and not relaxed.
-operation Activity setTimeLimit(newLimit : Real) {
-  if (self.annotation.isUndefined()) {
-    self.createPerformanceAnnotation();
+-- be made stricter, and not relaxed. If this node cannot be annotated, it does
+-- nothing.
+operation FlowNode setTimeLimit(newLimit : Real) {
+  if (self.hasProperty('annotation')) {
+    if (self.annotation.isUndefined()) {
+      self.createPerformanceAnnotation();
+    }
+    self.annotation.secsTimeLimit := newLimit * 1.0d;
   }
-  self.annotation.secsTimeLimit := newLimit * 1.0d;
 }
 
 -- GRAPH PREPROCESSING --------------------------------------------------------

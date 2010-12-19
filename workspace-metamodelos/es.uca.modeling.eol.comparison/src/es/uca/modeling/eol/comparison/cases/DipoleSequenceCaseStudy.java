@@ -115,6 +115,7 @@ public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
 
 			final double timeLimit = rnd.nextDouble() * available;
 			ann.setSecsTimeLimit(timeLimit);
+			ann.setWeight(rnd.nextDouble() * maxWeight);
 			available -= timeLimit;
 
 			// Ensure that the generated graphs are valid
@@ -123,8 +124,9 @@ public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
 				for (Map.Entry<String, ActivityPerformanceAnnotation> subentry : annotations.entrySet()) {
 					if (subentry.getKey().startsWith(branchPrefix)) {
 						final double subTimeLimit = rnd.nextDouble() * timeLimit;
-						subentry.getValue().setSecsTimeLimit(subTimeLimit);
-						annotations.remove(subentry.getKey());
+						final ActivityPerformanceAnnotation subann = subentry.getValue();
+						subann.setSecsTimeLimit(subTimeLimit);
+						subann.setWeight(rnd.nextDouble() * maxWeight);
 					}
 				}
 			}

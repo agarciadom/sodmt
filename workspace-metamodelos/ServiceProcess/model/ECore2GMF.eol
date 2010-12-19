@@ -21,7 +21,11 @@ serviceProcessMainBody(
     Sequence {'PerformanceAnnotationConcurrentUsersLabel',
      'concurrentUsers = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
-     'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
+     'timeLimit = {0}'},
+    Sequence {'PerformanceAnnotationMinimumTimeLabel',
+     'minTime = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'PerformanceAnnotationWeightLabel',
+     'weight = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'ProcessControlFlowLabel', '[{0}] (p = {1})',
      NATIVE_METHOD, '{0} : {1,number}'}},
   Sequence {
