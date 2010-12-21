@@ -13,9 +13,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 public interface ICaseStudy {
 
 	/**
-	 * Returns the human name for the case study.
+	 * Returns the generic name for the case study, for the case study selector.
 	 */
 	String getName();
+
+	/**
+	 * Returns the generic name, decorated with the parameters which change the shape of the graph.
+	 */
+	String getDecoratedName();
 
 	/**
 	 * Returns the list of the available parameters.

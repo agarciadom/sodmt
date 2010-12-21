@@ -64,6 +64,11 @@ public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
 	}
 
 	@Override
+	public String getDecoratedName() {
+		return String.format("%s (%d dipoles max, with %d branches each)", getName(), fNumDipoles, fBranchFactor);
+	}
+
+	@Override
 	protected List<EmfModel> buildModels() throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException {

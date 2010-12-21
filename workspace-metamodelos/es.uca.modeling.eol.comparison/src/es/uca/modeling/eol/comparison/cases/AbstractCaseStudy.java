@@ -85,8 +85,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
 		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
 		final YIntervalSeries
-			seriesNew = new YIntervalSeries("Collapsed paths"),
-			seriesOld = new YIntervalSeries("All paths");
+			seriesNew = new YIntervalSeries("Incremental"),
+			seriesOld = new YIntervalSeries("Exhaustive");
 		initXYLineChart(result, seriesNew, seriesOld);
 
 		List<EmfModel> models = buildModels();
@@ -162,6 +162,11 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		}
 	}
 
+	@Override
+	public String getDecoratedName() {
+		return getName();
+	}
+
 	protected void configureRandomManualAnnotations(
 			EmfModel model, Random rnd,
 			Map<String, ActivityPerformanceAnnotation> annotationMap,
@@ -229,8 +234,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			public void run() {
 				series.add(x,
 					stats.getMedian().doubleValue()/1000,
-					stats.getMinRegularValue().doubleValue()/1000,
-					stats.getMaxRegularValue().doubleValue()/1000);
+					stats.getMinOutlier().doubleValue()/1000,
+					stats.getMaxOutlier().doubleValue()/1000);
 			}
 		});
 	}
@@ -328,8 +333,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		headerBuilder.append('\n');
 
 		JFreeChart chart = ChartFactory.createXYLineChart(
-				"Execution times for case " + getName(),
-				"Size (number of ServiceActivities)", "Time (secs)", collection,
+				"Execution times for case " + getDecoratedName(),
+				"Size (vertexes)", "Time (seconds)", collection,
 				PlotOrientation.VERTICAL, true, true, false);
 
 		final XYPlot plot = (XYPlot)chart.getPlot();
