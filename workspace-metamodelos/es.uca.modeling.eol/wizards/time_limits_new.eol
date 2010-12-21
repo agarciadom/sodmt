@@ -22,18 +22,11 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
   var aggregateResults = aggregateConstraints(globalLimit, endNodes);
   var initial = aggregateResults.first();
 
-  -- Create stack for traversing the edges
-  var stack : OrderedSet = initial.getOutEdgesFromLeastToMostStrict(globalLimit);
-
-  -- Distribute time over the initial node
-  var initialConstraint;
-  if (stack.isEmpty()) {
-    initialConstraint = Sequence {initial.getMinimumTime(), initial.getWeight()};
-  } else {
-    initialConstraint = stack.last().~constraint.addConstraint(
-      initial.getMinimumTime(), initial.getWeight());
-  }
-  if (not initial.distributeTime(globalLimit, initialConstraint)) {
+  -- Distribute all the time through the initial node, with the strictest constraint for
+  -- all paths in the graph from the source to a sink, according to the global time limit
+  var strictestGraphConstraint := initial.getStrictestConstraintForGraph(globalLimit);
+  var stack : OrderedSet;
+  if (not initial.distributeTime(globalLimit, strictestGraphConstraint, stack)) {
     return false;
   }
 
@@ -66,13 +59,8 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
       -- the available time through its outgoing edges and add them to our traversal
       -- list (the algorithm follows a greedy approach). We need to use the same constraint
       -- we used to select this edge.
-
-      -- Should we sort the edges on the remaining time after the
-      -- target, or with the time available to the target?
-      var outEdges = target.getOutEdgesFromLeastToMostStrict(available);
-      stack.addAll(outEdges);
-      if (not target.distributeTime(available, edge.~constraint)) {
-        -- Could not distribute enough time
+      if (not target.distributeTime(available, edge.~constraint, stack)) {
+        -- Failed to distribute the time correctly through the target: abort
         return false;
       }
     }
@@ -102,7 +90,7 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
       break;
     }
   }
-  if (isApproximatelyEqual(totalWeight, 0, 0.0001)) {
+  if (totalWeight = 0) {
     return;
   }
 
@@ -113,52 +101,81 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
 }
 
 -*
-  Returns the outgoing edges of the current node, sorted from least to most restrictive.
-  For each edge, edge.~constraint is set to its strictest constraint, according to the
-  available time.
+  Returns the strictest constraint for every path in the graph which starts at the
+  source and ends in a sink.
 *-
-$pre self.outgoing.forAll(e|not e.~constraint.isDefined())
-operation FlowNode getOutEdgesFromLeastToMostStrict(globalLimit : Real) : OrderedSet {
-  for (edge in self.outgoing) {
-    edge.~constraint = edge.~constraints.sortBy(c|c.computeEstimate(globalLimit)).first();
+operation FlowNode getStrictestConstraintForGraph(globalLimit : Real) : Sequence {
+  var sourceConstraint := Sequence { self.getMinimumTime(), self.getWeight() };
+  if (self.outgoing.size() = 0) {
+    return sourceConstraint;
   }
-  return self.outgoing.sortBy(e | -e.~constraint.computeEstimate(globalLimit));
+
+  var strictestGraphConstraintPerEdge : Sequence;
+  for (edge in self.outgoing) {
+    var graphConstraintsForEdge
+      = edge.~constraints.collect(c|c.addConstraint(sourceConstraint));
+    var strictestGraphConstraintForEdge
+      := graphConstraintsForEdge.sortBy(c|c.computeEstimate(globalLimit)).first();
+    strictestGraphConstraintPerEdge.add(strictestGraphConstraintForEdge);
+  }
+  var strictestGraphConstraint
+    := strictestGraphConstraintPerEdge.sortBy(c|c.computeEstimate(globalLimit)).first();
+
+  return strictestGraphConstraint;
+}
+
+-*
+  Returns the outgoing edges of the current node, sorted from least to
+  most restrictive.  For each edge, edge.~constraint is set to its
+  weakly strictest constraint, according to the time received time.
+*-
+operation FlowNode getOutEdgesFromLeastToMostStrict(received : Real) : OrderedSet {
+  for (edge in self.outgoing) {
+    edge.~constraint = edge.~constraints.sortBy(c|c.computeEstimate(received)).first();
+  }
+  return self.outgoing.sortBy(e | -e.~constraint.computeEstimate(received));
 }
 
 -- Increases the time limit of the current node according to its local
 -- constraint and the constraint of the strictest path which contains it.
--- Annotates the node's outgoing edges with the distributed time. Returns
--- true or false depending on whether time could be distributed or not.
-operation FlowNode distributeTime(total : Real, cons : Sequence) : Boolean {
+-- Annotates the node's outgoing edges with the distributed time, and adds
+-- the edges to the stack from least to most strict, according to the remaining
+-- time. Returns true or false depending on whether time could be distributed or
+-- not.
+operation FlowNode distributeTime(total : Real, cons : Sequence, stack : OrderedSet) : Boolean {
   var time   = cons.first();
   var weight = cons.last();
 
-  -- We need to avoid a divide by zero error, and we also have to avoid nodes
-  -- with zero weight (setTimeLimit might not be defined for some of them)
+  -- Detect inconsistent graphs
+  if (total + 0.0001 < time) {
+    System.user.inform("The sum of the manual time limits is greater than the available time");
+    return false;
+  } else if (isApproximatelyEqual(total,time,0.0001) and weight > 0) {
+    System.user.inform("The manual time limits have used up all the time: no slack left to distribute");
+    return false;
+  }
+
+  -- Compute the slack to be distributed per unit of weight. We need to avoid a
+  -- divide by zero error, and we also have to avoid nodes with zero weight
+  -- (setTimeLimit might not be defined for some of them)
   var slackPerWU := 0;
   if (weight > 0) {
     slackPerWU := (total-time)/weight;
   }
   var newLimit = self.getWeight() * slackPerWU + self.getMinimumTime();
 
-  -- Check that there is still enough time remaining for the subgraph starting at this node
-  var remainTime = total - newLimit;
-  var remainWeight = weight - self.getWeight();
-  if (remainTime + 0.0001 < 0 or total + 0.0001 < time) {
-    System.user.inform("The sum of the manual time limits is greater than the available time");
-    return false;
-  }
-  else if (isApproximatelyEqual(remainTime, 0, 0.0001) and remainWeight > 0) {
-    System.user.inform("The manual time limits have used up all the time");
-    return false;
-  }
-
-  -- Distribute the remaining time limit
-  for (edge in self.outgoing) {
-    edge.~distributedTime = remainTime;
-  }
+  -- Assign the new time limit to this vertex and mark it as visited.
   self.setTimeLimit(newLimit);
-  self.~visited = true;
+  self.~visited := true;
+
+  -- Distribute the remaining time limit and add the sorted outgoing edges
+  -- to the stack, according to the remaining time.
+  var remainingTime := total - newLimit;
+  for (edge in self.outgoing) {
+    edge.~distributedTime = remainingTime;
+  }
+  stack.addAll(self.getOutEdgesFromLeastToMostStrict(remainingTime));
+
   return true;
 }
 
@@ -291,6 +308,17 @@ operation Sequence addConstraint(time : Real, weight : Real) : Sequence {
   var sum = self.clone();
   sum.set(0, sum.get(0) + time);
   sum.set(1, sum.get(1) + weight);
+  return sum;
+}
+
+-- Adds a packed constraint to another, generating a new one
+$pre self.size() = 2
+$pre cons.size() =2
+$post _result.size() = 2
+operation Sequence addConstraint(cons : Sequence) : Sequence {
+  var sum = self.clone();
+  sum.set(0, sum.get(0) + cons.get(0));
+  sum.set(1, sum.get(1) + cons.get(1));
   return sum;
 }
 
