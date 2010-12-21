@@ -18,13 +18,19 @@ import '../common/utils.eol';
 -*********** TIME DISTRIBUTION ***********-
 
 operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
-  -- Aggregate constraints (relaxing the automatic ones) all over the graph and get the initial node
+  -- Aggregate constraints over all the graph
   var aggregateResults = aggregateConstraints(globalLimit, endNodes);
+  if (aggregateResults == null) {
+    return false;
+  }
   var initial = aggregateResults.first();
+  var strictestGraphConstraints := aggregateResults.second();
 
-  -- Distribute all the time through the initial node, with the strictest constraint for
-  -- all paths in the graph from the source to a sink, according to the global time limit
-  var strictestGraphConstraint := initial.getStrictestConstraintForGraph(globalLimit);
+  -- Distribute all the time through the initial node, with the constraint of
+  -- the strictest path among all paths in the graph from the source to a
+  -- sink, according to the global time limit
+  var strictestGraphConstraint
+    := strictestGraphConstraints.sortBy(c|c.computeEstimate(globalLimit)).first();
   var stack : OrderedSet;
   if (not initial.distributeTime(globalLimit, strictestGraphConstraint, stack)) {
     return false;
@@ -101,34 +107,11 @@ operation reflowExtraTime(slack : Real, start : FlowNode) {
 }
 
 -*
-  Returns the strictest constraint for every path in the graph which starts at the
-  source and ends in a sink.
-*-
-operation FlowNode getStrictestConstraintForGraph(globalLimit : Real) : Sequence {
-  var sourceConstraint := Sequence { self.getMinimumTime(), self.getWeight() };
-  if (self.outgoing.size() = 0) {
-    return sourceConstraint;
-  }
-
-  var strictestGraphConstraintPerEdge : Sequence;
-  for (edge in self.outgoing) {
-    var graphConstraintsForEdge
-      = edge.~constraints.collect(c|c.addConstraint(sourceConstraint));
-    var strictestGraphConstraintForEdge
-      := graphConstraintsForEdge.sortBy(c|c.computeEstimate(globalLimit)).first();
-    strictestGraphConstraintPerEdge.add(strictestGraphConstraintForEdge);
-  }
-  var strictestGraphConstraint
-    := strictestGraphConstraintPerEdge.sortBy(c|c.computeEstimate(globalLimit)).first();
-
-  return strictestGraphConstraint;
-}
-
--*
   Returns the outgoing edges of the current node, sorted from least to
   most restrictive.  For each edge, edge.~constraint is set to its
   weakly strictest constraint, according to the time received time.
 *-
+$pre self.outgoing.forAll(e|not e.~constraint.isDefined())
 operation FlowNode getOutEdgesFromLeastToMostStrict(received : Real) : OrderedSet {
   for (edge in self.outgoing) {
     edge.~constraint = edge.~constraints.sortBy(c|c.computeEstimate(received)).first();
@@ -184,11 +167,12 @@ operation FlowNode distributeTime(total : Real, cons : Sequence, stack : Ordered
 -*
   Aggregates the constraints from each node in the graph, returning a pair
   (n_i, [(t_1, w_1)...]), where n_i is the initial node and [(t, w)] are the
-  constraints of the strictest path(s) in the graph (some paths may not be
-  comparable until we apply a global limit). Each vertex and edge has
-  been annotated with the constraints of the strictest paths they are part of.
-  If the initial node (node with no incoming edges) does not exist, displays
-  an error message and returns null.
+  constraints of the strictest path(s) between the source and a sink. Each edge
+  has been annotated with the strictest constraints of all the paths that start
+  at their target.
+
+  If the initial node (node with no incoming edges) does not exist, this operation
+  displays an error message and returns null.
 *-
 $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.outgoing.isEmpty())
