@@ -1,3 +1,16 @@
+-*
+  Miscellaneous utilities for both inference algorithms.
+
+  Copyright (c) 2009-2011 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+*-
+
 -- PERFORMANCE ANNOTATIONS ----------------------------------------------------
 
 operation FlowNode hasManualPerformanceAnnotation() : Boolean {
@@ -45,6 +58,20 @@ operation FlowNode setTimeLimit(newLimit : Real) {
       self.createPerformanceAnnotation();
     }
     self.annotation.secsTimeLimit := newLimit * 1.0d;
+  }
+}
+
+-- CONSTRAINTS ----------------------------------------------------------------
+
+-*
+  Computes the slack per unit of weight of a path using its constraint, when
+  the path receives T seconds.
+*-
+operation Sequence slackPerWU(T : Real) : Real {
+  if (self.last() > 0) {
+    return (T-self.first())/self.last();
+  } else {
+    return 0;
   }
 }
 
