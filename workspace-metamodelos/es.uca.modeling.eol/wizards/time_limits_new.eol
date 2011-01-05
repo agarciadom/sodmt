@@ -34,8 +34,6 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
 operation distributeTime(v : FlowNode, T : Real, c_pms : Sequence) : Boolean {
   var M_m   = v.~maxMinTimeLimit;
 
-  ("T: "  + T + ", v: " + v + ", c_pms: " + c_pms + ", M_m: " + M_m).println();
-
   if (T + 0.0001 < M_m) {
     System.user.inform("The sum of the manual time limits is greater than the available time");
     return false;
