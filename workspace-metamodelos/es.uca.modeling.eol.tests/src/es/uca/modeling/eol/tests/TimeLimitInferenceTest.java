@@ -69,6 +69,11 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 	}
 
 	@Test
+	public void handleOrder() throws EolRuntimeException {
+		assertOldAndNewResultsAreEqual(1.0, true, "handleOrder.model");
+	}
+
+	@Test
 	public void singleDipole() throws EolRuntimeException {
 		assertOldAndNewResultsAreEqual(1, true, "single-dipole.model");
 	}

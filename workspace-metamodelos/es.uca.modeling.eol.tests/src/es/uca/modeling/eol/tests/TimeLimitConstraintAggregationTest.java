@@ -54,4 +54,10 @@ public class TimeLimitConstraintAggregationTest extends AbstractTimeLimitTest {
 		// would be creating a cycle.
 		assertConstraintsEquals("dense.model", 100, pair(0, 4));
 	}
+
+	@Test
+	public void handleOrder() throws EolRuntimeException {
+		assertConstraintsEquals("handleOrder.model", 1, pair(0.4, 3));
+	}
+
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_naod8fGfEd-WVeBAYwAeXA">
+  <nodes xsi:type="sp:ProcessStart" xmi:id="_HlbR0CdTEeCTarsWR3CQ-w" outgoing="_hB99oCdTEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ProcessFinish" xmi:id="_IFDNECdTEeCTarsWR3CQ-w" incoming="_XNxDMCdUEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_I1vqMCdTEeCTarsWR3CQ-w" incoming="_hB99oCdTEeCTarsWR3CQ-w" outgoing="_haub4CdTEeCTarsWR3CQ-w" name="Evaluate Order" annotation="_T_AdoCdTEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_K_2xUCdTEeCTarsWR3CQ-w" incoming="_jZICQCdTEeCTarsWR3CQ-w" outgoing="_vsqQcCdTEeCTarsWR3CQ-w" name="Create Invoice"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_LW6mcCdTEeCTarsWR3CQ-w" incoming="_vsqQcCdTEeCTarsWR3CQ-w" outgoing="_wGnokCdTEeCTarsWR3CQ-w" name="Perform Payment"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_LxgQsCdTEeCTarsWR3CQ-w" incoming="_wh5PUCdTEeCTarsWR3CQ-w" outgoing="_Ng_b4CdUEeCTarsWR3CQ-w" name="Ship Order"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_PxFrsCdTEeCTarsWR3CQ-w" incoming="_V2VWMCdUEeCTarsWR3CQ-w" outgoing="_XNxDMCdUEeCTarsWR3CQ-w" name="Close Order"/>
+  <nodes xsi:type="sp:ProcessDecision" xmi:id="_RwohkCdTEeCTarsWR3CQ-w" incoming="_haub4CdTEeCTarsWR3CQ-w" outgoing="_ii3IoCdTEeCTarsWR3CQ-w _i5vXkCdTEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ProcessFork" xmi:id="_SLZK8CdTEeCTarsWR3CQ-w" incoming="_ii3IoCdTEeCTarsWR3CQ-w" outgoing="_jZICQCdTEeCTarsWR3CQ-w _wh5PUCdTEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ProcessJoin" xmi:id="_Sj_RICdTEeCTarsWR3CQ-w" incoming="_i5vXkCdTEeCTarsWR3CQ-w _RvfcoCdUEeCTarsWR3CQ-w" outgoing="_V2VWMCdUEeCTarsWR3CQ-w"/>
+  <nodes xsi:type="sp:ProcessJoin" xmi:id="_S7t0oCdTEeCTarsWR3CQ-w" incoming="_wGnokCdTEeCTarsWR3CQ-w _Ng_b4CdUEeCTarsWR3CQ-w" outgoing="_RvfcoCdUEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_hB99oCdTEeCTarsWR3CQ-w" target="_I1vqMCdTEeCTarsWR3CQ-w" source="_HlbR0CdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_haub4CdTEeCTarsWR3CQ-w" target="_RwohkCdTEeCTarsWR3CQ-w" source="_I1vqMCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_ii3IoCdTEeCTarsWR3CQ-w" target="_SLZK8CdTEeCTarsWR3CQ-w" source="_RwohkCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_i5vXkCdTEeCTarsWR3CQ-w" target="_Sj_RICdTEeCTarsWR3CQ-w" source="_RwohkCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_jZICQCdTEeCTarsWR3CQ-w" target="_K_2xUCdTEeCTarsWR3CQ-w" source="_SLZK8CdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_vsqQcCdTEeCTarsWR3CQ-w" target="_LW6mcCdTEeCTarsWR3CQ-w" source="_K_2xUCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_wGnokCdTEeCTarsWR3CQ-w" target="_S7t0oCdTEeCTarsWR3CQ-w" source="_LW6mcCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_wh5PUCdTEeCTarsWR3CQ-w" target="_LxgQsCdTEeCTarsWR3CQ-w" source="_SLZK8CdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_Ng_b4CdUEeCTarsWR3CQ-w" target="_S7t0oCdTEeCTarsWR3CQ-w" source="_LxgQsCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_RvfcoCdUEeCTarsWR3CQ-w" target="_Sj_RICdTEeCTarsWR3CQ-w" source="_S7t0oCdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_V2VWMCdUEeCTarsWR3CQ-w" target="_PxFrsCdTEeCTarsWR3CQ-w" source="_Sj_RICdTEeCTarsWR3CQ-w"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_XNxDMCdUEeCTarsWR3CQ-w" target="_IFDNECdTEeCTarsWR3CQ-w" source="_PxFrsCdTEeCTarsWR3CQ-w"/>
+  <activityPerformance xmi:id="_T_AdoCdTEeCTarsWR3CQ-w" minimumTime="0.4" execNode="_I1vqMCdTEeCTarsWR3CQ-w"/>
+  <processPerformance xmi:id="_WdAxICdTEeCTarsWR3CQ-w" secsTimeLimit="1.0"/>
+</sp:ServiceProcess>
