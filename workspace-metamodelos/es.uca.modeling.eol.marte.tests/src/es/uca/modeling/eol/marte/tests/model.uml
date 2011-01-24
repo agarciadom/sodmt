@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:PAM="http://www.eclipse.org/papyrus/PAM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM http://www.eclipse.org/papyrus/PAM/1 http://www.eclipse.org/papyrus/MARTE/1#//PAM">
+  <uml:Model xmi:id="_JvABkCZPEeCeUKHnFmT-Lw" name="model">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_JyO7wCZPEeCeUKHnFmT-Lw" name="Handle Order">
+      <node xmi:type="uml:InitialNode" xmi:id="_vUn_ECZPEeCeUKHnFmT-Lw" name="InitialNode1" outgoing="_BGEncCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_v9lcgCZPEeCeUKHnFmT-Lw" name="Evaluate Order" outgoing="_CXB5ACZQEeCeUKHnFmT-Lw" incoming="_BGEncCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_0DVJ4CZPEeCeUKHnFmT-Lw" name="DecisionNode1" outgoing="_C_EwcCZQEeCeUKHnFmT-Lw _DvNz8CZQEeCeUKHnFmT-Lw" incoming="_CXB5ACZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_0m4i4CZPEeCeUKHnFmT-Lw" name="JoinNode1" outgoing="_IPh9cCZQEeCeUKHnFmT-Lw" incoming="_FZ83cCZQEeCeUKHnFmT-Lw _HZcC8CZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_1VptYCZPEeCeUKHnFmT-Lw" name="ForkNode1" outgoing="_EYCugCZQEeCeUKHnFmT-Lw _F9IdACZQEeCeUKHnFmT-Lw" incoming="_DvNz8CZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_291zMCZPEeCeUKHnFmT-Lw" name="Create Invoice" outgoing="_EySagCZQEeCeUKHnFmT-Lw" incoming="_EYCugCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_4RUNQCZPEeCeUKHnFmT-Lw" name="Perform Payment" outgoing="_FZ83cCZQEeCeUKHnFmT-Lw" incoming="_EySagCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6W6AwCZPEeCeUKHnFmT-Lw" name="Ship Order" outgoing="_HZcC8CZQEeCeUKHnFmT-Lw" incoming="_F9IdACZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_95hL4CZPEeCeUKHnFmT-Lw" name="MergeNode1" outgoing="_Qqn6cCZQEeCeUKHnFmT-Lw" incoming="_C_EwcCZQEeCeUKHnFmT-Lw _IPh9cCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_NEb24CZQEeCeUKHnFmT-Lw" name="Close Order" outgoing="_RIwn8CZQEeCeUKHnFmT-Lw" incoming="_Qqn6cCZQEeCeUKHnFmT-Lw"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_P7x3cCZQEeCeUKHnFmT-Lw" name="ActivityFinalNode1" incoming="_RIwn8CZQEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_BGEncCZQEeCeUKHnFmT-Lw" name="ControlFlow1" source="_vUn_ECZPEeCeUKHnFmT-Lw" target="_v9lcgCZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_CXB5ACZQEeCeUKHnFmT-Lw" name="ControlFlow2" source="_v9lcgCZPEeCeUKHnFmT-Lw" target="_0DVJ4CZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_C_EwcCZQEeCeUKHnFmT-Lw" name="ControlFlow3" source="_0DVJ4CZPEeCeUKHnFmT-Lw" target="_95hL4CZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DvNz8CZQEeCeUKHnFmT-Lw" name="ControlFlow4" source="_0DVJ4CZPEeCeUKHnFmT-Lw" target="_1VptYCZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EYCugCZQEeCeUKHnFmT-Lw" name="ControlFlow5" source="_1VptYCZPEeCeUKHnFmT-Lw" target="_291zMCZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EySagCZQEeCeUKHnFmT-Lw" name="ControlFlow6" source="_291zMCZPEeCeUKHnFmT-Lw" target="_4RUNQCZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_FZ83cCZQEeCeUKHnFmT-Lw" name="ControlFlow7" source="_4RUNQCZPEeCeUKHnFmT-Lw" target="_0m4i4CZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_F9IdACZQEeCeUKHnFmT-Lw" name="ControlFlow8" source="_1VptYCZPEeCeUKHnFmT-Lw" target="_6W6AwCZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_HZcC8CZQEeCeUKHnFmT-Lw" name="ControlFlow9" source="_6W6AwCZPEeCeUKHnFmT-Lw" target="_0m4i4CZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_IPh9cCZQEeCeUKHnFmT-Lw" name="ControlFlow10" source="_0m4i4CZPEeCeUKHnFmT-Lw" target="_95hL4CZPEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Qqn6cCZQEeCeUKHnFmT-Lw" name="ControlFlow11" source="_95hL4CZPEeCeUKHnFmT-Lw" target="_NEb24CZQEeCeUKHnFmT-Lw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_RIwn8CZQEeCeUKHnFmT-Lw" name="ControlFlow12" source="_NEb24CZQEeCeUKHnFmT-Lw" target="_P7x3cCZQEeCeUKHnFmT-Lw"/>
+    </packagedElement>
+    <profileApplication xmi:id="_na5CsCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nbWVsCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//NFPs"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nctAkCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nc-tYCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//Time"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_WStkoAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nd5TYCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nebe4CZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//GRM"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_XVWGUAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_neuZ0CZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nfB70CZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//Alloc"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_ar8OsAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nfi5MCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_ngLLUCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//CoreElements"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_-wEewECLEd6UTJZnztgOLw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ng4V8CZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nhn80CZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//GQAM"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_4bV20APMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_niEBsCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nioCYCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//SAM"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_5ZCOIAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_njOfUCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_njiBUCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//PAM"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_6c2bkAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nj6b0CZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nkRoMCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_b-riAbG3Ed-tmN4hwNCxXQ"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_CHiIYA-LEdyNj8xzjk-DoA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nlPRgCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nll20CZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//DataTypes"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nmM60CZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nmfOsCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//Variables"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_9UgzYA-MEdyLh7muGbCqMw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nnQDsCZPEeCeUKHnFmT-Lw">
+      <eAnnotations xmi:id="_nni-oCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//Operators"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_jg_Z8PfhEd-f4r3MXmUB9g"/>
+    </profileApplication>
+  </uml:Model>
+  <GQAM:GaScenario xmi:id="_Yj5j0CZQEeCeUKHnFmT-Lw" base_NamedElement="_JyO7wCZPEeCeUKHnFmT-Lw" base_Behavior="_JyO7wCZPEeCeUKHnFmT-Lw">
+    <throughput>(value=1,source=req)</throughput>
+    <respT>(value=1,source=req)</respT>
+  </GQAM:GaScenario>
+  <PAM:PaStep xmi:id="_xDdl0CZXEeCeUKHnFmT-Lw" base_NamedElement="_v9lcgCZPEeCeUKHnFmT-Lw" base_Action="_v9lcgCZPEeCeUKHnFmT-Lw">
+    <hostDemand>(value=0.4+0*swEO,source=req)</hostDemand>
+  </PAM:PaStep>
+  <PAM:PaStep xmi:id="_yTfqUCZXEeCeUKHnFmT-Lw" base_NamedElement="_291zMCZPEeCeUKHnFmT-Lw" base_Action="_291zMCZPEeCeUKHnFmT-Lw">
+    <hostDemand>(value=0+1*swCI,source=req)</hostDemand>
+  </PAM:PaStep>
+  <PAM:PaStep xmi:id="_zOXXICZXEeCeUKHnFmT-Lw" base_NamedElement="_4RUNQCZPEeCeUKHnFmT-Lw" base_Action="_4RUNQCZPEeCeUKHnFmT-Lw">
+    <hostDemand>(value=0+1*swCI,source=req)</hostDemand>
+  </PAM:PaStep>
+  <PAM:PaStep xmi:id="_0JlCMCZXEeCeUKHnFmT-Lw" base_NamedElement="_6W6AwCZPEeCeUKHnFmT-Lw" base_Action="_6W6AwCZPEeCeUKHnFmT-Lw">
+    <hostDemand>(value=0+1*swCI,source=req)</hostDemand>
+  </PAM:PaStep>
+  <PAM:PaStep xmi:id="_2VsUcCZXEeCeUKHnFmT-Lw" base_NamedElement="_NEb24CZQEeCeUKHnFmT-Lw" base_Action="_NEb24CZQEeCeUKHnFmT-Lw">
+    <hostDemand>(value=0+1*swCI,source=req)</hostDemand>
+  </PAM:PaStep>
+  <GQAM:GaAnalysisContext xmi:id="_UewZwCZYEeCeUKHnFmT-Lw" base_StructuredClassifier="_JyO7wCZPEeCeUKHnFmT-Lw" base_NamedElement="_JyO7wCZPEeCeUKHnFmT-Lw">
+    <context>in$swEO</context>
+    <context>in$swCI</context>
+    <context>in$swPP</context>
+    <context>in$swSO</context>
+    <context>in$swCO</context>
+  </GQAM:GaAnalysisContext>
+  <PAM:PaStep xmi:id="_xo2DcCZaEeCeUKHnFmT-Lw" base_NamedElement="_C_EwcCZQEeCeUKHnFmT-Lw" prob="0.2"/>
+  <PAM:PaStep xmi:id="_y4DokCZaEeCeUKHnFmT-Lw" base_NamedElement="_DvNz8CZQEeCeUKHnFmT-Lw" prob="0.8"/>
+</xmi:XMI>

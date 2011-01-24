@@ -1,0 +1,24 @@
+--import 'utils.eol';
+
+var modelInstance : Model    := Model.allInstances.first();
+var mainActivity  : Activity := modelInstance.member.select(e|e.name='Handle Order').first();
+var mainScenario  := mainActivity.getScenario();
+var mainContext   := mainActivity.getAnalysisContext();
+var execNodes     := mainActivity.node.select(e : ExecutableNode | true);
+var initialNode   := mainActivity.node.select(e : InitialNode | true).first();
+
+("Main activity: "        + mainActivity.name).println();
+("Global response time: " + getGlobalTimeLimit()).println();
+("Global throughput: "    + getGlobalThroughput()).println();
+
+("Executable nodes: " + execNodes).println();
+("Initial node: " + initialNode).println();
+
+for (execNode in execNodes) {
+  ("Node: " + execNode.name).println();
+  execNode.setTimeLimit(2);
+  execNode.setThroughput(3);
+
+  ("Host demand constraints: " + execNode.getStep().hostDemand).println();
+  ("Weight: " + execNode.getWeight() + ", minimum time: " + execNode.getMinTime()).println();
+}

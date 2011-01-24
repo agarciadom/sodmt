@@ -1,0 +1,108 @@
+-*
+  Miscellaneous utilities for both inference algorithms.
+
+  Copyright (c) 2009-2011 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+*-
+
+-- CONSTRAINTS ----------------------------------------------------------------
+
+-*
+  Computes the slack per unit of weight of a path using its constraint, when
+  the path receives T seconds.
+*-
+operation Sequence slackPerWU(T : Real) : Real {
+  if (self.last() > 0) {
+    return (T-self.first())/self.last();
+  } else {
+    return 0;
+  }
+}
+
+-- GRAPH PREPROCESSING --------------------------------------------------------
+
+@cached
+$post _result >= 0
+operation ActivityNode getDepth() : Integer {
+  if (self.incoming.isEmpty()) {
+    return 0;
+  }
+  else {
+    return self.incoming.collect(r|r.source.getDepth()).max() + 1;
+  }
+}
+
+-- LOWEST COMMON ANCESTOR -----------------------------------------------------
+
+@cached
+$pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
+operation getLCA(nodeA : ActivityNode, nodeB : ActivityNode) : ActivityNode {
+  var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
+  var maxDepth   := depths.min();
+  var ancestorsA := nodeA.getAncestors(maxDepth);
+  var ancestorsB := nodeB.getAncestors(maxDepth);
+  var common := ancestorsA.intersect(ancestorsB);
+
+  if (common.isEmpty()) {
+    return;
+  }
+
+  return common.asSequence().sortBy(r|-r.getDepth()).first();
+}
+
+$pre maxDepth >= 0
+operation ActivityNode getAncestors(maxDepth : Integer) : Set {
+  var results := new Set;
+  self.addAllAncestors(maxDepth, results);
+  return results;
+}
+
+$pre maxDepth >= 0 and results.isDefined()
+operation ActivityNode addAllAncestors(maxDepth : Integer, results : Collection) {
+  if (self.getDepth() <= maxDepth) {
+    results.add(self);
+  }
+  for (parent in self.incoming.collect(r|r.source)) {
+    parent.addAllAncestors(maxDepth, results);
+  }
+}
+
+$pre otherSet.isDefined()
+operation Set intersect(otherSet : Set) : Set {
+  if (otherSet.size() < self.size()) {
+    return otherSet.intersect(self);
+  }
+
+  var results : Set;
+  for (element in self.select(r|otherSet.includes(r))) {
+    results.add(element);
+  }
+  return results;
+}
+
+-- COMPARISON OF REAL NUMBERS -----------------------------
+
+$pre epsilon > 0
+operation isApproximatelyEqual(a, b, epsilon) : Boolean {
+  return (a - b).abs() <= epsilon;
+}
+
+-- COLLECTION UTILITIES -----------------------------------
+
+operation Sequence popLast() : Any {
+  var elem = self.last();
+  self.removeAt(self.size()-1);
+  return elem;
+}
+
+operation OrderedSet popLast() : Any {
+  var elem = self.last();
+  self.removeAt(self.size()-1);
+  return elem;
+}

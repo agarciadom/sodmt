@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SODM+T: Inference algorithms for MARTE
+Bundle-SymbolicName: es.uca.modeling.eol.marte
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Universidad de Cádiz
+Require-Bundle: org.eclipse.ui.ide;bundle-version="3.6.1",
+ org.eclipse.epsilon.ewl.emf;bundle-version="0.8.9"

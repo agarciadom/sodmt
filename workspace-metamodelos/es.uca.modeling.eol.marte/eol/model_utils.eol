@@ -1,0 +1,151 @@
+-*
+   OPERATIONS FOR EXTRACTING GLOBAL CONSTRAINTS
+*-
+@cached
+operation getGlobalActivity() : Activity {
+  return Model.allInstances.first().member.select(e:Activity|true).first();
+}
+
+@cached
+operation getGlobalTimeLimit() : Real {
+  return getGlobalActivity().getScenario().respT.first().keyvalMap().get("value").asReal() * 1.0d;
+}
+
+@cached
+operation getGlobalThroughput() : Real {
+  return getGlobalActivity().getScenario().throughput.first().keyvalMap().get("value").asReal() * 1.0d;
+}
+
+-*
+  OPERATIONS FOR ExecutableNode
+*-
+$pre self.getStep().isDefined()
+operation ExecutableNode setThroughput(newThroughput : Real) {
+  var step := self.getStep();
+  step.throughput.clear();
+  step.throughput.add('(value=' + newThroughput + ',source=calc)');
+}
+
+$pre self.getStep().isDefined()
+operation ExecutableNode getTimeLimit() : Real {
+  var stepHD := self.getStep().hostDemand;
+  var kvCalcHD := stepHD.collect(e|e.keyvalMap()).select(kv|kv.get("source") == "calc").first();
+  if (kvCalcHD.isDefined()) {
+    return kvCalcHD.get("value").asReal() * 1.0d;
+  }
+  else {
+    return 0.0d;
+  }
+}
+
+$pre self.getStep().isDefined()
+operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
+  var step := self.getStep();
+
+  -- Remove all constraints not set by the user
+  step.hostDemand := step.hostDemand.select(e|e.keyvalMap().get("source") == "req");
+
+  -- Add a calculated constraint with the time
+  step.hostDemand.add('(value=' + newTimeMillis + ',source=calc)');
+}
+
+operation ExecutableNode getWeight() : Real {
+  return self.getRequiredHostDemand().get("value").getWeight();
+}
+
+operation ExecutableNode getMinimumTime() : Real {
+  return self.getRequiredHostDemand().get("value").getMinTime();
+}
+
+operation ExecutableNode getRequiredHostDemand() : Map {
+  if (self.getStep().isDefined()) {
+    return self.getStep().hostDemand.collect(e | e.keyvalMap()).select(kv|kv.get("source") == "req").first();
+  } else {
+    return '(value=0.0+1.0*x,source=req)'.keyvalMap();
+  }
+}
+
+-*
+  OPERATIONS FOR NamedElement
+*-
+operation NamedElement setThroughput(newThroughput : Real) {
+  -- do nothing
+}
+
+operation NamedElement setTimeLimit(newTimeMillis : Real) {
+  -- do nothing
+}
+
+operation NamedElement getWeight() : Real {
+  return 0.0d;
+}
+
+operation NamedElement getMinimumTime() : Real {
+  return 0.0d;
+}
+
+@cached
+operation NamedElement getRequiredHostDemand() : Map {
+  return '(value=0+0*x,source=req)'.keyvalMap();
+}
+
+@cached
+operation NamedElement getScenario() : MARTE!GaScenario {
+  return MARTE!GaScenario.allInstances.select(s|s.base_NamedElement == self).first();
+}
+
+@cached
+operation NamedElement getStep() : MARTE!GaStep {
+  return MARTE!GaStep.allInstances.select(s|s.base_NamedElement == self).first();
+}
+
+@cached
+operation NamedElement getAnalysisContext() : MARTE!GaAnalysisContext {
+  return MARTE!GaAnalysisContext.allInstances.select(s|s.base_NamedElement == self).first();
+}
+
+-*
+  STRING OPERATIONS
+*-
+
+-*
+  Extracts the minimum time m in a time constraint of the form m + w * swI,
+  ignoring whitespace.
+*-
+operation String getMinTime() : Real {
+  return self.split(" *[+*] *").at(0).asReal() * 1.0d;
+}
+
+-*
+  Extracts the weight w in a time constraint of the form m + w * swI,
+  ignoring whitespace.
+*-
+operation String getWeight() : Real {
+  return self.split(" *[+*] *").at(1).asReal() * 1.0d;
+}
+
+-*
+  Extracts the variable swI in a time constraint of the form m + w * swI,
+  ignoring whitespace.
+*-
+operation String getVariable() : Real {
+  return self.split(" *[+*] *").last();
+}
+
+-*
+  Computes the key-value map from a tuple of the form '(a = b, c = d, ...)',
+  ignoring initial and trailing whitespace in keys and values.
+*-
+operation String keyvalMap() : Map {
+  var input := self;
+  if (input.startsWith('(')) {
+    input := input.substring(1, input.length() - 1);
+  }
+  var pairs := input.split(" *, *");
+  var result : Map;
+  for (pair in pairs) {
+    var parts := pair.split(" *= *");
+    result.put(parts.first(), parts.second());
+  }
+  return result;
+}
