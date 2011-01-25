@@ -6,17 +6,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
-import org.eclipse.papyrus.MARTE.MARTEPackage;
 import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GaScenario;
 import org.eclipse.uml2.uml.ExecutableNode;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 /**
@@ -29,9 +26,13 @@ import org.junit.Test;
  */
 public class TimeLimitInferenceTest extends AbstractInferenceTest {
 
+	public TimeLimitInferenceTest() {
+		super(TIME_LIMITS_EOL_PATH);
+	}
+
 	@Test
 	public void handleOrderIsCorrectlyAnnotated() throws EolModelElementTypeNotFoundException, EolRuntimeException {
-		Map<String, Double> inferredTL = inferTimeLimits(1, true, "model.uml");
+		Map<String, Double> inferredTL = inferTimeLimits(1, true, HANDLEORDER_MODEL_PATH);
 		assertEquals("Evaluate Order should have 0.4s", 0.4, inferredTL.get("Evaluate Order"), 0.0001);
 		assertEquals("Create Invoice should have 0.2s", 0.2, inferredTL.get("Create Invoice"), 0.0001);
 		assertEquals("Perform Payment should have 0.2s", 0.2, inferredTL.get("Perform Payment"), 0.0001);
@@ -70,24 +71,11 @@ public class TimeLimitInferenceTest extends AbstractInferenceTest {
 		return mapNameToActivity;
 	}
 
-	private static final Pattern REGEX_COMMA_SPLIT = Pattern.compile(" *, *");
-	private static final Pattern REGEX_EQUAL_SPLIT = Pattern.compile(" *= *");
-	private Map<String, String> getKeyvalMap(String hostDemand) {
-		Map<String, String> map = new HashMap<String, String>();
-		if (!hostDemand.startsWith("(")) return map;
-		for (String keyval : REGEX_COMMA_SPLIT.split(hostDemand.substring(1, hostDemand.length()-1))) {
-			String[] parts = REGEX_EQUAL_SPLIT.split(keyval);
-			map.put(parts[0], parts[1]);
-		}
-		return map;
-	}
-
 	private Map<String, Double> inferTimeLimits(double globalLimit,
 			boolean shouldSucceed, String modelPath)
 			throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException, EolRuntimeException {
-		EmfModel model = loadModel("", modelPath, UMLPackage.eNS_URI);
-		loadModel("MARTE", modelPath, MARTEPackage.eNS_URI);
+		EmfModel model = loadMarteModel(modelPath);
 		List<EObject> endNodes = getEndNodes(model);
 		assertEquals(shouldSucceed, (Boolean) callOperation("distributeTime", globalLimit, endNodes));
 		return buildTimeLimitMapFromModel(model);

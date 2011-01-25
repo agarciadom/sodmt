@@ -8,8 +8,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.types.EolSequence;
-import org.eclipse.papyrus.MARTE.MARTEPackage;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 /**
@@ -20,6 +18,28 @@ import org.junit.Test;
  * @version 1.0
  */
 public class ConstraintAggregationTest extends AbstractInferenceTest {
+
+	public ConstraintAggregationTest() {
+		super(TIME_LIMITS_EOL_PATH);
+	}
+
+	@Test
+	public void aggregateHandleOrderConstraints() throws Exception {
+		assertConstraintsEquals("Evaluate Order", 1, pair(0.4, 3.0));
+	}
+
+	private void assertConstraintsEquals(String name, double globalLimit,
+			double[]... expected) throws EolRuntimeException {
+		EmfModel model = loadMarteModel(HANDLEORDER_MODEL_PATH);
+		EolSequence res = (EolSequence)callOperation(
+				"aggregateConstraints", globalLimit, getEndNodes(model));
+		assertConstraintsEquals("Activity " + name
+				+ " has the expected constraints", res, expected);
+	}
+
+	private double[] pair(double... args) {
+		return args;
+	}
 
 	private static void assertConstraintsEquals(String msg, EolSequence res, double[]... expectedConstraints) {
 		assertNotNull(res);
@@ -37,25 +57,6 @@ public class ConstraintAggregationTest extends AbstractInferenceTest {
 						expected[j], (Double) constraint.get(j), 0.001);
 			}
 		}
-	}
-
-	@Test
-	public void aggregateHandleOrderConstraints() throws Exception {
-		assertConstraintsEquals("Evaluate Order", 1, pair(0.4, 3.0));
-	}
-
-	private void assertConstraintsEquals(String name, double globalLimit,
-			double[]... expected) throws EolRuntimeException {
-		EmfModel model = loadModel("", "model.uml", UMLPackage.eNS_URI);
-		loadModel("MARTE", "model.uml", MARTEPackage.eNS_URI);
-		EolSequence res = (EolSequence)callOperation(
-				"aggregateConstraints", globalLimit, getEndNodes(model));
-		assertConstraintsEquals("Activity " + name
-				+ " has the expected constraints", res, expected);
-	}
-
-	private double[] pair(double... args) {
-		return args;
 	}
 
 }
