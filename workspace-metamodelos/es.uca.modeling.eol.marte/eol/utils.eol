@@ -86,6 +86,32 @@ operation Set intersect(otherSet : Set) : Set {
   return results;
 }
 
+----- REACHABLE NODES ---------------------------------------------------------
+
+-- Obtains all the nodes reachable from a node in the graph, in no
+-- particular order. Returns a Set: to convert it to a sequence, use asSequence().
+-- Note that if you only want the activities, you will need to filter them later
+-- on, using select(), for instance.
+@cached
+operation ActivityNode getAllReachableNodes() : Set {
+  var nodeSet := new Set;
+  nodeSet.add(self);
+  addAllReachableNodes(self, nodeSet);
+  return nodeSet;
+}
+
+-- Adds all the nodes which are reachable from a node in the graph to a set of
+-- nodes. Avoids nodes which have been already visited.
+operation addAllReachableNodes(node : ActivityNode, nodeSet : Set) {
+  for (child in node.outgoing.collect(r|r.target)) {
+    var oldSize := nodeSet.size();
+    nodeSet.add(child);
+    if (nodeSet.size() > oldSize) {
+      addAllReachableNodes(child, nodeSet);
+    }
+  }
+}
+
 -- COMPARISON OF REAL NUMBERS -----------------------------
 
 $pre epsilon > 0

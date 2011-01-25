@@ -1,0 +1,91 @@
+-*
+  Heuristic algorithm for computing the expected throughput for each
+  ActivityNode in an MDT UML2 model annotated with the MARTE profile.
+
+  Copyright (c) 2011 Antonio García Domínguez.  All rights reserved. This
+  program and the accompanying materials are made available under the terms
+  of the Eclipse Public License v1.0 which accompanies this distribution,
+  and is available at http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+
+  The algorithm computes the concurrent users of every node and edge, but only
+  adds annotation model elements to the executable nodes.
+
+  The algorithm performs a breadth-first traversal of the graph. Starting from
+  the initial node, we visit each node after all its ancestors and compute its
+  expected throughput. The expression used depends on the kind of node visited.
+  If C(x) is the calculated throughput for the node or edge x, G is the
+  throughput for the whole scenario and P(e) the traversal probability
+  annotated on an edge, then the formulae are as follows:
+
+    * C(initial node) = C(GaScenario for the activity)
+    * C(edge) = P(edge) * C(source)
+    * C(node, except JoinNode and MergeNode) = C(only incoming edge)
+    * C(JoinNode): minimum of the throughputs of all the incoming edges.
+    * C(MergeNode): sum of the throughputs of all the incoming edges.
+*-
+
+import 'model_utils.eol';
+import 'utils.eol';
+
+-*
+  This operation can ask the user if they want to update existing
+  constraints to make them stricter if they're set too lax. However, this means
+  that we need to walk the graph so these updates reach all the affected nodes.
+  We will go through all Activities, sorting them by depth in ascending
+  order.
+
+  This operation returns true if all nodes reachable from the starting node
+  have been successfully annotated, and false otherwise.
+*-
+operation annotateThroughput(start : ActivityNode) : Boolean {
+  -- Since the precondition must hold, all activities are reachable from the
+  -- initial node. Get all reachable nodes and filter only the activities.
+  var allNodes := start.getAllReachableNodes().asSequence().select(r:ExecutableNode|true);
+
+  -- Relax all automatic constraints before continuing
+  for (node in allNodes.sortBy(r|r.getDepth())) {
+	node.setThroughput(node.computeThroughput());
+  }
+  return true;
+}
+
+-- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
+
+-*
+  Note: for some reason, Epsilon (as of r597) doesn't use the most specific
+  operation for a particular class, but rather the first applicable operation.
+  Therefore, the computeThroughput operations below MUST be ordered from
+  least to most specific: first the edges, and then the nodes.
+*-
+@cached
+$pre self.source.isDefined() and self.target.isDefined()
+operation ActivityEdge computeThroughput() : Real {
+  return self.getProbability() * self.source.computeThroughput();
+}
+
+@cached
+$pre self.incoming.notEmpty()
+operation JoinNode computeThroughput() : Real {
+  return self.incoming.collect(e|e.computeThroughput()).sortBy(e|e).first();
+}
+
+@cached
+$pre self.incoming.notEmpty()
+operation MergeNode computeThroughput() : Real {
+  return self.incoming.collect(e|e.computeThroughput()).sum();
+}
+
+@cached
+$pre self.incoming.isEmpty()
+operation InitialNode computeThroughput() : Real {
+  return self.activity.getThroughput();
+}
+
+@cached
+$pre self.incoming.size() = 1
+operation ActivityNode computeThroughput() : Real {
+  return self.incoming.first().computeThroughput();
+}

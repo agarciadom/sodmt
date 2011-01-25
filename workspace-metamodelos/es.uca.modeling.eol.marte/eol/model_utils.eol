@@ -30,6 +30,15 @@ operation getGlobalThroughput() : Real {
 }
 
 -*
+  OPERATIONS FOR Activity
+*-
+@cached
+$pre self.getScenario().isDefined()
+operation Activity getThroughput() : Real {
+  return self.getScenario().throughput.first().keyvalMap().get("value").asReal();
+}
+
+-*
   OPERATIONS FOR ExecutableNode
 *-
 $pre self.getStep().isDefined()
@@ -62,6 +71,16 @@ operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
   step.hostDemand.add('(value=' + newTimeMillis + ',source=calc)');
 }
 
+$pre self.getStep().isDefined()
+operation ExecutableNode getThroughput() : Real {
+  var throughput := self.getStep().throughput.first();
+  if (throughput.isDefined()) {
+    return throughput.keyvalMap().get("value").asReal();
+  } else {
+    return null;
+  }
+}
+
 operation ExecutableNode getWeight() : Real {
   return self.getRequiredHostDemand().get("value").getWeight();
 }
@@ -79,6 +98,21 @@ operation ExecutableNode getRequiredHostDemand() : Map {
 }
 
 -*
+  OPERATIONS FOR ActivityEdge
+*-
+@cached
+$post _result.isDefined() and _result >= 0 and _result <= 1
+operation ActivityEdge getProbability() : Real {
+  var step := self.getStep();
+
+  if (step.isDefined()) {
+    return step.prob.asReal();
+  } else {
+    return 1.0d;
+  }
+}
+
+-*
   OPERATIONS FOR NamedElement
 *-
 operation NamedElement setThroughput(newThroughput : Real) {
@@ -87,6 +121,10 @@ operation NamedElement setThroughput(newThroughput : Real) {
 
 operation NamedElement setTimeLimit(newTimeMillis : Real) {
   -- do nothing
+}
+
+operation NamedElement getThroughput() : Real {
+  return 0.0d;
 }
 
 operation NamedElement getWeight() : Real {
