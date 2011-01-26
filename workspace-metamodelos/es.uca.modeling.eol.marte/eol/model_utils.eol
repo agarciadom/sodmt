@@ -141,18 +141,18 @@ operation NamedElement getRequiredHostDemand() : Map {
 }
 
 @cached
-operation NamedElement getScenario() : MARTE!GaScenario {
-  return MARTE!GaScenario.allInstances.select(s|s.base_NamedElement == self).first();
+operation NamedElement getScenario() : GaScenario {
+  return GaScenario.allInstances.select(s|s.base_NamedElement == self).first();
 }
 
 @cached
-operation NamedElement getStep() : MARTE!GaStep {
-  return MARTE!GaStep.allInstances.select(s|s.base_NamedElement == self).first();
+operation NamedElement getStep() : GaStep {
+  return GaStep.allInstances.select(s|s.base_NamedElement == self).first();
 }
 
 @cached
-operation NamedElement getAnalysisContext() : MARTE!GaAnalysisContext {
-  return MARTE!GaAnalysisContext.allInstances.select(s|s.base_NamedElement == self).first();
+operation NamedElement getAnalysisContext() : GaAnalysisContext {
+  return GaAnalysisContext.allInstances.select(s|s.base_NamedElement == self).first();
 }
 
 -*

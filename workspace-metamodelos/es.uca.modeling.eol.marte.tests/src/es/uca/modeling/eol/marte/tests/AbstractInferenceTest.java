@@ -20,7 +20,6 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
 import org.eclipse.uml2.uml.FinalNode;
 import org.eclipse.uml2.uml.InitialNode;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.After;
 import org.junit.Before;
 
@@ -96,9 +95,7 @@ public class AbstractInferenceTest {
 	 */
 	public EmfModel loadMarteModel(String modelPath)
 			throws EolModelLoadingException {
-		EmfModel model = loadModel("", "model.uml", UMLPackage.eNS_URI);
-		loadModel("MARTE", modelPath, MARTEPackage.eNS_URI);
-		return model;
+		return loadModel("", modelPath, MARTEPackage.eNS_URI);
 	}
 
 	private EmfModel loadModel(String name, String modelPath,
