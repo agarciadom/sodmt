@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:annotations="http://uca.es/annotation/1.0" xmlns:basemodel="http://uca.es/basemodel/1.0">
+  <basemodel:Element xmi:id="_ODu_ACk1EeCqvoBG-aBStQ" name="A"/>
+  <annotations:ElementComment element="_ODu_ACk1EeCqvoBG-aBStQ" text="foo"/>
+</xmi:XMI>

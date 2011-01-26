@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SeveralMetamodels
+Bundle-SymbolicName: SeveralMetamodels;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: UCA
+Require-Bundle: org.eclipse.epsilon.ewl.emf;bundle-version="0.9.0",
+ org.eclipse.emf.common;bundle-version="2.6.0",
+ org.eclipse.emf.ecore;bundle-version="2.6.1"

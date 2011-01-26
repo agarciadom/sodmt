@@ -1,0 +1,18 @@
+wizard RemoveAllAnnotations {
+  title : 'Remove all annotations'
+  do {
+    for (ann in ElementComment.allInstances) {
+      delete ann;
+    }
+  }
+}
+
+wizard AnnotateWithFoo {
+  guard : self.hasProperty('name')
+  title : 'Annotate with Foo'
+  do {
+    var ann     := Model.createInstance("ElementComment");
+    ann.text    := 'foo';
+    ann.element := self;
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.epsilon.ewl.emf.wizards">
+      <wizards
+            extraPackages="http://uca.es/annotation/1.0"
+            file="ewl/sample.ewl"
+            namespaceURI="http://uca.es/basemodel/1.0">
+      </wizards>
+   </extension>
+   <extension
+         point="org.eclipse.epsilon.ewl.emf.wizards">
+      <wizards
+            file="ewl/sample.ewl"
+            namespaceURI="http://uca.es/annotation/1.0">
+      </wizards>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="annotations.AnnotationsPackage"
+            uri="http://uca.es/annotation/1.0">
+      </package>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="basemodel.BasemodelPackage"
+            uri="http://uca.es/basemodel/1.0">
+      </package>
+   </extension>
+
+</plugin>

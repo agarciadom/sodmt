@@ -1,0 +1,18 @@
+("Models: " + Element.allInstances).println();
+("Annotations: " + ElementComment.allInstances()).println();
+
+var elem := Element.allInstances.first();
+var ann  := ElementComment.allInstances.select(e|e.element == elem).first();
+("Element: " + elem).println();
+
+if (ann.isDefined()) {
+  delete ann;
+  ("Removed annotation").println();
+} else {
+  "Annotation does not exist".println();
+}
+
+var ann := Model.createInstance("ElementComment");
+ann.text = 'foo';
+ann.element = elem;
+("Added annotation: " + ann).println();
