@@ -12,30 +12,17 @@
 *-
 
 -*
-   OPERATIONS FOR EXTRACTING GLOBAL CONSTRAINTS
-*-
-@cached
-operation getGlobalActivity() : Activity {
-  return Model.allInstances.first().member.select(e:Activity|true).first();
-}
-
-@cached
-operation getGlobalTimeLimit() : Real {
-  return getGlobalActivity().getScenario().respT.first().keyvalMap().get("value").asReal() * 1.0d;
-}
-
-@cached
-operation getGlobalThroughput() : Real {
-  return getGlobalActivity().getScenario().throughput.first().keyvalMap().get("value").asReal() * 1.0d;
-}
-
--*
   OPERATIONS FOR Activity
 *-
 @cached
+operation Activity getTimeLimit() : Real {
+  return self.getScenario().respT.first().keyvalMap().get("value").asReal() * 1.0d;
+}
+
+@cached
 $pre self.getScenario().isDefined()
 operation Activity getThroughput() : Real {
-  return self.getScenario().throughput.first().keyvalMap().get("value").asReal();
+  return self.getScenario().throughput.first().keyvalMap().get("value").asReal() * 1.0d;
 }
 
 -*

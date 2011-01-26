@@ -1,0 +1,30 @@
+import '../eol/throughput.eol';
+import '../eol/time_limits.eol';
+
+wizard InferTimeLimits {
+  guard : self.isKindOf(Activity) and self.getScenario().isDefined()
+  title : 'Infer time limits'
+  do {
+    transaction {
+      var finalNodes := self.node.select(e|e.isKindOf(FinalNode));
+      if (not distributeTime(self.getTimeLimit(), finalNodes)) {
+        abort;
+        return;
+      }
+    } -- transaction  
+  } -- do
+} -- wizard
+
+wizard InferThroughput {
+  guard : self.isKindOf(Activity) and self.getScenario().isDefined()
+  title : 'Infer throughput'
+  do {
+    transaction {
+      var initialNode := self.node.select(e|e.isKindOf(InitialNode)).first();
+      if (not annotateThroughput(initialNode)) {
+        abort;
+        return;
+      }
+    } -- transaction
+  } -- do
+} -- wizard
