@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.EmfModelFactory;
+import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
@@ -374,7 +375,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void addRandomManualAnnotations(EmfModel model, Random rnd) throws EolModelElementTypeNotFoundException, EolNotInstantiableModelElementTypeException {
+	private void addRandomManualAnnotations(EmfModel model, Random rnd) throws EolRuntimeException {
 		// Remove all manual annotations
 		final List<EObject> manualAnnotations = new ArrayList<EObject>(model.getAllOfType("ActivityPerformanceAnnotation"));
 		for (EObject o : manualAnnotations) {
