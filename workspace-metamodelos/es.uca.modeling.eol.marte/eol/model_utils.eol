@@ -69,18 +69,18 @@ operation ExecutableNode getThroughput() : Real {
 }
 
 operation ExecutableNode getWeight() : Real {
-  return self.getRequiredHostDemand().get("value").getWeight();
+  return self.getRequiredHostDemand().get("expr").getWeight();
 }
 
 operation ExecutableNode getMinimumTime() : Real {
-  return self.getRequiredHostDemand().get("value").getMinTime();
+  return self.getRequiredHostDemand().get("expr").getMinTime();
 }
 
 operation ExecutableNode getRequiredHostDemand() : Map {
   if (self.getStep().isDefined()) {
     return self.getStep().hostDemand.collect(e | e.keyvalMap()).select(kv|kv.get("source") == "req").first();
   } else {
-    return '(value=0.0+1.0*x,source=req)'.keyvalMap();
+    return '(expr=0.0+1.0*x,source=req)'.keyvalMap();
   }
 }
 
@@ -124,7 +124,7 @@ operation NamedElement getMinimumTime() : Real {
 
 @cached
 operation NamedElement getRequiredHostDemand() : Map {
-  return '(value=0+0*x,source=req)'.keyvalMap();
+  return '(expr=0+0*x,source=req)'.keyvalMap();
 }
 
 @cached
