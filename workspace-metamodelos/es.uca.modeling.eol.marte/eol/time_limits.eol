@@ -44,7 +44,8 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
     return false;
   }
 
-  var newLimit = v.getMinimumTime() + c_pms.slackPerWU(T) * v.getWeight();
+  var slackPerUW := c_pms.slackPerWU(T);
+  var newLimit   := v.getMinimumTime() + slackPerUW * v.getWeight();
   v.setTimeLimit(newLimit);
   v.~visited = true;
 
@@ -76,6 +77,15 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
         return false;
       }
     }
+  }
+
+  -- Set the SW variable to the effective slack per unit of weight
+  if (v.getVariable().isDefined()) {
+    var suw := 0;
+    if ( v.getWeight() > 0 ) {
+      suw := (v.getTimeLimit() - v.getMinimumTime()) / v.getWeight();
+    }
+    v.activity.setSWVariable(v.getVariable(), suw);
   }
 
   return true;

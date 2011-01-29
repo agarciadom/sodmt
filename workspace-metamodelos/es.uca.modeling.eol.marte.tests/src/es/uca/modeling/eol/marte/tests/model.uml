@@ -110,21 +110,14 @@
     <hostDemand>(expr=0+1*swCI,source=req)</hostDemand>
   </PAM:PaStep>
   <PAM:PaStep xmi:id="_zOXXICZXEeCeUKHnFmT-Lw" base_NamedElement="_4RUNQCZPEeCeUKHnFmT-Lw" base_Action="_4RUNQCZPEeCeUKHnFmT-Lw">
-    <hostDemand>(expr=0+1*swCI,source=req)</hostDemand>
+    <hostDemand>(expr=0+1*swPP,source=req)</hostDemand>
   </PAM:PaStep>
   <PAM:PaStep xmi:id="_0JlCMCZXEeCeUKHnFmT-Lw" base_NamedElement="_6W6AwCZPEeCeUKHnFmT-Lw" base_Action="_6W6AwCZPEeCeUKHnFmT-Lw">
-    <hostDemand>(expr=0+1*swCI,source=req)</hostDemand>
+    <hostDemand>(expr=0+1*swSO,source=req)</hostDemand>
   </PAM:PaStep>
   <PAM:PaStep xmi:id="_2VsUcCZXEeCeUKHnFmT-Lw" base_NamedElement="_NEb24CZQEeCeUKHnFmT-Lw" base_Action="_NEb24CZQEeCeUKHnFmT-Lw">
-    <hostDemand>(expr=0+1*swCI,source=req)</hostDemand>
+    <hostDemand>(expr=0+1*swCO,source=req)</hostDemand>
   </PAM:PaStep>
-  <GQAM:GaAnalysisContext xmi:id="_UewZwCZYEeCeUKHnFmT-Lw" base_StructuredClassifier="_JyO7wCZPEeCeUKHnFmT-Lw" base_NamedElement="_JyO7wCZPEeCeUKHnFmT-Lw">
-    <context>in$swEO</context>
-    <context>in$swCI</context>
-    <context>in$swPP</context>
-    <context>in$swSO</context>
-    <context>in$swCO</context>
-  </GQAM:GaAnalysisContext>
   <PAM:PaStep xmi:id="_xo2DcCZaEeCeUKHnFmT-Lw" base_NamedElement="_C_EwcCZQEeCeUKHnFmT-Lw" prob="0.2"/>
   <PAM:PaStep xmi:id="_y4DokCZaEeCeUKHnFmT-Lw" base_NamedElement="_DvNz8CZQEeCeUKHnFmT-Lw" prob="0.8"/>
 </xmi:XMI>
