@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -30,7 +31,7 @@ public class ThroughputComputationTest extends AbstractInferenceTest {
 
 	@Test
 	public void throughputsForHandleOrderAreOK() throws EolRuntimeException {
-		final Map<String, Double> throughputMap = computeThroughputs(HANDLEORDER_MODEL_PATH);
+		final Map<String, Double> throughputMap = computeThroughputs(MODEL_PATH, ACTIVITY_HANDLE_ORDER);
 
 		assertThroughput(throughputMap, "Evaluate Order", 1.0);
 		assertThroughput(throughputMap, "Create Invoice", 0.8);
@@ -39,27 +40,37 @@ public class ThroughputComputationTest extends AbstractInferenceTest {
 		assertThroughput(throughputMap, "Close Order", 1.0);
 	}
 
+	@Test
+	public void throughputsForSeqWithRepAreOK() throws EolRuntimeException {
+		final Map<String, Double> throughputMap = computeThroughputs(MODEL_PATH, ACTIVITY_SEQ_WITH_REPS);
+
+		assertThroughput(throughputMap, "A", 1.0);
+		assertThroughput(throughputMap, "B", 1.0);
+		assertThroughput(throughputMap, "C", 1.0);
+	}
+
 	private void assertThroughput(final Map<String, Double> throughputMap,
 			final String activityName, final Double expectedThroughput) {
 		assertEquals(activityName + " should handle 1 request/second",
 				expectedThroughput, throughputMap.get(activityName), 0.001);
 	}
 
-	private Map<String, Double> computeThroughputs(String modelPath)
+	private Map<String, Double> computeThroughputs(String modelPath, String activityName)
 			throws EolModelLoadingException, EolRuntimeException,
 			EolModelElementTypeNotFoundException {
 		EmfModel model = loadMarteModel(modelPath);
-		Boolean result = (Boolean)callOperation("annotateThroughput", getStartNode(model));
+		Boolean result = (Boolean)callOperation("annotateThroughput", getStartNode(model, activityName));
 		assertTrue("Annotation was successful", result);
-		final Map<String, Double> throughputMap = computeThroughputMap(model);
+		final Map<String, Double> throughputMap = computeThroughputMap(model, activityName);
 		return throughputMap;
 	}
 
-	private Map<String, Double> computeThroughputMap(EmfModel model)
+	private Map<String, Double> computeThroughputMap(EmfModel model, String activityName)
 			throws EolModelElementTypeNotFoundException {
 		final Map<String, Double> throughputMap = new HashMap<String, Double>();
-		for (EObject o : model.getAllOfKind("ExecutableNode")) {
-			ExecutableNode exec = (ExecutableNode)o;
+		final List<ExecutableNode> execNodes = getExecutableNodes(model, activityName);
+
+		for (ExecutableNode exec : execNodes) {
 			for (EObject oStereotype : exec.getStereotypeApplications()) {
 				if (!(oStereotype instanceof GaScenario)) continue;
 				

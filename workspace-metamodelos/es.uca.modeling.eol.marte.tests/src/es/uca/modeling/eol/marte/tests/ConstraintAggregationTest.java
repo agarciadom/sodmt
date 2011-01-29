@@ -25,16 +25,21 @@ public class ConstraintAggregationTest extends AbstractInferenceTest {
 
 	@Test
 	public void aggregateHandleOrderConstraints() throws Exception {
-		assertConstraintsEquals("Evaluate Order", 1, pair(0.4, 3.0));
+		assertConstraintsEquals(MODEL_PATH, ACTIVITY_HANDLE_ORDER, 1, pair(0.4, 3.0));
 	}
 
-	private void assertConstraintsEquals(String name, double globalLimit,
-			double[]... expected) throws EolRuntimeException {
-		EmfModel model = loadMarteModel(HANDLEORDER_MODEL_PATH);
+	@Test
+	public void aggregateSeqWithRepetitionsConstraints() throws Exception {
+		assertConstraintsEquals(MODEL_PATH, ACTIVITY_SEQ_WITH_REPS, 1, pair(0.0, 8.0));
+	}
+
+	private void assertConstraintsEquals(String modelPath,
+			String activityName, double globalLimit, double[]... expected) throws EolRuntimeException {
+		EmfModel model = loadMarteModel(modelPath);
 		EolSequence res = (EolSequence)callOperation(
-				"aggregateConstraints", globalLimit, getEndNodes(model));
-		assertConstraintsEquals("Activity " + name
-				+ " has the expected constraints", res, expected);
+			"aggregateConstraints", globalLimit, getEndNodes(model, activityName));
+		assertConstraintsEquals(
+			"Activity " + activityName	+ " has the expected constraints", res, expected);
 	}
 
 	private double[] pair(double... args) {

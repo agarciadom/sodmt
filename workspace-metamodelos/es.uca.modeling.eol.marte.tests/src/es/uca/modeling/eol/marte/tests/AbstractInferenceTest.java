@@ -18,6 +18,8 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.FinalNode;
 import org.eclipse.uml2.uml.InitialNode;
 import org.junit.After;
@@ -32,10 +34,12 @@ public class AbstractInferenceTest {
 
 	protected static final String TIME_LIMITS_EOL_PATH   = "/eol/time_limits.eol";
 	protected static final String THROUGHPUT_EOL_PATH    = "/eol/throughput.eol";
-	protected static final String HANDLEORDER_MODEL_PATH = "model.uml";
+	protected static final String MODEL_PATH = "model.uml";
 
 	private static final Pattern REGEX_COMMA_SPLIT = Pattern.compile(" *, *");
 	private static final Pattern REGEX_EQUAL_SPLIT = Pattern.compile(" *= *");
+	protected static final String ACTIVITY_HANDLE_ORDER = "Handle Order";
+	protected static final String ACTIVITY_SEQ_WITH_REPS = "SequenceWithRepetitions";
 
 	private EolModule mEolModule;
 	private final String mEolPath;
@@ -60,25 +64,47 @@ public class AbstractInferenceTest {
 		mEolModule.getContext().getModelRepository().dispose();
 	}
 
-	protected InitialNode getStartNode(EmfModel model)
+	protected InitialNode getStartNode(final EmfModel model,
+			final String activityName)
 			throws EolModelElementTypeNotFoundException {
-		Collection<EObject> flowNodes = model.getAllOfKind("InitialNode");
-		for (EObject o : flowNodes) {
-			final InitialNode node = (InitialNode) o;
-			return node;
+		final Activity activity = getActivity(model, activityName);
+		if (activity == null) return null;
+
+		for (EObject node : activity.getNodes()) {
+			if (node instanceof InitialNode) {
+				return (InitialNode) node;
+			}
 		}
 		return null;
 	}
 
-	protected List<EObject> getEndNodes(EmfModel model)
+	protected List<EObject> getEndNodes(final EmfModel model, final String activityName)
 			throws EolModelElementTypeNotFoundException {
-		Collection<EObject> flowNodes = model.getAllOfKind("FinalNode");
+		final Activity activity = getActivity(model, activityName);
+		if (activity == null) return null;
+
 		List<EObject> endNodes = new ArrayList<EObject>();
-		for (EObject o : flowNodes) {
-			final FinalNode node = (FinalNode) o;
-			endNodes.add(node);
+		for (EObject node : activity.getNodes()) {
+			if (node instanceof FinalNode) {
+				endNodes.add(node);
+			}
 		}
 		return endNodes;
+	}
+
+	protected Activity getActivity(final EmfModel model, final String activityName)
+			throws EolModelElementTypeNotFoundException {
+		Collection<EObject> activities = model.getAllOfKind("Activity");
+		Activity activity = null;
+		for (EObject o : activities) {
+			if (o instanceof Activity) {
+				activity = (Activity) o;
+				if (activityName.equals(activity.getName())) {
+					break;
+				}
+			}
+		}
+		return activity;
 	}
 
 	private void loadModule(String name) throws URISyntaxException, Exception,
@@ -119,5 +145,17 @@ public class AbstractInferenceTest {
 		}
 		return map;
 	}
+
+	protected List<ExecutableNode> getExecutableNodes(EmfModel model, String activityName)
+			throws EolModelElementTypeNotFoundException {
+				final Activity activity = getActivity(model, activityName);
+				final List<ExecutableNode> execNodes = new ArrayList<ExecutableNode>();
+				for (EObject o : activity.getNodes()) {
+					if (o instanceof ExecutableNode) {
+						execNodes.add((ExecutableNode)o);
+					}
+				}
+				return execNodes;
+			}
 
 }

@@ -26,6 +26,17 @@
       <edge xmi:type="uml:ControlFlow" xmi:id="_Qqn6cCZQEeCeUKHnFmT-Lw" name="ControlFlow11" source="_95hL4CZPEeCeUKHnFmT-Lw" target="_NEb24CZQEeCeUKHnFmT-Lw"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_RIwn8CZQEeCeUKHnFmT-Lw" name="ControlFlow12" source="_NEb24CZQEeCeUKHnFmT-Lw" target="_P7x3cCZQEeCeUKHnFmT-Lw"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_WW4zQCvuEeCNe_l0I2qAnA" name="SequenceWithRepetitions">
+      <node xmi:type="uml:InitialNode" xmi:id="_fWZE4CvuEeCNe_l0I2qAnA" name="InitialNode1" outgoing="_S-UqECvwEeCNe_l0I2qAnA"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_hXPiUCvuEeCNe_l0I2qAnA" name="ActivityFinalNode1" incoming="_Udzf0CvwEeCNe_l0I2qAnA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_QP3fwCvwEeCNe_l0I2qAnA" name="A" outgoing="_TdB_UCvwEeCNe_l0I2qAnA" incoming="_S-UqECvwEeCNe_l0I2qAnA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_RPphwCvwEeCNe_l0I2qAnA" name="B" outgoing="_T-OA0CvwEeCNe_l0I2qAnA" incoming="_TdB_UCvwEeCNe_l0I2qAnA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_R0f7QCvwEeCNe_l0I2qAnA" name="C" outgoing="_Udzf0CvwEeCNe_l0I2qAnA" incoming="_T-OA0CvwEeCNe_l0I2qAnA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_S-UqECvwEeCNe_l0I2qAnA" name="ControlFlow1" source="_fWZE4CvuEeCNe_l0I2qAnA" target="_QP3fwCvwEeCNe_l0I2qAnA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_TdB_UCvwEeCNe_l0I2qAnA" name="ControlFlow2" source="_QP3fwCvwEeCNe_l0I2qAnA" target="_RPphwCvwEeCNe_l0I2qAnA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_T-OA0CvwEeCNe_l0I2qAnA" name="ControlFlow3" source="_RPphwCvwEeCNe_l0I2qAnA" target="_R0f7QCvwEeCNe_l0I2qAnA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Udzf0CvwEeCNe_l0I2qAnA" name="ControlFlow4" source="_R0f7QCvwEeCNe_l0I2qAnA" target="_hXPiUCvuEeCNe_l0I2qAnA"/>
+    </packagedElement>
     <profileApplication xmi:id="_na5CsCZPEeCeUKHnFmT-Lw">
       <eAnnotations xmi:id="_nbWVsCZPEeCeUKHnFmT-Lw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//NFPs"/>
@@ -120,4 +131,17 @@
   </PAM:PaStep>
   <PAM:PaStep xmi:id="_xo2DcCZaEeCeUKHnFmT-Lw" base_NamedElement="_C_EwcCZQEeCeUKHnFmT-Lw" prob="0.2"/>
   <PAM:PaStep xmi:id="_y4DokCZaEeCeUKHnFmT-Lw" base_NamedElement="_DvNz8CZQEeCeUKHnFmT-Lw" prob="0.8"/>
+  <GQAM:GaScenario xmi:id="_pSLtsCvwEeCNe_l0I2qAnA" base_NamedElement="_WW4zQCvuEeCNe_l0I2qAnA" base_Behavior="_WW4zQCvuEeCNe_l0I2qAnA">
+    <throughput>(value=1.0,unit=Hz,source=req)</throughput>
+    <respT>(value=1.0,unit=s,source=req)</respT>
+  </GQAM:GaScenario>
+  <GQAM:GaStep xmi:id="_rQje4CvwEeCNe_l0I2qAnA" base_NamedElement="_QP3fwCvwEeCNe_l0I2qAnA" base_Action="_QP3fwCvwEeCNe_l0I2qAnA">
+    <hostDemand>(expr=0+1*swA,unit=s,source=req)</hostDemand>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_srRwcCvwEeCNe_l0I2qAnA" base_NamedElement="_RPphwCvwEeCNe_l0I2qAnA" base_Action="_RPphwCvwEeCNe_l0I2qAnA" rep="3.0">
+    <hostDemand>(expr=0+2*swB,unit=s,source=req)</hostDemand>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_zYpAUCvwEeCNe_l0I2qAnA" base_NamedElement="_R0f7QCvwEeCNe_l0I2qAnA" base_Action="_R0f7QCvwEeCNe_l0I2qAnA">
+    <hostDemand>(expr=0+1*swC,unit=s,source=req)</hostDemand>
+  </GQAM:GaStep>
 </xmi:XMI>

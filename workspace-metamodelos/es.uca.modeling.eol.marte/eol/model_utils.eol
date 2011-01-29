@@ -121,6 +121,11 @@ operation ExecutableNode getVariable() : String {
 }
 
 @cached
+operation ExecutableNode getRepetitions() : Real {
+  return self.getStep().rep.asReal();
+}
+
+@cached
 operation ExecutableNode getRequiredHostDemand() : Map {
   if (self.getStep().isDefined()) {
     return self.getStep().hostDemand.collect(e | e.keyvalMap()).select(kv|kv.get("source") == "req").first();
@@ -169,6 +174,10 @@ operation NamedElement getMinimumTime() : Real {
 
 operation NamedElement getVariable() : String {
   return null;
+}
+
+operation NamedElement getRepetitions() : Real {
+  return 0.0d;
 }
 
 @cached

@@ -44,9 +44,9 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
     return false;
   }
 
-  var slackPerUW := c_pms.slackPerWU(T);
-  var newLimit   := v.getMinimumTime() + slackPerUW * v.getWeight();
-  v.setTimeLimit(newLimit);
+  var slackPerWU := c_pms.slackPerWU(T);
+  var newLimit   := v.getMinimumTime() * v.getRepetitions() + slackPerWU * v.getWeight() * v.getRepetitions();
+  v.setTimeLimit(newLimit/v.getRepetitions());
   v.~visited = true;
 
   var remainingTime = T - newLimit;
@@ -103,7 +103,7 @@ operation reuseSurplusTime(slack : Real, start : ActivityNode) {
   while (current.outgoing.size() = 1) {
     if (current.getWeight() > 0) {
       backNodes.add(current);
-      totalWeight = totalWeight + current.getWeight();
+      totalWeight = totalWeight + current.getWeight() * current.getRepetitions();
     }
     if (current.incoming.size() = 1) {
       current = current.incoming.first().source;
@@ -180,7 +180,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
           .sortBy(e|e)
           .last();
     }
-    currentNode.~maxMinTimeLimit = currentNode.getMinimumTime() + maxMinTimeLimitChildren;
+    currentNode.~maxMinTimeLimit = currentNode.getMinimumTime() * currentNode.getRepetitions() + maxMinTimeLimitChildren;
 
     -- Compute the constraints of the paths in P'_S(v), the subset of P_S(v) (all paths
     -- from v to a sink) which excludes the paths that are less or just as strict as some
@@ -189,7 +189,8 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
     for (edge in currentNode.outgoing) {
       for (edgeConstraint in edge.~constraints) {
         var constraint = edgeConstraint.addConstraint(
-          currentNode.getMinimumTime(), currentNode.getWeight());
+          currentNode.getMinimumTime() * currentNode.getRepetitions(),
+          currentNode.getWeight() * currentNode.getRepetitions());
         var cmp = 0;
 
         -- We cannot use a for loop, as we're filtering and traversing
@@ -217,7 +218,9 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
       } -- for (edge)
     } -- for (constraint)
     if (constraints.isEmpty()) {
-      constraints.add(Sequence {currentNode.getMinimumTime(), currentNode.getWeight()});
+      constraints.add(Sequence {
+        currentNode.getMinimumTime() * currentNode.getRepetitions(),
+        currentNode.getWeight() * currentNode.getRepetitions()});
     }
 
     -- Propagate the constraints to the edges

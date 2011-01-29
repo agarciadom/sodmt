@@ -37,7 +37,7 @@ public class TimeLimitInferenceTest extends AbstractInferenceTest {
 
 	@Test
 	public void handleOrderIsCorrectlyAnnotated() throws EolModelElementTypeNotFoundException, EolRuntimeException {
-		Map<String, Double> inferredTL = inferTimeLimits(1, true, HANDLEORDER_MODEL_PATH);
+		Map<String, Double> inferredTL = inferTimeLimits(MODEL_PATH, ACTIVITY_HANDLE_ORDER, 1, true);
 		assertEquals("Evaluate Order should have 0.4s", 0.4, inferredTL.get("Evaluate Order"), 0.0001);
 		assertEquals("Create Invoice should have 0.2s", 0.2, inferredTL.get("Create Invoice"), 0.0001);
 		assertEquals("Perform Payment should have 0.2s", 0.2, inferredTL.get("Perform Payment"), 0.0001);
@@ -46,8 +46,16 @@ public class TimeLimitInferenceTest extends AbstractInferenceTest {
 	}
 
 	@Test
+	public void seqWithRepsIsCorrectlyAnnotated() throws EolModelElementTypeNotFoundException, EolRuntimeException {
+		Map<String, Double> inferredTL = inferTimeLimits(MODEL_PATH, ACTIVITY_SEQ_WITH_REPS, 1, true);
+		assertEquals("A should have 0.4s", 0.125, inferredTL.get("A"), 0.0001);
+		assertEquals("B should have 0.2s", 0.25, inferredTL.get("B"), 0.0001);
+		assertEquals("C should have 0.2s", 0.125, inferredTL.get("C"), 0.0001);
+	}
+
+	@Test
 	public void handleOrderHasCorrectSWVariables() throws EolModelElementTypeNotFoundException, EolRuntimeException {
-		EmfModel model = distributeTime(1, true, HANDLEORDER_MODEL_PATH);
+		EmfModel model = distributeTime(MODEL_PATH, ACTIVITY_HANDLE_ORDER, 1, true);
 		Map<String, Double> ctxParamMap = buildContextParameterMap(model);
 		assertContextParametersEqual(ctxParamMap,
 				new String[] { "swEO", "swCI", "swPP", "swSO", "swCO" },
@@ -118,19 +126,19 @@ public class TimeLimitInferenceTest extends AbstractInferenceTest {
 		return mapNameToAction;
 	}
 
-	private Map<String, Double> inferTimeLimits(double globalLimit,
-			boolean shouldSucceed, String modelPath)
+	private Map<String, Double> inferTimeLimits(String modelPath,
+			String activityName, double globalLimit, boolean shouldSucceed)
 			throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException, EolRuntimeException {
-		EmfModel model = distributeTime(globalLimit, shouldSucceed, modelPath);
+		EmfModel model = distributeTime(modelPath, activityName, globalLimit, shouldSucceed);
 		return buildTimeLimitMapFromModel(model);
 	}
 
-	private EmfModel distributeTime(double globalLimit, boolean shouldSucceed,
-			String modelPath) throws EolModelLoadingException,
+	private EmfModel distributeTime(String modelPath, String activityName,
+			double globalLimit, boolean shouldSucceed) throws EolModelLoadingException,
 			EolModelElementTypeNotFoundException, EolRuntimeException {
 		EmfModel model = loadMarteModel(modelPath);
-		List<EObject> endNodes = getEndNodes(model);
+		List<EObject> endNodes = getEndNodes(model, activityName);
 		assertEquals(shouldSucceed, (Boolean) callOperation("distributeTime", globalLimit, endNodes));
 		return model;
 	}
