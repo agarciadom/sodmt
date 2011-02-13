@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
@@ -112,6 +113,7 @@ public class AbstractInferenceTest {
 		java.net.URI uri = ConstraintAggregationTest.class.getResource(name).toURI();
 		mEolModule = new EolModule();
 		mEolModule.parse(uri);
+		mEolModule.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
 		mEolModule.execute();
 	}
 

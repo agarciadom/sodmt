@@ -45,11 +45,11 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
   }
 
   var slackPerWU := c_pms.slackPerWU(T);
-  var newLimit   := v.getMinimumTime() * v.getRepetitions() + slackPerWU * v.getWeight() * v.getRepetitions();
-  v.setTimeLimit(newLimit/v.getRepetitions());
+  var newLimit   := v.getMinimumTime() + slackPerWU * v.getWeight();
+  v.setTimeLimit(newLimit);
   v.~visited = true;
 
-  var remainingTime = T - newLimit;
+  var remainingTime = T - newLimit * v.getRepetitions();
   var outEdges : Sequence := v.getOutEdgesFromMostToLeastStrict(remainingTime);
   for (edge in outEdges) {
      var target = edge.target;

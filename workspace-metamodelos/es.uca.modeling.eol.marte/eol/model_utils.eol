@@ -15,14 +15,21 @@
   OPERATIONS FOR Activity
 *-
 @cached
+operation Activity getVSLTool() {
+  return new Native("es.uca.modeling.eol.marte.tools.VSLTupleTool");
+}
+
+@cached
 operation Activity getTimeLimit() : Real {
-  return self.getScenario().respT.first().keyvalMap().get("value").asReal() * 1.0d;
+  var tool := self.getVSLTool();
+  return tool.getKeyvalMap(self.getScenario().respT.first()).get("value").asReal() * 1.0d;
 }
 
 @cached
 $pre self.getScenario().isDefined()
 operation Activity getThroughput() : Real {
-  return self.getScenario().throughput.first().keyvalMap().get("value").asReal() * 1.0d;
+  var tool := self.getVSLTool();
+  return tool.getKeyvalMap(self.getScenario().throughput.first()).get("value").asReal() * 1.0d;
 }
 
 @cached
@@ -40,14 +47,14 @@ operation Activity getAnalysisContext() : GaAnalysisContext {
 
 -- Sets the value of a slack per unit of weight variable.
 operation Activity setSWVariable(name : String, value : Real) {
+  var tool     := self.getVSLTool();
   var ctx      := self.getAnalysisContext().context;
   var fullExpr := "$" + name + " : Real = " + value;
 
   -- Search if the variable is already declared in the context.
   var iParam := 0;
   while (iParam < ctx.size()) {
-    var parameter := ctx.at(iParam);
-    var paramName := parameter.split(" *[$:] *").at(1);
+    var paramName := tool.getParameterName(ctx.at(iParam));
     if (name == paramName) {
       -- The variable is already declared: replace its value and we're done.
       ctx.removeAt(iParam);
@@ -74,8 +81,9 @@ operation ExecutableNode setThroughput(newThroughput : Real) {
 
 $pre self.getStep().isDefined()
 operation ExecutableNode getTimeLimit() : Real {
+  var tool   := self.activity.getVSLTool();
   var stepHD := self.getStep().hostDemand;
-  var kvCalcHD := stepHD.collect(e|e.keyvalMap()).select(kv|kv.get("source") == "calc").first();
+  var kvCalcHD := stepHD.collect(e|tool.getKeyvalMap(e)).select(kv|kv.get("source") == "calc").first();
   if (kvCalcHD.isDefined()) {
     return kvCalcHD.get("value").asReal() * 1.0d;
   }
@@ -86,10 +94,11 @@ operation ExecutableNode getTimeLimit() : Real {
 
 $pre self.getStep().isDefined()
 operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
+  var tool := self.activity.getVSLTool();
   var step := self.getStep();
 
   -- Remove all constraints not set by the user
-  step.hostDemand := step.hostDemand.select(e|e.keyvalMap().get("source") == "req");
+  step.hostDemand := step.hostDemand.select(e | tool.getKeyvalMap(e).get("source") == "req");
 
   -- Add a calculated constraint with the time
   step.hostDemand.add('(value=' + newTimeMillis + ',source=calc)');
@@ -97,9 +106,10 @@ operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
 
 $pre self.getStep().isDefined()
 operation ExecutableNode getThroughput() : Real {
+  var tool       := self.activity.getVSLTool();
   var throughput := self.getStep().throughput.first();
   if (throughput.isDefined()) {
-    return throughput.keyvalMap().get("value").asReal();
+    return tool.getKeyvalMap(throughput).get("value").asReal();
   } else {
     return null;
   }
@@ -107,17 +117,20 @@ operation ExecutableNode getThroughput() : Real {
 
 @cached
 operation ExecutableNode getWeight() : Real {
-  return self.getRequiredHostDemand().get("expr").getWeight();
+  var tool := self.activity.getVSLTool();
+  return tool.getWeight(self.getRequiredHostDemand().get("expr"));
 }
 
 @cached
 operation ExecutableNode getMinimumTime() : Real {
-  return self.getRequiredHostDemand().get("expr").getMinTime();
+  var tool := self.activity.getVSLTool();
+  return tool.getMinimumTime(self.getRequiredHostDemand().get("expr"));
 }
 
 @cached
 operation ExecutableNode getVariable() : String {
-  return self.getRequiredHostDemand().get("expr").getVariable();
+  var tool := self.activity.getVSLTool();
+  return tool.getVariable(self.getRequiredHostDemand().get("expr"));
 }
 
 @cached
@@ -127,10 +140,14 @@ operation ExecutableNode getRepetitions() : Real {
 
 @cached
 operation ExecutableNode getRequiredHostDemand() : Map {
+  var tool := self.activity.getVSLTool();
   if (self.getStep().isDefined()) {
-    return self.getStep().hostDemand.collect(e | e.keyvalMap()).select(kv|kv.get("source") == "req").first();
+    return self.getStep().hostDemand.collect(e | tool.getKeyvalMap(e)).select(kv|kv.get("source") == "req").first();
   } else {
-    return '(expr=0.0+1.0*x,source=req)'.keyvalMap();
+    var map : Map;
+    map.put("expr", "0.0+1.0*x");
+    map.put("source", "req");
+    return map;
   }
 }
 
@@ -180,9 +197,11 @@ operation NamedElement getRepetitions() : Real {
   return 0.0d;
 }
 
-@cached
 operation NamedElement getRequiredHostDemand() : Map {
-  return '(expr=0+0*x,source=req)'.keyvalMap();
+  var map : Map;
+  map.put("expr", "0+0*x");
+  map.put("source", "req");
+  return map;
 }
 
 @cached
@@ -190,58 +209,20 @@ operation NamedElement getScenario() : GaScenario {
   return GaScenario.allInstances.select(s|s.base_NamedElement == self).first();
 }
 
-@cached
 operation NamedElement getStep() : GaStep {
-  return GaStep.allInstances.select(s|s.base_NamedElement == self).first();
+  -- Cache node->GaStep mapping in the activity, to avoid having to perform
+  -- several linear scans when searching for the GaStep of several nodes
+  if (not self.activity.~stepMap.isDefined()) {
+    var map : Map;
+    for (step in GaStep.allInstances) {
+      map.put(step.base_NamedElement, step);
+    }
+    self.activity.~stepMap := map;
+  }
+  return self.activity.~stepMap.get(self);
 }
 
 @cached
 operation NamedElement getAnalysisContext() : GaAnalysisContext {
   return GaAnalysisContext.allInstances.select(s|s.base_NamedElement == self).first();
-}
-
--*
-  STRING OPERATIONS
-*-
-
--*
-  Extracts the minimum time m in a time constraint of the form m + w * swI,
-  ignoring whitespace.
-*-
-operation String getMinTime() : Real {
-  return self.split(" *[+*] *").at(0).asReal() * 1.0d;
-}
-
--*
-  Extracts the weight w in a time constraint of the form m + w * swI,
-  ignoring whitespace.
-*-
-operation String getWeight() : Real {
-  return self.split(" *[+*] *").at(1).asReal() * 1.0d;
-}
-
--*
-  Extracts the variable swI in a time constraint of the form m + w * swI,
-  ignoring whitespace.
-*-
-operation String getVariable() : String {
-  return self.split(" *[+*] *").last();
-}
-
--*
-  Computes the key-value map from a tuple of the form '(a = b, c = d, ...)',
-  ignoring initial and trailing whitespace in keys and values.
-*-
-operation String keyvalMap() : Map {
-  var input := self;
-  if (input.startsWith('(')) {
-    input := input.substring(1, input.length() - 1);
-  }
-  var pairs := input.split(" *, *");
-  var result : Map;
-  for (pair in pairs) {
-    var parts := pair.split(" *= *");
-    result.put(parts.first(), parts.second());
-  }
-  return result;
 }

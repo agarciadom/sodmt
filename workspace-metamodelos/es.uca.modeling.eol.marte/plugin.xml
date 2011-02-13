@@ -9,5 +9,19 @@
             namespaceURI="http://www.eclipse.org/uml2/3.0.0/UML">
       </wizards>
    </extension>
+   <extension
+         point="org.eclipse.epsilon.common.dt.tool">
+      <tool
+            class="es.uca.modeling.eol.marte.tools.VSLTupleTool"
+            defaultName="VSLTupleTool">
+      </tool>
+   </extension>
+   <extension
+         point="org.eclipse.epsilon.common.dt.tool">
+      <tool
+            class="es.uca.modeling.eol.marte.tools.GCTool"
+            defaultName="GCTool">
+      </tool>
+   </extension>
 
 </plugin>

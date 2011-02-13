@@ -5,7 +5,7 @@
          point="org.eclipse.epsilon.common.dt.tool">
       <tool
             class="es.uca.modeling.eol.tools.ECoreUtilsTool"
-            defaultName="es.uca.modeling.eol.tools.tool1">
+            defaultName="ECoreUtilsTool">
       </tool>
    </extension>
 
