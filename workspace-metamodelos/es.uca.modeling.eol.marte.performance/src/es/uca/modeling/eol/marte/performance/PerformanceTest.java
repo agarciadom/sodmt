@@ -1,5 +1,9 @@
 package es.uca.modeling.eol.marte.performance;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
@@ -30,15 +34,16 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class PerformanceTest {
 
-	private static final int MAX_LEVELS = 45;
+	private static final int MAX_LEVELS = 25;
 	private static final int FIXED_WEIGHT = 1;
 	private static final int FIXED_MTIME = 0;
 	private static final int MAX_WEIGHT = 1;
 	private static final int THROUGHPUT = 1;
 	private static final int RESPONSE_TIME = 1;
-	private static final int SAMPLES = 100;
+	private static final int SAMPLES = 10;
 	private static final Random PRNG = new Random(0);
 	private static ThreadMXBean THREAD_MXBEAN;
+	private static Writer logWriter;
 
 	@Parameters
 	public static List<Object[]> data() {
@@ -50,9 +55,10 @@ public class PerformanceTest {
 	}
 
 	@BeforeClass
-	public static void globalSetUp() {
+	public static void globalSetUp() throws IOException {
 		THREAD_MXBEAN = ManagementFactory.getThreadMXBean();
 		THREAD_MXBEAN.setThreadCpuTimeEnabled(true);
+		logWriter = new FileWriter(new File("times.txt"));
 	}
 
 	private final int mSamples;
@@ -63,30 +69,6 @@ public class PerformanceTest {
 	public PerformanceTest(int levels, int samples) {
 		mSamples = samples;
 		mLevels  = levels;
-	}
-
-	private Activity prepareIteration(boolean fixedAnnotations) throws Exception {
-		if (mModule != null) {
-			mModule.getContext().getModelRepository().dispose();
-			mModule.reset();
-			mModule = null;
-		}
-		System.gc();
-
-		mModule = new EolModule();
-		mModule.parse(PerformanceTest.class.getResource("/eol/time_algorithms.eol").toURI());
-		mModule.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
-
-		mModel = new InMemoryEmfModel("Model", EmfUtil.createResource(), MARTEPackage.eNS_URI);
-		mModel.setReadOnLoad(false);
-		mModel.setStoredOnDisposal(false);
-		mModel.setCachingEnabled(false);
-		mModel.load();
-		mModule.getContext().getModelRepository().addModel(mModel);
-
-		mModule.execute();
-
-		return createForkJoinGraph(fixedAnnotations);
 	}
 
 	@Test
@@ -151,12 +133,42 @@ public class PerformanceTest {
 		return initial;
 	}
 
+	private Activity prepareIteration(boolean fixedAnnotations) throws Exception {
+		if (mModule != null) {
+			mModule.getContext().getModelRepository().dispose();
+			mModule.reset();
+			mModule = null;
+		}
+		System.gc();
+
+		mModule = new EolModule();
+		mModule.parse(PerformanceTest.class.getResource("/eol/time_algorithms.eol").toURI());
+		mModule.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
+
+		mModel = new InMemoryEmfModel("Model", EmfUtil.createResource(), MARTEPackage.eNS_URI);
+		mModel.setReadOnLoad(false);
+		mModel.setStoredOnDisposal(false);
+		mModel.setCachingEnabled(false);
+		mModel.load();
+		mModule.getContext().getModelRepository().addModel(mModel);
+
+		mModule.execute();
+
+		return createForkJoinGraph(fixedAnnotations);
+	}
+
+	private void print(final String line) throws IOException {
+		System.out.println(line);
+		logWriter.write(line + "\n");
+		logWriter.flush();
+	}
+
 	private void testThroughput(boolean fixedAnnotations)
 			throws Exception {
 		final String type = fixedAnnotations ? "fixed" : "random";
 		long total_micros = 0;
 
-		System.out.println("\nname, levels, sample, time (ms)");
+		print("\nname, levels, sample, time (ms)");
 		for (int i = 0; i < mSamples; ++i) {
 			Activity activity = prepareIteration(fixedAnnotations);
 			EolOperation opThroughputs = mModule.getOperations().getOperation("annotateThroughput");
@@ -172,11 +184,11 @@ public class PerformanceTest {
 			long sample_micros = (THREAD_MXBEAN.getCurrentThreadCpuTime() - t0)/1000;
 
 			total_micros += sample_micros;
-			System.out.println(String.format(Locale.ENGLISH,
+			print(String.format(Locale.ENGLISH,
 					"%s throughput,%d,%d,%g", type, mLevels, i + 1,
 					sample_micros / 1000.0));
 		}
-		System.out.println(String.format(Locale.ENGLISH,
+		print(String.format(Locale.ENGLISH,
 				"%s throughput,%d,avg,%g", type, mLevels, total_micros / 1000.0 / mSamples));
 	}
 
@@ -185,7 +197,7 @@ public class PerformanceTest {
 		final String type = fixedAnnotations ? "fixed" : "random";
 		long total_micros = 0;
 
-		System.out.println("\nname, levels, sample, time (ms)");
+		print("\nname, levels, sample, time (ms)");
 		for (int i = 0; i < mSamples; ++i) {
 			Activity activity = prepareIteration(fixedAnnotations);
 			List<FinalNode> finalNodes = getFinalNodes(activity);
@@ -201,11 +213,11 @@ public class PerformanceTest {
 			long sample_micros = (THREAD_MXBEAN.getCurrentThreadCpuTime() - t0) / 1000;
 
 			total_micros += sample_micros;
-			System.out.println(String.format(Locale.ENGLISH,
+			print(String.format(Locale.ENGLISH,
 					"%s time limits,%d,%d,%g", type, mLevels, i + 1,
 					sample_micros / 1000.0));
 		}
-		System.out.println(String.format(Locale.ENGLISH,
+		print(String.format(Locale.ENGLISH,
 				"%s time limits,%d,avg,%g", type, mLevels, total_micros
 						/ 1000.0 / mSamples));
 	}
