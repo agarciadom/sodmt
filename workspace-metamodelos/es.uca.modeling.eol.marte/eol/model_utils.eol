@@ -20,6 +20,7 @@ operation Activity getVSLTool() {
 }
 
 @cached
+$pre self.getScenario().isDefined() and not self.getScenario().respT.isEmpty()
 operation Activity getTimeLimit() : Real {
   var tool := self.getVSLTool();
   return tool.getKeyvalMap(self.getScenario().respT.first()).get("value").asReal() * 1.0d;
@@ -155,6 +156,7 @@ operation ExecutableNode getRequiredHostDemand() : Map {
   OPERATIONS FOR ActivityEdge
 *-
 @cached
+$pre not self.getStep().isDefined() or self.getStep().prob.isDefined()
 $post _result.isDefined() and _result >= 0 and _result <= 1
 operation ActivityEdge getProbability() : Real {
   var step := self.getStep();

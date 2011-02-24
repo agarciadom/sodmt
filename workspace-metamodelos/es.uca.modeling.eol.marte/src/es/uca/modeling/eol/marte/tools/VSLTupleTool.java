@@ -18,6 +18,10 @@ public class VSLTupleTool {
 	private final static Pattern REGEX_PARAMETER_SPLIT = Pattern.compile(" *[$:] *");
 
 	public Map<String, String> getKeyvalMap(String tuple) {
+		if (tuple == null) {
+			throw new IllegalArgumentException("tuple cannot be null");
+		}
+
 		final Map<String, String> map = new HashMap<String, String>();
 		if (!tuple.startsWith("(")) return map;
 
