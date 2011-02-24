@@ -13,86 +13,7 @@
 import '../eol/time_limits.eol';
 import '../eol/throughput.eol';
 
--- BASIC CONFIGURATION
--- Note: fixed/random annotations are selected by commenting some lines in the main body.
-
--*
-var levels         := 45;
-var fixed_samples  := 5;         -- fixed repetitions for random annotations
-var time_per_level := 30 * 1000; -- variable repetitions for fixed annotations
-var gctool := new Native("es.uca.modeling.eol.marte.tools.GCTool");
-var random := new Native("java.util.Random");
-random.setSeed(0l);
-
-testPerformance(levels, fixed_samples, time_per_level, random, true);
---testPerformance(levels, fixed_samples, time_per_level, random, false);
-
-operation testPerformance(levels, fixed_samples, time_per_level, random, fixed_repetitions) {
-  if (fixed_repetitions) {
-    ("Using " + levels + " level(s) with " + fixed_samples + " sample(s) each").println();
-  } else {
-    ("Using " + levels + " level(s) with " + time_per_level + "s for each").println();
-  }
-  "--".println();
-
-  -- MAIN BODY
-
-  for (level in 1.to(levels)) {
-    gctool.gc(Model);
-
-    var time_tlimit     := 0;
-    var time_throughput := 0;
-    var activity;
-
-    var n_samples := 0;
-    var loop := true;
-    while (loop) {
-      activity := createForkJoinActivity(level);
-
-      -- Comment one of these two lines to select fixed or random annotations
-      if (fixed_repetitions) {
-        annotateRandom(activity, 1, 1, 1, random);
-      } else {
-        annotateFixed(activity, 1, 1, 0, 1);
-      } 
-
-      -- First inference algorithm: time limits
-      var finalNodes  := activity.node.select(e : FinalNode | true);
-      var t0_tlimit := getCurrentTimeMillis();
-      distributeTime(1, finalNodes);
-      var delta_tlimit := getCurrentTimeMillis() - t0_tlimit;
-      time_tlimit := time_tlimit + delta_tlimit;
-
-      -- Second inference algorithm: throughputs
-      var initialNode := activity.node.select(e : InitialNode | true).first();
-      var t0_throughput := getCurrentTimeMillis();
-      annotateThroughput(initialNode);
-      var delta_throughput := getCurrentTimeMillis() - t0_throughput;
-      time_throughput := time_throughput + delta_throughput;
-
-      -- Print results for this sample
-      ("Sample " + (n_samples + 1) + ": "
---        + delta_tlimit + "ms for time limits, "
-        + delta_throughput + "ms for throughputs"
-        ).println();
-
-      -- Delete the activity and the annotations, to keep the model small
-      deleteAll(activity);
-      n_samples := n_samples + 1;
-
-      if (fixed_repetitions) {
-        loop := (n_samples < fixed_samples);
-      } else {
-        loop := (time_tlimit < time_per_level and time_throughput < time_per_level);
-      }
-    }
-
-    ("Time limits," + level + "," + time_tlimit/(n_samples * 1000.0)).println();
-    ("Throughputs," + level + "," + time_throughput/(n_samples * 1000.0)).println();
-  }
-}*-
-
--- UTILITY OPERATIONS --
+-- UTILITY OPERATIONS FOR THE JAVA CODE --
 
 $pre levels >= 0
 operation createForkJoinActivity(levels : Integer) : Activity {
@@ -146,11 +67,6 @@ operation annotateRandom(activity, respT, throughput, max_weight, random) {
     siblings.last().createStep(mtimeB, random.nextDouble() * max_weight, "swB" + action_counter);
     action_counter := action_counter + 1;
   }
-}
-
-operation getCurrentTimeMillis() {
-  var cal := new Native("java.util.GregorianCalendar");
-  return cal.getTimeInMillis();
 }
 
 -*
