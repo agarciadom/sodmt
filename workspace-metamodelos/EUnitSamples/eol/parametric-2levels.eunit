@@ -1,0 +1,14 @@
+@data x
+operation firstList() {
+  return 1.to(5);
+}
+
+@data y
+operation secondList() {
+  return 1.to(5);
+}
+
+@test
+operation sumIsFive() {
+  assert(x + y >= 2);
+}

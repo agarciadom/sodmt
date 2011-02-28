@@ -1,0 +1,22 @@
+<project>
+	<target name="testSuite1">
+		<epsilon.eunit src="sample.eunit">
+			<epsilon.emf.loadModel
+				name="Model"
+			    modelfile="sample.model"
+		        metamodelfile="sample.ecore"/>
+		</epsilon.eunit>
+	</target>
+
+	<target name="testSuite2">
+		<epsilon.eunit src="parametric.eunit">
+			<epsilon.emf.loadModel name="Model"
+				modelfile="dummy.model" metamodelfile="sample.ecore"
+				read="false" store="false"/>		
+		</epsilon.eunit>
+	</target>
+
+	<target name="testSuite3">
+		<epsilon.eunit src="parametric-2levels.eunit"/>
+	</target>
+</project>
