@@ -131,10 +131,7 @@ operation ActivityNode getOutEdgesFromMostToLeastStrict(received : Real) : Seque
   for (edge in self.outgoing) {
     edge.~constraint = edge.~constraints.sortBy(c|c.slackPerWU(received)).first();
   }
-  -- self.outgoing is a Set: dump it into a Sequence before sorting it
-  var seqOut : Sequence;
-  seqOut.addAll(self.outgoing);
-  return seqOut.sortBy(e | e.~constraint.slackPerWU(received));
+  return self.outgoing.sortBy(e | e.~constraint.slackPerWU(received));
 }
 
 -*********** CONSTRAINT AGGREGATION ***********-

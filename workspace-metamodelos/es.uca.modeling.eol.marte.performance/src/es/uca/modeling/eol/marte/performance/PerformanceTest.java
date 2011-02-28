@@ -19,7 +19,6 @@ import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
-import org.eclipse.epsilon.eol.types.CollectionAnnotator;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -227,7 +226,6 @@ public class PerformanceTest {
 			op.clearCache();
 		}
 		mModule.getContext().getExtendedProperties().clear();
-		CollectionAnnotator.getInstance().clear();
 	}
 
 }
