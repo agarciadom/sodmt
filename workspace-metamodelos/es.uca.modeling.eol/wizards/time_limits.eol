@@ -127,8 +127,8 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
 -- If there are no free nodes, it will use an arbitrarily large value to ensure
 -- that it is one of the last ones. We only want paths with no free nodes for
 -- consistency checking, anyway.
-operation Sequence getLimitEstimateForFreeNodes() {
-  if (self.~freeCount = 0) {
+operation Sequence getLimitEstimateForFreeNodes() : Real {
+  if (self.~totalWeight = 0) {
     return 1000000;
   } else {
     return self.~startingSlack/self.~totalWeight;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_nmnSMPGkEd-WVeBAYwAeXA">
+  <nodes xsi:type="sp:ProcessStart" xmi:id="_oVqJgPGkEd-WVeBAYwAeXA" outgoing="_uF0xUPGkEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ProcessFinish" xmi:id="_owVTUPGkEd-WVeBAYwAeXA" incoming="_u3wkkPGkEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_p8qjkPGkEd-WVeBAYwAeXA" incoming="_uF0xUPGkEd-WVeBAYwAeXA" outgoing="_ugetAPGkEd-WVeBAYwAeXA" name="A" annotation="_3CfKUPGkEd-WVeBAYwAeXA"/>
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_qoNa8PGkEd-WVeBAYwAeXA" incoming="_ugetAPGkEd-WVeBAYwAeXA" outgoing="_u3wkkPGkEd-WVeBAYwAeXA" name="B" annotation="_JVyZEfNGEd-6y6T5kO5uMw"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_uF0xUPGkEd-WVeBAYwAeXA" target="_p8qjkPGkEd-WVeBAYwAeXA" source="_oVqJgPGkEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_ugetAPGkEd-WVeBAYwAeXA" target="_qoNa8PGkEd-WVeBAYwAeXA" source="_p8qjkPGkEd-WVeBAYwAeXA"/>
+  <edges xsi:type="sp:ProcessControlFlow" xmi:id="_u3wkkPGkEd-WVeBAYwAeXA" target="_owVTUPGkEd-WVeBAYwAeXA" source="_qoNa8PGkEd-WVeBAYwAeXA"/>
+  <activityPerformance xmi:id="_3CfKUPGkEd-WVeBAYwAeXA" minimumTime="0.3" execNode="_p8qjkPGkEd-WVeBAYwAeXA"/>
+  <activityPerformance xmi:id="_JVyZEfNGEd-6y6T5kO5uMw" secsTimeLimit="9001.0" minimumTime="0.0" weight="1.0" execNode="_qoNa8PGkEd-WVeBAYwAeXA" manuallyAdded="false"/>
+  <processPerformance xmi:id="_rb8lAPGkEd-WVeBAYwAeXA"/>
+</sp:ServiceProcess>

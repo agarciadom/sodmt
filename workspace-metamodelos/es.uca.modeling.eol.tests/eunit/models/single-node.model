@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sp:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_ypYSsQonEeCvaaqED9ROug">
+  <nodes xsi:type="sp:ServiceActivity" xmi:id="_zwivEAonEeCvaaqED9ROug" name="A"/>
+  <processPerformance xmi:id="_1a-3oAonEeCvaaqED9ROug"/>
+</sp:ServiceProcess>

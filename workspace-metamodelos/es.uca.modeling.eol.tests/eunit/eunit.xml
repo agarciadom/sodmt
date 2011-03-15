@@ -1,0 +1,44 @@
+<project name="es.uca.modeling.eol.tests" default="allTests">
+
+	<property name="models.dir" location="models"/>
+	<property name="metamodel.uri" value="www.uca.es/modeling/serviceProcess"/>
+
+	<!-- BASIC TARGETS -->
+
+	<target name="init" description="Prepares the testing environment">
+		<delete dir="${basedir}" includes="TEST*.xml" />
+	    <macrodef name="run-comparison-tests">
+    	    <attribute name="script" default="oldAndNewMatch.eunit" />
+	    	<attribute name="package" />
+	    	<attribute name="model" />
+        	<sequential>
+        		<epsilon.eunit src="@{script}" package="sodmt.eol.tlimit.@{package}">
+        			<epsilon.emf.loadModel
+        				modelfile="${models.dir}/@{model}"
+        				metamodeluri="${metamodel.uri}"
+        				read="true" store="false"/>
+        		</epsilon.eunit>
+        	</sequential>
+    	</macrodef>
+	</target>
+
+	<target name="allTests" depends="minimal,single-node" description="Runs all tests">
+		<junitreport>
+			<fileset dir="${basedir}" includes="TEST-*.xml"/>
+			<report format="noframes" todir="report"/>
+		</junitreport>
+	</target>
+
+	<!-- TEST TARGETS -->
+
+	<target name="minimal" depends="init">
+		<run-comparison-tests
+			package="minimal" model="minimal.model"/>
+	</target>
+
+	<target name="single-node" depends="init">
+		<run-comparison-tests
+			package="singlenode" model="single-node.model"/>
+	</target>
+
+</project>

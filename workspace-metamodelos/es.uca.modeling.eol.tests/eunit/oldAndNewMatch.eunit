@@ -1,0 +1,55 @@
+import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
+
+@test
+operation withInteger() {
+	assertOldAndNewResultsAreEqual(1, true);
+}
+
+@test
+operation withReal() {
+	assertOldAndNewResultsAreEqual(1.0, true);
+}
+
+-*
+  Checks if the results produced by the old and the new algorithm are equal or not.
+*-
+operation assertOldAndNewResultsAreEqual(globalLimit : Real, shouldSucceed : Boolean) {
+    var successOld := annotateTimeLimits(globalLimit, getStartNode());
+    var tlimitOld  := getTimeLimitMap();
+    var successNew := distributeTime(globalLimit, getEndNodes());
+    var tlimitNew  := getTimeLimitMap();
+
+    assertEquals("Old and new algorithms should produce the same number of results",
+        tlimitOld.size(), tlimitNew.size());
+    for (key : String in tlimitOld.keySet()) {
+        var vOld := tlimitOld.get(key);
+        var vNew := tlimitNew.get(key);
+        assertEquals(
+            "Old and new algorithms should agree on time limit of " + vOld + " for " + key,
+            vOld, vNew);
+    }
+
+    if (shouldSucceed) {
+        assertEquals("Old algorithm should succeed", shouldSucceed, successOld);
+        assertEquals("New algorithm should succeed", shouldSucceed, successNew);
+    } else {
+        assertEquals("Old algorithm should not succeed", shouldSucceed, successOld);
+        assertEquals("New algorithm should not succeed", shouldSucceed, successNew);
+    }
+}
+
+operation getTimeLimitMap() : Map {
+    var results : Map;
+    for (act in ServiceActivity.allInstances) {
+      results.put(act.name, act.annotation.secsTimeLimit);
+    }
+    return results;
+}
+
+operation getStartNode() {
+  return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
+}
+
+operation getEndNodes() {
+  return FlowNode.allInstances.select(e|e.outgoing.isEmpty());
+}
