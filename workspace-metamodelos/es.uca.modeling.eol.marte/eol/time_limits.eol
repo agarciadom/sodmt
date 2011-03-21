@@ -274,7 +274,7 @@ operation compareConstraints(L : Real, first : Sequence, second : Sequence) : In
 -- Adds an unpacked constraint to another, generating a new one
 $pre self.size() = 2
 $post _result.size() = 2
-operation Sequence addConstraint(time : Real, weight : Real) : Sequence {
+operation Sequence addConstraint(time, weight) : Sequence {
   var sum = self.clone();
   sum.set(0, sum.get(0) + time);
   sum.set(1, sum.get(1) + weight);

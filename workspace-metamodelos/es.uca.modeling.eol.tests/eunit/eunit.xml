@@ -7,38 +7,47 @@
 
 	<target name="init" description="Prepares the testing environment">
 		<delete dir="${basedir}" includes="TEST*.xml" />
-	    <macrodef name="run-comparison-tests">
-    	    <attribute name="script" default="oldAndNewMatch.eunit" />
-	    	<attribute name="package" />
-	    	<attribute name="model" />
+		<tstamp />
+	    <macrodef name="loadModel">
+	    <attribute name="name" />
         	<sequential>
-        		<epsilon.eunit src="@{script}" package="sodmt.eol.tlimit.@{package}">
-        			<epsilon.emf.loadModel
-        				modelfile="${models.dir}/@{model}"
-        				metamodeluri="${metamodel.uri}"
-        				read="true" store="false"/>
-        		</epsilon.eunit>
+	      		<epsilon.emf.loadModel name="@{name}"
+	      			modelfile="${models.dir}/@{name}.model"
+				metamodeluri="${metamodel.uri}"
+      				read="true" store="false" />
         	</sequential>
     	</macrodef>
 	</target>
 
-	<target name="allTests" depends="minimal,single-node" description="Runs all tests">
+	<target name="allTests" depends="tlimits,caggregation" description="Runs all tests">
 		<junitreport>
-			<fileset dir="${basedir}" includes="TEST-*.xml"/>
-			<report format="noframes" todir="report"/>
+			<fileset dir="${basedir}" includes="TEST-*.xml" />
+			<report format="noframes" todir="report" />
 		</junitreport>
 	</target>
 
 	<!-- TEST TARGETS -->
 
-	<target name="minimal" depends="init">
-		<run-comparison-tests
-			package="minimal" model="minimal.model"/>
+	<target name="tlimits" description="Tests for the inferred time limits" depends="init">
+		<epsilon.eunit src="tlimits.eunit" package="sodmt.eol.tlimits">
+			<loadModel name="dense"/>
+			<loadModel name="handleOrder"/>
+			<loadModel name="minimal"/>
+			<loadModel name="sequence-w_auto_constraint"/>
+			<loadModel name="sequence"/>
+			<loadModel name="single-dipole"/>
+			<loadModel name="single-node"/>
+			<loadModel name="two-dipoles-Aneeds40"/>
+			<loadModel name="two-dipoles"/>
+		</epsilon.eunit>
 	</target>
 
-	<target name="single-node" depends="init">
-		<run-comparison-tests
-			package="singlenode" model="single-node.model"/>
+	<target name="caggregation" description="Tests for the aggregated constraints" depends="init">
+		<epsilon.eunit src="caggregation.eunit" package="sodmt.eol.caggregation">
+			<loadModel name="minimal"/>
+			<loadModel name="sequence"/>
+			<loadModel name="single-dipole"/>
+			<loadModel name="two-dipoles"/>
+		</epsilon.eunit>
 	</target>
-
 </project>

@@ -1,0 +1,34 @@
+import "common.eol";
+
+$with Sequence {"", "minimal"}
+@test
+operation minimal() {
+	assertConstraintsEquals(1, Sequence { pair(0, 0) });
+}
+
+$with Sequence {"", "sequence"}
+@test
+operation sequence() {
+	assertConstraintsEquals(1, Sequence { pair(0.3, 1) });
+}
+
+$with Sequence {"", "single-dipole"}
+@test
+operation singleDipole() {
+	assertConstraintsEquals(1, Sequence { pair(0, 4) });
+}
+
+-- There are two test cases with the two dipole graph, as the
+-- strictest paths depend on the selected global limit.
+
+$with Sequence {"", "two-dipoles"}
+@test
+operation twoDipolesWithLimit100() {
+	assertConstraintsEquals(100, Sequence { pair(50, 4), pair(30, 6) });
+}
+
+$with Sequence {"", "two-dipoles"}
+@test
+operation twoDipolesWithLimit60() {
+	assertConstraintsEquals(60, Sequence { pair(50, 4) });
+}

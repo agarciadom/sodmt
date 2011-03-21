@@ -1,0 +1,70 @@
+import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
+
+operation getStartNode() {
+  return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
+}
+
+operation getEndNodes() {
+  return FlowNode.allInstances.select(e|e.outgoing.isEmpty());
+}
+
+operation assertConstraintsEquals(globalLimit : Real, expectedConstraints : Sequence) {
+  var actualConstraints := aggregateConstraints(globalLimit, getEndNodes()).get(1);
+  assertConstraintsEquals(expectedConstraints, actualConstraints);
+}
+
+operation assertConstraintsEquals(expected : Sequence, actual : Sequence) {
+  assertEquals("Both sets of constraints should have the same number of elements",
+    expected.size(), actual.size());
+
+  for (i in 0.to(expected.size() - 1)) {
+    var exp := expected.get(i);
+    var act := actual.get(i);
+
+    assertEquals("The " + i + "-th constraint should have the same number of elements",
+      exp.size(), act.size());
+    for (j in 0.to(exp.size() - 1)) {
+      assertEquals(
+        "The " + j + "-th element of the " + i + "-th constraint should be approximately equal to " + exp.get(j),
+        exp.get(j), act.get(j), 5);
+    }
+  }
+}
+
+-*
+  Checks if the results produced by the old and the new algorithm are equal or not.
+*-
+operation assertOldAndNewResultsAreEqual(globalLimit : Real, shouldSucceed : Boolean) {
+    var successOld := annotateTimeLimits(globalLimit, getStartNode());
+    var tlimitOld  := getTimeLimitMap();
+    var successNew := distributeTime(globalLimit, getEndNodes());
+    var tlimitNew  := getTimeLimitMap();
+
+    assertEquals("Old and new algorithms should produce the same number of results",
+        tlimitOld.size(), tlimitNew.size());
+    for (key : String in tlimitOld.keySet()) {
+        var vOld := tlimitOld.get(key);
+        var vNew := tlimitNew.get(key);
+        assertEquals(vOld, vNew, 15);
+    }
+
+    if (shouldSucceed) {
+        assertTrue("Old algorithm should succeed", successOld);
+        assertEquals("New algorithm should succeed", shouldSucceed, successNew);
+    } else {
+        assertFalse("Old algorithm should not succeed", successOld);
+        assertEquals("New algorithm should not succeed", shouldSucceed, successNew);
+    }
+}
+
+operation getTimeLimitMap() : Map {
+    var results : Map;
+    for (act in ServiceActivity.allInstances) {
+      results.put(act.name, act.annotation.secsTimeLimit);
+    }
+    return results;
+}
+
+operation pair(x, y) : Sequence {
+  return Sequence { x, y };
+}
