@@ -1,0 +1,59 @@
+<project default="all">
+	<target name="init" description="Cleans up and sets up the test run">
+		<!-- Clean old JUnit XML reports -->
+		<delete dir="${basedir}" includes="TEST-*.xml"/>
+		<!-- Quick macro to avoid repeating the same XML fragment for loading the EMF models -->
+	    <macrodef name="loadModel">
+    	    <attribute name="name" />
+	    	<attribute name="read" default="true"/>
+        	<sequential>
+    			<epsilon.emf.loadModel
+    				name="@{name}"
+    				modelfile="@{name}.model"
+    				metamodelfile="sample.ecore"
+    				read="@{read}" store="false"/>            
+        	</sequential>
+    	</macrodef>
+	</target>
+
+	<target name="all" depends="hello,loadmodel,databind,modelbind,combined" description="Runs all tests">
+		<junitreport>
+			<fileset dir="${basedir}" includes="TEST-*.xml"/>
+			<report todir="${basedir}" format="noframes"/>
+		</junitreport>
+	</target>
+
+	<target name="hello" depends="init" description="Hello World!">
+		<epsilon.eunit src="hello-world.eunit" failonerrors="false"/>
+	</target>
+
+	<target name="loadmodel" depends="init" description="Loading a model">
+		<epsilon.eunit src="load-model.eunit">
+			<epsilon.emf.loadModel
+				modelfile="A.model"
+				metamodelfile="sample.ecore"
+				read="true" store="false"/>			
+		</epsilon.eunit>
+	</target>
+
+	<target name="databind" depends="init" description="Data bindings">
+		<epsilon.eunit src="data-bindings.eunit">
+			<loadModel name="A" read="false"/>
+		</epsilon.eunit>
+	</target>
+
+	<target name="modelbind" depends="init" description="Model bindings">
+		<epsilon.eunit src="model-bindings.eunit">
+			<loadModel name="A"/>
+			<loadModel name="B"/>
+		</epsilon.eunit>
+	</target>
+
+	<target name="combined" depends="init" description="Combinining everything">
+		<epsilon.eunit src="data-and-model-combined.eunit">
+			<loadModel name="A"/>
+			<loadModel name="B"/>
+		</epsilon.eunit>
+	</target>
+
+</project>

@@ -1,0 +1,15 @@
+@test
+operation testOK() {
+  assertEquals("Hello world!", "Hello world!");
+}
+
+@test
+operation testFail() {
+  var s = "Hello world!";
+  assertNotEquals(s, s);
+}
+
+@test
+operation testError() {
+  assertNotEquals("Hello world!", null.toString());
+}

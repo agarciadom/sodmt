@@ -1,0 +1,19 @@
+@data elems
+operation suiteData() {
+  return Sequence {
+    Sequence {"A", "B"},
+    Sequence {"B", "C"}
+  };
+}
+
+$with Sequence {"", elems.get(0)}
+@test
+operation hasExpectedElement() {
+  assertTrue(Element.allInstances.exists(e|e.name = elems.get(1)));
+}
+
+$with Sequence {"", elems.get(0)}
+@test
+operation isNotEmpty() {
+  assertTrue(Element.allInstances.size() > 0);
+}
