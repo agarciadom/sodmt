@@ -1,32 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="serviceProcess" default="default">
-	<description>
-	<![CDATA[
-		This Ant buildfile attempts to mimic the basic Eugenia workflow
-		included in the documentation. It consists of: generating the
-		ECore model from the Emfatic source file, generating the .genmodel
-		file, customizing it with the global and user-defined EOL scripts,
-		generating the EMF code, deriving the GMF models from the ECore
-		file, deriving the GMFGen model from these, customizing it, and
-		finally generating the source code from it.
-
-		It depends on the es.uca.modeling.ant and ca.ecliptical.gmf.ant
-		plugins to do its work. The Ecliptical update site is at [1].
-
-		Currently, there's one known issue: the edit and editor projects,
-		when created from scratch, do not have the required Java and PDE
-		natures assigned to them. For the first nature, see [2]. For the
-		second, right-click on the project and use "Configure > Convert
-		to Plugin Projects...". Another option is generating the projects
-		the first time through the GUI, and then "Refactor > Move" them
-		to the locations in the *Project.location properties. Nevertheless,
-		this bug might be fixed by EMF 2.6 [3].
-
-		[1]: http://www.eclipticalsoftware.com/updates/site.xml
-		[2]: http://enarion.net/programming/tools/eclipse/changing-general-project-to-java-project/
-		[3]: http://www.eclipse.org/forums/index.php?t=msg&th=152228
-	]]>
-	</description>
 
 	<!-- PROPERTIES ####################################################### -->
 
@@ -34,68 +7,25 @@
 	<property name="project.name" value="ServiceProcess" />
 	<property name="model.dir" value="model" />
 	<property name="model.basename" value="serviceprocess" />
-	<property name="templates.dir" value="templates"/>
-	<property name="templates.gmfgraph.dir" value="templates-gmfgraph"/>
 
 	<!-- File locations -->
 	<property name="copyright.location" value="${model.dir}/copyright.txt" />
 	<property name="common.fragment.location" value="${model.dir}/common.emf.fragment" />
 	<property name="emfatic.template.location" value="${model.dir}/${model.basename}.emf.template" />
 	<property name="emfatic.location" value="${model.dir}/${model.basename}.emf" />
-	<property name="ecore.location" value="${model.dir}/${model.basename}.ecore" />
-	<property name="genmodel.location" value="${model.dir}/${model.basename}.genmodel" />
-	<property name="gmfgen.location" value="${model.dir}/${model.basename}.gmfgen" />
-	<property name="gmfgraph.location" value="${model.dir}/${model.basename}.gmfgraph" />
-	<property name="gmfmap.location" value="${model.dir}/${model.basename}.gmfmap" />
-	<property name="gmftool.location" value="${model.dir}/${model.basename}.gmftool" />
-
-	<!-- Project locations -->
-	<!-- For some reason, to create the edit and editor projects, we need to
-		pass some special arguments to emf.Ecore2Java, and place them in paths
-		different to their expected placement: (workspace)/(project name).
-		Otherwise, Eclipse will complain that their paths overlaps with
-		themselves, which strikes me as very odd. Perhaps it's being created
-		several times, or something like that? -->
-	<property name="modelProject.location" location="${basedir}" />
-	<property name="editProject.location" location="${basedir}/../generated/${project.name}.edit" />
-	<property name="editorProject.location" location="${basedir}/../generated/${project.name}.editor" />
-       <property name="testsProject.location" location="${basedir}/../generated/${project.name}.tests" />
-	<property name="diagramProject.location" location="${basedir}/../${project.name}.diagram" />
-
-	<!-- EPackage URIs -->
-	<property name="ecore.nsuri" value="http://www.eclipse.org/emf/2002/Ecore" />
-	<property name="genmodel.nsuri" value="http://www.eclipse.org/emf/2002/GenModel" />
-	<property name="gmfgraph.nsuri" value="http://www.eclipse.org/gmf/2006/GraphicalDefinition" />
-	<property name="gmftool.nsuri" value="http://www.eclipse.org/gmf/2005/ToolDefinition" />
-	<property name="gmfmap.nsuri" value="http://www.eclipse.org/gmf/2008/mappings" />
-	<property name="gmfgen.nsuri" value="http://www.eclipse.org/gmf/2009/GenModel" />
-
-	<!-- Epsilon URLs -->
-	<property name="epsilon.ecore2gmf.uri" value="platform:/plugin/org.eclipse.epsilon.eugenia/transformations/ECore2GMF.eol" />
-	<property name="epsilon.fixgenmodel.uri" value="platform:/plugin/org.eclipse.epsilon.eugenia/transformations/FixGenModel.eol" />
-	<property name="epsilon.fixgengmf.uri" value="platform:/plugin/org.eclipse.epsilon.eugenia/transformations/FixGMFGen.eol" />
-
-	<property name="epsilon.ecore2gmf.local" value="${model.dir}/ECore2GMF.eol" />
-	<property name="epsilon.fixgenmodel.local" value="${model.dir}/FixGenModel.eol" />
-	<property name="epsilon.fixgmfgen.local" value="${model.dir}/FixGMFGen.eol" />
-
-	<available property="epsilon.ecore2gmf.local.exists" file="${epsilon.ecore2gmf.local}" />
-	<available property="epsilon.fixgenmodel.local.exists" file="${epsilon.fixgenmodel.local}" />
-	<available property="epsilon.fixgmfgen.local.exists" file="${epsilon.fixgmfgen.local}" />
-
-	<!--
-		Copyright text: try loading the copyright text. If it doesn't exist,
-		use the empty string.
-	-->
-	<loadfile srcFile="${copyright.location}" property="copyright.contents" quiet="true" />
-	<property name="copyright.contents" value="" />
 
 	<!-- MAIN BODY ######################################################## -->
 
 	<target name="init">
 		<tstamp />
 	</target>
-	<target name="generateEmfatic" depends="init">
+
+	<target name="refreshEmfatic" if="eclipse.application" depends="init">
+        <echo>Refreshing the project directory under Eclipse</echo>
+        <eclipse.refreshLocal resource="/${project.name}" depth="infinite"/>
+    </target>
+
+	<target name="generateEmfatic" depends="refreshEmfatic">
 		<echo>Generating Emfatic source ${emfatic.location} from its template</echo>
 		<loadfile srcFile="${common.fragment.location}" property="common.fragment.contents" />
 		<copy file="${emfatic.template.location}" tofile="${emfatic.location}">
@@ -104,131 +34,10 @@
 	          </filterset>
 		</copy>
     </target>
-    <target name="refreshEmfatic" if="eclipse.application">
-        <echo>Refreshing the project directory under Eclipse</echo>
-        <eclipse.refreshLocal resource="/${project.name}" depth="infinite"/>
-    </target>
-    <target name="generateECore" depends="generateEmfatic,refreshEmfatic">
-		<echo>Generating ${ecore.location} file from Emfatic source ${emfatic.location}</echo>
-		<emfatic.generate src="${emfatic.location}" />
-	</target>
-	<target name="registerECore" depends="generateECore">
-		<echo>Registering ${ecore.location} file permanently</echo>
-		<epsilon.emf.register file="${ecore.location}" permanently="true"/>
-	</target>
-	<target name="generateGenModel" depends="registerECore">
-		<echo>Generating initial ${genmodel.location} file</echo>
-		<emf.Ecore2Java model="${ecore.location}" genmodel="${genmodel.location}" modelproject="${modelProject.location}" modelProjectFragmentPath="src" modelPluginID="${project.name}" generateJavaCode="false" validateModel="true">
-			<arg line="-editProject ${editProject.location} src" />
-			<arg line="-editorProject ${editorProject.location} src" />
-			<arg line="-testsProject ${testsProject.location} src" />
-		</emf.Ecore2Java>
-	</target>
-	<target name="defaultFixGenModel" depends="generateGenModel">
-		<echo>Fixing ${genmodel.location} (default EOL script) </echo>
-		<epsilon.emf.loadModel name="ECore" modelFile="${ecore.location}" metamodeluri="${ecore.nsuri}" read="true" store="false" />
-		<epsilon.emf.loadModel name="GenModel" modelFile="${genmodel.location}" metamodeluri="${genmodel.nsuri}" read="true" store="true" />
-		<epsilon.eol uri="${epsilon.fixgenmodel.uri}">
-			<parameter name="copyright" value="${copyright.contents}" />
-			<model ref="ECore" as="ECore" />
-			<model ref="GenModel" as="GenModel" />
-		</epsilon.eol>
-	</target>
-	<target name="customFixGenModel" depends="defaultFixGenModel" if="epsilon.fixgenmodel.local.exists">
-		<echo>Fixing ${genmodel.location} (user-defined EOL script)</echo>
-		<epsilon.eol src="${epsilon.fixgenmodel.local}">
-			<parameter name="copyright" value="${copyright.contents}" />
-			<model ref="ECore" as="ECore" />
-			<model ref="GenModel" as="GenModel" />
-		</epsilon.eol>
-	</target>
-	<target name="saveGenModel" depends="customFixGenModel">
-		<epsilon.disposeModel model="GenModel" />
-	</target>
-	<target name="generateEMFCode" depends="customFixGenModel">
-		<echo>Generating EMF edit and editor code</echo>
-		<emf.Ecore2Java model="${ecore.location}" genmodel="${genmodel.location}" reconcileGenModel="keep" modelproject="${modelProject.location}" modelProjectFragmentPath="src" modelPluginID="${project.name}" jdkLevel="5.0" validateModel="true" autoBuild="true">
-			<arg line="-editProject ${editProject.location} src" />
-			<arg line="-editorProject ${editorProject.location} src" />
-			<arg line="-testsProject ${testsProject.location} src" />
-		</emf.Ecore2Java>
-	</target>
-	<target name="generateGMFFiles" depends="generateEMFCode">
-		<echo>Generating GMF models</echo>
-		<epsilon.emf.loadModel name="GmfGraph" modelFile="${gmfgraph.location}" metamodeluri="${gmfgraph.nsuri}" read="false" store="true" />
-		<epsilon.emf.loadModel name="GmfTool" modelFile="${gmftool.location}" metamodeluri="${gmftool.nsuri}" read="false" store="true" />
-		<epsilon.emf.loadModel name="GmfMap" modelFile="${gmfmap.location}" metamodeluri="${gmfmap.nsuri}" read="false" store="true" />
 
-		<epsilon.eol uri="${epsilon.ecore2gmf.uri}">
-			<model ref="ECore" as="ECore" />
-			<model ref="GmfGraph" as="GmfGraph" />
-			<model ref="GmfTool" as="GmfTool" />
-			<model ref="GmfMap" as="GmfMap" />
-		</epsilon.eol>
-	</target>
-	<target name="customFixGMFFiles" depends="generateGMFFiles" if="epsilon.ecore2gmf.local.exists">
-		<echo>Customizing GMF models</echo>
-		<epsilon.eol src="${epsilon.ecore2gmf.local}">
-			<model ref="ECore" as="ECore" />
-			<model ref="GmfGraph" as="GmfGraph" />
-			<model ref="GmfTool" as="GmfTool" />
-			<model ref="GmfMap" as="GmfMap" />
-		</epsilon.eol>
-	</target>
-	<target name="saveGMFFiles" depends="customFixGMFFiles">
-		<epsilon.disposeModel model="GmfGraph" />
-		<epsilon.disposeModel model="GmfTool" />
-		<epsilon.disposeModel model="GmfMap" />
-	</target>
-	<target name="generateGMFGenModel" depends="saveGMFFiles">
-		<echo>Generating and synchronizing GMFGen model ${gmfgen.location} from GMFMap model</echo>
-		<gmfgen.fromGmfmap projectName="${project.name}" destFile="${gmfgen.location}" genModel="${genmodel.location}" mapModel="${gmfmap.location}" templatesDir="${templates.gmfgraph.dir}"/>
-		<epsilon.emf.loadModel name="GmfGen" modelFile="${gmfgen.location}" metamodeluri="${gmfgen.nsuri}" read="true" store="true" />
-		<epsilon.eol uri="${epsilon.fixgengmf.uri}">
-			<parameter name="copyright" value="${copyright.contents}" />
-			<model ref="ECore" as="ECore" />
-			<model ref="GmfGen" as="GmfGen" />
-		</epsilon.eol>
-	</target>
-	<target name="customFixGMFGenModel" depends="generateGMFGenModel" if="epsilon.fixgmfgen.local.exists">
-		<echo>Customizing GMFGen model ${gmfgen.location}</echo>
-		<epsilon.eol src="${epsilon.fixgmfgen.local}">
-			<parameter name="copyright" value="${copyright.contents}" />
-			<model ref="ECore" as="ECore" />
-			<model ref="GmfGen" as="GmfGen" />
-		</epsilon.eol>
-	</target>
-	<target name="saveGMFGenModel" depends="customFixGMFGenModel">
-		<epsilon.disposeModel model="GmfGen"/>
-	</target>
-	<target name="generateDiagramCode" depends="saveGMFGenModel"
-		xmlns:gmf="http://ecliptical.ca/gmf/ant">
-		<echo>Generating diagram project in ${diagramProject.location}</echo>
-		<gmf:GenerateDiagramCode gmfgenpath="${project.name}/${gmfgen.location}"/>
+	<target name="default" depends="generateEmfatic">
+		<echo>Running Eugenia...</echo>
+		<epsilon.eugenia src="${emfatic.location}"/>
 	</target>
 
-	<!-- Default target -->
-	<target name="default" depends="generateDiagramCode"/>
-
-	<target name="clean">
-		<delete includeEmptyDirs="true" quiet="true">
-			<fileset dir="${modelProject.location}" includes="src/**/*"/>
-			<fileset dir="${modelProject.location}" includes="bin/**/*"/>
-			<fileset dir="${modelProject.location}" includes="${genmodel.location}"/>
-			<fileset dir="${modelProject.location}" includes="${gmfmap.location}"/>
-			<fileset dir="${modelProject.location}" includes="${gmftool.location}"/>
-			<fileset dir="${modelProject.location}" includes="${gmfgraph.location}"/>
-			<fileset dir="${modelProject.location}" includes="${gmfgen.location}"/>
-			<fileset dir="${modelProject.location}" includes="${ecore.location}"/>
-			<fileset dir="${modelProject.location}" includes="${emfatic.location}"/>
-			<fileset dir="${editProject.location}" includes="src/**/*"/>
-			<fileset dir="${editProject.location}" includes="bin/**/*"/>
-			<fileset dir="${editorProject.location}" includes="src/**/*"/>
-			<fileset dir="${editorProject.location}" includes="bin/**/*"/>
-			<fileset dir="${testsProject.location}" includes="src/**/*"/>
-			<fileset dir="${testsProject.location}" includes="bin/**/*"/>
-			<fileset dir="${diagramProject.location}" includes="src/**/*"/>
-			<fileset dir="${diagramProject.location}" includes="bin/**/*"/>
-        </delete>
-	</target>
 </project>
