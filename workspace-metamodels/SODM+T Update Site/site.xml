@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/ca.ecliptical.gmf.ant_1.1.0.20090717033226.jar" id="ca.ecliptical.gmf.ant" version="1.1.0.20090717033226">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/ca.ecliptical.gmf.ant.sdk_1.1.0.20090717033226.jar" id="ca.ecliptical.gmf.ant.sdk" version="1.1.0.20090717033226">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/ca.ecliptical.gmf.ant.source_1.1.0.20090717033226.jar" id="ca.ecliptical.gmf.ant.source" version="1.1.0.20090717033226">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/org.eclipse.epsilon.eugenia.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.eugenia.feature" version="0.8.8.201005261111">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/org.eclipse.epsilon.evl.emf.validation.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.evl.emf.validation.feature" version="0.8.8.201005261111">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/org.eclipse.epsilon.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.feature" version="0.8.8.201005261111">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
-   <feature url="features/org.eclipse.epsilon.gmf.feature_0.8.8.201005261111.jar" id="org.eclipse.epsilon.gmf.feature" version="0.8.8.201005261111">
-      <category name="es.uca.webservices.sodmt.updatesite.modeling"/>
-   </feature>
    <feature url="features/org.antlr_2.7.7.jar" id="org.antlr" version="2.7.7">
       <category name="es.uca.webservices.sodmt.updatesite.emfatic"/>
    </feature>
@@ -35,5 +14,4 @@
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.soa" label="SOA Modeling Tools"/>
    <category-def name="es.uca.webservices.sodmt.updatesite.emfatic" label="EMFatic"/>
-   <category-def name="es.uca.webservices.sodmt.updatesite.modeling" label="Modeling Dependencies"/>
 </site>

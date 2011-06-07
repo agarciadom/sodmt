@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.sodmt"
       label="SODM+T Toolset"
-      version="1.1.0.qualifier"
+      version="1.1.1.qualifier"
       provider-name="University of Cadiz">
 
    <description url="https://neptuno.uca.es/redmine/projects/sodmt/">
@@ -14,7 +14,7 @@ through reimplementation of the affected parts of the methodology.
    </description>
 
    <copyright>
-      Copyright (C) 2009-2010 Antonio García-Domínguez
+      Copyright (C) 2009-2011 Antonio García-Domínguez
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html.">
