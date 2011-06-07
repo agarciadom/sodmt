@@ -1,8 +1,9 @@
 package es.uca.modeling.eol.marte.tools;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.eclipse.epsilon.eol.types.EolMap;
 
 /**
  * EOL tool for processing VSL tuples.
@@ -22,7 +23,8 @@ public class VSLTupleTool {
 			throw new IllegalArgumentException("tuple cannot be null");
 		}
 
-		final Map<String, String> map = new HashMap<String, String>();
+		@SuppressWarnings("unchecked")
+		final Map<String, String> map = new EolMap();
 		if (!tuple.startsWith("(")) return map;
 
 		final String[] keyvals = REGEX_TUPLE_SPLIT.split(tuple.substring(1, tuple.length() - 1));
