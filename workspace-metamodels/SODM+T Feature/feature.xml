@@ -43,24 +43,18 @@ property of any of the other bundles.
    </url>
 
    <requires>
-      <import plugin="org.apache.ant" version="1.7.1" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.emfatic.core" version="0.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ant.core" version="3.2.100" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.bridge.ui" version="1.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.codegen.ecore" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.map" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.evl.emf.validation" version="0.8.6" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.etl.engine" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.erl.engine" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.common.dt" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.draw2d" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui" version="1.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.expressions"/>
@@ -87,12 +81,6 @@ property of any of the other bundles.
       <import plugin="org.eclipse.gef"/>
       <import plugin="org.eclipse.emf.edit"/>
    </requires>
-
-   <plugin
-         id="es.uca.modeling.ant"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="es.uca.modeling.eol"

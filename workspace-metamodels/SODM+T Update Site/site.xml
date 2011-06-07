@@ -9,7 +9,7 @@
    <feature url="features/org.eclipse.emf.emfatic_feature_0.3.0.200810132307.jar" id="org.eclipse.emf.emfatic_feature" version="0.3.0.200810132307">
       <category name="es.uca.webservices.sodmt.updatesite.emfatic"/>
    </feature>
-   <feature url="features/es.uca.modeling.sodmt_1.1.0.qualifier.jar" id="es.uca.modeling.sodmt" version="1.1.0.qualifier">
+   <feature url="features/es.uca.modeling.sodmt_1.1.1.201106072333.jar" id="es.uca.modeling.sodmt" version="1.1.1.201106072333">
       <category name="es.uca.webservices.sodmt.updatesite.soa"/>
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.soa" label="SOA Modeling Tools"/>
