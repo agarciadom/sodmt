@@ -7,4 +7,4 @@ Export-Package: es.uca.modeling.figures
 Require-Bundle: org.eclipse.draw2d;bundle-version="3.5.0",
  org.eclipse.gmf.runtime.draw2d.ui;bundle-version="1.2.0"
 Bundle-Vendor: %Bundle-Vendor
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
