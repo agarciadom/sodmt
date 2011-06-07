@@ -1,4 +1,0 @@
-@test
-operation elements() {
-  assertEquals(2, Element.allInstances.size());
-}
