@@ -1,4 +1,6 @@
 .metadata
 ServiceProcess.diagram
 ServiceComposition.diagram
-generated
+ServiceProcess.tests
+ServiceComposition.tests
+bin

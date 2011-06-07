@@ -1,52 +1,57 @@
 <project name="serviceComposition" default="default">
-  <description>
-    <![CDATA[
+	<description>
+		<![CDATA[
        Ant buildfile for the Service Composition model. See generate-code.xml
        in the ServiceProcess project for more details. This buildfile mostly
        relies on the old buildfile to do everything, and simply customizes the
        most important properties.
     ]]>
-  </description>
+	</description>
 
-  <!-- Basic project info -->
-  <property name="project.name"   value="ServiceComposition" />
-  <property name="model.basename" value="servicecomposition" />
+	<!-- Basic project info -->
+	<property name="project.name"    value="ServiceComposition" />
+	<property name="sp.project.name" value="ServiceProcess"     />
+	<property name="model.basename"  value="servicecomposition" />
 
-  <!-- This project has its own GMFGen templates directory -->
-  <property name="templates.scomp-custom.dir" value="templates-gmfgen"/>
+	<!-- This project has its own GMFGen templates directory -->
+	<property name="templates.dir" value="templates" />
+	<property name="templates.scomp-custom.dir" value="templates-gmfgen" />
 
-  <!-- ServiceProcess project info and overridden properties -->
-  <property name="sp.project.name" value="ServiceProcess"/>
-  <property name="common.fragment.location" value="../${sp.project.name}/model/common.emf.fragment" />
-  <import file="../${sp.project.name}/generate-code.xml"/>
+	<!-- ServiceProcess project info and overridden properties -->
+	<property name="common.fragment.location" value="../${sp.project.name}/model/common.emf.fragment" />
+	<import file="../${sp.project.name}/generate-code.xml" />
 
-  <!--
+	<!--
     We need to sync this project's Xpand2 templates with those from the
     ServiceProcess project, while at the same time keeping our own customized
-    versions if existing. Once we're done, we can call ServiceProcess' original
-    Ant task, to generate the code.
+    versions if existing. Once we're done, we can call Eugenia to do the rest
+    of the work.
 
     We keep the ${templates.scomp-custom.dir} directory with this project's custom
     GMFGen Xpand2 templates, and then join ServiceProcess' and those templates
     into a single templates directory.
-  -->
-  <target name="generateDiagramCode" depends="saveGMFGenModel">
-    <echo>Synchronizing templates from ${sp.project.name}</echo>
-    <sync todir="${templates.dir}">
-      <fileset dir="../${sp.project.name}/${templates.dir}">
-        <include name="**/*.xpt"/>
-      </fileset>
-    </sync>
-    <copy todir="${templates.dir}">
-      <fileset dir="${templates.scomp-custom.dir}">
-        <include name="**/*.xpt"/>
-      </fileset>
-    </copy>
-    <antcall target="serviceProcess.generateDiagramCode" />
-  </target>
+	-->
+	<target name="default" depends="generateEmfatic">
+		<echo>Running Eugenia up to EMF code generation...</echo>
+		<epsilon.eugenia src="${emfatic.location}" laststep="emfcode" />
 
-  <target name="clean" depends="init">
-    <delete dir="${templates.dir}"/>
-    <antcall target="serviceProcess.clean"/>
-  </target>
+		<echo>Synchronizing templates from ${sp.project.name}</echo>
+		<sync todir="${templates.dir}">
+			<fileset dir="../${sp.project.name}/${templates.dir}">
+				<include name="**/*.xpt" />
+			</fileset>
+		</sync>
+		<copy todir="${templates.dir}">
+			<fileset dir="${templates.scomp-custom.dir}">
+				<include name="**/*.xpt" />
+			</fileset>
+		</copy>
+
+		<echo>Running the last step of Eugenia</echo>
+		<epsilon.eugenia src="${emfatic.location}" firststep="gmfcode" laststep="gmfcode" />
+	</target>
+
+	<target name="clean" depends="init">
+		<delete dir="${templates.dir}" />
+	</target>
 </project>
