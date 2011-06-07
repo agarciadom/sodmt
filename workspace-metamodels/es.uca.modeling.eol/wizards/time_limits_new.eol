@@ -116,7 +116,7 @@ operation reuseSurplusTime(slack : Real, start : FlowNode) {
   slack per unit of weight in ascending order.
 *-
 $pre self.outgoing.forAll(e|not e.~constraint.isDefined())
-operation FlowNode getOutEdgesFromMostToLeastStrict(received : Real) : OrderedSet {
+operation FlowNode getOutEdgesFromMostToLeastStrict(received : Real) : Sequence {
   for (edge in self.outgoing) {
     edge.~constraint = edge.~constraints.sortBy(c|c.slackPerWU(received)).first();
   }
