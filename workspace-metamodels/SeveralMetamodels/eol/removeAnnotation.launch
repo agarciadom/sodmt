@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<launchConfiguration type="org.epsilon.eol.eclipse.dt.launching.EolLaunchConfigurationDelegate">
-<listAttribute key="models">
-<listEntry value="#&#10;#Wed Jan 26 18:23:31 CET 2011&#10;isMetamodelFileBased=false&#10;name=Model&#10;readOnLoad=true&#10;storeOnDisposal=true&#10;aliases=&#10;cached=true&#10;metamodelUri=http\://uca.es/annotation/1.0&#10;type=EMF&#10;modelFile=/SeveralMetamodels/eol/sample.model&#10;expand=true&#10;metamodelFile=&#10;"/>
-</listAttribute>
-<stringAttribute key="source" value="/SeveralMetamodels/eol/removeAnnotation.eol"/>
-</launchConfiguration>
