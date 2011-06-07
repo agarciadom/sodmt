@@ -85,8 +85,9 @@ public class AbstractTimeLimitTest {
 	}
 
 	@After
-	public void clearModels() {
+	public void cleanUp() {
 		mEolModule.getContext().getModelRepository().dispose();
+		mEolModule.clearCache();
 	}
 
 	private void loadModule(String name) throws URISyntaxException, Exception,

@@ -117,7 +117,7 @@ public class TimeLimitInferenceTest extends AbstractTimeLimitTest {
 						.getSecsTimeLimit());
 			}
 		}
-		clearModels();
+		cleanUp();
 
 		return mapNameToActivity;
 	}
