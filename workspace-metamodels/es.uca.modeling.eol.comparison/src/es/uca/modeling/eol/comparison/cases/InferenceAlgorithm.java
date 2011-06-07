@@ -43,7 +43,7 @@ public class InferenceAlgorithm {
 		final EolOperation operation = module.getOperations().getOperation(fOperation);
 		operation.execute(null, Arrays.asList(args), context);
 		context.getModelRepository().removeModel(model);
-		context.getExtendedProperties().clear();
+		module.clearCache();
 	}
 
 	public long runAndTimeMillis(EmfModel model, Object... args)
