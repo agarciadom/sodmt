@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="es.uca.modeling.sodmt"
-      label="SODM+T Toolset"
+      id="es.uca.modeling.sodmt.adhoc"
+      label="SODM+T Toolset (Ad-Hoc annotations)"
       version="1.1.1.qualifier"
       provider-name="University of Cadiz">
 
@@ -17,7 +17,7 @@ through reimplementation of the affected parts of the methodology.
       Copyright (C) 2009-2011 Antonio García-Domínguez
    </copyright>
 
-   <license url="http://www.eclipse.org/legal/epl-v10.html.">
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
       Please note that this license only applies to the source code
 of the parts of SODM that were reimplemented and extended in
 SODM+T at the University of Cadiz, and does not affect IN ANY
@@ -160,6 +160,13 @@ property of any of the other bundles.
 
    <plugin
          id="ServiceProcess.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.modeling.eol.comparison"
          download-size="0"
          install-size="0"
          version="0.0.0"
