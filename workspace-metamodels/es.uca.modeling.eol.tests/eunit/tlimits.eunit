@@ -1,47 +1,47 @@
 import "common.eol";
 
-$with Sequence {"", "handleOrder"}
-$with Sequence {"", "minimal"}
-$with Sequence {"", "sequence"}
-$with Sequence {"", "sequence-w_auto_constraint"}
-$with Sequence {"", "single-dipole"}
-$with Sequence {"", "single-node"}
+$with Map {"" = "handleOrder"}
+$with Map {"" = "minimal"}
+$with Map {"" = "sequence"}
+$with Map {"" = "sequence-w_auto_constraint"}
+$with Map {"" = "single-dipole"}
+$with Map {"" = "single-node"}
 @test
 operation withInteger() {
 	assertOldAndNewResultsAreEqual(1, true);
 }
 
-$with Sequence {"", "handleOrder"}
-$with Sequence {"", "minimal"}
-$with Sequence {"", "sequence"}
-$with Sequence {"", "sequence-w_auto_constraint"}
-$with Sequence {"", "single-dipole"}
-$with Sequence {"", "single-node"}
+$with Map {"" = "handleOrder"}
+$with Map {"" = "minimal"}
+$with Map {"" = "sequence"}
+$with Map {"" = "sequence-w_auto_constraint"}
+$with Map {"" = "single-dipole"}
+$with Map {"" = "single-node"}
 @test
 operation withReal() {
 	assertOldAndNewResultsAreEqual(1.0, true);
 }
 
-$with Sequence {"", "sequence"}
+$with Map {"" = "sequence"}
 @test
 operation notEnoughTime() {
 	assertOldAndNewResultsAreEqual(0.2, false);
 }
 
-$with Sequence {"", "sequence"}
+$with Map {"" = "sequence"}
 @test
 operation allTimeUsed() {
 	assertOldAndNewResultsAreEqual(0.3, false);
 }
 
-$with Sequence {"", "dense"}
+$with Map {"" = "dense"}
 @test
 operation denseDAG() {
 	assertOldAndNewResultsAreEqual(20, true);
 }
 
-$with Sequence {"", "two-dipoles"}
-$with Sequence {"", "two-dipoles-Aneeds40"}
+$with Map {"" = "two-dipoles"}
+$with Map {"" = "two-dipoles-Aneeds40"}
 @test
 operation twoDipoles() {
 	assertOldAndNewResultsAreEqual(100, true);

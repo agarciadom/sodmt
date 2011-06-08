@@ -13,7 +13,7 @@
         	<sequential>
 	      		<epsilon.emf.loadModel name="@{name}"
 	      			modelfile="${models.dir}/@{name}.model"
-				metamodeluri="${metamodel.uri}"
+					metamodeluri="${metamodel.uri}"
       				read="true" store="false" />
         	</sequential>
     	</macrodef>
@@ -29,25 +29,29 @@
 	<!-- TEST TARGETS -->
 
 	<target name="tlimits" description="Tests for the inferred time limits" depends="init">
-		<epsilon.eunit src="tlimits.eunit" package="sodmt.eol.tlimits">
-			<loadModel name="dense"/>
-			<loadModel name="handleOrder"/>
-			<loadModel name="minimal"/>
-			<loadModel name="sequence-w_auto_constraint"/>
-			<loadModel name="sequence"/>
-			<loadModel name="single-dipole"/>
-			<loadModel name="single-node"/>
-			<loadModel name="two-dipoles-Aneeds40"/>
-			<loadModel name="two-dipoles"/>
+		<epsilon.eunit src="tlimits.eunit" package="sodmt.adhoc.eol">
+			<modelTasks>
+				<loadModel name="dense"/>
+				<loadModel name="handleOrder"/>
+				<loadModel name="minimal"/>
+				<loadModel name="sequence-w_auto_constraint"/>
+				<loadModel name="sequence"/>
+				<loadModel name="single-dipole"/>
+				<loadModel name="single-node"/>
+				<loadModel name="two-dipoles-Aneeds40"/>
+				<loadModel name="two-dipoles"/>
+			</modelTasks>
 		</epsilon.eunit>
 	</target>
 
 	<target name="caggregation" description="Tests for the aggregated constraints" depends="init">
-		<epsilon.eunit src="caggregation.eunit" package="sodmt.eol.caggregation">
-			<loadModel name="minimal"/>
-			<loadModel name="sequence"/>
-			<loadModel name="single-dipole"/>
-			<loadModel name="two-dipoles"/>
+		<epsilon.eunit src="caggregation.eunit" package="sodmt.adhoc.eol">
+			<modelTasks>
+				<loadModel name="minimal"/>
+				<loadModel name="sequence"/>
+				<loadModel name="single-dipole"/>
+				<loadModel name="two-dipoles"/>
+			</modelTasks>
 		</epsilon.eunit>
 	</target>
 </project>

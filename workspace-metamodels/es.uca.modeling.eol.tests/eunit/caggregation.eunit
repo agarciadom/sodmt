@@ -15,7 +15,7 @@ operation mydata() {
   };
 }
 
-$with Sequence {"", elems.get(0)}
+$with Map {"" = elems.get(0)}
 @test
 operation aggregation() {
 	assertConstraintsEquals(elems.get(1), elems.get(2));
