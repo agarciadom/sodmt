@@ -13,6 +13,7 @@
 	<property name="common.fragment.location" value="${model.dir}/common.emf.fragment" />
 	<property name="emfatic.template.location" value="${model.dir}/${model.basename}.emf.template" />
 	<property name="emfatic.location" value="${model.dir}/${model.basename}.emf" />
+	<property name="ecore.location" value="${model.dir}/${model.basename}.ecore" />
 
 	<!-- MAIN BODY ######################################################## -->
 
@@ -38,6 +39,8 @@
 	<target name="default" depends="generateEmfatic">
 		<echo>Running Eugenia...</echo>
 		<epsilon.eugenia src="${emfatic.location}"/>
+		<echo>Registering metamodel permanently...</echo>
+		<epsilon.emf.register permanently="true" file="${ecore.location}"/>
 	</target>
 
 </project>

@@ -49,6 +49,9 @@
 
 		<echo>Running the last step of Eugenia</echo>
 		<epsilon.eugenia src="${emfatic.location}" firststep="gmfcode" laststep="gmfcode" />
+
+		<echo>Registering metamodel permanently</echo>
+		<epsilon.emf.register permanently="true" file="${ecore.location}"/>
 	</target>
 
 	<target name="clean" depends="init">
