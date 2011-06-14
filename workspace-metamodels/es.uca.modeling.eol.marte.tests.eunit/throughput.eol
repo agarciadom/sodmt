@@ -1,0 +1,43 @@
+import 'test-common.eol';
+import 'platform:/resource/es.uca.modeling.eol.marte/eol/throughput.eol';
+
+@test
+operation handleOrder() {
+  var throughputMap := computeThroughputs("Handle Order");
+  assertThroughput(throughputMap, "Evaluate Order", 1.0);
+  assertThroughput(throughputMap, "Create Invoice", 0.8);
+  assertThroughput(throughputMap, "Perform Payment", 0.8);
+  assertThroughput(throughputMap, "Ship Order", 0.8);
+  assertThroughput(throughputMap, "Close Order", 1.0);
+}
+
+@test
+operation seqWithReps() {
+  var throughputMap := computeThroughputs("SequenceWithRepetitions");
+  assertThroughput(throughputMap, "A", 1.0);
+  assertThroughput(throughputMap, "B", 1.0);
+  assertThroughput(throughputMap, "C", 1.0);
+}
+
+operation assertThroughput(throughputMap : Map, activityName : String, expectedThroughput : Real) {
+  assertEquals(activityName + " should handle 1 request/second", expectedThroughput, throughputMap.get(activityName), 10);
+}
+
+operation computeThroughputs(activityName : String) : Map {
+  assertTrue("Annotation was successful", annotateThroughput(getStartNode(activityName)));
+  return computeThroughputMap(activityName);
+}
+
+operation computeThroughputMap(activityName : String) : Map {
+  var activity  := getActivity(activityName);
+  var vslTool   := activity.getVSLTool();
+  var execNodes := activity.nodes.collect(s:ExecutableNode|s);
+  var throughputMap : Map;
+  for (execNode in execNodes) {
+    for (scenario in execNode.stereotypeApplications.collect(s:GaScenario|s)) {
+      var throughput := vslTool.getKeyvalMap(scenario.throughput.first).get("value").asReal();
+      throughputMap.put(execNode.name, throughput);
+    }
+  }
+  return throughputMap;
+}

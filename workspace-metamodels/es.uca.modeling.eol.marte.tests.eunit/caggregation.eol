@@ -1,0 +1,38 @@
+import 'test-common.eol';
+import 'platform:/resource/es.uca.modeling.eol.marte/eol/time_limits.eol';
+
+@test
+operation handleOrder() {
+  assertConstraintsEquals("Handle Order", 1, Sequence { pair(0.4, 3.0) });
+}
+
+@test
+operation sequenceWithRepetitions() {
+  assertConstraintsEquals("SequenceWithRepetitions", 1, Sequence { pair(0.0, 8.0) });
+}
+
+operation assertConstraintsEquals(activityName : String, globalLimit : Real, expected : Sequence) {
+  var finalNodes := getFinalNodes(activityName);
+  var result := aggregateConstraints(globalLimit, finalNodes);
+  assertConstraintsEquals("Activity " + activityName + " has the expected constraints", result, expected);
+}
+
+operation assertConstraintsEquals(msg : String, result : Sequence, expectedConstraints : Sequence) {
+  assertNotEquals(null, result);
+  assertNotEquals(null, result.get(0));
+
+  var inferredConstraints := result.get(1);
+  assertEquals(msg + ": the expected number of constraints has been inferred",
+    expectedConstraints.size, inferredConstraints.size);
+
+  for (expectedConstraint in expectedConstraints) {
+    var constraint := inferredConstraints.get(loopCount - 1);
+    assertEquals(msg + ": constraint #" + loopCount + " constraint has the expected length",
+      expectedConstraint.size, constraint.size);
+    for (expectedComponent in expectedConstraint) {
+      var component := constraint.get(loopCount - 1);
+      assertEquals(msg + ": constraint #" + loopCount + " component has a value similar to " + expectedComponent,
+        expectedComponent, component, 10);
+    }
+  }
+}

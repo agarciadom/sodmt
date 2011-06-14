@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>es.uca.modeling.eol.marte.tests.eunit</name>
+	<comment></comment>
+	<projects>
+		<project>es.uca.modeling.eol.marte</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>

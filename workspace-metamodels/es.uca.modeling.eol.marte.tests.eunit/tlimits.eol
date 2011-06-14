@@ -1,0 +1,67 @@
+import 'test-common.eol';
+import 'platform:/resource/es.uca.modeling.eol.marte/eol/time_limits.eol';
+
+@test
+operation handleOrderAnnotations() {
+  var inferredTL := inferTimeLimits("Handle Order", 1, true);
+  assertEquals("Evaluate Order should have 0.4s",  0.4, inferredTL.get("Evaluate Order"),  5);
+  assertEquals("Create Invoice should have 0.2s",  0.2, inferredTL.get("Create Invoice"),  5);
+  assertEquals("Perform Payment should have 0.2s", 0.2, inferredTL.get("Perform Payment"), 5);
+  assertEquals("Ship Order should have 0.4s",      0.4, inferredTL.get("Ship Order"),      5);
+  assertEquals("Close Order should have 0.2s",     0.2, inferredTL.get("Close Order"),     5);
+}
+
+@test
+operation seqWithRepsAnnotations() {
+  var inferredTL := inferTimeLimits("SequenceWithRepetitions", 1, true);
+  assertEquals("A should have 0.4s", 0.125, inferredTL.get("A"), 5);
+  assertEquals("B should have 0.2s", 0.25,  inferredTL.get("B"), 5);
+  assertEquals("C should have 0.2s", 0.125, inferredTL.get("C"), 5);
+}
+
+@test
+operation handleOrderSW() {
+  inferTimeLimits("Handle Order", 1, true);
+  var ctxParamMap := buildContextParameterMap();
+  var expectedParamMap := Map { "swEO" = 0.0, "swCI" = 0.2, "swPP" = 0.2, "swSO" = 0.4, "swCO" = 0.2 };
+  assertContextParamsEqual(expectedParamMap, ctxParamMap);
+}
+
+operation assertContextParamsEqual(expectedParamMap : Map, ctxParamMap : Map) {
+  assertEquals("There should be " + expectedParamMap.size + " context parameters", expectedParamMap.size, ctxParamMap.size);
+  for (param in expectedParamMap.keySet) {
+    var expected := expectedParamMap.get(param);
+    var obtained := ctxParamMap.get(param);
+    assertEquals("The " + param + " context parameter should be equivalent to " + expected, expected, obtained, 5);
+  }
+}
+
+operation buildContextParameterMap() : Map {
+  var vslTool := Activity.all.first.getVSLTool();
+  return Activity.all
+                  .collect(a | a.stereotypeApplications).flatten
+                  .collect(c : GaAnalysisContext | c.context).flatten
+                  .collect(c | vslTool.parseContextParameter(c))
+                  .aggregate(c | c.left, c.right);
+}
+
+operation buildTimeLimitMap() : Map {
+  var vslTool := Activity.all.first.getVSLTool();
+  var result : Map;
+  for (execNode in ExecutableNode.all) {
+    var kvCalc := execNode.stereotypeApplications
+                          .collect(c : GaScenario | c.hostDemand)
+                          .flatten
+                          .collect(h | vslTool.getKeyvalMap(h))
+                          .selectOne(m | m.get("source") = "calc");
+    if (kvCalc.isDefined()) {
+      result.put(execNode.name, kvCalc.get("value").asReal());
+    }
+  }
+  return result;
+}
+
+operation inferTimeLimits(activityName : String, globalLimit : Real, shouldSucceed : Boolean) {
+  assertEquals(shouldSucceed, distributeTime(globalLimit, getFinalNodes(activityName)));
+  return buildTimeLimitMap();
+}

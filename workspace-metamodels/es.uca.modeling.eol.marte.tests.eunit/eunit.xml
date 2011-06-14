@@ -1,0 +1,25 @@
+<project default="all-tests">
+
+	<target name="init">
+		<tstamp />
+	</target>
+
+	<target name="caggregation" depends="init">
+		<epsilon.eunit src="caggregation.eol" package="sodmt.marte" />
+	</target>
+
+	<target name="throughput" depends="init">
+		<epsilon.eunit src="throughput.eol" package="sodmt.marte" />
+	</target>
+
+	<target name="tlimits" depends="init">
+		<epsilon.eunit src="tlimits.eol" package="sodmt.marte" />
+	</target>
+
+	<target name="all-tests" depends="caggregation,throughput,tlimits" />
+
+	<target name="load-marte-model">
+		<epsilon.emf.loadModel name="UML" modelfile="models/model.uml" metamodeluri="http://www.eclipse.org/papyrus/MARTE/1" read="true" store="false" />
+	</target>
+
+</project>
