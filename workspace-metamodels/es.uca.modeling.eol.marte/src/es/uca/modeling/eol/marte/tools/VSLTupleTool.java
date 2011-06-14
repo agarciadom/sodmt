@@ -17,6 +17,8 @@ public class VSLTupleTool {
 	private final static Pattern REGEX_KEYVAL_SPLIT = Pattern.compile(" *= *");
 	private final static Pattern REGEX_TIMELIMIT_EXPR_SPLIT = Pattern.compile(" *[*+] *");
 	private final static Pattern REGEX_PARAMETER_SPLIT = Pattern.compile(" *[$:] *");
+	private final static Pattern REGEX_CONTEXT_SPLIT = Pattern.compile(" *[$:=] *");
+
 
 	public Map<String, String> getKeyvalMap(String tuple) {
 		if (tuple == null) {
@@ -61,5 +63,12 @@ public class VSLTupleTool {
 	public String getParameterName(String ctxParamElement) {
 		final String[] parts = REGEX_PARAMETER_SPLIT.split(ctxParamElement);
 		return parts[1];
+	}
+
+	public Pair<String, Double> parseContextParameter(String ctxParam) {
+		final String[] parts = REGEX_CONTEXT_SPLIT.split(ctxParam);
+		final String name = parts[1];
+		final Double value = Double.valueOf(parts[3]);
+		return new Pair<String, Double>(name, value);
 	}
 }
