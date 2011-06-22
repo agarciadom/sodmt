@@ -35,6 +35,9 @@ abstract class PerformanceAnnotation {
    attr Double concurrentUsers = 1;
    @gmf.label(label.readOnly="true")
    attr Double secsTimeLimit = 0;
+}
+
+abstract class LocalPerformanceAnnotation extends PerformanceAnnotation {
    @gmf.label(foo="bar")
    attr Double minimumTime = 1;
    @gmf.label(foo="bar")

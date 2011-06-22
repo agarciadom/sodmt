@@ -177,6 +177,9 @@ context PerformanceAnnotation {
     check : self.concurrentUsers > 0
     message : 'Transactions per sec must be a natural number'
   }
+}
+
+context LocalPerformanceAnnotation {
   constraint ValidMinTime {
     check : self.minimumTime >= 0
     message : 'The minimum time for a single activity must be greater or equal than 0'

@@ -21,6 +21,10 @@ serviceProcessMainBody(Sequence {
       'concurrentUsers = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
       'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'LocalPerformanceAnnotationMinimumTimeLabel',
+     'minTime = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'LocalPerformanceAnnotationWeightLabel',
+     'weight = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'CompositionControlFlowLabel', '[{0}] (p = {1})',
       NATIVE_METHOD, '{0} : {1,number}'},
     Sequence {'ActivityControlFlowLabel', '[{0}] (p = {1})',
@@ -59,3 +63,5 @@ setSymmetricLinkConstraintsForLinkMapping('ActivityObjectFlow',
   + ' or (self.oclIsKindOf(serviceComposition::ActivityObjectNode)'
     + ' and oppositeEnd.oclIsKindOf(serviceComposition::ActivityFlowNode))'
   + ' and self <> oppositeEnd');
+
+makeReadOnly('ActionPerformanceAnnotation', 'PerformanceAnnotationSecsTimeLimitLabel');

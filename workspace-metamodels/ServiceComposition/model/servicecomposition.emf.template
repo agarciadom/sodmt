@@ -43,7 +43,7 @@ class ActivityPerformanceAnnotation extends PerformanceAnnotation {
 
 @gmf.node(label.pattern="<<apc>>",
           tool.name="Action Performance Constraint")
-class ActionPerformanceAnnotation extends ActivityElement, PerformanceAnnotation {
+class ActionPerformanceAnnotation extends ActivityElement, LocalPerformanceAnnotation {
   ref ActivityAction#annotation action;
   @gmf.label(label.readOnly="true")
   attr boolean manuallyAdded = true;

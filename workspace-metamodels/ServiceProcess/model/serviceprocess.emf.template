@@ -23,7 +23,7 @@ abstract class ProcessFlowNode extends FlowNode {}
 
 @gmf.node(label.pattern="<<sapc>>",
           tool.name="Service Activity Performance Constraint")
-class ActivityPerformanceAnnotation extends PerformanceAnnotation {
+class ActivityPerformanceAnnotation extends LocalPerformanceAnnotation {
    ref ServiceActivity#annotation execNode;
    @gmf.label(label.readOnly="true")
    attr boolean manuallyAdded = true;

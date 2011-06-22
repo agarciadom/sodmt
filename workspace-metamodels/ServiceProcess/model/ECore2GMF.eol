@@ -21,10 +21,10 @@ serviceProcessMainBody(
     Sequence {'PerformanceAnnotationConcurrentUsersLabel',
      'concurrentUsers = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'PerformanceAnnotationSecsTimeLimitLabel',
-     'timeLimit = {0}'},
-    Sequence {'PerformanceAnnotationMinimumTimeLabel',
+     'timeLimit = {0}', NATIVE_METHOD, '{0,number}'},
+    Sequence {'LocalPerformanceAnnotationMinimumTimeLabel',
      'minTime = {0}', NATIVE_METHOD, '{0,number}'},
-    Sequence {'PerformanceAnnotationWeightLabel',
+    Sequence {'LocalPerformanceAnnotationWeightLabel',
      'weight = {0}', NATIVE_METHOD, '{0,number}'},
     Sequence {'ProcessControlFlowLabel', '[{0}] (p = {1})',
      NATIVE_METHOD, '{0} : {1,number}'}},
@@ -36,6 +36,9 @@ serviceProcessMainBody(
   Sequence { 'ProcessControlFlowLabelLabel' });
 
 setSymmetricLinkConstraintsForLinkMapping('ProcessControlFlow', 'self <> oppositeEnd');
+
+-- 'timeLimit' should be readonly in <<sppc>>
+makeReadOnly('ActivityPerformanceAnnotation', 'PerformanceAnnotationSecsTimeLimitLabel');
 
 -- Main body of the script -----------------------------------------
 operation serviceProcessMainBody(uselessLabels : Collection,
@@ -92,6 +95,12 @@ operation makeReadOnly(diagramLabelName : String) {
   for (labelMapping in findLabelMappingsByName(diagramLabelName)) {
     labelMapping.readOnly := true;
   }
+}
+
+operation makeReadOnly(metaModelClassName : String, diagramLabelName : String) {
+  var nodeMapping  := GmfMap!NodeMapping.all.selectOne(m|m.domainMetaElement.name == metaModelClassName);
+  var labelMapping := nodeMapping.labelMappings.selectOne(s|s.diagramLabel.name == diagramLabelName);
+  labelMapping.readOnly := true;
 }
 
 operation setFeatureLabelPatterns(diagramLabelName : String,

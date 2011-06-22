@@ -36,12 +36,6 @@
     <nodeLabelTraces
         visualID="5035"
         queryText="true"/>
-    <nodeLabelTraces
-        visualID="5038"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5040"
-        queryText="true"/>
   </nodeTraces>
   <nodeTraces
       visualID="2019"
