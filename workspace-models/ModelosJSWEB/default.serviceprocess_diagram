@@ -1,89 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_AOK0EKuuEd6U-qgc9EmNMw" type="Serviceprocess" name="default.serviceprocess_diagram" measurementUnit="Pixel">
-  <children xmi:type="notation:Node" xmi:id="_Be3m8KuuEd6U-qgc9EmNMw" type="2020">
-    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Be3m8auuEd6U-qgc9EmNMw"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_Be3m8quuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <styles xmi:type="notation:FillStyle" xmi:id="_Be3m86uuEd6U-qgc9EmNMw"/>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_c2qhYJywEeC_Xee2Etl24w" type="ServiceProcess" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_c3Di8JywEeC_Xee2Etl24w" type="2020">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_c3Di8ZywEeC_Xee2Etl24w"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_c3Di8pywEeC_Xee2Etl24w" fontName="Ubuntu"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_c3Di85ywEeC_Xee2Etl24w"/>
     <element xmi:type="sp:ProcessStart" href="default.serviceprocess#//@nodes.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Be3m9KuuEd6U-qgc9EmNMw" x="120" y="257"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3Di9JywEeC_Xee2Etl24w" x="139" y="472"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_CZHBoKuuEd6U-qgc9EmNMw" type="2019" fontName="Sans">
-    <children xmi:type="notation:DecorationNode" xmi:id="_CZHosKuuEd6U-qgc9EmNMw" type="5036"/>
+  <children xmi:type="notation:Shape" xmi:id="_c3Di9ZywEeC_Xee2Etl24w" type="2019" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3Di95ywEeC_Xee2Etl24w" type="5036"/>
     <element xmi:type="sp:ServiceActivity" href="default.serviceprocess#//@nodes.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CZHBoauuEd6U-qgc9EmNMw" x="287" y="252"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3Di9pywEeC_Xee2Etl24w" x="134" y="372"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_DsWyMKuuEd6U-qgc9EmNMw" type="2019" fontName="Sans">
-    <children xmi:type="notation:DecorationNode" xmi:id="_DsXZQKuuEd6U-qgc9EmNMw" type="5036"/>
+  <children xmi:type="notation:Shape" xmi:id="_c3Di-JywEeC_Xee2Etl24w" type="2019" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3EKAJywEeC_Xee2Etl24w" type="5036"/>
     <element xmi:type="sp:ServiceActivity" href="default.serviceprocess#//@nodes.2"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DsWyMauuEd6U-qgc9EmNMw" x="509" y="252"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3Di-ZywEeC_Xee2Etl24w" x="64" y="186"/>
   </children>
-  <children xmi:type="notation:Node" xmi:id="_EuHxMKuuEd6U-qgc9EmNMw" type="2021">
-    <styles xmi:type="notation:DescriptionStyle" xmi:id="_EuHxMauuEd6U-qgc9EmNMw"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_EuHxMquuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <styles xmi:type="notation:FillStyle" xmi:id="_EuHxM6uuEd6U-qgc9EmNMw"/>
+  <children xmi:type="notation:Node" xmi:id="_c3EKAZywEeC_Xee2Etl24w" type="2021">
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_c3EKApywEeC_Xee2Etl24w"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_c3EKA5ywEeC_Xee2Etl24w" fontName="Ubuntu"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_c3EKBJywEeC_Xee2Etl24w"/>
     <element xmi:type="sp:ProcessFinish" href="default.serviceprocess#//@nodes.3"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EuHxNKuuEd6U-qgc9EmNMw" x="713" y="257"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3EKBZywEeC_Xee2Etl24w"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_LptDQKuuEd6U-qgc9EmNMw" type="2018" fontName="Sans">
-    <children xmi:type="notation:DecorationNode" xmi:id="_LptqUKuuEd6U-qgc9EmNMw" type="5033"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_LptqUauuEd6U-qgc9EmNMw" type="5034"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_LptqUquuEd6U-qgc9EmNMw" type="5035"/>
-    <element xmi:type="sp:ProcessPerformanceAnnotation" href="default.serviceprocess#//@processPerformance"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LptDQauuEd6U-qgc9EmNMw" x="591" y="83"/>
-  </children>
-  <children xmi:type="notation:Shape" xmi:id="_OatLQKuuEd6U-qgc9EmNMw" type="2017" fontName="Sans">
-    <children xmi:type="notation:DecorationNode" xmi:id="_OatyUKuuEd6U-qgc9EmNMw" type="5029"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OatyUauuEd6U-qgc9EmNMw" type="5030"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OatyUquuEd6U-qgc9EmNMw" type="5031"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OauZYKuuEd6U-qgc9EmNMw" type="5032"/>
+  <children xmi:type="notation:Shape" xmi:id="_c3EKBpywEeC_Xee2Etl24w" type="2017" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3EKCJywEeC_Xee2Etl24w" type="5029"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3EKCZywEeC_Xee2Etl24w" type="5030"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3EKCpywEeC_Xee2Etl24w" type="5031"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExEJywEeC_Xee2Etl24w" type="5032"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExEZywEeC_Xee2Etl24w" type="5037"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExEpywEeC_Xee2Etl24w" type="5041"/>
     <element xmi:type="sp:ActivityPerformanceAnnotation" href="default.serviceprocess#//@activityPerformance.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OatLQauuEd6U-qgc9EmNMw" x="250" y="315"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3EKB5ywEeC_Xee2Etl24w" x="90"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_OavAcKuuEd6U-qgc9EmNMw" type="2017" fontName="Sans">
-    <children xmi:type="notation:DecorationNode" xmi:id="_OavngauuEd6U-qgc9EmNMw" type="5029"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OavngquuEd6U-qgc9EmNMw" type="5030"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OawOkKuuEd6U-qgc9EmNMw" type="5031"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_OawOkauuEd6U-qgc9EmNMw" type="5032"/>
+  <children xmi:type="notation:Shape" xmi:id="_c3ExE5ywEeC_Xee2Etl24w" type="2017" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExFZywEeC_Xee2Etl24w" type="5029"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExFpywEeC_Xee2Etl24w" type="5030"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExF5ywEeC_Xee2Etl24w" type="5031"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExGJywEeC_Xee2Etl24w" type="5032"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExGZywEeC_Xee2Etl24w" type="5037"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3ExGpywEeC_Xee2Etl24w" type="5041"/>
     <element xmi:type="sp:ActivityPerformanceAnnotation" href="default.serviceprocess#//@activityPerformance.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OavngKuuEd6U-qgc9EmNMw" x="485" y="315"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3ExFJywEeC_Xee2Etl24w" x="164" y="186"/>
   </children>
-  <styles xmi:type="notation:DiagramStyle" xmi:id="_AOK0EauuEd6U-qgc9EmNMw"/>
+  <children xmi:type="notation:Shape" xmi:id="_c3FYIJywEeC_Xee2Etl24w" type="2018" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3FYIpywEeC_Xee2Etl24w" type="5033"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3FYI5ywEeC_Xee2Etl24w" type="5034"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_c3FYJJywEeC_Xee2Etl24w" type="5035"/>
+    <element xmi:type="sp:ProcessPerformanceAnnotation" href="default.serviceprocess#//@processPerformance"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c3FYIZywEeC_Xee2Etl24w" x="385" y="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_c2qhYZywEeC_Xee2Etl24w"/>
   <element xmi:type="sp:ServiceProcess" href="default.serviceprocess#/"/>
-  <edges xmi:type="notation:Connector" xmi:id="_CZ8IEKuuEd6U-qgc9EmNMw" type="4005" source="_Be3m8KuuEd6U-qgc9EmNMw" target="_CZHBoKuuEd6U-qgc9EmNMw">
-    <children xmi:type="notation:DecorationNode" xmi:id="_CZ8vIKuuEd6U-qgc9EmNMw" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_CZ8vIauuEd6U-qgc9EmNMw" y="40"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_CZ8IEauuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <element xmi:type="sp:ProcessControlFlow" href="default.serviceprocess#//@edges.0"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CZ8IEquuEd6U-qgc9EmNMw" points="[-24, -30, 126, 165]$[-150, -195, 0, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CaKxkKuuEd6U-qgc9EmNMw" id="(0.7666666666666667,0.5333333333333333)"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_Ds0FMKuuEd6U-qgc9EmNMw" type="4005" source="_CZHBoKuuEd6U-qgc9EmNMw" target="_DsWyMKuuEd6U-qgc9EmNMw">
-    <children xmi:type="notation:DecorationNode" xmi:id="_Ds1TUKuuEd6U-qgc9EmNMw" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_Ds1TUauuEd6U-qgc9EmNMw" y="40"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_Ds0FMauuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <element xmi:type="sp:ProcessControlFlow" href="default.serviceprocess#//@edges.1"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ds0FMquuEd6U-qgc9EmNMw" points="[-40, -28, 287, 196]$[-327, -224, 0, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ds7Z8KuuEd6U-qgc9EmNMw" id="(0.825,0.475)"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_EuXBwKuuEd6U-qgc9EmNMw" type="4005" source="_DsWyMKuuEd6U-qgc9EmNMw" target="_EuHxMKuuEd6U-qgc9EmNMw">
-    <children xmi:type="notation:DecorationNode" xmi:id="_EuXBw6uuEd6U-qgc9EmNMw" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_EuXo0KuuEd6U-qgc9EmNMw" y="40"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_EuXBwauuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <element xmi:type="sp:ProcessControlFlow" href="default.serviceprocess#//@edges.2"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_EuXBwquuEd6U-qgc9EmNMw" points="[-40, -19, 509, 229]$[-549, -248, 0, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EubTMKuuEd6U-qgc9EmNMw" id="(0.8,0.475)"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_ObmjIKuuEd6U-qgc9EmNMw" type="4008" source="_CZHBoKuuEd6U-qgc9EmNMw" target="_OatLQKuuEd6U-qgc9EmNMw">
-    <styles xmi:type="notation:FontStyle" xmi:id="_ObnKMKuuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <element xsi:nil="true"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ObnKMauuEd6U-qgc9EmNMw" points="[-20, -18, 287, 254]$[-307, -272, 0, 0]"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_Obo_YKuuEd6U-qgc9EmNMw" type="4008" source="_DsWyMKuuEd6U-qgc9EmNMw" target="_OavAcKuuEd6U-qgc9EmNMw">
-    <styles xmi:type="notation:FontStyle" xmi:id="_Obo_YauuEd6U-qgc9EmNMw" fontName="Sans"/>
-    <element xsi:nil="true"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Obo_YquuEd6U-qgc9EmNMw" points="[-20, -11, 509, 261]$[-529, -272, 0, 0]"/>
-  </edges>
 </notation:Diagram>
