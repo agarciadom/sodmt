@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SODM+T MARTE support: Tests
-Bundle-SymbolicName: es.uca.modeling.eol.marte.tests
+Bundle-SymbolicName: es.uca.modeling.eol.marte.tests.junit
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Universidad de Cádiz
 Fragment-Host: es.uca.modeling.eol.marte;bundle-version="1.0.0"
