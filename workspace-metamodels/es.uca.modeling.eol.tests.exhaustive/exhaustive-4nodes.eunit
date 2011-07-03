@@ -1,0 +1,83 @@
+import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
+
+@data wA
+@data wB
+@data wC
+@data wD
+operation weights() {
+  return 1.to(5);
+}
+
+@model
+operation createModel() {
+  var sp = new ServiceProcess;
+
+  var start = new ProcessStart;
+  var decAB = new ProcessDecision;
+  var decCD = new ProcessDecision;
+  var mrgAB = new ProcessJoin;
+  var mrgCD = new ProcessJoin;
+  var fin = new ProcessFinish;
+  sp.nodes.add(start);
+  sp.nodes.add(decAB); sp.nodes.add(mrgAB);
+  sp.nodes.add(decCD); sp.nodes.add(mrgCD);
+  sp.nodes.add(fin);
+
+  var nodeA = createActivity(sp, "A", wA);
+  var nodeB = createActivity(sp, "B", wB);
+  var nodeC = createActivity(sp, "C", wC);
+  var nodeD = createActivity(sp, "D", wD);
+
+  createEdge(sp, start, decAB);
+  createDiamondEdges(sp, decAB, nodeA, nodeB, mrgAB);
+  createEdge(sp, mrgAB, decCD);
+  createDiamondEdges(sp, decCD, nodeC, nodeD, mrgCD);
+  createEdge(sp, mrgCD, fin);
+}
+
+@test
+operation correctResults() {
+  var globalLimit := 20;
+  var startNode   := getStartNode();
+  annotateTimeLimits(globalLimit, startNode);
+  for (path in getAllPathsFrom(startNode)) {
+    var total := path.collect(a:ServiceActivity | a.getTimeLimit()).sum;
+    assertTrue(total <= globalLimit);
+  }
+}
+
+operation getStartNode() {
+  return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
+}
+
+operation createActivity(sp : ServiceProcess, name : String, weight : Real) : ServiceActivity {
+  var node = new ServiceActivity;
+  node.name = name;
+  node.setWeight(weight);
+  sp.nodes.add(node);
+  return node;
+}
+
+operation createEdge(sp, source, target) : ProcessControlFlow {
+  ("Creating edge from " + source + " to " + target).println();
+  var edge = new ProcessControlFlow;
+  edge.source := source;
+  edge.target := target;
+  sp.edges.add(edge);
+  return edge;
+}
+
+operation createDiamondEdges(sp, decision, nodeA, nodeB, merge) : Sequence {
+  return Sequence {
+  	createEdge(sp, decision, nodeA),
+  	createEdge(sp, decision, nodeB),
+  	createEdge(sp, nodeA, merge),
+  	createEdge(sp, nodeB, merge)
+  };
+}
+
+operation ServiceActivity setWeight(weight : Real) {
+  self.createPerformanceAnnotation();
+  self.annotation.manuallyAdded := true;
+  self.annotation.weight := weight.asReal();
+}
