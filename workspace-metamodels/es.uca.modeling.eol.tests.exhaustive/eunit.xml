@@ -5,7 +5,7 @@
 			<modeltasks>
 				<epsilon.emf.loadModel name="Model"
 					metamodeluri="www.uca.es/modeling/serviceProcess"
-					modelfile="dummy.serviceprocess" read="false" store="true"/>
+					modelfile="dummy.serviceprocess" read="false" store="false"/>
 			</modeltasks>
 		</epsilon.eunit>
 	</target>

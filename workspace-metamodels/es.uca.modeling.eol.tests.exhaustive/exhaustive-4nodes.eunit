@@ -5,7 +5,15 @@ import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
 @data wC
 @data wD
 operation weights() {
-  return 1.to(5);
+  return 0.to(5);
+}
+
+@data mA
+@data mB
+@data mC
+@data mD
+operation minTimes() {
+  return Sequence {0, 30, 60};
 }
 
 @model
@@ -23,10 +31,10 @@ operation createModel() {
   sp.nodes.add(decCD); sp.nodes.add(mrgCD);
   sp.nodes.add(fin);
 
-  var nodeA = createActivity(sp, "A", wA);
-  var nodeB = createActivity(sp, "B", wB);
-  var nodeC = createActivity(sp, "C", wC);
-  var nodeD = createActivity(sp, "D", wD);
+  var nodeA = createActivity(sp, "A", wA, mA);
+  var nodeB = createActivity(sp, "B", wB, mB);
+  var nodeC = createActivity(sp, "C", wC, mC);
+  var nodeD = createActivity(sp, "D", wD, mD);
 
   createEdge(sp, start, decAB);
   createDiamondEdges(sp, decAB, nodeA, nodeB, mrgAB);
@@ -37,12 +45,15 @@ operation createModel() {
 
 @test
 operation correctResults() {
-  var globalLimit := 20;
+  var globalLimit := 200;
+  var epsilon     := 0.0001;
   var startNode   := getStartNode();
   annotateTimeLimits(globalLimit, startNode);
   for (path in getAllPathsFrom(startNode)) {
     var total := path.collect(a:ServiceActivity | a.getTimeLimit()).sum;
-    assertTrue(total <= globalLimit);
+    if (total > globalLimit + epsilon) {
+      fail("Total was " + total + ", which is greater than " + globalLimit);
+    }
   }
 }
 
@@ -50,16 +61,18 @@ operation getStartNode() {
   return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
 }
 
-operation createActivity(sp : ServiceProcess, name : String, weight : Real) : ServiceActivity {
+operation createActivity(sp : ServiceProcess, name : String, weight : Real, minLimit : Real) : ServiceActivity {
   var node = new ServiceActivity;
   node.name = name;
-  node.setWeight(weight);
+  node.createPerformanceAnnotation();
+  node.annotation.manuallyAdded := true;
+  node.annotation.weight      := weight.asReal();
+  node.annotation.minimumTime := minLimit.asReal();
   sp.nodes.add(node);
   return node;
 }
 
 operation createEdge(sp, source, target) : ProcessControlFlow {
-  ("Creating edge from " + source + " to " + target).println();
   var edge = new ProcessControlFlow;
   edge.source := source;
   edge.target := target;
@@ -74,10 +87,4 @@ operation createDiamondEdges(sp, decision, nodeA, nodeB, merge) : Sequence {
   	createEdge(sp, nodeA, merge),
   	createEdge(sp, nodeB, merge)
   };
-}
-
-operation ServiceActivity setWeight(weight : Real) {
-  self.createPerformanceAnnotation();
-  self.annotation.manuallyAdded := true;
-  self.annotation.weight := weight.asReal();
 }
