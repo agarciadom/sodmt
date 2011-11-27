@@ -8,7 +8,7 @@ public class Address {
 
 	private String country, state, city, street, location, postalCode;
 
-	Address() {
+	public Address() {
 		// used by Hibernate
 	}
 

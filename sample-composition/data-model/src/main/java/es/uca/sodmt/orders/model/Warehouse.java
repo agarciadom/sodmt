@@ -19,7 +19,7 @@ public class Warehouse {
 	private Address address;
 	private Set<StockItem> stockItems = new HashSet<StockItem>();
 
-	Warehouse() {
+	public Warehouse() {
 		// used by Hibernate
 	}
 

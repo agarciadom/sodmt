@@ -30,7 +30,7 @@ public class Invoice {
 	private Calendar timestamp;
 	private boolean paid;
 
-	Invoice() {
+	public Invoice() {
 		timestamp = Calendar.getInstance();
 		paid = false;
 	}

@@ -30,6 +30,15 @@ public class Shipment {
 	private Order order;
 	private Calendar timestamp;
 
+	public Shipment() {
+		timestamp = Calendar.getInstance();
+	}
+
+	public Shipment(Order order) {
+		this();
+		this.order = order;
+	}
+
 	// Shares the PK with Order
 	@Id
 	@GeneratedValue(generator = "foreign")

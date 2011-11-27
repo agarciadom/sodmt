@@ -21,8 +21,8 @@ public class StockItem implements Serializable {
 	private Article article;
 	private BigDecimal quantity;
 
-	StockItem() {
-		// used by Hibernate
+	public StockItem() {
+		// used by Hibernate and load() calls
 	}
 
 	public StockItem(Article article, BigDecimal qty) {

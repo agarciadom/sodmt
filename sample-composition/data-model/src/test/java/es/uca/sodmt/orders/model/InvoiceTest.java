@@ -26,6 +26,7 @@ public class InvoiceTest extends AbstractHibernateTest {
 			warehouse.addStockItem(new StockItem(article2, BigDecimal.valueOf(30)));
 
 			final Order order = new Order();
+			order.setWarehouse(warehouse);
 			order.addLine(new OrderLine(article1, BigDecimal.valueOf(qtyArticle1)));
 			order.addLine(new OrderLine(article2, BigDecimal.valueOf(qtyArticle2)));
 

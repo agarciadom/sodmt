@@ -17,10 +17,13 @@ public class OrderTest extends AbstractHibernateTest {
 		{
 			final Article article = new Article("cheezburger", BigDecimal.valueOf(20));
 			final Order order = new Order();
+			final Warehouse warehouse = new Warehouse(new Address("Spain", "Cádiz", "Cádiz", "C/Chile", "1", "23456"));
+			order.setWarehouse(warehouse);
 			order.addLine(new OrderLine(article, BigDecimal.valueOf(20)));
 
 			session.beginTransaction();
 			session.persist(article);
+			session.persist(warehouse);
 			session.persist(order);
 			session.getTransaction().commit();
 		}

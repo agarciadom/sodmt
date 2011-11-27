@@ -21,7 +21,7 @@ public class OrderLine implements Serializable {
 	private Article article;
 	private BigDecimal quantity, price;
 
-	OrderLine() {
+	public OrderLine() {
 		// used by Hibernate
 	}
 

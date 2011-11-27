@@ -17,7 +17,7 @@ public class Article {
 	private String name;
 	private BigDecimal price;
 
-	Article() {
+	public Article() {
 		// used by Hibernate
 	}
 

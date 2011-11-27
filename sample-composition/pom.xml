@@ -93,6 +93,7 @@
 
   <modules>
     <module>data-model</module>
+    <module>ws</module>
   </modules>
 
 </project>

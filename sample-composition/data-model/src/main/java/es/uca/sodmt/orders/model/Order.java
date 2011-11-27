@@ -1,7 +1,6 @@
 package es.uca.sodmt.orders.model;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,8 +27,11 @@ public class Order {
 	private Long id;
 	private Calendar timestamp;
 	private boolean open;
+
+	private Warehouse warehouse;
 	private Shipment shipment;
 	private Invoice invoice;
+
 	private Set<OrderLine> lines = new HashSet<OrderLine>();
 
 	public Order() {
@@ -65,6 +68,15 @@ public class Order {
 
 	public void setOpen(boolean open) {
 		this.open = open;
+	}
+
+	@ManyToOne(optional = false)
+	public Warehouse getWarehouse() {
+		return warehouse;
+	}
+
+	public void setWarehouse(Warehouse warehouse) {
+		this.warehouse = warehouse;
 	}
 
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
