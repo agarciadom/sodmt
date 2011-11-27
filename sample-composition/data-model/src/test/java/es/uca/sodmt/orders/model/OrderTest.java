@@ -1,0 +1,35 @@
+package es.uca.sodmt.orders.model;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.math.BigDecimal;
+
+import org.hibernate.Session;
+import org.junit.Test;
+
+public class OrderTest extends AbstractHibernateTest {
+
+	@Test
+	public void populateOrder() {
+		final Session session = sessionFactory.openSession();
+
+		{
+			final Article article = new Article("cheezburger", BigDecimal.valueOf(20));
+			final Order order = new Order();
+			order.addLine(new OrderLine(article, BigDecimal.valueOf(20)));
+
+			session.beginTransaction();
+			session.persist(article);
+			session.persist(order);
+			session.getTransaction().commit();
+		}
+
+		final Order order = (Order)session.createCriteria(Order.class).list().get(0);
+		final OrderLine firstLine = order.getLines().iterator().next();
+		assertNotNull(order.getTimestamp());
+		assertEquals(BigDecimal.valueOf(20), firstLine.getPrice());
+
+		session.close();
+	}
+}
