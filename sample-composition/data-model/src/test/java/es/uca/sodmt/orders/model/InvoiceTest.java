@@ -39,10 +39,6 @@ public class InvoiceTest extends AbstractHibernateTest {
 			session.persist(order);
 			session.persist(invoice);
 			session.getTransaction().commit();
-
-			System.out.println(warehouse);
-			System.out.println(order);
-			System.out.println(invoice);
 		}
 
 		final Invoice invoice = (Invoice)session.createCriteria(Invoice.class).list().get(0);

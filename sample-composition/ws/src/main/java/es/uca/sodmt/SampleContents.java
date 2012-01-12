@@ -1,8 +1,10 @@
 package es.uca.sodmt;
 
+
 import java.math.BigDecimal;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,14 +50,14 @@ public class SampleContents {
 			final Shipment shipment = new Shipment(order);
 			invoice.setPaid(true);
 
-			session.beginTransaction();
+			final Transaction transaction = session.beginTransaction();
 			session.persist(article1);
 			session.persist(article2);
 			session.persist(warehouse1);
 			session.persist(order);
 			session.persist(invoice);
 			session.persist(shipment);
-			session.getTransaction().commit();
+			transaction.commit();
 
 			LOGGER.info("Finished creating some sample contents for the in-memory H2 database");
 			LOGGER.info("Warehouse: " + warehouse1);

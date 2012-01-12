@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_vlvVQT1GEeGLMauHIEjlIw" name="model">
+  <packagedElement xmi:type="uml:Class" xmi:id="_x0K7sD1GEeGLMauHIEjlIw" name="Article">
+    <ownedAttribute xmi:id="_MoPFAD1QEeGr0d7Yz8C99Q" name="id" type="_3l73QD1MEeGr0d7Yz8C99Q" isOrdered="true"/>
+    <ownedAttribute xmi:id="_NXZ4ID1QEeGr0d7Yz8C99Q" name="name" type="_2MO5YD1MEeGr0d7Yz8C99Q" isOrdered="true" isUnique="false"/>
+    <ownedAttribute xmi:id="_OEFX8D1QEeGr0d7Yz8C99Q" name="price" visibility="public" type="_pi5IYD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_O5v0oD1QEeGr0d7Yz8C99Q" name="hidden" type="_2-5agD1OEeGr0d7Yz8C99Q" isUnique="false">
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_UvhVMD1QEeGr0d7Yz8C99Q"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0sAEcD1GEeGLMauHIEjlIw" name="OrderLine">
+    <ownedAttribute xmi:id="_8VN4kD1GEeGLMauHIEjlIw" name="article" type="_x0K7sD1GEeGLMauHIEjlIw" association="_8VPtwD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8VN4kT1GEeGLMauHIEjlIw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8VN4kj1GEeGLMauHIEjlIw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="__PdcID1GEeGLMauHIEjlIw" name="order" type="_1cgUUD1GEeGLMauHIEjlIw" association="__PeqQD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__PdcIT1GEeGLMauHIEjlIw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__PdcIj1GEeGLMauHIEjlIw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_03elkD1PEeGr0d7Yz8C99Q" name="qty" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_2sEvsD1PEeGr0d7Yz8C99Q" name="unitPrice" type="_pi5IYD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1cgUUD1GEeGLMauHIEjlIw" name="Order">
+    <ownedAttribute xmi:id="__n6YYD1GEeGLMauHIEjlIw" name="invoice" type="_2S5w0D1GEeGLMauHIEjlIw" association="__n9bsD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__n6YYT1GEeGLMauHIEjlIw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__n6YYj1GEeGLMauHIEjlIw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Ak36cT1IEeGIRZSaeGoipg" name="warehouse" type="_4qD1cD1GEeGLMauHIEjlIw" association="_Ak69wD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ak36cj1IEeGIRZSaeGoipg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ak36cz1IEeGIRZSaeGoipg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_A-TuID1IEeGIRZSaeGoipg" name="shipment" type="_2_mewD1GEeGLMauHIEjlIw" association="_A-U8QD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A-TuIT1IEeGIRZSaeGoipg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A-TuIj1IEeGIRZSaeGoipg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_isgC4D1PEeGr0d7Yz8C99Q" name="id" type="_3l73QD1MEeGr0d7Yz8C99Q" isOrdered="true"/>
+    <ownedAttribute xmi:id="_j0dwgD1PEeGr0d7Yz8C99Q" name="timestamp" type="_WjPAcD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_kiRRsD1PEeGr0d7Yz8C99Q" name="open" type="_2-5agD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2S5w0D1GEeGLMauHIEjlIw" name="Invoice">
+    <ownedAttribute xmi:id="_lU424D1OEeGr0d7Yz8C99Q" name="total" type="_pi5IYD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_mOxsQD1OEeGr0d7Yz8C99Q" name="timestamp" type="_WjPAcD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_nC8UID1OEeGr0d7Yz8C99Q" name="paid" type="_2-5agD1OEeGr0d7Yz8C99Q" isUnique="false">
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BfdZwD1QEeGr0d7Yz8C99Q"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2_mewD1GEeGLMauHIEjlIw" name="Shipment">
+    <ownedAttribute xmi:id="_UaXPcD1OEeGr0d7Yz8C99Q" name="timestamp" type="_WjPAcD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4DBqoD1GEeGLMauHIEjlIw" name="StockItem">
+    <ownedAttribute xmi:id="_CMBecD1IEeGIRZSaeGoipg" name="article" type="_x0K7sD1GEeGLMauHIEjlIw" association="_CMDToD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CMBecT1IEeGIRZSaeGoipg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CMBecj1IEeGIRZSaeGoipg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_sLiwMD1PEeGr0d7Yz8C99Q" name="qty" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4qD1cD1GEeGLMauHIEjlIw" name="Warehouse">
+    <ownedAttribute xmi:id="_FahawD1IEeGIRZSaeGoipg" name="id" type="_3l73QD1MEeGr0d7Yz8C99Q" isOrdered="true"/>
+    <ownedAttribute xmi:id="_Gt9YkD1IEeGIRZSaeGoipg" name="address" type="_IfRlMD1IEeGIRZSaeGoipg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8VPtwD1GEeGLMauHIEjlIw" name="orders" memberEnd="_8VPtwT1GEeGLMauHIEjlIw _8VN4kD1GEeGLMauHIEjlIw">
+    <ownedEnd xmi:id="_8VPtwT1GEeGLMauHIEjlIw" name="orderLine" type="_0sAEcD1GEeGLMauHIEjlIw" association="_8VPtwD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8VPtwj1GEeGLMauHIEjlIw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8VPtwz1GEeGLMauHIEjlIw"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="__PeqQD1GEeGLMauHIEjlIw" name="lines" memberEnd="__PeqQT1GEeGLMauHIEjlIw __PdcID1GEeGLMauHIEjlIw" navigableOwnedEnd="__PeqQT1GEeGLMauHIEjlIw">
+    <ownedEnd xmi:id="__PeqQT1GEeGLMauHIEjlIw" name="orderLine" type="_0sAEcD1GEeGLMauHIEjlIw" aggregation="composite" association="__PeqQD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__PeqQj1GEeGLMauHIEjlIw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__PeqQz1GEeGLMauHIEjlIw"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="__n9bsD1GEeGLMauHIEjlIw" name="paid with" memberEnd="__n9bsT1GEeGLMauHIEjlIw __n6YYD1GEeGLMauHIEjlIw" navigableOwnedEnd="__n9bsT1GEeGLMauHIEjlIw">
+    <ownedEnd xmi:id="__n9bsT1GEeGLMauHIEjlIw" name="order" type="_1cgUUD1GEeGLMauHIEjlIw" association="__n9bsD1GEeGLMauHIEjlIw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__n9bsj1GEeGLMauHIEjlIw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__n9bsz1GEeGLMauHIEjlIw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Ak69wD1IEeGIRZSaeGoipg" name="stock from" memberEnd="_Ak69wT1IEeGIRZSaeGoipg _Ak36cT1IEeGIRZSaeGoipg">
+    <ownedEnd xmi:id="_Ak69wT1IEeGIRZSaeGoipg" name="order" type="_1cgUUD1GEeGLMauHIEjlIw" association="_Ak69wD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ak69wj1IEeGIRZSaeGoipg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ak69wz1IEeGIRZSaeGoipg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A-U8QD1IEeGIRZSaeGoipg" name="shipped with" memberEnd="_A-U8QT1IEeGIRZSaeGoipg _A-TuID1IEeGIRZSaeGoipg" navigableOwnedEnd="_A-U8QT1IEeGIRZSaeGoipg">
+    <ownedEnd xmi:id="_A-U8QT1IEeGIRZSaeGoipg" name="order" type="_1cgUUD1GEeGLMauHIEjlIw" association="_A-U8QD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A-U8Qj1IEeGIRZSaeGoipg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A-VjUD1IEeGIRZSaeGoipg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_BdbTED1IEeGIRZSaeGoipg" name="stock" memberEnd="_BdbTET1IEeGIRZSaeGoipg _BdaE8D1IEeGIRZSaeGoipg" navigableOwnedEnd="_BdaE8D1IEeGIRZSaeGoipg _BdbTET1IEeGIRZSaeGoipg">
+    <ownedEnd xmi:id="_BdbTET1IEeGIRZSaeGoipg" name="warehouse" type="_4qD1cD1GEeGLMauHIEjlIw" association="_BdbTED1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BdbTEj1IEeGIRZSaeGoipg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BdbTEz1IEeGIRZSaeGoipg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_BdaE8D1IEeGIRZSaeGoipg" name="stockItem" type="_4DBqoD1GEeGLMauHIEjlIw" aggregation="composite" association="_BdbTED1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BdaE8T1IEeGIRZSaeGoipg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BdaE8j1IEeGIRZSaeGoipg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CMDToD1IEeGIRZSaeGoipg" name="stocks" memberEnd="_CMDToT1IEeGIRZSaeGoipg _CMBecD1IEeGIRZSaeGoipg">
+    <ownedEnd xmi:id="_CMDToT1IEeGIRZSaeGoipg" name="stockItem" type="_4DBqoD1GEeGLMauHIEjlIw" association="_CMDToD1IEeGIRZSaeGoipg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CMDToj1IEeGIRZSaeGoipg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CMDToz1IEeGIRZSaeGoipg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_IfRlMD1IEeGIRZSaeGoipg" name="Address">
+    <ownedAttribute xmi:id="_cZKj8D1MEeGr0d7Yz8C99Q" name="country" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_doEnED1MEeGr0d7Yz8C99Q" name="state" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_eOXyED1MEeGr0d7Yz8C99Q" name="city" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_e4KV8D1MEeGr0d7Yz8C99Q" name="street" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_fR32cD1MEeGr0d7Yz8C99Q" name="location" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_ghJF8D1MEeGr0d7Yz8C99Q" name="postalCode" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2MO5YD1MEeGr0d7Yz8C99Q" name="string"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3l73QD1MEeGr0d7Yz8C99Q" name="int"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_WjPAcD1OEeGr0d7Yz8C99Q" name="Date">
+    <ownedAttribute xmi:id="_YTgEMD1OEeGr0d7Yz8C99Q" name="year" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_Y_Pv4D1OEeGr0d7Yz8C99Q" name="month" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_Zpj4MD1OEeGr0d7Yz8C99Q" name="day" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_pi5IYD1OEeGr0d7Yz8C99Q" name="Money">
+    <ownedAttribute xmi:id="_szSiID1OEeGr0d7Yz8C99Q" name="qty" type="_q8mGQD1OEeGr0d7Yz8C99Q" isUnique="false"/>
+    <ownedAttribute xmi:id="_twACAD1OEeGr0d7Yz8C99Q" name="currency" type="_2MO5YD1MEeGr0d7Yz8C99Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_q8mGQD1OEeGr0d7Yz8C99Q" name="decimal"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2-5agD1OEeGr0d7Yz8C99Q" name="boolean"/>
+  <profileApplication xmi:id="_wK_IoD1MEeGr0d7Yz8C99Q">
+    <eAnnotations xmi:id="_wLKu0D1MEeGr0d7Yz8C99Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>
