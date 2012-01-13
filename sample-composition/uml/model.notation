@@ -929,6 +929,9 @@
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_E2FEaj1dEeGdF8-ZrGdK1A" type="7007">
         <children xmi:type="notation:Shape" xmi:id="_GGI-ED1dEeGdF8-ZrGdK1A" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xQAE8D3FEeG-xdrTjZ82Xg" source="CustomAppearance_Annotation">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xQAsAD3FEeG-xdrTjZ82Xg" key="CustomAppearance_MaskValue" value="2826"/>
+          </eAnnotations>
           <element xmi:type="uml:Operation" href="model.uml#_GGFTsD1dEeGdF8-ZrGdK1A"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_GGI-ET1dEeGdF8-ZrGdK1A"/>
         </children>

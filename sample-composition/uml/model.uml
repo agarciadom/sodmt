@@ -155,8 +155,9 @@
     <packagedElement xmi:type="uml:Dependency" xmi:id="_3NbdYD1cEeGdF8-ZrGdK1A" name="Dependency1" supplier="_2_mewD1GEeGLMauHIEjlIw" client="_mFfFAD1cEeGdF8-ZrGdK1A"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_4JA74D1cEeGdF8-ZrGdK1A" name="Dependency2" supplier="_1cgUUD1GEeGLMauHIEjlIw" client="_mFfFAD1cEeGdF8-ZrGdK1A"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_E16sUD1dEeGdF8-ZrGdK1A" name="InvoiceService" clientDependency="_iFXpED1dEeGdF8-ZrGdK1A _kmJjwD1dEeGdF8-ZrGdK1A">
-      <ownedOperation xmi:id="_GGFTsD1dEeGdF8-ZrGdK1A" name="add">
-        <ownedParameter xmi:id="_LWLUUD1dEeGdF8-ZrGdK1A" name="invoice" type="_2S5w0D1GEeGLMauHIEjlIw" isUnique="false"/>
+      <ownedOperation xmi:id="_GGFTsD1dEeGdF8-ZrGdK1A" name="generate">
+        <ownedParameter xmi:id="_oKrfMD3FEeG-xdrTjZ82Xg" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q"/>
+        <ownedParameter xmi:id="_vga9sD3FEeG-xdrTjZ82Xg" name="result" type="_2S5w0D1GEeGLMauHIEjlIw" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:id="_RjHXsD1dEeGdF8-ZrGdK1A" name="isPaid">
         <ownedParameter xmi:id="_WSiUMD1dEeGdF8-ZrGdK1A" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
