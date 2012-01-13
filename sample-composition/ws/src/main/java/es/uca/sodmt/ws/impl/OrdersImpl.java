@@ -1,4 +1,4 @@
-package es.uca.sodmt.ws;
+package es.uca.sodmt.ws.impl;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -21,6 +21,7 @@ import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.orders.model.OrderLine;
 import es.uca.sodmt.orders.model.StockItem;
 import es.uca.sodmt.orders.model.Warehouse;
+import es.uca.sodmt.ws.Orders;
 import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
 import es.uca.sodmt.ws.faults.UnknownArticle;
 import es.uca.sodmt.ws.faults.UnknownOrder;

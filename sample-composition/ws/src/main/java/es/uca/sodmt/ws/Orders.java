@@ -1,5 +1,6 @@
 package es.uca.sodmt.ws;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
@@ -14,12 +15,18 @@ import es.uca.sodmt.ws.responses.OrderQueryResponse;
 @WebService
 public interface Orders {
 
-	public OrderEvaluateResponse evaluate(OrderEvaluateRequest o) throws UnknownArticle;
+	OrderEvaluateResponse evaluate(
+		@WebParam(name="newOrder") OrderEvaluateRequest o)
+			throws UnknownArticle;
 
-	public OrderCloseResponse close(long orderID) throws UnknownOrder, OrderAlreadyClosed;
+	OrderCloseResponse close(
+		@WebParam(name="orderID") long orderID)
+			throws UnknownOrder, OrderAlreadyClosed;
 
-	public OrderListResponse  list();
+	OrderListResponse  list();
 
-	public OrderQueryResponse query(long orderID) throws UnknownOrder;
+	OrderQueryResponse query(
+		@WebParam(name="orderID") long orderID)
+			throws UnknownOrder;
 
 }

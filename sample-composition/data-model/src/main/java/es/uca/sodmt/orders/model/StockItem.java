@@ -26,6 +26,7 @@ public class StockItem implements Serializable {
 	}
 
 	public StockItem(Article article, BigDecimal qty) {
+		// note: warehouse is set by Warehouse#addStockItem
 		this.article = article;
 		this.quantity = qty;
 	}

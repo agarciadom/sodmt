@@ -31,7 +31,15 @@
 		WEB SERVICE ENDPOINTS 
 	-->
 	<jaxws:endpoint id="orders"
-		implementor="es.uca.sodmt.ws.OrdersImpl"
+		implementor="es.uca.sodmt.ws.impl.OrdersImpl"
 		address="/orders" />
+
+	<jaxws:endpoint id="warehouses"
+		implementor="es.uca.sodmt.ws.impl.WarehousesImpl"
+		address="/warehouses" />
+
+	<jaxws:endpoint id="invoices"
+		implementor="es.uca.sodmt.ws.impl.InvoicesImpl"
+		address="/invoices" />
 
 </beans>

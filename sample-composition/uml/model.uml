@@ -166,6 +166,10 @@
       <ownedOperation xmi:id="_bFvkgD1dEeGdF8-ZrGdK1A" name="pay">
         <ownedParameter xmi:id="_e8w5YD1dEeGdF8-ZrGdK1A" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:id="_zhk4cD3lEeGJV8Q8QNdEnw" name="query">
+        <ownedParameter xmi:id="_PrEaQD4IEeGJV8Q8QNdEnw" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q" effect="read"/>
+        <ownedParameter xmi:id="_VPH4sD4IEeGJV8Q8QNdEnw" name="result" type="_2S5w0D1GEeGLMauHIEjlIw" isUnique="false" direction="return" effect="read"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_iFXpED1dEeGdF8-ZrGdK1A" name="Dependency3" supplier="_2S5w0D1GEeGLMauHIEjlIw" client="_E16sUD1dEeGdF8-ZrGdK1A"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_kmJjwD1dEeGdF8-ZrGdK1A" name="Dependency4" supplier="_1cgUUD1GEeGLMauHIEjlIw" client="_E16sUD1dEeGdF8-ZrGdK1A"/>
@@ -176,13 +180,23 @@
       <ownedOperation xmi:id="_J5KuUD1eEeGdF8-ZrGdK1A" name="list">
         <ownedParameter xmi:id="_aKbWUD1eEeGdF8-ZrGdK1A" name="results" type="_4qD1cD1GEeGLMauHIEjlIw" direction="return" effect="read"/>
       </ownedOperation>
-      <ownedOperation xmi:id="_KoFp0D1eEeGdF8-ZrGdK1A" name="addStock">
+      <ownedOperation xmi:id="_KoFp0D1eEeGdF8-ZrGdK1A" name="changeStock">
+        <ownedParameter xmi:id="_w9pjUD4KEeGJV8Q8QNdEnw" name="warehouseID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
         <ownedParameter xmi:id="_eHUCoD1eEeGdF8-ZrGdK1A" name="articleID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
         <ownedParameter xmi:id="_gIOxgD1eEeGdF8-ZrGdK1A" name="qty" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
       </ownedOperation>
-      <ownedOperation xmi:id="_M4ipgD1eEeGdF8-ZrGdK1A" name="removeStock">
-        <ownedParameter xmi:id="_iuCWID1eEeGdF8-ZrGdK1A" name="articleID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
-        <ownedParameter xmi:id="_lNL5ID1eEeGdF8-ZrGdK1A" name="qty" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
+      <ownedOperation xmi:id="_6VmxMD4KEeGJV8Q8QNdEnw" name="queryStock">
+        <ownedParameter xmi:id="_AhGDED4LEeGJV8Q8QNdEnw" name="warehouseID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
+        <ownedParameter xmi:id="_C1tKAD4LEeGJV8Q8QNdEnw" name="articleID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
+        <ownedParameter xmi:id="_FKBWAD4LEeGJV8Q8QNdEnw" name="result" type="_3l73QD1MEeGr0d7Yz8C99Q" direction="return" effect="read"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_8B1pgD4KEeGJV8Q8QNdEnw" name="listStock">
+        <ownedParameter xmi:id="_Jimf0D4LEeGJV8Q8QNdEnw" name="warehouseID" type="_3l73QD1MEeGr0d7Yz8C99Q" effect="read"/>
+        <ownedParameter xmi:id="_NHVx4D4LEeGJV8Q8QNdEnw" name="results" type="_4DBqoD1GEeGLMauHIEjlIw" direction="return" effect="read"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_o7OvkD4LEeGJV8Q8QNdEnw" name="query">
+        <ownedParameter xmi:id="_tlOZgD4LEeGJV8Q8QNdEnw" name="warehouseID" type="_3l73QD1MEeGr0d7Yz8C99Q" effect="read"/>
+        <ownedParameter xmi:id="_w552UD4LEeGJV8Q8QNdEnw" name="result" type="_4qD1cD1GEeGLMauHIEjlIw" isUnique="false" direction="return" effect="read"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_psumkD1eEeGdF8-ZrGdK1A" name="Dependency5" supplier="_4qD1cD1GEeGLMauHIEjlIw" client="_IHANID1eEeGdF8-ZrGdK1A"/>
