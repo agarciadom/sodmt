@@ -23,10 +23,6 @@
 		factory-method="buildSessionFactory"
 		destroy-method="close" />
 
-	<bean name="sampleContents"	class="es.uca.sodmt.SampleContents" init-method="createContents">
-		<property name="sessionFactory" ref="hibernateSessionFactory"/>
-	</bean>
-
 	<!--
 		WEB SERVICE ENDPOINTS 
 	-->

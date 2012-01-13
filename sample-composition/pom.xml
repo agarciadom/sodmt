@@ -57,6 +57,13 @@
 	<version>${cxf.version}</version>
       </dependency>
 
+      <!-- Jetty -->
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-webapp</artifactId>
+	<version>7.1.5.v20100705</version>
+      </dependency>
+
       <!-- JUNIT -->
       <dependency>
         <groupId>junit</groupId>

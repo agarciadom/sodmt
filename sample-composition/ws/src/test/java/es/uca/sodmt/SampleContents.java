@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,14 +22,10 @@ import es.uca.sodmt.orders.model.Warehouse;
 public class SampleContents {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SampleContents.class);
-	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory factory) {
-		this.sessionFactory = factory;
-	}
  
 	public void createContents() {
-		final Session session = sessionFactory.openSession();
+		final SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		final Session session = factory.openSession();
 
 		try {
 			final Article article1 = new Article("cheezburger", BigDecimal.valueOf(3));
@@ -64,6 +61,7 @@ public class SampleContents {
 			LOGGER.info("Order: " + order);
 		} finally {
 			session.close();
+			factory.close();
 		}
 	}
 }
