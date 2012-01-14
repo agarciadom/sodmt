@@ -22,29 +22,35 @@ public class InvoicesImpl implements Invoices {
 	@Override
 	public InvoiceGenerateResponse generate(long orderID) throws UnknownOrder {
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
+
 		final Order order = getOrder(orderID, session);
 		Invoice newInvoice = order.getInvoice();
-		if (newInvoice != null) {
+		if (newInvoice == null) {
 			newInvoice = new Invoice(order);
-
-			final Transaction t = session.beginTransaction();
 			session.save(newInvoice);
-			t.commit();
 		}
 
-		return new InvoiceGenerateResponse(orderID, newInvoice);
+		InvoiceGenerateResponse response = new InvoiceGenerateResponse(orderID, newInvoice);
+		t.commit();
+		return response;
 	}
 
 	@Override
 	public boolean isPaid(long orderID) throws UnknownOrder, MissingInvoice {
 		final Session session = getSession();
-		return getInvoice(orderID, session).isPaid();
+		final Transaction t = session.beginTransaction();
+		boolean response = getInvoice(orderID, session).isPaid();
+		t.commit();
+		return response;
 	}
 
 	@Override
 	public void pay(long orderID) throws UnknownOrder, MissingInvoice {
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
 		getInvoice(orderID, session).setPaid(true);
+		t.commit();
 	}
 
 	@Override
@@ -52,8 +58,11 @@ public class InvoicesImpl implements Invoices {
 			MissingInvoice
 	{
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
 		final Invoice invoice = getInvoice(orderID, session);
-		return new InvoiceQueryResponse(orderID, invoice);
+		InvoiceQueryResponse response = new InvoiceQueryResponse(orderID, invoice);
+		t.commit();
+		return response;
 	}
 
 	private Invoice getInvoice(long orderID, final Session session)
