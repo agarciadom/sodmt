@@ -4,7 +4,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import es.uca.sodmt.ws.faults.MissingInvoice;
-import es.uca.sodmt.ws.faults.UnknownOrder;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.responses.InvoiceGenerateResponse;
 import es.uca.sodmt.ws.responses.InvoiceQueryResponse;
 
@@ -13,18 +13,18 @@ public interface Invoices {
 
 	InvoiceGenerateResponse generate(
 		@WebParam(name="orderID") long orderID)
-			throws UnknownOrder;
+			throws MissingOrder;
 
 	InvoiceQueryResponse query(
 		@WebParam(name="orderID") long orderID)
-			throws UnknownOrder, MissingInvoice;
+			throws MissingOrder, MissingInvoice;
 
 	boolean isPaid(
 		@WebParam(name="orderID") long orderID)
-			throws UnknownOrder, MissingInvoice;
+			throws MissingOrder, MissingInvoice;
 
 	void pay(
 		@WebParam(name="orderID") long orderID)
-			throws UnknownOrder, MissingInvoice;
+			throws MissingOrder, MissingInvoice;
 
 }

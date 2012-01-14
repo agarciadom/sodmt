@@ -1,16 +1,12 @@
 package es.uca.sodmt.ws.impl;
 
 import java.math.BigDecimal;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.jws.WebService;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ContextLoader;
 
 import es.uca.sodmt.orders.model.Article;
 import es.uca.sodmt.orders.model.StockItem;
@@ -28,7 +24,7 @@ import es.uca.sodmt.ws.responses.WarehouseListResponse;
 import es.uca.sodmt.ws.responses.WarehouseQueryResponse;
 
 @WebService(endpointInterface="es.uca.sodmt.ws.Warehouses")
-public class WarehousesImpl implements Warehouses {
+public class WarehousesImpl extends AbstractServiceImpl implements Warehouses {
 
 	@Override
 	public WarehouseAddResponse add(WarehouseAddRequest r) {
@@ -126,51 +122,6 @@ public class WarehousesImpl implements Warehouses {
 		t.commit();
 
 		return response;
-	}
-
-	private StockItem getStockItem(final Warehouse warehouse,
-			final Article article, final Session session) {
-		@SuppressWarnings("unchecked")
-		final Iterator<StockItem> items1 = (Iterator<StockItem>) session.createQuery(
-				"from StockItem si where si.warehouse = ? and si.article = ?")
-			.setParameter(0, warehouse)
-			.setParameter(1, article)
-			.iterate();
-		final Iterator<StockItem> items = items1;
-	
-		// Grab the existing stock item or create a new one
-		StockItem sItem;
-		if (items.hasNext()) {
-			sItem = items.next();
-		}
-		else {
-			sItem = new StockItem(article, BigDecimal.ZERO);
-		}
-		return sItem;
-	}
-
-	private Article getArticle(long articleID, final Session session)
-			throws MissingArticle {
-		final Article article = (Article)session.get(Article.class, articleID);
-		if (article == null) {
-			throw new MissingArticle(articleID);
-		}
-		return article;
-	}
-
-	private Warehouse getWarehouse(long warehouseID, final Session session)
-			throws MissingWarehouse {
-		final Warehouse warehouse = (Warehouse)session.get(Warehouse.class, warehouseID);
-		if (warehouse == null) {
-			throw new MissingWarehouse(warehouseID);
-		}
-		return warehouse;
-	}
-
-	private synchronized Session getSession() {
-		final ApplicationContext appContext = ContextLoader.getCurrentWebApplicationContext();
-		final SessionFactory factory = (SessionFactory)appContext.getBean("hibernateSessionFactory");
-		return factory.getCurrentSession();
 	}
 
 }

@@ -38,4 +38,8 @@
 		implementor="es.uca.sodmt.ws.impl.InvoicesImpl"
 		address="/invoices" />
 
+	<jaxws:endpoint id="shipments"
+		implementor="es.uca.sodmt.ws.impl.ShipmentsImpl"
+		address="/shipments" />
+
 </beans>

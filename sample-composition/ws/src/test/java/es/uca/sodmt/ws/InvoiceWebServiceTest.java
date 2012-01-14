@@ -8,13 +8,13 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 import es.uca.sodmt.ws.faults.MissingInvoice;
-import es.uca.sodmt.ws.faults.UnknownOrder;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.responses.InvoiceGenerateResponse;
 
 public class InvoiceWebServiceTest extends WebServiceTest {
 
 	@Test
-	public void doPayment() throws UnknownOrder, MissingInvoice {
+	public void doPayment() throws MissingOrder, MissingInvoice {
 		final long orderID = getDBContents().getOpenOrder().getId();
 
 		InvoiceGenerateResponse response = invoices.generate(orderID);

@@ -3,24 +3,21 @@ package es.uca.sodmt.ws.impl;
 import javax.jws.WebService;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ContextLoader;
 
 import es.uca.sodmt.orders.model.Invoice;
 import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.ws.Invoices;
 import es.uca.sodmt.ws.faults.MissingInvoice;
-import es.uca.sodmt.ws.faults.UnknownOrder;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.responses.InvoiceGenerateResponse;
 import es.uca.sodmt.ws.responses.InvoiceQueryResponse;
 
 @WebService(endpointInterface="es.uca.sodmt.ws.Invoices")
-public class InvoicesImpl implements Invoices {
+public class InvoicesImpl extends AbstractServiceImpl implements Invoices {
 
 	@Override
-	public InvoiceGenerateResponse generate(long orderID) throws UnknownOrder {
+	public InvoiceGenerateResponse generate(long orderID) throws MissingOrder {
 		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 
@@ -37,7 +34,7 @@ public class InvoicesImpl implements Invoices {
 	}
 
 	@Override
-	public boolean isPaid(long orderID) throws UnknownOrder, MissingInvoice {
+	public boolean isPaid(long orderID) throws MissingOrder, MissingInvoice {
 		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 		boolean response = getInvoice(orderID, session).isPaid();
@@ -46,7 +43,7 @@ public class InvoicesImpl implements Invoices {
 	}
 
 	@Override
-	public void pay(long orderID) throws UnknownOrder, MissingInvoice {
+	public void pay(long orderID) throws MissingOrder, MissingInvoice {
 		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 		getInvoice(orderID, session).setPaid(true);
@@ -54,7 +51,7 @@ public class InvoicesImpl implements Invoices {
 	}
 
 	@Override
-	public InvoiceQueryResponse query(long orderID) throws UnknownOrder,
+	public InvoiceQueryResponse query(long orderID) throws MissingOrder,
 			MissingInvoice
 	{
 		final Session session = getSession();
@@ -65,27 +62,4 @@ public class InvoicesImpl implements Invoices {
 		return response;
 	}
 
-	private Invoice getInvoice(long orderID, final Session session)
-			throws UnknownOrder, MissingInvoice {
-		final Order order = getOrder(orderID, session);
-		if (order.getInvoice() == null) {
-			throw new MissingInvoice(orderID);
-		}
-		return order.getInvoice();
-	}
-
-	private Order getOrder(long orderID, final Session session)
-			throws UnknownOrder {
-		final Order order = (Order) session.get(Order.class, orderID);
-		if (order == null) {
-			throw new UnknownOrder(orderID);
-		}
-		return order;
-	}
-
-	private synchronized Session getSession() {
-		final ApplicationContext appContext = ContextLoader.getCurrentWebApplicationContext();
-		final SessionFactory factory = (SessionFactory)appContext.getBean("hibernateSessionFactory");
-		return factory.getCurrentSession();
-	}
 }

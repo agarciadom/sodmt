@@ -12,11 +12,12 @@ import org.junit.Before;
 
 import es.uca.sodmt.SampleContents;
 
-public class WebServiceTest {
+public abstract class WebServiceTest {
 
 	protected Orders orders;
 	protected Warehouses warehouses;
 	protected Invoices invoices;
+	protected Shipments shipments;
 
 	private static int port = 9000;
 
@@ -41,6 +42,7 @@ public class WebServiceTest {
 		orders = createProxy(Orders.class, "/orders");
 		warehouses = createProxy(Warehouses.class, "/warehouses");
 		invoices = createProxy(Invoices.class, "/invoices");
+		shipments = createProxy(Shipments.class, "/shipments");
 	}
 
 	@After

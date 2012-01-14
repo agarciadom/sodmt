@@ -9,12 +9,9 @@ import java.util.Set;
 import javax.jws.WebService;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ContextLoader;
 
 import es.uca.sodmt.orders.model.Article;
 import es.uca.sodmt.orders.model.Order;
@@ -22,9 +19,9 @@ import es.uca.sodmt.orders.model.OrderLine;
 import es.uca.sodmt.orders.model.StockItem;
 import es.uca.sodmt.orders.model.Warehouse;
 import es.uca.sodmt.ws.Orders;
+import es.uca.sodmt.ws.faults.MissingArticle;
 import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
-import es.uca.sodmt.ws.faults.UnknownArticle;
-import es.uca.sodmt.ws.faults.UnknownOrder;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
 import es.uca.sodmt.ws.responses.OrderCloseResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
@@ -33,13 +30,13 @@ import es.uca.sodmt.ws.responses.OrderListResponse;
 import es.uca.sodmt.ws.responses.OrderQueryResponse;
 
 @WebService(endpointInterface="es.uca.sodmt.ws.Orders")
-public class OrdersImpl implements Orders {
+public class OrdersImpl extends AbstractServiceImpl implements Orders {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrdersImpl.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public OrderEvaluateResponse evaluate(OrderEvaluateRequest o) throws UnknownArticle {
+	public OrderEvaluateResponse evaluate(OrderEvaluateRequest o) throws MissingArticle {
 		final Session session = getSession();
 		OrderEvaluateResponse.OrderEvaluateResult result = OrderEvaluateResult.ACCEPTED;
 
@@ -64,7 +61,7 @@ public class OrdersImpl implements Orders {
 				final Article article = (Article) session.get(Article.class,
 						articleID);
 				if (article == null) {
-					throw new UnknownArticle(articleID);
+					throw new MissingArticle(articleID);
 				}
 
 				// Find all the warehouse IDs that have the required quantity of
@@ -113,13 +110,13 @@ public class OrdersImpl implements Orders {
 	}
 
 	@Override
-	public OrderCloseResponse close(long orderID) throws UnknownOrder, OrderAlreadyClosed {
+	public OrderCloseResponse close(long orderID) throws MissingOrder, OrderAlreadyClosed {
 		final Session session = getSession();
 		session.beginTransaction();
 		try {
 			final Order order = (Order) session.get(Order.class, orderID);
 			if (order == null) {
-				throw new UnknownOrder(orderID);
+				throw new MissingOrder(orderID);
 			} else if (!order.isOpen()) {
 				throw new OrderAlreadyClosed(orderID);
 			} else {
@@ -150,13 +147,13 @@ public class OrdersImpl implements Orders {
 	}
 
 	@Override
-	public OrderQueryResponse query(long orderID) throws UnknownOrder {
+	public OrderQueryResponse query(long orderID) throws MissingOrder {
 		final Session session = getSession();
 		session.beginTransaction();
 		try {
 			final Order order = (Order) session.get(Order.class, Long.valueOf(orderID));
 			if (order == null) {
-				throw new UnknownOrder(orderID);
+				throw new MissingOrder(orderID);
 			}
 			return new OrderQueryResponse(order);
 		} finally {
@@ -170,12 +167,6 @@ public class OrdersImpl implements Orders {
 		queryStockItem.setArticle(article);
 		queryStockItem.setWarehouse(warehouse);
 		return queryStockItem;
-	}
-
-	private synchronized Session getSession() {
-		final ApplicationContext appContext = ContextLoader.getCurrentWebApplicationContext();
-		final SessionFactory factory = (SessionFactory)appContext.getBean("hibernateSessionFactory");
-		return factory.getCurrentSession();
 	}
 
 }

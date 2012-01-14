@@ -10,9 +10,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import es.uca.sodmt.ws.faults.MissingArticle;
 import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
-import es.uca.sodmt.ws.faults.UnknownArticle;
-import es.uca.sodmt.ws.faults.UnknownOrder;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse.OrderEvaluateResult;
@@ -29,7 +29,7 @@ public class OrderWebServiceTest extends WebServiceTest {
 	}
 
 	@Test
-	public void queryOrders() throws UnknownOrder {
+	public void queryOrders() throws MissingOrder {
 		final OrderQueryResponse orderInfo = orders.query(getDBContents().getClosedOrder().getId());
 		final Set<SimpleOrderLine> lines = orderInfo.getLines();
 
@@ -39,7 +39,7 @@ public class OrderWebServiceTest extends WebServiceTest {
 	}
 
 	@Test
-	public void evaluateOrder() throws UnknownOrder, UnknownArticle {
+	public void evaluateOrder() throws MissingOrder, MissingArticle {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
 		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
 		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(10d));
@@ -53,7 +53,7 @@ public class OrderWebServiceTest extends WebServiceTest {
 	}
 
 	@Test
-	public void closeOrder() throws UnknownOrder, OrderAlreadyClosed {
+	public void closeOrder() throws MissingOrder, OrderAlreadyClosed {
 		final long firstOpenOrderID = getDBContents().getOpenOrder().getId();
 		orders.close(firstOpenOrderID);
 		assertTrue(!orders.query(firstOpenOrderID).getOpen());
