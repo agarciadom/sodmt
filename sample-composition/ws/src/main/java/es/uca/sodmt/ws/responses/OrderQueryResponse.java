@@ -1,8 +1,8 @@
 package es.uca.sodmt.ws.responses;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.orders.model.OrderLine;
@@ -13,7 +13,7 @@ import es.uca.sodmt.orders.model.OrderLine;
 public class OrderQueryResponse {
 
 	private long orderId;
-	private List<SimpleOrderLine> lines = new ArrayList<SimpleOrderLine>();
+	private Set<SimpleOrderLine> lines = new HashSet<SimpleOrderLine>();
 	private boolean open;
 	private Calendar timestamp;
 
@@ -39,10 +39,6 @@ public class OrderQueryResponse {
 		this.orderId = orderId;
 	}
 
-	public List<SimpleOrderLine> orderLines() {
-		return lines;
-	}
-
 	public boolean getOpen() {
 		return open;
 	}
@@ -59,11 +55,11 @@ public class OrderQueryResponse {
 		this.timestamp = timestamp;
 	}
 
-	public List<SimpleOrderLine> getLines() {
+	public Set<SimpleOrderLine> getLines() {
 		return lines;
 	}
 
-	public void setLines(List<SimpleOrderLine> lines) {
+	public void setLines(Set<SimpleOrderLine> lines) {
 		this.lines = lines;
 	}
 }

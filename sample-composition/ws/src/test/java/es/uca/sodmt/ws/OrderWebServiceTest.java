@@ -1,12 +1,18 @@
 package es.uca.sodmt.ws;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.junit.Test;
 
+import es.uca.sodmt.ws.faults.UnknownOrder;
 import es.uca.sodmt.ws.responses.OrderListResponse;
+import es.uca.sodmt.ws.responses.OrderQueryResponse;
+import es.uca.sodmt.ws.responses.SimpleOrderLine;
 
 public class OrderWebServiceTest extends WebServiceTest {
 
@@ -15,14 +21,20 @@ public class OrderWebServiceTest extends WebServiceTest {
 	}
 
 	@Test
-	public void listOrders() {
+	public void queryOrders() throws UnknownOrder {
 		OrderListResponse results = client.list();
-		assertThat(results.getOrderIds().size(), is(equalTo(1)));
+		assertEquals(1, results.getOrderIds().size());
+
+		final long orderId = results.getOrderIds().get(0);
+		OrderQueryResponse orderInfo = client.query(orderId);
+		final Set<SimpleOrderLine> lines = orderInfo.getLines();
+
+		final Iterator<SimpleOrderLine> iterLines = lines.iterator();
+		assertEqualBigDecimals(BigDecimal.valueOf(9001L), iterLines.next().getQty());
+		assertEqualBigDecimals(BigDecimal.valueOf(42L), iterLines.next().getQty());
 	}
 
-	@Test
-	public void listOrders2() {
-		OrderListResponse results = client.list();
-		assertThat(results.getOrderIds().size(), is(equalTo(1)));
+	private void assertEqualBigDecimals(BigDecimal expected, BigDecimal obtained) {
+		assertTrue(expected.compareTo(obtained) == 0);
 	}
 }
