@@ -47,6 +47,11 @@ public class SampleContents {
 			final Shipment shipment = new Shipment(order);
 			invoice.setPaid(true);
 
+			final Order openOrder = new Order();
+			openOrder.setWarehouse(warehouse1);
+			openOrder.addLine(new OrderLine(article1, BigDecimal.valueOf(5)));
+			openOrder.setOpen(true);
+
 			final Transaction transaction = session.beginTransaction();
 			session.persist(article1);
 			session.persist(article2);
@@ -54,6 +59,7 @@ public class SampleContents {
 			session.persist(order);
 			session.persist(invoice);
 			session.persist(shipment);
+			session.persist(openOrder);
 			transaction.commit();
 
 			LOGGER.info("Finished creating some sample contents for the in-memory H2 database");

@@ -32,10 +32,10 @@ public class WarehousesImpl implements Warehouses {
 
 	@Override
 	public WarehouseAddResponse add(WarehouseAddRequest r) {
-		final Session session = getSession();
 		final Warehouse w = new Warehouse();
 		w.setAddress(w.getAddress());
 
+		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 		session.persist(w);
 		t.commit();
@@ -47,15 +47,25 @@ public class WarehousesImpl implements Warehouses {
 	@Override
 	public WarehouseListResponse list() {
 		final Session session = getSession();
+
+		final Transaction t = session.beginTransaction();
 		final List<Warehouse> warehouses = session.createCriteria(Warehouse.class).list();
-		return new WarehouseListResponse(warehouses);
+		WarehouseListResponse response = new WarehouseListResponse(warehouses);
+		t.commit();
+
+		return response;
 	}
 
 	@Override
 	public WarehouseQueryResponse query(long warehouseID) throws MissingWarehouse {
 		final Session session = getSession();
+
+		final Transaction t = session.beginTransaction();
 		final Warehouse warehouse = getWarehouse(warehouseID, session);
-		return new WarehouseQueryResponse(warehouse);
+		WarehouseQueryResponse response = new WarehouseQueryResponse(warehouse);
+		t.commit();
+
+		return response;
 	}
 
 	@Override
@@ -64,6 +74,7 @@ public class WarehousesImpl implements Warehouses {
 			MissingArticle, InvalidAmount, NotEnoughStock
 	{
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
 
 		// Check that the warehouse and the article exist
 		final Warehouse warehouse = getWarehouse(warehouseID, session);
@@ -76,7 +87,6 @@ public class WarehousesImpl implements Warehouses {
 		}
 
 		// Perform the update
-		final Transaction t = session.beginTransaction();
 		sItem.setQuantity(sItem.getQuantity().add(amount));
 		if (sItem.getQuantity().compareTo(BigDecimal.ZERO) > 0) {
 			warehouse.addStockItem(sItem);
@@ -85,9 +95,10 @@ public class WarehousesImpl implements Warehouses {
 		else {
 			warehouse.getStockItems().remove(sItem);
 		}
-		t.commit();
+		WarehouseItemStockResponse response = new WarehouseItemStockResponse(sItem);
 
-		return new WarehouseItemStockResponse(sItem);
+		t.commit();
+		return response;
 	}
 
 	@Override
@@ -95,18 +106,26 @@ public class WarehousesImpl implements Warehouses {
 			long articleID) throws MissingWarehouse, MissingArticle
 	{
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
+
 		final Warehouse warehouse = getWarehouse(warehouseID, session);
 		final Article article = getArticle(articleID, session);
 		final StockItem sItem = getStockItem(warehouse, article, session);
+		WarehouseItemStockResponse response = new WarehouseItemStockResponse(sItem);
 
-		return new WarehouseItemStockResponse(sItem);
+		t.commit();
+		return response;
 	}
 
 	@Override
 	public WarehouseItemsResponse listStock(long warehouseID) throws MissingWarehouse {
 		final Session session = getSession();
+		final Transaction t = session.beginTransaction();
 		final Warehouse warehouse = getWarehouse(warehouseID, session);
-		return new WarehouseItemsResponse(warehouse);
+		WarehouseItemsResponse response = new WarehouseItemsResponse(warehouse);
+		t.commit();
+
+		return response;
 	}
 
 	private StockItem getStockItem(final Warehouse warehouse,

@@ -10,17 +10,13 @@ import es.uca.sodmt.SampleContents;
 
 public class WebServiceTest {
 
-	private Server server;
-	protected Orders client;
-	private final Class<?> serviceClass;
-	private final String serverPath;
+	protected Orders orders;
+	protected Warehouses warehouses;
+	protected Invoices invoices;
 
 	private static int port = 9000;
 
-	public WebServiceTest(Class<?> serviceClass, String serverPath) {
-		this.serviceClass = serviceClass;
-		this.serverPath = serverPath;
-	}
+	private Server server;
 
 	@Before
 	public void setup() throws Exception {
@@ -35,10 +31,17 @@ public class WebServiceTest {
 		// Populate the BD
 		new SampleContents().createContents();
 
+		// Create the service clients
+		orders = createProxy(Orders.class, "/orders");
+		warehouses = createProxy(Warehouses.class, "/warehouses");
+		invoices = createProxy(Invoices.class, "/invoices");
+	}
+
+	private <T> T createProxy(final Class<T> serviceClass, final String serverPath) {
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 		factory.setServiceClass(serviceClass);
 		factory.setAddress("http://localhost:" + port + serverPath);
-		client = (Orders)factory.create();
+		return serviceClass.cast(factory.create());
 	}
 
 	@After
