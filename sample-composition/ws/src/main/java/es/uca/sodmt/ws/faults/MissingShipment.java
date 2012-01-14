@@ -1,10 +1,12 @@
 package es.uca.sodmt.ws.faults;
 
-public class MissingShipment extends Exception {
-
-	private static final long serialVersionUID = 1L;
+public class MissingShipment {
 
 	private long orderID;
+
+	public MissingShipment() {
+		// used by JAX-WS
+	}
 
 	public MissingShipment(long orderID) {
 		this.orderID = orderID;

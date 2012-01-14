@@ -8,27 +8,35 @@ import org.hibernate.Transaction;
 import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.orders.model.Shipment;
 import es.uca.sodmt.ws.Shipments;
+import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.MissingShipment;
 import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
-import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.ShipmentFault;
 import es.uca.sodmt.ws.responses.ShipmentResponse;
 
 @WebService(endpointInterface="es.uca.sodmt.ws.Shipments")
 public class ShipmentsImpl extends AbstractServiceImpl implements Shipments {
 
 	@Override
-	public ShipmentResponse query(long orderID) throws MissingOrder, MissingShipment {
+	public ShipmentResponse query(long orderID) throws ShipmentFault {
 		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 
-		final Order o = getOrder(orderID, session);
-		if (o.getShipment() == null) {
-			throw new MissingShipment(o.getId());
+		try {
+			final Order o = getOrder(orderID, session);
+			if (o.getShipment() == null) {
+				throw new ShipmentFault(
+					"Order with ID " + orderID + " has not been shipped yet",
+					new MissingShipment(orderID));
+			}
+			final ShipmentResponse response = new ShipmentResponse(o.getShipment());
+			return response;
+		} catch (MissingOrder o) {
+			throw new ShipmentFault("Order with ID " + orderID + " does not exist",
+					new MissingShipment(orderID));
+		} finally {
+			t.commit();
 		}
-		final ShipmentResponse response = new ShipmentResponse(o.getShipment());
-
-		t.commit();
-		return response;
 	}
 
 	@Override
