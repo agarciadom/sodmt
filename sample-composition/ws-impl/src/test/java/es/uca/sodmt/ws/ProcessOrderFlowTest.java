@@ -9,7 +9,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import es.uca.sodmt.orders.model.Address;
@@ -22,6 +26,9 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 
 	private ExecutorService executor;
 
+	@Rule
+	public ContiPerfRule performanceRule = new ContiPerfRule();
+
 	@Before
 	public void prepareExecutor() {
 		executor = Executors.newFixedThreadPool(2);
@@ -31,6 +38,8 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	 * This test emulates the case in which the request is rejected.
 	 */
 	@Test
+	@PerfTest(invocations = 50)
+	@Required(average = 100)
 	public void runRejected() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
 		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
@@ -47,10 +56,12 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	 * This test emulates the case in which the request is accepted.
 	 */
 	@Test
+	@PerfTest(invocations = 50)
+	@Required(average = 100)
 	public void runAccepted() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
 		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
-		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(2L));
+		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1L));
 
 		final OrderEvaluateResponse evaluation = orders.evaluate(newOrder);
 		final long orderID = evaluation.getOrderId();

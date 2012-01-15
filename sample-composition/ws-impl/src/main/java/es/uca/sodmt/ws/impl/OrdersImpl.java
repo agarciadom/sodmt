@@ -96,6 +96,7 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 				if (warehouse != null) {
 					final StockItem stockItem = (StockItem)session.load(StockItem.class, stockItemKey(warehouse, article));
 					stockItem.setQuantity(stockItem.getQuantity().subtract(qty));
+					LOGGER.debug("New quantity of #" + article.getId() + " is: " + stockItem.getQuantity());
 				}
 
 				order.addLine(new OrderLine(article, qty));

@@ -71,6 +71,14 @@
         <version>4.8.1</version>
         <scope>test</scope>
       </dependency>
+
+      <!-- PERFORMANCE TESTING -->
+      <dependency>
+	<groupId>org.databene</groupId>
+	<artifactId>contiperf</artifactId>
+	<version>2.0.0</version>
+	<scope>test</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

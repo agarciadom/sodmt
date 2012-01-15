@@ -39,8 +39,8 @@ public class SampleContents {
 			bukkit = new Article("bukkit", BigDecimal.valueOf(6));
 
 			warehouse = new Warehouse(new Address("Spain", "Cádiz", "Cádiz", "C/Chile", "1", "23456"));
-			final StockItem stock1 = new StockItem(cheezburger, BigDecimal.valueOf(20));
-			final StockItem stock2 = new StockItem(bukkit, BigDecimal.valueOf(15));
+			final StockItem stock1 = new StockItem(cheezburger, BigDecimal.valueOf(100));
+			final StockItem stock2 = new StockItem(bukkit, BigDecimal.valueOf(150));
 			warehouse.addStockItem(stock1);
 			warehouse.addStockItem(stock2);
 

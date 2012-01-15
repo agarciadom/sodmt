@@ -46,6 +46,11 @@
       <artifactId>jetty-webapp</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.databene</groupId>
+      <artifactId>contiperf</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
