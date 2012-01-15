@@ -7,6 +7,7 @@ import es.uca.sodmt.orders.model.Address;
 import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.MissingShipment;
 import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
+import es.uca.sodmt.ws.faults.OrderRejected;
 import es.uca.sodmt.ws.responses.ShipmentResponse;
 
 @WebService
@@ -23,5 +24,5 @@ public interface Shipments {
 	ShipmentResponse ship(
 		@WebParam(name="orderID") long orderID,
 		@WebParam(name="destination") Address destination)
-			throws MissingOrder, OrderAlreadyShipped;
+			throws MissingOrder, OrderRejected, OrderAlreadyShipped;
 }

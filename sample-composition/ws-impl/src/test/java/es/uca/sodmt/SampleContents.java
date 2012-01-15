@@ -26,7 +26,9 @@ public class SampleContents {
 	private Article cheezburger;
 	private Article bukkit;
 	private Warehouse warehouse;
-	private Order closedOrder, openOrder;
+	private Order closedOrder, acceptedOpenOrder;
+
+	private Order rejectedOpenOrder;
  
 	public void createContents() {
 		final SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -52,10 +54,14 @@ public class SampleContents {
 			final Shipment shipment = new Shipment(closedOrder, new Address("A", "B", "C", "D", "E", "F"));
 			invoice.setPaid(true);
 
-			openOrder = new Order();
-			openOrder.setWarehouse(warehouse);
-			openOrder.addLine(new OrderLine(cheezburger, BigDecimal.valueOf(5)));
-			openOrder.setOpen(true);
+			acceptedOpenOrder = new Order();
+			acceptedOpenOrder.setWarehouse(warehouse);
+			acceptedOpenOrder.addLine(new OrderLine(cheezburger, BigDecimal.valueOf(5)));
+			acceptedOpenOrder.setOpen(true);
+
+			rejectedOpenOrder = new Order();
+			rejectedOpenOrder.addLine(new OrderLine(cheezburger, BigDecimal.valueOf(5000)));
+			rejectedOpenOrder.setOpen(true);
 
 			final Transaction transaction = session.beginTransaction();
 			session.persist(cheezburger);
@@ -64,7 +70,8 @@ public class SampleContents {
 			session.persist(closedOrder);
 			session.persist(invoice);
 			session.persist(shipment);
-			session.persist(openOrder);
+			session.persist(acceptedOpenOrder);
+			session.persist(rejectedOpenOrder);
 			transaction.commit();
 
 			LOGGER.info("Finished creating some sample contents for the in-memory H2 database");
@@ -92,8 +99,11 @@ public class SampleContents {
 		return closedOrder;
 	}
 
-	public Order getOpenOrder() {
-		return openOrder;
+	public Order getAcceptedOpenOrder() {
+		return acceptedOpenOrder;
 	}
 
+	public Order getRejectedOpenOrder() {
+		return rejectedOpenOrder;
+	}
 }

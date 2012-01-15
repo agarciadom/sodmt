@@ -39,7 +39,6 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 	@Override
 	public OrderEvaluateResponse evaluate(OrderEvaluateRequest o) throws MissingArticle {
 		final Session session = getSession();
-		OrderEvaluateResponse.OrderEvaluateResult result = OrderEvaluateResult.ACCEPTED;
 
 		try {
 			// Accepted: acquire stock from the first available warehouse
@@ -77,32 +76,36 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 				validWarehouses.retainAll(warehouseIDs);
 				if (validWarehouses.isEmpty()) {
 					LOGGER.info("No remaining warehouses: rejecting order");
-					result = OrderEvaluateResult.REJECTED;
 					break;
 				}
 				LOGGER.info("Remaining warehouses: " + validWarehouses);
 			}
 
-			// Rejected: do not continue
-			if (result == OrderEvaluateResult.REJECTED) {
-				return new OrderEvaluateResponse();
-			}
-
-			final Warehouse warehouse = (Warehouse)session.load(Warehouse.class, validWarehouses.iterator().next());
 			final Order order = new Order();
+			Warehouse warehouse = null;
+			if (!validWarehouses.isEmpty()) {
+				warehouse = (Warehouse)session.load(Warehouse.class, validWarehouses.iterator().next());
+			}
 			order.setWarehouse(warehouse);
+
 			for (Map.Entry<Long, BigDecimal> e : o.getArticleQuantities().entrySet()) {
 				final long articleID = e.getKey();
 				final BigDecimal qty = e.getValue();
 				final Article article = (Article)session.load(Article.class, articleID);
-				final StockItem stockItem = (StockItem)session.load(StockItem.class, stockItemKey(warehouse, article));
 
-				stockItem.setQuantity(stockItem.getQuantity().subtract(qty));
+				if (warehouse != null) {
+					final StockItem stockItem = (StockItem)session.load(StockItem.class, stockItemKey(warehouse, article));
+					stockItem.setQuantity(stockItem.getQuantity().subtract(qty));
+				}
+
 				order.addLine(new OrderLine(article, qty));
 			}
+
 			session.persist(order);
 			session.getTransaction().commit();
-			return new OrderEvaluateResponse(OrderEvaluateResult.ACCEPTED, order.getId());
+			return new OrderEvaluateResponse(
+				warehouse != null ? OrderEvaluateResult.ACCEPTED : OrderEvaluateResult.REJECTED,
+				order.getId());
 		}
 		catch (RuntimeException ex) {
 			session.getTransaction().rollback();

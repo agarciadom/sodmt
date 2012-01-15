@@ -1,6 +1,7 @@
 package es.uca.sodmt.ws;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class OrderWebServiceTest extends WebServiceTest {
 	@Test
 	public void listOrders() {
 		OrderListResponse results = orders.list();
-		assertEquals(2, results.getOrderIds().size());
+		assertEquals(3, results.getOrderIds().size());
 	}
 
 	@Test
@@ -39,7 +40,7 @@ public class OrderWebServiceTest extends WebServiceTest {
 	}
 
 	@Test
-	public void evaluateOrder() throws MissingOrder, MissingArticle {
+	public void evaluateOrderAccepted() throws MissingOrder, MissingArticle {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
 		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
 		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(10d));
@@ -49,12 +50,27 @@ public class OrderWebServiceTest extends WebServiceTest {
 		assertEquals(OrderEvaluateResult.ACCEPTED, orderEvaluateResponse.getResult());
 
 		// Ensure that the new order exists - this wouldn't normally be needed in a performance test
-		orders.query(orderEvaluateResponse.getOrderId());
+		OrderQueryResponse queryResult = orders.query(orderEvaluateResponse.getOrderId());
+		assertTrue("The order should have been accepted", queryResult.getAccepted());
+	}
+
+	@Test
+	public void evaluateOrderRejected() throws Exception {
+		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
+		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
+		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1000d));
+
+		OrderEvaluateResponse orderEvaluateResponse = orders.evaluate(newOrder);
+		assertEquals(OrderEvaluateResult.REJECTED, orderEvaluateResponse.getResult());
+
+		// Ensure that the new order exists - this wouldn't normally be needed in a performance test
+		OrderQueryResponse queryResult = orders.query(orderEvaluateResponse.getOrderId());
+		assertFalse("The order should have been rejected", queryResult.getAccepted());
 	}
 
 	@Test
 	public void closeOrder() throws MissingOrder, OrderAlreadyClosed {
-		final long firstOpenOrderID = getDBContents().getOpenOrder().getId();
+		final long firstOpenOrderID = getDBContents().getAcceptedOpenOrder().getId();
 		orders.close(firstOpenOrderID);
 		assertTrue(!orders.query(firstOpenOrderID).getOpen());
 	}

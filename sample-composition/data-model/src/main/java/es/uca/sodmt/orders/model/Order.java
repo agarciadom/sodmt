@@ -70,7 +70,7 @@ public class Order {
 		this.open = open;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	public Warehouse getWarehouse() {
 		return warehouse;
 	}

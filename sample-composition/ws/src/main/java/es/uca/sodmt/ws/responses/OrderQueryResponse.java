@@ -16,6 +16,7 @@ public class OrderQueryResponse {
 	private Set<SimpleOrderLine> lines = new HashSet<SimpleOrderLine>();
 	private boolean open;
 	private Calendar timestamp;
+	private boolean accepted;
 
 	OrderQueryResponse() {
 		// used by JAX-WS
@@ -25,6 +26,7 @@ public class OrderQueryResponse {
 		this.orderId = order.getId();
 		this.open = order.isOpen();
 		this.timestamp = order.getTimestamp();
+		this.accepted = order.getWarehouse() != null;
 		for (OrderLine l : order.getLines()) {
 			lines.add(new SimpleOrderLine(l.getArticle().getId(), l
 					.getQuantity(), l.getPrice()));
@@ -45,6 +47,14 @@ public class OrderQueryResponse {
 
 	public void setOpen(boolean open) {
 		this.open = open;
+	}
+
+	public boolean getAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
 	}
 
 	public Calendar getTimestamp() {

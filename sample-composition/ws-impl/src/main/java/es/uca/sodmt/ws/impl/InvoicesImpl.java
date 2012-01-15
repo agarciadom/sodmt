@@ -10,6 +10,7 @@ import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.ws.Invoices;
 import es.uca.sodmt.ws.faults.MissingInvoice;
 import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.OrderRejected;
 import es.uca.sodmt.ws.responses.InvoiceGenerateResponse;
 import es.uca.sodmt.ws.responses.InvoiceQueryResponse;
 
@@ -17,11 +18,14 @@ import es.uca.sodmt.ws.responses.InvoiceQueryResponse;
 public class InvoicesImpl extends AbstractServiceImpl implements Invoices {
 
 	@Override
-	public InvoiceGenerateResponse generate(long orderID) throws MissingOrder {
+	public InvoiceGenerateResponse generate(long orderID) throws MissingOrder, OrderRejected {
 		final Session session = getSession();
 		final Transaction t = session.beginTransaction();
 
 		final Order order = getOrder(orderID, session);
+		if (order.getWarehouse() == null) {
+			throw new OrderRejected(orderID);
+		}
 		Invoice newInvoice = order.getInvoice();
 		if (newInvoice == null) {
 			newInvoice = new Invoice(order);

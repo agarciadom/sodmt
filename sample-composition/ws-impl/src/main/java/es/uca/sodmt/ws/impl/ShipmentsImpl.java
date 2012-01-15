@@ -12,6 +12,7 @@ import es.uca.sodmt.ws.Shipments;
 import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.MissingShipment;
 import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
+import es.uca.sodmt.ws.faults.OrderRejected;
 import es.uca.sodmt.ws.faults.beans.MissingShipmentBean;
 import es.uca.sodmt.ws.responses.ShipmentResponse;
 
@@ -53,7 +54,7 @@ public class ShipmentsImpl extends AbstractServiceImpl implements Shipments {
 	}
 
 	@Override
-	public ShipmentResponse ship(long orderID, Address address) throws MissingOrder, OrderAlreadyShipped {
+	public ShipmentResponse ship(long orderID, Address address) throws MissingOrder, OrderAlreadyShipped, OrderRejected {
 		final Session session = getSession();
 
 		final Transaction t = session.beginTransaction();
@@ -61,6 +62,10 @@ public class ShipmentsImpl extends AbstractServiceImpl implements Shipments {
 		if (o.getShipment() != null) {
 			throw new OrderAlreadyShipped(orderID);
 		}
+		if (o.getWarehouse() == null) {
+			throw new OrderRejected(orderID);
+		}
+
 		Shipment shipment = new Shipment(o, address);
 		session.persist(shipment);
 		o.setShipment(shipment);

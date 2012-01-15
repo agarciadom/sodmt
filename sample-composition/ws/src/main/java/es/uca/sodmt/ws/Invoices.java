@@ -5,6 +5,7 @@ import javax.jws.WebService;
 
 import es.uca.sodmt.ws.faults.MissingInvoice;
 import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.OrderRejected;
 import es.uca.sodmt.ws.responses.InvoiceGenerateResponse;
 import es.uca.sodmt.ws.responses.InvoiceQueryResponse;
 
@@ -13,7 +14,7 @@ public interface Invoices {
 
 	InvoiceGenerateResponse generate(
 		@WebParam(name="orderID") long orderID)
-			throws MissingOrder;
+			throws MissingOrder, OrderRejected;
 
 	InvoiceQueryResponse query(
 		@WebParam(name="orderID") long orderID)
