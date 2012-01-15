@@ -101,6 +101,7 @@
   <modules>
     <module>data-model</module>
     <module>ws</module>
+    <module>ws-impl</module>
   </modules>
 
 </project>
