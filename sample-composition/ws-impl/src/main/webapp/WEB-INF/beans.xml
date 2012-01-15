@@ -23,6 +23,10 @@
 		factory-method="buildSessionFactory"
 		destroy-method="close" />
 
+	<bean name="jul2slf4jBridge"
+		class="es.uca.sodmt.ws.util.JUL2SLF4JBridgeBean"
+		init-method="install"/>
+
 	<!--
 		WEB SERVICE ENDPOINTS 
 	-->
