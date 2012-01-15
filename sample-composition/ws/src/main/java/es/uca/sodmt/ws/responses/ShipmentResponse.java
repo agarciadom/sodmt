@@ -2,12 +2,14 @@ package es.uca.sodmt.ws.responses;
 
 import java.util.Calendar;
 
+import es.uca.sodmt.orders.model.Address;
 import es.uca.sodmt.orders.model.Shipment;
 
 public class ShipmentResponse {
 
 	private Long orderID;
 	private Calendar timestamp;
+	private Address destination;
 
 	public ShipmentResponse() {
 		// used by JAX-WS
@@ -16,6 +18,7 @@ public class ShipmentResponse {
 	public ShipmentResponse(Shipment s) {
 		setOrderID(s.getOrderId());
 		setTimestamp(s.getTimestamp());
+		setDestination(s.getDestination());
 	}
 
 	public Long getOrderID() {
@@ -32,6 +35,14 @@ public class ShipmentResponse {
 
 	public void setTimestamp(Calendar timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public Address getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Address destination) {
+		this.destination = destination;
 	}
 
 }

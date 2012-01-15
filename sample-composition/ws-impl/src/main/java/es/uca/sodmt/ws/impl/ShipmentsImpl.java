@@ -5,12 +5,13 @@ import javax.jws.WebService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import es.uca.sodmt.orders.model.Address;
 import es.uca.sodmt.orders.model.Order;
 import es.uca.sodmt.orders.model.Shipment;
 import es.uca.sodmt.ws.Shipments;
 import es.uca.sodmt.ws.faults.MissingOrder;
-import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
 import es.uca.sodmt.ws.faults.MissingShipment;
+import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
 import es.uca.sodmt.ws.faults.beans.MissingShipmentBean;
 import es.uca.sodmt.ws.responses.ShipmentResponse;
 
@@ -52,7 +53,7 @@ public class ShipmentsImpl extends AbstractServiceImpl implements Shipments {
 	}
 
 	@Override
-	public ShipmentResponse ship(long orderID) throws MissingOrder, OrderAlreadyShipped {
+	public ShipmentResponse ship(long orderID, Address address) throws MissingOrder, OrderAlreadyShipped {
 		final Session session = getSession();
 
 		final Transaction t = session.beginTransaction();
@@ -60,7 +61,9 @@ public class ShipmentsImpl extends AbstractServiceImpl implements Shipments {
 		if (o.getShipment() != null) {
 			throw new OrderAlreadyShipped(orderID);
 		}
-		o.setShipment(new Shipment(o));
+		Shipment shipment = new Shipment(o, address);
+		session.persist(shipment);
+		o.setShipment(shipment);
 		final ShipmentResponse response = new ShipmentResponse(o.getShipment());
 		t.commit();
 		

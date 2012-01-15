@@ -29,15 +29,17 @@ public class Shipment {
 	private Long id;
 	private Order order;
 	private Calendar timestamp;
+	private Address destination;
 
 	public Shipment() {
-		timestamp = Calendar.getInstance();
+		this.timestamp = Calendar.getInstance();
 	}
 
-	public Shipment(Order order) {
+	public Shipment(Order order, Address address) {
 		this();
 		this.order = order;
 		this.id = order.getId();
+		this.destination = address;
 	}
 
 	// Shares the PK with Order
@@ -73,9 +75,18 @@ public class Shipment {
 		this.timestamp = timestamp;
 	}
 
+	public Address getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Address destination) {
+		this.destination = destination;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Shipment [order=%s, tstamp=%s]", order, timestamp);
+		return "Shipment [order=" + order + ", timestamp=" + timestamp
+				+ ", destination=" + destination + "]";
 	}
 
 	/* (non-Javadoc)

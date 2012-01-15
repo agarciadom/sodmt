@@ -9,7 +9,7 @@ public class Address {
 	private String country, state, city, street, location, postalCode;
 
 	public Address() {
-		// used by Hibernate
+		// used by Hibernate / JAXB
 	}
 
 	public Address(String country, String state, String city, String street, String location, String postalCode) {

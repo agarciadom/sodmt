@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import es.uca.sodmt.orders.model.Address;
 import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.MissingShipment;
 import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
@@ -48,13 +49,15 @@ public class ShipmentWebServiceTest extends WebServiceTest {
 	@Test(expected=OrderAlreadyShipped.class)
 	public void shippedAlready() throws Exception {
 		final long orderID = getDBContents().getClosedOrder().getId();
-		shipments.ship(orderID);
+		shipments.ship(orderID, new Address("Country", "State", "City", "Street", "13", "000"));
 	}
 
 	@Test
 	public void ship() throws Exception {
 		final long orderID = getDBContents().getOpenOrder().getId();
-		final ShipmentResponse result = shipments.ship(orderID);
+		Address destination = new Address("Country", "State", "City", "Street", "13", "000");
+		final ShipmentResponse result = shipments.ship(orderID, destination);
 		assertEquals(orderID, result.getOrderID().longValue());
+		assertEquals(destination, result.getDestination());
 	}
 }

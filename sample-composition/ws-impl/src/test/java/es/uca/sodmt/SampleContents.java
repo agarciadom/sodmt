@@ -49,7 +49,7 @@ public class SampleContents {
 			closedOrder.setOpen(false);
 
 			final Invoice invoice = new Invoice(closedOrder);
-			final Shipment shipment = new Shipment(closedOrder);
+			final Shipment shipment = new Shipment(closedOrder, new Address("A", "B", "C", "D", "E", "F"));
 			invoice.setPaid(true);
 
 			openOrder = new Order();
