@@ -39,7 +39,7 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	 * This test emulates the case in which the request is rejected.
 	 */
 	@Test
-	@PerfTest(invocations = 50)
+	@PerfTest(invocations = 100, threads=5)
 	@Required(average = 100)
 	public void runRejected() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
@@ -57,7 +57,7 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	 * This test emulates the case in which the request is accepted.
 	 */
 	@Test
-	@PerfTest(invocations = 50)
+	@PerfTest(invocations = 100, threads=5)
 	@Required(average = 100)
 	public void runAccepted() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
