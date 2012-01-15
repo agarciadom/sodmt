@@ -3,7 +3,6 @@ package es.uca.sodmt.ws.impl;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.jws.WebService;
@@ -24,6 +23,7 @@ import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
 import es.uca.sodmt.ws.faults.beans.MissingArticleBean;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
+import es.uca.sodmt.ws.requests.OrderEvaluateRequest.OrderEvaluateRequestItem;
 import es.uca.sodmt.ws.responses.OrderCloseResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse.OrderEvaluateResult;
@@ -52,12 +52,11 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 			final Set<Long> validWarehouses = new HashSet<Long>(
 					(List<Long>) session.createCriteria(Warehouse.class)
 							.setProjection(Projections.property("id")).list());
-			LOGGER.info("Available warehouses: " + validWarehouses);
+			LOGGER.debug("Available warehouses: " + validWarehouses);
 
-			for (Map.Entry<Long, BigDecimal> e : o.getArticleQuantities()
-					.entrySet()) {
-				final long articleID = e.getKey();
-				final BigDecimal qty = e.getValue();
+			for (OrderEvaluateRequestItem item : o.getArticleQuantities()) {
+				final long articleID = item.getArticleID();
+				final BigDecimal qty = item.getQuantity();
 				final Article article = (Article) session.get(Article.class,
 						articleID);
 				if (article == null) {
@@ -75,10 +74,10 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 
 				validWarehouses.retainAll(warehouseIDs);
 				if (validWarehouses.isEmpty()) {
-					LOGGER.info("No remaining warehouses: rejecting order");
+					LOGGER.warn("No remaining warehouses: rejecting order");
 					break;
 				}
-				LOGGER.info("Remaining warehouses: " + validWarehouses);
+				LOGGER.debug("Remaining warehouses: " + validWarehouses);
 			}
 
 			final Order order = new Order();
@@ -88,9 +87,9 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 			}
 			order.setWarehouse(warehouse);
 
-			for (Map.Entry<Long, BigDecimal> e : o.getArticleQuantities().entrySet()) {
-				final long articleID = e.getKey();
-				final BigDecimal qty = e.getValue();
+			for (OrderEvaluateRequestItem item : o.getArticleQuantities()) {
+				final long articleID = item.getArticleID();
+				final BigDecimal qty = item.getQuantity();
 				final Article article = (Article)session.load(Article.class, articleID);
 
 				if (warehouse != null) {

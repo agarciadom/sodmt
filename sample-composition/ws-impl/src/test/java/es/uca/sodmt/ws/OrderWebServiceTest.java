@@ -6,15 +6,16 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
 import es.uca.sodmt.ws.faults.MissingArticle;
-import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
 import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
+import es.uca.sodmt.ws.requests.OrderEvaluateRequest.OrderEvaluateRequestItem;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse.OrderEvaluateResult;
 import es.uca.sodmt.ws.responses.OrderListResponse;
@@ -42,9 +43,9 @@ public class OrderWebServiceTest extends WebServiceTest {
 	@Test
 	public void evaluateOrderAccepted() throws MissingOrder, MissingArticle {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
-		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
-		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(10d));
-		qtys.put(getDBContents().getSecondArticle().getId(), BigDecimal.valueOf(5d));
+		final List<OrderEvaluateRequestItem> qtys = newOrder.getArticleQuantities();
+		qtys.add(new OrderEvaluateRequestItem(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(10d)));
+		qtys.add(new OrderEvaluateRequestItem(getDBContents().getSecondArticle().getId(), BigDecimal.valueOf(5d)));
 
 		OrderEvaluateResponse orderEvaluateResponse = orders.evaluate(newOrder);
 		assertEquals(OrderEvaluateResult.ACCEPTED, orderEvaluateResponse.getResult());
@@ -57,8 +58,8 @@ public class OrderWebServiceTest extends WebServiceTest {
 	@Test
 	public void evaluateOrderRejected() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
-		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
-		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1000d));
+		final List<OrderEvaluateRequestItem> qtys = newOrder.getArticleQuantities();
+		qtys.add(new OrderEvaluateRequestItem(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1000d)));
 
 		OrderEvaluateResponse orderEvaluateResponse = orders.evaluate(newOrder);
 		assertEquals(OrderEvaluateResult.REJECTED, orderEvaluateResponse.getResult());

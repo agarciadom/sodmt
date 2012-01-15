@@ -3,7 +3,7 @@ package es.uca.sodmt.ws;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import es.uca.sodmt.orders.model.Address;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
+import es.uca.sodmt.ws.requests.OrderEvaluateRequest.OrderEvaluateRequestItem;
 import es.uca.sodmt.ws.responses.OrderCloseResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse.OrderEvaluateResult;
@@ -42,8 +43,8 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	@Required(average = 100)
 	public void runRejected() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
-		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
-		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(20000L));
+		final List<OrderEvaluateRequestItem> qtys = newOrder.getArticleQuantities();
+		qtys.add(new OrderEvaluateRequestItem(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(20000L)));
 
 		OrderEvaluateResponse evalResponse = orders.evaluate(newOrder);
 		assertEquals(OrderEvaluateResult.REJECTED, evalResponse.getResult());
@@ -60,8 +61,8 @@ public class ProcessOrderFlowTest extends WebServiceTest {
 	@Required(average = 100)
 	public void runAccepted() throws Exception {
 		final OrderEvaluateRequest newOrder = new OrderEvaluateRequest();
-		final Map<Long, BigDecimal> qtys = newOrder.getArticleQuantities();
-		qtys.put(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1L));
+		final List<OrderEvaluateRequestItem> qtys = newOrder.getArticleQuantities();
+		qtys.add(new OrderEvaluateRequestItem(getDBContents().getFirstArticle().getId(), BigDecimal.valueOf(1L)));
 
 		final OrderEvaluateResponse evaluation = orders.evaluate(newOrder);
 		final long orderID = evaluation.getOrderId();
