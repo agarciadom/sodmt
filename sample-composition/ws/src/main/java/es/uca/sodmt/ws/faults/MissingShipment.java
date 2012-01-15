@@ -1,23 +1,26 @@
 package es.uca.sodmt.ws.faults;
 
-public class MissingShipment {
+import javax.xml.ws.WebFault;
 
-	private long orderID;
+import es.uca.sodmt.ws.faults.beans.MissingShipmentBean;
 
-	public MissingShipment() {
-		// used by JAX-WS
+@WebFault
+public class MissingShipment extends Exception {
+
+	private static final long serialVersionUID = 1L;
+	private MissingShipmentBean info;
+
+	public MissingShipment(String message, MissingShipmentBean info) {
+		super(message);
+		this.info = info;
 	}
 
-	public MissingShipment(long orderID) {
-		this.orderID = orderID;
+	public MissingShipment(String message, MissingShipmentBean info, Throwable cause) {
+		super(message, cause);
+		this.info = info;
 	}
 
-	public long getOrderID() {
-		return orderID;
+	public MissingShipmentBean getFaultInfo() {
+		return info;
 	}
-
-	public void setOrderID(long orderID) {
-		this.orderID = orderID;
-	}
-
 }

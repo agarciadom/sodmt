@@ -15,8 +15,10 @@ import es.uca.sodmt.orders.model.StockItem;
 import es.uca.sodmt.orders.model.Warehouse;
 import es.uca.sodmt.ws.faults.MissingArticle;
 import es.uca.sodmt.ws.faults.MissingInvoice;
-import es.uca.sodmt.ws.faults.MissingWarehouse;
 import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.MissingWarehouse;
+import es.uca.sodmt.ws.faults.beans.MissingArticleBean;
+import es.uca.sodmt.ws.faults.beans.MissingInvoiceBean;
 
 abstract class AbstractServiceImpl {
 
@@ -26,14 +28,14 @@ abstract class AbstractServiceImpl {
 		return factory.getCurrentSession();
 	}
 
-	protected Invoice getInvoice(long orderID, final Session session) throws MissingOrder,
-			MissingInvoice {
-				final Order order = getOrder(orderID, session);
-				if (order.getInvoice() == null) {
-					throw new MissingInvoice(orderID);
-				}
-				return order.getInvoice();
-			}
+	protected Invoice getInvoice(long orderID, final Session session)
+			throws MissingOrder, MissingInvoice {
+		final Order order = getOrder(orderID, session);
+		if (order.getInvoice() == null) {
+			throw new MissingInvoice("Order " + orderID + " does not have an invoice yet", new MissingInvoiceBean(orderID));
+		}
+		return order.getInvoice();
+	}
 
 	protected Order getOrder(long orderID, final Session session) throws MissingOrder {
 		final Order order = (Order) session.get(Order.class, orderID);
@@ -65,20 +67,21 @@ abstract class AbstractServiceImpl {
 
 	protected Article getArticle(long articleID, final Session session)
 			throws MissingArticle {
-				final Article article = (Article)session.get(Article.class, articleID);
-				if (article == null) {
-					throw new MissingArticle(articleID);
-				}
-				return article;
-			}
+		final Article article = (Article) session.get(Article.class, articleID);
+		if (article == null) {
+			throw new MissingArticle("Article does not exist",
+					new MissingArticleBean(articleID));
+		}
+		return article;
+	}
 
 	protected Warehouse getWarehouse(long warehouseID, final Session session)
 			throws MissingWarehouse {
-				final Warehouse warehouse = (Warehouse)session.get(Warehouse.class, warehouseID);
-				if (warehouse == null) {
-					throw new MissingWarehouse(warehouseID);
-				}
-				return warehouse;
-			}
+		final Warehouse warehouse = (Warehouse) session.get(Warehouse.class, warehouseID);
+		if (warehouse == null) {
+			throw new MissingWarehouse(warehouseID);
+		}
+		return warehouse;
+	}
 
 }

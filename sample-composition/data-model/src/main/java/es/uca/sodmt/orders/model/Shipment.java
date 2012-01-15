@@ -37,6 +37,7 @@ public class Shipment {
 	public Shipment(Order order) {
 		this();
 		this.order = order;
+		this.id = order.getId();
 	}
 
 	// Shares the PK with Order

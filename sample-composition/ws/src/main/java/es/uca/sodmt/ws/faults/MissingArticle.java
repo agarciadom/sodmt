@@ -1,21 +1,27 @@
 package es.uca.sodmt.ws.faults;
 
+import javax.xml.ws.WebFault;
+
+import es.uca.sodmt.ws.faults.beans.MissingArticleBean;
+
+@WebFault
 public class MissingArticle extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private long articleID;
+	private MissingArticleBean info;
 
-	public MissingArticle(long articleID) {
-		this.articleID = articleID;
+	public MissingArticle(String message, MissingArticleBean bean, Throwable cause) {
+		super(message, cause);
+		this.info = bean;
 	}
 
-	public long getArticleID() {
-		return articleID;
+	public MissingArticle(String message, MissingArticleBean bean) {
+		super(message);
+		this.info = bean;
 	}
 
-	public void setArticleID(long articleID) {
-		this.articleID = articleID;
+	public MissingArticleBean getFaultInfo() {
+		return info;
 	}
-
 }

@@ -20,8 +20,9 @@ import es.uca.sodmt.orders.model.StockItem;
 import es.uca.sodmt.orders.model.Warehouse;
 import es.uca.sodmt.ws.Orders;
 import es.uca.sodmt.ws.faults.MissingArticle;
-import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
 import es.uca.sodmt.ws.faults.MissingOrder;
+import es.uca.sodmt.ws.faults.OrderAlreadyClosed;
+import es.uca.sodmt.ws.faults.beans.MissingArticleBean;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
 import es.uca.sodmt.ws.responses.OrderCloseResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
@@ -61,7 +62,7 @@ public class OrdersImpl extends AbstractServiceImpl implements Orders {
 				final Article article = (Article) session.get(Article.class,
 						articleID);
 				if (article == null) {
-					throw new MissingArticle(articleID);
+					throw new MissingArticle("Article " + articleID + " does not exist", new MissingArticleBean(articleID));
 				}
 
 				// Find all the warehouse IDs that have the required quantity of

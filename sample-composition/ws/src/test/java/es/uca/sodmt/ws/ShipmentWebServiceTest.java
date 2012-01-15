@@ -9,7 +9,8 @@ import org.junit.Test;
 
 import es.uca.sodmt.ws.faults.MissingOrder;
 import es.uca.sodmt.ws.faults.MissingShipment;
-import es.uca.sodmt.ws.faults.ShipmentFault;
+import es.uca.sodmt.ws.faults.OrderAlreadyShipped;
+import es.uca.sodmt.ws.faults.beans.MissingShipmentBean;
 import es.uca.sodmt.ws.responses.ShipmentResponse;
 
 public class ShipmentWebServiceTest extends WebServiceTest {
@@ -37,10 +38,23 @@ public class ShipmentWebServiceTest extends WebServiceTest {
 
 		try {
 			shipments.query(orderID);
-			fail("A ShipmentFault exception should have been thrown");
-		} catch (ShipmentFault ex) {
-			final MissingShipment info = ex.getFaultInfo();
+			fail("An exception should have been thrown");
+		} catch (MissingShipment ex) {
+			final MissingShipmentBean info = ex.getFaultInfo();
 			assertEquals(orderID, info.getOrderID());
 		}
+	}
+
+	@Test(expected=OrderAlreadyShipped.class)
+	public void shippedAlready() throws Exception {
+		final long orderID = getDBContents().getClosedOrder().getId();
+		shipments.ship(orderID);
+	}
+
+	@Test
+	public void ship() throws Exception {
+		final long orderID = getDBContents().getOpenOrder().getId();
+		final ShipmentResponse result = shipments.ship(orderID);
+		assertEquals(orderID, result.getOrderID().longValue());
 	}
 }

@@ -58,16 +58,16 @@ public abstract class WebServiceTest {
 		return contents;
 	}
 
+	protected void assertEqualBigDecimals(BigDecimal expected, BigDecimal obtained) {
+		if (expected.compareTo(obtained) != 0) {
+			fail("Expected " + expected + ", got " + obtained);
+		}
+	}
+
 	private <T> T createProxy(final Class<T> serviceClass, final String serverPath) {
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 		factory.setServiceClass(serviceClass);
 		factory.setAddress("http://localhost:" + port + serverPath);
 		return serviceClass.cast(factory.create());
-	}
-
-	protected void assertEqualBigDecimals(BigDecimal expected, BigDecimal obtained) {
-		if (expected.compareTo(obtained) != 0) {
-			fail("Expected " + expected + ", got " + obtained);
-		}
 	}
 }

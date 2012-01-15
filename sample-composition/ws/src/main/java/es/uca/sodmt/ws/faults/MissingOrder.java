@@ -1,20 +1,31 @@
 package es.uca.sodmt.ws.faults;
 
+import javax.xml.ws.WebFault;
+
+import es.uca.sodmt.ws.faults.beans.MissingOrderBean;
+
+@WebFault
 public class MissingOrder extends Exception {
 
 	private static final long serialVersionUID = 1L;
-	private long orderId;
+	private MissingOrderBean info;
 
-	public MissingOrder(long orderId) {
-		super("Unknown order ID: " + orderId);
-		this.orderId = orderId;
+	public MissingOrder(String message, MissingOrderBean info, Throwable cause) {
+		super(message, cause);
+		this.info = info;
 	}
 
-	/**
-	 * @return the orderId
-	 */
-	public long getOrderId() {
-		return orderId;
+	public MissingOrder(String message, MissingOrderBean info) {
+		super(message);
+		this.info = info;
+	}
+
+	public MissingOrder(long orderID) {
+		this("Order with ID " + orderID + " does not exist", new MissingOrderBean(orderID));
+	}
+
+	public MissingOrderBean getFaultInfo() {
+		return info;
 	}
 
 }

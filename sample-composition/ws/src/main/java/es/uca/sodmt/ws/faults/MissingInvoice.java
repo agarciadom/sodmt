@@ -1,21 +1,27 @@
 package es.uca.sodmt.ws.faults;
 
+import javax.xml.ws.WebFault;
+
+import es.uca.sodmt.ws.faults.beans.MissingInvoiceBean;
+
+@WebFault
 public class MissingInvoice extends Exception {
 
 	private static final long serialVersionUID = 1L;
+	private MissingInvoiceBean info;
 
-	private long orderID;
-
-	public MissingInvoice(long orderID) {
-		this.orderID = orderID;
+	public MissingInvoice(String message, MissingInvoiceBean info, Throwable cause) {
+		super(message, cause);
+		this.info = info;
 	}
 
-	public long getOrderID() {
-		return orderID;
+	public MissingInvoice(String message, MissingInvoiceBean info) {
+		super(message);
+		this.info = info;
 	}
 
-	public void setOrderID(long orderID) {
-		this.orderID = orderID;
+	public MissingInvoiceBean getFaultInfo() {
+		return info;
 	}
 
 }
