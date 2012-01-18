@@ -1,0 +1,3 @@
+*.log*
+build.classpath
+*-file-store
