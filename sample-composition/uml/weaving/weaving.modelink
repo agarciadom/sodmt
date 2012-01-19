@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="true">
+  <model path="/examples.marte/model.uml" position="LEFT" />
+  <model path="/examples.perf.weaving/weaving/weaving.model" position="MIDDLE" />
+  <model path="/examples.perf.weaving/modisco/ws-impl-1.0-SNAPSHOT_java.model" position="RIGHT" />
+</modelink>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pw:WeavingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pw="www.uca.es/modeling/modisco/performanceWeaving" xmi:id="_Sjp3MD-YEeGbj-4oj53haQ">
+  <links xmi:id="_d6kPoD-ZEeGbj-4oj53haQ">
+    <performanceRequirement href="../../examples.marte/model.uml#_hsi38D_6EeCSBtZ7STKcow"/>
+    <testMethod href="../modisco/ws-impl-1.0-SNAPSHOT_java.model#_dLQ5rj-ZEeGbj-4oj53haQ"/>
+  </links>
+</pw:WeavingModel>
