@@ -16,11 +16,11 @@ import serviceProcess.ActivityPerformanceAnnotation;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
 
-public class DipoleSequenceCaseStudy extends AbstractCaseStudy {
+public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
 
 	private static final int DEFAULT_NUM_DIPOLES = 3;
 	private static final int DEFAULT_BRANCH_FACTOR = 3;
-	private static final String CASE_STUDY_NAME = "DipoleSequence";
+	private static final String CASE_STUDY_NAME = "ForkJoinSequence";
 	private static final String PARAM_BRANCH_FACTOR = "branchFactor";
 	private static final String PARAM_NUM_DIPOLES = "numDipoles";
 

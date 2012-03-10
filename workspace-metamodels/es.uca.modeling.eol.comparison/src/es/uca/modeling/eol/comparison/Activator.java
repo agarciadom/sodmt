@@ -5,7 +5,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 import es.uca.modeling.eol.comparison.cases.DenseCaseStudy;
-import es.uca.modeling.eol.comparison.cases.DipoleSequenceCaseStudy;
+import es.uca.modeling.eol.comparison.cases.ForkJoinSequenceCaseStudy;
 import es.uca.modeling.eol.comparison.cases.SequenceCaseStudy;
 import es.uca.modeling.eol.comparison.model.CaseStudyRegistry;
 
@@ -39,7 +39,7 @@ public class Activator extends AbstractUIPlugin {
 		fRegistry = new CaseStudyRegistry();
 		fRegistry.register(new SequenceCaseStudy());
 		fRegistry.register(new DenseCaseStudy());
-		fRegistry.register(new DipoleSequenceCaseStudy());
+		fRegistry.register(new ForkJoinSequenceCaseStudy());
 	}
 
 	/*
