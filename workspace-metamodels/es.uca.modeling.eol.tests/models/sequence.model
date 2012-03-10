@@ -8,5 +8,5 @@
   <edges xsi:type="sp:ProcessControlFlow" xmi:id="_ugetAPGkEd-WVeBAYwAeXA" target="_qoNa8PGkEd-WVeBAYwAeXA" source="_p8qjkPGkEd-WVeBAYwAeXA"/>
   <edges xsi:type="sp:ProcessControlFlow" xmi:id="_u3wkkPGkEd-WVeBAYwAeXA" target="_owVTUPGkEd-WVeBAYwAeXA" source="_qoNa8PGkEd-WVeBAYwAeXA"/>
   <activityPerformance xmi:id="_3CfKUPGkEd-WVeBAYwAeXA" minimumTime="0.3" execNode="_p8qjkPGkEd-WVeBAYwAeXA"/>
-  <processPerformance xmi:id="_rb8lAPGkEd-WVeBAYwAeXA" minimumTime="0.0" weight="1.0"/>
+  <processPerformance xmi:id="_rb8lAPGkEd-WVeBAYwAeXA" />
 </sp:ServiceProcess>
