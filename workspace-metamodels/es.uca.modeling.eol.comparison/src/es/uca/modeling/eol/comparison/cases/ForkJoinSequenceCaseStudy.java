@@ -13,6 +13,11 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
 import serviceProcess.ActivityPerformanceAnnotation;
+import serviceProcess.FlowNode;
+import serviceProcess.ProcessDecision;
+import serviceProcess.ProcessFinish;
+import serviceProcess.ProcessJoin;
+import serviceProcess.ProcessStart;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
 
@@ -87,25 +92,25 @@ public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		ServiceActivity previous = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
-		previous.setName("S");
+		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
+		FlowNode prevLevel = start;
 		for (int i = 0; i < numDipoles; ++i) {
-			final ServiceActivity forkNode = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
-			final ServiceActivity joinNode = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
-			forkNode.setName("F" + i);
-			joinNode.setName("J" + i);
-			addEdge(model, edges, previous, forkNode);
+			final ProcessDecision decision = (ProcessDecision)addNode(model, nodes, "ProcessDecision");
+			final ProcessJoin join = (ProcessJoin)addNode(model, nodes, "ProcessJoin");
+			addEdge(model, edges, prevLevel, decision);
 
 			for (int j = 0; j < branchFactor; ++j) {
 				final ServiceActivity branchNode = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
 				branchNode.setName("B" + i + j);
-				addEdge(model, edges, forkNode, branchNode);
-				addEdge(model, edges, branchNode, joinNode);
+				addEdge(model, edges, decision, branchNode);
+				addEdge(model, edges, branchNode, join);
 			}
 
-			previous = joinNode;
+			prevLevel = join;
 		}
 
+		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		addEdge(model, edges, prevLevel, finish);
 		return model;
 	}
 

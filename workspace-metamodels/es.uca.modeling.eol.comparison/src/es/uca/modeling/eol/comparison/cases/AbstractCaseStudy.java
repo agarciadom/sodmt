@@ -103,36 +103,36 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
 				final Random rnd = new Random(fRandomSeed);
-				final List<Long> lOldTimes = new ArrayList<Long>();
-				final List<Long> lNewTimes = new ArrayList<Long>();
+				final List<Long> lOldNanos = new ArrayList<Long>();
+				final List<Long> lNewNanos = new ArrayList<Long>();
 
 				for (int i = 0; i < fIterations; ++i) {
 					addRandomManualAnnotations(model, rnd);
 
-					final long oldTime = oldAlgo.runAndTimeMillis(model, fGlobalLimit, startNode);
+					final long oldNanos = oldAlgo.runAndTimeNanos(model, fGlobalLimit, startNode);
 					final Map<String, Double> annotationsOld = computeAnnotationMap(model);
 
-					final long newTime = newAlgo.runAndTimeMillis(model, fGlobalLimit, endNodes);
+					final long newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
 					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
 
 					// If the results are not the same, the algorithms are not comparable
 					checkResultsMatch(annotationsNew, annotationsOld);
 
-					lOldTimes.add(oldTime);
-					lNewTimes.add(newTime);
+					lOldNanos.add(oldNanos);
+					lNewNanos.add(newNanos);
 				}
 
 				// Update the current results
 				final int size = getModelSize(model);
 				final BoxAndWhiskerItem newStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewTimes);
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewNanos);
 				final BoxAndWhiskerItem oldStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldTimes);
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldNanos);
 				addToSeries(seriesNew, size, newStats);
 				addToSeries(seriesOld, size, oldStats);
 				updateRawText(result, size,
-					newStats.getMedian().doubleValue()/1000,
-					oldStats.getMedian().doubleValue()/1000);
+					newStats.getMean().doubleValue()/1000000000,
+					oldStats.getMean().doubleValue()/1000000000);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -230,13 +230,13 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	 * Adds a value to a series. Ensures the addition is done in the SWT thread,
 	 * so the chart is properly updated.
 	 */
-	private void addToSeries(final YIntervalSeries series, final double x, final BoxAndWhiskerItem stats) {
+	private void addToSeries(final YIntervalSeries series, final double x, final BoxAndWhiskerItem statsInNanos) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				series.add(x,
-					stats.getMedian().doubleValue()/1000,
-					stats.getMinOutlier().doubleValue()/1000,
-					stats.getMaxOutlier().doubleValue()/1000);
+					statsInNanos.getMean().doubleValue()/1000000000,
+					statsInNanos.getMinOutlier().doubleValue()/1000000000,
+					statsInNanos.getMaxOutlier().doubleValue()/1000000000);
 			}
 		});
 	}
@@ -324,7 +324,18 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 	private void initXYLineChart(CaseStudyResult result, final YIntervalSeries... allSeries) {
 		YIntervalSeriesCollection collection = new YIntervalSeriesCollection();
-		StringBuilder headerBuilder = new StringBuilder();
+
+		// Note down the case study class and the parameters used to run the test
+		StringBuilder headerBuilder = new StringBuilder("# " + this.getClass());
+		for (String pName : getParameterNames()) {
+			headerBuilder.append(" ");
+			headerBuilder.append(pName);
+			headerBuilder.append("='");
+			headerBuilder.append(getParameter(pName));
+			headerBuilder.append("' ");
+		}
+		headerBuilder.append("\n");
+
 		headerBuilder.append("size");
 		for (YIntervalSeries series : allSeries) {
 			collection.addSeries(series);
@@ -368,7 +379,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private void updateRawText(CaseStudyResult result, int size,
 			final double newTime, final double oldTime) {
 		result.setRawText(result.getRawText()
-				+ String.format("%d%s%g%s%g\n", size,
+				+ String.format(Locale.ENGLISH, "%d%s%g%s%g\n", size,
 						RAWTEXT_FIELD_SEPARATOR, newTime,
 						RAWTEXT_FIELD_SEPARATOR, oldTime));
 	}

@@ -1,5 +1,7 @@
 package es.uca.modeling.eol.comparison.cases;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
 import java.net.URI;
 import java.util.Arrays;
 
@@ -15,7 +17,8 @@ public class InferenceAlgorithm {
 	public static final String OPERATION_OLD = "annotateTimeLimits";
 
 	private static final String MAIN_EOL_BUNDLE = "es.uca.modeling.eol";
-	private static final String MAIN_EOL_PATH = "/wizards/time_limits_sp.eol";	
+	private static final String MAIN_EOL_PATH = "/wizards/time_limits_sp.eol";
+	private static final ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
 
 	private static EolModule _module;
 
@@ -46,11 +49,11 @@ public class InferenceAlgorithm {
 		module.clearCache();
 	}
 
-	public long runAndTimeMillis(EmfModel model, Object... args)
+	public long runAndTimeNanos(EmfModel model, Object... args)
 		throws Exception
 	{
-		final long startMillis = System.currentTimeMillis();
+		final long startNanos = System.nanoTime();
 		run(model, args);
-		return System.currentTimeMillis() - startMillis;
+		return (System.nanoTime() - startNanos);
 	}
 }

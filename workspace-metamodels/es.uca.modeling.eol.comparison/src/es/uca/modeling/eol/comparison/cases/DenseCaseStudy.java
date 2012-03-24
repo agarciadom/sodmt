@@ -11,7 +11,9 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
 import serviceProcess.FlowNode;
+import serviceProcess.ProcessDecision;
 import serviceProcess.ProcessFinish;
+import serviceProcess.ProcessJoin;
 import serviceProcess.ProcessStart;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
@@ -87,27 +89,32 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		@SuppressWarnings("unused")
 		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
-		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		final List<ProcessDecision> decisions = new ArrayList<ProcessDecision>();
+		FlowNode prevLevel = start;
 
-		for (int i = 0; i <= size; ++i) {
-			FlowNode target;
-			if (i < size) {
-				final ServiceActivity activity = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
-				activity.setName("A" + i);
-				target = activity;
-			} else {
-				target = finish;
-			}
+		for (int i = 0; i < size; ++i) {
+			final ProcessDecision decision = (ProcessDecision)addNode(model, nodes, "ProcessDecision");
+			final ServiceActivity activity = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
+			final ProcessJoin join = (ProcessJoin)addNode(model, nodes, "ProcessJoin");
+			decisions.add(decision);
 
-			for (Object o : nodes) {
-				if (!(o instanceof ProcessFinish) && o != target) {
-					addEdge(model, edges, (FlowNode)o, target);
-				}
+			// Add edge from the join of the previous level to this level's decision node
+			addEdge(model, edges, prevLevel, decision);
+			prevLevel = join;
+
+			// Add edges in the decision-activity-join chain
+			addEdge(model, edges, decision, activity);
+			addEdge(model, edges, activity, join);
+
+			// Add edges from previous decisions to the current join node
+			for (ProcessDecision d : decisions) {
+				addEdge(model, edges, d, join);
 			}
 		}
 
+		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		addEdge(model, edges, prevLevel, finish);
 		return model;
 	}
 
