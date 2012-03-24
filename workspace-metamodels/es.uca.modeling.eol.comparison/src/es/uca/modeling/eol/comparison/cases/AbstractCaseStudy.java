@@ -286,7 +286,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				series.add(x,
-					statsInNanos.getMedian().doubleValue()/1000000000,
+					statsInNanos.getMean().doubleValue()/1000000000,
 					statsInNanos.getMinOutlier().doubleValue()/1000000000,
 					statsInNanos.getMaxOutlier().doubleValue()/1000000000);
 			}
@@ -392,6 +392,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		for (YIntervalSeries series : allSeries) {
 			collection.addSeries(series);
 			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
+			headerBuilder.append(series.getKey() + " mean");
+			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
 			headerBuilder.append(series.getKey() + " median");
 			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
 			headerBuilder.append(series.getKey() + " min");
@@ -452,6 +454,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		sb.append(size);
 		for (BoxAndWhiskerItem statsNanos : allStatsNanos) {
 			sb.append(RAWTEXT_FIELD_SEPARATOR);
+			sb.append(statsNanos.getMean().doubleValue() / NANOS_TO_SECONDS);
+			sb.append(RAWTEXT_FIELD_SEPARATOR);
 			sb.append(statsNanos.getMedian().doubleValue() / NANOS_TO_SECONDS);
 			sb.append(RAWTEXT_FIELD_SEPARATOR);
 			sb.append(statsNanos.getMinOutlier().doubleValue() / NANOS_TO_SECONDS);
@@ -471,34 +475,95 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			model.deleteElement(o);
 		}
 
-		// Select the service activities to be annotated at random
-		final List<EObject> shuffledNodes = new ArrayList<EObject>(model.getAllOfKind("ServiceActivity"));
-		Collections.shuffle(shuffledNodes, rnd);
-		final long nShuffled = Math.round(shuffledNodes.size() / 100.0d * fPercentageManual);
-		final List<EObject> annotatedNodes = shuffledNodes.subList(0, (int)nShuffled);
+		// Compute how many service activities should be annotated at random
+		final List<EObject> allActivities = new ArrayList<EObject>(model.getAllOfKind("ServiceActivity"));
+		final long nShuffled = Math.round(allActivities.size() / 100.0d * fPercentageManual);
+
+		// If any decision nodes exist, use the fork-join annotation method
+		final List<EObject> allDecisions = new ArrayList<EObject>(model.getAllOfKind("ProcessDecision"));
+		if (allDecisions.isEmpty()) {
+			randomAnnotationsWithoutDecisions(model, rnd, allActivities, nShuffled);
+		} else {
+			randomAnnotationsWithDecisions(model, rnd, allDecisions, nShuffled);
+		}
+	}
+
+	private void randomAnnotationsWithDecisions(EmfModel model, Random rnd, List<EObject> allDecisions, final long total) throws EolModelElementTypeNotFoundException, EolNotInstantiableModelElementTypeException
+	{
+		Collections.shuffle(allDecisions, rnd);
+		double availableTime = 0.5 * fGlobalLimit;
+
+		int annotatedActivities = 0;
+		for (EObject o : allDecisions) {
+			// Collect all the children activities
+			final DecisionNode decision = (DecisionNode)o;
+			final List<ServiceActivity> children = new ArrayList<ServiceActivity>();
+			for (FlowEdge out : decision.getOutgoing()) {
+				if (out.getTarget() instanceof ServiceActivity) {
+					children.add((ServiceActivity)out.getTarget());
+				}
+			}
+
+			// Compute random times and weights for them
+			final List<Double> assignedTimes = new ArrayList<Double>(children.size());
+			final List<Double> assignedWeights = new ArrayList<Double>(children.size());
+			double maxAssigned = 0;
+			for (int i = 0; i < children.size(); ++i) {
+				assignedWeights.add(rnd.nextDouble() * fMaxWeight);
+
+				final double newAssignedTime = rnd.nextDouble() * availableTime;
+				assignedTimes.add(newAssignedTime);
+				maxAssigned = Math.max(maxAssigned, newAssignedTime);
+			}
+			availableTime -= maxAssigned;
+
+			// Add the annotations
+			for (int i = 0; i < children.size(); ++i) {
+				final ServiceActivity child = children.get(i);
+
+				ActivityPerformanceAnnotation ann = createActivityPerformanceAnnotation(model, child);
+				ann.setMinimumTime(assignedTimes.get(i));
+				ann.setWeight(assignedWeights.get(i));
+				if (++annotatedActivities >= total) {
+					return;
+				}
+			}
+		}
+	}
+
+	private void randomAnnotationsWithoutDecisions(EmfModel model, Random rnd,
+			final List<EObject> allActivities, final long nShuffled)
+			throws EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException
+	{
+		Collections.shuffle(allActivities, rnd);
+		final List<EObject> annotatedNodes = allActivities.subList(0, (int)nShuffled);
 
 		// Create their manual annotations
-		final ServiceProcess process = (ServiceProcess)model.getAllOfKind("ServiceProcess").iterator().next();
-		final EList annotations = process.getActivityPerformance();
-		final Map<String, ActivityPerformanceAnnotation> annotationMap
-			= new HashMap<String, ActivityPerformanceAnnotation>();
+		final Map<String, ActivityPerformanceAnnotation> annotationMap = new HashMap<String, ActivityPerformanceAnnotation>();
 		for (EObject node : annotatedNodes) {
 			final ServiceActivity activity = (ServiceActivity)node;
-
-			ActivityPerformanceAnnotation ann
-				= (ActivityPerformanceAnnotation)model.createInstance("ActivityPerformanceAnnotation");
-			ann.setManuallyAdded(true);
-			ann.setExecNode(activity);
-
-			// Use a large value by default, to avoid having the algorithm ask us to increase the value and block the process
-			ann.setConcurrentUsers(fGlobalThroughput);
-
-			annotations.add(ann);
-			annotationMap.put(activity.getName(), ann);
+			annotationMap.put(activity.getName(), createActivityPerformanceAnnotation(model, activity));
 		}
 
 		// Hand annotations to method in the subclass
 		configureRandomManualAnnotations(model, rnd, annotationMap, fGlobalLimit, fMaxWeight);
+	}
+
+	private ActivityPerformanceAnnotation createActivityPerformanceAnnotation(
+			EmfModel model, final ServiceActivity child)
+			throws EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException {
+		final ServiceProcess process = (ServiceProcess)model.getAllOfKind("ServiceProcess").iterator().next();
+		final EList<ActivityPerformanceAnnotation> annotations = process.getActivityPerformance();
+	
+		ActivityPerformanceAnnotation ann = (ActivityPerformanceAnnotation)model.createInstance("ActivityPerformanceAnnotation");
+		ann.setManuallyAdded(true);
+		ann.setExecNode(child);
+		// Use a large value by default, to avoid having the algorithm ask us to increase the value and block the process
+		ann.setConcurrentUsers(fGlobalThroughput);
+		annotations.add(ann);
+		return ann;
 	}
 
 }
