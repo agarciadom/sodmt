@@ -53,12 +53,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private static final String PARAM_PERCENTAGE_MANUAL = "percentageManual";
 	private static final String PARAM_MAX_WEIGHT = "maxManualWeight";
 	private static final String PARAM_RANDOM_SEED = "randomSeed";
+	private static final String PARAM_OLD_ENABLED = "oldTimeAlgoEnabled";
 
 	private int fIterations = 5;
 	private int fPercentageManual = 20;
 	private int fRandomSeed = 0;
 	private double fMaxWeight = 10;
 	private double fGlobalLimit = 100;
+	private boolean fOldTimeAlgoEnabled = true;
 
 	@Override
 	public String getParameter(String name) {
@@ -72,12 +74,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			return Double.toString(fMaxWeight);
 		} else if (PARAM_RANDOM_SEED.equals(name)) {
 			return Integer.toString(fRandomSeed);
+		} else if (PARAM_OLD_ENABLED.equals(name)) {
+			return Boolean.toString(fOldTimeAlgoEnabled);
 		} else return null;
 	}
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_GLOBALLIMIT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
+		return Arrays.asList(PARAM_GLOBALLIMIT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_OLD_ENABLED, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
 	}
 
 	@Override
@@ -90,6 +94,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			seriesOld = new YIntervalSeries("Exhaustive");
 		initXYLineChart(result, seriesNew, seriesOld);
 
+		final Random rnd = new Random(fRandomSeed);
 		List<EmfModel> models = buildModels();
 
 		monitor.beginTask("Comparing execution times", models.size());
@@ -102,21 +107,26 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
-				final Random rnd = new Random(fRandomSeed);
 				final List<Long> lOldNanos = new ArrayList<Long>();
 				final List<Long> lNewNanos = new ArrayList<Long>();
 
 				for (int i = 0; i < fIterations; ++i) {
 					addRandomManualAnnotations(model, rnd);
 
-					final long oldNanos = oldAlgo.runAndTimeNanos(model, fGlobalLimit, startNode);
-					final Map<String, Double> annotationsOld = computeAnnotationMap(model);
+					long oldNanos = 0;
+					Map<String, Double> annotationsOld = null;
+					if (fOldTimeAlgoEnabled) {
+						oldNanos = oldAlgo.runAndTimeNanos(model, fGlobalLimit, startNode);
+						annotationsOld = computeAnnotationMap(model);
+					}
 
 					final long newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
 					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
 
-					// If the results are not the same, the algorithms are not comparable
-					checkResultsMatch(annotationsNew, annotationsOld);
+					if (fOldTimeAlgoEnabled) {
+						// If the results are not the same, the algorithms are not comparable
+						checkResultsMatch(annotationsNew, annotationsOld);
+					}
 
 					lOldNanos.add(oldNanos);
 					lNewNanos.add(newNanos);
@@ -130,9 +140,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldNanos);
 				addToSeries(seriesNew, size, newStats);
 				addToSeries(seriesOld, size, oldStats);
-				updateRawText(result, size,
-					newStats.getMean().doubleValue()/1000000000,
-					oldStats.getMean().doubleValue()/1000000000);
+				updateRawText(result, size, newStats, oldStats);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -155,6 +163,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				fMaxWeight = Double.valueOf(value);
 			} else if (PARAM_RANDOM_SEED.equals(name)) {
 				fRandomSeed = Integer.valueOf(value);
+			} else if (PARAM_OLD_ENABLED.equals(name)) {
+				fOldTimeAlgoEnabled = Boolean.valueOf(value);
 			} else {
 				throw new IllegalArgumentException("Unknown parameter: " + name);
 			}
@@ -234,7 +244,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				series.add(x,
-					statsInNanos.getMean().doubleValue()/1000000000,
+					statsInNanos.getMedian().doubleValue()/1000000000,
 					statsInNanos.getMinOutlier().doubleValue()/1000000000,
 					statsInNanos.getMaxOutlier().doubleValue()/1000000000);
 			}
@@ -340,7 +350,11 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		for (YIntervalSeries series : allSeries) {
 			collection.addSeries(series);
 			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
-			headerBuilder.append(series.getKey());
+			headerBuilder.append(series.getKey() + " median");
+			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
+			headerBuilder.append(series.getKey() + " min");
+			headerBuilder.append(RAWTEXT_FIELD_SEPARATOR);
+			headerBuilder.append(series.getKey() + " max");
 		}
 		headerBuilder.append('\n');
 
@@ -377,11 +391,16 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	}
 
 	private void updateRawText(CaseStudyResult result, int size,
-			final double newTime, final double oldTime) {
+			final BoxAndWhiskerItem newStatsNanos, final BoxAndWhiskerItem oldStatsNanos) {
 		result.setRawText(result.getRawText()
 				+ String.format(Locale.ENGLISH, "%d%s%g%s%g\n", size,
-						RAWTEXT_FIELD_SEPARATOR, newTime,
-						RAWTEXT_FIELD_SEPARATOR, oldTime));
+						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMedian().doubleValue()/1000000000,
+						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMinOutlier().doubleValue()/1000000000,
+						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMaxOutlier().doubleValue()/1000000000,
+						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMedian().doubleValue()/1000000000,
+						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMinOutlier().doubleValue()/1000000000,
+						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMaxOutlier().doubleValue()/1000000000
+						));
 	}
 
 
