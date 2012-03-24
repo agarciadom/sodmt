@@ -1,7 +1,5 @@
 package es.uca.modeling.eol.comparison.cases;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.net.URI;
 import java.util.Arrays;
 
@@ -15,10 +13,10 @@ public class InferenceAlgorithm {
 
 	public static final String OPERATION_NEW = "distributeTime";
 	public static final String OPERATION_OLD = "annotateTimeLimits";
+	public static final String OPERATION_THROUGHPUT = "annotateConcurrentUsers";
 
 	private static final String MAIN_EOL_BUNDLE = "es.uca.modeling.eol";
-	private static final String MAIN_EOL_PATH = "/wizards/time_limits_sp.eol";
-	private static final ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+	private static final String MAIN_EOL_PATH = "/wizards/algorithms_sp.eol";
 
 	private static EolModule _module;
 

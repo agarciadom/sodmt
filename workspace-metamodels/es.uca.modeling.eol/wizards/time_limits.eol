@@ -98,8 +98,6 @@ operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
   -- paths first. Otherwise, results would vary depending on what path got
   -- evaluated first, and would be inconsistent.
   for (path in paths.sortBy(p | p.getLimitEstimateForFreeNodes())) {
-    ("Path: " + path).println();
-
     var slack := path.~startingSlack;
     var totalWeight := path.~totalWeight;
 

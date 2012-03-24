@@ -1,4 +1,4 @@
-import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
+import "platform:/resource/es.uca.modeling.eol/wizards/algorithms_sp.eol";
 
 @data wA
 @data wB

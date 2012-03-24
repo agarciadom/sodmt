@@ -37,8 +37,12 @@ import org.jfree.data.xy.YIntervalSeries;
 import org.jfree.data.xy.YIntervalSeriesCollection;
 
 import serviceProcess.ActivityPerformanceAnnotation;
+import serviceProcess.ControlFlow;
+import serviceProcess.DecisionNode;
+import serviceProcess.FlowEdge;
 import serviceProcess.FlowNode;
 import serviceProcess.ProcessControlFlow;
+import serviceProcess.ProcessPerformanceAnnotation;
 import serviceProcess.ServiceActivity;
 import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
@@ -47,25 +51,32 @@ import es.uca.modeling.eol.comparison.model.ICaseStudy;
 
 public abstract class AbstractCaseStudy implements ICaseStudy {
 
+	private static final int NANOS_TO_SECONDS = 1000000000;
 	private static final String RAWTEXT_FIELD_SEPARATOR = "; ";
-	private static final String PARAM_GLOBALLIMIT = "globalLimit";
+	private static final String PARAM_GLOBAL_TIMELIMIT = "globalLimit";
+	private static final String PARAM_GLOBAL_THROUGHPUT = "globalThroughput";
 	private static final String PARAM_ITERATIONS = "iterationsPerSize";
 	private static final String PARAM_PERCENTAGE_MANUAL = "percentageManual";
 	private static final String PARAM_MAX_WEIGHT = "maxManualWeight";
 	private static final String PARAM_RANDOM_SEED = "randomSeed";
-	private static final String PARAM_OLD_ENABLED = "oldTimeAlgoEnabled";
+	private static final String PARAM_OLD_ENABLED = "enableOldTime";
+	private static final String PARAM_THROUGHPUT_ENABLED = "enableThroughput";
 
 	private int fIterations = 5;
 	private int fPercentageManual = 20;
 	private int fRandomSeed = 0;
 	private double fMaxWeight = 10;
 	private double fGlobalLimit = 100;
+	private double fGlobalThroughput = 10;
 	private boolean fOldTimeAlgoEnabled = true;
+	private boolean fThroughputAlgoEnabled = true;
 
 	@Override
 	public String getParameter(String name) {
-		if (PARAM_GLOBALLIMIT.equals(name)) {
+		if (PARAM_GLOBAL_TIMELIMIT.equals(name)) {
 			return Double.toString(fGlobalLimit);
+		} else if (PARAM_GLOBAL_THROUGHPUT.equals(name)) {
+			return Double.toString(fGlobalThroughput);
 		} else if (PARAM_ITERATIONS.equals(name)) {
 			return Integer.toString(fIterations);
 		} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
@@ -76,12 +87,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			return Integer.toString(fRandomSeed);
 		} else if (PARAM_OLD_ENABLED.equals(name)) {
 			return Boolean.toString(fOldTimeAlgoEnabled);
+		} else if (PARAM_THROUGHPUT_ENABLED.equals(name)) {
+			return Boolean.toString(fThroughputAlgoEnabled);
 		} else return null;
 	}
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_GLOBALLIMIT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_OLD_ENABLED, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
+		return Arrays.asList(PARAM_OLD_ENABLED, PARAM_THROUGHPUT_ENABLED, PARAM_GLOBAL_TIMELIMIT, PARAM_GLOBAL_THROUGHPUT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
 	}
 
 	@Override
@@ -89,10 +102,12 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		validateConfiguration();
 		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
 		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
+		final InferenceAlgorithm throughputAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_THROUGHPUT);
 		final YIntervalSeries
 			seriesNew = new YIntervalSeries("Incremental"),
-			seriesOld = new YIntervalSeries("Exhaustive");
-		initXYLineChart(result, seriesNew, seriesOld);
+			seriesOld = new YIntervalSeries("Exhaustive"),
+			seriesThroughput = new YIntervalSeries("Throughput");
+		initXYLineChart(result, seriesNew, seriesOld, seriesThroughput);
 
 		final Random rnd = new Random(fRandomSeed);
 		List<EmfModel> models = buildModels();
@@ -105,13 +120,22 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					return;
 				}
 
+				addGlobalPerformanceConstraint(model);
+				normalizeProbabilities(model);
+
 				final FlowNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
 				final List<Long> lOldNanos = new ArrayList<Long>();
 				final List<Long> lNewNanos = new ArrayList<Long>();
+				final List<Long> lThroughputNanos = new ArrayList<Long>();
 
 				for (int i = 0; i < fIterations; ++i) {
 					addRandomManualAnnotations(model, rnd);
+
+					final long throughputNanos =
+							fThroughputAlgoEnabled
+								? throughputAlgo.runAndTimeNanos(model, startNode)
+								: 0;
 
 					long oldNanos = 0;
 					Map<String, Double> annotationsOld = null;
@@ -122,7 +146,6 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 					final long newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
 					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
-
 					if (fOldTimeAlgoEnabled) {
 						// If the results are not the same, the algorithms are not comparable
 						checkResultsMatch(annotationsNew, annotationsOld);
@@ -130,6 +153,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 					lOldNanos.add(oldNanos);
 					lNewNanos.add(newNanos);
+					lThroughputNanos.add(throughputNanos);
 				}
 
 				// Update the current results
@@ -138,9 +162,12 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewNanos);
 				final BoxAndWhiskerItem oldStats
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldNanos);
+				final BoxAndWhiskerItem throughputStats
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lThroughputNanos);
 				addToSeries(seriesNew, size, newStats);
 				addToSeries(seriesOld, size, oldStats);
-				updateRawText(result, size, newStats, oldStats);
+				addToSeries(seriesThroughput, size, throughputStats);
+				updateRawText(result, size, newStats, oldStats, throughputStats);
 				monitor.worked(1);
 			} finally {
 				model.dispose();
@@ -153,8 +180,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	@Override
 	public void setParameter(String name, String value) throws IllegalArgumentException {
 		try {
-			if (PARAM_GLOBALLIMIT.equals(name)) {
+			if (PARAM_GLOBAL_TIMELIMIT.equals(name)) {
 				fGlobalLimit = Double.valueOf(value);
+			} else if (PARAM_GLOBAL_THROUGHPUT.equals(name)) {
+				fGlobalThroughput = Double.valueOf(value);
 			} else if (PARAM_ITERATIONS.equals(name)) {
 				fIterations = Integer.valueOf(value);
 			} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
@@ -165,6 +194,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				fRandomSeed = Integer.valueOf(value);
 			} else if (PARAM_OLD_ENABLED.equals(name)) {
 				fOldTimeAlgoEnabled = Boolean.valueOf(value);
+			} else if (PARAM_THROUGHPUT_ENABLED.equals(name)) {
+				fThroughputAlgoEnabled = Boolean.valueOf(value);
 			} else {
 				throw new IllegalArgumentException("Unknown parameter: " + name);
 			}
@@ -198,7 +229,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 	protected void validateConfiguration() {
 		if (fGlobalLimit <= 0) {
-			throw new IllegalArgumentException(PARAM_GLOBALLIMIT + " must be greater than 0");
+			throw new IllegalArgumentException(PARAM_GLOBAL_TIMELIMIT + " must be greater than 0");
 		}
 		if (fIterations <= 0) {
 			throw new IllegalArgumentException(PARAM_ITERATIONS + " must be greater than 0");
@@ -234,6 +265,17 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		edge.setSource(source);
 		edge.setTarget(target);
 		edges.add(edge);
+	}
+
+	private void addGlobalPerformanceConstraint(EmfModel model)
+			throws EolModelElementTypeNotFoundException,
+			EolNotInstantiableModelElementTypeException {
+		final ProcessPerformanceAnnotation ann
+			= (ProcessPerformanceAnnotation)model.createInstance("ProcessPerformanceAnnotation");
+		ann.setConcurrentUsers(fGlobalThroughput);
+		ann.setSecsTimeLimit(fGlobalLimit);
+		final ServiceProcess process = (ServiceProcess)model.getAllOfType("ServiceProcess").iterator().next();
+		process.setProcessPerformance(ann);
 	}
 
 	/**
@@ -390,19 +432,36 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		result.setChart(chart);
 	}
 
-	private void updateRawText(CaseStudyResult result, int size,
-			final BoxAndWhiskerItem newStatsNanos, final BoxAndWhiskerItem oldStatsNanos) {
-		result.setRawText(result.getRawText()
-				+ String.format(Locale.ENGLISH, "%d%s%g%s%g\n", size,
-						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMedian().doubleValue()/1000000000,
-						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMinOutlier().doubleValue()/1000000000,
-						RAWTEXT_FIELD_SEPARATOR, newStatsNanos.getMaxOutlier().doubleValue()/1000000000,
-						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMedian().doubleValue()/1000000000,
-						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMinOutlier().doubleValue()/1000000000,
-						RAWTEXT_FIELD_SEPARATOR, oldStatsNanos.getMaxOutlier().doubleValue()/1000000000
-						));
+	private void normalizeProbabilities(EmfModel model) throws EolModelElementTypeNotFoundException {
+		final Collection<EObject> decisions = model.getAllOfKind("DecisionNode");
+		
+		for (EObject o : decisions) {
+			final DecisionNode d = (DecisionNode)o;
+			final double prob = d.getOutgoing().isEmpty() ? 1 : 1/d.getOutgoing().size();
+		
+			for (FlowEdge out : d.getOutgoing()) {
+				if (out instanceof ControlFlow) {
+					((ControlFlow)out).setProbability(prob);
+				}
+			}
+		}
 	}
 
+	private void updateRawText(CaseStudyResult result, int size, final BoxAndWhiskerItem... allStatsNanos) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(size);
+		for (BoxAndWhiskerItem statsNanos : allStatsNanos) {
+			sb.append(RAWTEXT_FIELD_SEPARATOR);
+			sb.append(statsNanos.getMedian().doubleValue() / NANOS_TO_SECONDS);
+			sb.append(RAWTEXT_FIELD_SEPARATOR);
+			sb.append(statsNanos.getMinOutlier().doubleValue() / NANOS_TO_SECONDS);
+			sb.append(RAWTEXT_FIELD_SEPARATOR);
+			sb.append(statsNanos.getMaxOutlier().doubleValue() / NANOS_TO_SECONDS);
+		}
+		sb.append("\n");
+
+		result.setRawText(result.getRawText() + sb.toString());
+	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void addRandomManualAnnotations(EmfModel model, Random rnd) throws EolRuntimeException {
@@ -430,6 +489,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				= (ActivityPerformanceAnnotation)model.createInstance("ActivityPerformanceAnnotation");
 			ann.setManuallyAdded(true);
 			ann.setExecNode(activity);
+
+			// Use a large value by default, to avoid having the algorithm ask us to increase the value and block the process
+			ann.setConcurrentUsers(fGlobalThroughput);
+
 			annotations.add(ann);
 			annotationMap.put(activity.getName(), ann);
 		}

@@ -1,4 +1,4 @@
-import "platform:/resource/es.uca.modeling.eol/wizards/time_limits_sp.eol";
+import "platform:/resource/es.uca.modeling.eol/wizards/algorithms_sp.eol";
 
 operation getStartNode() {
   return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();

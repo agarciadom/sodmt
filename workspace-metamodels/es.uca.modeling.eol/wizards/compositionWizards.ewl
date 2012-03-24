@@ -1,5 +1,4 @@
-import 'time_limits_co.eol';
-import 'concurrent_users.eol';
+import 'algorithms_co.eol';
 
 wizard InferPerformanceAnnotations {
   title : 'Infer performance annotations'
