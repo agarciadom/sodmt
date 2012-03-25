@@ -60,7 +60,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private static final String PARAM_MAX_WEIGHT = "maxManualWeight";
 	private static final String PARAM_RANDOM_SEED = "randomSeed";
 	private static final String PARAM_OLD_ENABLED = "enableOldTime";
+	private static final String PARAM_NEW_ENABLED = "enabledNewTime";
 	private static final String PARAM_THROUGHPUT_ENABLED = "enableThroughput";
+	private static final String PARAM_EQ_ULPS = "eqThresholdUlps";
 
 	private int fIterations = 5;
 	private int fPercentageManual = 20;
@@ -69,7 +71,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private double fGlobalLimit = 100;
 	private double fGlobalThroughput = 10;
 	private boolean fOldTimeAlgoEnabled = true;
+	private boolean fNewTimeAlgoEnabled = true;
 	private boolean fThroughputAlgoEnabled = true;
+	private int fEqualityThresholdUlps = 10;
+
+	@Override
+	public Collection<String> getParameterNames() {
+		return Arrays.asList(PARAM_NEW_ENABLED, PARAM_OLD_ENABLED, PARAM_THROUGHPUT_ENABLED, PARAM_EQ_ULPS, PARAM_GLOBAL_TIMELIMIT, PARAM_GLOBAL_THROUGHPUT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
+	}
 
 	@Override
 	public String getParameter(String name) {
@@ -87,14 +96,44 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			return Integer.toString(fRandomSeed);
 		} else if (PARAM_OLD_ENABLED.equals(name)) {
 			return Boolean.toString(fOldTimeAlgoEnabled);
+		} else if (PARAM_NEW_ENABLED.equals(name)) {
+			return Boolean.toString(fNewTimeAlgoEnabled);
 		} else if (PARAM_THROUGHPUT_ENABLED.equals(name)) {
 			return Boolean.toString(fThroughputAlgoEnabled);
+		} else if (PARAM_EQ_ULPS.equals(name)) {
+			return Integer.toString(fEqualityThresholdUlps);
 		} else return null;
 	}
 
 	@Override
-	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_OLD_ENABLED, PARAM_THROUGHPUT_ENABLED, PARAM_GLOBAL_TIMELIMIT, PARAM_GLOBAL_THROUGHPUT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
+	public void setParameter(String name, String value) throws IllegalArgumentException {
+		try {
+			if (PARAM_GLOBAL_TIMELIMIT.equals(name)) {
+				fGlobalLimit = Double.valueOf(value);
+			} else if (PARAM_GLOBAL_THROUGHPUT.equals(name)) {
+				fGlobalThroughput = Double.valueOf(value);
+			} else if (PARAM_ITERATIONS.equals(name)) {
+				fIterations = Integer.valueOf(value);
+			} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
+				fPercentageManual = Integer.valueOf(value);
+			} else if (PARAM_MAX_WEIGHT.equals(name)) {
+				fMaxWeight = Double.valueOf(value);
+			} else if (PARAM_RANDOM_SEED.equals(name)) {
+				fRandomSeed = Integer.valueOf(value);
+			} else if (PARAM_OLD_ENABLED.equals(name)) {
+				fOldTimeAlgoEnabled = Boolean.valueOf(value);
+			} else if (PARAM_NEW_ENABLED.equals(name)) {
+				fNewTimeAlgoEnabled = Boolean.valueOf(value);
+			} else if (PARAM_THROUGHPUT_ENABLED.equals(name)) {
+				fThroughputAlgoEnabled = Boolean.valueOf(value);
+			} else if (PARAM_EQ_ULPS.equals(name)) {
+				fEqualityThresholdUlps = Integer.valueOf(value);
+			} else {
+				throw new IllegalArgumentException("Unknown parameter: " + name);
+			}
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(e);
+		}
 	}
 
 	@Override
@@ -144,10 +183,15 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 						annotationsOld = computeAnnotationMap(model);
 					}
 
-					final long newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
-					final Map<String, Double> annotationsNew = computeAnnotationMap(model);
-					if (fOldTimeAlgoEnabled) {
-						// If the results are not the same, the algorithms are not comparable
+					long newNanos = 0;
+					Map<String, Double> annotationsNew = null;
+					if (fNewTimeAlgoEnabled) {
+						newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
+						annotationsNew = computeAnnotationMap(model);
+					}
+					
+					if (fOldTimeAlgoEnabled && fNewTimeAlgoEnabled) {
+						// If both algorithms were run but the results are not equivalent, the algorithms are not comparable
 						checkResultsMatch(annotationsNew, annotationsOld);
 					}
 
@@ -175,33 +219,6 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		}
 		monitor.done();
 		result.setSuccessful(true);
-	}
-
-	@Override
-	public void setParameter(String name, String value) throws IllegalArgumentException {
-		try {
-			if (PARAM_GLOBAL_TIMELIMIT.equals(name)) {
-				fGlobalLimit = Double.valueOf(value);
-			} else if (PARAM_GLOBAL_THROUGHPUT.equals(name)) {
-				fGlobalThroughput = Double.valueOf(value);
-			} else if (PARAM_ITERATIONS.equals(name)) {
-				fIterations = Integer.valueOf(value);
-			} else if (PARAM_PERCENTAGE_MANUAL.equals(name)) {
-				fPercentageManual = Integer.valueOf(value);
-			} else if (PARAM_MAX_WEIGHT.equals(name)) {
-				fMaxWeight = Double.valueOf(value);
-			} else if (PARAM_RANDOM_SEED.equals(name)) {
-				fRandomSeed = Integer.valueOf(value);
-			} else if (PARAM_OLD_ENABLED.equals(name)) {
-				fOldTimeAlgoEnabled = Boolean.valueOf(value);
-			} else if (PARAM_THROUGHPUT_ENABLED.equals(name)) {
-				fThroughputAlgoEnabled = Boolean.valueOf(value);
-			} else {
-				throw new IllegalArgumentException("Unknown parameter: " + name);
-			}
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(e);
-		}
 	}
 
 	@Override
@@ -293,9 +310,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		});
 	}
 
-	private boolean approximatelyEqual(double x, double y, double relativeError) {
+	private boolean approximatelyEqual(double x, double y, long ulps) {
 		final double max = Math.max(x, y);
-		return Math.abs((x - y) / max) <= relativeError;
+		final double ulp = Math.ulp(max);
+		return Math.abs(x - y) <= ulps * ulp;
 	}
 
 	private Map<String, Double> computeAnnotationMap(EmfModel model)
@@ -316,14 +334,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		String firstNotEqualKey = null;
 
 		for (String key : resultsOld.keySet()) {
-			// The new method is more efficient, but more sensitive to the
-			// approximation error from the usage of floating-point math.
-			//
-			// TODO: switch algorithms to use integer times/weights. Times
-			// should be in the millisecond range.
-			if (!resultsNew.containsKey(key)
-					|| !approximatelyEqual(resultsOld.get(key),
-							resultsNew.get(key), 0.125)) {
+			if (!resultsNew.containsKey(key) || !approximatelyEqual(resultsOld.get(key), resultsNew.get(key), fEqualityThresholdUlps)) {
 				firstNotEqualKey = key;
 				break;
 			}

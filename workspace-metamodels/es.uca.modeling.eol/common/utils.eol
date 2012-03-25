@@ -94,9 +94,8 @@ operation FlowNode getDepth() : Integer {
 $pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
 operation getLCA(nodeA : FlowNode, nodeB : FlowNode) : FlowNode {
   var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
-  var maxDepth   := depths.min();
-  var ancestorsA := nodeA.getAncestors(maxDepth);
-  var ancestorsB := nodeB.getAncestors(maxDepth);
+  var ancestorsA := nodeA.getAncestors();
+  var ancestorsB := nodeB.getAncestors();
   var common := ancestorsA.intersect(ancestorsB);
 
   if (common.isEmpty()) {
@@ -106,20 +105,18 @@ operation getLCA(nodeA : FlowNode, nodeB : FlowNode) : FlowNode {
   return common.asSequence().sortBy(r|-r.getDepth()).first();
 }
 
-$pre maxDepth >= 0
-operation FlowNode getAncestors(maxDepth : Integer) : Set {
+operation FlowNode getAncestors() : Set {
   var results := new Set;
-  self.addAllAncestors(maxDepth, results);
+  self.addAllAncestors(results);
   return results;
 }
 
-$pre maxDepth >= 0 and results.isDefined()
-operation FlowNode addAllAncestors(maxDepth : Integer, results : Collection) {
-  if (self.getDepth() <= maxDepth) {
-    results.add(self);
-  }
-  for (parent in self.incoming.collect(r|r.source)) {
-    parent.addAllAncestors(maxDepth, results);
+$pre results.isDefined()
+operation FlowNode addAllAncestors(results : Collection) {
+  if (results.add(self)) {
+    for (parent in self.incoming.collect(r|r.source)) {
+      parent.addAllAncestors(results);
+    }
   }
 }
 
