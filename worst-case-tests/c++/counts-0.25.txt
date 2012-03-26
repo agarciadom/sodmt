@@ -1,0 +1,13 @@
+Response time: 0.25
+Minimum times: 0 0.1 0.2 
+Weights: 0 1 2 3 4 5 6 7 8 9 10 
+1 levels (1089 instances):
+ - 941 instances with 1 top-level path(s) (86.4096%)
+ - 148 instances with 2 top-level path(s) (13.5904%)
+2 levels (44770 instances):
+ - 37722 instances with 1 top-level path(s) (84.2573%)
+ - 6644 instances with 2 top-level path(s) (14.8403%)
+ - 404 instances with 3 top-level path(s) (0.90239%)
+ - 0 instances with 4 top-level path(s) (0%)
+3 levels (0 instances):
+  no instances have 8 paths

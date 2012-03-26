@@ -1,0 +1,39 @@
+Response time: 0.75
+Minimum times: 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 
+Weights: 0 1 2 3 4 5 6 7 8 9 10 
+1 levels (7744 instances):
+ - 6072 instances with 1 top-level path(s) (78.4091%)
+ - 1672 instances with 2 top-level path(s) (21.5909%)
+2 levels (3345166 instances):
+ - 2261542 instances with 1 top-level path(s) (67.6063%)
+ - 916768 instances with 2 top-level path(s) (27.4058%)
+ - 132712 instances with 3 top-level path(s) (3.96728%)
+ - 34144 instances with 4 top-level path(s) (1.0207%)
+3 levels (45595704 instances):
+ - 35039136 instances with 1 top-level path(s) (76.8475%)
+ - 5006200 instances with 2 top-level path(s) (10.9795%)
+ - 2654736 instances with 3 top-level path(s) (5.82234%)
+ - 2428128 instances with 4 top-level path(s) (5.32534%)
+ - 409808 instances with 5 top-level path(s) (0.898786%)
+ - 53280 instances with 6 top-level path(s) (0.116853%)
+ - 4320 instances with 7 top-level path(s) (0.00947458%)
+ - 96 instances with 8 top-level path(s) (0.000210546%)
+4 levels (11616 instances):
+ - 11472 instances with 1 top-level path(s) (98.7603%)
+ - 48 instances with 2 top-level path(s) (0.413223%)
+ - 0 instances with 3 top-level path(s) (0%)
+ - 0 instances with 4 top-level path(s) (0%)
+ - 0 instances with 5 top-level path(s) (0%)
+ - 0 instances with 6 top-level path(s) (0%)
+ - 0 instances with 7 top-level path(s) (0%)
+ - 96 instances with 8 top-level path(s) (0.826446%)
+ - 0 instances with 9 top-level path(s) (0%)
+ - 0 instances with 10 top-level path(s) (0%)
+ - 0 instances with 11 top-level path(s) (0%)
+ - 0 instances with 12 top-level path(s) (0%)
+ - 0 instances with 13 top-level path(s) (0%)
+ - 0 instances with 14 top-level path(s) (0%)
+ - 0 instances with 15 top-level path(s) (0%)
+ - 0 instances with 16 top-level path(s) (0%)
+5 levels (0 instances):
+  no instances have 32 paths
