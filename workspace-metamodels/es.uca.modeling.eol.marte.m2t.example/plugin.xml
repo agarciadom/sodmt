@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="es.uca.modeling.eol.marte.m2t.example.objectContribution1"
+            objectClass="org.eclipse.papyrus.diagram.activity.edit.parts.ActivityDiagramEditPart">
+         <action
+               class="es.uca.modeling.eol.marte.m2t.example.ListActivities"
+               id="es.uca.modeling.eol.marte.m2t.example.report"
+               label="List Activities"
+               style="push"
+               tooltip="Runs an EGL transformation to produce a report with every activity in the diagram.">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

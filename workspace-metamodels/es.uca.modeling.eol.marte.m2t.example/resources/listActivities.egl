@@ -1,0 +1,13 @@
+List of activities
+------------------
+
+[% for (a : Activity in Activity.all) { %]
+- [%=a.name%]
+[% } %]
+
+List of actions
+---------------
+
+[% for (a : Action in Action.all) { %]
+- [%=a.name%]
+[% } %]
