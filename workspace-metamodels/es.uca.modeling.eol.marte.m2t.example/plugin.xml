@@ -6,9 +6,9 @@
       <objectContribution
             adaptable="false"
             id="es.uca.modeling.eol.marte.m2t.example.objectContribution1"
-            objectClass="org.eclipse.papyrus.diagram.activity.edit.parts.ActivityDiagramEditPart">
+            objectClass="org.eclipse.papyrus.uml.diagram.activity.edit.parts.ActivityDiagramEditPart">
          <action
-               class="es.uca.modeling.eol.marte.m2t.example.ListActivities"
+               class="org.eclipse.epsilon.examples.egl.gmf.papyrus.ListActivities"
                id="es.uca.modeling.eol.marte.m2t.example.report"
                label="List Activities"
                style="push"

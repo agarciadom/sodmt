@@ -1,4 +1,4 @@
-package es.uca.modeling.eol.marte.m2t.example;
+package org.eclipse.epsilon.examples.egl.gmf.papyrus;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;

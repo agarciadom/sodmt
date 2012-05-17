@@ -5,9 +5,9 @@ List of activities
 - [%=a.name%]
 [% } %]
 
-List of actions
----------------
+List of executable nodes
+------------------------
 
-[% for (a : Action in Action.all) { %]
+[% for (a in ExecutableNode.all) { %]
 - [%=a.name%]
 [% } %]

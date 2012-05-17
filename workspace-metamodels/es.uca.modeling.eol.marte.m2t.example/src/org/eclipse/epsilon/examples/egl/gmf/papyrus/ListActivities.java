@@ -1,7 +1,13 @@
-package es.uca.modeling.eol.marte.m2t.example;
+package org.eclipse.epsilon.examples.egl.gmf.papyrus;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Iterator;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.egl.EglTemplateFactory;
@@ -12,7 +18,7 @@ import org.eclipse.epsilon.eol.models.ModelRepository;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.papyrus.diagram.activity.edit.parts.ActivityDiagramEditPart;
+import org.eclipse.papyrus.uml.diagram.activity.edit.parts.ActivityDiagramEditPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -27,7 +33,19 @@ public class ListActivities implements IObjectActionDelegate {
 			final ModelRepository modelRepo = eglModule.getContext().getModelRepository();
 			modelRepo.addModel(new InMemoryEmfModel(resource));
 			eglModule.parse(ListActivities.class.getResource("/listActivities.egl").toURI());
-			System.out.println(eglModule.execute());
+
+			final Path pathToModel = new Path(resource.getURI().toPlatformString(true));
+			final IFile ifModel = ResourcesPlugin.getWorkspace().getRoot().getFile(pathToModel);
+			final File fModel = ifModel.getLocation().toFile().getCanonicalFile();
+			final File fTarget = new File(fModel.getParentFile(), "report.txt");
+
+			final FileWriter fW = new FileWriter(fTarget);
+			try {
+				fW.write((String)eglModule.execute());
+			} finally {
+				fW.close();
+			}
+			ifModel.getParent().refreshLocal(IResource.DEPTH_ONE, null);
 		} catch (Exception e) {
 			ExampleM2TPlugin.getDefault().logError(e.getMessage(), e);
 		}
