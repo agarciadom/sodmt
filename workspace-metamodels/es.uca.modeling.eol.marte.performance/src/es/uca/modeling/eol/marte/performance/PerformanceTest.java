@@ -113,7 +113,7 @@ public class PerformanceTest {
 
 	private List<FinalNode> getFinalNodes(final Activity activity) {
 		List<FinalNode> finalNodes = new ArrayList<FinalNode>();
-		for (ActivityNode node : activity.getNodes()) {
+		for (ActivityNode node : activity.getOwnedNodes()) {
 			if (node instanceof FinalNode) {
 				finalNodes.add((FinalNode)node);
 			}			
@@ -123,7 +123,7 @@ public class PerformanceTest {
 
 	private InitialNode getInitialNode(Activity activity) {
 		InitialNode initial = null;
-		for (ActivityNode node : activity.getNodes()) {
+		for (ActivityNode node : activity.getOwnedNodes()) {
 			if (node instanceof InitialNode) {
 				initial = (InitialNode)node;
 				break;

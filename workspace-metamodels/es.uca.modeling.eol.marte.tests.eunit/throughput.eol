@@ -31,7 +31,7 @@ operation computeThroughputs(activityName : String) : Map {
 operation computeThroughputMap(activityName : String) : Map {
   var activity  := getActivity(activityName);
   var vslTool   := activity.getVSLTool();
-  var execNodes := activity.nodes.collect(s:ExecutableNode|s);
+  var execNodes := activity.ownedNodes.collect(s:ExecutableNode|s);
   var throughputMap : Map;
   for (execNode in execNodes) {
     for (scenario in execNode.stereotypeApplications.collect(s:GaScenario|s)) {

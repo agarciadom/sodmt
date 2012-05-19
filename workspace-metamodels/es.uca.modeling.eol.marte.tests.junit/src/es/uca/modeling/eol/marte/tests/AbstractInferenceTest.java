@@ -71,7 +71,7 @@ public class AbstractInferenceTest {
 		final Activity activity = getActivity(model, activityName);
 		if (activity == null) return null;
 
-		for (EObject node : activity.getNodes()) {
+		for (EObject node : activity.getOwnedNodes()) {
 			if (node instanceof InitialNode) {
 				return (InitialNode) node;
 			}
@@ -85,7 +85,7 @@ public class AbstractInferenceTest {
 		if (activity == null) return null;
 
 		List<EObject> endNodes = new ArrayList<EObject>();
-		for (EObject node : activity.getNodes()) {
+		for (EObject node : activity.getOwnedNodes()) {
 			if (node instanceof FinalNode) {
 				endNodes.add(node);
 			}
@@ -152,7 +152,7 @@ public class AbstractInferenceTest {
 			throws EolModelElementTypeNotFoundException {
 				final Activity activity = getActivity(model, activityName);
 				final List<ExecutableNode> execNodes = new ArrayList<ExecutableNode>();
-				for (EObject o : activity.getNodes()) {
+				for (EObject o : activity.getOwnedNodes()) {
 					if (o instanceof ExecutableNode) {
 						execNodes.add((ExecutableNode)o);
 					}

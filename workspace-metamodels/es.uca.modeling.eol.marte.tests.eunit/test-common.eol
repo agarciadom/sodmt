@@ -12,9 +12,9 @@ operation getActivity(activityName : String) : Activity {
 }
 
 operation getFinalNodes(activityName : String) : Sequence {
-  return getActivity(activityName).nodes.collect(s : FinalNode | s);
+  return getActivity(activityName).ownedNodes.collect(s : FinalNode | s);
 }
 
 operation getStartNode(activityName : String) : InitialNode {
-  return getActivity(activityName).nodes.selectOne(s : InitialNode | true);
+  return getActivity(activityName).ownedNodes.selectOne(s : InitialNode | true);
 }
