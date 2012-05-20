@@ -9,8 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="www.uca.es/modeling/weaving/modisco"
-            class="sodmtMoDiscoWeaving.SodmtMoDiscoWeavingPackage"
-            genModel="model/weaving.genmodel"/>
+            class="es.uca.modeling.eol.marte.weaving.links.LinksPackage"/>
    </extension>
 
 </plugin>

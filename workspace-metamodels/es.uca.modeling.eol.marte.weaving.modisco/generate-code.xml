@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="project" default="default">
-	<target name="default">
-		<epsilon.emf.loadModel
-			name="MoDiscoGenModel"
-			modelfile="../org.eclipse.gmt.modisco.java/model/java.genmodel"
-			metamodeluri="http://www.eclipse.org/emf/2002/GenModel"
-			read="true" store="false"
-		/>
-		<epsilon.emf.loadModel
-			name="MARTEGenModel"
-			modelfile="../org.eclipse.papyrus.marte.static.profile/resources/MARTE.genmodel"
-			metamodeluri="http://www.eclipse.org/emf/2002/GenModel"
-			read="true" store="false"
-		/>
-		<epsilon.emf.loadModel
-			name="UMLTypesGenModel"
-			modelfile="../org.eclipse.uml2.types/model/Types.genmodel"
-			metamodeluri="http://www.eclipse.org/emf/2002/GenModel"
-			read="true" store="false"
-		/>
 
-		<epsilon.eugenia laststep="genmodel" src="model/weaving.emf">
-			<model step="genmodel" ref="MoDiscoGenModel"/>
-			<model step="genmodel" ref="MARTEGenModel"/>
-			<model step="genmodel" ref="UMLTypesGenModel"/>
+	<property name="main.pkg" value="links" />
+
+	<target name="default">
+		<epsilon.emf.loadModel name="MoDiscoGenModel" modeluri="platform:/plugin/org.eclipse.gmt.modisco.java/model/java.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="MARTEGenModel" modeluri="platform:/plugin/org.eclipse.papyrus.marte.static.profile/resources/MARTE.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="UMLTypesGenModel" modeluri="platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+
+		<epsilon.eugenia laststep="genmodel" src="model/${main.pkg}.emf">
+			<model step="genmodel" ref="MoDiscoGenModel" />
+			<model step="genmodel" ref="MARTEGenModel" />
+			<model step="genmodel" ref="UMLTypesGenModel" />
 		</epsilon.eugenia>
-		<epsilon.disposeModels/>
+		<epsilon.eugenia firststep="emfcode" laststep="emfcode" src="model/${main.pkg}.ecore" />
+
+		<epsilon.disposeModels />
 	</target>
 </project>

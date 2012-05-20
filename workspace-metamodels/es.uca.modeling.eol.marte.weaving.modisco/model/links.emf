@@ -1,5 +1,5 @@
 @namespace(uri="www.uca.es/modeling/weaving/modisco", prefix="mw")
-package sodmtMoDiscoWeaving;
+package links;
 
 import "http://www.eclipse.org/papyrus/MARTE/1";
 import "http://www.eclipse.org/MoDisco/Java/0.2.incubation/java";
@@ -9,6 +9,6 @@ class PerformanceRequirementLinks {
 }
 
 class PerformanceRequirementLink {
-   !resolve ref MARTE.GQAM.GaStep performanceRequirement;
-   !resolve ref java.MethodDeclaration testMethod;
+   ref MARTE.GQAM.GaStep performanceRequirement;
+   ref java.MethodDeclaration testMethod;
 }
