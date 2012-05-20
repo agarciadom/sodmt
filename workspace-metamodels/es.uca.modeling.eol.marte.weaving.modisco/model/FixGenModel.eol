@@ -1,0 +1,8 @@
+var modiscoGenPak := MoDiscoGenModel!GenPackage.all.selectOne(p|p.prefix='Java');
+var marteGenPak := MARTEGenModel!GenPackage.all.selectOne(p|p.prefix='MARTE');
+var typesGenPak := UMLTypesGenModel!GenPackage.all.selectOne(p|p.prefix='Types');
+
+var usedPaks := GenModel!GenModel.all.first.usedGenPackages;
+usedPaks.add(modiscoGenPak);
+usedPaks.add(marteGenPak);
+usedPaks.add(typesGenPak);
