@@ -8,6 +8,7 @@ class PerformanceRequirementLinks {
    val PerformanceRequirementLink[*] links;
 }
 
+@exeed(label="return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat('.') + '.' + self.testMethod.abstractTypeDeclaration.name + '#' + self.testMethod.name;")
 class PerformanceRequirementLink {
    ref MARTE.GQAM.GaStep performanceRequirement;
    ref java.MethodDeclaration testMethod;

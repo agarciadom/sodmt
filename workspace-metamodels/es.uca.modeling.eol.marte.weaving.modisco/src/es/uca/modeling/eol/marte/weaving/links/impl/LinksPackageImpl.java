@@ -243,6 +243,28 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
 
     // Create resource
     createResource(eNS_URI);
+
+    // Create annotations
+    // exeed
+    createExeedAnnotations();
+  }
+
+  /**
+   * Initializes the annotations for <b>exeed</b>.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void createExeedAnnotations()
+  {
+    String source = "exeed";		
+    addAnnotation
+      (performanceRequirementLinkEClass, 
+       source, 
+       new String[] 
+       {
+       "label", "return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat('.') + '.' + self.testMethod.abstractTypeDeclaration.name + '#' + self.testMethod.name;"
+       });
   }
 
 } //LinksPackageImpl
