@@ -263,7 +263,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
        source, 
        new String[] 
        {
-       "label", "return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat('.') + '.' + self.testMethod.abstractTypeDeclaration.name + '#' + self.testMethod.name;"
+       "label", "return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat(\'.\') + \'.\' + self.testMethod.abstractTypeDeclaration.name + \'#\' + self.testMethod.name;"
        });
   }
 

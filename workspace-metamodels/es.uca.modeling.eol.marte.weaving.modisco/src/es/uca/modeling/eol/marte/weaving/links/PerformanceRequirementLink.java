@@ -22,7 +22,7 @@ import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GaStep;
  * </p>
  *
  * @see es.uca.modeling.eol.marte.weaving.links.LinksPackage#getPerformanceRequirementLink()
- * @model annotation="exeed" label="'return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat('.') + '.' + self.testMethod.abstractTypeDeclaration.name + '#' + self.testMethod.name;'"
+ * @model annotation="exeed label='return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat(\'.\') + \'.\' + self.testMethod.abstractTypeDeclaration.name + \'#\' + self.testMethod.name;'"
  * @generated
  */
 public interface PerformanceRequirementLink extends EObject
