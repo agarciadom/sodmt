@@ -8,6 +8,11 @@
             file="ewl/inference.ewl"
             namespaceURI="http://www.eclipse.org/uml2/4.0.0/UML">
       </wizards>
+      <wizards
+            extraPackages="http://www.eclipse.org/papyrus/MARTE/1"
+            file="ewl/inference.ewl"
+            namespaceURI="http://www.eclipse.org/uml2/3.0.0/UML">
+      </wizards>
    </extension>
    <extension
          point="org.eclipse.epsilon.common.dt.tool">
