@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM">
-  <uml:Model xmi:id="_59x5ID_4EeCSBtZ7STKcow" name="model">
-    <packagedElement xmi:type="uml:Activity" xmi:id="_5-RoYD_4EeCSBtZ7STKcow" name="sample">
-      <node xmi:type="uml:InitialNode" xmi:id="_7VLJ4D_4EeCSBtZ7STKcow" name="InitialNode1" outgoing="_-yN4gD_4EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:ActivityFinalNode" xmi:id="_7p7R4D_4EeCSBtZ7STKcow" name="ActivityFinalNode1" incoming="_C3azUD_5EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_8KbW4D_4EeCSBtZ7STKcow" name="A" outgoing="__PuT4D_4EeCSBtZ7STKcow" incoming="_-yN4gD_4EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:DecisionNode" xmi:id="_8wMWYD_4EeCSBtZ7STKcow" name="DecisionNode1" outgoing="__rRAYD_4EeCSBtZ7STKcow _ACsB4D_5EeCSBtZ7STKcow" incoming="__PuT4D_4EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_9L9sYD_4EeCSBtZ7STKcow" name="B" outgoing="_B3WdcD_5EeCSBtZ7STKcow" incoming="__rRAYD_4EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_9rPpYD_4EeCSBtZ7STKcow" name="C" outgoing="_AUAbYD_5EeCSBtZ7STKcow" incoming="_ACsB4D_5EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_-GKq0D_4EeCSBtZ7STKcow" name="D" outgoing="_CbWiYD_5EeCSBtZ7STKcow" incoming="_AUAbYD_5EeCSBtZ7STKcow"/>
-      <node xmi:type="uml:MergeNode" xmi:id="_B26YkD_5EeCSBtZ7STKcow" name="MergeNode1" outgoing="_C3azUD_5EeCSBtZ7STKcow" incoming="_B3WdcD_5EeCSBtZ7STKcow _CbWiYD_5EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_-yN4gD_4EeCSBtZ7STKcow" name="ControlFlow1" source="_7VLJ4D_4EeCSBtZ7STKcow" target="_8KbW4D_4EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="__PuT4D_4EeCSBtZ7STKcow" name="ControlFlow2" source="_8KbW4D_4EeCSBtZ7STKcow" target="_8wMWYD_4EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="__rRAYD_4EeCSBtZ7STKcow" name="ControlFlow3" source="_8wMWYD_4EeCSBtZ7STKcow" target="_9L9sYD_4EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_ACsB4D_5EeCSBtZ7STKcow" name="ControlFlow4" source="_8wMWYD_4EeCSBtZ7STKcow" target="_9rPpYD_4EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_AUAbYD_5EeCSBtZ7STKcow" name="ControlFlow5" source="_9rPpYD_4EeCSBtZ7STKcow" target="_-GKq0D_4EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_B3WdcD_5EeCSBtZ7STKcow" name="ControlFlow6" source="_9L9sYD_4EeCSBtZ7STKcow" target="_B26YkD_5EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_CbWiYD_5EeCSBtZ7STKcow" name="ControlFlow7" source="_-GKq0D_4EeCSBtZ7STKcow" target="_B26YkD_5EeCSBtZ7STKcow"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_C3azUD_5EeCSBtZ7STKcow" name="ControlFlow8" source="_B26YkD_5EeCSBtZ7STKcow" target="_7p7R4D_4EeCSBtZ7STKcow"/>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM">
+  <uml:Model xmi:id="_abpTsLSzEeGnwu9wMl-zdQ" name="model">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_acLfMLSzEeGnwu9wMl-zdQ" name="Activity1" node="_j27iYLSzEeGnwu9wMl-zdQ _kNbW0LSzEeGnwu9wMl-zdQ _mPzeQLSzEeGnwu9wMl-zdQ _m_qN4LSzEeGnwu9wMl-zdQ _nfeWYLSzEeGnwu9wMl-zdQ _n_3GoLSzEeGnwu9wMl-zdQ _rbbOkLSzEeGnwu9wMl-zdQ _rpbOULSzEeGnwu9wMl-zdQ">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_w5sOELSzEeGnwu9wMl-zdQ" name="ControlFlow1" source="_j27iYLSzEeGnwu9wMl-zdQ" target="_mPzeQLSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_w5s1IbSzEeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_z2TwMLSzEeGnwu9wMl-zdQ" name="ControlFlow2" source="_mPzeQLSzEeGnwu9wMl-zdQ" target="_rbbOkLSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_z2TwMrSzEeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1wgMALSzEeGnwu9wMl-zdQ" name="ControlFlow3" source="_rbbOkLSzEeGnwu9wMl-zdQ" target="_m_qN4LSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_1wgzELSzEeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3rpDALSzEeGnwu9wMl-zdQ" name="ControlFlow4" source="_rbbOkLSzEeGnwu9wMl-zdQ" target="_nfeWYLSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_3rpqEbSzEeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_7BQT8LSzEeGnwu9wMl-zdQ" name="ControlFlow5" source="_nfeWYLSzEeGnwu9wMl-zdQ" target="_n_3GoLSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_7BQ7AbSzEeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_A4AE4LS0EeGnwu9wMl-zdQ" name="ControlFlow6" source="_n_3GoLSzEeGnwu9wMl-zdQ" target="_rpbOULSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_A4AE4rS0EeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DIUhsLS0EeGnwu9wMl-zdQ" name="ControlFlow7" source="_rpbOULSzEeGnwu9wMl-zdQ" target="_kNbW0LSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_DIVIwLS0EeGnwu9wMl-zdQ"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_D93poLS0EeGnwu9wMl-zdQ" name="ControlFlow8" source="_m_qN4LSzEeGnwu9wMl-zdQ" target="_rpbOULSzEeGnwu9wMl-zdQ">
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_D93porS0EeGnwu9wMl-zdQ"/>
+      </edge>
+      <node xmi:type="uml:InitialNode" xmi:id="_j27iYLSzEeGnwu9wMl-zdQ" name="InitialNode1" outgoing="_w5sOELSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_kNbW0LSzEeGnwu9wMl-zdQ" name="ActivityFinalNode1" incoming="_DIUhsLS0EeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_mPzeQLSzEeGnwu9wMl-zdQ" name="A" outgoing="_z2TwMLSzEeGnwu9wMl-zdQ" incoming="_w5sOELSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_m_qN4LSzEeGnwu9wMl-zdQ" name="B" outgoing="_D93poLS0EeGnwu9wMl-zdQ" incoming="_1wgMALSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_nfeWYLSzEeGnwu9wMl-zdQ" name="C" outgoing="_7BQT8LSzEeGnwu9wMl-zdQ" incoming="_3rpDALSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_n_3GoLSzEeGnwu9wMl-zdQ" name="Do Something" outgoing="_A4AE4LS0EeGnwu9wMl-zdQ" incoming="_7BQT8LSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_rbbOkLSzEeGnwu9wMl-zdQ" name="DecisionNode1" outgoing="_1wgMALSzEeGnwu9wMl-zdQ _3rpDALSzEeGnwu9wMl-zdQ" incoming="_z2TwMLSzEeGnwu9wMl-zdQ"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_rpbOULSzEeGnwu9wMl-zdQ" name="MergeNode1" outgoing="_DIUhsLS0EeGnwu9wMl-zdQ" incoming="_A4AE4LS0EeGnwu9wMl-zdQ _D93poLS0EeGnwu9wMl-zdQ"/>
     </packagedElement>
-    <profileApplication xmi:id="_VBuyMD_6EeCSBtZ7STKcow">
-      <eAnnotations xmi:id="_VClt0D_6EeCSBtZ7STKcow" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_rY-ZQLU8EeGLL_Xdum3tpw">
+      <eAnnotations xmi:id="_rZNp0LU8EeGLL_Xdum3tpw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//GQAM"/>
       </eAnnotations>
       <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_4bV20APMEdyuUt-4qHuVvQ"/>
     </profileApplication>
-    <profileApplication xmi:id="_VCtpoD_6EeCSBtZ7STKcow">
-      <eAnnotations xmi:id="_VDJugD_6EeCSBtZ7STKcow" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//NFPs"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_VDYYAD_6EeCSBtZ7STKcow">
-      <eAnnotations xmi:id="_VDz10D_6EeCSBtZ7STKcow" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//Time"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_WStkoAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_VD5VYD_6EeCSBtZ7STKcow">
-      <eAnnotations xmi:id="_VES-AD_6EeCSBtZ7STKcow" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//CoreElements"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_-wEewECLEd6UTJZnztgOLw"/>
-    </profileApplication>
   </uml:Model>
-  <GQAM:GaScenario xmi:id="_fnczsD_6EeCSBtZ7STKcow" base_NamedElement="_5-RoYD_4EeCSBtZ7STKcow" base_Behavior="_5-RoYD_4EeCSBtZ7STKcow">
-    <throughput>(value=2,unit=Hz,source=req)</throughput>
-    <respT>(value=5,unit=s,source=req)</respT>
+  <GQAM:GaScenario xmi:id="_6tsGILYQEeG5WedSjt6yuA" base_NamedElement="_acLfMLSzEeGnwu9wMl-zdQ">
+    <throughput>(value=2.0,unit=Hz,source=req)</throughput>
+    <respT>(value=10.0,unit=s,source=req)</respT>
   </GQAM:GaScenario>
-  <GQAM:GaAnalysisContext xmi:id="_fnrdMD_6EeCSBtZ7STKcow" base_StructuredClassifier="_5-RoYD_4EeCSBtZ7STKcow" base_NamedElement="_5-RoYD_4EeCSBtZ7STKcow">
-    <context>$swD : Real = 1.6666666269302368</context>
-    <context>$swC : Real = 1.6666666269302368</context>
-    <context>$swB : Real = 3.1333332538604735</context>
-    <context>$swA : Real = 1.6666666269302368</context>
+  <GQAM:GaStep xmi:id="_9UyEMLYQEeG5WedSjt6yuA" base_NamedElement="_m_qN4LSzEeGnwu9wMl-zdQ">
+    <hostDemand>(value=6.666666666666666,unit=s,source=calc)</hostDemand>
+    <throughput>(value=2.0,unit=Hz,source=calc)</throughput>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_9U2VoLYQEeG5WedSjt6yuA" base_NamedElement="_n_3GoLSzEeGnwu9wMl-zdQ">
+    <hostDemand>(value=3.333333333333333,unit=s,source=calc)</hostDemand>
+    <throughput>(value=2.0,unit=Hz,source=calc)</throughput>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_9U6AALYQEeG5WedSjt6yuA" base_NamedElement="_nfeWYLSzEeGnwu9wMl-zdQ">
+    <hostDemand>(value=3.333333333333333,unit=s,source=calc)</hostDemand>
+    <throughput>(value=2.0,unit=Hz,source=calc)</throughput>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_9U-4gLYQEeG5WedSjt6yuA" base_NamedElement="_mPzeQLSzEeGnwu9wMl-zdQ">
+    <hostDemand>(value=3.3333333333333335,unit=s,source=calc)</hostDemand>
+    <throughput>(value=2.0,unit=Hz,source=calc)</throughput>
+  </GQAM:GaStep>
+  <GQAM:GaAnalysisContext xmi:id="_9VOJELYQEeG5WedSjt6yuA" base_NamedElement="_acLfMLSzEeGnwu9wMl-zdQ">
+    <context>$swDoSomething : Real = 3.3333332538604736</context>
+    <context>$swC : Real = 3.3333332538604736</context>
+    <context>$swB : Real = 6.666666507720947</context>
+    <context>$swA : Real = 3.3333332538604736</context>
   </GQAM:GaAnalysisContext>
-  <GQAM:GaStep xmi:id="_hEuqAD_6EeCSBtZ7STKcow" base_NamedElement="_9rPpYD_4EeCSBtZ7STKcow" base_Action="_9rPpYD_4EeCSBtZ7STKcow">
-    <hostDemand>(expr=0+1*swC,unit=Hz,source=req)</hostDemand>
-    <hostDemand>(value=1.6666666666666665,source=calc)</hostDemand>
-    <throughput>(value=1.0,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_hsi38D_6EeCSBtZ7STKcow" base_NamedElement="_-GKq0D_4EeCSBtZ7STKcow" base_Action="_-GKq0D_4EeCSBtZ7STKcow">
-    <hostDemand>(expr=0+1*swD,unit=Hz,source=req)</hostDemand>
-    <hostDemand>(value=1.6666666666666665,source=calc)</hostDemand>
-    <throughput>(value=1.0,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_iKgmUD_6EeCSBtZ7STKcow" base_NamedElement="_9L9sYD_4EeCSBtZ7STKcow" base_Action="_9L9sYD_4EeCSBtZ7STKcow">
-    <hostDemand>(expr=0.2+1*swB,unit=s,source=req)</hostDemand>
-    <hostDemand>(value=3.333333333333333,source=calc)</hostDemand>
-    <throughput>(value=1.0,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_iv054D_6EeCSBtZ7STKcow" base_NamedElement="_8KbW4D_4EeCSBtZ7STKcow" base_Action="_8KbW4D_4EeCSBtZ7STKcow">
-    <hostDemand>(expr=0+1*swA,unit=Hz,source=req)</hostDemand>
-    <hostDemand>(value=1.6666666666666667,source=calc)</hostDemand>
-    <throughput>(value=2.0,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_VljJkD_9EeC2p5VtDyqsbg" base_NamedElement="__rRAYD_4EeCSBtZ7STKcow" prob="0.5"/>
-  <GQAM:GaStep xmi:id="_WQ6awD_9EeC2p5VtDyqsbg" base_NamedElement="_ACsB4D_5EeCSBtZ7STKcow" prob="0.5"/>
 </xmi:XMI>

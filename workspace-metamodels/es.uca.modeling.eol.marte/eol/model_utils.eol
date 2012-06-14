@@ -19,18 +19,43 @@ operation Activity getVSLTool() {
   return new Native("es.uca.modeling.eol.marte.tools.VSLTupleTool");
 }
 
-@cached
 $pre self.getScenario().isDefined() and not self.getScenario().respT.isEmpty()
 operation Activity getTimeLimit() : Real {
   var tool := self.getVSLTool();
   return tool.getKeyvalMap(self.getScenario().respT.first()).get("value").asReal() * 1.0d;
 }
 
-@cached
-$pre self.getScenario().isDefined()
+operation Activity getTimeLimitWithDefault(def : Real) : Real {
+  if (self.getScenario().isUndefined() or self.getScenario().respT.isEmpty()) {
+    return def;
+  }
+  return self.getTimeLimit();
+}
+
+operation Activity setTimeLimit(newTimeLimit : Real) {
+  var scenario := self.getScenario(true);
+  scenario.respT.clear();
+  scenario.respT.add('(value=' + newTimeLimit + ',unit=s,source=req)');
+}
+
+$pre self.getScenario().isDefined() and not self.getScenario().throughput.isEmpty()
 operation Activity getThroughput() : Real {
   var tool := self.getVSLTool();
   return tool.getKeyvalMap(self.getScenario().throughput.first()).get("value").asReal() * 1.0d;
+}
+
+operation Activity getThroughputWithDefault(def : Real) : Real {
+  if (self.getScenario().isUndefined() or self.getScenario().throughput.isEmpty()) {
+    return def;
+  }
+  return self.getThroughput();
+}
+
+$pre self.getScenario().isDefined()
+operation Activity setThroughput(newThroughput : Real) {
+  var scenario := self.getScenario(true);
+  scenario.throughput.clear();
+  scenario.throughput.add('(value=' + newThroughput + ',unit=Hz,source=req)');
 }
 
 @cached
@@ -73,11 +98,10 @@ operation Activity setSWVariable(name : String, value : Real) {
 -*
   OPERATIONS FOR ExecutableNode
 *-
-$pre self.getStep().isDefined()
 operation ExecutableNode setThroughput(newThroughput : Real) {
-  var step := self.getStep();
+  var step := self.getStep(true);
   step.throughput.clear();
-  step.throughput.add('(value=' + newThroughput + ',source=calc)');
+  step.throughput.add('(value=' + newThroughput + ',unit=Hz,source=calc)');
 }
 
 $pre self.getStep().isDefined()
@@ -93,16 +117,28 @@ operation ExecutableNode getTimeLimit() : Real {
   }
 }
 
-$pre self.getStep().isDefined()
 operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
   var tool := self.activity.getVSLTool();
-  var step := self.getStep();
+  var step := self.getStep(true);
 
   -- Remove all constraints not set by the user
   step.hostDemand := step.hostDemand.select(e | tool.getKeyvalMap(e).get("source") == "req");
 
   -- Add a calculated constraint with the time
-  step.hostDemand.add('(value=' + newTimeMillis + ',source=calc)');
+  step.hostDemand.add('(value=' + newTimeMillis + ',unit=s,source=calc)');
+}
+
+operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
+  var step := self.getStep();
+  if (step.isUndefined()) {
+    step := new GaStep;
+    step.base_NamedElement := self;
+  }
+  step.hostDemand.clear();
+
+  var expr := minTime + ' + ' + weight + ' * ' + self.getContextParameterName();
+  var entry := '(expr=' + expr + ',unit=s,source = req)';
+  step.hostDemand.add(entry);
 }
 
 $pre self.getStep().isDefined()
@@ -125,7 +161,8 @@ operation ExecutableNode getWeight() : Real {
 @cached
 operation ExecutableNode getMinimumTime() : Real {
   var tool := self.activity.getVSLTool();
-  return tool.getMinimumTime(self.getRequiredHostDemand().get("expr"));
+  var rhd := self.getRequiredHostDemand();
+  return tool.getMinimumTime(rhd.get("expr"));
 }
 
 @cached
@@ -142,14 +179,14 @@ operation ExecutableNode getRepetitions() : Real {
 @cached
 operation ExecutableNode getRequiredHostDemand() : Map {
   var tool := self.activity.getVSLTool();
-  if (self.getStep().isDefined()) {
-    return self.getStep().hostDemand.collect(e | tool.getKeyvalMap(e)).select(kv|kv.get("source") == "req").first();
-  } else {
-    var map : Map;
-    map.put("expr", "0.0+1.0*x");
-    map.put("source", "req");
-    return map;
+  var step := self.getStep();
+  if (step.isDefined()) {
+    var req := step.hostDemand.collect(e | tool.getKeyvalMap(e)).selectOne(kv|kv.get("source") == "req");
+    if (req.isDefined()) {
+      return req;
+    }
   }
+  return Map { "expr" = "0.0 + 1.0 * " + self.getContextParameterName(), "unit" = "s", "source" = "req" };
 }
 
 -*
@@ -179,6 +216,10 @@ operation NamedElement setTimeLimit(newTimeMillis : Real) {
   -- do nothing
 }
 
+operation NamedElement getContextParameterName() {
+  return 'sw' + self.getName().replaceAll('\\W', '');
+}
+
 operation NamedElement getThroughput() : Real {
   return 0.0d;
 }
@@ -200,18 +241,27 @@ operation NamedElement getRepetitions() : Real {
 }
 
 operation NamedElement getRequiredHostDemand() : Map {
-  var map : Map;
-  map.put("expr", "0+0*x");
-  map.put("source", "req");
-  return map;
+  return Map { "expr" = "0 + 0 * " + self.getContextParameterName(), "source" = "req" };
 }
 
-@cached
 operation NamedElement getScenario() : GaScenario {
-  return GaScenario.allInstances.select(s|s.base_NamedElement == self).first();
+  return self.getScenario(false);
+}
+
+operation NamedElement getScenario(createIfMissing : Boolean) : GaScenario {
+  var scenario := GaScenario.allInstances.selectOne(s|s.base_NamedElement == self);
+  if (createIfMissing and scenario.isUndefined()) {
+    scenario := new GaScenario;
+    scenario.base_NamedElement := self;
+  }
+  return scenario;
 }
 
 operation NamedElement getStep() : GaStep {
+  return self.getStep(false);
+}
+
+operation NamedElement getStep(createIfMissing : Boolean) : GaStep {
   -- Cache node->GaStep mapping in the activity, to avoid having to perform
   -- several linear scans when searching for the GaStep of several nodes
   if (not self.activity.~stepMap.isDefined()) {
@@ -221,10 +271,14 @@ operation NamedElement getStep() : GaStep {
     }
     self.activity.~stepMap := map;
   }
+  if (createIfMissing and not self.activity.~stepMap.containsKey(self)) {
+    var step := new GaStep;
+    step.base_NamedElement := self;
+    self.activity.~stepMap.put(self, step);
+  }
   return self.activity.~stepMap.get(self);
 }
 
-@cached
 operation NamedElement getAnalysisContext() : GaAnalysisContext {
-  return GaAnalysisContext.allInstances.select(s|s.base_NamedElement == self).first();
+  return GaAnalysisContext.allInstances.selectOne(s|s.base_NamedElement == self);
 }

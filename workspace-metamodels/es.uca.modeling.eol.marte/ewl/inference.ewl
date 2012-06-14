@@ -1,6 +1,23 @@
 import '../eol/throughput.eol';
 import '../eol/time_limits.eol';
 
+wizard SetGlobalConstraints {
+  guard : self.isKindOf(Activity)
+  title : 'Set global constraints'
+  do {
+    transaction {
+      var globalTimeLimit := self.getTimeLimitWithDefault(10.0d);
+      var globalThroughput := self.getThroughputWithDefault(1.0d);
+
+      globalTimeLimit := System.user.promptReal("Please enter the global time limit (in seconds)", globalTimeLimit);
+      globalThroughput := System.user.promptReal("Please enter the global throughput (in requests/second)", globalThroughput);
+
+      self.setTimeLimit(globalTimeLimit);
+      self.setThroughput(globalThroughput);
+    }
+  }
+}
+
 wizard InferTimeLimits {
   guard : self.isKindOf(Activity) and self.getScenario().isDefined()
   title : 'Infer time limits'
@@ -11,7 +28,7 @@ wizard InferTimeLimits {
         abort;
         return;
       }
-    } -- transaction  
+    } -- transaction
   } -- do
 } -- wizard
 
@@ -28,3 +45,23 @@ wizard InferThroughput {
     } -- transaction
   } -- do
 } -- wizard
+
+wizard SetTimeLimit {
+  guard : self.isKindOf(Action)
+  title : 'Set time limit expression'
+  do {
+    transaction {
+      var minTime := System.user.promptReal("Please enter the minimum time (in seconds): ", self.getMinimumTime());
+      if (minTime.isUndefined()) {
+        abort; return;
+      }
+
+      var weight := System.user.promptReal("Please enter the weight: ", self.getWeight());
+      if (weight.isUndefined()) {
+        abort; return;
+      }
+
+      self.setRequiredTimeLimit(minTime, weight);
+    }
+  }
+}
