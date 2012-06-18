@@ -12,13 +12,13 @@
 
    <extension point="org.eclipse.ui.newWizards">
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="es.uca.modeling.sodmt.wizards"
             name="%_UI_Wizard_category"/>
       <wizard
             id="serviceComposition.presentation.ServiceCompositionModelWizardID"
             name="%_UI_ServiceCompositionModelWizard_label"
             class="serviceComposition.presentation.ServiceCompositionModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="es.uca.modeling.sodmt.wizards"
             icon="icons/full/obj16/ServiceCompositionModelFile.gif">
          <description>%_UI_ServiceCompositionModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
