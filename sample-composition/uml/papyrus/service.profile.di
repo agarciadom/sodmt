@@ -11,9 +11,6 @@
         <children>
           <emfPageIdentifier href="service.profile.notation#_GYDU0D1aEeGCENGiitFRVw"/>
         </children>
-        <children>
-          <emfPageIdentifier href="service.profile.notation#_GYDU0D1aEeGCENGiitFRVw"/>
-        </children>
       </children>
     </windows>
   </sashModel>
