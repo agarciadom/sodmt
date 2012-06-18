@@ -129,11 +129,7 @@ operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
 }
 
 operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
-  var step := self.getStep();
-  if (step.isUndefined()) {
-    step := new GaStep;
-    step.base_NamedElement := self;
-  }
+  var step := self.getStep(true);
   step.hostDemand.clear();
 
   var expr := minTime + ' + ' + weight + ' * ' + self.getContextParameterName();
@@ -171,9 +167,18 @@ operation ExecutableNode getVariable() : String {
   return tool.getVariable(self.getRequiredHostDemand().get("expr"));
 }
 
-@cached
 operation ExecutableNode getRepetitions() : Real {
-  return self.getStep().rep.asReal();
+  var step := self.getStep();
+  if (step.isUndefined()) {
+    return 1.0d;
+  }
+  else {
+    return step.rep.asReal();
+  }
+}
+
+operation ExecutableNode setRepetitions(newRep : Real) {
+  self.getStep(true).rep := newRep;
 }
 
 @cached

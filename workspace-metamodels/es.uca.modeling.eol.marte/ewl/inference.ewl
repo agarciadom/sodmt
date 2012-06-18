@@ -47,21 +47,35 @@ wizard InferThroughput {
 } -- wizard
 
 wizard SetTimeLimit {
-  guard : self.isKindOf(Action)
+  guard : self.isKindOf(ExecutableNode)
   title : 'Set time limit expression'
   do {
     transaction {
-      var minTime := System.user.promptReal("Please enter the minimum time (in seconds): ", self.getMinimumTime());
+      var minTime := System.user.promptReal("Please enter the minimum time (in seconds):", self.getMinimumTime());
       if (minTime.isUndefined()) {
         abort; return;
       }
 
-      var weight := System.user.promptReal("Please enter the weight: ", self.getWeight());
+      var weight := System.user.promptReal("Please enter the weight:", self.getWeight());
       if (weight.isUndefined()) {
         abort; return;
       }
 
       self.setRequiredTimeLimit(minTime, weight);
+    }
+  }
+}
+
+wizard SetRepetitions {
+  guard : self.isKindOf(ExecutableNode)
+  title : 'Set repetitions'
+  do {
+    transaction {
+      var reps := System.user.promptReal("Please enter the number of repetitions:", self.getRepetitions());
+      if (reps.isUndefined()) {
+        abort; return;
+      }
+      self.setRepetitions(reps);
     }
   }
 }
