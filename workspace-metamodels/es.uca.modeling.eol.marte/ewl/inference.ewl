@@ -79,3 +79,20 @@ wizard SetRepetitions {
     }
   }
 }
+
+wizard SetProbability {
+  guard : self.isKindOf(ControlFlow) and self.source.isKindOf(DecisionNode)
+  title : 'Set probability'
+  do {
+    transaction {
+      var prob := 0.0;
+      while (prob <= 0.0 or prob > 1) {
+        prob := System.user.promptReal("Please enter a probability within (0, 1]", prob);
+        if (prob.isUndefined()) {
+          abort; return;
+        }
+      }
+      self.setProbability(prob);
+    }
+  }
+}

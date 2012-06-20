@@ -1,7 +1,13 @@
 <project default="all-tests">
-
 	<target name="init">
 		<tstamp />
+		<macrodef name="load.marte.model">
+			<attribute name="model" />
+			<attribute name="basename" />
+			<sequential>
+				<epsilon.emf.loadModel name="@{model}" modelfile="models/@{basename}.uml" metamodeluri="http://www.eclipse.org/papyrus/MARTE/1" read="true" store="false" />
+			</sequential>
+		</macrodef>
 	</target>
 
 	<target name="caggregation" depends="init">
@@ -16,10 +22,10 @@
 		<epsilon.eunit src="tlimits.eol" package="sodmt.marte" />
 	</target>
 
-	<target name="all-tests" depends="caggregation,throughput,tlimits" />
+	<target name="all-tests" depends="tlimits" />
 
 	<target name="load-marte-model">
-		<epsilon.emf.loadModel name="UML" modelfile="models/model.uml" metamodeluri="http://www.eclipse.org/papyrus/MARTE/1" read="true" store="false" />
+		<load.marte.model model="UML" basename="model" />
+		<load.marte.model model="MultiDiagram" basename="multimodel" />
 	</target>
-
 </project>

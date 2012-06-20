@@ -96,18 +96,35 @@ operation Set intersect(otherSet : Set) : Set {
 operation ActivityNode getAllReachableNodes() : Set {
   var nodeSet := new Set;
   nodeSet.add(self);
-  addAllReachableNodes(self, nodeSet);
+  self.addAllReachableNodes(nodeSet);
   return nodeSet;
+}
+
+-- Returns all the front end nodes of a structured activity node. According
+-- to the UML spec, these are the nodes that do not have any incoming edges.
+operation StructuredActivityNode getFrontEndNodes() : Set {
+  var fn := self.nodes.select(n | n.incoming.isEmpty()).asSet();
+  ("frontend nodes for " + self + ": " + fn).println();
+  return fn;
 }
 
 -- Adds all the nodes which are reachable from a node in the graph to a set of
 -- nodes. Avoids nodes which have been already visited.
-operation addAllReachableNodes(node : ActivityNode, nodeSet : Set) {
-  for (child in node.outgoing.collect(r|r.target)) {
-    var oldSize := nodeSet.size();
-    nodeSet.add(child);
-    if (nodeSet.size() > oldSize) {
-      addAllReachableNodes(child, nodeSet);
+operation StructuredActivityNode addAllReachableNodes(nodeSet : Set) {
+  addAllReachableNodeSet(self.getFrontEndNodes(), nodeSet);
+  addAllReachableNodeSet(self.outgoing.collect(r|r.target), nodeSet);
+}
+
+-- Adds all the nodes which are reachable from a node in the graph to a set of
+-- nodes. Avoids nodes which have been already visited.
+operation ActivityNode addAllReachableNodes(nodeSet : Set) {
+  addAllReachableNodeSet(self.outgoing.collect(r|r.target), nodeSet);
+}
+
+operation addAllReachableNodeSet(source : Collection, target : Collection) {
+  for (node in source) {
+    if (target.add(node)) {
+      node.addAllReachableNodes(target);
     }
   }
 }

@@ -1,11 +1,13 @@
 import 'test-common.eol';
 import 'platform:/resource/es.uca.modeling.eol.marte/eol/time_limits.eol';
 
+$onlyWith Map { "UML" = "UML" }
 @test
 operation handleOrder() {
   assertConstraintsEquals("Handle Order", 1, Sequence { pair(0.4, 3.0) });
 }
 
+$onlyWith Map { "UML" = "UML" }
 @test
 operation sequenceWithRepetitions() {
   assertConstraintsEquals("SequenceWithRepetitions", 1, Sequence { pair(0.0, 8.0) });

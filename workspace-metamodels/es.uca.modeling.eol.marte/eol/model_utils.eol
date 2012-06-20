@@ -95,18 +95,29 @@ operation Activity setSWVariable(name : String, value : Real) {
   ctx.add(fullExpr);
 }
 
+@cached
+operation Activity getStepMap() : Map {
+  var map : Map;
+  for (step in GaStep.allInstances) {
+    map.put(step.base_NamedElement, step);
+  }
+  return map;
+}
+
 -*
   OPERATIONS FOR ExecutableNode
 *-
 operation ExecutableNode setThroughput(newThroughput : Real) {
+  ("Setting throughput for " + self.name + " to " + newThroughput).println();
   var step := self.getStep(true);
   step.throughput.clear();
   step.throughput.add('(value=' + newThroughput + ',unit=Hz,source=calc)');
+  ("Set throughput for " + self.name + " to " + self.getThroughput()).println();
 }
 
 $pre self.getStep().isDefined()
 operation ExecutableNode getTimeLimit() : Real {
-  var tool   := self.activity.getVSLTool();
+  var tool   := self.getActivity().getVSLTool();
   var stepHD := self.getStep().hostDemand;
   var kvCalcHD := stepHD.collect(e|tool.getKeyvalMap(e)).select(kv|kv.get("source") == "calc").first();
   if (kvCalcHD.isDefined()) {
@@ -118,7 +129,7 @@ operation ExecutableNode getTimeLimit() : Real {
 }
 
 operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
-  var tool := self.activity.getVSLTool();
+  var tool := self.getActivity().getVSLTool();
   var step := self.getStep(true);
 
   -- Remove all constraints not set by the user
@@ -139,7 +150,7 @@ operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
 
 $pre self.getStep().isDefined()
 operation ExecutableNode getThroughput() : Real {
-  var tool       := self.activity.getVSLTool();
+  var tool       := self.getActivity().getVSLTool();
   var throughput := self.getStep().throughput.first();
   if (throughput.isDefined()) {
     return tool.getKeyvalMap(throughput).get("value").asReal();
@@ -150,20 +161,20 @@ operation ExecutableNode getThroughput() : Real {
 
 @cached
 operation ExecutableNode getWeight() : Real {
-  var tool := self.activity.getVSLTool();
+  var tool := self.getActivity().getVSLTool();
   return tool.getWeight(self.getRequiredHostDemand().get("expr"));
 }
 
 @cached
 operation ExecutableNode getMinimumTime() : Real {
-  var tool := self.activity.getVSLTool();
+  var tool := self.getActivity().getVSLTool();
   var rhd := self.getRequiredHostDemand();
   return tool.getMinimumTime(rhd.get("expr"));
 }
 
 @cached
 operation ExecutableNode getVariable() : String {
-  var tool := self.activity.getVSLTool();
+  var tool := self.getActivity().getVSLTool();
   return tool.getVariable(self.getRequiredHostDemand().get("expr"));
 }
 
@@ -183,7 +194,7 @@ operation ExecutableNode setRepetitions(newRep : Real) {
 
 @cached
 operation ExecutableNode getRequiredHostDemand() : Map {
-  var tool := self.activity.getVSLTool();
+  var tool := self.getActivity().getVSLTool();
   var step := self.getStep();
   if (step.isDefined()) {
     var req := step.hostDemand.collect(e | tool.getKeyvalMap(e)).selectOne(kv|kv.get("source") == "req");
@@ -197,7 +208,6 @@ operation ExecutableNode getRequiredHostDemand() : Map {
 -*
   OPERATIONS FOR ActivityEdge
 *-
-@cached
 $pre not self.getStep().isDefined() or self.getStep().prob.isDefined()
 $post _result.isDefined() and _result >= 0 and _result <= 1
 operation ActivityEdge getProbability() : Real {
@@ -208,6 +218,10 @@ operation ActivityEdge getProbability() : Real {
   } else {
     return 1.0d;
   }
+}
+
+operation ActivityEdge setProbability(newProb : Real) {
+  self.getStep(true).prob := newProb;
 }
 
 -*
@@ -269,19 +283,27 @@ operation NamedElement getStep() : GaStep {
 operation NamedElement getStep(createIfMissing : Boolean) : GaStep {
   -- Cache node->GaStep mapping in the activity, to avoid having to perform
   -- several linear scans when searching for the GaStep of several nodes
-  if (not self.activity.~stepMap.isDefined()) {
-    var map : Map;
-    for (step in GaStep.allInstances) {
-      map.put(step.base_NamedElement, step);
-    }
-    self.activity.~stepMap := map;
-  }
-  if (createIfMissing and not self.activity.~stepMap.containsKey(self)) {
+  var stepMap := self.getStepMap();
+  if (createIfMissing and not stepMap.containsKey(self)) {
     var step := new GaStep;
     step.base_NamedElement := self;
-    self.activity.~stepMap.put(self, step);
+    stepMap.put(self, step);
   }
-  return self.activity.~stepMap.get(self);
+  return stepMap.get(self);
+}
+
+operation NamedElement getStepMap() : Map {
+  return self.getActivity().getStepMap();
+}
+
+@cached
+operation NamedElement getActivity() {
+  if (self.activity.isDefined()) {
+    return self.activity;
+  }
+  else {
+    return self.inGroup.first().getActivity();
+  }
 }
 
 operation NamedElement getAnalysisContext() : GaAnalysisContext {

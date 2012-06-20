@@ -85,7 +85,13 @@ operation InitialNode computeThroughput() : Real {
 }
 
 @cached
-$pre self.incoming.size() = 1
+$pre self.inStructuredNode.isDefined() or self.incoming.select(e : ControlFlow | true).size() = 1
 operation ActivityNode computeThroughput() : Real {
-  return self.incoming.first().computeThroughput();
+  var result := 0;
+  if (not self.incoming.isEmpty()) {
+    result := self.incoming.selectOne(e : ControlFlow | true).computeThroughput();
+  } else {
+    result := self.inGroup.first().computeThroughput();
+  }
+  return result;
 }
