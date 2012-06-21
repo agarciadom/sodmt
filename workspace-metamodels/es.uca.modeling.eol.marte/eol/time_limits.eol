@@ -3,7 +3,7 @@
   time limits. Uses an alternative formulation to the first version
   which does not require all paths to be enumerated. 
 
-  Copyright (c) 2010-2011 Antonio García Domínguez.  All rights
+  Copyright (c) 2010-2012 Antonio García Domínguez.  All rights
   reserved. This program and the accompanying materials are made
   available under the terms of the Eclipse Public License v1.0 which
   accompanies this distribution, and is available at
@@ -48,6 +48,9 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
   var newLimit   := v.getMinimumTime() + slackPerWU * v.getWeight();
   v.setTimeLimit(newLimit);
   v.~visited = true;
+  if (v.isKindOf(StructuredActivityNode) and not distributeTime(v.getTimeLimit(), v.getBackEndNodes())) {
+    return false;
+  }
 
   var remainingTime = T - newLimit * v.getRepetitions();
   var outEdges : Sequence := v.getOutEdgesFromMostToLeastStrict(remainingTime);
@@ -85,7 +88,7 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
     if ( v.getWeight() > 0 ) {
       suw := (v.getTimeLimit() - v.getMinimumTime()) / v.getWeight();
     }
-    v.activity.setSWVariable(v.getVariable(), suw);
+    v.getActivity().setSWVariable(v.getVariable(), suw);
   }
 
   return true;
@@ -119,6 +122,9 @@ operation reuseSurplusTime(slack : Real, start : ActivityNode) {
   -- Distribute the time according to the weights of each node.
   for (node in backNodes) {
     node.setTimeLimit(node.getTimeLimit() + node.getWeight()/totalWeight * slack);
+    if (node.isKindOf(StructuredActivityNode) and not distributeTime(node.getTimeLimit(), node.getBackEndNodes())) {
+      return false;
+    }
   }
 }
 
@@ -155,13 +161,20 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
   var stack : Sequence;
   stack.addAll(endNodes);
 
+  var results : Sequence;
+
   while (not stack.isEmpty()) {
     -- Take the top of the stack
     var currentNode : ActivityNode = stack.popLast();
 
     -- Skip this node for now if not all outgoing edges have been visited yet.
     -- We will visit it later through another edge.
-    if (currentNode.outgoing.exists(e|not e.~constraints.isDefined())) {
+    if (currentNode.outgoing.exists(e|e.~constraints.isUndefined())) {
+      continue;
+    }
+
+    -- Skip the node if it was previously visited (happens quite often with decision and fork nodes)
+    if (currentNode.~maxMinTimeLimit.isDefined()) {
       continue;
     }
 
@@ -228,13 +241,24 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
 
     -- Check if we're done or not
     if (currentNode.incoming.isEmpty()) {
-      -- Current node is the initial one and all outgoing edges have been visited: we are done.
-      return Sequence { currentNode, constraints };
+      -- Current node does not have incoming links and all outgoing edges have been visited: it may be an initial node.
+      results.add(currentNode);
+      results.add(constraints);
     }
   }
 
-  System.user.inform("ERROR: no initial node found");
-  return null;
+  if (results.size() > 2) {
+    var initial := 0.iota(results.size - 1, 2).collect(n | results.at(n));
+    System.user.inform(initial.size + " potential initial nodes were found: " + initial + ". Please revise your model.");
+    return null;
+  }
+  else if (not results.isEmpty()) {
+    return results;
+  }
+  else {
+    System.user.inform("ERROR: no initial node found");
+    return null;
+  }
 }
 
 -* Compares two constraints. Returns -1 if the first constraint is stricter

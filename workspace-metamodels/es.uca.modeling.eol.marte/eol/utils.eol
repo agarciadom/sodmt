@@ -1,7 +1,7 @@
 -*
   Miscellaneous utilities for both inference algorithms.
 
-  Copyright (c) 2009-2011 Antonio García Domínguez.  All rights
+  Copyright (c) 2009-2012 Antonio García Domínguez.  All rights
   reserved. This program and the accompanying materials are made
   available under the terms of the Eclipse Public License v1.0 which
   accompanies this distribution, and is available at
@@ -104,7 +104,6 @@ operation ActivityNode getAllReachableNodes() : Set {
 -- to the UML spec, these are the nodes that do not have any incoming edges.
 operation StructuredActivityNode getFrontEndNodes() : Set {
   var fn := self.nodes.select(n | n.incoming.isEmpty()).asSet();
-  ("frontend nodes for " + self + ": " + fn).println();
   return fn;
 }
 
@@ -138,12 +137,28 @@ operation isApproximatelyEqual(a, b, epsilon) : Boolean {
 
 -- COLLECTION UTILITIES -----------------------------------
 
+$pre not self.isEmpty()
+operation Sequence popFirst() : Any {
+  var elem = self.first();
+  self.removeAt(0);
+  return elem;
+}
+
+$pre not self.isEmpty()
+operation OrderedSet popFirst() : Any {
+  var elem = self.first();
+  self.removeAt(0);
+  return elem;
+}
+
+$pre not self.isEmpty()
 operation Sequence popLast() : Any {
   var elem = self.last();
   self.removeAt(self.size()-1);
   return elem;
 }
 
+$pre not self.isEmpty()
 operation OrderedSet popLast() : Any {
   var elem = self.last();
   self.removeAt(self.size()-1);

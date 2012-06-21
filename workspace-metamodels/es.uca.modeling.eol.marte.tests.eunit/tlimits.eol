@@ -6,11 +6,11 @@ $onlyWith Map { "Model" = "MultiDiagram" }
 @test
 operation handleOrderAnnotations() {
   var inferredTL := inferTimeLimits("Handle Order", 1, true);
-  assertEquals("Evaluate Order should have 0.4s",  0.4, inferredTL.get("Evaluate Order"),  5);
-  assertEquals("Create Invoice should have 0.2s",  0.2, inferredTL.get("Create Invoice"),  5);
-  assertEquals("Perform Payment should have 0.2s", 0.2, inferredTL.get("Perform Payment"), 5);
-  assertEquals("Ship Order should have 0.4s",      0.4, inferredTL.get("Ship Order"),      5);
-  assertEquals("Close Order should have 0.2s",     0.2, inferredTL.get("Close Order"),     5);
+  assertTimeLimit("Evaluate Order", 0.4, inferredTL);
+  assertTimeLimit("Create Invoice", 0.2, inferredTL);
+  assertTimeLimit("Perform Payment", 0.2, inferredTL);
+  assertTimeLimit("Ship Order", 0.4, inferredTL);
+  assertTimeLimit("Close Order", 0.2, inferredTL);
 }
 
 $onlyWith Map { "Model" = "MultiDiagram" }
@@ -18,15 +18,25 @@ $onlyWith Map { "Model" = "MultiDiagram" }
 operation evaluateOrderAnnotations() {
   var inferredTL := inferTimeLimits("Evaluate Order", 1, true);
   ("inferredTL: " + inferredTL).println();
+  assertTimeLimit("Create Order", 0.2, inferredTL);
+  assertTimeLimit("List Warehouses", 0.2, inferredTL);
+  assertTimeLimit("LoopThroughOrderItems", 0.2, inferredTL);
+  assertTimeLimit("CheckIfWarehouseHasStock", 0.2, inferredTL);
+  assertTimeLimit("Select Next Order Item", 0.2, inferredTL);
+  assertTimeLimit("Check Stock", 0.1, inferredTL);
+  assertTimeLimit("Remove Warehouse", 0.1, inferredTL);
+  assertTimeLimit("Accept Order", 0.2, inferredTL);
+  assertTimeLimit("Select Closest Warehouse", 0.2, inferredTL);
+  assertTimeLimit("Reject Order", 0.4, inferredTL);
 }
 
 $onlyWith Map { "Model" = "UML" }
 @test
 operation seqWithRepsAnnotations() {
   var inferredTL := inferTimeLimits("SequenceWithRepetitions", 1, true);
-  assertEquals("A should have 0.4s", 0.125, inferredTL.get("A"), 5);
-  assertEquals("B should have 0.2s", 0.25,  inferredTL.get("B"), 5);
-  assertEquals("C should have 0.2s", 0.125, inferredTL.get("C"), 5);
+  assertTimeLimit("A", 0.125, inferredTL);
+  assertTimeLimit("B", 0.25,  inferredTL);
+  assertTimeLimit("C", 0.125, inferredTL);
 }
 
 $onlyWith Map { "Model" = "UML" }
@@ -36,6 +46,10 @@ operation handleOrderSW() {
   var ctxParamMap := buildContextParameterMap();
   var expectedParamMap := Map { "swEO" = 0.0, "swCI" = 0.2, "swPP" = 0.2, "swSO" = 0.4, "swCO" = 0.2 };
   assertContextParamsEqual(expectedParamMap, ctxParamMap);
+}
+
+operation assertTimeLimit(name : String, timeLimit : Real, tlMap : Map) {
+  assertEquals(name + " should have " + timeLimit + "s", timeLimit, tlMap.get(name), 5);
 }
 
 operation assertContextParamsEqual(expectedParamMap : Map, ctxParamMap : Map) {
