@@ -54,12 +54,6 @@ operation annotateThroughput(start : ActivityNode) : Boolean {
 
 -- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
 
--*
-  Note: for some reason, Epsilon (as of r597) doesn't use the most specific
-  operation for a particular class, but rather the first applicable operation.
-  Therefore, the computeThroughput operations below MUST be ordered from
-  least to most specific: first the edges, and then the nodes.
-*-
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
 operation ActivityEdge computeThroughput() : Real {
@@ -67,31 +61,24 @@ operation ActivityEdge computeThroughput() : Real {
 }
 
 @cached
-$pre self.incoming.notEmpty()
-operation JoinNode computeThroughput() : Real {
-  return self.incoming.collect(e|e.computeThroughput()).sortBy(e|e).first();
-}
-
-@cached
-$pre self.incoming.notEmpty()
-operation MergeNode computeThroughput() : Real {
-  return self.incoming.collect(e|e.computeThroughput()).sum();
-}
-
-@cached
-$pre self.incoming.isEmpty()
-operation InitialNode computeThroughput() : Real {
-  return self.activity.getThroughput();
-}
-
-@cached
-$pre self.inStructuredNode.isDefined() or self.incoming.select(e : ControlFlow | true).size() = 1
 operation ActivityNode computeThroughput() : Real {
-  var result := 0;
-  if (not self.incoming.isEmpty()) {
-    result := self.incoming.selectOne(e : ControlFlow | true).computeThroughput();
-  } else {
-    result := self.inGroup.first().computeThroughput();
+  var prev = self.incoming.select(e : ControlFlow | true);
+  if (prev.isEmpty()) {
+    prev = self.getPrev();
   }
-  return result;
+  if (prev.notEmpty()) {
+    if (self.isKindOf(JoinNode)) {
+      return prev.collect(e|e.computeThroughput()).sortBy(e|e).first();
+    } else if (self.isKindOf(MergeNode)) {
+      return prev.collect(e|e.computeThroughput()).sum();
+    } else {
+      -- We assume that anything that isn't a JoinNode or a MergeNode has exactly one incoming edge or one previous node
+      return prev.first.computeThroughput();
+    }
+  }
+
+  if (self.getContainers().notEmpty()) {
+    return self.getContainers().first.computeThroughput();
+  }
+  return 0;
 }

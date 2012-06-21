@@ -363,7 +363,7 @@
       </edge>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_79qKMLo3EeGzmcMwgoMnpg" name="ObjectFlow4" source="_sSHeYLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_Cvax4Lo4EeGzmcMwgoMnpg" name="ObjectFlow5" source="_8nX1kLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
-      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" outgoing="_jL-9ILozEeG_n-mswuuavA" incoming="_2GCeQLoxEeG_n-mswuuavA">
+      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" outgoing="_jL-9ILozEeG_n-mswuuavA" incoming="_2GCeQLoxEeG_n-mswuuavA" bodyPart="_PZh7wLoyEeG_n-mswuuavA" test="_KSE5wLoyEeG_n-mswuuavA">
         <node xmi:type="uml:OpaqueAction" xmi:id="_KSE5wLoyEeG_n-mswuuavA" name="Select Next Order Item"/>
         <node xmi:type="uml:LoopNode" xmi:id="_PZh7wLoyEeG_n-mswuuavA" name="CheckIfWarehouseHasStock">
           <node xmi:type="uml:CallOperationAction" xmi:id="_z8I9ELoyEeG_n-mswuuavA" name="Check Stock" outgoing="_Ahn24LozEeG_n-mswuuavA" operation="_6VmxMD4KEeGJV8Q8QNdEnw"/>

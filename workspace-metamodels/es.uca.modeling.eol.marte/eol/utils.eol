@@ -68,7 +68,7 @@ operation ActivityNode addAllAncestors(maxDepth : Integer, results : Collection)
   if (self.getDepth() <= maxDepth) {
     results.add(self);
   }
-  for (parent in self.incoming.collect(r|r.source)) {
+  for (parent in self.getPrev()) {
     parent.addAllAncestors(maxDepth, results);
   }
 }
@@ -86,6 +86,119 @@ operation Set intersect(otherSet : Set) : Set {
   return results;
 }
 
+----- NODE TRAVERSAL ----------------------------------------------------------
+
+@cached
+operation ActivityNode getLoopPart(ln : LoopNode) : Integer {
+  if (ln.setupPart.contains(self)) {
+    return 0;
+  }
+  else if (ln.test.contains(self)) {
+    return 1;
+  }
+  else if (ln.bodyPart.contains(self)) {
+     return 2;
+  }
+  else {
+    return 3;
+  }
+}
+
+-- Returns all the nodes that are directly after this one: normally it will use
+-- the outgoing edges, but it may need to work differently in some cases.
+@cached
+operation ActivityNode getNext() : Sequence {
+  if (n.outgoing.isEmpty()) {
+    for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
+      var part := self.getLoopPart(loopNode);
+      if (part == 0 and not self.test.isEmpty()) {
+        return self.test.getSources();
+      }
+      else if ((part == 0 and part == 1) and not self.bodyPart.isEmpty()) {
+        return self.bodyPart.getSources();
+      }
+    }
+  } else {
+    return n.outgoing.collect(e|e.target);
+  }
+  return Sequence {};
+}
+
+-- Returns all the nodes that are directly after this one: normally it will use
+-- the outgoing edges, but it may need to work differently in some cases.
+@cached
+operation ActivityNode getPrev() : Sequence {
+  if (n.incoming.isEmpty()) {
+    for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
+      var part := self.getLoopPart(loopNode);
+      if (part == 2 and not self.test.isEmpty()) {
+        return self.test.getSinks();
+      }
+      else if ((part == 1 or part == 2) and not self.setupPart.isEmpty()) {
+        return self.setupPart.getSinks();
+      }
+    }
+  } else {
+    return n.incoming.collect(e|e.source);
+  }
+  return Sequence {};
+}
+
+operation Activity getSources() : Sequence {
+  return self.nodes.getSources();
+}
+
+operation Activity getSinks() : Sequence {
+  return self.nodes.getSinks();
+}
+
+operation LoopNode getSources() : Sequence {
+  if (not self.setupPart.isEmpty()) { return self.setupPart.getSources(); }
+  else if (not self.test.isEmpty()) { return self.test.getSources(); }
+  else if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSources(); }
+  else { return self.nodes.getSources(); }
+}
+
+operation LoopNode getSinks() : Sequence {
+  if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSinks(); }
+  else if (not self.test.isEmpty()) { return self.test.getSinks(); }
+  else if (not self.setupPart.isEmpty()) { return self.setupPart.getSinks(); }
+  else { return self.nodes.getSinks(); }
+}
+
+operation StructuredActivityNode getSources() : Sequence {
+  return self.nodes.getSources();
+}
+
+operation StructuredActivityNode getSinks() : Sequence {
+  return self.nodes.getSinks();
+}
+
+operation ActivityNode getSources() : Sequence {
+  return Sequence {};
+}
+
+operation ActivityNode getSinks() : Sequence {
+  return Sequence {};
+}
+
+operation Sequence getSources() : Sequence {
+  return self.select(n | n.incoming.select(c : ControlFlow | true).isEmpty());
+}
+
+operation Sequence getSinks() : Sequence {
+  return self.select(n | n.outgoing.select(c : ControlFlow | true).isEmpty());
+}
+
+@cached
+operation ActivityNode getContainers() : Sequence {
+  if (self.activity.isDefined()) {
+    return Sequence { self.activity };
+  } else {
+    return self.inGroup;
+  }
+}
+
 ----- REACHABLE NODES ---------------------------------------------------------
 
 -- Obtains all the nodes reachable from a node in the graph, in no
@@ -100,23 +213,10 @@ operation ActivityNode getAllReachableNodes() : Set {
   return nodeSet;
 }
 
--- Returns all the front end nodes of a structured activity node. According
--- to the UML spec, these are the nodes that do not have any incoming edges.
-operation StructuredActivityNode getFrontEndNodes() : Set {
-  var fn := self.nodes.select(n | n.incoming.isEmpty()).asSet();
-  return fn;
-}
-
--- Adds all the nodes which are reachable from a node in the graph to a set of
--- nodes. Avoids nodes which have been already visited.
-operation StructuredActivityNode addAllReachableNodes(nodeSet : Set) {
-  addAllReachableNodeSet(self.getFrontEndNodes(), nodeSet);
-  addAllReachableNodeSet(self.outgoing.collect(r|r.target), nodeSet);
-}
-
 -- Adds all the nodes which are reachable from a node in the graph to a set of
 -- nodes. Avoids nodes which have been already visited.
 operation ActivityNode addAllReachableNodes(nodeSet : Set) {
+  addAllReachableNodeSet(self.getSources(), nodeSet);
   addAllReachableNodeSet(self.outgoing.collect(r|r.target), nodeSet);
 }
 
