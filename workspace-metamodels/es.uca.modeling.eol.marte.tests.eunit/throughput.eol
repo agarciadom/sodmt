@@ -15,6 +15,14 @@ operation handleOrder() {
 
 $onlyWith Map { "Model" = "MultiDiagram" }
 @test
+operation nextSelectOrderItem() {
+  var sno := ActivityNode.all.selectOne(n | n.name == "Select Next Order Item");
+  var cws := ActivityNode.all.selectOne(n | n.name == "CheckIfWarehouseHasStock");
+  assertEquals(Sequence { cws }.asSet(), sno.getNext());
+}
+
+$onlyWith Map { "Model" = "MultiDiagram" }
+@test
 operation evaluateOrder() {
   var throughputMap := computeThroughputs("Evaluate Order");
   assertThroughput(throughputMap, "Create Order", 5.0);

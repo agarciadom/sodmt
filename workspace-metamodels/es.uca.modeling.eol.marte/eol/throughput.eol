@@ -54,6 +54,10 @@ operation annotateThroughput(start : ActivityNode) : Boolean {
 
 -- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
 
+operation Activity computeThroughput() : Real {
+  return self.getThroughput();
+}
+
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
 operation ActivityEdge computeThroughput() : Real {

@@ -107,93 +107,93 @@ operation ActivityNode getLoopPart(ln : LoopNode) : Integer {
 -- Returns all the nodes that are directly after this one: normally it will use
 -- the outgoing edges, but it may need to work differently in some cases.
 @cached
-operation ActivityNode getNext() : Sequence {
-  if (n.outgoing.isEmpty()) {
+operation ActivityNode getNext() : Set {
+  if (self.outgoing.isEmpty()) {
     for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
       var part := self.getLoopPart(loopNode);
-      if (part == 0 and not self.test.isEmpty()) {
-        return self.test.getSources();
+      if (part == 0 and not loopNode.test.isEmpty()) {
+        return loopNode.test.getSources();
       }
-      else if ((part == 0 and part == 1) and not self.bodyPart.isEmpty()) {
-        return self.bodyPart.getSources();
+      else if ((part == 0 or part == 1) and not loopNode.bodyPart.isEmpty()) {
+        return loopNode.bodyPart.getSources();
       }
     }
   } else {
-    return n.outgoing.collect(e|e.target);
+    return self.outgoing.collect(e|e.target).asSet();
   }
-  return Sequence {};
+  return Set {};
 }
 
 -- Returns all the nodes that are directly after this one: normally it will use
 -- the outgoing edges, but it may need to work differently in some cases.
 @cached
-operation ActivityNode getPrev() : Sequence {
-  if (n.incoming.isEmpty()) {
+operation ActivityNode getPrev() : Set {
+  if (self.incoming.isEmpty()) {
     for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
       var part := self.getLoopPart(loopNode);
-      if (part == 2 and not self.test.isEmpty()) {
-        return self.test.getSinks();
+      if (part == 2 and not loopNode.test.isEmpty()) {
+        return loopNode.test.getSinks();
       }
-      else if ((part == 1 or part == 2) and not self.setupPart.isEmpty()) {
-        return self.setupPart.getSinks();
+      else if ((part == 1 or part == 2) and not loopNode.setupPart.isEmpty()) {
+        return loopNode.setupPart.getSinks();
       }
     }
   } else {
-    return n.incoming.collect(e|e.source);
+    return self.incoming.collect(e|e.source).asSet();
   }
-  return Sequence {};
+  return Set {};
 }
 
-operation Activity getSources() : Sequence {
+operation Activity getSources() : Set {
   return self.nodes.getSources();
 }
 
-operation Activity getSinks() : Sequence {
+operation Activity getSinks() : Set {
   return self.nodes.getSinks();
 }
 
-operation LoopNode getSources() : Sequence {
+operation LoopNode getSources() : Set {
   if (not self.setupPart.isEmpty()) { return self.setupPart.getSources(); }
   else if (not self.test.isEmpty()) { return self.test.getSources(); }
   else if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSources(); }
   else { return self.nodes.getSources(); }
 }
 
-operation LoopNode getSinks() : Sequence {
+operation LoopNode getSinks() : Set {
   if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSinks(); }
   else if (not self.test.isEmpty()) { return self.test.getSinks(); }
   else if (not self.setupPart.isEmpty()) { return self.setupPart.getSinks(); }
   else { return self.nodes.getSinks(); }
 }
 
-operation StructuredActivityNode getSources() : Sequence {
+operation StructuredActivityNode getSources() : Set {
   return self.nodes.getSources();
 }
 
-operation StructuredActivityNode getSinks() : Sequence {
+operation StructuredActivityNode getSinks() : Set {
   return self.nodes.getSinks();
 }
 
-operation ActivityNode getSources() : Sequence {
-  return Sequence {};
+operation ActivityNode getSources() : Set {
+  return Set {};
 }
 
-operation ActivityNode getSinks() : Sequence {
-  return Sequence {};
+operation ActivityNode getSinks() : Set {
+  return Set {};
 }
 
-operation Sequence getSources() : Sequence {
-  return self.select(n | n.incoming.select(c : ControlFlow | true).isEmpty());
+operation Collection getSources() : Set {
+  return self.select(n | n.incoming.select(c : ControlFlow | true).isEmpty()).asSet();
 }
 
-operation Sequence getSinks() : Sequence {
-  return self.select(n | n.outgoing.select(c : ControlFlow | true).isEmpty());
+operation Collection getSinks() : Set {
+  return self.select(n | n.outgoing.select(c : ControlFlow | true).isEmpty()).asSet();
 }
 
 @cached
-operation ActivityNode getContainers() : Sequence {
+operation ActivityNode getContainers() : Set {
   if (self.activity.isDefined()) {
-    return Sequence { self.activity };
+    return Set { self.activity };
   } else {
     return self.inGroup;
   }
@@ -205,7 +205,6 @@ operation ActivityNode getContainers() : Sequence {
 -- particular order. Returns a Set: to convert it to a sequence, use asSequence().
 -- Note that if you only want the activities, you will need to filter them later
 -- on, using select(), for instance.
-@cached
 operation ActivityNode getAllReachableNodes() : Set {
   var nodeSet := new Set;
   nodeSet.add(self);
@@ -217,7 +216,7 @@ operation ActivityNode getAllReachableNodes() : Set {
 -- nodes. Avoids nodes which have been already visited.
 operation ActivityNode addAllReachableNodes(nodeSet : Set) {
   addAllReachableNodeSet(self.getSources(), nodeSet);
-  addAllReachableNodeSet(self.outgoing.collect(r|r.target), nodeSet);
+  addAllReachableNodeSet(self.getNext(), nodeSet);
 }
 
 operation addAllReachableNodeSet(source : Collection, target : Collection) {
