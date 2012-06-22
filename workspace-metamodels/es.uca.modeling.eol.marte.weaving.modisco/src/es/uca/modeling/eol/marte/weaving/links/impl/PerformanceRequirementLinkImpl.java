@@ -2,20 +2,16 @@
  */
 package es.uca.modeling.eol.marte.weaving.links.impl;
 
-import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
-import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.gmt.modisco.java.MethodDeclaration;
+import org.eclipse.uml2.uml.ExecutableNode;
 
-import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GaStep;
+import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
+import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +20,7 @@ import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GaStep;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getPerformanceRequirement <em>Performance Requirement</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getExecNode <em>Exec Node</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getTestMethod <em>Test Method</em>}</li>
  * </ul>
  * </p>
@@ -34,14 +30,14 @@ import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GaStep;
 public class PerformanceRequirementLinkImpl extends EObjectImpl implements PerformanceRequirementLink
 {
   /**
-   * The cached value of the '{@link #getPerformanceRequirement() <em>Performance Requirement</em>}' reference.
+   * The cached value of the '{@link #getExecNode() <em>Exec Node</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPerformanceRequirement()
+   * @see #getExecNode()
    * @generated
    * @ordered
    */
-  protected GaStep performanceRequirement;
+  protected ExecutableNode execNode;
 
   /**
    * The cached value of the '{@link #getTestMethod() <em>Test Method</em>}' reference.
@@ -79,19 +75,19 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
-  public GaStep getPerformanceRequirement()
+  public ExecutableNode getExecNode()
   {
-    if (performanceRequirement != null && performanceRequirement.eIsProxy())
+    if (execNode != null && execNode.eIsProxy())
     {
-      InternalEObject oldPerformanceRequirement = (InternalEObject)performanceRequirement;
-      performanceRequirement = (GaStep)eResolveProxy(oldPerformanceRequirement);
-      if (performanceRequirement != oldPerformanceRequirement)
+      InternalEObject oldExecNode = (InternalEObject)execNode;
+      execNode = (ExecutableNode)eResolveProxy(oldExecNode);
+      if (execNode != oldExecNode)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT, oldPerformanceRequirement, performanceRequirement));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE, oldExecNode, execNode));
       }
     }
-    return performanceRequirement;
+    return execNode;
   }
 
   /**
@@ -99,9 +95,9 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
-  public GaStep basicGetPerformanceRequirement()
+  public ExecutableNode basicGetExecNode()
   {
-    return performanceRequirement;
+    return execNode;
   }
 
   /**
@@ -109,12 +105,12 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPerformanceRequirement(GaStep newPerformanceRequirement)
+  public void setExecNode(ExecutableNode newExecNode)
   {
-    GaStep oldPerformanceRequirement = performanceRequirement;
-    performanceRequirement = newPerformanceRequirement;
+    ExecutableNode oldExecNode = execNode;
+    execNode = newExecNode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT, oldPerformanceRequirement, performanceRequirement));
+      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE, oldExecNode, execNode));
   }
 
   /**
@@ -170,9 +166,9 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT:
-        if (resolve) return getPerformanceRequirement();
-        return basicGetPerformanceRequirement();
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
+        if (resolve) return getExecNode();
+        return basicGetExecNode();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
         if (resolve) return getTestMethod();
         return basicGetTestMethod();
@@ -190,8 +186,8 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT:
-        setPerformanceRequirement((GaStep)newValue);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
+        setExecNode((ExecutableNode)newValue);
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
         setTestMethod((MethodDeclaration)newValue);
@@ -210,8 +206,8 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT:
-        setPerformanceRequirement((GaStep)null);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
+        setExecNode((ExecutableNode)null);
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
         setTestMethod((MethodDeclaration)null);
@@ -230,8 +226,8 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT:
-        return performanceRequirement != null;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
+        return execNode != null;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
         return testMethod != null;
     }

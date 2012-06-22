@@ -2,24 +2,18 @@
  */
 package es.uca.modeling.eol.marte.weaving.links.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.gmt.modisco.java.emf.JavaPackage;
+import org.eclipse.uml2.types.TypesPackage;
+import org.eclipse.uml2.uml.UMLPackage;
+
 import es.uca.modeling.eol.marte.weaving.links.LinksFactory;
 import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.gmt.modisco.java.emf.JavaPackage;
-
-import org.eclipse.papyrus.MARTE.MARTEPackage;
-
-import org.eclipse.papyrus.MARTE.MARTE_AnalysisModel.GQAM.GQAMPackage;
-
-import org.eclipse.uml2.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -93,7 +87,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
 
     // Initialize simple dependencies
     JavaPackage.eINSTANCE.eClass();
-    MARTEPackage.eINSTANCE.eClass();
+    UMLPackage.eINSTANCE.eClass();
     TypesPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
@@ -146,7 +140,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPerformanceRequirementLink_PerformanceRequirement()
+  public EReference getPerformanceRequirementLink_ExecNode()
   {
     return (EReference)performanceRequirementLinkEClass.getEStructuralFeatures().get(0);
   }
@@ -195,7 +189,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     createEReference(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__LINKS);
 
     performanceRequirementLinkEClass = createEClass(PERFORMANCE_REQUIREMENT_LINK);
-    createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT);
+    createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE);
     createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD);
   }
 
@@ -224,7 +218,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    GQAMPackage theGQAMPackage = (GQAMPackage)EPackage.Registry.INSTANCE.getEPackage(GQAMPackage.eNS_URI);
+    UMLPackage theUMLPackage = (UMLPackage)EPackage.Registry.INSTANCE.getEPackage(UMLPackage.eNS_URI);
     JavaPackage theJavaPackage = (JavaPackage)EPackage.Registry.INSTANCE.getEPackage(JavaPackage.eNS_URI);
 
     // Create type parameters
@@ -238,7 +232,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     initEReference(getPerformanceRequirementLinks_Links(), this.getPerformanceRequirementLink(), null, "links", null, 0, -1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(performanceRequirementLinkEClass, PerformanceRequirementLink.class, "PerformanceRequirementLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPerformanceRequirementLink_PerformanceRequirement(), theGQAMPackage.getGaStep(), null, "performanceRequirement", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPerformanceRequirementLink_ExecNode(), theUMLPackage.getExecutableNode(), null, "execNode", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPerformanceRequirementLink_TestMethod(), theJavaPackage.getMethodDeclaration(), null, "testMethod", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

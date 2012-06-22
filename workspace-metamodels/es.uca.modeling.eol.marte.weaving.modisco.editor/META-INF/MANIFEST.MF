@@ -14,5 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  es.uca.modeling.eol.marte.weaving.modisco.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport
+ org.eclipse.ui.ide;visibility:=reexport,
+ org.eclipse.uml2.uml.editor;bundle-version="4.0.0",
+ org.eclipse.gmt.modisco.java.editor;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

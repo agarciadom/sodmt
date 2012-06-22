@@ -1,7 +1,7 @@
 @namespace(uri="www.uca.es/modeling/weaving/modisco", prefix="mw")
 package links;
 
-import "http://www.eclipse.org/papyrus/MARTE/1";
+import "http://www.eclipse.org/uml2/4.0.0/UML";
 import "http://www.eclipse.org/MoDisco/Java/0.2.incubation/java";
 
 class PerformanceRequirementLinks {
@@ -10,6 +10,6 @@ class PerformanceRequirementLinks {
 
 @exeed(label="return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat('.') + '.' + self.testMethod.abstractTypeDeclaration.name + '#' + self.testMethod.name;")
 class PerformanceRequirementLink {
-   ref MARTE.GQAM.GaStep performanceRequirement;
+   ref uml.ExecutableNode execNode;
    ref java.MethodDeclaration testMethod;
 }

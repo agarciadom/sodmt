@@ -5,6 +5,8 @@ package es.uca.modeling.eol.marte.weaving.links.presentation;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.gmt.modisco.java.emf.provider.JavaEditPlugin;
+import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
  * This is the central singleton for the Links editor plugin.
@@ -41,6 +43,8 @@ public final class LinksEditorPlugin extends EMFPlugin
     super
       (new ResourceLocator [] 
       {
+        JavaEditPlugin.INSTANCE,
+        UMLEditPlugin.INSTANCE,
       });
   }
 

@@ -108,11 +108,9 @@ operation Activity getStepMap() : Map {
   OPERATIONS FOR ExecutableNode
 *-
 operation ExecutableNode setThroughput(newThroughput : Real) {
-  ("Setting throughput for " + self.name + " to " + newThroughput).println();
   var step := self.getStep(true);
   step.throughput.clear();
   step.throughput.add('(value=' + newThroughput + ',unit=Hz,source=calc)');
-  ("Set throughput for " + self.name + " to " + self.getThroughput()).println();
 }
 
 $pre self.getStep().isDefined()

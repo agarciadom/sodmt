@@ -17,7 +17,6 @@ $onlyWith Map { "Model" = "MultiDiagram" }
 @test
 operation evaluateOrderAnnotations() {
   var inferredTL := inferTimeLimits("Evaluate Order", 1, true);
-  ("inferredTL: " + inferredTL).println();
   assertTimeLimit("Create Order", 0.2, inferredTL);
   assertTimeLimit("List Warehouses", 0.2, inferredTL);
   assertTimeLimit("LoopThroughOrderItems", 0.2, inferredTL);

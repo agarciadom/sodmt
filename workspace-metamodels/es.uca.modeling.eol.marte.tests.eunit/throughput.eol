@@ -64,7 +64,6 @@ operation computeThroughputMap(activityName : String) : Map {
     var throughput := execNode.getThroughput();
     if (throughput.isDefined()) {
       throughputMap.put(execNode.name, throughput);
-      ("Throughput of " + execNode.name + ": " + throughput).println();
     }
   }
   return throughputMap;

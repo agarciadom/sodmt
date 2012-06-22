@@ -5,12 +5,12 @@
 
 	<target name="default">
 		<epsilon.emf.loadModel name="MoDiscoGenModel" modeluri="platform:/plugin/org.eclipse.gmt.modisco.java/model/java.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
-		<epsilon.emf.loadModel name="MARTEGenModel" modeluri="platform:/plugin/org.eclipse.papyrus.marte.static.profile/resources/MARTE.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="UMLGenModel" modeluri="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
 		<epsilon.emf.loadModel name="UMLTypesGenModel" modeluri="platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
 
 		<epsilon.eugenia laststep="genmodel" src="model/${main.pkg}.emf">
 			<model step="genmodel" ref="MoDiscoGenModel" />
-			<model step="genmodel" ref="MARTEGenModel" />
+			<model step="genmodel" ref="UMLGenModel" />
 			<model step="genmodel" ref="UMLTypesGenModel" />
 		</epsilon.eugenia>
 		<epsilon.eugenia firststep="emfcode" laststep="emfcode" src="model/${main.pkg}.ecore" />

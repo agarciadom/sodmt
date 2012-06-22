@@ -61,27 +61,27 @@ public class PerformanceRequirementLinkItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addPerformanceRequirementPropertyDescriptor(object);
+      addExecNodePropertyDescriptor(object);
       addTestMethodPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Performance Requirement feature.
+   * This adds a property descriptor for the Exec Node feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addPerformanceRequirementPropertyDescriptor(Object object)
+  protected void addExecNodePropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_PerformanceRequirementLink_performanceRequirement_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLink_performanceRequirement_feature", "_UI_PerformanceRequirementLink_type"),
-         LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT,
+         getString("_UI_PerformanceRequirementLink_execNode_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLink_execNode_feature", "_UI_PerformanceRequirementLink_type"),
+         LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE,
          true,
          false,
          true,

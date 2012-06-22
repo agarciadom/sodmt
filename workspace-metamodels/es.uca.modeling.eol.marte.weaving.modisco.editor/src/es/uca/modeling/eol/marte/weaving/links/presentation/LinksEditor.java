@@ -117,8 +117,10 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 
 import es.uca.modeling.eol.marte.weaving.links.provider.LinksItemProviderAdapterFactory;
+import org.eclipse.gmt.modisco.java.emf.provider.JavaItemProviderAdapterFactory;
 
 
 /**
@@ -731,6 +733,8 @@ public class LinksEditor
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new LinksItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new JavaItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new UMLItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
     // Create the command stack that will notify this editor as commands are executed.

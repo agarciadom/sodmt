@@ -94,13 +94,13 @@ public interface LinksPackage extends EPackage
   int PERFORMANCE_REQUIREMENT_LINK = 1;
 
   /**
-   * The feature id for the '<em><b>Performance Requirement</b></em>' reference.
+   * The feature id for the '<em><b>Exec Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT = 0;
+  int PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE = 0;
 
   /**
    * The feature id for the '<em><b>Test Method</b></em>' reference.
@@ -153,15 +153,15 @@ public interface LinksPackage extends EPackage
   EClass getPerformanceRequirementLink();
 
   /**
-   * Returns the meta object for the reference '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink#getPerformanceRequirement <em>Performance Requirement</em>}'.
+   * Returns the meta object for the reference '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink#getExecNode <em>Exec Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Performance Requirement</em>'.
-   * @see es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink#getPerformanceRequirement()
+   * @return the meta object for the reference '<em>Exec Node</em>'.
+   * @see es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink#getExecNode()
    * @see #getPerformanceRequirementLink()
    * @generated
    */
-  EReference getPerformanceRequirementLink_PerformanceRequirement();
+  EReference getPerformanceRequirementLink_ExecNode();
 
   /**
    * Returns the meta object for the reference '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink#getTestMethod <em>Test Method</em>}'.
@@ -226,12 +226,12 @@ public interface LinksPackage extends EPackage
     EClass PERFORMANCE_REQUIREMENT_LINK = eINSTANCE.getPerformanceRequirementLink();
 
     /**
-     * The meta object literal for the '<em><b>Performance Requirement</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Exec Node</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PERFORMANCE_REQUIREMENT_LINK__PERFORMANCE_REQUIREMENT = eINSTANCE.getPerformanceRequirementLink_PerformanceRequirement();
+    EReference PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE = eINSTANCE.getPerformanceRequirementLink_ExecNode();
 
     /**
      * The meta object literal for the '<em><b>Test Method</b></em>' reference feature.
