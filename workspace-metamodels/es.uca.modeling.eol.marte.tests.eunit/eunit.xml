@@ -22,7 +22,7 @@
 		<epsilon.eunit src="tlimits.eol" package="sodmt.marte" />
 	</target>
 
-	<target name="all-tests" depends="tlimits" />
+	<target name="all-tests" depends="caggregation,throughput,tlimits" />
 
 	<target name="load-marte-model">
 		<load.marte.model model="UML" basename="model" />

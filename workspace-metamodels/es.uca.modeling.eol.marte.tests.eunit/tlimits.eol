@@ -21,10 +21,10 @@ operation evaluateOrderAnnotations() {
   assertTimeLimit("Create Order", 0.2, inferredTL);
   assertTimeLimit("List Warehouses", 0.2, inferredTL);
   assertTimeLimit("LoopThroughOrderItems", 0.2, inferredTL);
-  assertTimeLimit("CheckIfWarehouseHasStock", 0.2, inferredTL);
-  assertTimeLimit("Select Next Order Item", 0.2, inferredTL);
-  assertTimeLimit("Check Stock", 0.1, inferredTL);
-  assertTimeLimit("Remove Warehouse", 0.1, inferredTL);
+  assertTimeLimit("CheckIfWarehouseHasStock", 0.1, inferredTL);
+  assertTimeLimit("Select Next Order Item", 0.1, inferredTL);
+  assertTimeLimit("Check Stock", 0.05, inferredTL);
+  assertTimeLimit("Remove Warehouse", 0.05, inferredTL);
   assertTimeLimit("Accept Order", 0.2, inferredTL);
   assertTimeLimit("Select Closest Warehouse", 0.2, inferredTL);
   assertTimeLimit("Reject Order", 0.4, inferredTL);
