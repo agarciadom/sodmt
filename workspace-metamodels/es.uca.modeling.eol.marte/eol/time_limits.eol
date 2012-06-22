@@ -48,7 +48,7 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
   var newLimit   := v.getMinimumTime() + slackPerWU * v.getWeight();
   v.setTimeLimit(newLimit);
   v.~visited = true;
-  if (v.isKindOf(StructuredActivityNode) and not distributeTime(v.getTimeLimit(), v.getBackEndNodes())) {
+  if (v.isKindOf(StructuredActivityNode) and not distributeTime(v.getTimeLimit(), v.getSinks())) {
     return false;
   }
 
@@ -103,13 +103,13 @@ operation reuseSurplusTime(slack : Real, start : ActivityNode) {
   -- We can only add a node if it has only 1 outgoing edge, and we can only
   -- back up if the previous node has only 1 incoming edge, though. Otherwise,
   -- we risk getting inconsistent results.
-  while (current.outgoing.size() = 1) {
+  while (current.getNext().size() = 1) {
     if (current.getWeight() > 0) {
       backNodes.add(current);
       totalWeight = totalWeight + current.getWeight() * current.getRepetitions();
     }
-    if (current.incoming.size() = 1) {
-      current = current.incoming.first().source;
+    if (current.getPrev().size() = 1) {
+      current = current.getPrev().first();
     }
     else {
       break;
@@ -132,7 +132,7 @@ operation reuseSurplusTime(slack : Real, start : ActivityNode) {
   Returns the outgoing edges of the current node, sorted according to their
   slack per unit of weight in ascending order.
 *-
-$pre self.outgoing.forAll(e|not e.~constraint.isDefined())
+$pre self.outgoing.forAll(e|e.~constraint.isUndefined())
 operation ActivityNode getOutEdgesFromMostToLeastStrict(received : Real) : Sequence {
   for (edge in self.outgoing) {
     edge.~constraint = edge.~constraints.sortBy(c|c.slackPerWU(received)).first();
@@ -153,7 +153,7 @@ operation ActivityNode getOutEdgesFromMostToLeastStrict(received : Real) : Seque
   displays an error message and returns null.
 *-
 $pre not endNodes.isEmpty()
-$pre endNodes.forAll(e|e.outgoing.isEmpty())
+$pre endNodes.forAll(e|e.getNext().isEmpty())
 $post _result = null or (_result.size() = 2 and _result.first().isKindOf(ActivityNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
 operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequence {
 
@@ -184,11 +184,10 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
     -- Annotate the current node with M_m(v) = m(p_{Mm}(v)), the maximum
     -- minimum time limit of every path starting at the current node.
     var maxMinTimeLimitChildren = 0.0d;
-    if (not currentNode.outgoing.isEmpty()) {
-      maxMinTimeLimitChildren := currentNode.outgoing
-          .collect(e|e.target.~maxMinTimeLimit)
-          .sortBy(e|e)
-          .last();
+    if (not currentNode.getNext().isEmpty()) {
+      maxMinTimeLimitChildren := currentNode.getNext()
+          .collect(n|n.~maxMinTimeLimit)
+          .sortBy(e|e).last();
     }
     currentNode.~maxMinTimeLimit = currentNode.getMinimumTime() * currentNode.getRepetitions() + maxMinTimeLimitChildren;
 
@@ -240,7 +239,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
     }
 
     -- Check if we're done or not
-    if (currentNode.incoming.isEmpty()) {
+    if (currentNode.getPrev().isEmpty()) {
       -- Current node does not have incoming links and all outgoing edges have been visited: it may be an initial node.
       results.add(currentNode);
       results.add(constraints);
