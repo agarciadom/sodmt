@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="true" forceExeedL="false" forceExeedM="true" forceExeedR="true">
+  <model path="/examples.perf.weaving/papyrus/multimodel.uml" position="LEFT" />
+  <model path="/examples.perf.weaving/weaving/ws-impl.modisco_perfreq" position="MIDDLE" />
+  <model path="/examples.perf.weaving/modisco/ws-impl-1.0-20120623.javaxmi" position="RIGHT" />
+</modelink>
+

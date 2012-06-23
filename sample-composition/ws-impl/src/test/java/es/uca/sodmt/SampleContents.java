@@ -25,7 +25,7 @@ public class SampleContents {
 
 	private Article cheezburger;
 	private Article bukkit;
-	private Warehouse warehouse;
+	private Warehouse warehouse, warehouse2;
 	private Order closedOrder, acceptedOpenOrder;
 
 	private Order rejectedOpenOrder;
@@ -43,6 +43,8 @@ public class SampleContents {
 			final StockItem stock2 = new StockItem(bukkit, BigDecimal.valueOf(150));
 			warehouse.addStockItem(stock1);
 			warehouse.addStockItem(stock2);
+
+			warehouse2 = new Warehouse(new Address("Spain", "Madrid", "Madrid", "Rue del Percebe", "13", "12345"));
 
 			closedOrder = new Order();
 			closedOrder.setWarehouse(warehouse);
@@ -67,6 +69,7 @@ public class SampleContents {
 			session.persist(cheezburger);
 			session.persist(bukkit);
 			session.persist(warehouse);
+			session.persist(warehouse2);
 			session.persist(closedOrder);
 			session.persist(invoice);
 			session.persist(shipment);
