@@ -2,34 +2,57 @@
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/model_utils.eol';
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/utils.eol';
 
--- TODO: enforce that the test uses the JUnit 4 default runner (according to ContiPerf docs)
+var root := Weaving!PerformanceRequirementLinks.all.first;
 
-var wrapClassTemplate : Template := TemplateFactory.load("wrapClass.egl"); 
+var needsFilterByClassRule := false;
+var FBC_PACKAGE := 'sodmt.util';
+var FBC_CLASS := 'FilterByClassRule';
 
-for (link in Weaving!PerformanceRequirementLink.all) {
-  var method := link.testMethod;
+for (link in root.links) {
+  var klazz := link.klazz;
   var execNode := link.execNode;
   var timeLimit := execNode.getTimeLimit();
   var throughput := execNode.getThroughput();
   var className := execNode.className() + "PerformanceTest";
-  var packageName := method.packageName();
+  var packageName := klazz.packageName();
+
+  var template : Template;
+  if (link.testMethods.isEmpty) {
+    template := TemplateFactory.load("wrapAllTests.egl");
+  } else {
+    template := TemplateFactory.load("wrapSomeTests.egl");
+    needsFilterByClassRule := true;
+  }
 
   -- Weaving information
-  wrapClassTemplate.populate("method", method);
-  wrapClassTemplate.populate("execNode", execNode);
+  template.populate("testSuite", klazz);
+  template.populate("testCases", link.testMethods);
+  template.populate("execNode", execNode);
 
   -- Performance test parameters
-  wrapClassTemplate.populate("invocations", 1000);
-  wrapClassTemplate.populate("threads", 5);
-  wrapClassTemplate.populate("timeLimit", timeLimit);
-  wrapClassTemplate.populate("throughput", throughput);
+  template.populate("invocations", root.samplesPerTest);
+  template.populate("threads", root.threads);
+  template.populate("timeLimit", timeLimit);
+  template.populate("throughput", throughput);
 
   -- Code parameters
-  wrapClassTemplate.populate("packageName", packageName);
-  wrapClassTemplate.populate("className", className);
+  template.populate("packageName", packageName);
+  template.populate("className", className);
+  template.populate("fbc_packageName", FBC_PACKAGE);
+  template.populate("fbc_className", FBC_CLASS);
 
   -- Generate the actual Java code
-  wrapClassTemplate.generate(sourcePath(packageName, className));
+  template.generate(sourcePath(packageName, className));
+}
+
+if (needsFilterByClassRule) {
+  -- Do we need this helper class?
+  var template := TemplateFactory.load("filterByClassRule.egl");
+  var className := FBC_CLASS;
+  var packageName := FBC_PACKAGE;
+  template.populate("className", className);
+  template.populate("packageName", packageName);
+  template.generate(sourcePath(packageName, className));
 }
 
 operation sourcePath(package : String, class : String) : String {
@@ -44,9 +67,9 @@ operation ExecutableNode className() {
   return self.name.replace('\\s', '');
 }
 
-operation MethodDeclaration packageName() {
+operation AbstractTypeDeclaration packageName() {
   var packages := Sequence {};
-  var current := self.abstractTypeDeclaration.package;
+  var current := self.package;
   while (current.isDefined()) {
     packages.add(current.name);
     current := current.package;

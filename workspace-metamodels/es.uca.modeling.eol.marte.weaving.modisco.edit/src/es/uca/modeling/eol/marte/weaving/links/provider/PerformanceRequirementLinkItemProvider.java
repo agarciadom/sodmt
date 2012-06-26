@@ -29,7 +29,6 @@ import org.eclipse.gmt.modisco.java.Type;
 
 import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
-import es.uca.modeling.eol.marte.weaving.links.TimeLimitMetric;
 
 /**
  * This is the item provider adapter for a {@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink} object.
