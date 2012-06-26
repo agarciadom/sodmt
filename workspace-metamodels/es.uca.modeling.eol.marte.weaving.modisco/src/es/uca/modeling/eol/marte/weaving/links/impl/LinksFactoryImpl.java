@@ -5,6 +5,7 @@ package es.uca.modeling.eol.marte.weaving.links.impl;
 import es.uca.modeling.eol.marte.weaving.links.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -76,6 +77,40 @@ public class LinksFactoryImpl extends EFactoryImpl implements LinksFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case LinksPackage.TIME_LIMIT_METRIC:
+        return createTimeLimitMetricFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case LinksPackage.TIME_LIMIT_METRIC:
+        return convertTimeLimitMetricToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PerformanceRequirementLinks createPerformanceRequirementLinks()
   {
     PerformanceRequirementLinksImpl performanceRequirementLinks = new PerformanceRequirementLinksImpl();
@@ -91,6 +126,28 @@ public class LinksFactoryImpl extends EFactoryImpl implements LinksFactory
   {
     PerformanceRequirementLinkImpl performanceRequirementLink = new PerformanceRequirementLinkImpl();
     return performanceRequirementLink;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TimeLimitMetric createTimeLimitMetricFromString(EDataType eDataType, String initialValue)
+  {
+    TimeLimitMetric result = TimeLimitMetric.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTimeLimitMetricToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

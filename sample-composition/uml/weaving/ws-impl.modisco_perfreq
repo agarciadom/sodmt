@@ -2,6 +2,12 @@
 <mw:PerformanceRequirementLinks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mw="www.uca.es/modeling/weaving/modisco" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
   <links>
     <execNode xsi:type="uml:CallOperationAction" href="../papyrus/multimodel.uml#_dvXOULoxEeG_n-mswuuavA"/>
-    <testMethod href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.2/@bodyDeclarations.0"/>
+    <klazz href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.2"/>
+  </links>
+  <links>
+    <execNode xsi:type="uml:CallBehaviorAction" href="../papyrus/multimodel.uml#_XGNQYLouEeG_n-mswuuavA"/>
+    <klazz href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.0"/>
+    <testMethods href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.0/@bodyDeclarations.2"/>
+    <testMethods href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.0/@bodyDeclarations.3"/>
   </links>
 </mw:PerformanceRequirementLinks>

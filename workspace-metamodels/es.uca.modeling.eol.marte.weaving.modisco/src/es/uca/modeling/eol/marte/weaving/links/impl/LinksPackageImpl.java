@@ -3,6 +3,7 @@
 package es.uca.modeling.eol.marte.weaving.links.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -14,6 +15,8 @@ import es.uca.modeling.eol.marte.weaving.links.LinksFactory;
 import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks;
+import es.uca.modeling.eol.marte.weaving.links.TimeLimitMetric;
+import org.eclipse.emf.ecore.EAttribute;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +39,13 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * @generated
    */
   private EClass performanceRequirementLinkEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum timeLimitMetricEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -120,9 +130,29 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPerformanceRequirementLinks_SamplesPerTest()
+  {
+    return (EAttribute)performanceRequirementLinksEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPerformanceRequirementLinks_Threads()
+  {
+    return (EAttribute)performanceRequirementLinksEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPerformanceRequirementLinks_Links()
   {
-    return (EReference)performanceRequirementLinksEClass.getEStructuralFeatures().get(0);
+    return (EReference)performanceRequirementLinksEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -140,9 +170,9 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPerformanceRequirementLink_ExecNode()
+  public EAttribute getPerformanceRequirementLink_Metric()
   {
-    return (EReference)performanceRequirementLinkEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)performanceRequirementLinkEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -150,9 +180,39 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPerformanceRequirementLink_TestMethod()
+  public EReference getPerformanceRequirementLink_ExecNode()
   {
     return (EReference)performanceRequirementLinkEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPerformanceRequirementLink_Klazz()
+  {
+    return (EReference)performanceRequirementLinkEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPerformanceRequirementLink_TestMethods()
+  {
+    return (EReference)performanceRequirementLinkEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getTimeLimitMetric()
+  {
+    return timeLimitMetricEEnum;
   }
 
   /**
@@ -186,11 +246,18 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
 
     // Create classes and their features
     performanceRequirementLinksEClass = createEClass(PERFORMANCE_REQUIREMENT_LINKS);
+    createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__SAMPLES_PER_TEST);
+    createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__THREADS);
     createEReference(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__LINKS);
 
     performanceRequirementLinkEClass = createEClass(PERFORMANCE_REQUIREMENT_LINK);
+    createEAttribute(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__METRIC);
     createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE);
-    createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD);
+    createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__KLAZZ);
+    createEReference(performanceRequirementLinkEClass, PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS);
+
+    // Create enums
+    timeLimitMetricEEnum = createEEnum(TIME_LIMIT_METRIC);
   }
 
   /**
@@ -229,11 +296,24 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(performanceRequirementLinksEClass, PerformanceRequirementLinks.class, "PerformanceRequirementLinks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPerformanceRequirementLinks_SamplesPerTest(), ecorePackage.getEIntegerObject(), "samplesPerTest", "1000", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPerformanceRequirementLinks_Threads(), ecorePackage.getEIntegerObject(), "threads", "5", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPerformanceRequirementLinks_Links(), this.getPerformanceRequirementLink(), null, "links", null, 0, -1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(performanceRequirementLinkEClass, PerformanceRequirementLink.class, "PerformanceRequirementLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPerformanceRequirementLink_Metric(), this.getTimeLimitMetric(), "metric", "0", 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPerformanceRequirementLink_ExecNode(), theUMLPackage.getExecutableNode(), null, "execNode", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPerformanceRequirementLink_TestMethod(), theJavaPackage.getMethodDeclaration(), null, "testMethod", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPerformanceRequirementLink_Klazz(), theJavaPackage.getClassDeclaration(), null, "klazz", null, 0, 1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPerformanceRequirementLink_TestMethods(), theJavaPackage.getMethodDeclaration(), null, "testMethods", null, 0, -1, PerformanceRequirementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(timeLimitMetricEEnum, TimeLimitMetric.class, "TimeLimitMetric");
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.MAX);
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.AVERAGE);
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.PERCENTILE_90);
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.PERCENTILE_95);
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.PERCENTILE_99);
+    addEEnumLiteral(timeLimitMetricEEnum, TimeLimitMetric.MEDIAN);
 
     // Create resource
     createResource(eNS_URI);
@@ -253,11 +333,18 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
   {
     String source = "exeed";		
     addAnnotation
+      (performanceRequirementLinksEClass, 
+       source, 
+       new String[] 
+       {
+       "label", "return \'Tests (\' + samplesPerTest + \' samples per test, \' + threads + \' threads)\';"
+       });		
+    addAnnotation
       (performanceRequirementLinkEClass, 
        source, 
        new String[] 
        {
-       "label", "return Sequence { self.testMethod.abstractTypeDeclaration.package }.closure(p | p.package).invert.collect(p|p.name).concat(\'.\') + \'.\' + self.testMethod.abstractTypeDeclaration.name + \'#\' + self.testMethod.name;"
+       "label", "return \'From \\\'\' + execNode.name + \'\\\' to \\\'\' + klazz.name + \'\\\'\';"
        });
   }
 

@@ -3,15 +3,20 @@
 package es.uca.modeling.eol.marte.weaving.links.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.eclipse.uml2.uml.ExecutableNode;
 
 import es.uca.modeling.eol.marte.weaving.links.LinksPackage;
 import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
+import es.uca.modeling.eol.marte.weaving.links.TimeLimitMetric;
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +25,10 @@ import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getMetric <em>Metric</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getExecNode <em>Exec Node</em>}</li>
- *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getTestMethod <em>Test Method</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getKlazz <em>Klazz</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl#getTestMethods <em>Test Methods</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,6 +36,26 @@ import es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLink;
  */
 public class PerformanceRequirementLinkImpl extends EObjectImpl implements PerformanceRequirementLink
 {
+  /**
+   * The default value of the '{@link #getMetric() <em>Metric</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetric()
+   * @generated
+   * @ordered
+   */
+  protected static final TimeLimitMetric METRIC_EDEFAULT = TimeLimitMetric.MAX;
+
+  /**
+   * The cached value of the '{@link #getMetric() <em>Metric</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetric()
+   * @generated
+   * @ordered
+   */
+  protected TimeLimitMetric metric = METRIC_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getExecNode() <em>Exec Node</em>}' reference.
    * <!-- begin-user-doc -->
@@ -40,14 +67,24 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   protected ExecutableNode execNode;
 
   /**
-   * The cached value of the '{@link #getTestMethod() <em>Test Method</em>}' reference.
+   * The cached value of the '{@link #getKlazz() <em>Klazz</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTestMethod()
+   * @see #getKlazz()
    * @generated
    * @ordered
    */
-  protected MethodDeclaration testMethod;
+  protected ClassDeclaration klazz;
+
+  /**
+   * The cached value of the '{@link #getTestMethods() <em>Test Methods</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTestMethods()
+   * @generated
+   * @ordered
+   */
+  protected EList<MethodDeclaration> testMethods;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,6 +105,29 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   protected EClass eStaticClass()
   {
     return LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINK;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TimeLimitMetric getMetric()
+  {
+    return metric;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMetric(TimeLimitMetric newMetric)
+  {
+    TimeLimitMetric oldMetric = metric;
+    metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__METRIC, oldMetric, metric));
   }
 
   /**
@@ -118,19 +178,19 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodDeclaration getTestMethod()
+  public ClassDeclaration getKlazz()
   {
-    if (testMethod != null && testMethod.eIsProxy())
+    if (klazz != null && klazz.eIsProxy())
     {
-      InternalEObject oldTestMethod = (InternalEObject)testMethod;
-      testMethod = (MethodDeclaration)eResolveProxy(oldTestMethod);
-      if (testMethod != oldTestMethod)
+      InternalEObject oldKlazz = (InternalEObject)klazz;
+      klazz = (ClassDeclaration)eResolveProxy(oldKlazz);
+      if (klazz != oldKlazz)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD, oldTestMethod, testMethod));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ, oldKlazz, klazz));
       }
     }
-    return testMethod;
+    return klazz;
   }
 
   /**
@@ -138,22 +198,42 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodDeclaration basicGetTestMethod()
+  public ClassDeclaration basicGetKlazz()
   {
-    return testMethod;
+    return klazz;
   }
 
   /**
    * <!-- begin-user-doc -->
+   * The Test Methods feature will be cleared every time the Klazz feature changes value.
    * <!-- end-user-doc -->
-   * @generated
+   * @generated NOT
    */
-  public void setTestMethod(MethodDeclaration newTestMethod)
+  public void setKlazz(ClassDeclaration newKlazz)
   {
-    MethodDeclaration oldTestMethod = testMethod;
-    testMethod = newTestMethod;
+    ClassDeclaration oldKlazz = klazz;
+    klazz = newKlazz;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD, oldTestMethod, testMethod));
+      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ, oldKlazz, klazz));
+    if (oldKlazz != newKlazz) {
+    	getTestMethods().clear();
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * The Test Methods feature should only contain a subset of the MethodDeclaration objects of
+   * the ClassDeclaration in the Klazz feature.
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<MethodDeclaration> getTestMethods()
+  {
+    if (testMethods == null)
+    {
+      testMethods = new EObjectResolvingEList<MethodDeclaration>(MethodDeclaration.class, this, LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS);
+    }
+    return testMethods;
   }
 
   /**
@@ -166,12 +246,16 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__METRIC:
+        return getMetric();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
         if (resolve) return getExecNode();
         return basicGetExecNode();
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
-        if (resolve) return getTestMethod();
-        return basicGetTestMethod();
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ:
+        if (resolve) return getKlazz();
+        return basicGetKlazz();
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS:
+        return getTestMethods();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -181,16 +265,24 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__METRIC:
+        setMetric((TimeLimitMetric)newValue);
+        return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
         setExecNode((ExecutableNode)newValue);
         return;
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
-        setTestMethod((MethodDeclaration)newValue);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ:
+        setKlazz((ClassDeclaration)newValue);
+        return;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS:
+        getTestMethods().clear();
+        getTestMethods().addAll((Collection<? extends MethodDeclaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -206,11 +298,17 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__METRIC:
+        setMetric(METRIC_EDEFAULT);
+        return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
         setExecNode((ExecutableNode)null);
         return;
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
-        setTestMethod((MethodDeclaration)null);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ:
+        setKlazz((ClassDeclaration)null);
+        return;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS:
+        getTestMethods().clear();
         return;
     }
     super.eUnset(featureID);
@@ -226,12 +324,33 @@ public class PerformanceRequirementLinkImpl extends EObjectImpl implements Perfo
   {
     switch (featureID)
     {
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__METRIC:
+        return metric != METRIC_EDEFAULT;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__EXEC_NODE:
         return execNode != null;
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHOD:
-        return testMethod != null;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__KLAZZ:
+        return klazz != null;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINK__TEST_METHODS:
+        return testMethods != null && !testMethods.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (metric: ");
+    result.append(metric);
+    result.append(')');
+    return result.toString();
   }
 
 } //PerformanceRequirementLinkImpl
