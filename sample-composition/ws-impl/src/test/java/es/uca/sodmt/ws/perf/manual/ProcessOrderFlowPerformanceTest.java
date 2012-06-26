@@ -1,4 +1,4 @@
-package es.uca.sodmt.ws;
+package es.uca.sodmt.ws.perf.manual;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,13 +17,14 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import es.uca.sodmt.orders.model.Address;
+import es.uca.sodmt.ws.WebServiceTest;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest;
 import es.uca.sodmt.ws.requests.OrderEvaluateRequest.OrderEvaluateRequestItem;
 import es.uca.sodmt.ws.responses.OrderCloseResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse;
 import es.uca.sodmt.ws.responses.OrderEvaluateResponse.OrderEvaluateResult;
 
-public class ProcessOrderFlowTest extends WebServiceTest {
+public class ProcessOrderFlowPerformanceTest extends WebServiceTest {
 
 	private ExecutorService executor;
 

@@ -11,15 +11,15 @@
 	</target>
 
 	<target name="caggregation" depends="init">
-		<epsilon.eunit src="caggregation.eol" package="sodmt.marte" />
+		<epsilon.eunit src="caggregation.eol" package="sodmt.marte" report="no" />
 	</target>
 
 	<target name="throughput" depends="init">
-		<epsilon.eunit src="throughput.eol" package="sodmt.marte" />
+		<epsilon.eunit src="throughput.eol" package="sodmt.marte" report="no" />
 	</target>
 
 	<target name="tlimits" depends="init">
-		<epsilon.eunit src="tlimits.eol" package="sodmt.marte" />
+		<epsilon.eunit src="tlimits.eol" package="sodmt.marte" report="no" />
 	</target>
 
 	<target name="all-tests" depends="caggregation,throughput,tlimits" />
