@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SODM+T MoDisco-based Code Generator
+Bundle-SymbolicName: es.uca.modeling.eol.marte.codegen.modisco; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: es.uca.modeling.eol.marte.codegen.modisco.Activator
+Bundle-Vendor: Universidad de Cádiz
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

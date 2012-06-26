@@ -1,0 +1,39 @@
+[% out.setContentType("Java"); %]
+package [%=packageName%];
+
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.MethodRule;
+
+import [%=fbc_packageName%].[%=fbc_className%];
+
+/**
+ * Performance test suite generated from some of the test cases in the test
+ * suite '[%=testSuite.name%]' and executable node '[%=execNode.name%]'. Time
+ * limit is [%=timeLimit%] seconds and throughput is [%=throughput%] requests
+ * per second.
+ */
+@Required(throughput=[%=throughput%], max=[%=(timeLimit * 1000).asInteger()%])
+public class [%=className%] extends [%=testSuite.name%] {
+
+  @Rule
+  public MethodRule f = new [%=fbc_className%](this.getClass());
+
+  @Rule
+  public ContiPerfRule i = new ContiPerfRule();
+
+[% for (testCase in testCases) { %]
+  @PerfTest(invocations=[%=invocations%], threads=[%=threads%])
+  @Override
+  public void [%=testCase.name%] throws Exception {
+    super.[%=testCase.name%]();
+  }
+
+[% } %]
+
+[%=out.preserve('customTests', false, '// Add your own tests here')%]
+
+}

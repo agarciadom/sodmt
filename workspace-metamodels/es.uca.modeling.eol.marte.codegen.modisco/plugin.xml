@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="es.uca.modeling.eol.marte.codegen.modisco.commands.category"
+            name="SODM+T for MoDisco">
+      </category>
+      <command
+            categoryId="es.uca.modeling.eol.marte.codegen.modisco.commands.category"
+            id="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests"
+            name="Generate Performance Tests">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uca.modeling.eol.marte.codegen.modisco.handlers.GeneratePerformanceTestsHandler"
+            commandId="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <menu
+               id="es.uca.modeling.eol.marte.codegen.modisco.menu"
+               label="SODM+T for MoDisco"
+               mnemonic="S">
+            <command
+                  commandId="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests"
+                  id="es.uca.modeling.eol.marte.codegen.modisco.menu.generatePerformanceTests"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+         <menu
+               id="es.uca.modeling.eol.marte.codegen.modisco.menu"
+               label="SODM+T for MoDisco"
+               mnemonic="S">
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
