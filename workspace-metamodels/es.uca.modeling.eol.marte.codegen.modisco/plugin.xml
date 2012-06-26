@@ -19,6 +19,11 @@
       <handler
             class="es.uca.modeling.eol.marte.codegen.modisco.handlers.GeneratePerformanceTestsHandler"
             commandId="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests">
+         <enabledWhen>
+            <reference
+                  definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleWeavingModelSelected">
+            </reference>
+         </enabledWhen>
       </handler>
    </extension>
    <extension
@@ -43,6 +48,12 @@
                   id="es.uca.modeling.eol.marte.codegen.modisco.menu.generatePerformanceTests"
                   mnemonic="S">
             </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleWeavingModelSelected">
+               </reference>
+            </visibleWhen>
          </menu>
       </menuContribution>
       <menuContribution
@@ -53,6 +64,28 @@
                mnemonic="S">
          </menu>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="es.uca.modeling.eol.marte.codegen.modisco.singleWeavingModelSelected">
+         <and>
+            <count
+                  value="1">
+            </count>
+            <iterate
+                  ifEmpty="false"
+                  operator="and">
+               <instanceof
+                     value="org.eclipse.core.resources.IFile">
+               </instanceof>
+               <test
+                     property="org.eclipse.core.resources.name"
+                     value="*.modisco_perfreq">
+               </test>
+            </iterate>
+         </and>
+      </definition>
    </extension>
 
 </plugin>
