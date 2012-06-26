@@ -1,0 +1,57 @@
+[%
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/model_utils.eol';
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/utils.eol';
+
+-- TODO: enforce that the test uses the JUnit 4 default runner (according to ContiPerf docs)
+
+var wrapClassTemplate : Template := TemplateFactory.load("wrapClass.egl"); 
+
+for (link in Weaving!PerformanceRequirementLink.all) {
+  var method := link.testMethod;
+  var execNode := link.execNode;
+  var timeLimit := execNode.getTimeLimit();
+  var throughput := execNode.getThroughput();
+  var className := execNode.className() + "PerformanceTest";
+  var packageName := method.packageName();
+
+  -- Weaving information
+  wrapClassTemplate.populate("method", method);
+  wrapClassTemplate.populate("execNode", execNode);
+
+  -- Performance test parameters
+  wrapClassTemplate.populate("invocations", 1000);
+  wrapClassTemplate.populate("threads", 5);
+  wrapClassTemplate.populate("timeLimit", timeLimit);
+  wrapClassTemplate.populate("throughput", throughput);
+
+  -- Code parameters
+  wrapClassTemplate.populate("packageName", packageName);
+  wrapClassTemplate.populate("className", className);
+
+  -- Generate the actual Java code
+  wrapClassTemplate.generate(sourcePath(packageName, className));
+}
+
+operation sourcePath(package : String, class : String) : String {
+  var path = "src/";
+  if (package.isDefined() and package.length() > 0) {
+    path = path + package.replaceAll("\\.", "/") + "/";
+  }
+  return path + class + ".java";
+}
+
+operation ExecutableNode className() {
+  return self.name.replace('\\s', '');
+}
+
+operation MethodDeclaration packageName() {
+  var packages := Sequence {};
+  var current := self.abstractTypeDeclaration.package;
+  while (current.isDefined()) {
+    packages.add(current.name);
+    current := current.package;
+  }
+  return packages.invert.concat(".");
+}
+
+%]
