@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.ExecutableNode;
  * </p>
  *
  * @see es.uca.modeling.eol.marte.weaving.links.LinksPackage#getPerformanceRequirementLink()
- * @model annotation="exeed label='return \'From \\\'\' + execNode.name + \'\\\' to \\\'\' + klazz.name + \'\\\'\';'"
+ * @model
  * @generated
  */
 public interface PerformanceRequirementLink extends EObject

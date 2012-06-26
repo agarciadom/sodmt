@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see es.uca.modeling.eol.marte.weaving.links.LinksPackage#getPerformanceRequirementLinks()
- * @model annotation="exeed label='return \'Tests (\' + samplesPerTest + \' samples per test, \' + threads + \' threads)\';'"
+ * @model
  * @generated
  */
 public interface PerformanceRequirementLinks extends EObject
