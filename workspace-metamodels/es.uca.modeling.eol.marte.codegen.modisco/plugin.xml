@@ -12,6 +12,11 @@
             id="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests"
             name="Generate Performance Tests">
       </command>
+      <command
+            categoryId="es.uca.modeling.eol.marte.codegen.modisco.commands.category"
+            id="es.uca.modeling.eol.marte.codegen.modisco.analyzeThisProject"
+            name="Analyze Java Project">
+      </command>
    </extension>
 
    <extension
@@ -25,6 +30,15 @@
             </reference>
          </enabledWhen>
       </handler>
+      <handler
+            class="es.uca.modeling.eol.marte.codegen.modisco.handlers.AnalyzeJavaProjectHandler"
+            commandId="es.uca.modeling.eol.marte.codegen.modisco.analyzeThisProject">
+         <enabledWhen>
+            <reference
+                  definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleJavaProject">
+            </reference>
+         </enabledWhen>
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
@@ -33,6 +47,12 @@
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+6">
+      </key>
+      <key
+            commandId="es.uca.modeling.eol.marte.codegen.modisco.analyzeThisProject"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
       </key>
    </extension>
    <extension
@@ -46,14 +66,27 @@
             <command
                   commandId="es.uca.modeling.eol.marte.codegen.modisco.commands.generatePerformanceTests"
                   id="es.uca.modeling.eol.marte.codegen.modisco.menu.generatePerformanceTests"
-                  mnemonic="S">
+                  mnemonic="S"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleWeavingModelSelected">
+                  </reference>
+               </visibleWhen>
             </command>
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleWeavingModelSelected">
-               </reference>
-            </visibleWhen>
+            <command
+                  commandId="es.uca.modeling.eol.marte.codegen.modisco.analyzeThisProject"
+                  id="es.uca.modeling.eol.marte.codegen.modisco.menu.analyzeJavaProject"
+                  mnemonic="J"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleJavaProject">
+                  </reference>
+               </visibleWhen>
+            </command>
          </menu>
       </menuContribution>
       <menuContribution
@@ -85,6 +118,34 @@
                </test>
             </iterate>
          </and>
+      </definition>
+      <definition
+            id="es.uca.modeling.eol.marte.codegen.modisco.singleJavaProject">
+            <and>
+               <count
+                     value="1">
+               </count>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="org.eclipse.jdt.core.IJavaProject">
+                     </instanceof>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <test
+                              property="org.eclipse.core.resources.projectNature"
+                              value="org.eclipse.jdt.core.javanature">
+                        </test>
+                        <test
+                              property="org.eclipse.core.resources.open"
+                              value="open">
+                        </test>
+                     </and>
+                  </or>
+               </iterate>
+            </and>
       </definition>
    </extension>
 
