@@ -86,13 +86,22 @@ public interface LinksPackage extends EPackage
   int PERFORMANCE_REQUIREMENT_LINKS__THREADS = 1;
 
   /**
+   * The feature id for the '<em><b>Base Dir</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR = 2;
+
+  /**
    * The feature id for the '<em><b>Links</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PERFORMANCE_REQUIREMENT_LINKS__LINKS = 2;
+  int PERFORMANCE_REQUIREMENT_LINKS__LINKS = 3;
 
   /**
    * The number of structural features of the '<em>Performance Requirement Links</em>' class.
@@ -101,7 +110,7 @@ public interface LinksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PERFORMANCE_REQUIREMENT_LINKS_FEATURE_COUNT = 3;
+  int PERFORMANCE_REQUIREMENT_LINKS_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl <em>Performance Requirement Link</em>}' class.
@@ -201,6 +210,17 @@ public interface LinksPackage extends EPackage
    * @generated
    */
   EAttribute getPerformanceRequirementLinks_Threads();
+
+  /**
+   * Returns the meta object for the attribute '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Base Dir</em>'.
+   * @see es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getBaseDir()
+   * @see #getPerformanceRequirementLinks()
+   * @generated
+   */
+  EAttribute getPerformanceRequirementLinks_BaseDir();
 
   /**
    * Returns the meta object for the containment reference list '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getLinks <em>Links</em>}'.
@@ -325,6 +345,14 @@ public interface LinksPackage extends EPackage
      * @generated
      */
     EAttribute PERFORMANCE_REQUIREMENT_LINKS__THREADS = eINSTANCE.getPerformanceRequirementLinks_Threads();
+
+    /**
+     * The meta object literal for the '<em><b>Base Dir</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR = eINSTANCE.getPerformanceRequirementLinks_BaseDir();
 
     /**
      * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.

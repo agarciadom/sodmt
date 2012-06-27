@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getSamplesPerTest <em>Samples Per Test</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getThreads <em>Threads</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getLinks <em>Links</em>}</li>
  * </ul>
  * </p>
@@ -79,6 +80,33 @@ public interface PerformanceRequirementLinks extends EObject
    * @generated
    */
   void setThreads(Integer value);
+
+  /**
+   * Returns the value of the '<em><b>Base Dir</b></em>' attribute.
+   * The default value is <code>"src"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Base Dir</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Base Dir</em>' attribute.
+   * @see #setBaseDir(String)
+   * @see es.uca.modeling.eol.marte.weaving.links.LinksPackage#getPerformanceRequirementLinks_BaseDir()
+   * @model default="src"
+   * @generated
+   */
+  String getBaseDir();
+
+  /**
+   * Sets the value of the '{@link es.uca.modeling.eol.marte.weaving.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Base Dir</em>' attribute.
+   * @see #getBaseDir()
+   * @generated
+   */
+  void setBaseDir(String value);
 
   /**
    * Returns the value of the '<em><b>Links</b></em>' containment reference list.

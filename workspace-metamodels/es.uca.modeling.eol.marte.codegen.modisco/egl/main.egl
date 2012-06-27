@@ -42,7 +42,7 @@ for (link in root.links) {
   template.populate("fbc_className", FBC_CLASS);
 
   -- Generate the actual Java code
-  template.generate(sourcePath(packageName, className));
+  template.generate(sourcePath(root.baseDir, packageName, className));
 }
 
 if (needsFilterByClassRule) {
@@ -52,11 +52,11 @@ if (needsFilterByClassRule) {
   var packageName := FBC_PACKAGE;
   template.populate("className", className);
   template.populate("packageName", packageName);
-  template.generate(sourcePath(packageName, className));
+  template.generate(sourcePath(root.baseDir, packageName, className));
 }
 
-operation sourcePath(package : String, class : String) : String {
-  var path = "src/";
+operation sourcePath(baseDir : String, package : String, class : String) : String {
+  var path = baseDir + "/";
   if (package.isDefined() and package.length() > 0) {
     path = path + package.replaceAll("\\.", "/") + "/";
   }

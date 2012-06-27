@@ -150,9 +150,19 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPerformanceRequirementLinks_BaseDir()
+  {
+    return (EAttribute)performanceRequirementLinksEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPerformanceRequirementLinks_Links()
   {
-    return (EReference)performanceRequirementLinksEClass.getEStructuralFeatures().get(2);
+    return (EReference)performanceRequirementLinksEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -248,6 +258,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     performanceRequirementLinksEClass = createEClass(PERFORMANCE_REQUIREMENT_LINKS);
     createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__SAMPLES_PER_TEST);
     createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__THREADS);
+    createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR);
     createEReference(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__LINKS);
 
     performanceRequirementLinkEClass = createEClass(PERFORMANCE_REQUIREMENT_LINK);
@@ -298,6 +309,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     initEClass(performanceRequirementLinksEClass, PerformanceRequirementLinks.class, "PerformanceRequirementLinks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPerformanceRequirementLinks_SamplesPerTest(), ecorePackage.getEIntegerObject(), "samplesPerTest", "1000", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPerformanceRequirementLinks_Threads(), ecorePackage.getEIntegerObject(), "threads", "5", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPerformanceRequirementLinks_BaseDir(), ecorePackage.getEString(), "baseDir", "src", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPerformanceRequirementLinks_Links(), this.getPerformanceRequirementLink(), null, "links", null, 0, -1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(performanceRequirementLinkEClass, PerformanceRequirementLink.class, "PerformanceRequirementLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

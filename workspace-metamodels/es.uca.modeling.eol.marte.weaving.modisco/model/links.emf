@@ -7,6 +7,7 @@ import "http://www.eclipse.org/MoDisco/Java/0.2.incubation/java";
 class PerformanceRequirementLinks {
    attr Integer samplesPerTest = 1000;
    attr Integer threads = 5;
+   attr String baseDir = "src";
    val PerformanceRequirementLink[*] links;
 }
 

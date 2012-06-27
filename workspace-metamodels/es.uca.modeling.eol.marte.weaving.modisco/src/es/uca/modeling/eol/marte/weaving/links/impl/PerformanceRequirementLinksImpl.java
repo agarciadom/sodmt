@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinksImpl#getSamplesPerTest <em>Samples Per Test</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinksImpl#getThreads <em>Threads</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinksImpl#getBaseDir <em>Base Dir</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinksImpl#getLinks <em>Links</em>}</li>
  * </ul>
  * </p>
@@ -75,6 +76,24 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
    * @ordered
    */
   protected Integer threads = THREADS_EDEFAULT;
+  /**
+   * The default value of the '{@link #getBaseDir() <em>Base Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBaseDir()
+   * @generated
+   * @ordered
+   */
+  protected static final String BASE_DIR_EDEFAULT = "src";
+  /**
+   * The cached value of the '{@link #getBaseDir() <em>Base Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBaseDir()
+   * @generated
+   * @ordered
+   */
+  protected String baseDir = BASE_DIR_EDEFAULT;
   /**
    * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -157,6 +176,29 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getBaseDir()
+  {
+    return baseDir;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBaseDir(String newBaseDir)
+  {
+    String oldBaseDir = baseDir;
+    baseDir = newBaseDir;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR, oldBaseDir, baseDir));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<PerformanceRequirementLink> getLinks()
   {
     if (links == null)
@@ -196,6 +238,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
         return getSamplesPerTest();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__THREADS:
         return getThreads();
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
+        return getBaseDir();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         return getLinks();
     }
@@ -218,6 +262,9 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__THREADS:
         setThreads((Integer)newValue);
+        return;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
+        setBaseDir((String)newValue);
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         getLinks().clear();
@@ -243,6 +290,9 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__THREADS:
         setThreads(THREADS_EDEFAULT);
         return;
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
+        setBaseDir(BASE_DIR_EDEFAULT);
+        return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         getLinks().clear();
         return;
@@ -264,6 +314,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
         return SAMPLES_PER_TEST_EDEFAULT == null ? samplesPerTest != null : !SAMPLES_PER_TEST_EDEFAULT.equals(samplesPerTest);
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__THREADS:
         return THREADS_EDEFAULT == null ? threads != null : !THREADS_EDEFAULT.equals(threads);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
+        return BASE_DIR_EDEFAULT == null ? baseDir != null : !BASE_DIR_EDEFAULT.equals(baseDir);
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         return links != null && !links.isEmpty();
     }
@@ -285,6 +337,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
     result.append(samplesPerTest);
     result.append(", threads: ");
     result.append(threads);
+    result.append(", baseDir: ");
+    result.append(baseDir);
     result.append(')');
     return result.toString();
   }

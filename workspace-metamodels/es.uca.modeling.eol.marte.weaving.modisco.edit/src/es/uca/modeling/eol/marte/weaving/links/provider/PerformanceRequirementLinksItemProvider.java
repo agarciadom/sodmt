@@ -69,6 +69,7 @@ public class PerformanceRequirementLinksItemProvider
 
       addSamplesPerTestPropertyDescriptor(object);
       addThreadsPropertyDescriptor(object);
+      addBaseDirPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -111,6 +112,29 @@ public class PerformanceRequirementLinksItemProvider
          getString("_UI_PerformanceRequirementLinks_threads_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLinks_threads_feature", "_UI_PerformanceRequirementLinks_type"),
          LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINKS__THREADS,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Base Dir feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addBaseDirPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_PerformanceRequirementLinks_baseDir_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLinks_baseDir_feature", "_UI_PerformanceRequirementLinks_type"),
+         LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR,
          true,
          false,
          false,
@@ -193,6 +217,7 @@ public class PerformanceRequirementLinksItemProvider
     {
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__SAMPLES_PER_TEST:
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__THREADS:
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:

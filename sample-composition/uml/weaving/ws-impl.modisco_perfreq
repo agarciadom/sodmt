@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mw:PerformanceRequirementLinks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mw="www.uca.es/modeling/weaving/modisco" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+<mw:PerformanceRequirementLinks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mw="www.uca.es/modeling/weaving/modisco" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" baseDir="src/test">
   <links>
     <execNode xsi:type="uml:CallOperationAction" href="../papyrus/multimodel.uml#_dvXOULoxEeG_n-mswuuavA"/>
     <klazz href="../modisco/ws-impl-1.0-20120623.javaxmi#//@ownedElements.0/@ownedPackages.0/@ownedPackages.0/@ownedPackages.0/@ownedElements.2"/>
