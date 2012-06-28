@@ -17,6 +17,10 @@
             id="es.uca.modeling.eol.marte.codegen.modisco.analyzeThisProject"
             name="Analyze Java Project">
       </command>
+      <command
+            id="es.uca.modeling.eol.marte.codegen.modisco.weave"
+            name="Weave Java and UML Models">
+      </command>
    </extension>
 
    <extension
@@ -36,6 +40,15 @@
          <enabledWhen>
             <reference
                   definitionId="es.uca.modeling.eol.marte.codegen.modisco.singleJavaProject">
+            </reference>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="es.uca.modeling.eol.marte.codegen.modisco.handlers.WeaveModelsHandler"
+            commandId="es.uca.modeling.eol.marte.codegen.modisco.weave">
+         <enabledWhen>
+            <reference
+                  definitionId="es.uca.modeling.eol.marte.codegen.modisco.javaAndUMLModel">
             </reference>
          </enabledWhen>
       </handler>
@@ -87,6 +100,17 @@
                   </reference>
                </visibleWhen>
             </command>
+            <command
+                  commandId="es.uca.modeling.eol.marte.codegen.modisco.weave"
+                  id="es.uca.modeling.eol.marte.codegen.modisco.menu.weave"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="es.uca.modeling.eol.marte.codegen.modisco.javaAndUMLModel">
+                  </reference>
+               </visibleWhen>
+            </command>
          </menu>
       </menuContribution>
       <menuContribution
@@ -113,8 +137,8 @@
                      value="org.eclipse.core.resources.IFile">
                </instanceof>
                <test
-                     property="org.eclipse.core.resources.name"
-                     value="*.modisco_perfreq">
+                     property="org.eclipse.core.resources.extension"
+                     value="modisco_perfreq">
                </test>
             </iterate>
          </and>
@@ -146,6 +170,36 @@
                   </or>
                </iterate>
             </and>
+      </definition>
+      <definition
+            id="es.uca.modeling.eol.marte.codegen.modisco.javaAndUMLModel">
+         <and>
+            <count
+                  value="2">
+            </count>
+            <iterate
+                  ifEmpty="false"
+                  operator="or">
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        property="org.eclipse.core.resources.extension"
+                        value="uml">
+                  </test>
+               </adapt>
+            </iterate>
+            <iterate
+                  ifEmpty="false"
+                  operator="or">
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        property="org.eclipse.core.resources.extension"
+                        value="javaxmi">
+                  </test>
+               </adapt>
+            </iterate>
+         </and>
       </definition>
    </extension>
 
