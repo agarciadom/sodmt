@@ -10,6 +10,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 import org.eclipse.epsilon.emc.emf.EmfModel;
@@ -19,6 +21,7 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import es.uca.modeling.eol.marte.codegen.modisco.Activator;
@@ -69,7 +72,19 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 
 	private EmfModel loadWeavingModel(final IFile file)	throws EolModelLoadingException, IOException {
 		final EmfModel model = new EmfModel();
-		model.setModelFile(new File(file.getLocationURI()).getCanonicalPath());
+
+		// Try using a platform: URI whenever possible - model weaving tends to create these
+		URI modelUri = null;
+		IFile[] workspaceMatches = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocationURI(file.getLocationURI());
+		if (workspaceMatches.length > 0) {
+			final IProject project = workspaceMatches[0].getProject();
+			modelUri = URI.createPlatformResourceURI("/" + project.getName() + "/" + workspaceMatches[0].getProjectRelativePath(), true);
+		}
+		if (modelUri == null) {
+			modelUri = URI.createURI(file.getLocationURI().toString());
+		}
+		model.setModelFileUri(modelUri);
+
 		model.setMetamodelUris(Arrays.asList(LinksPackage.eNS_URI, MARTEPackage.eNS_URI));
 		model.setName("Weaving");
 		model.setExpand(true);

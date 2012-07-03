@@ -1,6 +1,7 @@
 [%
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/model_utils.eol';
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/utils.eol';
+import 'utils.egl';
 
 var root := Weaving!PerformanceRequirementLinks.all.first;
 
@@ -34,6 +35,7 @@ for (link in root.links) {
   template.populate("threads", root.threads);
   template.populate("timeLimit", timeLimit);
   template.populate("throughput", throughput);
+  template.populate("metric", link.metric);
 
   -- Code parameters
   template.populate("packageName", packageName);
@@ -65,16 +67,6 @@ operation sourcePath(baseDir : String, package : String, class : String) : Strin
 
 operation ExecutableNode className() {
   return self.name.replace('\\s', '');
-}
-
-operation AbstractTypeDeclaration packageName() {
-  var packages := Sequence {};
-  var current := self.package;
-  while (current.isDefined()) {
-    packages.add(current.name);
-    current := current.package;
-  }
-  return packages.invert.concat(".");
 }
 
 %]

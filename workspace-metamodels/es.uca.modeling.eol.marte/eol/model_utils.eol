@@ -290,20 +290,22 @@ operation NamedElement getStep(createIfMissing : Boolean) : GaStep {
   return stepMap.get(self);
 }
 
-operation NamedElement getStepMap() : Map {
+operation NamedElement getAnalysisContext() : GaAnalysisContext {
+  return GaAnalysisContext.allInstances.selectOne(s|s.base_NamedElement == self);
+}
+
+-* Operations for ActivityNode *-
+
+operation ActivityNode getStepMap() : Map {
   return self.getActivity().getStepMap();
 }
 
 @cached
-operation NamedElement getActivity() {
+operation ActivityNode getActivity() {
   if (self.activity.isDefined()) {
     return self.activity;
   }
   else {
     return self.inGroup.first().getActivity();
   }
-}
-
-operation NamedElement getAnalysisContext() : GaAnalysisContext {
-  return GaAnalysisContext.allInstances.selectOne(s|s.base_NamedElement == self);
 }

@@ -1,4 +1,8 @@
-[% out.setContentType("Java"); %]
+[%
+  import 'utils.egl';
+
+  out.setContentType("Java");
+%]
 package [%=packageName%];
 
 import org.databene.contiperf.PerfTest;
@@ -8,15 +12,29 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
 
+[% printExceptionImports(testCases); %]
+
+[%
+  var thrownExceptions := testCases.collect(c|c.thrownExceptions.collect(e|e.type)).flatten().asSet();
+  var filteredExceptions := thrownExceptions.select(e | not e.qualifiedName().startsWith('java.lang'));
+
+  for (imp in filteredExceptions) { %]
+import [%=imp.qualifiedName()%];
+[% } %]
+
 import [%=fbc_packageName%].[%=fbc_className%];
 
+[%
+  var finalThroughput := throughput.asInteger();
+  var finalTimeLimit := (timeLimit * 1000).asInteger();
+%]
 /**
  * Performance test suite generated from some of the test cases in the test
  * suite '[%=testSuite.name%]' and executable node '[%=execNode.name%]'. Time
- * limit is [%=timeLimit%] seconds and throughput is [%=throughput%] requests
+ * limit is [%=finalTimeLimit%] milliseconds and throughput is [%=finalThroughput%] requests
  * per second.
  */
-@Required(throughput=[%=throughput%], max=[%=(timeLimit * 1000).asInteger()%])
+[% printRequirement(finalThroughput, finalTimeLimit, metric); %]
 public class [%=className%] extends [%=testSuite.name%] {
 
   @Rule
@@ -27,13 +45,13 @@ public class [%=className%] extends [%=testSuite.name%] {
 
 [% for (testCase in testCases) { %]
   @PerfTest(invocations=[%=invocations%], threads=[%=threads%])
+  @Test
   @Override
-  public void [%=testCase.name%] throws Exception {
+  public void [%=testCase.name%]() throws [%=testCase.thrownExceptions.collect(e|e.type.name).concat(", ")%] {
     super.[%=testCase.name%]();
   }
 
 [% } %]
-
 [%=out.preserve('customTests', false, '// Add your own tests here')%]
 
 }

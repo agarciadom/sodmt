@@ -1,4 +1,8 @@
-[% out.setContentType("Java"); %]
+[%
+   import 'utils.egl';
+
+   out.setContentType("Java");
+%]
 package [%=packageName%];
 
 import org.databene.contiperf.PerfTest;
@@ -7,15 +11,19 @@ import org.databene.contiperf.junit.ContiPerfSuiteRunner;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
+[%
+  var finalThroughput := throughput.asInteger();
+  var finalTimeLimit := (timeLimit * 1000).asInteger();
+%]
 /**
- * Performance test suite generated from test suite '[%=testSuite.name%]'
- * and executable node '[%=execNode.name%]'. Time limit is [%=timeLimit%]
- * seconds and throughput is [%=throughput%] requests per second.
+ * Performance test suite generated from some of the test cases in the test
+ * suite '[%=testSuite.name%]' and executable node '[%=execNode.name%]'. Time
+ * limit is [%=finalTimeLimit%] milliseconds and throughput is [%=finalThroughput%] requests per second.
  */
 @RunWith(ContiPerfSuiteRunner.class)
 @SuiteClasses([%=testSuite.name%].class)
 @PerfTest(invocations=[%=invocations%], threads=[%=threads%])
-@Required(throughput=[%=throughput%], max=[%=(timeLimit * 1000).asInteger()%])
+[% printRequirement(finalThroughput, finalTimeLimit, metric); %]
 public class [%=className%] {
 
 [%=out.preserve('customTests', false, '// Add your own tests here')%]
