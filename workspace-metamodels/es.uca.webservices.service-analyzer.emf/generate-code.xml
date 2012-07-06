@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="generate-wsdl-weaving-code" default="generate">
+
+	<property name="mmodel" location="model/messageCatalog.xsd.ecore" />
+
+	<target name="generate">
+		<epsilon.eugenia laststep="genmodel" src="${mmodel}" />
+		<epsilon.eugenia firststep="emfcode" laststep="emfcode" src="${mmodel}" />
+	</target>
+
+</project>

@@ -1,0 +1,7 @@
+var genPkg := GenModel!GenPackage.all.first;
+
+genPkg.basePackage := 'es.uca.webservices.wsdl.analyzer.emf';
+genPkg.prefix := 'MessageCatalog';
+genPkg.resource := GenModel!GenResourceKind#XML;
+genPkg.fileExtensions := 'msgcat';
+genPkg.generateExampleClass := false;

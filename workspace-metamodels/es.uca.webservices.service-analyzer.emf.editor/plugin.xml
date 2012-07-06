@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="es.uca.webservices.wsdl.analyzer.emf.catalog.presentation.MessageCatalogModelWizardID"
+            name="%_UI_MessageCatalogModelWizard_label"
+            class="es.uca.webservices.wsdl.analyzer.emf.catalog.presentation.MessageCatalogModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MessageCatalogModelFile.gif">
+         <description>%_UI_MessageCatalogModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="es.uca.webservices.wsdl.analyzer.emf.catalog.presentation.MessageCatalogEditorID"
+            name="%_UI_MessageCatalogEditor_label"
+            icon="icons/full/obj16/MessageCatalogModelFile.gif"
+            extensions="msgcat"
+            class="es.uca.webservices.wsdl.analyzer.emf.catalog.presentation.MessageCatalogEditor"
+            contributorClass="es.uca.webservices.wsdl.analyzer.emf.catalog.presentation.MessageCatalogActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

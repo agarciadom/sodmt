@@ -1,5 +1,6 @@
 .metadata
 .settings
+es.uca.webservices.*
 ServiceProcess.diagram
 ServiceComposition.diagram
 ServiceProcess.tests
