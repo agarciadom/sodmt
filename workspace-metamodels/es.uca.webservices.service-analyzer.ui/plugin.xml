@@ -32,6 +32,7 @@
             locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
          <command
                commandId="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog"
+               icon="icons/sample.gif"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -45,6 +46,7 @@
             locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
          <command
                commandId="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog"
+               icon="icons/sample.gif"
                style="push">
             <visibleWhen
                   checkEnabled="false">
