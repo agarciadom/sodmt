@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse UI for ServiceAnalyzer
+Bundle-SymbolicName: es.uca.webservices.service-analyzer.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: es.uca.webservices.wsdl.emf.ui.Activator
+Bundle-Vendor: Universidad de Cádiz
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.expressions,
+ org.eclipse.core.resources,
+ es.uca.webservices.service-analyzer,
+ es.uca.webservices.test-generator,
+ es.uca.webservices.test-generator-api,
+ es.uca.webservices.wsdl2xsdtree,
+ es.uca.webservices.xml-utils
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

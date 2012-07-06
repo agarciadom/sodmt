@@ -1,8 +1,12 @@
 .metadata
 .settings
-es.uca.webservices.*
 ServiceProcess.diagram
 ServiceComposition.diagram
 ServiceProcess.tests
 ServiceComposition.tests
 bin
+es.uca.webservices.service-analyzer
+es.uca.webservices.test-generator-api
+es.uca.webservices.test-generator
+es.uca.webservices.wsdl2xsdtree
+es.uca.webservices.xml-utils
