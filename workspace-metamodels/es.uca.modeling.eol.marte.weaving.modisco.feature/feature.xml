@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="es.uca.modeling.sodmt.adhoc"
-      label="SODM+T Toolset (Ad-Hoc)"
-      version="1.1.1.qualifier"
-      provider-name="University of Cadiz">
+      id="es.uca.modeling.eol.marte.weaving.modisco.feature"
+      label="SODM+T MoDisco Weaving"
+      version="1.0.0.qualifier"
+      provider-name="Universidad de Cádiz">
 
-   <description url="https://neptuno.uca.es/redmine/projects/sodmt/">
-      Toolset for the SODM+T model-driven SOA methodology, which extends the SODM methodology developed at the Kybele research group of the University of Rey Juan Carlos (Madrid) to take testing aspects into account. Extensions have been done through reimplementation of the affected parts of the methodology.
+   <description url="https://neptuno.uca.es/redmine/projects/sodmt/wiki">
+      This feature allows users to weave actions inside UML2 activity models with JUnit test suites, and generate ContiPerf-based test artefacts from the performance requirements inferred by the MARTE-based algorithms.
    </description>
 
    <copyright>
-      Copyright (C) 2009-2011 Antonio García-Domínguez
+      Copyright (C) 2010-2012 Antonio García-Domínguez
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -87,141 +87,57 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <requires>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.evl.emf.validation" version="0.8.6" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.etl.engine" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.erl.engine" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.common.dt" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.draw2d" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.runtime.draw2d.ui" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.expressions"/>
-      <import plugin="org.eclipse.jface"/>
-      <import plugin="org.eclipse.ui.views"/>
-      <import plugin="org.eclipse.ui.navigator"/>
-      <import plugin="org.eclipse.ui.navigator.resources"/>
+      <import plugin="org.eclipse.epsilon.dt.exeed"/>
+      <import plugin="org.eclipse.epsilon.eol.dt"/>
+      <import plugin="org.eclipse.epsilon.egl.engine"/>
+      <import plugin="org.eclipse.epsilon.emc.emf"/>
+      <import plugin="org.eclipse.epsilon.eol.engine"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.modisco.java.discoverer"/>
+      <import plugin="org.eclipse.modisco.infra.discovery.core"/>
+      <import plugin="org.eclipse.papyrus.marte.static.profile"/>
+      <import plugin="es.uca.modeling.eol.marte"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.gmt.modisco.java"/>
+      <import plugin="org.eclipse.uml2.types"/>
+      <import plugin="org.eclipse.uml2.uml" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.uml2.uml.edit" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmt.modisco.java.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.ui.properties"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.printing"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.printing.render"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers.ide"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.render"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
-      <import plugin="org.eclipse.ocl.ecore"/>
-      <import plugin="org.eclipse.emf.validation"/>
-      <import plugin="org.eclipse.gef"/>
-      <import plugin="org.eclipse.emf.edit"/>
-      <import plugin="org.eclipse.ui" version="3.6.1" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jface.databinding" version="1.4.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.databinding" version="1.3.100" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.databinding.beans" version="1.2.100" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.databinding.property"/>
-      <import plugin="com.ibm.icu"/>
-      <import plugin="es.uca.modeling.eol" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="ServiceProcess" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.uml2.uml.editor" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmt.modisco.java.editor" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
-         id="es.uca.modeling.eol"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="es.uca.modeling.eol.contextmenu"
+         id="es.uca.modeling.eol.marte.codegen.modisco"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.eol.tools"
+         id="es.uca.modeling.eol.marte.weaving.modisco"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.figures"
+         id="es.uca.modeling.eol.marte.weaving.modisco.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="ServiceComposition"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceComposition.diagram"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceComposition.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceComposition.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceProcess"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceProcess.diagram"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceProcess.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ServiceProcess.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="es.uca.modeling.eol.comparison"
+         id="es.uca.modeling.eol.marte.weaving.modisco.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

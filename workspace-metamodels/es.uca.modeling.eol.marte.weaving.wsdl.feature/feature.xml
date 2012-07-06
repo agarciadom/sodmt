@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="es.uca.modeling.sodmt.marte"
-      label="SODM+T Toolset (MARTE)"
+      id="es.uca.modeling.eol.marte.weaving.wsdl.feature"
+      label="SODM+T WSDL Weaving"
       version="1.0.0.qualifier"
       provider-name="Universidad de Cádiz">
 
    <description url="https://neptuno.uca.es/redmine/projects/sodmt/wiki">
-      This feature contains the plugins which infer performance constraints in UML activity diagrams annotated with the MARTE profile.
+      This feature allows users to weave operatiosn inside ServiceAnalyzer WSDL catalogs with UML2 activities annotated with the MARTE profile, and generate The Grinder-based test artefacts from the performance requirements inferred by the MARTE-based algorithms.
    </description>
 
    <copyright>
-      Copyright (C) 2010-2011 Antonio García-Domínguez
+      Copyright (C) 2010-2012 Antonio García-Domínguez
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -86,56 +86,64 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
 
-   <requires>
-      <import plugin="org.eclipse.ui.ide" version="3.6.1" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.common.dt" version="0.9.0" match="greaterOrEqual"/>
-   </requires>
-
    <plugin
-         id="es.uca.modeling.eol.marte"
+         id="es.uca.webservices.service-analyzer"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.eol.marte.weaving.modisco"
+         id="es.uca.webservices.service-analyzer.emf"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.eol.marte.weaving.modisco.edit"
+         id="es.uca.webservices.service-analyzer.emf.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.eol.marte.weaving.modisco.editor"
+         id="es.uca.webservices.service-analyzer.emf.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="es.uca.modeling.eol.marte.weaving.modisco.tests"
+         id="es.uca.webservices.service-analyzer.emf.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.gmt.modisco.java.edit"
+         id="es.uca.webservices.test-generator"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.gmt.modisco.java.editor"
+         id="es.uca.webservices.test-generator-api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.webservices.wsdl2xsdtree"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.webservices.xml-utils"
          download-size="0"
          install-size="0"
          version="0.0.0"
