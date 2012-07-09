@@ -1,0 +1,13 @@
+var wsdlCatGenPak := WSDLCatalogGenModel!GenPackage.all.selectOne(p|p.prefix='MessageCatalog');
+var umlGenPak := UMLGenModel!GenPackage.all.selectOne(p|p.prefix='UML');
+var typesGenPak := UMLTypesGenModel!GenPackage.all.selectOne(p|p.prefix='Types');
+
+var mainGenModel := GenModel!GenModel.all.first;
+var usedPaks := mainGenModel.usedGenPackages;
+usedPaks.add(wsdlCatGenPak);
+usedPaks.add(umlGenPak);
+usedPaks.add(typesGenPak);
+
+var mainGenPak := mainGenModel.genPackages.first;
+mainGenPak.basePackage := 'es.uca.modeling.eol.marte.weaving.wsdl';
+mainGenPak.fileExtensions := 'wsdl_perfreq';

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="generate">
+	<property name="models.wsdlcat" location="../es.uca.webservices.service-analyzer.emf/model" />
+
+	<target name="generate">
+		<epsilon.emf.register file="${models.wsdlcat}/messageCatalog.xsd.ecore" />
+
+		<epsilon.emf.loadModel name="WSDLCatalogGenModel" modelfile="${models.wsdlcat}/messageCatalog.xsd.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="UMLGenModel" modeluri="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="UMLTypesGenModel" modeluri="platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+
+		<epsilon.eugenia src="model/links.emf" laststep="genmodel">
+			<model step="genmodel" ref="WSDLCatalogGenModel" />
+			<model step="genmodel" ref="UMLGenModel" />
+			<model step="genmodel" ref="UMLTypesGenModel" />
+		</epsilon.eugenia>
+		<epsilon.eugenia firststep="emfcode" laststep="emfcode" src="model/links.ecore" />
+
+		<epsilon.disposeModels />
+	</target>
+
+</project>

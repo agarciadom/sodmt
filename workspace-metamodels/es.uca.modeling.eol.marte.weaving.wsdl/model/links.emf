@@ -1,0 +1,14 @@
+@namespace(uri="www.uca.es/modeling/weaving/wsdl", prefix="mw")
+package links;
+
+import "http://www.eclipse.org/uml2/4.0.0/UML";
+import "http://serviceAnalyzer/messageCatalog";
+
+class PerformanceRequirementLinks {
+   val PerformanceRequirementLink[*] links;
+}
+
+class PerformanceRequirementLink {
+   ref uml.ExecutableNode execNode;
+   ref catalog.TypeOperation operation;
+}
