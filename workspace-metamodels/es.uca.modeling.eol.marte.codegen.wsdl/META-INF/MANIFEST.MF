@@ -7,6 +7,10 @@ Bundle-Activator: es.uca.modeling.eol.marte.codegen.wsdl.Activator
 Bundle-Vendor: University of Cádiz
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.expressions
+ org.eclipse.core.expressions,
+ org.eclipse.core.resources,
+ org.eclipse.epsilon.emc.emf,
+ org.eclipse.epsilon.dt.exeed,
+ es.uca.modeling.eol.marte.weaving.wsdl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

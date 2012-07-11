@@ -21,7 +21,6 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import es.uca.modeling.eol.marte.codegen.modisco.Activator;
