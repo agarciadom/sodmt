@@ -14,21 +14,39 @@
   <name>Orders :: Web Services :: Grinder Tests</name>
   <description>Performance tests based on The Grinder</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>ws-impl</artifactId>
-      <version>${project.version}</version>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
-
   <build>
       <plugins>
+          <plugin>
+              <artifactId>maven-clean-plugin</artifactId>
+              <version>2.5</version>
+              <configuration>
+                  <filesets>
+                      <fileset>
+                          <directory>cachedir</directory>
+                      </fileset>
+                      <fileset>
+                          <directory>.</directory>
+                          <includes>
+                              <include>velocity*.log</include>
+                          </includes>
+                      </fileset>
+                  </filesets>
+              </configuration>
+          </plugin>
           <plugin>
               <groupId>com.fides</groupId>
               <artifactId>grinderplugin</artifactId>
               <version>1.0.0-RC3</version>
+              <executions>
+                  <execution>
+                      <id>run-tests</id>
+                      <phase>test</phase>
+                      <goals>
+                          <goal>agent</goal>
+                          <goal>report</goal>
+                      </goals>
+                  </execution>
+              </executions>
           </plugin>
       </plugins>
   </build>
