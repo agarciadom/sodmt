@@ -1,0 +1,8 @@
+<soapenv:Envelope
+  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:u="http://ws.sodmt.uca.es/">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <u:list/>
+  </soapenv:Body>
+</soapenv:Envelope>
