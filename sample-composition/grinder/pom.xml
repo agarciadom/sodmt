@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.uca.sodmt.orders</groupId>
+    <artifactId>parent</artifactId>
+    <version>1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>grinder</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Orders :: Web Services :: Grinder Tests</name>
+  <description>Performance tests based on The Grinder</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ws-impl</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>com.fides</groupId>
+              <artifactId>grinderplugin</artifactId>
+              <version>1.0.0-RC3</version>
+          </plugin>
+      </plugins>
+  </build>
+
+</project>

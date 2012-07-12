@@ -115,6 +115,7 @@
     <module>data-model</module>
     <module>ws</module>
     <module>ws-impl</module>
+    <module>grinder</module>
   </modules>
 
 </project>
