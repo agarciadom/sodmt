@@ -40,9 +40,15 @@
               <executions>
                   <execution>
                       <id>run-tests</id>
-                      <phase>test</phase>
+                      <phase>integration-test</phase>
                       <goals>
                           <goal>agent</goal>
+                      </goals>
+                  </execution>
+                  <execution>
+                      <id>generate-report</id>
+                      <phase>post-integration-test</phase>
+                      <goals>
                           <goal>report</goal>
                       </goals>
                   </execution>
