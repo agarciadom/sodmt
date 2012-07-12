@@ -7,29 +7,51 @@ from org.apache.velocity import VelocityContext
 
 from java.io import StringWriter, FileInputStream, File
 
+
 ## CONFIGURATION AREA
+
 
 TEMPLATE_DIR = "src/test/velocity"
 
+
 ## TEST BODY
 
+
 class TestRunner:
+    def __init__(self):
+        self.listOrdersCtx = VelocityContext()
+
     def __call__(self):
         Velocity.init()
 
-        def invoke():
-            response = HTTPRequest().POST(
-                "http://localhost:8080/orders",
-                render(VelocityContext(), "ListOrders", "listOrders.vm"))
+        listOrdersTest = Test(1, "List all orders").wrap(
+            successful_before(
+                lambda : post(
+                    "http://localhost:8080/orders",
+                    self.listOrdersCtx, "ListOrders", "listOrders.vm"
+                ),
+                maximum = 150
+            )
+        )
 
-            stats = grinder.statistics.getForCurrentTest()
-            if stats.time > 150 or response.statusCode != 200:
-                stats.success = 0
+        listOrdersTest()
 
-        test = Test(1, "Query order by ID").wrap(invoke)
-        test()
 
 ## UTILITY FUNCTIONS
+
+def successful_before(func, maximum):
+    def wrapper():
+        response = func()
+        stats = grinder.statistics.getForCurrentTest()
+        if stats.time > maximum or response.statusCode != 200:
+            stats.success = 0
+    return wrapper
+
+def post(url, context, logString, template):
+    return HTTPRequest().POST(
+        url,
+        render(context, logString, template)
+    )
 
 def render(context, logString, template):
     sWriter = StringWriter()

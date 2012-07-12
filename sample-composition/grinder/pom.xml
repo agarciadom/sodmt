@@ -14,6 +14,10 @@
   <name>Orders :: Web Services :: Grinder Tests</name>
   <description>Performance tests based on The Grinder</description>
 
+  <properties>
+      <grinder.version>1.0.0-RC3</grinder.version>
+  </properties>
+
   <build>
       <plugins>
           <plugin>
@@ -36,7 +40,7 @@
           <plugin>
               <groupId>com.fides</groupId>
               <artifactId>grinderplugin</artifactId>
-              <version>1.0.0-RC3</version>
+              <version>${grinder.version}</version>
               <executions>
                   <execution>
                       <id>run-tests</id>
