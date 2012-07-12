@@ -24,11 +24,11 @@ class TestRunner:
     def __call__(self):
         Velocity.init()
 
-        listOrdersTest = Test(1, "List all orders").wrap(
+        listOrdersTest = Test(1, "listOrders").wrap(
             successful_before(
                 lambda : post(
                     "http://localhost:8080/orders",
-                    self.listOrdersCtx, "ListOrders", "listOrders.vm"
+                    self.listOrdersCtx, "listOrders", "listOrders.vm"
                 ),
                 maximum = 150
             )
