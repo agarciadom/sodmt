@@ -10,42 +10,48 @@ from java.io import StringWriter, FileInputStream, File
 
 ## CONFIGURATION AREA
 
-
 TEMPLATE_DIR = "src/test/velocity"
 
 
 ## TEST BODY
 
-
 class TestRunner:
-    def __init__(self):
-        self.listOrdersCtx = VelocityContext()
+    lastNumber = 1
 
-    def __call__(self):
+    def __init__(self):
         Velocity.init()
 
-        listOrdersTest = Test(1, "listOrders").wrap(
-            successful_before(
-                lambda : post(
-                    "http://localhost:8080/orders",
-                    self.listOrdersCtx, "listOrders", "listOrders.vm"
-                ),
-                maximum = 150
-            )
+        self.tests = (
+            (
+                VelocityContext(),
+                successful_before(
+                    "listOrders",
+                    lambda **kw: post(url="http://localhost:8080/orders", **kw),
+                    maximum = 150
+                )
+            ),
         )
 
-        listOrdersTest()
+    def __call__(self):
+        for inputs, test in self.tests:
+            test(pick_random_input(inputs))
 
 
 ## UTILITY FUNCTIONS
 
-def successful_before(func, maximum):
-    def wrapper():
-        response = func()
+def successful_before(name, func, maximum):
+    def wrapper(ctx):
+        response = func(context=ctx, logString=name, template=name + ".vm")
         stats = grinder.statistics.getForCurrentTest()
         if stats.time > maximum or response.statusCode != 200:
             stats.success = 0
-    return wrapper
+
+    test = Test(TestRunner.lastNumber, name).wrap(wrapper)
+    TestRunner.lastNumber += 1
+    return test
+
+def pick_random_input(inputsCtx):
+    return inputsCtx
 
 def post(url, context, logString, template):
     return HTTPRequest().POST(
