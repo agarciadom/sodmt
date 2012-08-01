@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: es.uca.webservices.wsdl.emf.ui.Activator
 Bundle-Vendor: Universidad de Cádiz
 Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide,
  org.eclipse.core.runtime,
  org.eclipse.core.expressions,
  org.eclipse.core.resources,

@@ -6,24 +6,33 @@
          point="org.eclipse.ui.commands">
       <category
             name="ServiceAnalyzer"
-            id="es.uca.webservices.service-analyzer.emf.ui.commands.category">
+            id="es.uca.webservices.service-analyzer.ui.commands.category">
       </category>
       <command
-            name="Generate ServiceAnalyzer WSDL Catalog"
-            categoryId="es.uca.webservices.service-analyzer.emf.ui.commands.category"
-            id="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog">
+            name="Generate ServiceAnalyzer Catalog"
+            categoryId="es.uca.webservices.service-analyzer.ui.commands.category"
+            id="es.uca.webservices.service-analyzer.ui.commands.catalogFromFile">
+      </command>
+      <command
+            categoryId="es.uca.webservices.service-analyzer.ui.commands.category"
+            id="es.uca.webservices.service-analyzer.ui.commands.catalogFromURL"
+            name="Generate ServiceAnalyzer Catalog from URL...">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog"
-            class="es.uca.webservices.wsdl.emf.ui.handlers.GenerateMessageCatalogHandler">
+            commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromFile"
+            class="es.uca.webservices.wsdl.emf.ui.handlers.GenerateCatalogFromFileHandler">
          <enabledWhen>
             <reference
-                  definitionId="es.uca.webservices.service-analyzer.emf.ui.oneOrMoreWSDLs">
+                  definitionId="es.uca.webservices.service-analyzer.ui.oneOrMoreWSDLs">
             </reference>
          </enabledWhen>
+      </handler>
+      <handler
+            class="es.uca.webservices.wsdl.emf.ui.handlers.GenerateCatalogFromURLHandler"
+            commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromURL">
       </handler>
    </extension>
    <extension
@@ -31,36 +40,46 @@
       <menuContribution
             locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
          <command
-               commandId="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog"
+               commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromFile"
                icon="icons/sample.gif"
                style="push">
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="es.uca.webservices.service-analyzer.emf.ui.oneOrMoreWSDLs">
+                     definitionId="es.uca.webservices.service-analyzer.ui.oneOrMoreWSDLs">
                </reference>
             </visibleWhen>
+         </command>
+         <command
+               commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromURL"
+               icon="icons/sample.gif"
+               style="push">
          </command>
       </menuContribution>
       <menuContribution
             locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
          <command
-               commandId="es.uca.webservices.service-analyzer.emf.ui.commands.generateCatalog"
+               commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromFile"
                icon="icons/sample.gif"
                style="push">
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="es.uca.webservices.service-analyzer.emf.ui.oneOrMoreWSDLs">
+                     definitionId="es.uca.webservices.service-analyzer.ui.oneOrMoreWSDLs">
                </reference>
             </visibleWhen>
+         </command>
+         <command
+               commandId="es.uca.webservices.service-analyzer.ui.commands.catalogFromURL"
+               icon="icons/sample.gif"
+               style="push">
          </command>
       </menuContribution>
    </extension>
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="es.uca.webservices.service-analyzer.emf.ui.oneOrMoreWSDLs">
+            id="es.uca.webservices.service-analyzer.ui.oneOrMoreWSDLs">
          <and>
             <count
                   value="+">
