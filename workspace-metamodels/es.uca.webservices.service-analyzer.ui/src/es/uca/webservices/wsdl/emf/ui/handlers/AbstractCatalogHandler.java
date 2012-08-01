@@ -24,38 +24,30 @@ public abstract class AbstractCatalogHandler extends AbstractHandler {
 
 	protected void generateCatalog(final List<String> inputPaths, File targetFile) throws ExecutionException {
 		try {
-			/*final Thread currentThread = Thread.currentThread();
+			final Thread currentThread = Thread.currentThread();
 			final ClassLoader thisLoader = getClass().getClassLoader();
-			final ClassLoader oldLoader = currentThread.getContextClassLoader();*/
+			final ClassLoader oldLoader = currentThread.getContextClassLoader();
 
 			/*
 			 * Saxon (used to generate the XML Schema docs) needs a specific
-			 * classloader when used from OSGi - we need to set this up
+			 * classloader when used from OSGi, since the ContextFinder normally
+			 * used does not play nice with it. We need to set this up
 			 * temporarily only for this step, as doing it for the whole process
 			 * breaks XMLBeans.
 			 */
 			List<Definition> defs;
 			List<File> xsdRoots;
 			try {
-				//currentThread.setContextClassLoader(thisLoader);
+				currentThread.setContextClassLoader(thisLoader);
 				defs = ServiceAnalyzer.readAllDefinitions(inputPaths.toArray(new String[inputPaths.size()]));
 				xsdRoots = ServiceAnalyzer.generateRoots(defs);
 			} finally {
-				//currentThread.setContextClassLoader(oldLoader);
+				currentThread.setContextClassLoader(oldLoader);
 			}
 
 			ServiceAnalyzer sa = new ServiceAnalyzer(defs, xsdRoots);
-			
-			try {
-				//SchemaTypeSystemImpl.class.getClass();
-				//currentThread.setContextClassLoader(thisLoader);
-				ServicesDocument.Factory.newInstance();
-
-				final ServicesDocument catalog = sa.generateMessageCatalog();
-				saveXML(catalog, targetFile);
-			} finally {
-				//currentThread.setContextClassLoader(oldLoader);
-			}
+			final ServicesDocument catalog = sa.generateMessageCatalog();
+			saveXML(catalog, targetFile);
 		} catch (Exception e) {
 			throw new ExecutionException("Error while generating the ServiceAnalyzer catalog from the WSDL documents", e);
 		}
