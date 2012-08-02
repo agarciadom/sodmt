@@ -12,6 +12,22 @@ from java.io import StringWriter, FileInputStream, File
 
 TEMPLATE_DIR = "src/test/velocity"
 
+MSGTEMPLATE_DIR = TEMPLATE_DIR + "/messages"
+
+MSGTEMPLATE_PREFIX = "\n".join((
+    "<soapenv:Envelope\n",
+    "  xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n",
+    "  <soapenv:Header/>\n",
+    "  <soapenv:Body>"
+))
+
+MSGTEMPLATE_SUFFIX = "\n".join((
+    "",
+    "  </soapenv:Body>",
+    "</soapenv:Envelope>"
+))
+
+INPUTS_DIR = TEMPLATE_DIR + "/inputs"
 
 ## TEST BODY
 
@@ -25,7 +41,7 @@ class TestRunner:
             (
                 VelocityContext(),
                 successful_before(
-                    "listOrders",
+                    "OrdersImplService-list",
                     lambda **kw: post(url="http://localhost:8080/orders", **kw),
                     maximum = 150
                 )
@@ -63,8 +79,10 @@ def render(context, logString, template):
     sWriter = StringWriter()
     fIS = None
     try:
-        fIS = FileInputStream(File(TEMPLATE_DIR, template))
+        sWriter.append(MSGTEMPLATE_PREFIX)
+        fIS = FileInputStream(File(MSGTEMPLATE_DIR, template))
         Velocity.evaluate(context, sWriter, logString, fIS)
+        sWriter.append(MSGTEMPLATE_SUFFIX)
         return sWriter.toString()
     finally:
         if fIS:

@@ -1,0 +1,5 @@
+<w:close xmlns:w="http://ws.sodmt.uca.es/">
+  <orderID>
+    $close
+  </orderID>
+</w:close>

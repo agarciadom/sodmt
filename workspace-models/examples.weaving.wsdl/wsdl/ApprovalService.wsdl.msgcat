@@ -7,76 +7,22 @@
           <mes:decls>
             <mes:variable name="ApprovalRequest" type="float"/>
           </mes:decls>
-          <mes:template>&lt;l:ApprovalRequest xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:amount>
+          <mes:template><![CDATA[<l:ApprovalRequest xmlns:l="http://xml.netbeans.org/schema/Loans">
+  <l:amount>
     $ApprovalRequest
-  &lt;/l:amount>
-&lt;/l:ApprovalRequest></mes:template>
+  </l:amount>
+</l:ApprovalRequest>]]></mes:template>
         </mes:input>
         <mes:output>
           <mes:decls>
             <mes:typedef name="TApprovalResponse" type="string" values="true,false"/>
             <mes:variable name="ApprovalResponse" type="TApprovalResponse"/>
           </mes:decls>
-          <mes:template>&lt;l:ApprovalResponse xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:accept>
+          <mes:template><![CDATA[<l:ApprovalResponse xmlns:l="http://xml.netbeans.org/schema/Loans">
+  <l:accept>
     $ApprovalResponse
-  &lt;/l:accept>
-&lt;/l:ApprovalResponse></mes:template>
-        </mes:output>
-      </mes:operation>
-    </mes:port>
-  </mes:service>
-  <mes:service name="AssessorServiceService" uri="http://j2ee.netbeans.org/wsdl/AssessorService">
-    <mes:port name="AssessorServicePort">
-      <mes:operation name="assessLoan">
-        <mes:input>
-          <mes:decls>
-            <mes:variable name="AssessorRequest" type="float"/>
-          </mes:decls>
-          <mes:template>&lt;l:AssessorRequest xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:amount>
-    $AssessorRequest
-  &lt;/l:amount>
-&lt;/l:AssessorRequest></mes:template>
-        </mes:input>
-        <mes:output>
-          <mes:decls>
-            <mes:typedef name="TAssessorResponse" type="string" values="high,low"/>
-            <mes:variable name="AssessorResponse" type="TAssessorResponse"/>
-          </mes:decls>
-          <mes:template>&lt;l:AssessorResponse xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:risk>
-    $AssessorResponse
-  &lt;/l:risk>
-&lt;/l:AssessorResponse></mes:template>
-        </mes:output>
-      </mes:operation>
-    </mes:port>
-  </mes:service>
-  <mes:service name="LoanServiceService" uri="http://j2ee.netbeans.org/wsdl/LoanService">
-    <mes:port name="LoanServicePort">
-      <mes:operation name="grantLoan">
-        <mes:input>
-          <mes:decls>
-            <mes:variable name="ApprovalRequest" type="float"/>
-          </mes:decls>
-          <mes:template>&lt;l:ApprovalRequest xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:amount>
-    $ApprovalRequest
-  &lt;/l:amount>
-&lt;/l:ApprovalRequest></mes:template>
-        </mes:input>
-        <mes:output>
-          <mes:decls>
-            <mes:typedef name="TApprovalResponse" type="string" values="true,false"/>
-            <mes:variable name="ApprovalResponse" type="TApprovalResponse"/>
-          </mes:decls>
-          <mes:template>&lt;l:ApprovalResponse xmlns:l=&quot;http://xml.netbeans.org/schema/Loans&quot;>
-  &lt;l:accept>
-    $ApprovalResponse
-  &lt;/l:accept>
-&lt;/l:ApprovalResponse></mes:template>
+  </l:accept>
+</l:ApprovalResponse>]]></mes:template>
         </mes:output>
       </mes:operation>
     </mes:port>

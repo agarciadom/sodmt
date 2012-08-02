@@ -1,0 +1,5 @@
+<w:query xmlns:w="http://ws.sodmt.uca.es/">
+  <orderID>
+    $query
+  </orderID>
+</w:query>

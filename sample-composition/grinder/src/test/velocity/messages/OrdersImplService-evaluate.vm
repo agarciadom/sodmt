@@ -1,0 +1,18 @@
+<w:evaluate xmlns:w="http://ws.sodmt.uca.es/">
+  #foreach($V1 in $evaluate)
+  <newOrder>
+    #foreach($V2 in $V1)
+    <articleQuantities>
+      <articleID>
+        $V2.get(0)
+      </articleID>
+      #foreach($V3 in $V2.get(1))
+      <quantity>
+        $V3
+      </quantity>
+      #end
+    </articleQuantities>
+    #end
+  </newOrder>
+  #end
+</w:evaluate>
