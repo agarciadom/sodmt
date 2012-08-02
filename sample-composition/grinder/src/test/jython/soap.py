@@ -38,13 +38,10 @@ class TestRunner:
         Velocity.init()
 
         self.tests = (
-            (
-                VelocityContext(),
-                successful_before(
-                    "OrdersImplService-list",
-                    lambda **kw: post(url="http://localhost:8080/orders", **kw),
-                    maximum = 150
-                )
+            successful_before(
+                "OrdersImplService-list",
+                lambda **kw: post(url="http://localhost:8080/orders", **kw),
+                maximum = 150
             ),
         )
 
@@ -62,9 +59,22 @@ def successful_before(name, func, maximum):
         if stats.time > maximum or response.statusCode != 200:
             stats.success = 0
 
+    inputs = build_velocity_context(File(INPUTS_DIR, name + ".vm"))
     test = Test(TestRunner.lastNumber, name).wrap(wrapper)
     TestRunner.lastNumber += 1
-    return test
+
+    return (inputs, test)
+
+def build_velocity_context(template_file):
+    inputs = VelocityContext()
+    fInputs = None
+    try:
+        fInputs = FileInputStream(template_file)
+        Velocity.evaluate(inputs, StringWriter(), "inputs", fInputs)
+        return inputs
+    finally:
+        if fInputs:
+            fInputs.close()
 
 def pick_random_input(inputsCtx):
     return inputsCtx
