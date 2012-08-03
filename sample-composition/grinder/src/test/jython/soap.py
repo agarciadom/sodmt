@@ -35,33 +35,23 @@ PRNG = Random()
 ## TEST BODY
 
 class TestRunner:
-    nameNumberMap = {}
+    testNumberMap = {}
     lastNumber = 1
 
     def __init__(self):
         Velocity.init()
 
         self.tests = (
-            successful_before(
-                "OrdersImplService-list",
-                lambda **kw: post(url="http://localhost:8080/orders", **kw),
-                maximum = 150
-            ),
-            successful_before(
-                "OrdersImplService-query",
-                lambda **kw: post(url="http://localhost:8080/orders", **kw),
-                maximum = 150
-            ),
-            successful_before(
-                "OrdersImplService-close",
-                lambda **kw: post(url="http://localhost:8080/orders", **kw),
-                maximum = 150
-            ),
-            successful_before(
-                "OrdersImplService-evaluate",
-                lambda **kw: post(url="http://localhost:8080/orders", **kw),
-                maximum = 150
-            ),
+            test_service(
+                name="OrdersImplService",
+                url="http://localhost:8080/orders",
+                operations=(
+                    ("list", {"maximum": 150}),
+                    ("query", {"maximum": 150}),
+                    ("close", {"maximum": 150}),
+                    ("evaluate", {"maximum": 150}),
+                ),
+            )
         )
 
     def __call__(self):
@@ -70,24 +60,6 @@ class TestRunner:
 
 
 ## UTILITY FUNCTIONS
-
-def successful_before(name, func, maximum):
-    def wrapper(ctx):
-        response = func(context=ctx, logString=name, template=name + ".vm")
-        stats = grinder.statistics.getForCurrentTest()
-        if stats.time > maximum or response.statusCode != 200:
-            stats.success = 0
-
-    inputs = build_velocity_context(File(INPUTS_DIR, name + ".vm"))
-    if name in TestRunner.nameNumberMap:
-        number = TestRunner.nameNumberMap[name]
-    else:
-        number = TestRunner.nameNumberMap[name] = TestRunner.lastNumber
-        TestRunner.lastNumber += 1
-
-    test = Test(TestRunner.lastNumber, name).wrap(wrapper)
-
-    return (inputs, test)
 
 def build_velocity_context(template_file):
     inputs = VelocityContext()
@@ -145,3 +117,39 @@ def render(context, logString, template):
     finally:
         if fIS:
             fIS.close()
+
+## TEST BUILDING FUNCTIONS
+
+def test_service(name, url, operations, method=post):
+    service_func = lambda **kw: method(url=url, **kw)
+
+    return [
+        (
+            test_inputs(name + "-" + operation),
+            test_spec(name + "-" + operation, func=service_func, **options)
+        )
+        for (operation, options) in operations
+    ]
+
+def test_inputs(test_name):
+    inputs_file = File(INPUTS_DIR, test_name + ".vm")
+    return build_velocity_context(inputs_file)
+
+def test_spec(test_name, func, maximum=None):
+    def wrapper(ctx):
+        response = func(
+            context=ctx,
+            logString=test_name,
+            template=test_name + ".vm"
+        )
+        stats = grinder.statistics.getForCurrentTest()
+        if maximum and stats.time > maximum:
+            stats.success = 0
+
+    if test_name in TestRunner.testNumberMap:
+        number = TestRunner.testNumberMap[test_name]
+    else:
+        number = TestRunner.testNumberMap[test_name] = TestRunner.lastNumber
+        TestRunner.lastNumber += 1
+
+    return Test(number, test_name).wrap(wrapper)
