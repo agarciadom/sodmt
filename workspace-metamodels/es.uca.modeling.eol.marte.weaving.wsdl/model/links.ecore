@@ -4,6 +4,36 @@
   <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLinks">
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//PerformanceRequirementLink" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="../performance.tests/"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processIncrement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processIncrementInterval"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadsPerProcess" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consoleHost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="127.0.0.1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useConsole" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateInputsOnSpecChanged"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberInputsOnSpecChanged"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mavenGroupId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="com.example"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mavenArtifactId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="grinder"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mavenVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="1.0-SNAPSHOT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mavenHumanName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="Performance Tests"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mavenHumanDescription"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="Grinder-based performance tests for our web services"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="execNode" eType="ecore:EClass http://www.eclipse.org/uml2/4.0.0/UML#//ExecutableNode"/>

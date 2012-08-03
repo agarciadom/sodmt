@@ -2,12 +2,27 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/es.uca.modeling.eol.marte.weaving.wsdl/src"
     modelPluginID="es.uca.modeling.eol.marte.weaving.wsdl" modelName="Links" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../es.uca.webservices.service-analyzer.emf/model/messageCatalog.xsd.genmodel#//catalog platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types">
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../es.uca.webservices.service-analyzer.emf/model/catalog.genmodel#//catalog platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types">
   <foreignModel>links.emf</foreignModel>
   <genPackages prefix="Links" basePackage="es.uca.modeling.eol.marte.weaving.wsdl"
       disposableProviderFactory="true" fileExtensions="wsdl_perfreq" ecorePackage="links.ecore#/">
     <genClasses ecoreClass="links.ecore#//PerformanceRequirementLinks">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLinks/links"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/baseDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processIncrement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processIncrementInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/threadsPerProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/consoleHost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/useConsole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/updateInputsOnSpecChanged"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/numberInputsOnSpecChanged"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/mavenGroupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/mavenArtifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/mavenVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/mavenHumanName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/mavenHumanDescription"/>
     </genClasses>
     <genClasses ecoreClass="links.ecore#//PerformanceRequirementLink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLink/execNode"/>

@@ -5,10 +5,35 @@ import "http://www.eclipse.org/uml2/4.0.0/UML";
 import "http://serviceAnalyzer/messageCatalog";
 
 class PerformanceRequirementLinks {
-   val PerformanceRequirementLink[*] links;
+  val PerformanceRequirementLink[*] links;
+
+  // Base directory where the new project should be created
+  attr String baseDir = "../performance.tests/";
+
+  // Grinder: number of processes and threads
+  attr int processes = 1;
+  attr int processIncrement = 1;
+  attr int processIncrementInterval = 1000;
+  attr int threadsPerProcess = 5;
+  attr int runs = 2;
+
+  // Grinder: console host and whether it should be used or not
+  attr String consoleHost = "127.0.0.1";
+  attr boolean useConsole = false;
+
+  // Jython: should test inputs be regenerated if the .spec is manually edited later on?
+  attr boolean updateInputsOnSpecChanged = true;
+  attr int numberInputsOnSpecChanged = 5;
+
+  // Maven coordinates
+  attr String mavenGroupId = "com.example";
+  attr String mavenArtifactId = "grinder";
+  attr String mavenVersion = "1.0-SNAPSHOT";
+  attr String mavenHumanName = "Performance Tests";
+  attr String mavenHumanDescription = "Grinder-based performance tests for our web services";
 }
 
 class PerformanceRequirementLink {
-   ref uml.ExecutableNode execNode;
-   ref catalog.TypeOperation operation;
+  ref uml.ExecutableNode execNode;
+  ref catalog.TypeOperation operation;
 }
