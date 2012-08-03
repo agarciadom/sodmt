@@ -1,3 +1,8 @@
+from es.uca.webservices.testgen import TestGeneratorCommand
+
+from java.io import StringWriter, FileInputStream, File
+from java.util import Random
+
 from net.grinder.script.Grinder import grinder
 from net.grinder.script         import Test
 from net.grinder.plugin.http    import HTTPRequest
@@ -5,15 +10,23 @@ from net.grinder.plugin.http    import HTTPRequest
 from org.apache.velocity.app import Velocity
 from org.apache.velocity import VelocityContext
 
-from java.io import StringWriter, FileInputStream, File
-
-from java.util import Random
-
 ## CONFIGURATION AREA
 
-TEMPLATE_DIR = "src/test/velocity"
+# When SPEC_DIR/foo.spec is newer than INPUT_DIR/foo.vm, should we
+# update INPUT_DIR/foo.vm? And with how many tests?
+UPDATE_INPUTS_ON_SPEC_CHANGE = True
+NUMBER_INPUTS_ON_SPEC_CHANGE = 5
 
+# Random number generator: we can optionally pass a seed if we want to
+# always produce the same results.
+PRNG = Random()
+
+## TEST BODY
+
+SPEC_DIR = "src/test/spec"
+TEMPLATE_DIR = "src/test/velocity"
 MSGTEMPLATE_DIR = TEMPLATE_DIR + "/messages"
+INPUT_DIR = TEMPLATE_DIR + "/inputs"
 
 MSGTEMPLATE_PREFIX = "\n".join((
     "<soapenv:Envelope",
@@ -27,12 +40,6 @@ MSGTEMPLATE_SUFFIX = "\n".join((
     "  </soapenv:Body>",
     "</soapenv:Envelope>"
 ))
-
-INPUTS_DIR = TEMPLATE_DIR + "/inputs"
-
-PRNG = Random()
-
-## TEST BODY
 
 class TestRunner:
     testNumberMap = {}
@@ -118,6 +125,9 @@ def render(context, logString, template):
         if fIS:
             fIS.close()
 
+def is_newer_than(file_a, file_b):
+    return file_a.lastModified() > file_b.lastModified()
+
 ## TEST BUILDING FUNCTIONS
 
 def test_service(name, url, operations, method=post):
@@ -132,7 +142,23 @@ def test_service(name, url, operations, method=post):
     ]
 
 def test_inputs(test_name):
-    inputs_file = File(INPUTS_DIR, test_name + ".vm")
+    spec_file = File(SPEC_DIR, test_name + ".spec")
+    inputs_file = File(INPUT_DIR, test_name + ".vm")
+
+    # If the inputs do not exist, generate them
+    # If the inputs are outdated, update them if the user wants to
+    if ((inputs_file.canRead()
+         and UPDATE_INPUTS_ON_SPEC_CHANGE
+         and spec_file.canRead()
+         and is_newer_than(spec_file, inputs_file))
+        or not inputs_file.canRead()):
+        cmd = TestGeneratorCommand()
+        cmd.parseArgs([spec_file.getAbsolutePath(),
+                      str(NUMBER_INPUTS_ON_SPEC_CHANGE),
+                      "--output",
+                      inputs_file.getAbsolutePath()])
+        cmd.run()
+
     return build_velocity_context(inputs_file)
 
 def test_spec(test_name, func, maximum=None):

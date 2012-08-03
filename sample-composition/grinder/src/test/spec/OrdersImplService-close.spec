@@ -1,3 +1,2 @@
-typedef int (min=-9223372036854775808, max=9223372036854775807) TClose;
+typedef int (min=0, max=5) TClose;
 TClose close;
-
