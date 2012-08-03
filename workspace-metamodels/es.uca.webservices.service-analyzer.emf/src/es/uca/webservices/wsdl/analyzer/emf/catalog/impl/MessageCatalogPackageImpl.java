@@ -476,8 +476,7 @@ public class MessageCatalogPackageImpl extends EPackageImpl implements MessageCa
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTypePort_Name()
-  {
+	public EAttribute getTypePort_Address() {
     return (EAttribute)typePortEClass.getEStructuralFeatures().get(1);
   }
 
@@ -486,8 +485,16 @@ public class MessageCatalogPackageImpl extends EPackageImpl implements MessageCa
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTypeService()
-  {
+	public EAttribute getTypePort_Name() {
+		return (EAttribute)typePortEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTypeService() {
     return typeServiceEClass;
   }
 
@@ -755,6 +762,7 @@ public class MessageCatalogPackageImpl extends EPackageImpl implements MessageCa
 
     typePortEClass = createEClass(TYPE_PORT);
     createEReference(typePortEClass, TYPE_PORT__OPERATION);
+		createEAttribute(typePortEClass, TYPE_PORT__ADDRESS);
     createEAttribute(typePortEClass, TYPE_PORT__NAME);
 
     typeServiceEClass = createEClass(TYPE_SERVICE);
@@ -855,6 +863,7 @@ public class MessageCatalogPackageImpl extends EPackageImpl implements MessageCa
 
     initEClass(typePortEClass, TypePort.class, "TypePort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypePort_Operation(), this.getTypeOperation(), null, "operation", null, 0, -1, TypePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypePort_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TypePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTypePort_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TypePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeServiceEClass, TypeService.class, "TypeService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

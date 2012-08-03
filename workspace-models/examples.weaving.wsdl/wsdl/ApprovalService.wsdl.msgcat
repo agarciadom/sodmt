@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mes:services xmlns:mes="http://serviceAnalyzer/messageCatalog">
   <mes:service name="ApprovalServiceService" uri="http://j2ee.netbeans.org/wsdl/ApprovalService">
-    <mes:port name="ApprovalServicePort">
+    <mes:port name="ApprovalServicePort" address="http://localhost:777/ws/externalApprover">
       <mes:operation name="approveLoan">
         <mes:input>
           <mes:decls>

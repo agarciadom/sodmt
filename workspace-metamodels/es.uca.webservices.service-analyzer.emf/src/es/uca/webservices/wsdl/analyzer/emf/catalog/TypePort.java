@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link es.uca.webservices.wsdl.analyzer.emf.catalog.TypePort#getOperation <em>Operation</em>}</li>
+ *   <li>{@link es.uca.webservices.wsdl.analyzer.emf.catalog.TypePort#getAddress <em>Address</em>}</li>
  *   <li>{@link es.uca.webservices.wsdl.analyzer.emf.catalog.TypePort#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -43,6 +44,33 @@ public interface TypePort extends EObject
   EList<TypeOperation> getOperation();
 
   /**
+	 * Returns the value of the '<em><b>Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Address</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Address</em>' attribute.
+	 * @see #setAddress(String)
+	 * @see es.uca.webservices.wsdl.analyzer.emf.catalog.MessageCatalogPackage#getTypePort_Address()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='address'"
+	 * @generated
+	 */
+	String getAddress();
+
+	/**
+	 * Sets the value of the '{@link es.uca.webservices.wsdl.analyzer.emf.catalog.TypePort#getAddress <em>Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Address</em>' attribute.
+	 * @see #getAddress()
+	 * @generated
+	 */
+	void setAddress(String value);
+
+	/**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
-   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:mc="http://serviceAnalyzer/messageCatalog"
-   targetNamespace="http://serviceAnalyzer/messageCatalog"
-   elementFormDefault="qualified">
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc="http://serviceAnalyzer/messageCatalog"
+        targetNamespace="http://serviceAnalyzer/messageCatalog"
+        elementFormDefault="qualified">
 
-  <!-- Al menos un servicio -->  
+    <!-- Al menos un servicio -->
     <xs:element name="services">
         <xs:complexType>
             <xs:sequence>
@@ -14,7 +14,7 @@
         </xs:complexType>
     </xs:element>
 
-  <!-- Al menos un puerto --> 
+    <!-- Al menos un puerto -->
     <xs:complexType name="typeService">
         <xs:sequence>
             <xs:element name="port" type="mc:typePort" maxOccurs="unbounded"/>
@@ -23,12 +23,13 @@
         <xs:attribute name="uri" type="xs:string" use="required"/>
     </xs:complexType>
 
-  <!-- Cero o más operaciones -->
+    <!-- Cero o más operaciones -->
     <xs:complexType name="typePort">
         <xs:sequence>
             <xs:element name="operation" type="mc:typeOperation" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="address" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="typeOperation">
@@ -43,7 +44,7 @@
     <xs:group name="messageGroup">
         <xs:sequence>
             <xs:element name="decls" type="mc:typeDecls"/>
-            <xs:element name="template" type="mc:typeTemplate"/>  
+            <xs:element name="template" type="mc:typeTemplate"/>
         </xs:sequence>
     </xs:group>
 
@@ -62,7 +63,8 @@
 
     <xs:complexType name="typeDecls">
         <xs:sequence>
-            <xs:element name="typedef" type="mc:typeTypedef" minOccurs="0" maxOccurs="unbounded"/> <!-- revisar -->
+            <xs:element name="typedef" type="mc:typeTypedef" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- revisar -->
             <xs:element name="variable" type="mc:typeVariable" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -72,7 +74,7 @@
             <xs:extension base="xs:string"/>
         </xs:simpleContent>
     </xs:complexType>
-  
+
     <xs:simpleType name="typeGA">
         <xs:restriction base="xs:string">
             <xs:enumeration value="string"/>
@@ -86,7 +88,7 @@
             <xs:enumeration value="duration"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:complexType name="typeTypedef">
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="type" type="mc:typeGA" use="required"/>
@@ -98,7 +100,7 @@
         <xs:attribute name="fractionDigits" type="xs:nonNegativeInteger"/>
         <xs:attribute name="totalDigits" type="xs:positiveInteger"/>
     </xs:complexType>
-  
+
     <xs:complexType name="typeVariable">
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="type" type="xs:string" use="required"/>

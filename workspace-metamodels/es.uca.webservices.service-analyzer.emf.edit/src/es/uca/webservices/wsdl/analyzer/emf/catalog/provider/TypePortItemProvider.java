@@ -67,12 +67,35 @@ public class TypePortItemProvider
     {
       super.getPropertyDescriptors(object);
 
+			addAddressPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
+	 * This adds a property descriptor for the Address feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAddressPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TypePort_address_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TypePort_address_feature", "_UI_TypePort_type"),
+				 MessageCatalogPackage.Literals.TYPE_PORT__ADDRESS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
    * This adds a property descriptor for the Name feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -167,8 +190,8 @@ public class TypePortItemProvider
   {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(TypePort.class))
-    {
+		switch (notification.getFeatureID(TypePort.class)) {
+			case MessageCatalogPackage.TYPE_PORT__ADDRESS:
       case MessageCatalogPackage.TYPE_PORT__NAME:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;

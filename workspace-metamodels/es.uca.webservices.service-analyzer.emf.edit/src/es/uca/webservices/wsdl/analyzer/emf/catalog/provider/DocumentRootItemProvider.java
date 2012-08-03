@@ -17,14 +17,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -67,32 +65,8 @@ public class DocumentRootItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addMixedPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Mixed feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addMixedPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_DocumentRoot_mixed_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_DocumentRoot_mixed_feature", "_UI_DocumentRoot_type"),
-         MessageCatalogPackage.Literals.DOCUMENT_ROOT__MIXED,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
   }
 
   /**
@@ -109,8 +83,6 @@ public class DocumentRootItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(MessageCatalogPackage.Literals.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
-      childrenFeatures.add(MessageCatalogPackage.Literals.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
       childrenFeatures.add(MessageCatalogPackage.Literals.DOCUMENT_ROOT__SERVICES);
     }
     return childrenFeatures;
@@ -166,13 +138,7 @@ public class DocumentRootItemProvider
   {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(DocumentRoot.class))
-    {
-      case MessageCatalogPackage.DOCUMENT_ROOT__MIXED:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-        return;
-      case MessageCatalogPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-      case MessageCatalogPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+		switch (notification.getFeatureID(DocumentRoot.class)) {
       case MessageCatalogPackage.DOCUMENT_ROOT__SERVICES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
