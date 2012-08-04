@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mes:services xmlns:mes="http://serviceAnalyzer/messageCatalog">
+  <mes:service name="OrdersImplService" uri="http://impl.ws.sodmt.uca.es/">
+    <mes:port address="http://localhost:8080/orders" name="OrdersImplPort">
+      <mes:operation name="close">
+        <mes:input>
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TClose" type="int"/>
+            <mes:variable name="close" type="TClose"/>
+          </mes:decls>
+          <mes:template>&lt;w:close xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;orderID>
+    $close
+  &lt;/orderID>
+&lt;/w:close></mes:template>
+        </mes:input>
+        <mes:output>
+          <mes:decls>
+            <mes:typedef element="dateTime" max="1" min="0" name="TList_dateTime" type="list"/>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TOrderID" type="int"/>
+            <mes:typedef element="TList_dateTime, TOrderID" name="TReturn" type="tuple"/>
+            <mes:typedef element="TReturn" max="1" min="0" name="TCloseResponse" type="list"/>
+            <mes:variable name="closeResponse" type="TCloseResponse"/>
+          </mes:decls>
+          <mes:template>&lt;w:closeResponse xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  #foreach($V1 in $closeResponse)
+  &lt;return>
+    #foreach($V2 in $V1.get(0))
+    &lt;closedTimestamp>
+      $V2
+    &lt;/closedTimestamp>
+    #end
+    &lt;orderID>
+      $V1.get(1)
+    &lt;/orderID>
+  &lt;/return>
+  #end
+&lt;/w:closeResponse></mes:template>
+        </mes:output>
+        <mes:fault name="MissingOrder">
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TMissingOrder" type="int"/>
+            <mes:variable name="MissingOrder" type="TMissingOrder"/>
+          </mes:decls>
+          <mes:template>&lt;w:MissingOrder xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;orderId>
+    $MissingOrder
+  &lt;/orderId>
+&lt;/w:MissingOrder></mes:template>
+        </mes:fault>
+        <mes:fault name="OrderAlreadyClosed">
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TOrderAlreadyClosed" type="int"/>
+            <mes:variable name="OrderAlreadyClosed" type="TOrderAlreadyClosed"/>
+          </mes:decls>
+          <mes:template>&lt;w:OrderAlreadyClosed xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;orderId>
+    $OrderAlreadyClosed
+  &lt;/orderId>
+&lt;/w:OrderAlreadyClosed></mes:template>
+        </mes:fault>
+      </mes:operation>
+      <mes:operation name="list">
+        <mes:input>
+          <mes:decls/>
+          <mes:template>&lt;w:list xmlns:w=&quot;http://ws.sodmt.uca.es/&quot; /></mes:template>
+        </mes:input>
+        <mes:output>
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TOrderIds" type="int"/>
+            <mes:typedef element="TOrderIds" min="0" name="TReturn" type="list"/>
+            <mes:typedef element="TReturn" max="1" min="0" name="TListResponse" type="list"/>
+            <mes:variable name="listResponse" type="TListResponse"/>
+          </mes:decls>
+          <mes:template>&lt;w:listResponse xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  #foreach($V1 in $listResponse)
+  &lt;return>
+    #foreach($V2 in $V1)
+    &lt;orderIds>
+      $V2
+    &lt;/orderIds>
+    #end
+  &lt;/return>
+  #end
+&lt;/w:listResponse></mes:template>
+        </mes:output>
+      </mes:operation>
+      <mes:operation name="query">
+        <mes:input>
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TQuery" type="int"/>
+            <mes:variable name="query" type="TQuery"/>
+          </mes:decls>
+          <mes:template>&lt;w:query xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;orderID>
+    $query
+  &lt;/orderID>
+&lt;/w:query></mes:template>
+        </mes:input>
+        <mes:output>
+          <mes:decls>
+            <mes:typedef name="TAccepted" type="string" values="true,false"/>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TArticleId" type="int"/>
+            <mes:typedef element="float" max="1" min="0" name="TList_float" type="list"/>
+            <mes:typedef element="TArticleId, TList_float, TList_float" name="TLines" type="tuple"/>
+            <mes:typedef element="TLines" min="0" name="TList_Lines" type="list"/>
+            <mes:typedef name="TOpen" type="string" values="true,false"/>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TOrderId" type="int"/>
+            <mes:typedef element="dateTime" max="1" min="0" name="TList_dateTime" type="list"/>
+            <mes:typedef element="TAccepted, TList_Lines, TOpen, TOrderId, TList_dateTime" name="TReturn" type="tuple"/>
+            <mes:typedef element="TReturn" max="1" min="0" name="TQueryResponse" type="list"/>
+            <mes:variable name="queryResponse" type="TQueryResponse"/>
+          </mes:decls>
+          <mes:template>&lt;w:queryResponse xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  #foreach($V1 in $queryResponse)
+  &lt;return>
+    &lt;accepted>
+      $V1.get(0)
+    &lt;/accepted>
+    #foreach($V2 in $V1.get(1))
+    &lt;lines>
+      &lt;articleId>
+        $V2.get(0)
+      &lt;/articleId>
+      #foreach($V3 in $V2.get(1))
+      &lt;price>
+        $V3
+      &lt;/price>
+      #end#foreach($V4 in $V2.get(2))
+      &lt;qty>
+        $V4
+      &lt;/qty>
+      #end
+    &lt;/lines>
+    #end
+    &lt;open>
+      $V1.get(2)
+    &lt;/open>
+    &lt;orderId>
+      $V1.get(3)
+    &lt;/orderId>
+    #foreach($V5 in $V1.get(4))
+    &lt;timestamp>
+      $V5
+    &lt;/timestamp>
+    #end
+  &lt;/return>
+  #end
+&lt;/w:queryResponse></mes:template>
+        </mes:output>
+        <mes:fault name="MissingOrder">
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TMissingOrder" type="int"/>
+            <mes:variable name="MissingOrder" type="TMissingOrder"/>
+          </mes:decls>
+          <mes:template>&lt;w:MissingOrder xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;orderId>
+    $MissingOrder
+  &lt;/orderId>
+&lt;/w:MissingOrder></mes:template>
+        </mes:fault>
+      </mes:operation>
+      <mes:operation name="evaluate">
+        <mes:input>
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TArticleID" type="int"/>
+            <mes:typedef element="float" max="1" min="0" name="TList_float" type="list"/>
+            <mes:typedef element="TArticleID, TList_float" name="TArticleQuantities" type="tuple"/>
+            <mes:typedef element="TArticleQuantities" min="0" name="TNewOrder" type="list"/>
+            <mes:typedef element="TNewOrder" max="1" min="0" name="TEvaluate" type="list"/>
+            <mes:variable name="evaluate" type="TEvaluate"/>
+          </mes:decls>
+          <mes:template>&lt;w:evaluate xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  #foreach($V1 in $evaluate)
+  &lt;newOrder>
+    #foreach($V2 in $V1)
+    &lt;articleQuantities>
+      &lt;articleID>
+        $V2.get(0)
+      &lt;/articleID>
+      #foreach($V3 in $V2.get(1))
+      &lt;quantity>
+        $V3
+      &lt;/quantity>
+      #end
+    &lt;/articleQuantities>
+    #end
+  &lt;/newOrder>
+  #end
+&lt;/w:evaluate></mes:template>
+        </mes:input>
+        <mes:output>
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TOrderId" type="int"/>
+            <mes:typedef name="TResult" type="string" values="REJECTED,ACCEPTED"/>
+            <mes:typedef element="TResult" max="1" min="0" name="TList_Result" type="list"/>
+            <mes:typedef element="TOrderId, TList_Result" name="TReturn" type="tuple"/>
+            <mes:typedef element="TReturn" max="1" min="0" name="TEvaluateResponse" type="list"/>
+            <mes:variable name="evaluateResponse" type="TEvaluateResponse"/>
+          </mes:decls>
+          <mes:template>&lt;w:evaluateResponse xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  #foreach($V1 in $evaluateResponse)
+  &lt;return>
+    &lt;orderId>
+      $V1.get(0)
+    &lt;/orderId>
+    #foreach($V2 in $V1.get(1))
+    &lt;result>
+      $V2
+    &lt;/result>
+    #end
+  &lt;/return>
+  #end
+&lt;/w:evaluateResponse></mes:template>
+        </mes:output>
+        <mes:fault name="MissingArticle">
+          <mes:decls>
+            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TMissingArticle" type="int"/>
+            <mes:variable name="MissingArticle" type="TMissingArticle"/>
+          </mes:decls>
+          <mes:template>&lt;w:MissingArticle xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
+  &lt;articleID>
+    $MissingArticle
+  &lt;/articleID>
+&lt;/w:MissingArticle></mes:template>
+        </mes:fault>
+      </mes:operation>
+    </mes:port>
+  </mes:service>
+</mes:services>

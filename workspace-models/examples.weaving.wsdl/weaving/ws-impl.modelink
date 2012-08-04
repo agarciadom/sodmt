@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<modelink threeWay="true" forceExeedL="true" forceExeedM="true" forceExeedR="false">
-  <model path="/examples.weaving.wsdl/weaving/ws-impl.wsdl_perfreq" position="MIDDLE" />
-  <model path="/examples.weaving.wsdl/wsdl/ApprovalService.wsdl.msgcat" position="RIGHT" />
-  <model path="/examples.weaving.wsdl/papyrus/multimodel.uml" position="LEFT" />
-</modelink>
-
