@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="true" forceExeedL="false" forceExeedM="true" forceExeedR="true">
+  <model path="/examples.weaving.wsdl/papyrus/multimodel.uml" position="LEFT" />
+  <model path="/examples.weaving.wsdl/serviceAnalyzer/orders.msgcat" position="RIGHT" />
+  <model path="/examples.weaving.wsdl/weaving/orders.wsdl_perfreq" position="MIDDLE" />
+</modelink>
+

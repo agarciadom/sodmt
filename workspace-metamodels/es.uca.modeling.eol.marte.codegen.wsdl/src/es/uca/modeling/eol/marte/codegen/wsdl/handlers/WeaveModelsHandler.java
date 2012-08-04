@@ -62,7 +62,7 @@ public class WeaveModelsHandler extends AbstractHandler {
 	{
 		final IProject project = fMsgCat.getProject();
 		final String sCatalogBasename = fMsgCat.getName().replaceAll("[.].*$", "");
-		final IFile fWeavingModel = project.getFile(new Path("/" + sCatalogBasename + ".modisco_perfreq"));
+		final IFile fWeavingModel = project.getFile(new Path("/" + sCatalogBasename + ".wsdl_perfreq"));
 
 		// Create an empty weaving model if it doesn't exist yet
 		if (!fWeavingModel.exists()) {
