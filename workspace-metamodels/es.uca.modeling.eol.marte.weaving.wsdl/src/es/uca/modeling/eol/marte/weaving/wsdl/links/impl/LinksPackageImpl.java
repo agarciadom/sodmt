@@ -135,7 +135,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPerformanceRequirementLinks_BaseDir()
+  public EAttribute getPerformanceRequirementLinks_EclipseProjectName()
   {
     return (EAttribute)performanceRequirementLinksEClass.getEStructuralFeatures().get(1);
   }
@@ -342,7 +342,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     // Create classes and their features
     performanceRequirementLinksEClass = createEClass(PERFORMANCE_REQUIREMENT_LINKS);
     createEReference(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__LINKS);
-    createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR);
+    createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME);
     createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__PROCESSES);
     createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT);
     createEAttribute(performanceRequirementLinksEClass, PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT_INTERVAL);
@@ -400,7 +400,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage
     // Initialize classes and features; add operations and parameters
     initEClass(performanceRequirementLinksEClass, PerformanceRequirementLinks.class, "PerformanceRequirementLinks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPerformanceRequirementLinks_Links(), this.getPerformanceRequirementLink(), null, "links", null, 0, -1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPerformanceRequirementLinks_BaseDir(), ecorePackage.getEString(), "baseDir", "../performance.tests/", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPerformanceRequirementLinks_EclipseProjectName(), ecorePackage.getEString(), "eclipseProjectName", "performance.tests", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPerformanceRequirementLinks_Processes(), ecorePackage.getEInt(), "processes", "1", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPerformanceRequirementLinks_ProcessIncrement(), ecorePackage.getEInt(), "processIncrement", "1", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPerformanceRequirementLinks_ProcessIncrementInterval(), ecorePackage.getEInt(), "processIncrementInterval", "1000", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

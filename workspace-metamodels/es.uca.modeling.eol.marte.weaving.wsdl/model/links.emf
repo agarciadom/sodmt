@@ -7,8 +7,8 @@ import "http://serviceAnalyzer/messageCatalog";
 class PerformanceRequirementLinks {
   val PerformanceRequirementLink[*] links;
 
-  // Base directory where the new project should be created
-  attr String baseDir = "../performance.tests/";
+  // Name of the Eclipse project which should be created
+  attr String eclipseProjectName = "performance.tests";
 
   // Grinder: number of processes and threads
   attr int processes = 1;

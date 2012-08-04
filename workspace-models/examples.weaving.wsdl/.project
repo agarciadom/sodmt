@@ -5,13 +5,7 @@
 	<projects>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.epsilon.concordance.builder.ConcordanceBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.epsilon.concordance.nature.ConcordanceNature</nature>
 	</natures>
 </projectDescription>

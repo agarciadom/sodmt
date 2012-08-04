@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getLinks <em>Links</em>}</li>
- *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getEclipseProjectName <em>Eclipse Project Name</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getProcesses <em>Processes</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getProcessIncrement <em>Process Increment</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getProcessIncrementInterval <em>Process Increment Interval</em>}</li>
@@ -56,31 +56,31 @@ public interface PerformanceRequirementLinks extends EObject
   EList<PerformanceRequirementLink> getLinks();
 
   /**
-   * Returns the value of the '<em><b>Base Dir</b></em>' attribute.
-   * The default value is <code>"../performance.tests/"</code>.
+   * Returns the value of the '<em><b>Eclipse Project Name</b></em>' attribute.
+   * The default value is <code>"performance.tests"</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Base Dir</em>' attribute isn't clear,
+   * If the meaning of the '<em>Eclipse Project Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Base Dir</em>' attribute.
-   * @see #setBaseDir(String)
-   * @see es.uca.modeling.eol.marte.weaving.wsdl.links.LinksPackage#getPerformanceRequirementLinks_BaseDir()
-   * @model default="../performance.tests/"
+   * @return the value of the '<em>Eclipse Project Name</em>' attribute.
+   * @see #setEclipseProjectName(String)
+   * @see es.uca.modeling.eol.marte.weaving.wsdl.links.LinksPackage#getPerformanceRequirementLinks_EclipseProjectName()
+   * @model default="performance.tests"
    * @generated
    */
-  String getBaseDir();
+  String getEclipseProjectName();
 
   /**
-   * Sets the value of the '{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}' attribute.
+   * Sets the value of the '{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getEclipseProjectName <em>Eclipse Project Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Base Dir</em>' attribute.
-   * @see #getBaseDir()
+   * @param value the new value of the '<em>Eclipse Project Name</em>' attribute.
+   * @see #getEclipseProjectName()
    * @generated
    */
-  void setBaseDir(String value);
+  void setEclipseProjectName(String value);
 
   /**
    * Returns the value of the '<em><b>Processes</b></em>' attribute.

@@ -67,7 +67,7 @@ public class PerformanceRequirementLinksItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addBaseDirPropertyDescriptor(object);
+      addEclipseProjectNamePropertyDescriptor(object);
       addProcessesPropertyDescriptor(object);
       addProcessIncrementPropertyDescriptor(object);
       addProcessIncrementIntervalPropertyDescriptor(object);
@@ -87,20 +87,20 @@ public class PerformanceRequirementLinksItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Base Dir feature.
+   * This adds a property descriptor for the Eclipse Project Name feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addBaseDirPropertyDescriptor(Object object)
+  protected void addEclipseProjectNamePropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_PerformanceRequirementLinks_baseDir_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLinks_baseDir_feature", "_UI_PerformanceRequirementLinks_type"),
-         LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR,
+         getString("_UI_PerformanceRequirementLinks_eclipseProjectName_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_PerformanceRequirementLinks_eclipseProjectName_feature", "_UI_PerformanceRequirementLinks_type"),
+         LinksPackage.Literals.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME,
          true,
          false,
          false,
@@ -485,7 +485,7 @@ public class PerformanceRequirementLinksItemProvider
   @Override
   public String getText(Object object)
   {
-    String label = ((PerformanceRequirementLinks)object).getMavenHumanName();
+    String label = ((PerformanceRequirementLinks)object).getEclipseProjectName();
     return label == null || label.length() == 0 ?
       getString("_UI_PerformanceRequirementLinks_type") :
       getString("_UI_PerformanceRequirementLinks_type") + " " + label;
@@ -505,7 +505,7 @@ public class PerformanceRequirementLinksItemProvider
 
     switch (notification.getFeatureID(PerformanceRequirementLinks.class))
     {
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME:
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESSES:
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT:
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT_INTERVAL:

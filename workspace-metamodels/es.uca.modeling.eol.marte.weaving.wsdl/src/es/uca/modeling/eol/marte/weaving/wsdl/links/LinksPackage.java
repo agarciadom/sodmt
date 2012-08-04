@@ -76,13 +76,13 @@ public interface LinksPackage extends EPackage
   int PERFORMANCE_REQUIREMENT_LINKS__LINKS = 0;
 
   /**
-   * The feature id for the '<em><b>Base Dir</b></em>' attribute.
+   * The feature id for the '<em><b>Eclipse Project Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR = 1;
+  int PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME = 1;
 
   /**
    * The feature id for the '<em><b>Processes</b></em>' attribute.
@@ -279,15 +279,15 @@ public interface LinksPackage extends EPackage
   EReference getPerformanceRequirementLinks_Links();
 
   /**
-   * Returns the meta object for the attribute '{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getBaseDir <em>Base Dir</em>}'.
+   * Returns the meta object for the attribute '{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getEclipseProjectName <em>Eclipse Project Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Base Dir</em>'.
-   * @see es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getBaseDir()
+   * @return the meta object for the attribute '<em>Eclipse Project Name</em>'.
+   * @see es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getEclipseProjectName()
    * @see #getPerformanceRequirementLinks()
    * @generated
    */
-  EAttribute getPerformanceRequirementLinks_BaseDir();
+  EAttribute getPerformanceRequirementLinks_EclipseProjectName();
 
   /**
    * Returns the meta object for the attribute '{@link es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks#getProcesses <em>Processes</em>}'.
@@ -517,12 +517,12 @@ public interface LinksPackage extends EPackage
     EReference PERFORMANCE_REQUIREMENT_LINKS__LINKS = eINSTANCE.getPerformanceRequirementLinks_Links();
 
     /**
-     * The meta object literal for the '<em><b>Base Dir</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Eclipse Project Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR = eINSTANCE.getPerformanceRequirementLinks_BaseDir();
+    EAttribute PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME = eINSTANCE.getPerformanceRequirementLinks_EclipseProjectName();
 
     /**
      * The meta object literal for the '<em><b>Processes</b></em>' attribute feature.

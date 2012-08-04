@@ -4,8 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLinks">
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//PerformanceRequirementLink" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="../performance.tests/"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclipseProjectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="performance.tests"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="processes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="processIncrement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"

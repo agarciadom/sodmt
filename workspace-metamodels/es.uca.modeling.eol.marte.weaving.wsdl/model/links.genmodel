@@ -8,7 +8,7 @@
       disposableProviderFactory="true" fileExtensions="wsdl_perfreq" ecorePackage="links.ecore#/">
     <genClasses ecoreClass="links.ecore#//PerformanceRequirementLinks">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLinks/links"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/baseDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/eclipseProjectName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processIncrement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/processIncrementInterval"/>

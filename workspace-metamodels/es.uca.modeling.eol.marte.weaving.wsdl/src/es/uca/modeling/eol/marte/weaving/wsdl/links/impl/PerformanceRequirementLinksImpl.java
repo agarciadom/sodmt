@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getLinks <em>Links</em>}</li>
- *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getBaseDir <em>Base Dir</em>}</li>
+ *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getEclipseProjectName <em>Eclipse Project Name</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getProcesses <em>Processes</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getProcessIncrement <em>Process Increment</em>}</li>
  *   <li>{@link es.uca.modeling.eol.marte.weaving.wsdl.links.impl.PerformanceRequirementLinksImpl#getProcessIncrementInterval <em>Process Increment Interval</em>}</li>
@@ -63,23 +63,25 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
   protected EList<PerformanceRequirementLink> links;
 
   /**
-   * The default value of the '{@link #getBaseDir() <em>Base Dir</em>}' attribute.
+   * The default value of the '{@link #getEclipseProjectName() <em>Eclipse Project Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBaseDir()
+   * @see #getEclipseProjectName()
    * @generated
    * @ordered
    */
-  protected static final String BASE_DIR_EDEFAULT = "../performance.tests/";
+  protected static final String ECLIPSE_PROJECT_NAME_EDEFAULT = "performance.tests";
+
   /**
-   * The cached value of the '{@link #getBaseDir() <em>Base Dir</em>}' attribute.
+   * The cached value of the '{@link #getEclipseProjectName() <em>Eclipse Project Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBaseDir()
+   * @see #getEclipseProjectName()
    * @generated
    * @ordered
    */
-  protected String baseDir = BASE_DIR_EDEFAULT;
+  protected String eclipseProjectName = ECLIPSE_PROJECT_NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getProcesses() <em>Processes</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -373,9 +375,9 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getBaseDir()
+  public String getEclipseProjectName()
   {
-    return baseDir;
+    return eclipseProjectName;
   }
 
   /**
@@ -383,12 +385,12 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBaseDir(String newBaseDir)
+  public void setEclipseProjectName(String newEclipseProjectName)
   {
-    String oldBaseDir = baseDir;
-    baseDir = newBaseDir;
+    String oldEclipseProjectName = eclipseProjectName;
+    eclipseProjectName = newEclipseProjectName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR, oldBaseDir, baseDir));
+      eNotify(new ENotificationImpl(this, Notification.SET, LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME, oldEclipseProjectName, eclipseProjectName));
   }
 
   /**
@@ -741,8 +743,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
     {
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         return getLinks();
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
-        return getBaseDir();
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME:
+        return getEclipseProjectName();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESSES:
         return getProcesses();
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT:
@@ -790,8 +792,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
         getLinks().clear();
         getLinks().addAll((Collection<? extends PerformanceRequirementLink>)newValue);
         return;
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
-        setBaseDir((String)newValue);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME:
+        setEclipseProjectName((String)newValue);
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESSES:
         setProcesses((Integer)newValue);
@@ -852,8 +854,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         getLinks().clear();
         return;
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
-        setBaseDir(BASE_DIR_EDEFAULT);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME:
+        setEclipseProjectName(ECLIPSE_PROJECT_NAME_EDEFAULT);
         return;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESSES:
         setProcesses(PROCESSES_EDEFAULT);
@@ -913,8 +915,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
     {
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__LINKS:
         return links != null && !links.isEmpty();
-      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__BASE_DIR:
-        return BASE_DIR_EDEFAULT == null ? baseDir != null : !BASE_DIR_EDEFAULT.equals(baseDir);
+      case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__ECLIPSE_PROJECT_NAME:
+        return ECLIPSE_PROJECT_NAME_EDEFAULT == null ? eclipseProjectName != null : !ECLIPSE_PROJECT_NAME_EDEFAULT.equals(eclipseProjectName);
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESSES:
         return processes != PROCESSES_EDEFAULT;
       case LinksPackage.PERFORMANCE_REQUIREMENT_LINKS__PROCESS_INCREMENT:
@@ -958,8 +960,8 @@ public class PerformanceRequirementLinksImpl extends EObjectImpl implements Perf
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (baseDir: ");
-    result.append(baseDir);
+    result.append(" (eclipseProjectName: ");
+    result.append(eclipseProjectName);
     result.append(", processes: ");
     result.append(processes);
     result.append(", processIncrement: ");
