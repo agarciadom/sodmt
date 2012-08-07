@@ -1,8 +1,11 @@
-grinder.processes=1
-grinder.threads=5
-grinder.runs=2
-grinder.processIncrement=1
-grinder.processIncrementInterval=1000
-grinder.consoleHost=127.0.0.1
-grinder.useConsole=false
-grinder.script=soap.py
+[%
+  var links := Weaving!PerformanceRequirementLinks.all.first();
+%]
+grinder.processes=[%=links.processes%]
+grinder.threads=[%=links.threadsPerProcess%]
+grinder.runs=[%=links.runs%]
+grinder.processIncrement=[%=links.processIncrement%]
+grinder.processIncrementInterval=[%=links.processIncrementInterval%]
+grinder.consoleHost=[%=links.consoleHost%]
+grinder.useConsole=[%=links.useConsole%]
+grinder.script=tests.py

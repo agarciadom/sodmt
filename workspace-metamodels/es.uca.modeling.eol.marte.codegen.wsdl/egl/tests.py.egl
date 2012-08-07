@@ -1,3 +1,31 @@
+[%
+  import 'platform:/plugin/es.uca.modeling.eol.marte/eol/model_utils.eol';
+  import 'platform:/plugin/es.uca.modeling.eol.marte/eol/utils.eol';
+
+  var links := Weaving!PerformanceRequirementLinks.all.first();
+
+  -- We can't really get more than a millisecond of accuracy on most
+  -- systems, so we don't need that many decimals. Decimal real values
+  -- are not accurately represented by binary floating-point numbers,
+  -- so 0.4 ends up having a much less readable representation.
+  var df := new Native('java.text.DecimalFormat')("0.#");
+  df.setMaximumFractionDigits(5);
+  var symbols := df.getDecimalFormatSymbols();
+  symbols.setDecimalSeparator('.'.charAt(0));
+  df.setDecimalFormatSymbols(symbols);
+
+  -- Group tests by port
+  var testsByPort : Map;
+  for (link in  links.links) {
+    var port := link.`operation`.eContainer();
+    var portTests := testsByPort.get(port);
+    if (portTests.isUndefined()) {
+      portTests := Sequence {};
+      testsByPort.put(port, portTests);
+    }
+    portTests.add(link);
+  }
+%]
 from es.uca.webservices.testgen import TestGeneratorCommand
 
 from java.io import StringWriter, FileInputStream, File
@@ -49,16 +77,24 @@ class TestRunner:
         Velocity.init()
 
         self.tests = (
+[% for (port in testsByPort.keySet()) {
+     var service := port.eContainer();
+     var tests := testsByPort.get(port);
+%]
             test_service(
-                name="OrdersImplService",
-                url="http://localhost:8080/orders",
+                name="[%=service.name%]",
+                url="[%=port.address%]",
                 operations=(
-                    ("list", {"maximum": 150}),
-                    ("query", {"maximum": 150}),
-                    ("close", {"maximum": 150}),
-                    ("evaluate", {"maximum": 150}),
+[%   for (test in tests) {
+       var op := test.`operation`;
+       var node := test.execNode;
+       var limit := node.getTimeLimit();
+%]
+                    ("[%=op.name%]", {"maximum": [%=df.format(limit)%]}),
+[%   } %]
                 ),
-            )
+            ),
+[% } %]
         )
 
     def __call__(self):

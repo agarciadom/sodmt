@@ -32,6 +32,7 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.papyrus.MARTE.MARTEPackage;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import serviceAnalyzer.messageCatalog.ServicesDocument;
@@ -222,7 +223,7 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 	private EmfModel loadWeavingModel(final IFile file)	throws EolModelLoadingException, IOException {
 		final EmfModel model = new EmfModel();
 		model.setModelFileUri(URI.createFileURI(file.getLocation().toFile().getAbsolutePath()));
-		model.setMetamodelUris(Arrays.asList(LinksPackage.eNS_URI, MessageCatalogPackage.eNS_URI));
+		model.setMetamodelUris(Arrays.asList(LinksPackage.eNS_URI, MessageCatalogPackage.eNS_URI, MARTEPackage.eNS_URI));
 		model.setName("Weaving");
 		model.setExpand(true);
 		model.setCachingEnabled(true);
