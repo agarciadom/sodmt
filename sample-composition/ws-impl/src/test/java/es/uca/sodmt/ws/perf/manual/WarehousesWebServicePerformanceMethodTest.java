@@ -30,7 +30,7 @@ public class WarehousesWebServicePerformanceMethodTest extends WarehousesWebServ
 		super.listWarehouses();
 	}
 
-	@Test
+	//@Test
 	public void failingNonPerformanceTest() {
 		assertTrue(false);
 	}
