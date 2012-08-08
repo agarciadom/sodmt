@@ -4,6 +4,7 @@ Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: es.uca.modeling.eol;singleton:=true
 Bundle-Version: 1.1.1.qualifier
 Bundle-Vendor: %Bundle-Vendor
-Require-Bundle: org.eclipse.ui.ide;bundle-version="3.5.0",
- org.eclipse.epsilon.evl.emf.validation;bundle-version="0.8.6",
- org.eclipse.epsilon.ewl.emf;bundle-version="0.8.7"
+Require-Bundle: org.eclipse.ui.ide,
+ org.eclipse.epsilon.evl.emf.validation,
+ org.eclipse.epsilon.ewl.emf,
+ org.eclipse.epsilon.ewl.gmf;resolution:=optional
