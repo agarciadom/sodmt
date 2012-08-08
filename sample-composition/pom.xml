@@ -118,4 +118,13 @@
     <module>grinder</module>
   </modules>
 
+  <pluginRepositories>
+      <pluginRepository>
+          <id>neptuno-releases</id>
+          <url>https://neptuno.uca.es/nexus/content/groups/release-repos/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+      </pluginRepository>
+  </pluginRepositories>
+
 </project>

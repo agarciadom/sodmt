@@ -5,11 +5,9 @@
   var links := Weaving!PerformanceRequirementLinks.all.first();
 
   -- We can't really get more than a millisecond of accuracy on most
-  -- systems, so we don't need that many decimals. Decimal real values
-  -- are not accurately represented by binary floating-point numbers,
-  -- so 0.4 ends up having a much less readable representation.
+  -- systems, so anything more than 2 fractional digits is overkill.
   var df := new Native('java.text.DecimalFormat')("0.#");
-  df.setMaximumFractionDigits(5);
+  df.setMaximumFractionDigits(2);
   var symbols := df.getDecimalFormatSymbols();
   symbols.setDecimalSeparator('.'.charAt(0));
   df.setDecimalFormatSymbols(symbols);
@@ -29,7 +27,8 @@
 from es.uca.webservices.testgen import TestGeneratorCommand
 
 from java.io import StringWriter, FileInputStream, File
-from java.util import Random
+from java.lang import String
+from java.util import Locale, Random
 
 from net.grinder.script.Grinder import grinder
 from net.grinder.script         import Test
@@ -77,23 +76,30 @@ class TestRunner:
         Velocity.init()
 
         self.tests = (
-[% for (port in testsByPort.keySet()) {
-     var service := port.eContainer();
-     var tests := testsByPort.get(port);
+[%
+   var first := true;
+   for (port in testsByPort.keySet()) {
+     var service = port.eContainer();
+     var tests = testsByPort.get(port);
+     if (first) {
+       first = false;
 %]
             test_service(
+[% } else { %]
+          + test_service(
+[% } %]
                 name="[%=service.name%]",
                 url="[%=port.address%]",
                 operations=(
 [%   for (test in tests) {
        var op := test.`operation`;
        var node := test.execNode;
-       var limit := node.getTimeLimit();
+       var limitMillis := node.getTimeLimit() * 100;
 %]
-                    ("[%=op.name%]", {"maximum": [%=df.format(limit)%]}),
+                    ("[%=op.name%]", {"maximum": [%=df.format(limitMillis)%]}),
 [%   } %]
                 ),
-            ),
+            )
 [% } %]
         )
 
@@ -206,6 +212,11 @@ def test_spec(test_name, func, maximum=None):
         )
         stats = grinder.statistics.getForCurrentTest()
         if maximum and stats.time > maximum:
+            grinder.getLogger().error(String.format(
+                Locale.ENGLISH,
+                "Request took too long (%s ms), while maximum was %s ms",
+                [stats.time, maximum]
+            ))
             stats.success = 0
 
     if test_name in TestRunner.testNumberMap:

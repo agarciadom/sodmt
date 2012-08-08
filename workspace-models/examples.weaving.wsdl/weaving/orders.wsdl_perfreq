@@ -4,4 +4,8 @@
     <execNode xsi:type="uml:CallBehaviorAction" href="../papyrus/multimodel.uml#_XGNQYLouEeG_n-mswuuavA"/>
     <operation href="../serviceAnalyzer/orders.msgcat#//@services/@service.0/@port.0/@operation.3"/>
   </links>
+  <links>
+    <execNode xsi:type="uml:CallOperationAction" href="../papyrus/multimodel.uml#_tGt6MLouEeG_n-mswuuavA"/>
+    <operation href="../serviceAnalyzer/orders.msgcat#//@services/@service.0/@port.0/@operation.0"/>
+  </links>
 </mw:PerformanceRequirementLinks>

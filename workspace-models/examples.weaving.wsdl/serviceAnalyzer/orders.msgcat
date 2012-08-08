@@ -5,7 +5,7 @@
       <mes:operation name="close">
         <mes:input>
           <mes:decls>
-            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TClose" type="int"/>
+            <mes:typedef max="20" min="0" name="TClose" type="int"/>
             <mes:variable name="close" type="TClose"/>
           </mes:decls>
           <mes:template>&lt;w:close xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
@@ -163,11 +163,12 @@
       <mes:operation name="evaluate">
         <mes:input>
           <mes:decls>
-            <mes:typedef max="9223372036854775807" min="-9223372036854775808" name="TArticleID" type="int"/>
-            <mes:typedef element="float" max="1" min="0" name="TList_float" type="list"/>
+            <mes:typedef max="100" min="0" name="TArticleID" type="int"/>
+            <mes:typedef max="2000" min="0.01" name="TPrice" type="float"/>
+            <mes:typedef element="TPrice" max="1" min="1" name="TList_float" type="list"/>
             <mes:typedef element="TArticleID, TList_float" name="TArticleQuantities" type="tuple"/>
             <mes:typedef element="TArticleQuantities" min="0" name="TNewOrder" type="list"/>
-            <mes:typedef element="TNewOrder" max="1" min="0" name="TEvaluate" type="list"/>
+            <mes:typedef element="TNewOrder" max="1" min="1" name="TEvaluate" type="list"/>
             <mes:variable name="evaluate" type="TEvaluate"/>
           </mes:decls>
           <mes:template>&lt;w:evaluate xmlns:w=&quot;http://ws.sodmt.uca.es/&quot;>
