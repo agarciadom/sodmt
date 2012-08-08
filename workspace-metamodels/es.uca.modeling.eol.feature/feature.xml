@@ -86,6 +86,10 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
 
+   <url>
+      <discovery label="Eclipse Epsilon (Interim)" url="http://download.eclipse.org/epsilon/interim/"/>
+   </url>
+
    <requires>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.evl.emf.validation" version="0.8.6" match="greaterOrEqual"/>
@@ -131,10 +135,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.core.databinding.beans" version="1.2.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.property"/>
       <import plugin="com.ibm.icu"/>
-      <import plugin="es.uca.modeling.eol" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.9" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="ServiceProcess" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.tooling.runtime"/>
    </requires>
 
    <plugin
