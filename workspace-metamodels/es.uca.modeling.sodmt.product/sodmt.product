@@ -346,14 +346,6 @@
       <plugin id="org.eclipse.ocl.common"/>
       <plugin id="org.eclipse.ocl.common.ui"/>
       <plugin id="org.eclipse.ocl.ecore"/>
-      <plugin id="org.eclipse.ocl.examples.common"/>
-      <plugin id="org.eclipse.ocl.examples.domain"/>
-      <plugin id="org.eclipse.ocl.examples.library"/>
-      <plugin id="org.eclipse.ocl.examples.pivot"/>
-      <plugin id="org.eclipse.ocl.examples.xtext.base"/>
-      <plugin id="org.eclipse.ocl.examples.xtext.console"/>
-      <plugin id="org.eclipse.ocl.examples.xtext.essentialocl"/>
-      <plugin id="org.eclipse.ocl.examples.xtext.essentialocl.ui"/>
       <plugin id="org.eclipse.ocl.uml"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
