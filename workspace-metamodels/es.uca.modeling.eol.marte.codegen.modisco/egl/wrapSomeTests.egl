@@ -12,8 +12,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
 
-[% printExceptionImports(testCases); %]
-
 [%
   var thrownExceptions := testCases.collect(c|c.thrownExceptions.collect(e|e.type)).flatten().asSet();
   var filteredExceptions := thrownExceptions.select(e | not e.qualifiedName().startsWith('java.lang'));
