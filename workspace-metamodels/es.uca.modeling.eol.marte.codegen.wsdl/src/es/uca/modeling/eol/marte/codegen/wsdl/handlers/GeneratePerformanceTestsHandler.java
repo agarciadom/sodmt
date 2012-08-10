@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,9 +16,11 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -35,7 +36,9 @@ import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.m2e.core.internal.IMavenConstants;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
+import org.eclipse.ui.actions.AddBookmarkAction;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import serviceAnalyzer.messageCatalog.ServicesDocument;
@@ -84,7 +87,9 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 					.getAllOfType("PerformanceRequirementLinks")
 					.iterator().next();
 
-			populateProject(createProject(allLinks), weavingModel, allLinks);
+			final IProject project = createProject(allLinks);
+			populateProject(project, weavingModel, allLinks);
+			addMavenNature(project, null);
 		} finally {
 			weavingModel.dispose();
 		}
@@ -255,4 +260,18 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 		}
 	}
 
+	/**
+	 * Taken from org.eclipse.m2e.core.internal.project.ProjectConfigurationManager, by Sonatype.
+	 */
+	private void addMavenNature(IProject project, IProgressMonitor monitor) throws CoreException {
+		if (!project.hasNature(IMavenConstants.NATURE_ID)) {
+			IProjectDescription description = project.getDescription();
+			String[] prevNatures = description.getNatureIds();
+			String[] newNatures = new String[prevNatures.length + 1];
+			System.arraycopy(prevNatures, 0, newNatures, 1, prevNatures.length);
+			newNatures[0] = IMavenConstants.NATURE_ID;
+			description.setNatureIds(newNatures);
+			project.setDescription(description, monitor);
+		}
+	}
 }
