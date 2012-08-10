@@ -195,6 +195,7 @@
       <plugin id="org.eclipse.epsilon.evl.engine"/>
       <plugin id="org.eclipse.epsilon.ewl.emf"/>
       <plugin id="org.eclipse.epsilon.ewl.engine"/>
+      <plugin id="org.eclipse.epsilon.ewl.gmf"/>
       <plugin id="org.eclipse.epsilon.profiling"/>
       <plugin id="org.eclipse.epsilon.util.emf"/>
       <plugin id="org.eclipse.equinox.app"/>
