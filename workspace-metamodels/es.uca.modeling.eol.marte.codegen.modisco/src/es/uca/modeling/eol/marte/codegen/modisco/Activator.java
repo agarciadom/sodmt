@@ -67,4 +67,12 @@ public class Activator extends AbstractUIPlugin {
 	public void logError(Exception e) {
 		getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
 	}
+
+	/**
+	 * Sends a new <code>WARNING</code> entry to the Error Log view.
+	 */
+	public void logWarning(String message) {
+		getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, message));
+	}
+
 }

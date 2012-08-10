@@ -7,8 +7,6 @@
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Xdebug
--Xrunjdwp:transport=dt_socket,address=8000,server=n</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
@@ -134,6 +132,7 @@
       <plugin id="org.eclipse.e4.ui.services"/>
       <plugin id="org.eclipse.e4.ui.widgets"/>
       <plugin id="org.eclipse.e4.ui.workbench"/>
+      <plugin id="org.eclipse.e4.ui.workbench.addons.swt"/>
       <plugin id="org.eclipse.e4.ui.workbench.renderers.swt"/>
       <plugin id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa" fragment="true"/>
       <plugin id="org.eclipse.e4.ui.workbench.swt"/>
@@ -453,7 +452,6 @@
       <plugin id="org.eclipse.papyrus.uml.import"/>
       <plugin id="org.eclipse.papyrus.uml.modelexplorer"/>
       <plugin id="org.eclipse.papyrus.uml.modelexplorer.widgets"/>
-      <plugin id="org.eclipse.papyrus.uml.oclconstraintevaluation"/>
       <plugin id="org.eclipse.papyrus.uml.pastemanager"/>
       <plugin id="org.eclipse.papyrus.uml.perspective"/>
       <plugin id="org.eclipse.papyrus.uml.profile"/>
@@ -554,10 +552,5 @@
       <feature id="org.eclipse.emf.common"/>
    </features>
 
-   <configurations>
-      <plugin id="org.eclipse.papyrus.marte.static.profile" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.papyrus.uml.profile" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.uml2.uml" autoStart="true" startLevel="0" />
-   </configurations>
 
 </product>

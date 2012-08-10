@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,6 +22,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.commons.util.StringUtil;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
@@ -36,6 +39,7 @@ import org.eclipse.papyrus.MARTE.MARTEPackage;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import serviceAnalyzer.messageCatalog.ServicesDocument;
+import es.uca.modeling.eol.marte.codegen.wsdl.Activator;
 import es.uca.modeling.eol.marte.weaving.wsdl.links.LinksPackage;
 import es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLink;
 import es.uca.modeling.eol.marte.weaving.wsdl.links.PerformanceRequirementLinks;
@@ -221,6 +225,10 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 	}
 
 	private EmfModel loadWeavingModel(final IFile file)	throws EolModelLoadingException, IOException {
+		// Required in RCP apps: otherwise, the MARTE metamodel won't be found until the EPackage Registr
+		// view or a Papyrus editor is opened.
+		preloadEPackageRegistry();
+
 		final EmfModel model = new EmfModel();
 		model.setModelFileUri(URI.createFileURI(file.getLocation().toFile().getAbsolutePath()));
 		model.setMetamodelUris(Arrays.asList(LinksPackage.eNS_URI, MessageCatalogPackage.eNS_URI, MARTEPackage.eNS_URI));
@@ -232,4 +240,19 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 		model.load();
 		return model;
 	}
+
+	private void preloadEPackageRegistry() {
+		final Registry registry = EPackage.Registry.INSTANCE;
+		final EPackage marteEPackage = registry.getEPackage(MARTEPackage.eNS_URI);
+		if (marteEPackage == null) {
+			final Set<String> urls = new HashSet<String>(registry.keySet());
+			for (String url : urls) {
+				final EPackage pkg = registry.getEPackage(url);
+				if (pkg == null) {
+					Activator.getDefault().logWarning("EPackage for '" + url + "' is null");
+				}
+			}
+		}
+	}
+
 }

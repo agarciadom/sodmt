@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -12,6 +14,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 import org.eclipse.epsilon.emc.emf.EmfModel;
@@ -70,6 +74,10 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 	}
 
 	private EmfModel loadWeavingModel(final IFile file)	throws EolModelLoadingException, IOException {
+		// Required in RCP apps: otherwise, the MARTE metamodel won't be found until the EPackage Registr
+		// view or a Papyrus editor is opened.
+		preloadEPackageRegistry();
+
 		final EmfModel model = new EmfModel();
 
 		// Try using a platform: URI whenever possible - model weaving tends to create these
@@ -92,5 +100,19 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 		model.setStoredOnDisposal(false);
 		model.load();
 		return model;
+	}
+
+	private void preloadEPackageRegistry() {
+		final Registry registry = EPackage.Registry.INSTANCE;
+		final EPackage marteEPackage = registry.getEPackage(MARTEPackage.eNS_URI);
+		if (marteEPackage == null) {
+			final Set<String> urls = new HashSet<String>(registry.keySet());
+			for (String url : urls) {
+				final EPackage pkg = registry.getEPackage(url);
+				if (pkg == null) {
+					Activator.getDefault().logWarning("EPackage for '" + url + "' is null");
+				}
+			}
+		}
 	}
 }
