@@ -92,8 +92,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </url>
 
    <requires>
-      <import plugin="javax.wsdl"/>
       <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.slf4j.api"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
@@ -110,7 +110,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.epsilon.dt.exeed"/>
       <import plugin="org.eclipse.epsilon.eol.dt"/>
       <import plugin="org.eclipse.epsilon.egl.engine"/>
-      <import feature="es.uca.modeling.eol.marte.feature" version="1.0.0.qualifier"/>
+      <import plugin="es.uca.modeling.eol.marte"/>
+      <import plugin="org.eclipse.m2e.core"/>
+      <import plugin="org.eclipse.papyrus.marte.static.profile" version="0.9.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

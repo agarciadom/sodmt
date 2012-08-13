@@ -91,16 +91,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </url>
 
    <requires>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.evl.emf.validation" version="0.8.6" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.evl.engine"/>
+      <import plugin="org.eclipse.epsilon.evl.emf.validation"/>
+      <import plugin="org.eclipse.epsilon.ewl.emf"/>
+      <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.epsilon.etl.engine" version="0.8.7" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.erl.engine" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.7" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.common.dt" version="0.8.7" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.draw2d" version="3.5.0" match="greaterOrEqual"/>
@@ -128,6 +125,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.emf.validation"/>
       <import plugin="org.eclipse.gef"/>
       <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.gmf.tooling.runtime"/>
       <import plugin="org.eclipse.ui" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface.databinding" version="1.4.0" match="greaterOrEqual"/>
@@ -135,9 +133,10 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.core.databinding.beans" version="1.2.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.property"/>
       <import plugin="com.ibm.icu"/>
+      <import plugin="es.uca.modeling.eol" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.eol.engine" version="0.8.9" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.tooling.runtime"/>
+      <import plugin="org.eclipse.epsilon.util.emf"/>
    </requires>
 
    <plugin
