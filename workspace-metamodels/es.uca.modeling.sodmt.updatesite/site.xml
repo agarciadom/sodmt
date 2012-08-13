@@ -3,16 +3,16 @@
    <description name="SODM+T Update Site" url="http://neptuno.uca.es/~agarcia/sodmt-updates/site.xml">
       This update site contains plugins which implement various model-driven tools designed to assist in the testing of service-oriented systems. These plugins have been developed as part of Antonio García-Domínguez&apos;s PhD thesis.
    </description>
-   <feature url="features/es.uca.modeling.eol.feature_1.1.1.201208132012.jar" id="es.uca.modeling.eol.feature" version="1.1.1.201208132012">
+   <feature url="features/es.uca.modeling.eol.feature_1.1.1.201208132020.jar" id="es.uca.modeling.eol.feature" version="1.1.1.201208132020">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.eol.marte.feature_1.0.0.201208132012.jar" id="es.uca.modeling.eol.marte.feature" version="1.0.0.201208132012">
+   <feature url="features/es.uca.modeling.eol.marte.feature_1.0.0.201208132020.jar" id="es.uca.modeling.eol.marte.feature" version="1.0.0.201208132020">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.eol.marte.weaving.modisco.feature_1.0.0.201208132012.jar" id="es.uca.modeling.eol.marte.weaving.modisco.feature" version="1.0.0.201208132012">
+   <feature url="features/es.uca.modeling.eol.marte.weaving.modisco.feature_1.0.0.201208132020.jar" id="es.uca.modeling.eol.marte.weaving.modisco.feature" version="1.0.0.201208132020">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.0.201208132012.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.0.201208132012">
+   <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.0.201208132020.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.0.201208132020">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>

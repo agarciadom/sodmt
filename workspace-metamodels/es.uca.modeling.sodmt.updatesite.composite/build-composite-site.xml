@@ -8,6 +8,7 @@
 				<repository location="http://download.eclipse.org/epsilon/interim" />
 				<repository location="http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/" />
 				<repository location="http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/extra/" />
+				<repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases" />
 				<repository location="http://neptuno.uca.es/~agarcia/sodmt-updates/" />
 			</add>
 		</p2.composite.repository>
