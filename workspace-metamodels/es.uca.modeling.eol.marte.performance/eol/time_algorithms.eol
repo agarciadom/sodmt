@@ -10,8 +10,8 @@
   Contributors:
      Antonio García Domínguez - initial API and implementation
 *-
-import '../eol/time_limits.eol';
-import '../eol/throughput.eol';
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/time_limits.eol';
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/throughput.eol';
 
 -- UTILITY OPERATIONS FOR THE JAVA CODE --
 
