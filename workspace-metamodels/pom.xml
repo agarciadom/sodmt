@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>es.uca.modeling</groupId>
+    <artifactId>parent</artifactId>
+    <version>1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Parent</name>
+    <description>Common parent for all modules in this project</description>
+
+    <properties>
+        <tycho-version>0.15.0</tycho-version>
+    </properties>
+
+    <modules>
+        <!-- Ad-hoc models and algorithms -->
+        <module>es.uca.modeling.eol.feature</module>
+        <module>es.uca.modeling.eol</module>
+        <module>es.uca.modeling.eol.comparison</module>
+        <module>es.uca.modeling.eol.contextmenu</module>
+        <module>es.uca.modeling.eol.tools</module>
+        <module>es.uca.modeling.figures</module>
+        <module>ServiceProcess</module>
+        <module>ServiceProcess.diagram</module>
+        <module>ServiceProcess.edit</module>
+        <module>ServiceProcess.editor</module>
+        <module>ServiceProcess.tests</module>
+        <module>ServiceComposition</module>
+        <module>ServiceComposition.diagram</module>
+        <module>ServiceComposition.edit</module>
+        <module>ServiceComposition.editor</module>
+        <module>ServiceComposition.tests</module>
+
+        
+    </modules>
+    
+    <repositories>
+        <repository>
+            <id>eclipse-juno</id>
+            <url>http://download.eclipse.org/releases/juno</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <id>epsilon-interim</id>
+            <url>http://download.eclipse.org/epsilon/interim</url>
+            <layout>p2</layout>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+	        <groupId>org.eclipse.tycho</groupId>
+	        <artifactId>target-platform-configuration</artifactId>
+	        <version>${tycho-version}</version>
+	        <configuration>
+	            <environments>
+		        <environment>
+		            <os>linux</os>
+		            <ws>gtk</ws>
+		            <arch>x86</arch>
+		        </environment>
+		        <environment>
+		            <os>linux</os>
+		            <ws>gtk</ws>
+		            <arch>x86_64</arch>
+		        </environment>
+		        <environment>
+		            <os>win32</os>
+		            <ws>win32</ws>
+		            <arch>x86</arch>
+		        </environment>
+		        <environment>
+		            <os>win32</os>
+		            <ws>win32</ws>
+		            <arch>x86_64</arch>
+		        </environment>
+		        <environment>
+		            <os>macosx</os>
+		            <ws>cocoa</ws>
+		            <arch>x86_64</arch>
+		        </environment>
+	            </environments>
+	        </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
