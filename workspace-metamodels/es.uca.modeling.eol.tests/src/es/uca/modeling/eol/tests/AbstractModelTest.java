@@ -7,10 +7,11 @@ import java.util.List;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
+import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
 
 import serviceProcess.ServiceProcessPackage;
 
-public abstract class AbstractModelTest implements IEUnitSuite {
+public abstract class AbstractModelTest extends IEUnitSuite {
 
 	@Override
 	public List<IModel> prepareModels() throws EolModelLoadingException {
