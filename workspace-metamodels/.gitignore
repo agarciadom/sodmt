@@ -5,6 +5,7 @@ ServiceComposition.diagram
 ServiceProcess.tests
 ServiceComposition.tests
 bin
+build
 target
 repository
 es.uca.webservices.service-analyzer

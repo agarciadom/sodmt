@@ -23,6 +23,7 @@
         <module>es.uca.modeling.eol.comparison</module>
         <module>es.uca.modeling.eol.contextmenu</module>
         <module>es.uca.modeling.eol.tools</module>
+        <module>es.uca.modeling.eol.tests</module>
         <module>es.uca.modeling.figures</module>
         <module>ServiceProcess</module>
         <module>ServiceProcess.diagram</module>
@@ -34,8 +35,6 @@
         <module>ServiceComposition.edit</module>
         <module>ServiceComposition.editor</module>
         <module>ServiceComposition.tests</module>
-
-        
     </modules>
     
     <repositories>
