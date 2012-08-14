@@ -11,7 +11,7 @@ import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
 
 import serviceProcess.ServiceProcessPackage;
 
-public abstract class AbstractModelTest extends IEUnitSuite {
+public abstract class AbstractModelTest implements IEUnitSuite {
 
 	@Override
 	public List<IModel> prepareModels() throws EolModelLoadingException {
@@ -26,7 +26,7 @@ public abstract class AbstractModelTest extends IEUnitSuite {
 			model.load();
 			models.add(model);
 		}
-	
+
 		return models;
 	}
 

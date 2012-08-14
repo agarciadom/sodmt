@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URI;
 
 import org.eclipse.epsilon.eunit.junit.EUnitTestRunner;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(EUnitTestRunner.class)
