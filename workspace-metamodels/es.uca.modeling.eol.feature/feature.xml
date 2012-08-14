@@ -139,6 +139,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.epsilon.util.emf"/>
       <import plugin="org.eclipse.epsilon.ewl.engine"/>
       <import feature="org.eclipse.epsilon.dependencies.feature" version="0.9.1.qualifier"/>
+      <import plugin="org.eclipse.epsilon.ewl.gmf"/>
    </requires>
 
    <plugin
