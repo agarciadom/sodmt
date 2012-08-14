@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
 public class TimeLimitTest extends AbstractModelTest {
 	@Override
 	public URI getModuleURI() throws Exception {
-		return new File("caggregation.eunit").toURI();
+		return new File("tlimits.eunit").toURI();
 	}
 }
