@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tests
+Bundle-Name: SODM+T Ad-Hoc Tests
 Bundle-SymbolicName: es.uca.modeling.eol.tests
 Bundle-Version: 1.1.1.qualifier
 Require-Bundle: org.eclipse.epsilon.eol.engine;bundle-version="0.9.1",
