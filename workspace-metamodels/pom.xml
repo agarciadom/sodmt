@@ -29,12 +29,10 @@
         <module>ServiceProcess.diagram</module>
         <module>ServiceProcess.edit</module>
         <module>ServiceProcess.editor</module>
-        <module>ServiceProcess.tests</module>
         <module>ServiceComposition</module>
         <module>ServiceComposition.diagram</module>
         <module>ServiceComposition.edit</module>
         <module>ServiceComposition.editor</module>
-        <module>ServiceComposition.tests</module>
     </modules>
     
     <repositories>
