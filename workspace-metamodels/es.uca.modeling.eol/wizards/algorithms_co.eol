@@ -29,7 +29,7 @@ operation ActivityAction createPerformanceAnnotation() {
 }
 
 operation ActivityStart getGlobalTimeLimit() {
-  return self.activity.secsTimeLimit;
+  return self.activity.annotation.secsTimeLimit;
 }
 
 @cached

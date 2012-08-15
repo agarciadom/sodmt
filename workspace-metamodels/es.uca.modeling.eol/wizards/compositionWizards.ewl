@@ -5,7 +5,7 @@ wizard InferTimeLimitsNew {
   do {
     transaction {
       for (start in ActivityStart.all) {
-        if (not distributeTime(start.getGlobalTimeLimit(), ProcessFinish.all)
+        if (not distributeTime(start.getGlobalTimeLimit(), ActivityFinish.all)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;
