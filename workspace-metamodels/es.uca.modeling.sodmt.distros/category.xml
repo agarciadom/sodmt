@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/es.uca.modeling.eol.feature_1.1.1.qualifier.jar" id="es.uca.modeling.eol.feature" version="1.1.1.qualifier">
+      <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
+   </feature>
+   <feature url="features/es.uca.modeling.eol.marte.feature_1.0.0.qualifier.jar" id="es.uca.modeling.eol.marte.feature" version="1.0.0.qualifier">
+      <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
+   </feature>
+   <feature url="features/es.uca.modeling.eol.marte.weaving.modisco.feature_1.0.0.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.modisco.feature" version="1.0.0.qualifier">
+      <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
+   </feature>
+   <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.0.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.0.qualifier">
+      <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
+   </feature>
+   <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>
+</site>

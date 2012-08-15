@@ -41,6 +41,38 @@
         <module>es.uca.modeling.eol.marte.tests.eunit</module>
         <module>es.uca.modeling.eol.marte.tests.junit</module>
 
+        <!-- Code generation from JUnit -->
+        <module>es.uca.modeling.eol.marte.weaving.modisco.feature</module>
+        <module>es.uca.modeling.eol.marte.codegen.modisco</module>
+        <module>es.uca.modeling.eol.marte.weaving.modisco</module>
+        <module>es.uca.modeling.eol.marte.weaving.modisco.edit</module>
+        <module>es.uca.modeling.eol.marte.weaving.modisco.editor</module>
+        <module>org.eclipse.gmt.modisco.java.edit</module>
+        <module>org.eclipse.gmt.modisco.java.editor</module>
+
+        <!-- Code generation from WSDL -->
+        <module>es.uca.modeling.eol.marte.weaving.wsdl.feature</module>
+        <module>es.uca.modeling.eol.marte.codegen.wsdl</module>
+        <module>es.uca.modeling.eol.marte.weaving.wsdl</module>
+        <module>es.uca.modeling.eol.marte.weaving.wsdl.edit</module>
+        <module>es.uca.modeling.eol.marte.weaving.wsdl.editor</module>
+        <module>es.uca.webservices.service-analyzer</module>
+        <module>es.uca.webservices.service-analyzer.emf</module>
+        <module>es.uca.webservices.service-analyzer.emf.edit</module>
+        <module>es.uca.webservices.service-analyzer.emf.editor</module>
+        <module>es.uca.webservices.service-analyzer.ui</module>
+        <module>es.uca.webservices.test-generator</module>
+        <module>es.uca.webservices.test-generator-api</module>
+        <module>es.uca.webservices.wsdl2xsdtree</module>
+        <module>es.uca.webservices.xml-utils</module>
+
+        <!--
+            RCP product definition and distributions: composite update
+            site not included (it's only an Ant script that produces
+            two files).
+        -->
+        <module>es.uca.modeling.sodmt.product</module>
+        <module>es.uca.modeling.sodmt.distros</module>
     </modules>
     
     <repositories>
