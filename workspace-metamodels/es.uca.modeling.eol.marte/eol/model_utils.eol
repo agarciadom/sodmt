@@ -309,3 +309,9 @@ operation ActivityNode getActivity() {
     return self.inGroup.first().getActivity();
   }
 }
+
+-* Operations for ActivityEdge *-
+
+operation ActivityEdge getStepMap() : Map {
+  return self.source.getStepMap();
+}

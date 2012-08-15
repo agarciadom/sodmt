@@ -1,8 +1,3 @@
-@model
-operation loadModels() {
-  runTarget("load-marte-model");
-}
-
 operation pair(x, y) : Sequence {
   return Sequence { x, y };
 }
@@ -11,7 +6,7 @@ operation getActivity(activityName : String) : Activity {
   return Activity.all.selectOne(s | s.name == activityName);
 }
 
-operation getFinalNodes(activityName : String) : Sequence {
+operation getFinalNodes(activityName : String) : Collection {
   return getActivity(activityName).ownedNodes.collect(s : FinalNode | s);
 }
 

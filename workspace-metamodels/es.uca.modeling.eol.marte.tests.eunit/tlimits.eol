@@ -1,5 +1,5 @@
 import 'test-common.eol';
-import 'platform:/resource/es.uca.modeling.eol.marte/eol/time_limits.eol';
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/time_limits.eol';
 
 $onlyWith Map { "Model" = "UML" }
 $onlyWith Map { "Model" = "MultiDiagram" }

@@ -1,5 +1,5 @@
 import 'test-common.eol';
-import 'platform:/resource/es.uca.modeling.eol.marte/eol/throughput.eol';
+import 'platform:/plugin/es.uca.modeling.eol.marte/eol/throughput.eol';
 
 $onlyWith Map { "Model" = "MultiDiagram" }
 $onlyWith Map { "Model" = "UML" }

@@ -33,6 +33,14 @@
         <module>ServiceComposition.diagram</module>
         <module>ServiceComposition.edit</module>
         <module>ServiceComposition.editor</module>
+
+        <!-- MARTE-annotated models -->
+        <module>es.uca.modeling.eol.marte</module>
+        <module>es.uca.modeling.eol.marte.feature</module>
+        <module>es.uca.modeling.eol.marte.performance</module>
+        <module>es.uca.modeling.eol.marte.tests.eunit</module>
+        <module>es.uca.modeling.eol.marte.tests.junit</module>
+
     </modules>
     
     <repositories>
@@ -44,6 +52,11 @@
         <repository>
             <id>epsilon-interim</id>
             <url>http://download.eclipse.org/epsilon/interim</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <id>papyrus-extra-nightlies</id>
+            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/extra/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
