@@ -8,11 +8,6 @@ bin
 build
 target
 repository
-es.uca.webservices.service-analyzer
-es.uca.webservices.test-generator-api
-es.uca.webservices.test-generator
-es.uca.webservices.wsdl2xsdtree
-es.uca.webservices.xml-utils
 org.eclipse.platform
 TEST*
 junit-noframes.html
