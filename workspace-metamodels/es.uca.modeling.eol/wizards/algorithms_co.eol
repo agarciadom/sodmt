@@ -28,6 +28,10 @@ operation ActivityAction createPerformanceAnnotation() {
   self.activity.nodes.add(self.annotation);
 }
 
+operation ActivityStart getGlobalTimeLimit() {
+  return self.activity.secsTimeLimit;
+}
+
 @cached
 operation ActivityStart getConcurrentUsers() : Real {
   return self.activity.annotation.concurrentUsers;

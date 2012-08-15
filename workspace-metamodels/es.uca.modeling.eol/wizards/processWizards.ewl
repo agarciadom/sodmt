@@ -21,13 +21,12 @@ wizard InferPerformanceAnnotations {
     transaction {
       for (start in ProcessStart.all) {
         if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)) {
-          'Time limit annotation failed (old algorithm)'.println();
           abort;
           return;
         }
       }
     } -- transaction
-  }
+  } -- do
 }
 
 wizard RemoveAllInferredAnnotations {

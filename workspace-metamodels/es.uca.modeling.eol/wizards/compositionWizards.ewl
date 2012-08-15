@@ -1,28 +1,26 @@
 import 'algorithms_co.eol';
 
-wizard InferPerformanceAnnotations {
+wizard InferTimeLimitsNew {
   title : 'Infer performance annotations'
   do {
     transaction {
       for (start in ActivityStart.all) {
-        var global_limit = start.activity.annotation.secsTimeLimit;
-        if (not annotateTimeLimits(global_limit, start)
+        if (not distributeTime(start.getGlobalTimeLimit(), ProcessFinish.all)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;
         }
       }
     } -- transaction
-  }
+  } -- do
 }
 
-wizard InferTimeLimitsNew {
-  title : 'Infer time limits (new algorithm)'
+wizard InferPerformanceAnnotations {
+  title : 'Infer time limits (old algorithm)'
   do {
     transaction {
-      for (activity in ServiceActivity.all) {
-        var ends = activity.nodes.select(e|e.isKindOf(ActivityFinish));
-        if (not distributeTime(activity.annotation.secsTimeLimit, ends)) {
+      for (start in ActivityStart.all) {
+        if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)) {
           abort;
           return;
         }
