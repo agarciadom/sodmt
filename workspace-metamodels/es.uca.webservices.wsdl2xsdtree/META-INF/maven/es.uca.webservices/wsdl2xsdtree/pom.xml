@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>es.uca.webservices</groupId>
+        <artifactId>parent</artifactId>
+        <version>5-SNAPSHOT</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+
+    <artifactId>wsdl2xsdtree</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>WSDL2XSDTree</name>
+    <description>Outputs a tree of XML Schema descriptions from a starting WSDL</description>
+
+    <licenses>
+        <license>
+            <name>Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <!-- Dependencies on other UCASE modules -->
+        <dependency>
+            <groupId>es.uca.webservices</groupId>
+            <artifactId>xml-utils</artifactId>
+            <version>1.3-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Compile/runtime deps -->
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jopt-simple</groupId>
+            <artifactId>jopt-simple</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Test deps -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <mainclass>es.uca.webservices.wsdl.util.Application</mainclass>
+    </properties>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>dist</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/dist.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                      <Export-Package>es.uca.webservices.wsdl.util</Export-Package>
+                      <_exportcontents>joptsimple,javax.wsdl.*;version="1.6.2",com.ibm.wsdl.*;version="1.6.2"</_exportcontents>
+                      <Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+                      <Embed-Dependency>*;scope=compile;groupId=!es.uca.webservices</Embed-Dependency>
+                      <Embed-Directory>lib</Embed-Directory>
+                      <Import-Package>!org.slf4j.impl,*</Import-Package>
+                  </instructions>
+              </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>use-umlgraph</id>
+            <activation>
+                <file>
+	    <!-- To use UMLGraph for the javadocs, please install the
+		 "graphviz" package -->
+                    <exists>/usr/bin/dot</exists>
+                </file>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <configuration>
+                                <source>1.6</source>
+                                <aggregate>true</aggregate>
+                                <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
+                                <docletArtifact>
+                                    <groupId>gr.spinellis</groupId>
+                                    <artifactId>UmlGraph</artifactId>
+                                    <version>4.6</version>
+                                </docletArtifact>
+                                <additionalparam>
+		    -inferrel
+		    -inferdep
+		    -quiet
+		    -constructors
+		    -visibility
+		    -types
+		    -postfixpackage
+		    -nodefontsize 9
+		    -nodefontpackagesize 7
+                                </additionalparam>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

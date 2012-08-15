@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.uca.webservices</groupId>
+    <artifactId>parent</artifactId>
+    <version>5-SNAPSHOT</version>
+    <relativePath>../parent</relativePath>
+  </parent>
+
+  <artifactId>test-generator-api</artifactId>
+  <version>1.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>TestGenerator API</name>
+  <description>Abstract interfaces for the high-level components in TestGenerator</description>
+
+  <url>http://neptuno.uca.es/redmine/projects/sources-fm</url>
+  <inceptionYear>2011</inceptionYear>
+  <developers>
+    <developer>
+      <id>antonio</id>
+    </developer>
+    <developer>
+      <id>miguel.angel</id>
+    </developer>
+  </developers>
+
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.felix</groupId>
+              <artifactId>maven-bundle-plugin</artifactId>
+              <configuration>
+                  <instructions>
+                      <Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+                      <Import-Package>!*</Import-Package>
+                  </instructions>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+</project>

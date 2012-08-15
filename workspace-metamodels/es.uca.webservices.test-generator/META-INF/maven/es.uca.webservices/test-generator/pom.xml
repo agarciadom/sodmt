@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.uca.webservices</groupId>
+    <artifactId>parent</artifactId>
+    <version>5-SNAPSHOT</version>
+    <relativePath>../parent</relativePath>
+  </parent>
+
+  <artifactId>test-generator</artifactId>
+  <version>1.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>TestGenerator</name>
+  <description>Generates test cases from abstract specifications, in several formats</description>
+
+  <properties>
+    <mainclass>es.uca.webservices.testgen.TestGeneratorCommand</mainclass>
+    <specgen.mainclass>es.uca.webservices.specgen.SpecGenerator</specgen.mainclass>
+  </properties>
+
+  <url>http://neptuno.uca.es/redmine/projects/sources-fm</url>
+  <inceptionYear>2011</inceptionYear>
+  <developers>
+    <developer>
+      <id>antonio</id>
+    </developer>
+    <developer>
+      <id>miguel.angel</id>
+    </developer>
+  </developers>
+
+  <licenses>
+      <license>
+          <name>Apache 2</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+          <comments>A business-friendly OSS license</comments>
+      </license>
+  </licenses>
+
+  <dependencies>
+    <dependency>
+      <groupId>es.uca.webservices</groupId>
+      <artifactId>test-generator-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- ServiceAnalyzer is optional: we will accept other rule formats as well -->
+    <dependency>
+      <groupId>es.uca.webservices</groupId>
+      <artifactId>service-analyzer</artifactId>
+      <version>1.1.2-SNAPSHOT</version>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- Unit testing library -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+    <!-- SLF4J requires a backend: we use Log4J by default -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.jopt-simple</groupId>
+      <artifactId>jopt-simple</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr-runtime</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>nl.flotsam</groupId>
+      <artifactId>xeger</artifactId>
+      <version>1.0.20100205</version>
+    </dependency>
+   </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+	<groupId>com.keyboardsamurais.maven</groupId>
+	<artifactId>maven-timestamp-plugin</artifactId>
+      </plugin>
+      <plugin>
+	<groupId>org.antlr</groupId>
+	<artifactId>antlr3-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>dist</id>
+            <phase>package</phase>
+            <goals><goal>single</goal></goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/dist.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <configuration>
+              <instructions>
+                  <Embed-Transitive>true</Embed-Transitive>
+                  <Embed-Dependency>*;scope=compile;groupId=org.antlr|antlr|nl.flotsam|dk.brics</Embed-Dependency>
+                  <Embed-Directory>lib</Embed-Directory>
+                  <Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+              </instructions>
+          </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
