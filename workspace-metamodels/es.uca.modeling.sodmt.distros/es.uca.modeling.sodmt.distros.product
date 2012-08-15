@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="SODM+T RCP Application" uid="es.uca.modeling.sodmt.product.plugin" id="es.uca.modeling.sodmt.product.rcp" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="SODM+T RCP Application" uid="es.uca.modeling.sodmt.product.plugin" id="es.uca.modeling.sodmt.product.rcp" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -44,8 +44,6 @@
       <plugin id="es.uca.modeling.eol.marte"/>
       <plugin id="es.uca.modeling.eol.marte.codegen.modisco"/>
       <plugin id="es.uca.modeling.eol.marte.codegen.wsdl"/>
-      <plugin id="es.uca.modeling.eol.marte.performance" fragment="true"/>
-      <plugin id="es.uca.modeling.eol.marte.tests.junit" fragment="true"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.modisco"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.modisco.edit"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.modisco.editor"/>
@@ -106,22 +104,19 @@
       <plugin id="org.eclipse.core.externaltools"/>
       <plugin id="org.eclipse.core.filebuffers"/>
       <plugin id="org.eclipse.core.filesystem"/>
-      <plugin id="org.eclipse.core.filesystem.aix.ppc" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.hpux.ia64_32" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.macosx" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.solaris.sparc" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.core.filesystem.linux.x86" fragment="true" os="linux" arch="x86" />
+      <plugin id="org.eclipse.core.filesystem.linux.x86_64" fragment="true" os="linux" arch="x86_64" />
+      <plugin id="org.eclipse.core.filesystem.macosx" fragment="true" os="macosx" />
+      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true" os="win32" arch="x86" />
+      <plugin id="org.eclipse.core.filesystem.win32.x86_64" fragment="true" os="win32" arch="x86_64" />
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.net"/>
-      <plugin id="org.eclipse.core.net.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.net.linux.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.core.net.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.core.net.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.core.net.linux.x86" fragment="true" os="linux" arch="x86" />
+      <plugin id="org.eclipse.core.net.linux.x86_64" fragment="true" os="linux" arch="x86_64" />
+      <plugin id="org.eclipse.core.net.win32.x86" fragment="true" os="win32" arch="x86" />
+      <plugin id="org.eclipse.core.net.win32.x86_64" fragment="true" os="win32" arch="x86_64" />
       <plugin id="org.eclipse.core.resources"/>
-      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true" os="win32" arch="x86" />
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.core.variables"/>
@@ -144,7 +139,7 @@
       <plugin id="org.eclipse.e4.ui.workbench"/>
       <plugin id="org.eclipse.e4.ui.workbench.addons.swt"/>
       <plugin id="org.eclipse.e4.ui.workbench.renderers.swt"/>
-      <plugin id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa" fragment="true"/>
+      <plugin id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa" fragment="true" ws="cocoa"/>
       <plugin id="org.eclipse.e4.ui.workbench.swt"/>
       <plugin id="org.eclipse.e4.ui.workbench3"/>
       <plugin id="org.eclipse.emf"/>
@@ -264,10 +259,10 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
-      <plugin id="org.eclipse.equinox.security.macosx" fragment="true"/>
+      <plugin id="org.eclipse.equinox.security.macosx" fragment="true" os="macosx" />
       <plugin id="org.eclipse.equinox.security.ui"/>
-      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.equinox.security.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true" os="win32" arch="x86" />
+      <plugin id="org.eclipse.equinox.security.win32.x86_64" fragment="true" os="win32" arch="x86_64" />
       <plugin id="org.eclipse.equinox.simpleconfigurator"/>
       <plugin id="org.eclipse.equinox.simpleconfigurator.manipulator"/>
       <plugin id="org.eclipse.equinox.util"/>
@@ -278,7 +273,7 @@
       <plugin id="org.eclipse.gmf.runtime.common.ui.action"/>
       <plugin id="org.eclipse.gmf.runtime.common.ui.action.ide"/>
       <plugin id="org.eclipse.gmf.runtime.common.ui.printing"/>
-      <plugin id="org.eclipse.gmf.runtime.common.ui.printing.win32" fragment="true"/>
+      <plugin id="org.eclipse.gmf.runtime.common.ui.printing.win32" fragment="true" os="win32" />
       <plugin id="org.eclipse.gmf.runtime.common.ui.services"/>
       <plugin id="org.eclipse.gmf.runtime.common.ui.services.action"/>
       <plugin id="org.eclipse.gmf.runtime.common.ui.services.properties"/>
@@ -500,20 +495,12 @@
       <plugin id="org.eclipse.pde.ui"/>
       <plugin id="org.eclipse.search"/>
       <plugin id="org.eclipse.swt"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.aix.ppc" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.aix.ppc64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.hpux.ia64_32" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.ppc64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.s390" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.s390x" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.solaris.sparc" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.solaris.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true" os="macosx" ws="cocoa" arch="x86" />
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true" os="macosx" ws="cocoa" arch="x86_64" />
+      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true" os="linux" ws="gtk" arch="x86" />
+      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true" os="linux" ws="gtk" arch="x86_64" />
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true" os="win32" ws="win32" arch="x86" />
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true" os="win32" ws="win32" arch="x86_64" />
       <plugin id="org.eclipse.team.core"/>
       <plugin id="org.eclipse.team.ui"/>
       <plugin id="org.eclipse.text"/>
@@ -531,7 +518,7 @@
       <plugin id="org.eclipse.ui.views"/>
       <plugin id="org.eclipse.ui.views.log"/>
       <plugin id="org.eclipse.ui.views.properties.tabbed"/>
-      <plugin id="org.eclipse.ui.win32" fragment="true"/>
+      <plugin id="org.eclipse.ui.win32" fragment="true" os="win32" ws="win32" />
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.eclipse.uml2.codegen.ecore"/>
@@ -556,7 +543,6 @@
       <plugin id="org.eclipse.wst.xml.core"/>
       <plugin id="org.eclipse.wst.xsd.core"/>
       <plugin id="org.eclipse.xsd"/>
-      <plugin id="org.eclipse.xtext.logging" fragment="true"/>
       <plugin id="org.eclipse.zest.layouts"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.jboss.netty"/>
@@ -572,97 +558,10 @@
       <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
-   <features>
-      <feature id="org.eclipse.uml2"/>
-      <feature id="es.uca.modeling.eol.feature"/>
-      <feature id="es.uca.modeling.eol.marte.feature"/>
-      <feature id="es.uca.modeling.eol.marte.weaving.modisco.feature"/>
-      <feature id="es.uca.modeling.eol.marte.weaving.wsdl.feature"/>
-      <feature id="org.eclipse.epsilon.evl.emf.validation.feature"/>
-      <feature id="org.eclipse.epsilon.feature"/>
-      <feature id="org.eclipse.epsilon.gmf.feature"/>
-      <feature id="org.eclipse.epsilon.dependencies.feature"/>
-      <feature id="org.eclipse.rcp"/>
-      <feature id="org.eclipse.emf.ecore"/>
-      <feature id="org.eclipse.e4.rcp"/>
-      <feature id="org.eclipse.emf.common"/>
-      <feature id="org.eclipse.papyrus.uml.textedit.feature"/>
-      <feature id="org.eclipse.papyrus.uml.feature"/>
-      <feature id="org.eclipse.papyrus.infra.feature"/>
-      <feature id="org.eclipse.papyrus.views.properties.feature"/>
-      <feature id="org.eclipse.papyrus.infra.gmfdiag.feature"/>
-      <feature id="org.eclipse.papyrus.uml.table.feature"/>
-      <feature id="org.eclipse.papyrus.uml.properties.feature"/>
-      <feature id="org.eclipse.papyrus.infra.services.feature"/>
-      <feature id="org.eclipse.papyrus.infra.widget.feature"/>
-      <feature id="org.eclipse.papyrus.infra.core.feature"/>
-      <feature id="org.eclipse.papyrus.editor.feature"/>
-      <feature id="org.eclipse.papyrus.infra.table.feature"/>
-      <feature id="org.eclipse.papyrus.uml.modelexplorer.feature"/>
-      <feature id="org.eclipse.papyrus.infra.emf.feature"/>
-      <feature id="org.eclipse.papyrus.uml.diagram.feature"/>
-      <feature id="org.eclipse.papyrus.infra.queries.feature"/>
-      <feature id="org.eclipse.papyrus.extra.marte.feature"/>
-      <feature id="org.eclipse.papyrus.views.modelexplorer.feature"/>
-      <feature id="org.eclipse.equinox.executable"/>
-      <feature id="org.eclipse.equinox.p2.user.ui"/>
-      <feature id="org.eclipse.equinox.p2.core.feature"/>
-      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
-      <feature id="org.eclipse.equinox.p2.extras.feature"/>
-      <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.help"/>
-      <feature id="es.uca.modeling.sodmt.product.feature"/>
-      <feature id="org.eclipse.emf"/>
-      <feature id="org.eclipse.emf.common.ui"/>
-      <feature id="org.eclipse.emf.ecore.edit"/>
-      <feature id="org.eclipse.emf.ecore.editor"/>
-      <feature id="org.eclipse.emf.edit"/>
-      <feature id="org.eclipse.emf.edit.ui"/>
-      <feature id="org.eclipse.emf.mapping"/>
-      <feature id="org.eclipse.emf.mapping.ecore"/>
-      <feature id="org.eclipse.emf.mapping.ecore.editor"/>
-      <feature id="org.eclipse.emf.query"/>
-      <feature id="org.eclipse.emf.codegen.ecore.ui"/>
-      <feature id="org.eclipse.emf.codegen.ui"/>
-      <feature id="org.eclipse.emf.converter"/>
-      <feature id="org.eclipse.emf.databinding.edit"/>
-      <feature id="org.eclipse.emf.codegen.ecore"/>
-      <feature id="org.eclipse.emf.databinding"/>
-      <feature id="org.eclipse.emf.mapping.ui"/>
-      <feature id="org.eclipse.emf.codegen"/>
-      <feature id="org.eclipse.modisco.infra.omg.feature"/>
-      <feature id="org.eclipse.modisco.infrastructure.feature"/>
-      <feature id="org.eclipse.papyrus.infra.discovery.feature"/>
-      <feature id="org.eclipse.modisco.infrastructure.source.feature"/>
-      <feature id="org.eclipse.modisco.infra.omg.source.feature"/>
-      <feature id="org.eclipse.gmf"/>
-      <feature id="org.eclipse.gmf.runtime.notation"/>
-      <feature id="org.eclipse.gmf.tooling"/>
-      <feature id="org.eclipse.gmf.tooling.runtime"/>
-      <feature id="org.eclipse.emf.workspace"/>
-      <feature id="org.eclipse.emf.transaction"/>
-      <feature id="org.eclipse.draw2d"/>
-      <feature id="org.eclipse.emf.validation"/>
-      <feature id="org.eclipse.gmf.runtime.thirdparty"/>
-      <feature id="org.eclipse.gef"/>
-      <feature id="org.eclipse.papyrus.uml.tools.feature"/>
-      <feature id="org.eclipse.xtext.runtime"/>
-      <feature id="org.eclipse.xtext.ui"/>
-      <feature id="org.eclipse.pde"/>
-      <feature id="org.eclipse.jdt"/>
-      <feature id="org.eclipse.modisco.java.feature"/>
-      <feature id="org.eclipse.papyrus.customization.feature"/>
-      <feature id="org.eclipse.papyrus.sdk.feature"/>
-      <feature id="org.eclipse.papyrus.team.feature"/>
-      <feature id="org.eclipse.modisco.java.source.feature"/>
-      <feature id="org.eclipse.papyrus.xwt.feature"/>
-      <feature id="org.eclipse.papyrus.sysml.properties.feature"/>
-      <feature id="org.eclipse.ocl"/>
-      <feature id="org.eclipse.ocl.uml"/>
-   </features>
-
    <configurations>
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
    </configurations>
 
 </product>
