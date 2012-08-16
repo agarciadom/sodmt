@@ -1,5 +1,7 @@
 package es.uca.modeling.eol.marte.performance;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.EmfUtil;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
@@ -113,7 +116,7 @@ public class PerformanceTest {
 
 	private List<FinalNode> getFinalNodes(final Activity activity) {
 		List<FinalNode> finalNodes = new ArrayList<FinalNode>();
-		for (ActivityNode node : activity.getOwnedNodes()) {
+		for (ActivityNode node : activity.getNodes()) {
 			if (node instanceof FinalNode) {
 				finalNodes.add((FinalNode)node);
 			}			
@@ -123,7 +126,7 @@ public class PerformanceTest {
 
 	private InitialNode getInitialNode(Activity activity) {
 		InitialNode initial = null;
-		for (ActivityNode node : activity.getOwnedNodes()) {
+		for (ActivityNode node : activity.getNodes()) {
 			if (node instanceof InitialNode) {
 				initial = (InitialNode)node;
 				break;
@@ -144,7 +147,10 @@ public class PerformanceTest {
 		mModule.parse(PerformanceTest.class.getResource("/eol/time_algorithms.eol").toURI());
 		mModule.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
 
-		mModel = new InMemoryEmfModel("Model", EmfUtil.createResource(), MARTEPackage.eNS_URI);
+		Resource resource = EmfUtil.createResource();
+
+		mModel = new InMemoryEmfModel("Model", resource, MARTEPackage.eINSTANCE);
+		mModel.setModelFile("dummy.model");
 		mModel.setReadOnLoad(false);
 		mModel.setStoredOnDisposal(false);
 		mModel.setCachingEnabled(false);
@@ -172,6 +178,7 @@ public class PerformanceTest {
 			Activity activity = prepareIteration(fixedAnnotations);
 			EolOperation opThroughputs = mModule.getOperations().getOperation("annotateThroughput");
 			InitialNode initial = getInitialNode(activity);
+			assertNotNull(initial);
 
 			// Run once, as warm-up
 			opThroughputs.execute(null, Arrays.asList(initial), mModule.getContext());
