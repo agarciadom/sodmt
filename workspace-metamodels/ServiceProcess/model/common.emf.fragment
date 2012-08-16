@@ -39,9 +39,9 @@ abstract class PerformanceAnnotation {
 
 abstract class LocalPerformanceAnnotation extends PerformanceAnnotation {
    @gmf.label(foo="bar")
-   attr Double minimumTime = 1;
+   attr Double minimumTime = 0;
    @gmf.label(foo="bar")
-   attr Double weight = 0;
+   attr Double weight = 1;
 }
 
 /* EDGES */

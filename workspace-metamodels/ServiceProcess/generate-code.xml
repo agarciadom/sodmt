@@ -29,7 +29,7 @@
 	<target name="generateEmfatic" depends="refreshEmfatic">
 		<echo>Generating Emfatic source ${emfatic.location} from its template</echo>
 		<loadfile srcFile="${common.fragment.location}" property="common.fragment.contents" />
-		<copy file="${emfatic.template.location}" tofile="${emfatic.location}">
+		<copy file="${emfatic.template.location}" tofile="${emfatic.location}" overwrite="true">
 		  <filterset begintoken="/*@" endtoken="@*/" recurse="false">
 		    <filter token="COMMON_FRAGMENT" value="${common.fragment.contents}"/>
 	          </filterset>
