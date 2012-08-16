@@ -2,13 +2,28 @@
 <project default="run-tests">
 
 	<target name="run-tests">
-		<epsilon.emf.loadModel name="Model"
-			modelfile="models/scomp-CompraTabacoSinTratar.model"
-			metamodelfile="../ServiceComposition/model/servicecomposition.ecore"
+		<epsilon.emf.loadModel name="minimal"
+			modelfile="models/minimal.model"
+			metamodelfile="../ServiceProcess/model/serviceprocess.ecore"
+			read="true" store="false" />
+		<epsilon.emf.loadModel name="sequence"
+			modelfile="models/sequence.model"
+			metamodelfile="../ServiceProcess/model/serviceprocess.ecore"
+			read="true" store="false" />
+		<epsilon.emf.loadModel name="single-dipole"
+			modelfile="models/single-dipole.model"
+			metamodelfile="../ServiceProcess/model/serviceprocess.ecore"
+			read="true" store="false" />
+		<epsilon.emf.loadModel name="two-dipoles"
+			modelfile="models/two-dipoles.model"
+			metamodelfile="../ServiceProcess/model/serviceprocess.ecore"
 			read="true" store="false" />
 
-		<epsilon.eunit src="serviceComposition.eunit" debug="true">
-			<model ref="Model" />
+		<epsilon.eunit src="caggregation.eunit" debug="true">
+			<model ref="minimal" />
+			<model ref="sequence" />
+			<model ref="single-dipole" />
+			<model ref="two-dipoles" />
 		</epsilon.eunit>
 	</target>
 

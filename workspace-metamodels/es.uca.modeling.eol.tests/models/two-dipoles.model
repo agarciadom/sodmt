@@ -31,7 +31,7 @@
   <edges xsi:type="sp:ProcessControlFlow" xmi:id="_GvMMYPGoEd-WVeBAYwAeXA" target="_l2oa8PGnEd-WVeBAYwAeXA" source="_3iYD8PGnEd-WVeBAYwAeXA"/>
   <edges xsi:type="sp:ProcessControlFlow" xmi:id="_G6qckPGoEd-WVeBAYwAeXA" target="_38udoPGnEd-WVeBAYwAeXA" source="_l2oa8PGnEd-WVeBAYwAeXA"/>
   <edges xsi:type="sp:ProcessControlFlow" xmi:id="_HFyHcPGoEd-WVeBAYwAeXA" target="_h8m1YPGnEd-WVeBAYwAeXA" source="_38udoPGnEd-WVeBAYwAeXA"/>
-  <activityPerformance xmi:id="_yBpJ0PGoEd-WVeBAYwAeXA" minimumTime="20.0" execNode="_0K6Y4PGnEd-WVeBAYwAeXA"/>
-  <activityPerformance xmi:id="_xgtnAPGoEd-WVeBAYwAeXA" minimumTime="30.0" execNode="_2CVNgPGnEd-WVeBAYwAeXA"/>
-  <processPerformance xmi:id="_tFjqUPGoEd-WVeBAYwAeXA" secsTimeLimit="100.0" />
+  <activityPerformance xmi:id="_yBpJ0PGoEd-WVeBAYwAeXA" minimumTime="20.0" weight="0.0" execNode="_0K6Y4PGnEd-WVeBAYwAeXA"/>
+  <activityPerformance xmi:id="_xgtnAPGoEd-WVeBAYwAeXA" minimumTime="30.0" weight="0.0" execNode="_2CVNgPGnEd-WVeBAYwAeXA"/>
+  <processPerformance xmi:id="_tFjqUPGoEd-WVeBAYwAeXA" secsTimeLimit="100.0"/>
 </sp:ServiceProcess>
