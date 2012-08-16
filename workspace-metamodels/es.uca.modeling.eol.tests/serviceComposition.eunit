@@ -24,19 +24,45 @@ operation throughputAlgorithmWorks() {
 }
 
 @test
-operation newTL_InSiteQC() {
+operation newTL_sequence() {
   var saInSiteQC := ServiceActivity.all.selectOne(s|s.name == 'Realizar control de calidad in situ');
   var start := saInSiteQC.nodes.selectOne(n : ActivityStart | true);
+  var actions := saInSiteQC.nodes.select(n : ActivityAction | true);
 
   saInSiteQC.annotation.secsTimeLimit := 10.0d;
   assertTrue(distributeTime(start.getGlobalTimeLimit(), start.getEndNodes()));
 
-  var expectedTL := 10 / 6.0;
+  var expectedTL := 10 / actions.size().asDouble();
   for (action in saInSiteQC.nodes.select(n : ActivityAction | true)) {
-    assertEquals(expectedTL, action.annotation.secsTimeLimit);
+    assertEquals(expectedTL, action.annotation.secsTimeLimit, 3);
   }
 }
 
-operation ServiceActivity find(name : String) : ActivityNode {
-  return self.nodes.selectOne(n | n.name == name);
+@test
+operation oldTL_sequence() {
+  var saInSiteQC := ServiceActivity.all.selectOne(s|s.name == 'Realizar control de calidad in situ');
+  var start := saInSiteQC.nodes.selectOne(n : ActivityStart | true);
+  var actions := saInSiteQC.nodes.select(n : ActivityAction | true);
+
+  saInSiteQC.annotation.secsTimeLimit := 10.0d;
+  assertTrue(annotateTimeLimits(start.getGlobalTimeLimit(), start));
+
+  var expectedTL := 10 / actions.size().asDouble();
+  for (action in saInSiteQC.nodes.select(n : ActivityAction | true)) {
+    assertEquals(expectedTL, action.annotation.secsTimeLimit, 3);
+  }
+}
+
+@test
+operation throughput_sequence() {
+  var saInSiteQC := ServiceActivity.all.selectOne(s|s.name == 'Realizar control de calidad in situ');
+  var start := saInSiteQC.nodes.selectOne(n : ActivityStart | true);
+
+  var expectedCU := 3.0d;
+  saInSiteQC.annotation.concurrentUsers := expectedCU;
+  assertTrue(annotateConcurrentUsers(start));
+
+  for (action in saInSiteQC.nodes.select(n : ActivityAction | true)) {
+    assertEquals(expectedCU, action.annotation.concurrentUsers, 3);
+  }
 }
