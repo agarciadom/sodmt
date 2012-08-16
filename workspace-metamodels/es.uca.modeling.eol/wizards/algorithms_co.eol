@@ -32,6 +32,10 @@ operation ActivityStart getGlobalTimeLimit() {
   return self.activity.annotation.secsTimeLimit;
 }
 
+operation ActivityStart getEndNodes() {
+ return self.activity.nodes.select(n : ActivityFinish | true);
+}
+
 @cached
 operation ActivityStart getConcurrentUsers() : Real {
   return self.activity.annotation.concurrentUsers;

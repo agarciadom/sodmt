@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="run-tests">
+
+	<target name="run-tests">
+		<epsilon.emf.loadModel name="Model"
+			modelfile="models/scomp-CompraTabacoSinTratar.model"
+			metamodelfile="../ServiceComposition/model/servicecomposition.ecore"
+			read="true" store="false" />
+
+		<epsilon.eunit src="serviceComposition.eunit" debug="true">
+			<model ref="Model" />
+		</epsilon.eunit>
+	</target>
+
+</project>

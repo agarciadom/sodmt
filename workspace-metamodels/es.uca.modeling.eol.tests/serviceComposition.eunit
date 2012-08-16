@@ -1,0 +1,42 @@
+import 'platform:/plugin/es.uca.modeling.eol/wizards/algorithms_co.eol';
+
+@test
+operation newTimeLimitAlgorithmWorks() {
+  for (start in ActivityStart.all) {
+    var globalLimit = start.getGlobalTimeLimit();
+    var endNodes = start.getEndNodes();
+    assertTrue(distributeTime(globalLimit, endNodes));
+  }
+}
+
+@test
+operation oldTimeLimitAlgorithmWorks() {
+  for (start in ActivityStart.all) {
+    assertTrue(annotateTimeLimits(start.getGlobalTimeLimit(), start));
+  }
+}
+
+@test
+operation throughputAlgorithmWorks() {
+  for (start in ActivityStart.all) {
+    assertTrue(annotateConcurrentUsers(start));
+  }
+}
+
+@test
+operation newTL_InSiteQC() {
+  var saInSiteQC := ServiceActivity.all.selectOne(s|s.name == 'Realizar control de calidad in situ');
+  var start := saInSiteQC.nodes.selectOne(n : ActivityStart | true);
+
+  saInSiteQC.annotation.secsTimeLimit := 10.0d;
+  assertTrue(distributeTime(start.getGlobalTimeLimit(), start.getEndNodes()));
+
+  var expectedTL := 10 / 6.0;
+  for (action in saInSiteQC.nodes.select(n : ActivityAction | true)) {
+    assertEquals(expectedTL, action.annotation.secsTimeLimit);
+  }
+}
+
+operation ServiceActivity find(name : String) : ActivityNode {
+  return self.nodes.selectOne(n | n.name == name);
+}
