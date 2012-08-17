@@ -12,5 +12,9 @@
    <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.0.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.0.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
+   <feature url="features/kybele.etsii.urjc.es.ucm.feature_1.0.0.jar" id="kybele.etsii.urjc.es.ucm.feature" version="1.0.0">
+      <category name="es.uca.webservices.sodmt.updatesite.sodm"/>
+   </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>
+   <category-def name="es.uca.webservices.sodmt.updatesite.sodm" label="SODM"/>
 </site>

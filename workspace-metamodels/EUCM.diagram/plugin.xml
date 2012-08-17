@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes">
+      <?gmfgen generated="true"?>
+      <fileTypes
+         type="text"
+         extension="euc_diagram">
+      </fileTypes>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <?gmfgen generated="true"?>
+      <parser
+         type="euc_diagram"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <?gmfgen generated="true"?>
+      <editor
+         id="EUC.diagram.part.ExtendedUseCasesDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/EUCDiagramFile.gif"
+         extensions="euc_diagram"
+         default="true"
+         class="EUC.diagram.part.ExtendedUseCasesDiagramEditor"
+         matchingStrategy="EUC.diagram.part.ExtendedUseCasesMatchingStrategy"
+         contributorClass="EUC.diagram.part.ExtendedUseCasesDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="EUC.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/EUCDiagramFile.gif"
+  	     category="org.eclipse.ui.Examples"
+  	     class="EUC.diagram.part.ExtendedUseCasesCreationWizard"
+  	     id="EUC.diagram.part.ExtendedUseCasesCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            adaptable="false"
+            id="EUCM.diagram.LoadResource"
+            objectClass="EUC.diagram.edit.parts.ExtendedUseCasesModelEditPart">
+         <action
+               class="EUC.diagram.part.ExtendedUseCasesLoadResourceAction"
+               enablesFor="1"
+               id="EUCM.diagram.LoadResourceAction"
+               label="%loadResourceActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>           
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="EUCM.diagram.InitDiagram"
+            nameFilter="*.euc"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="EUC.diagram.part.ExtendedUseCasesInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="EUCM.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="ExtendedUseCasesPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="EUC.diagram.part.ExtendedUseCasesDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="ExtendedUseCasesPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="EUC.diagram.part.ExtendedUseCasesDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="ExtendedUseCasesRender">
+         <Priority name="Lowest"/>
+         <ViewId id="EUC.diagram.part.ExtendedUseCasesDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <?gmfgen generated="true"?>
+      <contributionItemProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="Low"/>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="EUC.diagram.edit.parts.ActorNameEditPart"/>
+            <popupPredefinedItem id="deleteFromDiagramAction" remove="true"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="EUC.diagram.edit.parts.ActorUseCaseEditPart"/>
+            <popupAction path="/editGroup" id="deleteFromModelAction"/>
+            <popupPredefinedItem id="deleteFromDiagramAction" remove="true"/>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="EUC.diagram.edit.parts.WrapLabelEditPart"/>
+            <popupPredefinedItem id="deleteFromDiagramAction" remove="true"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="EUC.diagram.edit.parts.WrapLabel2EditPart"/>
+            <popupPredefinedItem id="deleteFromDiagramAction" remove="true"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+      </contributionItemProvider>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences">
+      <?gmfgen generated="true"?>
+      <initializer class="EUC.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <?gmfgen generated="true"?>
+      <page
+            id="EUCM.diagram.general"
+            name="%preference.page.title.EUCM.diagram.general"
+            class="EUC.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="EUCM.diagram.appearance"
+            name="%preference.page.title.EUCM.diagram.appearance"
+            category="EUCM.diagram.general"
+            class="EUC.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="EUCM.diagram.connections"
+            name="%preference.page.title.EUCM.diagram.connections"
+            category="EUCM.diagram.general"
+            class="EUC.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="EUCM.diagram.printing"
+            name="%preference.page.title.EUCM.diagram.printing"
+            category="EUCM.diagram.general"
+            class="EUC.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="EUCM.diagram.rulersAndGrid"
+            name="%preference.page.title.EUCM.diagram.rulersAndGrid"
+            category="EUCM.diagram.general"
+            class="EUC.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+      <page
+            id="EUCM.diagram.pathmaps"
+            name="%preference.page.title.EUCM.diagram.pathmaps"
+            category="EUCM.diagram.general"
+            class="org.eclipse.gmf.runtime.emf.ui.preferences.PathmapsPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="EUCM.diagram"
+            labelProvider="EUC.diagram.sheet.ExtendedUseCasesSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="EUCM.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="EUCM.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="EUC.diagram.sheet.ExtendedUseCasesPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <?gmfgen generated="true"?>
+      <viewProvider class="EUC.diagram.providers.ExtendedUseCasesViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ExtendedUseCases"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints=""/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints=""/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="EUC.diagram.providers.ExtendedUseCasesEditPartProvider">
+         <Priority name="Lowest"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="EUC.diagram.providers.ExtendedUseCasesModelingAssistantProvider">
+         <Priority name="Lowest"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+      <?gmfgen generated="true"?>
+      <IconProvider class="EUC.diagram.providers.ExtendedUseCasesIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="EUC.diagram.providers.ExtendedUseCasesParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.ExtendedUseCasesModel_79"
+               name="%metatype.name.ExtendedUseCasesModel_79"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ExtendedUseCasesModel"
+               edithelper="EUC.diagram.edit.helpers.ExtendedUseCasesModelEditHelper">
+            <param name="semanticHint" value="79"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.Classifier_1001"
+               name="%metatype.name.Classifier_1001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Classifier"
+               edithelper="EUC.diagram.edit.helpers.ClassifierEditHelper">
+            <param name="semanticHint" value="1001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.Actor_1002"
+               name="%metatype.name.Actor_1002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Actor"
+               edithelper="EUC.diagram.edit.helpers.ActorEditHelper">
+            <param name="semanticHint" value="1002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.StructuralBasicUseCase_2001"
+               name="%metatype.name.StructuralBasicUseCase_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StructuralBasicUseCase"
+               edithelper="EUC.diagram.edit.helpers.StructuralBasicUseCaseEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.FunctionalBasicUseCase_2002"
+               name="%metatype.name.FunctionalBasicUseCase_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FunctionalBasicUseCase"
+               edithelper="EUC.diagram.edit.helpers.FunctionalBasicUseCaseEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <specializationType
+               id="EUCM.diagram.ActorUseCase_3001"
+               name="%metatype.name.ActorUseCase_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="3001"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.Extend_3002"
+               name="%metatype.name.Extend_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Extend"
+               edithelper="EUC.diagram.edit.helpers.Extend2EditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://kybele.es/EUC">
+         <metamodelType
+               id="EUCM.diagram.Include_3003"
+               name="%metatype.name.Include_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Include"
+               edithelper="EUC.diagram.edit.helpers.ExtendEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="ExtendedUseCasesClientContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="EUCM.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="ExtendedUseCasesClientContext">
+         <elementType ref="EUCM.diagram.ExtendedUseCasesModel_79"/>
+         <elementType ref="EUCM.diagram.Classifier_1001"/>
+         <elementType ref="EUCM.diagram.Actor_1002"/>
+         <elementType ref="EUCM.diagram.StructuralBasicUseCase_2001"/>
+         <elementType ref="EUCM.diagram.FunctionalBasicUseCase_2002"/>
+         <elementType ref="EUCM.diagram.ActorUseCase_3001"/>
+         <elementType ref="EUCM.diagram.Extend_3002"/>
+         <elementType ref="EUCM.diagram.Include_3003"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="EUCM.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="EUCM.diagram"
+           properties="isURIEditorInput"
+           class="EUC.diagram.part.ExtendedUseCasesUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="EUCM.diagram.DomainModelElementPropertyTester"
+           type="org.eclipse.emf.ecore.EObject"
+           namespace="EUCM.diagram"
+           properties="isDomainModelElement"
+           class="EUC.diagram.part.ExtendedUseCasesDomainModelElementTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="EUCM.diagram.resourceContent"/>
+			<contentExtension pattern="EUCM.diagram.domainResourceContent"/>
+            <contentExtension pattern="EUCM.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="EUCM.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="EUCM.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="EUC.diagram.navigator.ExtendedUseCasesNavigatorContentProvider" 
+            labelProvider="EUC.diagram.navigator.ExtendedUseCasesNavigatorLabelProvider"
+            icon="icons/obj16/EUCDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="euc_diagram"/>
+               </and>
+               <instanceof value="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="EUCM.diagram.navigatorSorter" 
+               class="EUC.diagram.navigator.ExtendedUseCasesNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="euc_diagram"/>
+                  </and>
+                  <instanceof value="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="EUCM.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="EUC.diagram.navigator.ExtendedUseCasesDomainNavigatorContentProvider" 
+            labelProvider="EUC.diagram.navigator.ExtendedUseCasesDomainNavigatorLabelProvider"
+            icon="icons/obj16/EUCDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="euc"/>
+               </and>
+               <and>
+                  <instanceof value="org.eclipse.emf.ecore.EObject"/>
+                  <test property="EUCM.diagram.isDomainModelElement"/>
+               </and>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <and>
+       	       <instanceof value="org.eclipse.emf.ecore.EObject"/>
+       	       <test property="EUCM.diagram.isDomainModelElement"/>
+       	    </and>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="EUCM.diagram.navigatorActionProvider"
+            class="EUC.diagram.navigator.ExtendedUseCasesNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="EUCM.diagram.navigatorLinkHelper"
+            class="EUC.diagram.navigator.ExtendedUseCasesNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="EUCM.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="EUC.diagram.navigator.ExtendedUseCasesAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="EUC.diagram.part.ExtendedUseCasesDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="EUC.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="EUC.diagram.updateDiagram"
+         contextId="EUC.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+</plugin>

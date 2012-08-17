@@ -1,0 +1,7 @@
+# Tracing options for the UCM.diagram plug-in
+
+# Common issues
+UCM.diagram/debug=false
+
+# Visual IDs
+UCM.diagram/debug/visualID=false

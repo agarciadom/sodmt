@@ -21,6 +21,14 @@
    </vm>
 
    <plugins>
+      <plugin id="EUCM" />
+      <plugin id="EUCM.edit" />
+      <plugin id="EUCM.editor" />
+      <plugin id="EUCM.diagram" />
+      <plugin id="UCM" />
+      <plugin id="UCM.edit" />
+      <plugin id="UCM.editor" />
+      <plugin id="UCM.diagram" />
       <plugin id="ServiceComposition"/>
       <plugin id="ServiceComposition.diagram"/>
       <plugin id="ServiceComposition.edit"/>

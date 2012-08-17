@@ -1,0 +1,7 @@
+# Tracing options for the EUCM.diagram plug-in
+
+# Common issues
+EUCM.diagram/debug=false
+
+# Visual IDs
+EUCM.diagram/debug/visualID=false

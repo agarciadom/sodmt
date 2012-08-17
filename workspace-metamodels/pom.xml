@@ -17,6 +17,17 @@
     </properties>
 
     <modules>
+        <!-- SODM use case models -->
+        <module>kybele.etsii.urjc.es.ucm.feature</module>
+        <module>EUCM</module>
+        <module>EUCM.edit</module>
+        <module>EUCM.editor</module>
+        <module>EUCM.diagram</module>
+        <module>UCM</module>
+        <module>UCM.edit</module>
+        <module>UCM.editor</module>
+        <module>UCM.diagram</module>
+
         <!-- Ad-hoc models and algorithms -->
         <module>es.uca.modeling.eol.feature</module>
         <module>es.uca.modeling.eol</module>
