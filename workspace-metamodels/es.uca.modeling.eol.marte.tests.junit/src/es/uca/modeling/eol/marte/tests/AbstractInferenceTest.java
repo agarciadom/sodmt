@@ -1,5 +1,7 @@
 package es.uca.modeling.eol.marte.tests;
 
+import static org.junit.Assert.assertTrue;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +13,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
@@ -121,8 +124,10 @@ public class AbstractInferenceTest {
 	 * Loads a model twice: once with the standard UML2 Ecore package, and again with the
 	 * MARTE package, so both type systems are available inside the EOL script.
 	 */
-	public EmfModel loadMarteModel(String modelPath)
-			throws EolModelLoadingException {
+	public EmfModel loadMarteModel(String modelPath) throws EolModelLoadingException {
+		final EPackage martePkg = MARTEPackage.eINSTANCE;
+		assertTrue(EPackage.Registry.INSTANCE.containsKey(martePkg.getNsURI()));
+
 		return loadModel("", modelPath, MARTEPackage.eNS_URI);
 	}
 

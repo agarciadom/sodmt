@@ -10,4 +10,5 @@ Require-Bundle: org.eclipse.epsilon.eunit.junit;bundle-version="0.9.1",
  org.eclipse.papyrus.marte.static.profile;bundle-version="0.9.0",
  es.uca.modeling.eol.marte
 Bundle-Vendor: University of Cádiz
-Import-Package: org.junit.runner;version="4.5.0"
+Import-Package: org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0"

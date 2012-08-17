@@ -33,6 +33,7 @@ public class ConstraintAggregationTest extends AbstractInferenceTest {
 		assertConstraintsEquals(MODEL_PATH, ACTIVITY_SEQ_WITH_REPS, 1, pair(0.0, 8.0));
 	}
 
+	@SuppressWarnings("rawtypes")
 	private void assertConstraintsEquals(String modelPath,
 			String activityName, double globalLimit, double[]... expected) throws EolRuntimeException {
 		EmfModel model = loadMarteModel(modelPath);
@@ -46,6 +47,7 @@ public class ConstraintAggregationTest extends AbstractInferenceTest {
 		return args;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static void assertConstraintsEquals(String msg, EolSequence res, double[]... expectedConstraints) {
 		assertNotNull(res);
 		assertNotNull((EObject)res.get(0));
