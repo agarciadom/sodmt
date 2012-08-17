@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="serviceComposition" nsURI="www.uca.es/modeling/serviceComposition"
+    nsPrefix="sc">
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceComposition">
+    <eAnnotations source="gmf.diagram">
+      <details key="foo" value="bar"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//CompositionFlowNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositionEdges" upperBound="-1"
+        eType="#//CompositionFlowEdge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityEdges" upperBound="-1"
+        eType="#//ActivityFlowEdge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swimlanes" eType="#//SwimlaneContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityPerformance" upperBound="-1"
+        eType="#//ActivityPerformanceAnnotation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//ServiceActivity"
+        eOpposite="#//ServiceActivity/nodes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionFlowEdge" abstract="true"
+      eSuperTypes="#//FlowEdge"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionFlowNode" abstract="true"
+      eSuperTypes="#//FlowNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityFlowEdge" abstract="true" eSuperTypes="#//FlowEdge"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityFlowNode" abstract="true" eSuperTypes="#//ActivityElement #//FlowNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SwimlaneContainer">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="swimlanes"/>
+      <details key="figure" value="es.uca.modeling.figures.SwimlanesFigure"/>
+      <details key="tool.name" value="Swimlanes"/>
+      <details key="size" value="600,300"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="swimlaneNames" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityPerformanceAnnotation" eSuperTypes="#//PerformanceAnnotation">
+    <eAnnotations source="gmf.node">
+      <details key="label.pattern" value="&lt;&lt;sapc>>"/>
+      <details key="tool.name" value="Service Activity Performance Constraint"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execNode" eType="#//ServiceActivity"
+        eOpposite="#//ServiceActivity/annotation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionPerformanceAnnotation" eSuperTypes="#//ActivityElement #//LocalPerformanceAnnotation">
+    <eAnnotations source="gmf.node">
+      <details key="label.pattern" value="&lt;&lt;apc>>"/>
+      <details key="tool.name" value="Action Performance Constraint"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//ActivityAction"
+        eOpposite="#//ActivityAction/annotation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="manuallyAdded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true">
+      <eAnnotations source="gmf.label">
+        <details key="label.readOnly" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionControlFlow" eSuperTypes="#//CompositionFlowEdge #//ControlFlow">
+    <eAnnotations source="gmf.link">
+      <details key="tool.name" value="Composition Control Flow"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionObjectFlow" eSuperTypes="#//CompositionFlowEdge #//ObjectFlow">
+    <eAnnotations source="gmf.link">
+      <details key="tool.name" value="Composition Object Flow"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityControlFlow" eSuperTypes="#//ActivityFlowEdge #//ControlFlow">
+    <eAnnotations source="gmf.link">
+      <details key="tool.name" value="Activity Control Flow"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityObjectFlow" eSuperTypes="#//ActivityFlowEdge #//ObjectFlow">
+    <eAnnotations source="gmf.link">
+      <details key="tool.name" value="Activity Object Flow"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceActivity" eSuperTypes="#//CompositionFlowNode #//Activity">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Service Activity"/>
+      <details key="figure" value="rounded"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="#//ActivityPerformanceAnnotation"
+        eOpposite="#//ActivityPerformanceAnnotation/execNode">
+      <eAnnotations source="gmf.link">
+        <details key="label" value="performance"/>
+        <details key="style" value="dash"/>
+        <details key="tool.name" value="Link Activity Performance Annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//ActivityElement" containment="true" eOpposite="#//ActivityElement/activity">
+      <eAnnotations source="gmf.compartment">
+        <details key="layout" value="free"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionStart" eSuperTypes="#//CompositionFlowNode #//InitialNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Start"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionFinish" eSuperTypes="#//CompositionFlowNode #//FinalNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Finish"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionDecision" eSuperTypes="#//CompositionFlowNode #//DecisionNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Decision"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionFork" eSuperTypes="#//CompositionFlowNode #//ForkNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Fork"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionJoin" eSuperTypes="#//CompositionFlowNode #//JoinNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Join"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionObjectNode" eSuperTypes="#//CompositionFlowNode #//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Composition Object Node"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityAction" eSuperTypes="#//ActivityFlowNode #//Activity">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Action"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="#//ActionPerformanceAnnotation"
+        eOpposite="#//ActionPerformanceAnnotation/action">
+      <eAnnotations source="gmf.link">
+        <details key="label" value="performance"/>
+        <details key="style" value="dash"/>
+        <details key="tool.name" value="Link Action Performance Annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityStart" eSuperTypes="#//ActivityFlowNode #//InitialNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Start"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityFinish" eSuperTypes="#//ActivityFlowNode #//FinalNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Finish"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityDecision" eSuperTypes="#//ActivityFlowNode #//DecisionNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Decision"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityFork" eSuperTypes="#//ActivityFlowNode #//ForkNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Fork"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityJoin" eSuperTypes="#//ActivityFlowNode #//JoinNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Join"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityObjectNode" eSuperTypes="#//ActivityFlowNode #//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="tool.name" value="Activity Object Node"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExpressionLanguage">
+    <eLiterals name="OCL"/>
+    <eLiterals name="JML" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VisitStatus">
+    <eLiterals name="NOT_VISITED"/>
+    <eLiterals name="VISITING" value="1"/>
+    <eLiterals name="VISITED" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NodeSide">
+    <eLiterals name="INCOMING"/>
+    <eLiterals name="OUTGOING" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PerformanceAnnotation" abstract="true">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="concurrentUsers"/>
+      <details key="figure" value="rectangle"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concurrentUsers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="1">
+      <eAnnotations source="gmf.label">
+        <details key="foo" value="bar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="secsTimeLimit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="0">
+      <eAnnotations source="gmf.label">
+        <details key="label.readOnly" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalPerformanceAnnotation" abstract="true"
+      eSuperTypes="#//PerformanceAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="0">
+      <eAnnotations source="gmf.label">
+        <details key="foo" value="bar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="1">
+      <eAnnotations source="gmf.label">
+        <details key="foo" value="bar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowNode" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//FlowEdge" eOpposite="#//FlowEdge/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//FlowEdge" eOpposite="#//FlowEdge/source"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowEdge" abstract="true">
+    <eAnnotations source="gmf.link">
+      <details key="source" value="source"/>
+      <details key="target" value="target"/>
+      <details key="width" value="3"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//FlowNode"
+        eOpposite="#//FlowNode/incoming"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//FlowNode"
+        eOpposite="#//FlowNode/outgoing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlFlow" abstract="true" eSuperTypes="#//FlowEdge">
+    <eAnnotations source="gmf.link">
+      <details key="target.decoration" value="arrow"/>
+      <details key="tool.name" value="Control Flow"/>
+      <details key="label" value="condition,probability"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectFlow" abstract="true" eSuperTypes="#//FlowEdge">
+    <eAnnotations source="gmf.link">
+      <details key="style" value="dash"/>
+      <details key="target.decoration" value="arrow"/>
+      <details key="tool.name" value="Object Flow"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" abstract="true" eSuperTypes="#//FlowNode #//NamedElement">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.CapsuleFigure"/>
+      <details key="label.icon" value="false"/>
+      <details key="tool.name" value="Executable Node"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" abstract="true" eSuperTypes="#//FlowNode #//NamedElement">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="rectangle"/>
+      <details key="label.icon" value="false"/>
+      <details key="tool.name" value="Object Node"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialNode" abstract="true" eSuperTypes="#//FlowNode">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.FgFilledCircleFigure"/>
+      <details key="border.color" value="0,0,0"/>
+      <details key="size" value="30,30"/>
+      <details key="tool.name" value="Start"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FinalNode" abstract="true" eSuperTypes="#//FlowNode">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.FgBgFilledCircleFigure"/>
+      <details key="border.color" value="0,0,0"/>
+      <details key="size" value="30,30"/>
+      <details key="tool.name" value="Finish"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkNode" abstract="true" eSuperTypes="#//FlowNode">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.FgFilledRectangleFigure"/>
+      <details key="border.color" value="0,0,0"/>
+      <details key="size" value="15,30"/>
+      <details key="tool.name" value="Fork"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinNode" abstract="true" eSuperTypes="#//FlowNode">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.FgFilledRectangleFigure"/>
+      <details key="border.color" value="0,0,0"/>
+      <details key="size" value="15,30"/>
+      <details key="tool.name" value="Join"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionNode" abstract="true" eSuperTypes="#//FlowNode">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="es.uca.modeling.figures.DiamondFigure"/>
+      <details key="border.color" value="0,0,0"/>
+      <details key="size" value="30,30"/>
+      <details key="tool.name" value="Decision"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

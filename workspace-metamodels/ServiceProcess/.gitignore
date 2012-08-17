@@ -1,10 +1,1 @@
 bin
-src
-*.properties
-*.ecore
-*.genmodel
-*.gmfmap
-*.gmfgraph
-*.gmftool
-*.gmfgen
-*.emf

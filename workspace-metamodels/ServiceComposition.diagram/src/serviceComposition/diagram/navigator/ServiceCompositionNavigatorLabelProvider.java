@@ -89,78 +89,78 @@ public class ServiceCompositionNavigatorLabelProvider extends LabelProvider
 	public Image getImage(View view) {
 		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceComposition.diagram.edit.parts.SwimlaneContainerEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.CompositionControlFlowEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?SwimlaneContainer", serviceComposition.diagram.providers.ServiceCompositionElementTypes.SwimlaneContainer_2030); //$NON-NLS-1$
+					"Navigator?Link?www.uca.es/modeling/serviceComposition?CompositionControlFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionControlFlow_4007); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.CompositionForkEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionFork", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionFork_2026); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityControlFlowEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityControlFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityControlFlow_4011); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.CompositionJoinEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionJoin", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionJoin_2027); //$NON-NLS-1$
 		case serviceComposition.diagram.edit.parts.CompositionFinishEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionFinish", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionFinish_2024); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityActionAnnotationEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.CompositionStartEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityAction?annotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityActionAnnotation_4008); //$NON-NLS-1$
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionStart", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionStart_2023); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityStartEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityStart", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityStart_3002); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityDecisionEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityDecision", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityDecision_3004); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityForkEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityFork", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityFork_3005); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.CompositionObjectNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionObjectNode", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionObjectNode_2031); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?ActivityPerformanceAnnotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPerformanceAnnotation_2028); //$NON-NLS-1$
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Diagram?www.uca.es/modeling/serviceComposition?ServiceComposition", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ServiceComposition_1000); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActionPerformanceAnnotationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActionPerformanceAnnotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActionPerformanceAnnotation_3007); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityObjectNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityObjectNode", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityObjectNode_3008); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityObjectFlowEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityObjectFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityObjectFlow_4012); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityFinishEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityFinish", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityFinish_3003); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityJoinEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityJoin", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityJoin_3006); //$NON-NLS-1$
 		case serviceComposition.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?ServiceActivity", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ServiceActivity_2022); //$NON-NLS-1$
 		case serviceComposition.diagram.edit.parts.CompositionDecisionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionDecision", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionDecision_2025); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityForkEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.SwimlaneContainerEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityFork", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityFork_3005); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityFinishEditPart.VISUAL_ID:
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?SwimlaneContainer", serviceComposition.diagram.providers.ServiceCompositionElementTypes.SwimlaneContainer_2030); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.ActivityActionAnnotationEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityFinish", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityFinish_3003); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityStartEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityStart", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityStart_3002); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityControlFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityControlFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityControlFlow_4011); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityActionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityAction", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityAction_3001); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityObjectNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityObjectNode", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityObjectNode_3008); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionObjectFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceComposition?CompositionObjectFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionObjectFlow_4015); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionForkEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionFork", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionFork_2026); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityObjectFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityObjectFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityObjectFlow_4012); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActionPerformanceAnnotationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActionPerformanceAnnotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActionPerformanceAnnotation_3007); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionJoinEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionJoin", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionJoin_2027); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionControlFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceComposition?CompositionControlFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionControlFlow_4007); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionObjectNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionObjectNode", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionObjectNode_2031); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityJoinEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityJoin", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityJoin_3006); //$NON-NLS-1$
+					"Navigator?Link?www.uca.es/modeling/serviceComposition?ActivityAction?annotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityActionAnnotation_4008); //$NON-NLS-1$
 		case serviceComposition.diagram.edit.parts.ServiceActivityAnnotationEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?www.uca.es/modeling/serviceComposition?ServiceActivity?annotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ServiceActivityAnnotation_4014); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.CompositionStartEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.ActivityActionEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?CompositionStart", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionStart_2023); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
+					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityAction", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityAction_3001); //$NON-NLS-1$
+		case serviceComposition.diagram.edit.parts.CompositionObjectFlowEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceComposition?ActivityPerformanceAnnotation", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPerformanceAnnotation_2028); //$NON-NLS-1$
-		case serviceComposition.diagram.edit.parts.ActivityDecisionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/serviceComposition?ActivityDecision", serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityDecision_3004); //$NON-NLS-1$
+					"Navigator?Link?www.uca.es/modeling/serviceComposition?CompositionObjectFlow", serviceComposition.diagram.providers.ServiceCompositionElementTypes.CompositionObjectFlow_4015); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -225,54 +225,54 @@ public class ServiceCompositionNavigatorLabelProvider extends LabelProvider
 		}
 		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceComposition.diagram.edit.parts.SwimlaneContainerEditPart.VISUAL_ID:
-			return getSwimlaneContainer_2030Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionControlFlowEditPart.VISUAL_ID:
+			return getCompositionControlFlow_4007Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionForkEditPart.VISUAL_ID:
+			return getCompositionFork_2026Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityControlFlowEditPart.VISUAL_ID:
+			return getActivityControlFlow_4011Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionJoinEditPart.VISUAL_ID:
+			return getCompositionJoin_2027Text(view);
 		case serviceComposition.diagram.edit.parts.CompositionFinishEditPart.VISUAL_ID:
 			return getCompositionFinish_2024Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityActionAnnotationEditPart.VISUAL_ID:
-			return getActivityActionAnnotation_4008Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionStartEditPart.VISUAL_ID:
+			return getCompositionStart_2023Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityStartEditPart.VISUAL_ID:
+			return getActivityStart_3002Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityDecisionEditPart.VISUAL_ID:
+			return getActivityDecision_3004Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityForkEditPart.VISUAL_ID:
+			return getActivityFork_3005Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionObjectNodeEditPart.VISUAL_ID:
+			return getCompositionObjectNode_2031Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
+			return getActivityPerformanceAnnotation_2028Text(view);
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID:
 			return getServiceComposition_1000Text(view);
+		case serviceComposition.diagram.edit.parts.ActionPerformanceAnnotationEditPart.VISUAL_ID:
+			return getActionPerformanceAnnotation_3007Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityObjectNodeEditPart.VISUAL_ID:
+			return getActivityObjectNode_3008Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityObjectFlowEditPart.VISUAL_ID:
+			return getActivityObjectFlow_4012Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityFinishEditPart.VISUAL_ID:
+			return getActivityFinish_3003Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityJoinEditPart.VISUAL_ID:
+			return getActivityJoin_3006Text(view);
 		case serviceComposition.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
 			return getServiceActivity_2022Text(view);
 		case serviceComposition.diagram.edit.parts.CompositionDecisionEditPart.VISUAL_ID:
 			return getCompositionDecision_2025Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityForkEditPart.VISUAL_ID:
-			return getActivityFork_3005Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityFinishEditPart.VISUAL_ID:
-			return getActivityFinish_3003Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityStartEditPart.VISUAL_ID:
-			return getActivityStart_3002Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityControlFlowEditPart.VISUAL_ID:
-			return getActivityControlFlow_4011Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityActionEditPart.VISUAL_ID:
-			return getActivityAction_3001Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityObjectNodeEditPart.VISUAL_ID:
-			return getActivityObjectNode_3008Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionObjectFlowEditPart.VISUAL_ID:
-			return getCompositionObjectFlow_4015Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionForkEditPart.VISUAL_ID:
-			return getCompositionFork_2026Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityObjectFlowEditPart.VISUAL_ID:
-			return getActivityObjectFlow_4012Text(view);
-		case serviceComposition.diagram.edit.parts.ActionPerformanceAnnotationEditPart.VISUAL_ID:
-			return getActionPerformanceAnnotation_3007Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionJoinEditPart.VISUAL_ID:
-			return getCompositionJoin_2027Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionControlFlowEditPart.VISUAL_ID:
-			return getCompositionControlFlow_4007Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionObjectNodeEditPart.VISUAL_ID:
-			return getCompositionObjectNode_2031Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityJoinEditPart.VISUAL_ID:
-			return getActivityJoin_3006Text(view);
+		case serviceComposition.diagram.edit.parts.SwimlaneContainerEditPart.VISUAL_ID:
+			return getSwimlaneContainer_2030Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityActionAnnotationEditPart.VISUAL_ID:
+			return getActivityActionAnnotation_4008Text(view);
 		case serviceComposition.diagram.edit.parts.ServiceActivityAnnotationEditPart.VISUAL_ID:
 			return getServiceActivityAnnotation_4014Text(view);
-		case serviceComposition.diagram.edit.parts.CompositionStartEditPart.VISUAL_ID:
-			return getCompositionStart_2023Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
-			return getActivityPerformanceAnnotation_2028Text(view);
-		case serviceComposition.diagram.edit.parts.ActivityDecisionEditPart.VISUAL_ID:
-			return getActivityDecision_3004Text(view);
+		case serviceComposition.diagram.edit.parts.ActivityActionEditPart.VISUAL_ID:
+			return getActivityAction_3001Text(view);
+		case serviceComposition.diagram.edit.parts.CompositionObjectFlowEditPart.VISUAL_ID:
+			return getCompositionObjectFlow_4015Text(view);
 		}
 		return getUnknownElementText(view);
 	}

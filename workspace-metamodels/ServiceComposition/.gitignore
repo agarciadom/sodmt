@@ -1,8 +1,2 @@
 bin
-src
-model/*.emf
-model/*.ecore
-model/*.gmf*
-model/*.genmodel
-templates
 .settings

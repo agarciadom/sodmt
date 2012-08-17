@@ -1,73 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<trace:TraceModel
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
-  <nodeTraces
-      visualID="2017"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ActivityPerformanceAnnotation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'activityPerformance')">
-    <nodeLabelTraces
-        visualID="5029"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5030"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5031"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5032"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5037"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5041"
-        queryText="true"/>
+<trace:TraceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces visualID="2017" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ActivityPerformanceAnnotation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'activityPerformance')">
+    <nodeLabelTraces visualID="5029" queryText="true"/>
+    <nodeLabelTraces visualID="5030" queryText="true"/>
+    <nodeLabelTraces visualID="5031" queryText="true"/>
+    <nodeLabelTraces visualID="5032" queryText="true"/>
+    <nodeLabelTraces visualID="5037" queryText="true"/>
+    <nodeLabelTraces visualID="5041" queryText="true"/>
   </nodeTraces>
-  <nodeTraces
-      visualID="2018"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessPerformanceAnnotation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'processPerformance')">
-    <nodeLabelTraces
-        visualID="5033"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5034"
-        queryText="true"/>
-    <nodeLabelTraces
-        visualID="5035"
-        queryText="true"/>
+  <nodeTraces visualID="2018" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessPerformanceAnnotation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'processPerformance')">
+    <nodeLabelTraces visualID="5033" queryText="true"/>
+    <nodeLabelTraces visualID="5034" queryText="true"/>
+    <nodeLabelTraces visualID="5035" queryText="true"/>
   </nodeTraces>
-  <nodeTraces
-      visualID="2019"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceActivity') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')">
-    <nodeLabelTraces
-        visualID="5036"
-        queryText="true"/>
+  <nodeTraces visualID="2019" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceActivity') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')">
+    <nodeLabelTraces visualID="5036" queryText="true"/>
   </nodeTraces>
-  <nodeTraces
-      visualID="2020"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessStart') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
-  <nodeTraces
-      visualID="2021"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessFinish') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
-  <nodeTraces
-      visualID="2022"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessDecision') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
-  <nodeTraces
-      visualID="2023"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessFork') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
-  <nodeTraces
-      visualID="2024"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessJoin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
-  <linkTraces
-      visualID="4005"
-      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessControlFlow')">
-    <linkLabelTraces
-        visualID="6002"
-        queryText="true"/>
+  <nodeTraces visualID="2020" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessStart') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
+  <nodeTraces visualID="2021" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessFinish') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
+  <nodeTraces visualID="2022" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessDecision') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
+  <nodeTraces visualID="2023" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessFork') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
+  <nodeTraces visualID="2024" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessJoin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
+  <linkTraces visualID="4005" queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ProcessControlFlow')">
+    <linkLabelTraces visualID="6002" queryText="true"/>
   </linkTraces>
-  <linkTraces
-      visualID="4008"
-      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceActivity') and _feature_.name = 'annotation')"/>
+  <linkTraces visualID="4008" queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/serviceProcess' and _eClass_.name = 'ServiceActivity') and _feature_.name = 'annotation')"/>
 </trace:TraceModel>

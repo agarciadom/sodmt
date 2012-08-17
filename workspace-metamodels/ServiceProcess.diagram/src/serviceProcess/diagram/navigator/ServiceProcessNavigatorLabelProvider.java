@@ -89,39 +89,39 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	public Image getImage(View view) {
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceProcess.diagram.edit.parts.ProcessPerformanceAnnotationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessPerformanceAnnotation_2018); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ProcessDecisionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessDecision", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessDecision_2022); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?www.uca.es/modeling/serviceProcess?ServiceProcess", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceProcess_1000); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ProcessForkEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessFork", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessFork_2023); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ProcessControlFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?www.uca.es/modeling/serviceProcess?ProcessControlFlow", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessControlFlow_4005); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ProcessJoinEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessJoin", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessJoin_2024); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ProcessFinishEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessFinish", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessFinish_2021); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ServiceActivity", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceActivity_2019); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ServiceActivityAnnotationEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?www.uca.es/modeling/serviceProcess?ServiceActivity?annotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceActivityAnnotation_4008); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ActivityPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.ActivityPerformanceAnnotation_2017); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessJoinEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessJoin", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessJoin_2024); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ProcessStartEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessStart", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessStart_2020); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Diagram?www.uca.es/modeling/serviceProcess?ServiceProcess", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceProcess_1000); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessPerformanceAnnotationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessPerformanceAnnotation_2018); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ServiceActivity", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceActivity_2019); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessFinishEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessFinish", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessFinish_2021); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessDecisionEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessDecision", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessDecision_2022); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessControlFlowEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?www.uca.es/modeling/serviceProcess?ProcessControlFlow", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessControlFlow_4005); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ProcessForkEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/serviceProcess?ProcessFork", serviceProcess.diagram.providers.ServiceProcessElementTypes.ProcessFork_2023); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -186,28 +186,28 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 		}
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceProcess.diagram.edit.parts.ProcessPerformanceAnnotationEditPart.VISUAL_ID:
-			return getProcessPerformanceAnnotation_2018Text(view);
-		case serviceProcess.diagram.edit.parts.ProcessDecisionEditPart.VISUAL_ID:
-			return getProcessDecision_2022Text(view);
-		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
-			return getServiceProcess_1000Text(view);
-		case serviceProcess.diagram.edit.parts.ProcessForkEditPart.VISUAL_ID:
-			return getProcessFork_2023Text(view);
-		case serviceProcess.diagram.edit.parts.ProcessControlFlowEditPart.VISUAL_ID:
-			return getProcessControlFlow_4005Text(view);
-		case serviceProcess.diagram.edit.parts.ProcessJoinEditPart.VISUAL_ID:
-			return getProcessJoin_2024Text(view);
-		case serviceProcess.diagram.edit.parts.ProcessFinishEditPart.VISUAL_ID:
-			return getProcessFinish_2021Text(view);
-		case serviceProcess.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
-			return getServiceActivity_2019Text(view);
 		case serviceProcess.diagram.edit.parts.ServiceActivityAnnotationEditPart.VISUAL_ID:
 			return getServiceActivityAnnotation_4008Text(view);
 		case serviceProcess.diagram.edit.parts.ActivityPerformanceAnnotationEditPart.VISUAL_ID:
 			return getActivityPerformanceAnnotation_2017Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessJoinEditPart.VISUAL_ID:
+			return getProcessJoin_2024Text(view);
 		case serviceProcess.diagram.edit.parts.ProcessStartEditPart.VISUAL_ID:
 			return getProcessStart_2020Text(view);
+		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
+			return getServiceProcess_1000Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessPerformanceAnnotationEditPart.VISUAL_ID:
+			return getProcessPerformanceAnnotation_2018Text(view);
+		case serviceProcess.diagram.edit.parts.ServiceActivityEditPart.VISUAL_ID:
+			return getServiceActivity_2019Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessFinishEditPart.VISUAL_ID:
+			return getProcessFinish_2021Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessDecisionEditPart.VISUAL_ID:
+			return getProcessDecision_2022Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessControlFlowEditPart.VISUAL_ID:
+			return getProcessControlFlow_4005Text(view);
+		case serviceProcess.diagram.edit.parts.ProcessForkEditPart.VISUAL_ID:
+			return getProcessFork_2023Text(view);
 		}
 		return getUnknownElementText(view);
 	}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/ServiceComposition/src" modelPluginID="ServiceComposition"
+    modelName="ServiceComposition" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>servicecomposition.emf</foreignModel>
+  <genPackages prefix="ServiceComposition" disposableProviderFactory="true" ecorePackage="servicecomposition.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="servicecomposition.ecore#//ExpressionLanguage">
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//ExpressionLanguage/OCL"/>
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//ExpressionLanguage/JML"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="servicecomposition.ecore#//VisitStatus">
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//VisitStatus/NOT_VISITED"/>
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//VisitStatus/VISITING"/>
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//VisitStatus/VISITED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="servicecomposition.ecore#//NodeSide">
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//NodeSide/INCOMING"/>
+      <genEnumLiterals ecoreEnumLiteral="servicecomposition.ecore#//NodeSide/OUTGOING"/>
+    </genEnums>
+    <genClasses ecoreClass="servicecomposition.ecore#//ServiceComposition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceComposition/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceComposition/compositionEdges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceComposition/activityEdges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceComposition/swimlanes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceComposition/activityPerformance"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ActivityElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference servicecomposition.ecore#//ActivityElement/activity"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//CompositionFlowEdge"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//CompositionFlowNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ActivityFlowEdge"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ActivityFlowNode"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//SwimlaneContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//SwimlaneContainer/swimlaneNames"/>
+    </genClasses>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityPerformanceAnnotation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ActivityPerformanceAnnotation/execNode"/>
+    </genClasses>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActionPerformanceAnnotation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ActionPerformanceAnnotation/action"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//ActionPerformanceAnnotation/manuallyAdded"/>
+    </genClasses>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionControlFlow"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionObjectFlow"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityControlFlow"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityObjectFlow"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ServiceActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceActivity/annotation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ServiceActivity/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionStart"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionFinish"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionDecision"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionFork"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionJoin"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//CompositionObjectNode"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//ActivityAction/annotation"/>
+    </genClasses>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityStart"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityFinish"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityDecision"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityFork"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityJoin"/>
+    <genClasses ecoreClass="servicecomposition.ecore#//ActivityObjectNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//PerformanceAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//PerformanceAnnotation/concurrentUsers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//PerformanceAnnotation/secsTimeLimit"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//LocalPerformanceAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//LocalPerformanceAnnotation/minimumTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//LocalPerformanceAnnotation/weight"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//FlowNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//FlowNode/incoming"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//FlowNode/outgoing"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//FlowEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//FlowEdge/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference servicecomposition.ecore#//FlowEdge/source"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ControlFlow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//ControlFlow/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//ControlFlow/probability"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ObjectFlow"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute servicecomposition.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//Activity"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ObjectNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//InitialNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//FinalNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//ForkNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//JoinNode"/>
+    <genClasses image="false" ecoreClass="servicecomposition.ecore#//DecisionNode"/>
+  </genPackages>
+</genmodel:GenModel>
