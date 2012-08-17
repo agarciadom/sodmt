@@ -1,7 +1,5 @@
 .metadata
 .settings
-ServiceProcess.diagram
-ServiceComposition.diagram
 ServiceProcess.tests
 ServiceComposition.tests
 bin
