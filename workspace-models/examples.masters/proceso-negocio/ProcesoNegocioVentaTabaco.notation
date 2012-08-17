@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_h6kP0OhaEeGf9_4DfBOXHA" type="PapyrusUMLActivityDiagram" name="ActivityDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_h6kP0ehaEeGf9_4DfBOXHA" type="2001" fontName="Sans Serif" fontHeight="12" lineColor="0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h6kP0uhaEeGf9_4DfBOXHA" source="ShadowFigure">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h6kP0-haEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h6kP1OhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h6kP1ehaEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h6kP1uhaEeGf9_4DfBOXHA" source="QualifiedName">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h6kP1-haEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+    </eAnnotations>
+    <children xmi:type="notation:DecorationNode" xmi:id="_h6kP2OhaEeGf9_4DfBOXHA" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_h6kP2uhaEeGf9_4DfBOXHA" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_h6kP2-haEeGf9_4DfBOXHA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_h6kP3OhaEeGf9_4DfBOXHA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h6kP3ehaEeGf9_4DfBOXHA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_h6kP3uhaEeGf9_4DfBOXHA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_h6kP3-haEeGf9_4DfBOXHA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_h6kP4OhaEeGf9_4DfBOXHA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h6kP4ehaEeGf9_4DfBOXHA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_h6kP4uhaEeGf9_4DfBOXHA" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_h6kP4-haEeGf9_4DfBOXHA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_h6kP5OhaEeGf9_4DfBOXHA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h6kP5ehaEeGf9_4DfBOXHA"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_h6kP5uhaEeGf9_4DfBOXHA" type="7004">
+      <children xmi:type="notation:Shape" xmi:id="_ilrCUOhaEeGf9_4DfBOXHA" type="3004" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ilrpYOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ilrpYehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ilrpYuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ilrpY-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ilrpZOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ilrpZehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ilsQcOhaEeGf9_4DfBOXHA" type="5080">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ilsQcehaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_ilrCUehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:InitialNode" href="ProcesoNegocioVentaTabaco.uml#_I0FUEJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ilrCUuhaEeGf9_4DfBOXHA" x="360" y="685"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_il2BcOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_il2ogOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_il2ogehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_il2oguhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_il2og-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_il2ohOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_il2ohehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_il2ohuhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_il2BcehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_LTnRkJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_il2BcuhaEeGf9_4DfBOXHA" x="140" y="750" width="466" height="36"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_jArjUOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jArjU-haEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jArjVOhaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jAsKYOhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jAsKYehaEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jAsKYuhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jAsKY-haEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_jAsKZOhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_jArjUehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_WWeiEJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jArjUuhaEeGf9_4DfBOXHA" x="295" y="865"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_jluKEOhaEeGf9_4DfBOXHA" type="3038" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jluKE-haEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jluKFOhaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jluKFehaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jluKFuhaEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jluKF-haEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jluKGOhaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_jluKGehaEeGf9_4DfBOXHA" type="5043">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_jluxIOhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_jluxIehaEeGf9_4DfBOXHA" type="5098">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_jluxIuhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_jluKEehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:DecisionNode" href="ProcesoNegocioVentaTabaco.uml#_ZbsmkJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jluKEuhaEeGf9_4DfBOXHA" x="363" y="960"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_j2GIYOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_j2GvcOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_j2GvcehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_j2GvcuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_j2Gvc-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_j2GvdOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_j2GvdehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_j2GvduhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_j2GIYehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_c6tEEJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j2GIYuhaEeGf9_4DfBOXHA" x="410" y="955"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_kHQw4OhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kHRX8OhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kHRX8ehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kHRX8uhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kHRX8-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kHRX9OhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kHRX9ehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_kHRX9uhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_kHQw4ehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_k1meEJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kHQw4uhaEeGf9_4DfBOXHA" x="279" y="1020"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_kZODkOhaEeGf9_4DfBOXHA" type="3038" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kZOqoOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kZOqoehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kZOqouhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kZOqo-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kZOqpOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kZOqpehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_kZOqpuhaEeGf9_4DfBOXHA" type="5043">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_kZPRsOhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_kZPRsehaEeGf9_4DfBOXHA" type="5098">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_kZPRsuhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_kZODkehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:DecisionNode" href="ProcesoNegocioVentaTabaco.uml#_qzwekJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kZODkuhaEeGf9_4DfBOXHA" x="363" y="1110"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_nAuRUOhaEeGf9_4DfBOXHA" type="3038" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nAuRU-haEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nAuRVOhaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nAuRVehaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nAuRVuhaEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nAuRV-haEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nAuRWOhaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_nAuRWehaEeGf9_4DfBOXHA" type="5043">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_nAuRWuhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_nAuRW-haEeGf9_4DfBOXHA" type="5098">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_nAuRXOhaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_nAuRUehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:DecisionNode" href="ProcesoNegocioVentaTabaco.uml#_nkYjEJfyEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nAuRUuhaEeGf9_4DfBOXHA" x="625" y="960"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_nzkqkOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nzlRoOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nzlRoehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nzlRouhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nzlRo-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nzlRpOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nzlRpehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_nzlRpuhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_nzkqkehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_2C5bEJfyEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nzkqkuhaEeGf9_4DfBOXHA" x="800" y="955"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_oJYigOhaEeGf9_4DfBOXHA" type="3040" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oJZJkOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oJZJkehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oJZJkuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oJZJk-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oJZJlOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oJZJlehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_oJZwoOhaEeGf9_4DfBOXHA" type="5100">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_oJZwoehaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_oJYigehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:ForkNode" href="ProcesoNegocioVentaTabaco.uml#_B06QkJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oJYiguhaEeGf9_4DfBOXHA" x="855" y="885"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_o1ezgOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o1fakOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_o1fakehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o1fakuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_o1fak-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o1falOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_o1falehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_o1faluhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_o1ezgehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_NSegEJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o1ezguhaEeGf9_4DfBOXHA" x="655" y="805"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_pFMqgOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFNRkOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFNRkehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFNRkuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFNRk-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFNRlOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFNRlehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_pFNRluhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_pFMqgehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_QqPGEJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pFMqguhaEeGf9_4DfBOXHA" x="895" y="805"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_pWDxAOhaEeGf9_4DfBOXHA" type="3041" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pWEYEOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pWEYEehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pWEYEuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pWEYE-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pWEYFOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pWEYFehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_pWEYFuhaEeGf9_4DfBOXHA" type="5042">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_pWEYF-haEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_pWEYGOhaEeGf9_4DfBOXHA" type="5101">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_pWEYGehaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_pWDxAehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:JoinNode" href="ProcesoNegocioVentaTabaco.uml#_WJarkJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pWDxAuhaEeGf9_4DfBOXHA" x="745" y="710"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_p47NgOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_p470kOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_p470kehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_p470kuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_p470k-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_p470lOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_p48boOhaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_p48boehaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_p47NgehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_q6wzkJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p47NguhaEeGf9_4DfBOXHA" x="625" y="610"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_qJEiUOhaEeGf9_4DfBOXHA" type="3040" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qJFJYOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qJFJYehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qJFJYuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qJFJY-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qJFJZOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qJFJZehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_qJFJZuhaEeGf9_4DfBOXHA" type="5100">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_qJFJZ-haEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_qJEiUehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:ForkNode" href="ProcesoNegocioVentaTabaco.uml#_8DB8EJfzEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qJEiUuhaEeGf9_4DfBOXHA" x="690" y="510"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_qXTLkOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qXTyoOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qXTyoehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qXTyouhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qXTyo-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qXTypOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qXTypehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_qXTypuhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_qXTLkehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_B5GXkJf0Ed6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qXTLkuhaEeGf9_4DfBOXHA" x="515" y="410"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_qkZMYOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qkZzcOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qkZzcehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qkZzcuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qkZzc-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qkZzdOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qkZzdehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_qkZzduhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_qkZMYehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_PB72EJf0Ed6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qkZMYuhaEeGf9_4DfBOXHA" x="730" y="410"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_q2mWsOhaEeGf9_4DfBOXHA" type="3040" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_q2m9wOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q2m9wehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_q2m9wuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q2m9w-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_q2m9xOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q2m9xehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_q2nk0OhaEeGf9_4DfBOXHA" type="5100">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_q2nk0ehaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_q2mWsehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:ForkNode" href="ProcesoNegocioVentaTabaco.uml#_qikgkJf0Ed6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q2mWsuhaEeGf9_4DfBOXHA" x="690" y="310"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_rT9BEOhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rT9oIOhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rT9oIehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rT9oIuhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rT9oI-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rT9oJOhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rT9oJehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_rT9oJuhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_rT9BEehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_WwPlkJf0Ed6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rT9BEuhaEeGf9_4DfBOXHA" x="610" y="210"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_sn2R4OhaEeGf9_4DfBOXHA" type="3007" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sn248OhaEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sn248ehaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sn248uhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sn248-haEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sn249OhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sn249ehaEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_sn249uhaEeGf9_4DfBOXHA" type="5003"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_sn2R4ehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:OpaqueAction" href="ProcesoNegocioVentaTabaco.uml#_8JEjkJf8Ed6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sn2R4uhaEeGf9_4DfBOXHA" x="575" y="110"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_s9aSMOhaEeGf9_4DfBOXHA" type="3005" fontName="Sans Serif" fontHeight="12" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s9aSM-haEeGf9_4DfBOXHA" source="ShadowFigure">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s9aSNOhaEeGf9_4DfBOXHA" key="ShadowFigure_Value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s9a5QOhaEeGf9_4DfBOXHA" source="displayNameLabelIcon">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s9a5QehaEeGf9_4DfBOXHA" key="displayNameLabelIcon_value" value="false"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s9a5QuhaEeGf9_4DfBOXHA" source="QualifiedName">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s9a5Q-haEeGf9_4DfBOXHA" key="QualifiedNameDepth" value="1000"/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_s9a5ROhaEeGf9_4DfBOXHA" type="5081">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_s9a5RehaEeGf9_4DfBOXHA" y="5"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_s9aSMehaEeGf9_4DfBOXHA"/>
+        <element xmi:type="uml:ActivityFinalNode" href="ProcesoNegocioVentaTabaco.uml#_KCNUEJfxEd6mN4mv65HnEA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s9aSMuhaEeGf9_4DfBOXHA" x="685" y="30"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h6kP5-haEeGf9_4DfBOXHA"/>
+    </children>
+    <element xmi:type="uml:Activity" href="ProcesoNegocioVentaTabaco.uml#_FR_tYJfxEd6mN4mv65HnEA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h6kP6OhaEeGf9_4DfBOXHA"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_h6kP6ehaEeGf9_4DfBOXHA"/>
+  <element xmi:type="uml:Activity" href="ProcesoNegocioVentaTabaco.uml#_FR_tYJfxEd6mN4mv65HnEA"/>
+  <edges xmi:type="notation:Connector" xmi:id="_imAZgOhaEeGf9_4DfBOXHA" type="4004" source="_ilrCUOhaEeGf9_4DfBOXHA" target="_il2BcOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_imAZg-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_imAZhOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_imAZhehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_imAZhuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_imAZh-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_imAZiOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_imAZiehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_imAZiuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_imAZgehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_TpKnQJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_imAZguhaEeGf9_4DfBOXHA" points="[-3, 9, 190, -76]$[-3, 55, 190, -30]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_s5UKcOhcEeGf9_4DfBOXHA" id="(0.2,0.5)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_jA5lwOhaEeGf9_4DfBOXHA" type="4004" source="_il2BcOhaEeGf9_4DfBOXHA" target="_jArjUOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jA5lw-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jA5lxOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jA5lxehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jA5lxuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jA5lx-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jA5lyOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jA5lyehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jA5lyuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_jA5lwehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_Ya87QJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jA5lwuhaEeGf9_4DfBOXHA" points="[0, 0, -234, 60]$[234, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrGiMuhaEeGf9_4DfBOXHA" id="(0.4988344988344988,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_jl6-YOhaEeGf9_4DfBOXHA" type="4004" source="_jArjUOhaEeGf9_4DfBOXHA" target="_jluKEOhaEeGf9_4DfBOXHA" routing="Rectilinear" closestDistance="true" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jl6-Y-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jl6-ZOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jl6-ZehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jl6-ZuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jl6-Z-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jl6-aOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jl6-aehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_jl6-auhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_jl6-YehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_aqFFQJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jl6-YuhaEeGf9_4DfBOXHA" points="[0, 0, 41, -65]$[-44, 68, -3, 3]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrHwUehaEeGf9_4DfBOXHA" id="(0.6,0.03333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_j2VY8OhaEeGf9_4DfBOXHA" type="4004" source="_jluKEOhaEeGf9_4DfBOXHA" target="_j2GIYOhaEeGf9_4DfBOXHA" routing="Rectilinear" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_j2WAAOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j2WAAehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_j2WAAuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j2WAA-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_j2WABOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j2WABehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_j2WABuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j2WAB-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_j2VY8ehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_gAtywJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_j2VY8uhaEeGf9_4DfBOXHA" points="[8, 17, -113, -33]$[12, 25, -109, -25]$[27, 28, -94, -22]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrFUEuhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrFUE-haEeGf9_4DfBOXHA" id="(0.5696969696969697,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_kHeMQOhaEeGf9_4DfBOXHA" type="4004" source="_jluKEOhaEeGf9_4DfBOXHA" target="_kHQw4OhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kHeMQ-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kHeMROhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kHeMRehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kHeMRuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kHeMR-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kHeMSOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kHeMSehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kHeMSuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kHeMQehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_orrXwJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kHeMQuhaEeGf9_4DfBOXHA" points="[0, 0, 243, 60]$[-243, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrF7IOhaEeGf9_4DfBOXHA" id="(0.25,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrF7IehaEeGf9_4DfBOXHA" id="(0.49732620320855614,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_kZaQ0OhaEeGf9_4DfBOXHA" type="4004" source="_kHQw4OhaEeGf9_4DfBOXHA" target="_kZODkOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kZa34OhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kZa34ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kZa34uhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kZa34-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kZa35OhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kZa35ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kZa35uhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kZa35-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kZaQ0ehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_r6gEMJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kZaQ0uhaEeGf9_4DfBOXHA" points="[0, 0, -156, 60]$[156, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrGiMOhaEeGf9_4DfBOXHA" id="(0.47593582887700536,0.925)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6eL6IOhbEeGf9_4DfBOXHA" id="(0.6,0.13333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_kqGYMOhaEeGf9_4DfBOXHA" type="4004" source="_kZODkOhaEeGf9_4DfBOXHA" target="_jArjUOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqG_QOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqG_QehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqG_QuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqG_Q-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqG_ROhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqG_RehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqG_RuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqG_R-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kqGYMehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_vqwCsJfxEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kqGYMuhaEeGf9_4DfBOXHA" points="[-10, 0, 47, 238]$[-175, 0, -118, 238]$[-175, -234, -118, 4]$[-78, -234, -21, 4]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrHJQuhaEeGf9_4DfBOXHA" id="(0.1346153846153846,0.55)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_lAe34OhaEeGf9_4DfBOXHA" type="4004" source="_kZODkOhaEeGf9_4DfBOXHA" target="_il2BcOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_lAfe8OhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_lAfe8ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_lAfe8uhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_lAfe8-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_lAfe9OhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_lAfe9ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_lAfe9uhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_lAfe9-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_lAe34ehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_Iaw_sJfyEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lAe34uhaEeGf9_4DfBOXHA" points="[0, 30, 230, 370]$[0, 45, 230, 385]$[-288, 45, -58, 385]$[-288, -334, -58, 6]$[-233, -334, -3, 6]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrF7IuhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lrF7I-haEeGf9_4DfBOXHA" id="(0.006437768240343348,0.5555555555555556)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_nA4pYOhaEeGf9_4DfBOXHA" type="4004" source="_j2GIYOhaEeGf9_4DfBOXHA" target="_nAuRUOhaEeGf9_4DfBOXHA" routing="Rectilinear" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_nA5QcOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nA5QcehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nA5QcuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nA5Qc-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nA5QdOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nA5QdehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nA5QduhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nA5Qd-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_nA4pYehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_pP-iMJfyEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nA4pYuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnAo0OhaEeGf9_4DfBOXHA" id="(0.49696969696969695,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnAo0ehaEeGf9_4DfBOXHA" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_nUoEwOhaEeGf9_4DfBOXHA" type="4004" source="_nAuRUOhaEeGf9_4DfBOXHA" target="_il2BcOhaEeGf9_4DfBOXHA" routing="Rectilinear" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_nUpS4OhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nUpS4ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nUpS4uhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nUpS4-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nUpS5OhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nUpS5ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nUpS5uhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nUpS5-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_nUoEwehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_rXZhsJfyEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nUoEwuhaEeGf9_4DfBOXHA" points="[0, 0, 42, 193]$[0, -192, 42, 1]$[-29, -192, 13, 1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm6iMehaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm6iMuhaEeGf9_4DfBOXHA" id="(0.9721030042918455,0.4722222222222222)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_nzyF8OhaEeGf9_4DfBOXHA" type="4004" source="_nAuRUOhaEeGf9_4DfBOXHA" target="_nzkqkOhaEeGf9_4DfBOXHA" routing="Rectilinear" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_nzytAOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nzytAehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nzytAuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nzytA-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nzytBOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nzytBehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_nzytBuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_nzytB-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_nzyF8ehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_5EZdMJfyEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nzyF8uhaEeGf9_4DfBOXHA" points="[0, 0, -262, 60]$[262, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm7JQOhaEeGf9_4DfBOXHA" id="(0.75,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm7JQehaEeGf9_4DfBOXHA" id="(0.046153846153846156,0.575)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_oJnMAOhaEeGf9_4DfBOXHA" type="4004" source="_nzkqkOhaEeGf9_4DfBOXHA" target="_oJYigOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_oJnzEOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oJnzEehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_oJnzEuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oJnzE-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_oJnzFOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oJnzFehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_oJnzFuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oJnzF-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_oJnMAehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_DjtUsJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_oJnMAuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm9lguhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm-MkOhaEeGf9_4DfBOXHA" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_o1pLkOhaEeGf9_4DfBOXHA" type="4004" source="_oJYigOhaEeGf9_4DfBOXHA" target="_o1ezgOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_o1pyoOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_o1pyoehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_o1pyouhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_o1pyo-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_o1pypOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_o1pypehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_o1pypuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_o1pyp-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_o1pLkehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_Tdi7MJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_o1pLkuhaEeGf9_4DfBOXHA" points="[0, 0, 115, 60]$[-115, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm_asuhaEeGf9_4DfBOXHA" id="(0.3,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnABwOhaEeGf9_4DfBOXHA" id="(0.4975609756097561,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_pFgzkOhaEeGf9_4DfBOXHA" type="4004" source="_oJYigOhaEeGf9_4DfBOXHA" target="_pFMqgOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pFgzk-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pFgzlOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pFgzlehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pFgzluhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pFgzl-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pFgzmOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pFgzmehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pFgzmuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_pFgzkehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_UALuMJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pFgzkuhaEeGf9_4DfBOXHA" points="[0, 0, -109, 60]$[109, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm_asOhaEeGf9_4DfBOXHA" id="(0.6,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm_asehaEeGf9_4DfBOXHA" id="(0.49612403100775193,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_pWZIMOhaEeGf9_4DfBOXHA" type="4004" source="_o1ezgOhaEeGf9_4DfBOXHA" target="_pWDxAOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pWZIM-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pWZINOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pWZINehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pWZINuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pWZIN-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pWZIOOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pWZIOehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pWZIOuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_pWZIMehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_ceewMJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pWZIMuhaEeGf9_4DfBOXHA" points="[0, 0, -109, 60]$[109, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8-cOhaEeGf9_4DfBOXHA" id="(0.4975609756097561,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8-cehaEeGf9_4DfBOXHA" id="(0.3,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_pl91QOhaEeGf9_4DfBOXHA" type="4004" source="_pFMqgOhaEeGf9_4DfBOXHA" target="_pWDxAOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pl91Q-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pl91ROhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pl91RehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pl91RuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pl-cUOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pl-cUehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pl-cUuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_pl-cU-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_pl91QehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_dKlBMJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pl91QuhaEeGf9_4DfBOXHA" points="[0, 0, 115, 60]$[-115, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnAo0uhaEeGf9_4DfBOXHA" id="(0.49612403100775193,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnAo0-haEeGf9_4DfBOXHA" id="(0.6,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_p5HawOhaEeGf9_4DfBOXHA" type="4004" source="_pWDxAOhaEeGf9_4DfBOXHA" target="_p47NgOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_p5IB0OhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_p5IB0ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_p5IB0uhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_p5IB0-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_p5IB1OhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_p5IB1ehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_p5IB1uhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_p5IB1-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_p5HawehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_tJhxMJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_p5HawuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm5UEOhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm5UEehaEeGf9_4DfBOXHA" id="(0.4965034965034965,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_qJQvkOhaEeGf9_4DfBOXHA" type="4004" source="_p47NgOhaEeGf9_4DfBOXHA" target="_qJEiUOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qJQvk-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qJQvlOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qJRWoOhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qJRWoehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qJRWouhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qJRWo-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qJRWpOhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qJRWpehaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_qJQvkehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_9vO_MJfzEd6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qJQvkuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm-MkehaEeGf9_4DfBOXHA" id="(0.4965034965034965,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm-MkuhaEeGf9_4DfBOXHA" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_qXhOAOhaEeGf9_4DfBOXHA" type="4004" source="_qJEiUOhaEeGf9_4DfBOXHA" target="_qXTLkOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qXh1EOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qXh1EehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qXh1EuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qXh1E-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qXh1FOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qXh1FehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qXh1FuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qXh1F-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_qXhOAehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_OVjRMJf0Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qXhOAuhaEeGf9_4DfBOXHA" points="[0, 0, 100, 60]$[-100, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnBP4OhaEeGf9_4DfBOXHA" id="(0.3,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnBP4ehaEeGf9_4DfBOXHA" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_qkprEOhaEeGf9_4DfBOXHA" type="4004" source="_qJEiUOhaEeGf9_4DfBOXHA" target="_qkZMYOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qkqSIOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qkqSIehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qkqSIuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qkqSI-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qkqSJOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qkqSJehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_qkqSJuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qkqSJ-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_qkprEehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_RxIAMJf0Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qkprEuhaEeGf9_4DfBOXHA" points="[0, 0, -98, 60]$[98, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnBP4uhaEeGf9_4DfBOXHA" id="(0.6,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnBP4-haEeGf9_4DfBOXHA" id="(0.49612403100775193,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_q2zyEOhaEeGf9_4DfBOXHA" type="4004" source="_qkZMYOhaEeGf9_4DfBOXHA" target="_q2mWsOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_q2zyE-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_q2zyFOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_q20ZIOhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_q20ZIehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_q20ZIuhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_q20ZI-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_q20ZJOhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_q20ZJehaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_q2zyEehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_r0mwMJf0Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_q2zyEuhaEeGf9_4DfBOXHA" points="[0, 0, 100, 60]$[-100, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnABwehaEeGf9_4DfBOXHA" id="(0.49612403100775193,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tnABwuhaEeGf9_4DfBOXHA" id="(0.6,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_rEUpoOhaEeGf9_4DfBOXHA" type="4004" source="_qXTLkOhaEeGf9_4DfBOXHA" target="_q2mWsOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_rEUpo-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rEUppOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rEVQsOhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rEVQsehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rEVQsuhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rEVQs-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rEVQtOhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rEVQtehaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_rEUpoehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_sXs2MJf0Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rEUpouhaEeGf9_4DfBOXHA" points="[0, 0, -98, 60]$[98, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm9lgOhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm9lgehaEeGf9_4DfBOXHA" id="(0.3,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_rUInQOhaEeGf9_4DfBOXHA" type="4004" source="_q2mWsOhaEeGf9_4DfBOXHA" target="_rT9BEOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_rUInQ-haEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rUInROhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rUInRehaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rUInRuhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rUInR-haEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rUJOUOhaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_rUJOUehaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_rUJOUuhaEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_rUInQehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_6-F-MJf8Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rUInQuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm57IOhaEeGf9_4DfBOXHA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm6iMOhaEeGf9_4DfBOXHA" id="(0.49707602339181284,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_soFicOhaEeGf9_4DfBOXHA" type="4004" source="_rT9BEOhaEeGf9_4DfBOXHA" target="_sn2R4OhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_soGJgOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_soGJgehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_soGJguhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_soGJg-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_soGJhOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_soGJhehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_soGJhuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_soGJh-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_soFicehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_Ki_2gJf9Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_soFicuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8XYOhaEeGf9_4DfBOXHA" id="(0.49707602339181284,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm8XYehaEeGf9_4DfBOXHA" id="(0.4978902953586498,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_s9kqQOhaEeGf9_4DfBOXHA" type="4004" source="_sn2R4OhaEeGf9_4DfBOXHA" target="_s9aSMOhaEeGf9_4DfBOXHA" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9lRUOhaEeGf9_4DfBOXHA" visible="false" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_s9lRUehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9lRUuhaEeGf9_4DfBOXHA" visible="false" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_s9lRU-haEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9lRVOhaEeGf9_4DfBOXHA" type="6009">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_s9lRVehaEeGf9_4DfBOXHA" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9lRVuhaEeGf9_4DfBOXHA" type="6011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_s9lRV-haEeGf9_4DfBOXHA" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_s9kqQehaEeGf9_4DfBOXHA" fontName="Sans Serif" fontHeight="12"/>
+    <element xmi:type="uml:ControlFlow" href="ProcesoNegocioVentaTabaco.uml#_LljfsJf9Ed6mN4mv65HnEA"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_s9kqQuhaEeGf9_4DfBOXHA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm7JQuhaEeGf9_4DfBOXHA" id="(0.4978902953586498,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tm7JQ-haEeGf9_4DfBOXHA" id="(0.5,1.0)"/>
+  </edges>
+</notation:Diagram>
