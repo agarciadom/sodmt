@@ -98,6 +98,11 @@
             <layout>p2</layout>
         </repository>
         <repository>
+            <id>papyrus-nightlies</id>
+            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
             <id>papyrus-extra-nightlies</id>
             <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/extra/</url>
             <layout>p2</layout>
