@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.epsilon.commons.util.StringUtil;
+import org.eclipse.epsilon.common.util.StringUtil;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 import org.eclipse.epsilon.egl.util.FileUtil;
@@ -38,7 +38,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.m2e.core.internal.IMavenConstants;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
-import org.eclipse.ui.actions.AddBookmarkAction;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import serviceAnalyzer.messageCatalog.ServicesDocument;

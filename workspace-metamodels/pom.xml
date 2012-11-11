@@ -93,8 +93,8 @@
             <layout>p2</layout>
         </repository>
         <repository>
-            <id>epsilon-interim</id>
-            <url>http://download.eclipse.org/epsilon/interim</url>
+            <id>epsilon-stable</id>
+            <url>http://download.eclipse.org/epsilon/updates</url>
             <layout>p2</layout>
         </repository>
         <repository>

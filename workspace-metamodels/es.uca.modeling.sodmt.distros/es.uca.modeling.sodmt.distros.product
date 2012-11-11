@@ -224,8 +224,8 @@
       <plugin id="org.eclipse.emf.validation.ui.ide"/>
       <plugin id="org.eclipse.emf.workspace"/>
       <plugin id="org.eclipse.emf.workspace.ui"/>
+      <plugin id="org.eclipse.epsilon.common"/>
       <plugin id="org.eclipse.epsilon.common.dt"/>
-      <plugin id="org.eclipse.epsilon.commons"/>
       <plugin id="org.eclipse.epsilon.dependencies"/>
       <plugin id="org.eclipse.epsilon.dt.exeed"/>
       <plugin id="org.eclipse.epsilon.egl.engine"/>
@@ -241,7 +241,6 @@
       <plugin id="org.eclipse.epsilon.ewl.engine"/>
       <plugin id="org.eclipse.epsilon.ewl.gmf"/>
       <plugin id="org.eclipse.epsilon.profiling"/>
-      <plugin id="org.eclipse.epsilon.util.emf"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.ds"/>

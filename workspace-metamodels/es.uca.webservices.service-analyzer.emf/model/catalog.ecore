@@ -107,7 +107,6 @@
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="typeGA"/>
     </eAnnotations>
-    <eLiterals name="string"/>
     <eLiterals name="int" value="1"/>
     <eLiterals name="float" value="2"/>
     <eLiterals name="list" value="3"/>
@@ -116,6 +115,7 @@
     <eLiterals name="dateTime" value="6"/>
     <eLiterals name="time" value="7"/>
     <eLiterals name="duration" value="8"/>
+    <eLiterals name="string" value="9"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="TypeGAObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
