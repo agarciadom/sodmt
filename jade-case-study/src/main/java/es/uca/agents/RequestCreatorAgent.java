@@ -133,6 +133,15 @@ public class RequestCreatorAgent extends Agent {
 		LOGGER.info("Setup completed");
 	}
 
+	@Override
+	protected void takeDown() {
+		try {
+			DFService.deregister(this);
+		} catch (FIPAException e) {
+			LOGGER.error("Could not deregister from the DF", e);
+		}
+	}
+
 	private DFAgentDescription createDFDescription() {
 		ServiceDescription sd = new ServiceDescription();
 		sd.addLanguages(codec.getName());
@@ -141,25 +150,16 @@ public class RequestCreatorAgent extends Agent {
 		sd.setOwnership("OrderCreatorOwner");
 		sd.setName("createOrder");
 		sd.addOntologies(ProductionOntology.NAME);
-
+	
 		// Expose the agent as a web service (WSIG_HIER is needed since we use a bean ontology)
 		sd.addProperties(new Property(WSIG, "true"));
 		sd.addProperties(new Property(WSIG_HIER, "true"));
-
+	
 		DFAgentDescription dfad = new DFAgentDescription();
 		dfad.setName(getAID());
 		dfad.addLanguages(codec.getName());
 		dfad.addProtocols(FIPANames.InteractionProtocol.FIPA_REQUEST);
 		dfad.addServices(sd);
 		return dfad;
-	}
-
-	@Override
-	protected void takeDown() {
-		try {
-			DFService.deregister(this);
-		} catch (FIPAException e) {
-			LOGGER.error("Could not deregister from the DF", e);
-		}
 	}
 }
