@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * Ontology for all concepts used in the case study.
  */
 public class ProductionOntology extends BeanOntology {
-	public static final String NAME = "uca_production";
+	public static final String NAME = "uca-production";
 
 	public static ProductionOntology getInstance() {
 		return INSTANCE;

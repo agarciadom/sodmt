@@ -8,6 +8,7 @@ import jade.content.onto.OntologyException;
 import jade.content.onto.basic.Action;
 import jade.content.onto.basic.Result;
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPANames;
@@ -15,11 +16,9 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.FIPAManagementOntology;
 import jade.domain.FIPAAgentManagement.NotUnderstoodException;
 import jade.domain.FIPAAgentManagement.Property;
-import jade.domain.FIPAAgentManagement.RefuseException;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-import jade.proto.AchieveREResponder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,17 +34,12 @@ public class RequestCreatorAgent extends Agent {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RequestCreatorAgent.class);
 	
-	private static final class RequestServer extends AchieveREResponder {
+	private static final class RequestServer extends CyclicBehaviour {
 		private static final long serialVersionUID = 1L;
+		private static final MessageTemplate MSG_TEMPLATE
+			= MessageTemplate.MatchOntology(ProductionOntology.NAME);
 
-		public RequestServer(Agent a) {
-			super(a, MessageTemplate.MatchOntology(ProductionOntology.NAME));
-		}
-
-		@Override
-		protected ACLMessage handleRequest(ACLMessage request)
-				throws NotUnderstoodException, RefuseException
-		{
+		protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException {
 			AgentAction agAct = null;
 			try {
 				Action act = (Action) myAgent.getContentManager().extractContent(request);
@@ -81,6 +75,26 @@ public class RequestCreatorAgent extends Agent {
 
 			return reply;
 		}
+
+		@Override
+		public void action() {
+			ACLMessage msg = myAgent.receive(MSG_TEMPLATE);
+			if (msg != null) {
+				LOGGER.info("Received query");
+				LOGGER.debug("Query content is: {}", msg.getContent());
+				ACLMessage reply;
+				try {
+					reply = handleRequest(msg);
+				} catch (NotUnderstoodException e) {
+					reply = msg.createReply();
+					reply.setPerformative(ACLMessage.NOT_UNDERSTOOD);
+					LOGGER.error("Did not understand the request", e);
+				}
+				myAgent.send(reply);
+			} else {
+				block();
+			}
+		}
 	}
 
 	private Codec codec = new SLCodec();
@@ -103,7 +117,7 @@ public class RequestCreatorAgent extends Agent {
 		}
 		LOGGER.info("Successfully registered in DF");
 
-		addBehaviour(new RequestServer(this));
+		addBehaviour(new RequestServer());
 
 		LOGGER.info("Setup completed");
 	}
