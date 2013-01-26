@@ -32,6 +32,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.StaleProxyException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import es.uca.agents.ontology.ProductionOntology;
+import es.uca.agents.ontology.actions.ListOrders;
 import es.uca.agents.ontology.actions.Manufacture;
 import es.uca.agents.ontology.actions.ReportStatus;
 import es.uca.agents.ontology.concepts.OrderConfirmation;
@@ -95,6 +97,9 @@ public class RequestCreatorAgent extends Agent {
 				else if (agAct instanceof ReportStatus) {
 					return handleOrderStatus(request, (ReportStatus)agAct);
 				}
+				else if (agAct instanceof ListOrders) {
+					return handleListOrders(request, (ListOrders)agAct);
+				}
 			} catch (Exception e) {
 				LOGGER.error("Could not reply to the request", e);
 				ACLMessage reply = request.createReply();
@@ -105,10 +110,22 @@ public class RequestCreatorAgent extends Agent {
 			throw new NotUnderstoodException(request);
 		}
 
-		private ACLMessage handleOrderStatus(ACLMessage request, ReportStatus agAct)
+		private ACLMessage handleListOrders(ACLMessage request, ListOrders action)
 				throws CodecException, OntologyException
 		{
-			final String oID = agAct.getOrderID();
+			jade.util.leap.ArrayList l = new jade.util.leap.ArrayList();
+			l.fromList(new ArrayList<String>(statuses.keySet()));
+
+			ACLMessage reply = request.createReply();
+			reply.setPerformative(ACLMessage.INFORM);
+			myAgent.getContentManager().fillContent(reply, new Result(action, l));
+			return reply;
+		}
+
+		private ACLMessage handleOrderStatus(ACLMessage request, ReportStatus action)
+				throws CodecException, OntologyException
+		{
+			final String oID = action.getOrderID();
 
 			LOGGER.info("Received status update on order {}", oID);
 			final OrderStatus status = statuses.get(oID);
@@ -121,7 +138,7 @@ public class RequestCreatorAgent extends Agent {
 			else {
 				LOGGER.debug("Found status for order {}", oID);
 				reply.setPerformative(ACLMessage.INFORM);
-				myAgent.getContentManager().fillContent(reply, new Result(agAct, status));
+				myAgent.getContentManager().fillContent(reply, new Result(action, status));
 			}
 			
 			return reply;
