@@ -9,24 +9,25 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-package es.uca.agents.ontology;
+package es.uca.agents.ontology.actions;
 
 import jade.content.AgentAction;
 import jade.content.onto.annotations.Result;
 import jade.content.onto.annotations.Slot;
+import es.uca.agents.ontology.concepts.OrderStatus;
 
-@Result(type=OrderResult.class)
-public class Manufacture implements AgentAction {
+@Result(type=OrderStatus.class)
+public class ReportStatus implements AgentAction {
 	private static final long serialVersionUID = 1L;
 
-	private Order order;
+	private String orderID;
 
 	@Slot(mandatory = true)
-	public Order getOrder() {
-		return order;
+	public String getOrderID() {
+		return orderID;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 }

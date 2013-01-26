@@ -9,7 +9,6 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-
 package es.uca.agents.ontology;
 
 import jade.content.onto.BeanOntology;
@@ -17,6 +16,9 @@ import jade.content.onto.OntologyException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import es.uca.agents.ontology.actions.Manufacture;
+import es.uca.agents.ontology.concepts.OrderStatus;
 
 /**
  * Ontology for all concepts used in the case study.
@@ -36,12 +38,10 @@ public class ProductionOntology extends BeanOntology {
 		super(NAME);
 		
 		try {
-			// Concepts
-			add(Order.class);
-			add(OrderResult.class);
+			add(OrderStatus.class.getPackage().getName());
+			add(Manufacture.class.getPackage().getName());
 
-			// Agent actions
-			add(Manufacture.class);
+			LOGGER.debug("Created ontology with actions: {}", this.getActionNames());
 		} catch (OntologyException e) {
 			LOGGER.error("Could not set up the ontology", e);
 		}

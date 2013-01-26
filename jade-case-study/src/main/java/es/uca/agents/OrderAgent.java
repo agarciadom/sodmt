@@ -9,22 +9,11 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-package es.uca.agents.ontology;
+package es.uca.agents;
 
-import jade.content.Concept;
-import jade.content.onto.annotations.Slot;
+import jade.core.Agent;
 
-public class OrderResult implements Concept {
+public class OrderAgent extends Agent {
 	private static final long serialVersionUID = 1L;
 
-	private boolean isSuccessful;
-
-	@Slot(mandatory = true)
-	public boolean isSuccessful() {
-		return isSuccessful;
-	}
-
-	public void setSuccessful(boolean isSuccessful) {
-		this.isSuccessful = isSuccessful;
-	}
 }

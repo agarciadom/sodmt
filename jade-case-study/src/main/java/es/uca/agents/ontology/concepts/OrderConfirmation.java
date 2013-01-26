@@ -9,35 +9,22 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-package es.uca.agents.ontology;
+package es.uca.agents.ontology.concepts;
 
 import jade.content.Concept;
 import jade.content.onto.annotations.Slot;
 
-/**
- * Java bean that contains all the information of a customer order.
- */
-public class Order implements Concept {
+public class OrderConfirmation implements Concept {
 	private static final long serialVersionUID = 1L;
 
-	private String productID;
-	private int quantity;
+	private String newOrderID;
 
-	@Slot(mandatory = true)
-	public String getProductID() {
-		return productID;
+	@Slot(mandatory=true)
+	public String getNewOrderID() {
+		return newOrderID;
 	}
 
-	public void setProductID(String productID) {
-		this.productID = productID;
-	}
-
-	@Slot(mandatory = true)
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setNewOrderID(String newOrderID) {
+		this.newOrderID = newOrderID;
 	}
 }

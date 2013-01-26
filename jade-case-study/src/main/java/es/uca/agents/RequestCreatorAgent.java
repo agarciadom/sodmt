@@ -30,13 +30,19 @@ import jade.domain.FIPAAgentManagement.Property;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import jade.wrapper.StaleProxyException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import es.uca.agents.ontology.Manufacture;
-import es.uca.agents.ontology.OrderResult;
 import es.uca.agents.ontology.ProductionOntology;
+import es.uca.agents.ontology.actions.Manufacture;
+import es.uca.agents.ontology.actions.ReportStatus;
+import es.uca.agents.ontology.concepts.OrderConfirmation;
+import es.uca.agents.ontology.concepts.OrderStatus;
 
 public class RequestCreatorAgent extends Agent {
 	private static final long serialVersionUID = 1L;
@@ -50,42 +56,8 @@ public class RequestCreatorAgent extends Agent {
 		private static final MessageTemplate MSG_TEMPLATE
 			= MessageTemplate.MatchOntology(ProductionOntology.NAME);
 
-		protected ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException {
-			AgentAction agAct = null;
-			try {
-				Action act = (Action) myAgent.getContentManager().extractContent(request);
-				agAct = (AgentAction)act.getAction();
-			} catch (Exception e) {
-				LOGGER.error("Could not understand the request", e);
-			}
-
-			try {
-				if (agAct instanceof Manufacture) {
-					return handleManufacture(request, (Manufacture)agAct);
-				}
-			} catch (Exception e) {
-				LOGGER.error("Could not reply to the request", e);
-				ACLMessage reply = request.createReply();
-				reply.setPerformative(ACLMessage.FAILURE);
-				return reply;
-			}
-
-			throw new NotUnderstoodException(request);
-		}
-
-		private ACLMessage handleManufacture(ACLMessage request, Manufacture action)
-				throws CodecException, OntologyException
-		{
-			// Dummy reply for now
-			OrderResult r = new OrderResult();
-			r.setSuccessful(true);
-
-			ACLMessage reply = request.createReply();
-			reply.setPerformative(ACLMessage.INFORM);
-			myAgent.getContentManager().fillContent(reply, new Result(action, r));
-
-			return reply;
-		}
+		private int orderNo = 1;
+		private Map<String, OrderStatus> statuses = new HashMap<String, OrderStatus>();
 
 		@Override
 		public void action() {
@@ -105,6 +77,77 @@ public class RequestCreatorAgent extends Agent {
 			} else {
 				block();
 			}
+		}
+
+		private ACLMessage handleRequest(ACLMessage request) throws NotUnderstoodException {
+			AgentAction agAct = null;
+			try {
+				Action act = (Action) myAgent.getContentManager().extractContent(request);
+				agAct = (AgentAction)act.getAction();
+			} catch (Exception e) {
+				LOGGER.error("Could not understand the request", e);
+			}
+
+			try {
+				if (agAct instanceof Manufacture) {
+					return handleManufacture(request, (Manufacture)agAct);
+				}
+				else if (agAct instanceof ReportStatus) {
+					return handleOrderStatus(request, (ReportStatus)agAct);
+				}
+			} catch (Exception e) {
+				LOGGER.error("Could not reply to the request", e);
+				ACLMessage reply = request.createReply();
+				reply.setPerformative(ACLMessage.FAILURE);
+				return reply;
+			}
+
+			throw new NotUnderstoodException(request);
+		}
+
+		private ACLMessage handleOrderStatus(ACLMessage request, ReportStatus agAct)
+				throws CodecException, OntologyException
+		{
+			final String oID = agAct.getOrderID();
+
+			LOGGER.info("Received status update on order {}", oID);
+			final OrderStatus status = statuses.get(oID);
+
+			ACLMessage reply = request.createReply();
+			if (status == null) {
+				LOGGER.warn("Cannot report status of order {}: it does not exist", oID);
+				reply.setPerformative(ACLMessage.FAILURE);
+			}
+			else {
+				LOGGER.debug("Found status for order {}", oID);
+				reply.setPerformative(ACLMessage.INFORM);
+				myAgent.getContentManager().fillContent(reply, new Result(agAct, status));
+			}
+			
+			return reply;
+		}
+
+		private ACLMessage handleManufacture(ACLMessage request, Manufacture action)
+				throws CodecException, OntologyException, StaleProxyException
+		{
+			OrderConfirmation r = new OrderConfirmation();
+			r.setNewOrderID("order" + orderNo++);
+
+			OrderStatus s = new OrderStatus(r.getNewOrderID(),
+				action.getOrder().getProductID(),
+				action.getOrder().getQuantity());
+			statuses.put(r.getNewOrderID(), s);
+
+			myAgent.getContainerController().createNewAgent(
+				r.getNewOrderID(),
+				OrderAgent.class.getName(),
+				new Object[] {r.getNewOrderID(), action.getOrder()});
+
+			ACLMessage reply = request.createReply();
+			reply.setPerformative(ACLMessage.INFORM);
+			myAgent.getContentManager().fillContent(reply, new Result(action, r));
+
+			return reply;
 		}
 	}
 
@@ -148,7 +191,7 @@ public class RequestCreatorAgent extends Agent {
 		sd.addProtocols(FIPANames.InteractionProtocol.FIPA_REQUEST);
 		sd.setType("OrderCreator");
 		sd.setOwnership("OrderCreatorOwner");
-		sd.setName("createOrder");
+		sd.setName("orders");
 		sd.addOntologies(ProductionOntology.NAME);
 	
 		// Expose the agent as a web service (WSIG_HIER is needed since we use a bean ontology)
