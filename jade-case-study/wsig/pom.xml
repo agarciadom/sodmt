@@ -5,25 +5,21 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>es.uca.agents</groupId>
-    <artifactId>mesic-case-study</artifactId>
+    <parent>
+        <groupId>es.uca.agents</groupId>
+        <artifactId>parent</artifactId>
+        <version>1-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <artifactId>wsig</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Case study for the MESIC 2013 paper</name>
-
-    <repositories>
-        <repository>
-            <id>neptuno-releases</id>
-            <url>https://neptuno.uca.es/nexus/content/groups/release-repos</url>
-            <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>false</enabled></snapshots>
-        </repository>
-    </repositories>
+    <packaging>war</packaging>
+    <name>WSIG distribution</name>
 
     <licenses>
         <license>
-            <name>Eclipse Public License 1.0</name>
-            <url>http://opensource.org/licenses/eclipse-1.0.php</url>
+            <name>GNU Lesser General Public License 2.1</name>
+            <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -31,25 +27,23 @@
     <dependencies>
         <dependency>
             <groupId>com.tilab</groupId>
-            <artifactId>jade</artifactId>
-            <version>4.2</version>
+            <artifactId>wsig</artifactId>
+            <type>war</type>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.9</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.0.9</version>
-            <scope>runtime</scope>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ontologies</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.8.v20121106</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

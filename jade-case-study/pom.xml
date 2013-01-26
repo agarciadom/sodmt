@@ -35,7 +35,7 @@
     <modules>
         <module>agents</module>
         <module>ontologies</module>
-        <!-- <module>wsig</module> -->
+        <module>wsig</module>
     </modules>
 
     <dependencyManagement>
@@ -44,6 +44,12 @@
                 <groupId>com.tilab</groupId>
                 <artifactId>jade</artifactId>
                 <version>4.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tilab</groupId>
+                <artifactId>wsig</artifactId>
+                <type>war</type>
+                <version>2.9</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

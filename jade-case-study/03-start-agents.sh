@@ -36,8 +36,6 @@ fi
 
 RCA_CLASS=es.uca.agents.RequestCreatorAgent
 
-mvn -am -pl agents install
-
 MAVEN_OPTS="$MAVEN_OPTS $JVM_FLAGS" mvn -pl agents exec:java \
     -Dexec.mainClass=jade.Boot \
     -Dexec.args="-container -host $CONTAINER -agents 'creator:$RCA_CLASS'"
