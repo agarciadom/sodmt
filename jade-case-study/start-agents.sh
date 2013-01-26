@@ -2,32 +2,42 @@
 
 ## OPTION PROCESSING ###########################################################
 
+CONTAINER=localhost
 DEBUG=
 JDWP_PORT=9876
-while getopts dp: option; do
+HELP=
+
+while getopts c:dhp: option; do
     case "$option" in
+	c) CONTAINER=$OPTARG;;
         d) DEBUG=1;;
+        h) HELP=1;;
         p) JDWP_PORT=$OPTARG;;
         ?) echo "Unknown option: $option"; exit 1;;
     esac
 done
+shift $((OPTIND - 1))
+
 if [[ "$DEBUG" == 1 ]]; then
     JVM_FLAGS="-Xrunjdwp:transport=dt_socket,address=$JDWP_PORT,server=y,suspend=y"
 fi
-shift $((OPTIND - 1))
 
-if [[ "$#" != 1 ]]; then
-    echo "Usage: $0 [-d for remote debugging | -p for JDWP port] (main container host)" >&2
+if [[ "$HELP" == 1 ]]; then
+    echo "Usage: $0 [options]" >&2
+    echo "Options:" >&2
+    echo "  * -c H  connect to container on host H" >&2
+    echo "  * -d    wait for remote debugger" >&2
+    echo "  * -h    print this help message" >&2
+    echo "  * -p P  use port P for remote debugging" >&2
     exit 1
 fi
 
 ## MAIN BODY ###################################################################
 
-HOST=$1
 RCA_CLASS=es.uca.agents.RequestCreatorAgent
 
-mvn compile
+mvn -am -pl agents install
 
-MAVEN_OPTS="$MAVEN_OPTS $JVM_FLAGS" mvn exec:java \
+MAVEN_OPTS="$MAVEN_OPTS $JVM_FLAGS" mvn -pl agents exec:java \
     -Dexec.mainClass=jade.Boot \
-    -Dexec.args="-container -host $HOST -agents 'creator:$RCA_CLASS'"
+    -Dexec.args="-container -host $CONTAINER -agents 'creator:$RCA_CLASS'"

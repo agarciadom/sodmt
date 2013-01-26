@@ -6,10 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>es.uca.agents</groupId>
-    <artifactId>mesic-case-study</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Case study for the MESIC 2013 paper</name>
+    <artifactId>parent</artifactId>
+    <version>1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Parent</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <repositories>
         <repository>
@@ -28,28 +32,36 @@
         </license>
     </licenses>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.tilab</groupId>
-            <artifactId>jade</artifactId>
-            <version>4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.9</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.0.9</version>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>agents</module>
+        <module>ontologies</module>
+        <!-- <module>wsig</module> -->
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.tilab</groupId>
+                <artifactId>jade</artifactId>
+                <version>4.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.2</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.0.9</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.0.9</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
