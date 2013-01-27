@@ -52,7 +52,7 @@ public class RequestCreatorAgent extends Agent {
 	private static final String WSIG = "wsig";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RequestCreatorAgent.class);
-	
+
 	private static final class RequestServer extends CyclicBehaviour {
 		private static final long serialVersionUID = 1L;
 		private static final MessageTemplate MSG_TEMPLATE
@@ -210,11 +210,11 @@ public class RequestCreatorAgent extends Agent {
 		sd.setOwnership("OrderCreatorOwner");
 		sd.setName("orders");
 		sd.addOntologies(ProductionOntology.NAME);
-	
+
 		// Expose the agent as a web service (WSIG_HIER is needed since we use a bean ontology)
 		sd.addProperties(new Property(WSIG, "true"));
 		sd.addProperties(new Property(WSIG_HIER, "true"));
-	
+
 		DFAgentDescription dfad = new DFAgentDescription();
 		dfad.setName(getAID());
 		dfad.addLanguages(codec.getName());

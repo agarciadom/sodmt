@@ -35,7 +35,8 @@ fi
 ## MAIN BODY ###################################################################
 
 RCA_CLASS=es.uca.agents.RequestCreatorAgent
+PA_CLASS=es.uca.agents.ProductAgent
 
 MAVEN_OPTS="$MAVEN_OPTS $JVM_FLAGS" mvn -pl agents exec:java \
     -Dexec.mainClass=jade.Boot \
-    -Dexec.args="-container -host $CONTAINER -agents 'creator:$RCA_CLASS'"
+    -Dexec.args="-container -container-name Workfloor -host $CONTAINER -agents 'creator:$RCA_CLASS;p1:$PA_CLASS(\"product1\",true)'"

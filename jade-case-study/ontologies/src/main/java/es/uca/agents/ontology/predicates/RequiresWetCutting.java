@@ -9,21 +9,22 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-package es.uca.agents;
+package es.uca.agents.ontology.predicates;
 
-import jade.core.Agent;
+import jade.content.Predicate;
+import jade.content.onto.annotations.Slot;
 
-/**
- * <p>
- * Implementation of the order agent of the PROSA architecture [1].
- * </p>
- * <p>
- * [1]: H. Van Brussel, J. Wyns, P. Valckenaers, L. Bongaerts, and P. Peeters,
- * <em>Reference architecture for holonic manufacturing systems: PROSA</em>,
- * Computers in Industry, vol. 37, no. 3, pp. 255–274, Nov. 1998.
- * </p>
- */
-public class OrderAgent extends Agent {
+public class RequiresWetCutting implements Predicate {
 	private static final long serialVersionUID = 1L;
 
+	private String productID;
+
+	@Slot(mandatory=true)
+	public String getProductID() {
+		return productID;
+	}
+
+	public void setProductID(String productID) {
+		this.productID = productID;
+	}
 }

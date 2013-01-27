@@ -9,21 +9,12 @@
  * Contributors:
  *     Antonio García-Domínguez - initial API and implementation
  */
-package es.uca.agents;
+package es.uca.agents.ontology.actions;
 
-import jade.core.Agent;
+import jade.content.AgentAction;
+import jade.content.onto.annotations.AggregateResult;
 
-/**
- * <p>
- * Implementation of the order agent of the PROSA architecture [1].
- * </p>
- * <p>
- * [1]: H. Van Brussel, J. Wyns, P. Valckenaers, L. Bongaerts, and P. Peeters,
- * <em>Reference architecture for holonic manufacturing systems: PROSA</em>,
- * Computers in Industry, vol. 37, no. 3, pp. 255–274, Nov. 1998.
- * </p>
- */
-public class OrderAgent extends Agent {
+@AggregateResult(type=String.class)
+public class ListOrders implements AgentAction {
 	private static final long serialVersionUID = 1L;
-
 }

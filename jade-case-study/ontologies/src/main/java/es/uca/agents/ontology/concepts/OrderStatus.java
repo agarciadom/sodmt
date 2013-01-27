@@ -11,9 +11,12 @@
  */
 package es.uca.agents.ontology.concepts;
 
+import jade.content.Concept;
 import jade.content.onto.annotations.Slot;
 
-public class OrderStatus {
+public class OrderStatus implements Concept {
+	private static final long serialVersionUID = 1L;
+
 	private String orderID, articleID;
 	private int requestedQuantity;
 	private boolean done = false;
