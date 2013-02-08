@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="generate-editor" default="default">
+    <target name="default">
+        <epsilon.eugenia src="model/sodmt_performance.emf"/>
+    </target>
+</project>
