@@ -56,7 +56,7 @@ public class ObjectNodeName2EditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5011;
+	public static final int VISUAL_ID = 5025;
 
 	/**
 	 * @generated
@@ -304,7 +304,7 @@ public class ObjectNodeName2EditPart extends CompartmentEditPart implements
 		if (parser == null) {
 			parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
 					.getParser(
-							serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003,
+							serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012,
 							getParserElement(),
 							serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 									.getType(serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID));

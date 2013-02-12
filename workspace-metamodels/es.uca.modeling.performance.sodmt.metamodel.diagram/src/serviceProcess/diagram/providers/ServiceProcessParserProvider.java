@@ -25,6 +25,47 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser actionName_5018Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getActionName_5018Parser() {
+		if (actionName_5018Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getNamedElement_Name() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			actionName_5018Parser = parser;
+		}
+		return actionName_5018Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser structuredActivityNodeName_5027Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getStructuredActivityNodeName_5027Parser() {
+		if (structuredActivityNodeName_5027Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getNamedElement_Name() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("«structured» {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0}"); //$NON-NLS-1$
+			parser.setEditPattern("{0}"); //$NON-NLS-1$
+			structuredActivityNodeName_5027Parser = parser;
+		}
+		return structuredActivityNodeName_5027Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser localPerformanceAnnotationConcurrentUsers_5001Parser;
 
 	/**
@@ -135,25 +176,6 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser executableNodeName_5013Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getExecutableNodeName_5013Parser() {
-		if (executableNodeName_5013Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
-					.getNamedElement_Name() };
-			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
-					features);
-			executableNodeName_5013Parser = parser;
-		}
-		return executableNodeName_5013Parser;
-	}
-
-	/**
-	 * @generated
-	 */
 	private IParser objectNodeName_5014Parser;
 
 	/**
@@ -239,13 +261,54 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser localPerformanceAnnotationConcurrentUsers_5006Parser;
+	private IParser actionName_5019Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getLocalPerformanceAnnotationConcurrentUsers_5006Parser() {
-		if (localPerformanceAnnotationConcurrentUsers_5006Parser == null) {
+	private IParser getActionName_5019Parser() {
+		if (actionName_5019Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getNamedElement_Name() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			actionName_5019Parser = parser;
+		}
+		return actionName_5019Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser structuredActivityNodeName_5026Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getStructuredActivityNodeName_5026Parser() {
+		if (structuredActivityNodeName_5026Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getNamedElement_Name() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("«structured» {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0}"); //$NON-NLS-1$
+			parser.setEditPattern("{0}"); //$NON-NLS-1$
+			structuredActivityNodeName_5026Parser = parser;
+		}
+		return structuredActivityNodeName_5026Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser localPerformanceAnnotationConcurrentUsers_5020Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationConcurrentUsers_5020Parser() {
+		if (localPerformanceAnnotationConcurrentUsers_5020Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
@@ -253,21 +316,21 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			parser.setViewPattern("«lpc»"); //$NON-NLS-1$
 			parser.setEditorPattern("«lpc»"); //$NON-NLS-1$
 			parser.setEditPattern("«lpc»"); //$NON-NLS-1$
-			localPerformanceAnnotationConcurrentUsers_5006Parser = parser;
+			localPerformanceAnnotationConcurrentUsers_5020Parser = parser;
 		}
-		return localPerformanceAnnotationConcurrentUsers_5006Parser;
+		return localPerformanceAnnotationConcurrentUsers_5020Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser localPerformanceAnnotationConcurrentUsers_5007Parser;
+	private IParser localPerformanceAnnotationConcurrentUsers_5021Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getLocalPerformanceAnnotationConcurrentUsers_5007Parser() {
-		if (localPerformanceAnnotationConcurrentUsers_5007Parser == null) {
+	private IParser getLocalPerformanceAnnotationConcurrentUsers_5021Parser() {
+		if (localPerformanceAnnotationConcurrentUsers_5021Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
@@ -275,21 +338,21 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
 			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
-			localPerformanceAnnotationConcurrentUsers_5007Parser = parser;
+			localPerformanceAnnotationConcurrentUsers_5021Parser = parser;
 		}
-		return localPerformanceAnnotationConcurrentUsers_5007Parser;
+		return localPerformanceAnnotationConcurrentUsers_5021Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser localPerformanceAnnotationSecsTimeLimit_5008Parser;
+	private IParser localPerformanceAnnotationSecsTimeLimit_5022Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getLocalPerformanceAnnotationSecsTimeLimit_5008Parser() {
-		if (localPerformanceAnnotationSecsTimeLimit_5008Parser == null) {
+	private IParser getLocalPerformanceAnnotationSecsTimeLimit_5022Parser() {
+		if (localPerformanceAnnotationSecsTimeLimit_5022Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_SecsTimeLimit() };
 			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
@@ -297,21 +360,21 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
 			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
-			localPerformanceAnnotationSecsTimeLimit_5008Parser = parser;
+			localPerformanceAnnotationSecsTimeLimit_5022Parser = parser;
 		}
-		return localPerformanceAnnotationSecsTimeLimit_5008Parser;
+		return localPerformanceAnnotationSecsTimeLimit_5022Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser localPerformanceAnnotationMinimumTime_5009Parser;
+	private IParser localPerformanceAnnotationMinimumTime_5023Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getLocalPerformanceAnnotationMinimumTime_5009Parser() {
-		if (localPerformanceAnnotationMinimumTime_5009Parser == null) {
+	private IParser getLocalPerformanceAnnotationMinimumTime_5023Parser() {
+		if (localPerformanceAnnotationMinimumTime_5023Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_MinimumTime() };
 			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
@@ -319,21 +382,21 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			parser.setViewPattern("minimum = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
 			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
-			localPerformanceAnnotationMinimumTime_5009Parser = parser;
+			localPerformanceAnnotationMinimumTime_5023Parser = parser;
 		}
-		return localPerformanceAnnotationMinimumTime_5009Parser;
+		return localPerformanceAnnotationMinimumTime_5023Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser localPerformanceAnnotationWeight_5010Parser;
+	private IParser localPerformanceAnnotationWeight_5024Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getLocalPerformanceAnnotationWeight_5010Parser() {
-		if (localPerformanceAnnotationWeight_5010Parser == null) {
+	private IParser getLocalPerformanceAnnotationWeight_5024Parser() {
+		if (localPerformanceAnnotationWeight_5024Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_Weight() };
 			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
@@ -341,47 +404,28 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
 			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
-			localPerformanceAnnotationWeight_5010Parser = parser;
+			localPerformanceAnnotationWeight_5024Parser = parser;
 		}
-		return localPerformanceAnnotationWeight_5010Parser;
+		return localPerformanceAnnotationWeight_5024Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser executableNodeName_5012Parser;
+	private IParser objectNodeName_5025Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getExecutableNodeName_5012Parser() {
-		if (executableNodeName_5012Parser == null) {
+	private IParser getObjectNodeName_5025Parser() {
+		if (objectNodeName_5025Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getNamedElement_Name() };
 			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
-			executableNodeName_5012Parser = parser;
+			objectNodeName_5025Parser = parser;
 		}
-		return executableNodeName_5012Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser objectNodeName_5011Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getObjectNodeName_5011Parser() {
-		if (objectNodeName_5011Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
-					.getNamedElement_Name() };
-			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
-					features);
-			objectNodeName_5011Parser = parser;
-		}
-		return objectNodeName_5011Parser;
+		return objectNodeName_5025Parser;
 	}
 
 	/**
@@ -414,6 +458,10 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
+		case serviceProcess.diagram.edit.parts.ActionNameEditPart.VISUAL_ID:
+			return getActionName_5018Parser();
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID:
+			return getStructuredActivityNodeName_5027Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsersEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationConcurrentUsers_5001Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers2EditPart.VISUAL_ID:
@@ -424,8 +472,6 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			return getLocalPerformanceAnnotationMinimumTime_5004Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5005Parser();
-		case serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart.VISUAL_ID:
-			return getExecutableNodeName_5013Parser();
 		case serviceProcess.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID:
 			return getObjectNodeName_5014Parser();
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationConcurrentUsersEditPart.VISUAL_ID:
@@ -434,20 +480,22 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			return getPerformanceAnnotationConcurrentUsers_5016Parser();
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationSecsTimeLimitEditPart.VISUAL_ID:
 			return getPerformanceAnnotationSecsTimeLimit_5017Parser();
+		case serviceProcess.diagram.edit.parts.ActionName2EditPart.VISUAL_ID:
+			return getActionName_5019Parser();
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart.VISUAL_ID:
+			return getStructuredActivityNodeName_5026Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotationConcurrentUsers_5006Parser();
+			return getLocalPerformanceAnnotationConcurrentUsers_5020Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers4EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotationConcurrentUsers_5007Parser();
+			return getLocalPerformanceAnnotationConcurrentUsers_5021Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationSecsTimeLimit2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotationSecsTimeLimit_5008Parser();
+			return getLocalPerformanceAnnotationSecsTimeLimit_5022Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationMinimumTime2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotationMinimumTime_5009Parser();
+			return getLocalPerformanceAnnotationMinimumTime_5023Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotationWeight_5010Parser();
-		case serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID:
-			return getExecutableNodeName_5012Parser();
+			return getLocalPerformanceAnnotationWeight_5024Parser();
 		case serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID:
-			return getObjectNodeName_5011Parser();
+			return getObjectNodeName_5025Parser();
 		case serviceProcess.diagram.edit.parts.ControlFlowConditionProbabilityEditPart.VISUAL_ID:
 			return getControlFlowConditionProbability_6001Parser();
 		}

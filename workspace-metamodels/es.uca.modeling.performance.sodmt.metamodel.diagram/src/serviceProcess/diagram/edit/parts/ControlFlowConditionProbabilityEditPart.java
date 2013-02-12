@@ -645,7 +645,7 @@ public class ControlFlowConditionProbabilityEditPart extends LabelEditPart
 		 * @generated
 		 */
 		public ControlFlowLabelFigure() {
-			this.setText("ControlFlow");
+			this.setText(" ");
 		}
 
 	}

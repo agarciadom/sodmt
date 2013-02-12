@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import serviceProcess.Action;
 import serviceProcess.ActivityEdge;
 import serviceProcess.ActivityNode;
 import serviceProcess.ControlFlow;
@@ -29,6 +30,7 @@ import serviceProcess.PerformanceAnnotation;
 import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessFactory;
 import serviceProcess.ServiceProcessPackage;
+import serviceProcess.StructuredActivityNode;
 import serviceProcess.VisitStatus;
 
 /**
@@ -101,6 +103,20 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * @generated
    */
   private EClass executableNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass structuredActivityNodeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -463,9 +479,29 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExecutableNode_Subnodes()
+  public EClass getAction()
   {
-    return (EReference)executableNodeEClass.getEStructuralFeatures().get(1);
+    return actionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStructuredActivityNode()
+  {
+    return structuredActivityNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStructuredActivityNode_Subnodes()
+  {
+    return (EReference)structuredActivityNodeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -619,7 +655,11 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
 
     executableNodeEClass = createEClass(EXECUTABLE_NODE);
     createEReference(executableNodeEClass, EXECUTABLE_NODE__ANNOTATION);
-    createEReference(executableNodeEClass, EXECUTABLE_NODE__SUBNODES);
+
+    actionEClass = createEClass(ACTION);
+
+    structuredActivityNodeEClass = createEClass(STRUCTURED_ACTIVITY_NODE);
+    createEReference(structuredActivityNodeEClass, STRUCTURED_ACTIVITY_NODE__SUBNODES);
 
     objectNodeEClass = createEClass(OBJECT_NODE);
 
@@ -674,6 +714,8 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     objectFlowEClass.getESuperTypes().add(this.getActivityEdge());
     executableNodeEClass.getESuperTypes().add(this.getActivityNode());
     executableNodeEClass.getESuperTypes().add(this.getNamedElement());
+    actionEClass.getESuperTypes().add(this.getExecutableNode());
+    structuredActivityNodeEClass.getESuperTypes().add(this.getExecutableNode());
     objectNodeEClass.getESuperTypes().add(this.getActivityNode());
     objectNodeEClass.getESuperTypes().add(this.getNamedElement());
     initialNodeEClass.getESuperTypes().add(this.getActivityNode());
@@ -712,9 +754,13 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(executableNodeEClass, ExecutableNode.class, "ExecutableNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(executableNodeEClass, ExecutableNode.class, "ExecutableNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExecutableNode_Annotation(), this.getLocalPerformanceAnnotation(), this.getLocalPerformanceAnnotation_ExecNode(), "annotation", null, 0, 1, ExecutableNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExecutableNode_Subnodes(), this.getActivityNode(), null, "subnodes", null, 0, -1, ExecutableNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(structuredActivityNodeEClass, StructuredActivityNode.class, "StructuredActivityNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStructuredActivityNode_Subnodes(), this.getActivityNode(), null, "subnodes", null, 0, -1, StructuredActivityNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectNodeEClass, ObjectNode.class, "ObjectNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -774,7 +820,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "model.extension", "sp",
        "diagram.extension", "spdiag"
-       });																			
+       });																				
   }
 
   /**
@@ -806,6 +852,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "label.view.pattern", "[{0}] (p = {1})",
        "label.edit.pattern", "{0} : {1,number}",
        "label.parser", "ControlFlowLabelParser",
+       "label.text", " ",
        "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)",
        "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)"
        });		
@@ -826,7 +873,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "incoming", "true",
        "style", "dash",
        "tool.name", "Link Performance Annotation"
-       });							
+       });								
   }
 
   /**
@@ -869,9 +916,18 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        source, 
        new String[] 
        {
-       "label.icon", "false",
-       "tool.name", "Executable Node"
-       });				
+       "label.icon", "false"
+       });			
+    addAnnotation
+      (structuredActivityNodeEClass, 
+       source, 
+       new String[] 
+       {
+       "border.style", "dash",
+       "label.view.pattern", "\u00abstructured\u00bb {0}",
+       "label.edit.pattern", "{0}",
+       "tool.name", "Structured Activity Node"
+       });			
     addAnnotation
       (objectNodeEClass, 
        source, 
@@ -995,7 +1051,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "label.view.pattern", "weight = {0}",
        "label.edit.pattern", "{0, number}",
        "label.parser", "NumbersToDoubleLabelParser"
-       });												
+       });													
   }
 
   /**
@@ -1006,9 +1062,9 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    */
   protected void createGmf_4Annotations()
   {
-    String source = "gmf.compartment";															
+    String source = "gmf.compartment";																
     addAnnotation
-      (getExecutableNode_Subnodes(), 
+      (getStructuredActivityNode_Subnodes(), 
        source, 
        new String[] 
        {

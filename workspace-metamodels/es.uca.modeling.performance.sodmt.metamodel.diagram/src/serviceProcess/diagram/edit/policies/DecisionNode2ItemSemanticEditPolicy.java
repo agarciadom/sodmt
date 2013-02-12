@@ -28,7 +28,7 @@ public class DecisionNode2ItemSemanticEditPolicy
 	 */
 	public DecisionNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
 	}
 
 	/**

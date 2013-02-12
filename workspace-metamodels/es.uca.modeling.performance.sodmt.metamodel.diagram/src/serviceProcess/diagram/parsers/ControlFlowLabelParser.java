@@ -189,8 +189,10 @@ public class ControlFlowLabelParser extends
 	/**
 	 * @generated NOT
 	 */
-	public ICommand getParseCommand(IAdaptable adapter, String newString, int flags) {
-		Object[] values = getEditorProcessor().parse(newString, new java.text.ParsePosition(0));
+	public ICommand getParseCommand(IAdaptable adapter, String newString,
+			int flags) {
+		Object[] values = getEditorProcessor().parse(newString,
+				new java.text.ParsePosition(0));
 		for (int i = 0; i < values.length; ++i) {
 			if (values[i] instanceof Number) {
 				values[i] = new Double(((Number) values[i]).doubleValue());

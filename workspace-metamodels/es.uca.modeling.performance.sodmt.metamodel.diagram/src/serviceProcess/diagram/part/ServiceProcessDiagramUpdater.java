@@ -38,10 +38,10 @@ public class ServiceProcessDiagramUpdater {
 				.getVisualID(view)) {
 		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
 			return getServiceProcess_1000SemanticChildren(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
-			return getExecutableNodeExecutableNodeSubnodesCompartment_7001SemanticChildren(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID:
-			return getExecutableNodeExecutableNodeSubnodesCompartment_7002SemanticChildren(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID:
+			return getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7003SemanticChildren(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
+			return getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7004SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -62,12 +62,17 @@ public class ServiceProcessDiagramUpdater {
 					.next();
 			int visualID = serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 					.getNodeVisualID(view, childElement);
-			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
 			}
-			if (visualID == serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
+			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
@@ -119,7 +124,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> getExecutableNodeExecutableNodeSubnodesCompartment_7001SemanticChildren(
+	public static List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7003SemanticChildren(
 			View view) {
 		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
@@ -128,7 +133,7 @@ public class ServiceProcessDiagramUpdater {
 		if (!containerView.isSetElement()) {
 			return Collections.emptyList();
 		}
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) containerView
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) containerView
 				.getElement();
 		LinkedList<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getSubnodes().iterator(); it
@@ -137,12 +142,17 @@ public class ServiceProcessDiagramUpdater {
 					.next();
 			int visualID = serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 					.getNodeVisualID(view, childElement);
-			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
 			}
-			if (visualID == serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
+			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
@@ -184,7 +194,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> getExecutableNodeExecutableNodeSubnodesCompartment_7002SemanticChildren(
+	public static List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7004SemanticChildren(
 			View view) {
 		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
@@ -193,7 +203,7 @@ public class ServiceProcessDiagramUpdater {
 		if (!containerView.isSetElement()) {
 			return Collections.emptyList();
 		}
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) containerView
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) containerView
 				.getElement();
 		LinkedList<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getSubnodes().iterator(); it
@@ -202,12 +212,17 @@ public class ServiceProcessDiagramUpdater {
 					.next();
 			int visualID = serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 					.getNodeVisualID(view, childElement);
-			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
 			}
-			if (visualID == serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID) {
+			if (visualID == serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
+			if (visualID == serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
 				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
 						childElement, visualID));
 				continue;
@@ -255,10 +270,12 @@ public class ServiceProcessDiagramUpdater {
 				.getVisualID(view)) {
 		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
 			return getServiceProcess_1000ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return getAction_2010ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return getStructuredActivityNode_2011ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotation_2001ContainedLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return getExecutableNode_2002ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return getObjectNode_2003ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -273,22 +290,24 @@ public class ServiceProcessDiagramUpdater {
 			return getJoinNode_2008ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return getAction_3009ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return getStructuredActivityNode_3010ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotation_3001ContainedLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return getExecutableNode_3002ContainedLinks(view);
+			return getLocalPerformanceAnnotation_3011ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return getObjectNode_3003ContainedLinks(view);
+			return getObjectNode_3012ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return getInitialNode_3004ContainedLinks(view);
+			return getInitialNode_3013ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return getFinalNode_3005ContainedLinks(view);
+			return getFinalNode_3014ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return getDecisionNode_3006ContainedLinks(view);
+			return getDecisionNode_3015ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return getForkNode_3007ContainedLinks(view);
+			return getForkNode_3016ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return getJoinNode_3008ContainedLinks(view);
+			return getJoinNode_3017ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -304,10 +323,12 @@ public class ServiceProcessDiagramUpdater {
 			View view) {
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return getAction_2010IncomingLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return getStructuredActivityNode_2011IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotation_2001IncomingLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return getExecutableNode_2002IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return getObjectNode_2003IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -322,22 +343,24 @@ public class ServiceProcessDiagramUpdater {
 			return getJoinNode_2008IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009IncomingLinks(view);
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return getAction_3009IncomingLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return getStructuredActivityNode_3010IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotation_3001IncomingLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return getExecutableNode_3002IncomingLinks(view);
+			return getLocalPerformanceAnnotation_3011IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return getObjectNode_3003IncomingLinks(view);
+			return getObjectNode_3012IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return getInitialNode_3004IncomingLinks(view);
+			return getInitialNode_3013IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return getFinalNode_3005IncomingLinks(view);
+			return getFinalNode_3014IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return getDecisionNode_3006IncomingLinks(view);
+			return getDecisionNode_3015IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return getForkNode_3007IncomingLinks(view);
+			return getForkNode_3016IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return getJoinNode_3008IncomingLinks(view);
+			return getJoinNode_3017IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -353,10 +376,12 @@ public class ServiceProcessDiagramUpdater {
 			View view) {
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return getAction_2010OutgoingLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return getStructuredActivityNode_2011OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotation_2001OutgoingLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return getExecutableNode_2002OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return getObjectNode_2003OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -371,22 +396,24 @@ public class ServiceProcessDiagramUpdater {
 			return getJoinNode_2008OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009OutgoingLinks(view);
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return getAction_3009OutgoingLinks(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return getStructuredActivityNode_3010OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotation_3001OutgoingLinks(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return getExecutableNode_3002OutgoingLinks(view);
+			return getLocalPerformanceAnnotation_3011OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return getObjectNode_3003OutgoingLinks(view);
+			return getObjectNode_3012OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return getInitialNode_3004OutgoingLinks(view);
+			return getInitialNode_3013OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return getFinalNode_3005OutgoingLinks(view);
+			return getFinalNode_3014OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return getDecisionNode_3006OutgoingLinks(view);
+			return getDecisionNode_3015OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return getForkNode_3007OutgoingLinks(view);
+			return getForkNode_3016OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return getJoinNode_3008OutgoingLinks(view);
+			return getJoinNode_3017OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -411,21 +438,33 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_2001ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_2010ContainedLinks(
 			View view) {
-		return Collections.emptyList();
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_2002ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_2011ContainedLinks(
 			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
 				.getElement();
 		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
 		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_2001ContainedLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
@@ -487,17 +526,9 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3001ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_3009ContainedLinks(
 			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_3002ContainedLinks(
-			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
 				.getElement();
 		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
@@ -507,7 +538,19 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3003ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_3010ContainedLinks(
+			View view) {
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3011ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -515,7 +558,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3004ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3012ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -523,7 +566,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3005ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3013ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -531,7 +574,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3006ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3014ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -539,7 +582,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3007ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3015ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -547,7 +590,15 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3008ContainedLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3016ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3017ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -571,6 +622,40 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_2010IncomingLinks(
+			View view) {
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_2011IncomingLinks(
+			View view) {
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_2001IncomingLinks(
 			View view) {
 		serviceProcess.LocalPerformanceAnnotation modelElement = (serviceProcess.LocalPerformanceAnnotation) view
@@ -583,23 +668,6 @@ public class ServiceProcessDiagramUpdater {
 		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
 				modelElement, crossReferences));
 		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(
-				modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_2002IncomingLinks(
-			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
-				.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
 				modelElement, crossReferences));
 		return result;
 	}
@@ -717,7 +785,41 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3001IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_3009IncomingLinks(
+			View view) {
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_3010IncomingLinks(
+			View view) {
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3011IncomingLinks(
 			View view) {
 		serviceProcess.LocalPerformanceAnnotation modelElement = (serviceProcess.LocalPerformanceAnnotation) view
 				.getElement();
@@ -736,24 +838,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_3002IncomingLinks(
-			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
-				.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3003IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3012IncomingLinks(
 			View view) {
 		serviceProcess.ObjectNode modelElement = (serviceProcess.ObjectNode) view
 				.getElement();
@@ -770,7 +855,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3004IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3013IncomingLinks(
 			View view) {
 		serviceProcess.InitialNode modelElement = (serviceProcess.InitialNode) view
 				.getElement();
@@ -787,7 +872,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3005IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3014IncomingLinks(
 			View view) {
 		serviceProcess.FinalNode modelElement = (serviceProcess.FinalNode) view
 				.getElement();
@@ -804,7 +889,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3006IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3015IncomingLinks(
 			View view) {
 		serviceProcess.DecisionNode modelElement = (serviceProcess.DecisionNode) view
 				.getElement();
@@ -821,7 +906,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3007IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3016IncomingLinks(
 			View view) {
 		serviceProcess.ForkNode modelElement = (serviceProcess.ForkNode) view
 				.getElement();
@@ -838,7 +923,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3008IncomingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3017IncomingLinks(
 			View view) {
 		serviceProcess.JoinNode modelElement = (serviceProcess.JoinNode) view
 				.getElement();
@@ -871,6 +956,34 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_2010OutgoingLinks(
+			View view) {
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_2011OutgoingLinks(
+			View view) {
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_2001OutgoingLinks(
 			View view) {
 		serviceProcess.LocalPerformanceAnnotation modelElement = (serviceProcess.LocalPerformanceAnnotation) view
@@ -878,20 +991,6 @@ public class ServiceProcessDiagramUpdater {
 		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_2002OutgoingLinks(
-			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
-				.getElement();
-		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
-		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
-		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
 		return result;
 	}
 
@@ -984,7 +1083,35 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3001OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getAction_3009OutgoingLinks(
+			View view) {
+		serviceProcess.Action modelElement = (serviceProcess.Action) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getStructuredActivityNode_3010OutgoingLinks(
+			View view) {
+		serviceProcess.StructuredActivityNode modelElement = (serviceProcess.StructuredActivityNode) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getLocalPerformanceAnnotation_3011OutgoingLinks(
 			View view) {
 		serviceProcess.LocalPerformanceAnnotation modelElement = (serviceProcess.LocalPerformanceAnnotation) view
 				.getElement();
@@ -997,21 +1124,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getExecutableNode_3002OutgoingLinks(
-			View view) {
-		serviceProcess.ExecutableNode modelElement = (serviceProcess.ExecutableNode) view
-				.getElement();
-		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
-		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
-		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3003OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getObjectNode_3012OutgoingLinks(
 			View view) {
 		serviceProcess.ObjectNode modelElement = (serviceProcess.ObjectNode) view
 				.getElement();
@@ -1024,7 +1137,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3004OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getInitialNode_3013OutgoingLinks(
 			View view) {
 		serviceProcess.InitialNode modelElement = (serviceProcess.InitialNode) view
 				.getElement();
@@ -1037,7 +1150,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3005OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getFinalNode_3014OutgoingLinks(
 			View view) {
 		serviceProcess.FinalNode modelElement = (serviceProcess.FinalNode) view
 				.getElement();
@@ -1050,7 +1163,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3006OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getDecisionNode_3015OutgoingLinks(
 			View view) {
 		serviceProcess.DecisionNode modelElement = (serviceProcess.DecisionNode) view
 				.getElement();
@@ -1063,7 +1176,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3007OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getForkNode_3016OutgoingLinks(
 			View view) {
 		serviceProcess.ForkNode modelElement = (serviceProcess.ForkNode) view
 				.getElement();
@@ -1076,7 +1189,7 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3008OutgoingLinks(
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3017OutgoingLinks(
 			View view) {
 		serviceProcess.JoinNode modelElement = (serviceProcess.JoinNode) view
 				.getElement();

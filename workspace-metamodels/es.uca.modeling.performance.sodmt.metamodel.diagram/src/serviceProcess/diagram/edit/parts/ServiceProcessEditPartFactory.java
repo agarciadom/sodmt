@@ -28,6 +28,22 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 				return new serviceProcess.diagram.edit.parts.ServiceProcessEditPart(
 						view);
 
+			case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.ActionEditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.ActionNameEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.ActionNameEditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart(
+						view);
+
 			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart(
 						view);
@@ -50,14 +66,6 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 
 			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart(
-						view);
-
-			case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNodeEditPart(
-						view);
-
-			case serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart(
 						view);
 
 			case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
@@ -104,6 +112,22 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 				return new serviceProcess.diagram.edit.parts.PerformanceAnnotationSecsTimeLimitEditPart(
 						view);
 
+			case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.Action2EditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.ActionName2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.ActionName2EditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart(
+						view);
+
 			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart(
 						view);
@@ -126,14 +150,6 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 
 			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart(
-						view);
-
-			case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNode2EditPart(
-						view);
-
-			case serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart(
 						view);
 
 			case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
@@ -164,12 +180,12 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 				return new serviceProcess.diagram.edit.parts.JoinNode2EditPart(
 						view);
 
-			case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart(
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart(
 						view);
 
-			case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID:
-				return new serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart(
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart(
 						view);
 
 			case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:

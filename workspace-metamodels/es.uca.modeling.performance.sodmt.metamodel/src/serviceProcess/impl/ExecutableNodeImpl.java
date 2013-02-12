@@ -32,13 +32,12 @@ import serviceProcess.ServiceProcessPackage;
  * <ul>
  *   <li>{@link serviceProcess.impl.ExecutableNodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link serviceProcess.impl.ExecutableNodeImpl#getAnnotation <em>Annotation</em>}</li>
- *   <li>{@link serviceProcess.impl.ExecutableNodeImpl#getSubnodes <em>Subnodes</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNode
+public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNode
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -69,16 +68,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
    * @ordered
    */
   protected LocalPerformanceAnnotation annotation;
-
-  /**
-   * The cached value of the '{@link #getSubnodes() <em>Subnodes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSubnodes()
-   * @generated
-   * @ordered
-   */
-  protected EList<ActivityNode> subnodes;
 
   /**
    * <!-- begin-user-doc -->
@@ -197,20 +186,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ActivityNode> getSubnodes()
-  {
-    if (subnodes == null)
-    {
-      subnodes = new EObjectContainmentEList<ActivityNode>(ActivityNode.class, this, ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES);
-    }
-    return subnodes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -236,8 +211,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
     {
       case ServiceProcessPackage.EXECUTABLE_NODE__ANNOTATION:
         return basicSetAnnotation(null, msgs);
-      case ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES:
-        return ((InternalEList<?>)getSubnodes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -257,8 +230,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
       case ServiceProcessPackage.EXECUTABLE_NODE__ANNOTATION:
         if (resolve) return getAnnotation();
         return basicGetAnnotation();
-      case ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES:
-        return getSubnodes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -280,10 +251,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
       case ServiceProcessPackage.EXECUTABLE_NODE__ANNOTATION:
         setAnnotation((LocalPerformanceAnnotation)newValue);
         return;
-      case ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES:
-        getSubnodes().clear();
-        getSubnodes().addAll((Collection<? extends ActivityNode>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -304,9 +271,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
       case ServiceProcessPackage.EXECUTABLE_NODE__ANNOTATION:
         setAnnotation((LocalPerformanceAnnotation)null);
         return;
-      case ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES:
-        getSubnodes().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -325,8 +289,6 @@ public class ExecutableNodeImpl extends ActivityNodeImpl implements ExecutableNo
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ServiceProcessPackage.EXECUTABLE_NODE__ANNOTATION:
         return annotation != null;
-      case ServiceProcessPackage.EXECUTABLE_NODE__SUBNODES:
-        return subnodes != null && !subnodes.isEmpty();
     }
     return super.eIsSet(featureID);
   }

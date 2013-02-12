@@ -18,12 +18,12 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ExecutableNode2CreateCommand extends EditElementCommand {
+public class Action2CreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public ExecutableNode2CreateCommand(CreateElementRequest req) {
+	public Action2CreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -53,10 +53,10 @@ public class ExecutableNode2CreateCommand extends EditElementCommand {
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
-		serviceProcess.ExecutableNode newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
-				.createExecutableNode();
+		serviceProcess.Action newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
+				.createAction();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);
@@ -68,7 +68,7 @@ public class ExecutableNode2CreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(serviceProcess.ExecutableNode newElement,
+	protected void doConfigure(serviceProcess.Action newElement,
 			IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest())

@@ -27,7 +27,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy
+public class StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentCanonicalEditPolicy
 		extends CanonicalEditPolicy {
 
 	/**
@@ -47,7 +47,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy
 	 */
 	protected EStructuralFeature getFeatureToSynchronize() {
 		return serviceProcess.ServiceProcessPackage.eINSTANCE
-				.getExecutableNode_Subnodes();
+				.getStructuredActivityNode_Subnodes();
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> childDescriptors = serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-				.getExecutableNodeExecutableNodeSubnodesCompartment_7001SemanticChildren(viewObject);
+				.getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7003SemanticChildren(viewObject);
 		for (serviceProcess.diagram.part.ServiceProcessNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -81,8 +81,9 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy
 		int visualID = serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view);
 		switch (visualID) {
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
@@ -103,7 +104,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<serviceProcess.diagram.part.ServiceProcessNodeDescriptor> childDescriptors = serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-				.getExecutableNodeExecutableNodeSubnodesCompartment_7001SemanticChildren((View) getHost()
+				.getStructuredActivityNodeStructuredActivityNodeSubnodesCompartment_7003SemanticChildren((View) getHost()
 						.getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours

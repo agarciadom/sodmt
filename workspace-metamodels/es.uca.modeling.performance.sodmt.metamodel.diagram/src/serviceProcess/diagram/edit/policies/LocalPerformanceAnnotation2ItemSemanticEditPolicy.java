@@ -31,7 +31,7 @@ public class LocalPerformanceAnnotation2ItemSemanticEditPolicy
 	 */
 	public LocalPerformanceAnnotation2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
 	}
 
 	/**

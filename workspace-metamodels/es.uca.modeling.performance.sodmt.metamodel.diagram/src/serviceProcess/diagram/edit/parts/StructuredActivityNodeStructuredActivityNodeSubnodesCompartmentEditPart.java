@@ -17,18 +17,19 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 /**
  * @generated
  */
-public class ExecutableNodeExecutableNodeSubnodesCompartment2EditPart extends
-		ShapeCompartmentEditPart {
+public class StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart
+		extends ShapeCompartmentEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 7002;
+	public static final int VISUAL_ID = 7003;
 
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeExecutableNodeSubnodesCompartment2EditPart(View view) {
+	public StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart(
+			View view) {
 		super(view);
 	}
 
@@ -36,7 +37,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartment2EditPart extends
 	 * @generated
 	 */
 	public String getCompartmentName() {
-		return serviceProcess.diagram.part.Messages.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart_title;
+		return serviceProcess.diagram.part.Messages.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart_title;
 	}
 
 	/**
@@ -58,7 +59,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartment2EditPart extends
 				new ResizableCompartmentEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
-				new serviceProcess.diagram.edit.policies.ExecutableNodeExecutableNodeSubnodesCompartment2ItemSemanticEditPolicy());
+				new serviceProcess.diagram.edit.policies.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentItemSemanticEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.CREATION_ROLE,
 				new CreationEditPolicyWithCustomReparent(
@@ -67,7 +68,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartment2EditPart extends
 				new DragDropEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.CANONICAL_ROLE,
-				new serviceProcess.diagram.edit.policies.ExecutableNodeExecutableNodeSubnodesCompartment2CanonicalEditPolicy());
+				new serviceProcess.diagram.edit.policies.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentCanonicalEditPolicy());
 	}
 
 	/**

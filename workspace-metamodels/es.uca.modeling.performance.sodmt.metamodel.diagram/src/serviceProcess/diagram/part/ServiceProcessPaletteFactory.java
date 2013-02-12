@@ -37,8 +37,8 @@ public class ServiceProcessPaletteFactory {
 		PaletteDrawer paletteContainer = new PaletteDrawer(
 				serviceProcess.diagram.part.Messages.Objects1Group_title);
 		paletteContainer.setId("createObjects1Group"); //$NON-NLS-1$
-		paletteContainer.add(createDecision1CreationTool());
-		paletteContainer.add(createExecutableNode2CreationTool());
+		paletteContainer.add(createAction1CreationTool());
+		paletteContainer.add(createDecision2CreationTool());
 		paletteContainer.add(createFinish3CreationTool());
 		paletteContainer.add(createFork4CreationTool());
 		paletteContainer.add(createGlobalPerformanceConstraint5CreationTool());
@@ -46,6 +46,7 @@ public class ServiceProcessPaletteFactory {
 		paletteContainer.add(createLocalPerformanceConstraint7CreationTool());
 		paletteContainer.add(createObjectNode8CreationTool());
 		paletteContainer.add(createStart9CreationTool());
+		paletteContainer.add(createStructuredActivityNode10CreationTool());
 		return paletteContainer;
 	}
 
@@ -66,17 +67,17 @@ public class ServiceProcessPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createDecision1CreationTool() {
+	private ToolEntry createAction1CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceProcess.diagram.part.Messages.Decision1CreationTool_title,
-				serviceProcess.diagram.part.Messages.Decision1CreationTool_desc,
+				serviceProcess.diagram.part.Messages.Action1CreationTool_title,
+				serviceProcess.diagram.part.Messages.Action1CreationTool_desc,
 				types);
-		entry.setId("createDecision1CreationTool"); //$NON-NLS-1$
+		entry.setId("createAction1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -84,17 +85,17 @@ public class ServiceProcessPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createExecutableNode2CreationTool() {
+	private ToolEntry createDecision2CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceProcess.diagram.part.Messages.ExecutableNode2CreationTool_title,
-				serviceProcess.diagram.part.Messages.ExecutableNode2CreationTool_desc,
+				serviceProcess.diagram.part.Messages.Decision2CreationTool_title,
+				serviceProcess.diagram.part.Messages.Decision2CreationTool_desc,
 				types);
-		entry.setId("createExecutableNode2CreationTool"); //$NON-NLS-1$
+		entry.setId("createDecision2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -104,7 +105,7 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createFinish3CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.Finish3CreationTool_title,
@@ -112,7 +113,7 @@ public class ServiceProcessPaletteFactory {
 				types);
 		entry.setId("createFinish3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -122,7 +123,7 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createFork4CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.Fork4CreationTool_title,
@@ -130,7 +131,7 @@ public class ServiceProcessPaletteFactory {
 				types);
 		entry.setId("createFork4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -156,7 +157,7 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createJoin6CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.Join6CreationTool_title,
@@ -164,7 +165,7 @@ public class ServiceProcessPaletteFactory {
 				types);
 		entry.setId("createJoin6CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -174,15 +175,15 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createLocalPerformanceConstraint7CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.LocalPerformanceConstraint7CreationTool_title,
 				serviceProcess.diagram.part.Messages.LocalPerformanceConstraint7CreationTool_desc,
 				types);
 		entry.setId("createLocalPerformanceConstraint7CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -192,7 +193,7 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createObjectNode8CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.ObjectNode8CreationTool_title,
@@ -200,7 +201,7 @@ public class ServiceProcessPaletteFactory {
 				types);
 		entry.setId("createObjectNode8CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -210,7 +211,7 @@ public class ServiceProcessPaletteFactory {
 	 */
 	private ToolEntry createStart9CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 		NodeToolEntry entry = new NodeToolEntry(
 				serviceProcess.diagram.part.Messages.Start9CreationTool_title,
@@ -218,7 +219,25 @@ public class ServiceProcessPaletteFactory {
 				types);
 		entry.setId("createStart9CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
-				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004));
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createStructuredActivityNode10CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+		NodeToolEntry entry = new NodeToolEntry(
+				serviceProcess.diagram.part.Messages.StructuredActivityNode10CreationTool_title,
+				serviceProcess.diagram.part.Messages.StructuredActivityNode10CreationTool_desc,
+				types);
+		entry.setId("createStructuredActivityNode10CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

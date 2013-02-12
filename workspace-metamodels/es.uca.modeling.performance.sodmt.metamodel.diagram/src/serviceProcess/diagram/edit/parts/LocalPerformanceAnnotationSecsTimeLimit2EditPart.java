@@ -56,7 +56,7 @@ public class LocalPerformanceAnnotationSecsTimeLimit2EditPart extends
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5008;
+	public static final int VISUAL_ID = 5022;
 
 	/**
 	 * @generated
@@ -304,7 +304,7 @@ public class LocalPerformanceAnnotationSecsTimeLimit2EditPart extends
 		if (parser == null) {
 			parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
 					.getParser(
-							serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001,
+							serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011,
 							getParserElement(),
 							serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 									.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationSecsTimeLimit2EditPart.VISUAL_ID));

@@ -57,7 +57,7 @@ public class LocalPerformanceAnnotation2CreateCommand extends
 		serviceProcess.LocalPerformanceAnnotation newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
 				.createLocalPerformanceAnnotation();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);

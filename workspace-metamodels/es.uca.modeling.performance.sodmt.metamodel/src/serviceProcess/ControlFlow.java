@@ -17,7 +17,7 @@ package serviceProcess;
  * </p>
  *
  * @see serviceProcess.ServiceProcessPackage#getControlFlow()
- * @model annotation="gmf.link tool.name='Control Flow' label='condition,probability' label.view.pattern='[{0}] (p = {1})' label.edit.pattern='{0} : {1,number}' label.parser='ControlFlowLabelParser' source.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)' target.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)'"
+ * @model annotation="gmf.link tool.name='Control Flow' label='condition,probability' label.view.pattern='[{0}] (p = {1})' label.edit.pattern='{0} : {1,number}' label.parser='ControlFlowLabelParser' label.text=' ' source.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)' target.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)'"
  * @generated
  */
 public interface ControlFlow extends ActivityEdge

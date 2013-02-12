@@ -68,13 +68,22 @@ public interface ServiceProcessFactory extends EFactory
   ObjectFlow createObjectFlow();
 
   /**
-   * Returns a new object of class '<em>Executable Node</em>'.
+   * Returns a new object of class '<em>Action</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Executable Node</em>'.
+   * @return a new object of class '<em>Action</em>'.
    * @generated
    */
-  ExecutableNode createExecutableNode();
+  Action createAction();
+
+  /**
+   * Returns a new object of class '<em>Structured Activity Node</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Structured Activity Node</em>'.
+   * @generated
+   */
+  StructuredActivityNode createStructuredActivityNode();
 
   /**
    * Returns a new object of class '<em>Object Node</em>'.

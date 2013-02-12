@@ -122,14 +122,19 @@ public class ServiceProcessVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID;
+			}
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getStructuredActivityNode().isSuperTypeOf(
+							domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID;
+			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation().isSuperTypeOf(
 							domainElement.eClass())) {
 				return serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID;
-			}
-			if (serviceProcess.ServiceProcessPackage.eINSTANCE
-					.getExecutableNode().isSuperTypeOf(domainElement.eClass())) {
-				return serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID;
 			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getObjectNode()
 					.isSuperTypeOf(domainElement.eClass())) {
@@ -161,15 +166,20 @@ public class ServiceProcessVisualIDRegistry {
 				return serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID:
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID;
+			}
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getStructuredActivityNode().isSuperTypeOf(
+							domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID;
+			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation().isSuperTypeOf(
 							domainElement.eClass())) {
 				return serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID;
-			}
-			if (serviceProcess.ServiceProcessPackage.eINSTANCE
-					.getExecutableNode().isSuperTypeOf(domainElement.eClass())) {
-				return serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID;
 			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getObjectNode()
 					.isSuperTypeOf(domainElement.eClass())) {
@@ -196,15 +206,20 @@ public class ServiceProcessVisualIDRegistry {
 				return serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID;
+			}
+			if (serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getStructuredActivityNode().isSuperTypeOf(
+							domainElement.eClass())) {
+				return serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID;
+			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation().isSuperTypeOf(
 							domainElement.eClass())) {
 				return serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID;
-			}
-			if (serviceProcess.ServiceProcessPackage.eINSTANCE
-					.getExecutableNode().isSuperTypeOf(domainElement.eClass())) {
-				return serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID;
 			}
 			if (serviceProcess.ServiceProcessPackage.eINSTANCE.getObjectNode()
 					.isSuperTypeOf(domainElement.eClass())) {
@@ -259,10 +274,13 @@ public class ServiceProcessVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
-			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID == nodeVisualID) {
+			if (serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID == nodeVisualID) {
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -287,6 +305,19 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			break;
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.ActionNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsersEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -304,14 +335,6 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			if (serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			if (serviceProcess.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -325,6 +348,19 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			if (serviceProcess.diagram.edit.parts.PerformanceAnnotationSecsTimeLimitEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.ActionName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -345,24 +381,19 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			if (serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 			if (serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
-			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID == nodeVisualID) {
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID == nodeVisualID) {
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID == nodeVisualID) {
@@ -384,11 +415,14 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			break;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID:
-			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID == nodeVisualID) {
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
+			if (serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID == nodeVisualID) {
+			if (serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID == nodeVisualID) {
@@ -470,8 +504,8 @@ public class ServiceProcessVisualIDRegistry {
 	 */
 	public static boolean isCompartmentVisualID(int visualID) {
 		switch (visualID) {
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
-		case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;
@@ -494,6 +528,8 @@ public class ServiceProcessVisualIDRegistry {
 		case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:

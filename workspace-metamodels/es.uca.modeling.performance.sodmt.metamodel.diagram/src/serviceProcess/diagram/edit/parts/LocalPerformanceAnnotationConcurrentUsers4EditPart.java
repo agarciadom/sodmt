@@ -56,7 +56,7 @@ public class LocalPerformanceAnnotationConcurrentUsers4EditPart extends
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5007;
+	public static final int VISUAL_ID = 5021;
 
 	/**
 	 * @generated
@@ -304,7 +304,7 @@ public class LocalPerformanceAnnotationConcurrentUsers4EditPart extends
 		if (parser == null) {
 			parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
 					.getParser(
-							serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001,
+							serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011,
 							getParserElement(),
 							serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 									.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers4EditPart.VISUAL_ID));

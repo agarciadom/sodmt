@@ -28,7 +28,7 @@ public class JoinNode2ItemSemanticEditPolicy
 	 */
 	public JoinNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 	}
 
 	/**

@@ -90,69 +90,75 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	public Image getImage(View view) {
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?ExecutableNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002); //$NON-NLS-1$
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?FinalNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?DecisionNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?InitialNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?InitialNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?www.uca.es/modeling/performance/sodmt?ExecutableNode?annotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNodeAnnotation_4003); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?LocalPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?PerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.PerformanceAnnotation_2009); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?LocalPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?Action", serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?ForkNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
+					"Navigator?Link?www.uca.es/modeling/performance/sodmt?ControlFlow", serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Diagram?www.uca.es/modeling/performance/sodmt?ServiceProcess", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceProcess_1000); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?JoinNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?FinalNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?DecisionNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?ExecutableNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?InitialNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004); //$NON-NLS-1$
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?ObjectNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?www.uca.es/modeling/performance/sodmt?ObjectFlow", serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?ObjectNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?ObjectNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?FinalNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?www.uca.es/modeling/performance/sodmt?JoinNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?DecisionNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006); //$NON-NLS-1$
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?FinalNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?ForkNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?LocalPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?ForkNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?StructuredActivityNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?Action", serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009); //$NON-NLS-1$
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?JoinNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?InitialNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?LocalPerformanceAnnotation", serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?www.uca.es/modeling/performance/sodmt?ObjectNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003); //$NON-NLS-1$
-		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?DecisionNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Link?www.uca.es/modeling/performance/sodmt?ControlFlow", serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001); //$NON-NLS-1$
+					"Navigator?Diagram?www.uca.es/modeling/performance/sodmt?ServiceProcess", serviceProcess.diagram.providers.ServiceProcessElementTypes.ServiceProcess_1000); //$NON-NLS-1$
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?www.uca.es/modeling/performance/sodmt?StructuredActivityNode", serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -217,48 +223,52 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 		}
 		switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view)) {
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return getExecutableNode_2002Text(view);
+		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
+			return getFinalNode_3014Text(view);
+		case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
+			return getDecisionNode_2006Text(view);
+		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
+			return getInitialNode_3013Text(view);
+		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
+			return getInitialNode_2004Text(view);
 		case serviceProcess.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID:
 			return getExecutableNodeAnnotation_4003Text(view);
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotation_3001Text(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009Text(view);
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
-			return getLocalPerformanceAnnotation_2001Text(view);
-		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return getForkNode_3007Text(view);
-		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
-			return getServiceProcess_1000Text(view);
-		case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
-			return getFinalNode_2005Text(view);
-		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return getDecisionNode_3006Text(view);
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return getExecutableNode_3002Text(view);
-		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return getInitialNode_3004Text(view);
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return getAction_2010Text(view);
+		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
+			return getControlFlow_4001Text(view);
+		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+			return getJoinNode_3017Text(view);
+		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
+			return getObjectNode_2003Text(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
 			return getObjectFlow_4002Text(view);
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return getObjectNode_3003Text(view);
-		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return getFinalNode_3005Text(view);
-		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return getJoinNode_3008Text(view);
-		case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
-			return getDecisionNode_2006Text(view);
+			return getObjectNode_3012Text(view);
+		case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
+			return getFinalNode_2005Text(view);
 		case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 			return getForkNode_2007Text(view);
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotation_2001Text(view);
+		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
+			return getForkNode_3016Text(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return getStructuredActivityNode_2011Text(view);
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return getAction_3009Text(view);
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2008Text(view);
-		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
-			return getInitialNode_2004Text(view);
-		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
-			return getObjectNode_2003Text(view);
-		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
-			return getControlFlow_4001Text(view);
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotation_3011Text(view);
+		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
+			return getDecisionNode_3015Text(view);
+		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
+			return getServiceProcess_1000Text(view);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return getStructuredActivityNode_3010Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -287,59 +297,37 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	/**
 	 * @generated
 	 */
+	private String getInitialNode_3013Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getStructuredActivityNode_2011Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5027); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
 	private String getFinalNode_2005Text(View view) {
 		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getExecutableNode_2002Text(View view) {
-		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
-				.getParser(
-						serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002,
-						view.getElement() != null ? view.getElement() : view,
-						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-								.getType(serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
-					.getInstance().logError(
-							"Parser was not found for label " + 5013); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getJoinNode_3008Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getObjectNode_3003Text(View view) {
-		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
-				.getParser(
-						serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003,
-						view.getElement() != null ? view.getElement() : view,
-						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-								.getType(serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
-					.getInstance().logError(
-							"Parser was not found for label " + 5011); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
 	}
 
 	/**
@@ -352,6 +340,28 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	/**
 	 * @generated
 	 */
+	private String getAction_3009Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.ActionName2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5019); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
 	private String getJoinNode_2008Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
@@ -359,8 +369,96 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	/**
 	 * @generated
 	 */
-	private String getFinalNode_3005Text(View view) {
+	private String getLocalPerformanceAnnotation_3011Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5020); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getJoinNode_3017Text(View view) {
 		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getStructuredActivityNode_3010Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5026); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getAction_2010Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.ActionNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5018); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getObjectNode_3012Text(View view) {
+		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
+				.getParser(
+						serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012,
+						view.getElement() != null ? view.getElement() : view,
+						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+								.getType(serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
+					.getInstance().logError(
+							"Parser was not found for label " + 5025); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -388,7 +486,21 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	/**
 	 * @generated
 	 */
+	private String getForkNode_3016Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
 	private String getInitialNode_2004Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getDecisionNode_3015Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -425,6 +537,13 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 	 * @generated
 	 */
 	private String getServiceProcess_1000Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getFinalNode_3014Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -468,71 +587,6 @@ public class ServiceProcessNavigatorLabelProvider extends LabelProvider
 			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
 					.getInstance().logError(
 							"Parser was not found for label " + 6001); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getInitialNode_3004Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getDecisionNode_3006Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getForkNode_3007Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getExecutableNode_3002Text(View view) {
-		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
-				.getParser(
-						serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002,
-						view.getElement() != null ? view.getElement() : view,
-						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-								.getType(serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
-					.getInstance().logError(
-							"Parser was not found for label " + 5012); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private String getLocalPerformanceAnnotation_3001Text(View view) {
-		IParser parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
-				.getParser(
-						serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001,
-						view.getElement() != null ? view.getElement() : view,
-						serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-								.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
-					.getInstance().logError(
-							"Parser was not found for label " + 5006); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

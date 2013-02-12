@@ -258,7 +258,7 @@
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ServiceProcess"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3009,3010,3011,3012,3013,3014,3015,3016,3017"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003"/>
       </viewProvider>
    </extension>
@@ -271,16 +271,16 @@
             <method name="getType()" value="ServiceProcess"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008"/>
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3009,3010,3011,3012,3013,3014,3015,3016,3017"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001,4002,4003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001,5002,5003,5004,5005,5013,5014,5015,5016,5017,5006,5007,5008,5009,5010,5012,5011"/>
+            <method name="getType()" value="5018,5027,5001,5002,5003,5004,5005,5014,5015,5016,5017,5019,5026,5020,5021,5022,5023,5024,5025"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7001,7002"/>
+            <method name="getType()" value="7003,7004"/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -291,8 +291,9 @@
       <modelingAssistantProvider class="serviceProcess.diagram.providers.ServiceProcessModelingAssistantProvider">
          <Priority name="Lowest"/>
          <object class="serviceProcess.diagram.edit.parts.ServiceProcessEditPart" id="ServiceProcess_1000"/>
+         <object class="serviceProcess.diagram.edit.parts.ActionEditPart" id="Action_2010"/>
+         <object class="serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart" id="StructuredActivityNode_2011"/>
          <object class="serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart" id="LocalPerformanceAnnotation_2001"/>
-         <object class="serviceProcess.diagram.edit.parts.ExecutableNodeEditPart" id="ExecutableNode_2002"/>
          <object class="serviceProcess.diagram.edit.parts.ObjectNodeEditPart" id="ObjectNode_2003"/>
          <object class="serviceProcess.diagram.edit.parts.InitialNodeEditPart" id="InitialNode_2004"/>
          <object class="serviceProcess.diagram.edit.parts.FinalNodeEditPart" id="FinalNode_2005"/>
@@ -300,15 +301,16 @@
          <object class="serviceProcess.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2007"/>
          <object class="serviceProcess.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2008"/>
          <object class="serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2009"/>
-         <object class="serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart" id="LocalPerformanceAnnotation_3001"/>
-         <object class="serviceProcess.diagram.edit.parts.ExecutableNode2EditPart" id="ExecutableNode_3002"/>
-         <object class="serviceProcess.diagram.edit.parts.ObjectNode2EditPart" id="ObjectNode_3003"/>
-         <object class="serviceProcess.diagram.edit.parts.InitialNode2EditPart" id="InitialNode_3004"/>
-         <object class="serviceProcess.diagram.edit.parts.FinalNode2EditPart" id="FinalNode_3005"/>
-         <object class="serviceProcess.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3006"/>
-         <object class="serviceProcess.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3007"/>
-         <object class="serviceProcess.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3008"/>
-         <context elements="ServiceProcess_1000,LocalPerformanceAnnotation_2001,ExecutableNode_2002,ObjectNode_2003,InitialNode_2004,FinalNode_2005,DecisionNode_2006,ForkNode_2007,JoinNode_2008,PerformanceAnnotation_2009,LocalPerformanceAnnotation_3001,ExecutableNode_3002,ObjectNode_3003,InitialNode_3004,FinalNode_3005,DecisionNode_3006,ForkNode_3007,JoinNode_3008"/>
+         <object class="serviceProcess.diagram.edit.parts.Action2EditPart" id="Action_3009"/>
+         <object class="serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3010"/>
+         <object class="serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart" id="LocalPerformanceAnnotation_3011"/>
+         <object class="serviceProcess.diagram.edit.parts.ObjectNode2EditPart" id="ObjectNode_3012"/>
+         <object class="serviceProcess.diagram.edit.parts.InitialNode2EditPart" id="InitialNode_3013"/>
+         <object class="serviceProcess.diagram.edit.parts.FinalNode2EditPart" id="FinalNode_3014"/>
+         <object class="serviceProcess.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3015"/>
+         <object class="serviceProcess.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3016"/>
+         <object class="serviceProcess.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3017"/>
+         <context elements="ServiceProcess_1000,Action_2010,StructuredActivityNode_2011,LocalPerformanceAnnotation_2001,ObjectNode_2003,InitialNode_2004,FinalNode_2005,DecisionNode_2006,ForkNode_2007,JoinNode_2008,PerformanceAnnotation_2009,Action_3009,StructuredActivityNode_3010,LocalPerformanceAnnotation_3011,ObjectNode_3012,InitialNode_3013,FinalNode_3014,DecisionNode_3015,ForkNode_3016,JoinNode_3017"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -331,7 +333,7 @@
       <decoratorProvider class="serviceProcess.diagram.providers.ServiceProcessShortcutsDecoratorProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009"/>
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009"/>
          </object>
          <context decoratorTargets="generated-top-nodes"/>
       </decoratorProvider>
@@ -351,30 +353,39 @@
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"
-               name="%metatype.name.LocalPerformanceAnnotation_2001"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.Action_2010"
+               name="%metatype.name.Action_2010"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="LocalPerformanceAnnotation"
-               edithelper="serviceProcess.diagram.edit.helpers.LocalPerformanceAnnotationEditHelper">
-            <param name="semanticHint" value="2001"/>
+               eclass="Action"
+               edithelper="serviceProcess.diagram.edit.helpers.ActionEditHelper">
+            <param name="semanticHint" value="2010"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_2002"
-               name="%metatype.name.ExecutableNode_2002"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_2011"
+               name="%metatype.name.StructuredActivityNode_2011"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="ExecutableNode"
-               edithelper="serviceProcess.diagram.edit.helpers.ExecutableNodeEditHelper">
-            <param name="semanticHint" value="2002"/>
+               eclass="StructuredActivityNode"
+               edithelper="serviceProcess.diagram.edit.helpers.StructuredActivityNodeEditHelper">
+            <param name="semanticHint" value="2011"/>
          </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"
+               name="%metatype.name.LocalPerformanceAnnotation_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3011"/>
+            <param name="semanticHint" value="2001"/>
+         </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <specializationType
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_2003"
                name="%metatype.name.ObjectNode_2003"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3003"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3012"/>
             <param name="semanticHint" value="2003"/>
          </specializationType>
       </metamodel>
@@ -383,7 +394,7 @@
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_2004"
                name="%metatype.name.InitialNode_2004"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3004"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3013"/>
             <param name="semanticHint" value="2004"/>
          </specializationType>
       </metamodel>
@@ -392,7 +403,7 @@
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_2005"
                name="%metatype.name.FinalNode_2005"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3005"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3014"/>
             <param name="semanticHint" value="2005"/>
          </specializationType>
       </metamodel>
@@ -401,7 +412,7 @@
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_2006"
                name="%metatype.name.DecisionNode_2006"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3006"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3015"/>
             <param name="semanticHint" value="2006"/>
          </specializationType>
       </metamodel>
@@ -410,7 +421,7 @@
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_2007"
                name="%metatype.name.ForkNode_2007"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3007"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3016"/>
             <param name="semanticHint" value="2007"/>
          </specializationType>
       </metamodel>
@@ -419,7 +430,7 @@
                id="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_2008"
                name="%metatype.name.JoinNode_2008"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3008"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3017"/>
             <param name="semanticHint" value="2008"/>
          </specializationType>
       </metamodel>
@@ -435,80 +446,90 @@
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <specializationType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3001"
-               name="%metatype.name.LocalPerformanceAnnotation_3001"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.Action_3009"
+               name="%metatype.name.Action_3009"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"/>
-            <param name="semanticHint" value="3001"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.Action_2010"/>
+            <param name="semanticHint" value="3009"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <specializationType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_3002"
-               name="%metatype.name.ExecutableNode_3002"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_3010"
+               name="%metatype.name.StructuredActivityNode_3010"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_2002"/>
-            <param name="semanticHint" value="3002"/>
+            <specializes id="es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_2011"/>
+            <param name="semanticHint" value="3010"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3003"
-               name="%metatype.name.ObjectNode_3003"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3011"
+               name="%metatype.name.LocalPerformanceAnnotation_3011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LocalPerformanceAnnotation"
+               edithelper="serviceProcess.diagram.edit.helpers.LocalPerformanceAnnotationEditHelper">
+            <param name="semanticHint" value="3011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3012"
+               name="%metatype.name.ObjectNode_3012"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="ObjectNode"
                edithelper="serviceProcess.diagram.edit.helpers.ObjectNodeEditHelper">
-            <param name="semanticHint" value="3003"/>
+            <param name="semanticHint" value="3012"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3004"
-               name="%metatype.name.InitialNode_3004"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3013"
+               name="%metatype.name.InitialNode_3013"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="InitialNode"
                edithelper="serviceProcess.diagram.edit.helpers.InitialNodeEditHelper">
-            <param name="semanticHint" value="3004"/>
+            <param name="semanticHint" value="3013"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3005"
-               name="%metatype.name.FinalNode_3005"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3014"
+               name="%metatype.name.FinalNode_3014"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="FinalNode"
                edithelper="serviceProcess.diagram.edit.helpers.FinalNodeEditHelper">
-            <param name="semanticHint" value="3005"/>
+            <param name="semanticHint" value="3014"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3006"
-               name="%metatype.name.DecisionNode_3006"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3015"
+               name="%metatype.name.DecisionNode_3015"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="DecisionNode"
                edithelper="serviceProcess.diagram.edit.helpers.DecisionNodeEditHelper">
-            <param name="semanticHint" value="3006"/>
+            <param name="semanticHint" value="3015"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3007"
-               name="%metatype.name.ForkNode_3007"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3016"
+               name="%metatype.name.ForkNode_3016"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="ForkNode"
                edithelper="serviceProcess.diagram.edit.helpers.ForkNodeEditHelper">
-            <param name="semanticHint" value="3007"/>
+            <param name="semanticHint" value="3016"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
-               id="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3008"
-               name="%metatype.name.JoinNode_3008"
+               id="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3017"
+               name="%metatype.name.JoinNode_3017"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="JoinNode"
                edithelper="serviceProcess.diagram.edit.helpers.JoinNodeEditHelper">
-            <param name="semanticHint" value="3008"/>
+            <param name="semanticHint" value="3017"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
@@ -553,8 +574,9 @@
       </clientContext> 
       <binding context="es.uca.modeling.performance.sodmt.metamodel.diagram.TypeContext">
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ServiceProcess_1000"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.Action_2010"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_2011"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_2002"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_2003"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_2004"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_2005"/>
@@ -562,14 +584,15 @@
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_2007"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_2008"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.PerformanceAnnotation_2009"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3001"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_3002"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3003"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3004"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3005"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3006"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3007"/>
-         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3008"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.Action_3009"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_3010"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3011"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3012"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3013"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3014"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3015"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3016"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3017"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ControlFlow_4001"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectFlow_4002"/>
          <elementType ref="es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNodeAnnotation_4003"/>

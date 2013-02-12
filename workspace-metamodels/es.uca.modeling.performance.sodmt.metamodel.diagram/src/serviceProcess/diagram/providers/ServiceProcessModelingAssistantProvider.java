@@ -37,9 +37,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		IGraphicalEditPart editPart = (IGraphicalEditPart) host
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof serviceProcess.diagram.edit.parts.ServiceProcessEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(9);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(10);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
@@ -49,28 +50,30 @@ public class ServiceProcessModelingAssistantProvider extends
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.PerformanceAnnotation_2009);
 			return types;
 		}
-		if (editPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(8);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+		if (editPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(9);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 			return types;
 		}
-		if (editPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(8);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+		if (editPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(9);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -82,12 +85,16 @@ public class ServiceProcessModelingAssistantProvider extends
 	public List getRelTypesOnSource(IAdaptable source) {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
 				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
+			return ((serviceProcess.diagram.edit.parts.ActionEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -114,12 +121,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -155,12 +166,16 @@ public class ServiceProcessModelingAssistantProvider extends
 	public List getRelTypesOnTarget(IAdaptable target) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
+			return ((serviceProcess.diagram.edit.parts.ActionEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -187,12 +202,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.Action2EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -231,12 +250,16 @@ public class ServiceProcessModelingAssistantProvider extends
 				.getAdapter(IGraphicalEditPart.class);
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
+			return ((serviceProcess.diagram.edit.parts.ActionEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -263,12 +286,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -305,12 +332,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			IElementType relationshipType) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
+			return ((serviceProcess.diagram.edit.parts.ActionEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -337,12 +368,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.Action2EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) targetEditPart)
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -379,12 +414,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			IElementType relationshipType) {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
 				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
+			return ((serviceProcess.diagram.edit.parts.ActionEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -411,12 +450,16 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
-			return ((serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) sourceEditPart)
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {

@@ -710,7 +710,9 @@ public class ServiceProcessDocumentProvider extends AbstractDocumentProvider
 			}
 			newResource.unload();
 		}
-		ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)document.getContent());
+		ValidateAction
+				.runValidation((org.eclipse.gmf.runtime.notation.View) document
+						.getContent());
 	}
 
 	/**

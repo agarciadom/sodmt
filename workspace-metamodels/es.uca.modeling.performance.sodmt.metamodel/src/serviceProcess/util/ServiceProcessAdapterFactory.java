@@ -120,6 +120,16 @@ public class ServiceProcessAdapterFactory extends AdapterFactoryImpl
         return createExecutableNodeAdapter();
       }
       @Override
+      public Adapter caseAction(Action object)
+      {
+        return createActionAdapter();
+      }
+      @Override
+      public Adapter caseStructuredActivityNode(StructuredActivityNode object)
+      {
+        return createStructuredActivityNodeAdapter();
+      }
+      @Override
       public Adapter caseObjectNode(ObjectNode object)
       {
         return createObjectNodeAdapter();
@@ -302,6 +312,36 @@ public class ServiceProcessAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExecutableNodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link serviceProcess.Action <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see serviceProcess.Action
+   * @generated
+   */
+  public Adapter createActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link serviceProcess.StructuredActivityNode <em>Structured Activity Node</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see serviceProcess.StructuredActivityNode
+   * @generated
+   */
+  public Adapter createStructuredActivityNodeAdapter()
   {
     return null;
   }

@@ -13,12 +13,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link serviceProcess.ExecutableNode#getAnnotation <em>Annotation</em>}</li>
- *   <li>{@link serviceProcess.ExecutableNode#getSubnodes <em>Subnodes</em>}</li>
  * </ul>
  * </p>
  *
  * @see serviceProcess.ServiceProcessPackage#getExecutableNode()
- * @model annotation="gmf.node label.icon='false' tool.name='Executable Node'"
+ * @model abstract="true"
+ *        annotation="gmf.node label.icon='false'"
  * @generated
  */
 public interface ExecutableNode extends ActivityNode, NamedElement
@@ -51,21 +51,5 @@ public interface ExecutableNode extends ActivityNode, NamedElement
    * @generated
    */
   void setAnnotation(LocalPerformanceAnnotation value);
-
-  /**
-   * Returns the value of the '<em><b>Subnodes</b></em>' containment reference list.
-   * The list contents are of type {@link serviceProcess.ActivityNode}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Subnodes</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Subnodes</em>' containment reference list.
-   * @see serviceProcess.ServiceProcessPackage#getExecutableNode_Subnodes()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ActivityNode> getSubnodes();
 
 } // ExecutableNode

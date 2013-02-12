@@ -171,7 +171,12 @@ public class ServiceProcessItemProvider
     newChildDescriptors.add
       (createChildParameter
         (ServiceProcessPackage.Literals.SERVICE_PROCESS__NODES,
-         ServiceProcessFactory.eINSTANCE.createExecutableNode()));
+         ServiceProcessFactory.eINSTANCE.createAction()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (ServiceProcessPackage.Literals.SERVICE_PROCESS__NODES,
+         ServiceProcessFactory.eINSTANCE.createStructuredActivityNode()));
 
     newChildDescriptors.add
       (createChildParameter

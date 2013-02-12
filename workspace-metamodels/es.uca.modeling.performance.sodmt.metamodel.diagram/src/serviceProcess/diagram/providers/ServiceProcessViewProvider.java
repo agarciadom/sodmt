@@ -141,23 +141,25 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
-				case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
-				case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-				case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -170,8 +172,9 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID == visualID
-				|| serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID == visualID
+		return serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID == visualID
@@ -179,8 +182,9 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				|| serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID == visualID
-				|| serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID == visualID
@@ -246,12 +250,15 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 					.getVisualID(semanticHint);
 		}
 		switch (visualID) {
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return createAction_2010(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return createStructuredActivityNode_2011(domainElement,
+					containerView, index, persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			return createLocalPerformanceAnnotation_2001(domainElement,
 					containerView, index, persisted, preferencesHint);
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return createExecutableNode_2002(domainElement, containerView,
-					index, persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return createObjectNode_2003(domainElement, containerView, index,
 					persisted, preferencesHint);
@@ -273,29 +280,32 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return createPerformanceAnnotation_2009(domainElement,
 					containerView, index, persisted, preferencesHint);
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return createLocalPerformanceAnnotation_3001(domainElement,
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return createAction_3009(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return createStructuredActivityNode_3010(domainElement,
 					containerView, index, persisted, preferencesHint);
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return createExecutableNode_3002(domainElement, containerView,
-					index, persisted, preferencesHint);
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
+			return createLocalPerformanceAnnotation_3011(domainElement,
+					containerView, index, persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return createObjectNode_3003(domainElement, containerView, index,
+			return createObjectNode_3012(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return createInitialNode_3004(domainElement, containerView, index,
+			return createInitialNode_3013(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return createFinalNode_3005(domainElement, containerView, index,
+			return createFinalNode_3014(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return createDecisionNode_3006(domainElement, containerView, index,
+			return createDecisionNode_3015(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return createForkNode_3007(domainElement, containerView, index,
+			return createForkNode_3016(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return createJoinNode_3008(domainElement, containerView, index,
+			return createJoinNode_3017(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -324,6 +334,108 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		}
 		// can never happen, provided #provides(CreateEdgeViewOperation) is correct
 		return null;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createAction_2010(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5018 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.ActionNameEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createStructuredActivityNode_2011(EObject domainElement,
+			View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(
+				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5027 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartmentEditPart.VISUAL_ID),
+				true, false, false, false);
+		return node;
 	}
 
 	/**
@@ -387,61 +499,6 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	 * @generated
-	 */
-	public Node createExecutableNode_2002(EObject domainElement,
-			View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.getStyles().add(
-				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-				.getType(serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
-				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node
-				.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore,
-					IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
-					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
-					.intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5013 = createLabel(
-				node,
-				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-						.getType(serviceProcess.diagram.edit.parts.ExecutableNodeNameEditPart.VISUAL_ID));
-		createCompartment(
-				node,
-				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-						.getType(serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID),
-				true, false, false, false);
 		return node;
 	}
 
@@ -765,7 +822,107 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createLocalPerformanceAnnotation_3001(EObject domainElement,
+	public Node createAction_3009(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5019 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.ActionName2EditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createStructuredActivityNode_3010(EObject domainElement,
+			View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(
+				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5026 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeName2EditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID),
+				true, false, false, false);
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createLocalPerformanceAnnotation_3011(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
@@ -802,23 +959,23 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5006 = createLabel(
+		Node label5020 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID));
-		Node label5007 = createLabel(
+		Node label5021 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers4EditPart.VISUAL_ID));
-		Node label5008 = createLabel(
+		Node label5022 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationSecsTimeLimit2EditPart.VISUAL_ID));
-		Node label5009 = createLabel(
+		Node label5023 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationMinimumTime2EditPart.VISUAL_ID));
-		Node label5010 = createLabel(
+		Node label5024 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID));
@@ -828,61 +985,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createExecutableNode_3002(EObject domainElement,
-			View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.getStyles().add(
-				NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-				.getType(serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
-				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node
-				.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore,
-					IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
-					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
-					.intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5012 = createLabel(
-				node,
-				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-						.getType(serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID));
-		createCompartment(
-				node,
-				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-						.getType(serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartment2EditPart.VISUAL_ID),
-				true, false, false, false);
-		return node;
-	}
-
-	/**
-	 * @generated
-	 */
-	public Node createObjectNode_3003(EObject domainElement,
+	public Node createObjectNode_3012(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
@@ -919,7 +1022,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5011 = createLabel(
+		Node label5025 = createLabel(
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID));
@@ -929,7 +1032,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createInitialNode_3004(EObject domainElement,
+	public Node createInitialNode_3013(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
@@ -972,7 +1075,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createFinalNode_3005(EObject domainElement, View containerView,
+	public Node createFinalNode_3014(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -1014,7 +1117,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createDecisionNode_3006(EObject domainElement,
+	public Node createDecisionNode_3015(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
@@ -1055,7 +1158,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createForkNode_3007(EObject domainElement, View containerView,
+	public Node createForkNode_3016(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.getStyles()
@@ -1096,7 +1199,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createJoinNode_3008(EObject domainElement, View containerView,
+	public Node createJoinNode_3017(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.getStyles()

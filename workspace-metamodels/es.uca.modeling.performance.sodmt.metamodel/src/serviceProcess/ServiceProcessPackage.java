@@ -409,22 +409,96 @@ public interface ServiceProcessPackage extends EPackage
   int EXECUTABLE_NODE__ANNOTATION = ACTIVITY_NODE_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Subnodes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXECUTABLE_NODE__SUBNODES = ACTIVITY_NODE_FEATURE_COUNT + 2;
-
-  /**
    * The number of structural features of the '<em>Executable Node</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXECUTABLE_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 3;
+  int EXECUTABLE_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link serviceProcess.impl.ActionImpl <em>Action</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see serviceProcess.impl.ActionImpl
+   * @see serviceProcess.impl.ServiceProcessPackageImpl#getAction()
+   * @generated
+   */
+  int ACTION = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__NAME = EXECUTABLE_NODE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Annotation</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__ANNOTATION = EXECUTABLE_NODE__ANNOTATION;
+
+  /**
+   * The number of structural features of the '<em>Action</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_FEATURE_COUNT = EXECUTABLE_NODE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link serviceProcess.impl.StructuredActivityNodeImpl <em>Structured Activity Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see serviceProcess.impl.StructuredActivityNodeImpl
+   * @see serviceProcess.impl.ServiceProcessPackageImpl#getStructuredActivityNode()
+   * @generated
+   */
+  int STRUCTURED_ACTIVITY_NODE = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURED_ACTIVITY_NODE__NAME = EXECUTABLE_NODE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Annotation</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURED_ACTIVITY_NODE__ANNOTATION = EXECUTABLE_NODE__ANNOTATION;
+
+  /**
+   * The feature id for the '<em><b>Subnodes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURED_ACTIVITY_NODE__SUBNODES = EXECUTABLE_NODE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Structured Activity Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT = EXECUTABLE_NODE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link serviceProcess.impl.ObjectNodeImpl <em>Object Node</em>}' class.
@@ -434,7 +508,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getObjectNode()
    * @generated
    */
-  int OBJECT_NODE = 9;
+  int OBJECT_NODE = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -462,7 +536,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getInitialNode()
    * @generated
    */
-  int INITIAL_NODE = 10;
+  int INITIAL_NODE = 12;
 
   /**
    * The number of structural features of the '<em>Initial Node</em>' class.
@@ -481,7 +555,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getFinalNode()
    * @generated
    */
-  int FINAL_NODE = 11;
+  int FINAL_NODE = 13;
 
   /**
    * The number of structural features of the '<em>Final Node</em>' class.
@@ -500,7 +574,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getDecisionNode()
    * @generated
    */
-  int DECISION_NODE = 12;
+  int DECISION_NODE = 14;
 
   /**
    * The number of structural features of the '<em>Decision Node</em>' class.
@@ -519,7 +593,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getForkNode()
    * @generated
    */
-  int FORK_NODE = 13;
+  int FORK_NODE = 15;
 
   /**
    * The number of structural features of the '<em>Fork Node</em>' class.
@@ -538,7 +612,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getJoinNode()
    * @generated
    */
-  int JOIN_NODE = 14;
+  int JOIN_NODE = 16;
 
   /**
    * The number of structural features of the '<em>Join Node</em>' class.
@@ -557,7 +631,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getExpressionLanguage()
    * @generated
    */
-  int EXPRESSION_LANGUAGE = 15;
+  int EXPRESSION_LANGUAGE = 17;
 
   /**
    * The meta object id for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.
@@ -567,7 +641,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 16;
+  int VISIT_STATUS = 18;
 
   /**
    * The meta object id for the '{@link serviceProcess.NodeSide <em>Node Side</em>}' enum.
@@ -577,7 +651,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 17;
+  int NODE_SIDE = 19;
 
 
   /**
@@ -825,15 +899,35 @@ public interface ServiceProcessPackage extends EPackage
   EReference getExecutableNode_Annotation();
 
   /**
-   * Returns the meta object for the containment reference list '{@link serviceProcess.ExecutableNode#getSubnodes <em>Subnodes</em>}'.
+   * Returns the meta object for class '{@link serviceProcess.Action <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action</em>'.
+   * @see serviceProcess.Action
+   * @generated
+   */
+  EClass getAction();
+
+  /**
+   * Returns the meta object for class '{@link serviceProcess.StructuredActivityNode <em>Structured Activity Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Structured Activity Node</em>'.
+   * @see serviceProcess.StructuredActivityNode
+   * @generated
+   */
+  EClass getStructuredActivityNode();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link serviceProcess.StructuredActivityNode#getSubnodes <em>Subnodes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Subnodes</em>'.
-   * @see serviceProcess.ExecutableNode#getSubnodes()
-   * @see #getExecutableNode()
+   * @see serviceProcess.StructuredActivityNode#getSubnodes()
+   * @see #getStructuredActivityNode()
    * @generated
    */
-  EReference getExecutableNode_Subnodes();
+  EReference getStructuredActivityNode_Subnodes();
 
   /**
    * Returns the meta object for class '{@link serviceProcess.ObjectNode <em>Object Node</em>}'.
@@ -1151,12 +1245,32 @@ public interface ServiceProcessPackage extends EPackage
     EReference EXECUTABLE_NODE__ANNOTATION = eINSTANCE.getExecutableNode_Annotation();
 
     /**
+     * The meta object literal for the '{@link serviceProcess.impl.ActionImpl <em>Action</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see serviceProcess.impl.ActionImpl
+     * @see serviceProcess.impl.ServiceProcessPackageImpl#getAction()
+     * @generated
+     */
+    EClass ACTION = eINSTANCE.getAction();
+
+    /**
+     * The meta object literal for the '{@link serviceProcess.impl.StructuredActivityNodeImpl <em>Structured Activity Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see serviceProcess.impl.StructuredActivityNodeImpl
+     * @see serviceProcess.impl.ServiceProcessPackageImpl#getStructuredActivityNode()
+     * @generated
+     */
+    EClass STRUCTURED_ACTIVITY_NODE = eINSTANCE.getStructuredActivityNode();
+
+    /**
      * The meta object literal for the '<em><b>Subnodes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXECUTABLE_NODE__SUBNODES = eINSTANCE.getExecutableNode_Subnodes();
+    EReference STRUCTURED_ACTIVITY_NODE__SUBNODES = eINSTANCE.getStructuredActivityNode_Subnodes();
 
     /**
      * The meta object literal for the '{@link serviceProcess.impl.ObjectNodeImpl <em>Object Node</em>}' class.

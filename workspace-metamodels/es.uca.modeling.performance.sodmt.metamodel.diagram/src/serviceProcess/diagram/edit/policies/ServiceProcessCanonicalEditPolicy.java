@@ -107,8 +107,9 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		int visualID = serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getVisualID(view);
 		switch (visualID) {
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID:
@@ -294,18 +295,26 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID: {
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getLocalPerformanceAnnotation_2001ContainedLinks(view));
+						.getAction_2010ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID: {
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getExecutableNode_2002ContainedLinks(view));
+						.getStructuredActivityNode_2011ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
+						.getLocalPerformanceAnnotation_2001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -366,18 +375,26 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID: {
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getLocalPerformanceAnnotation_3001ContainedLinks(view));
+						.getAction_3009ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID: {
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getExecutableNode_3002ContainedLinks(view));
+						.getStructuredActivityNode_3010ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
+						.getLocalPerformanceAnnotation_3011ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -385,7 +402,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getObjectNode_3003ContainedLinks(view));
+						.getObjectNode_3012ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -393,7 +410,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getInitialNode_3004ContainedLinks(view));
+						.getInitialNode_3013ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -401,7 +418,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getFinalNode_3005ContainedLinks(view));
+						.getFinalNode_3014ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -409,7 +426,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getDecisionNode_3006ContainedLinks(view));
+						.getDecisionNode_3015ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -417,7 +434,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getForkNode_3007ContainedLinks(view));
+						.getForkNode_3016ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -425,7 +442,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
-						.getJoinNode_3008ContainedLinks(view));
+						.getJoinNode_3017ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

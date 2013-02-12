@@ -28,7 +28,7 @@ public class InitialNode2ItemSemanticEditPolicy
 	 */
 	public InitialNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
 	}
 
 	/**

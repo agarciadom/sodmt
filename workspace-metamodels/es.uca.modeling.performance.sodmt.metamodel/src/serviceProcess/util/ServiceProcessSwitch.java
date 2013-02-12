@@ -141,6 +141,26 @@ public class ServiceProcessSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ServiceProcessPackage.ACTION:
+      {
+        Action action = (Action)theEObject;
+        T result = caseAction(action);
+        if (result == null) result = caseExecutableNode(action);
+        if (result == null) result = caseActivityNode(action);
+        if (result == null) result = caseNamedElement(action);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ServiceProcessPackage.STRUCTURED_ACTIVITY_NODE:
+      {
+        StructuredActivityNode structuredActivityNode = (StructuredActivityNode)theEObject;
+        T result = caseStructuredActivityNode(structuredActivityNode);
+        if (result == null) result = caseExecutableNode(structuredActivityNode);
+        if (result == null) result = caseActivityNode(structuredActivityNode);
+        if (result == null) result = caseNamedElement(structuredActivityNode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ServiceProcessPackage.OBJECT_NODE:
       {
         ObjectNode objectNode = (ObjectNode)theEObject;
@@ -334,6 +354,38 @@ public class ServiceProcessSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExecutableNode(ExecutableNode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAction(Action object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Structured Activity Node</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Structured Activity Node</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStructuredActivityNode(StructuredActivityNode object)
   {
     return null;
   }

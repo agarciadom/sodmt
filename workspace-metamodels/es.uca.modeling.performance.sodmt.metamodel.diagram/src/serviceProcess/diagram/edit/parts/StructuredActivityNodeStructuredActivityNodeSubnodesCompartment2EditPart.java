@@ -17,18 +17,19 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 /**
  * @generated
  */
-public class ExecutableNodeExecutableNodeSubnodesCompartmentEditPart extends
-		ShapeCompartmentEditPart {
+public class StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart
+		extends ShapeCompartmentEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 7001;
+	public static final int VISUAL_ID = 7004;
 
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeExecutableNodeSubnodesCompartmentEditPart(View view) {
+	public StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart(
+			View view) {
 		super(view);
 	}
 
@@ -36,7 +37,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentEditPart extends
 	 * @generated
 	 */
 	public String getCompartmentName() {
-		return serviceProcess.diagram.part.Messages.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart_title;
+		return serviceProcess.diagram.part.Messages.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart_title;
 	}
 
 	/**
@@ -58,7 +59,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentEditPart extends
 				new ResizableCompartmentEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
-				new serviceProcess.diagram.edit.policies.ExecutableNodeExecutableNodeSubnodesCompartmentItemSemanticEditPolicy());
+				new serviceProcess.diagram.edit.policies.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2ItemSemanticEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.CREATION_ROLE,
 				new CreationEditPolicyWithCustomReparent(
@@ -67,7 +68,7 @@ public class ExecutableNodeExecutableNodeSubnodesCompartmentEditPart extends
 				new DragDropEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.CANONICAL_ROLE,
-				new serviceProcess.diagram.edit.policies.ExecutableNodeExecutableNodeSubnodesCompartmentCanonicalEditPolicy());
+				new serviceProcess.diagram.edit.policies.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2CanonicalEditPolicy());
 	}
 
 	/**

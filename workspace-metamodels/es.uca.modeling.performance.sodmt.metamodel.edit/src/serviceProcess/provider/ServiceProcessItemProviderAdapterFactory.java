@@ -199,28 +199,53 @@ public class ServiceProcessItemProviderAdapterFactory extends ServiceProcessAdap
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link serviceProcess.ExecutableNode} instances.
+   * This keeps track of the one adapter used for all {@link serviceProcess.Action} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ExecutableNodeItemProvider executableNodeItemProvider;
+  protected ActionItemProvider actionItemProvider;
 
   /**
-   * This creates an adapter for a {@link serviceProcess.ExecutableNode}.
+   * This creates an adapter for a {@link serviceProcess.Action}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
-  public Adapter createExecutableNodeAdapter()
+  public Adapter createActionAdapter()
   {
-    if (executableNodeItemProvider == null)
+    if (actionItemProvider == null)
     {
-      executableNodeItemProvider = new ExecutableNodeItemProvider(this);
+      actionItemProvider = new ActionItemProvider(this);
     }
 
-    return executableNodeItemProvider;
+    return actionItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link serviceProcess.StructuredActivityNode} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected StructuredActivityNodeItemProvider structuredActivityNodeItemProvider;
+
+  /**
+   * This creates an adapter for a {@link serviceProcess.StructuredActivityNode}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createStructuredActivityNodeAdapter()
+  {
+    if (structuredActivityNodeItemProvider == null)
+    {
+      structuredActivityNodeItemProvider = new StructuredActivityNodeItemProvider(this);
+    }
+
+    return structuredActivityNodeItemProvider;
   }
 
   /**
@@ -489,7 +514,8 @@ public class ServiceProcessItemProviderAdapterFactory extends ServiceProcessAdap
     if (localPerformanceAnnotationItemProvider != null) localPerformanceAnnotationItemProvider.dispose();
     if (controlFlowItemProvider != null) controlFlowItemProvider.dispose();
     if (objectFlowItemProvider != null) objectFlowItemProvider.dispose();
-    if (executableNodeItemProvider != null) executableNodeItemProvider.dispose();
+    if (actionItemProvider != null) actionItemProvider.dispose();
+    if (structuredActivityNodeItemProvider != null) structuredActivityNodeItemProvider.dispose();
     if (objectNodeItemProvider != null) objectNodeItemProvider.dispose();
     if (initialNodeItemProvider != null) initialNodeItemProvider.dispose();
     if (finalNodeItemProvider != null) finalNodeItemProvider.dispose();

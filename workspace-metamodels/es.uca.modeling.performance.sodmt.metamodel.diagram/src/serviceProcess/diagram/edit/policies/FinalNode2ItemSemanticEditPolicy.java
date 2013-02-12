@@ -28,7 +28,7 @@ public class FinalNode2ItemSemanticEditPolicy
 	 */
 	public FinalNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
 	}
 
 	/**

@@ -56,7 +56,7 @@ public class ObjectNode2CreateCommand extends EditElementCommand {
 		serviceProcess.ObjectNode newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
 				.createObjectNode();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);

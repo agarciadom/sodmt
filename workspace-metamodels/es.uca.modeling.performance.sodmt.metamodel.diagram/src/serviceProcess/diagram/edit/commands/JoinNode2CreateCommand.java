@@ -56,7 +56,7 @@ public class JoinNode2CreateCommand extends EditElementCommand {
 		serviceProcess.JoinNode newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
 				.createJoinNode();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);

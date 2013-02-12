@@ -29,14 +29,19 @@ public class ServiceProcessItemSemanticEditPolicy
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
+		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010 == req
+				.getElementType()) {
+			return getGEFWrapper(new serviceProcess.diagram.edit.commands.ActionCreateCommand(
+					req));
+		}
+		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011 == req
+				.getElementType()) {
+			return getGEFWrapper(new serviceProcess.diagram.edit.commands.StructuredActivityNodeCreateCommand(
+					req));
+		}
 		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001 == req
 				.getElementType()) {
 			return getGEFWrapper(new serviceProcess.diagram.edit.commands.LocalPerformanceAnnotationCreateCommand(
-					req));
-		}
-		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002 == req
-				.getElementType()) {
-			return getGEFWrapper(new serviceProcess.diagram.edit.commands.ExecutableNodeCreateCommand(
 					req));
 		}
 		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003 == req

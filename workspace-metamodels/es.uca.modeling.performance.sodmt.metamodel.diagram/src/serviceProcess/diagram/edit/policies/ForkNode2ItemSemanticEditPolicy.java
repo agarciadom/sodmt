@@ -28,7 +28,7 @@ public class ForkNode2ItemSemanticEditPolicy
 	 */
 	public ForkNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
 	}
 
 	/**

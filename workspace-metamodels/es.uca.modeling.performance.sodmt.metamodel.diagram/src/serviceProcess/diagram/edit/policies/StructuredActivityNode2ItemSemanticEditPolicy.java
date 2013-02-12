@@ -24,16 +24,16 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ExecutableNodeItemSemanticEditPolicy
+public class StructuredActivityNode2ItemSemanticEditPolicy
 		extends
 		serviceProcess.diagram.edit.policies.ServiceProcessBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeItemSemanticEditPolicy() {
+	public StructuredActivityNode2ItemSemanticEditPolicy() {
 		super(
-				serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
+				serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
 	}
 
 	/**
@@ -113,12 +113,136 @@ public class ExecutableNodeItemSemanticEditPolicy
 			Node node = (Node) nit.next();
 			switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 					.getVisualID(node)) {
-			case serviceProcess.diagram.edit.parts.ExecutableNodeExecutableNodeSubnodesCompartmentEditPart.VISUAL_ID:
+			case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeSubnodesCompartment2EditPart.VISUAL_ID:
 				for (Iterator<?> cit = node.getChildren().iterator(); cit
 						.hasNext();) {
 					Node cnode = (Node) cit.next();
 					switch (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 							.getVisualID(cnode)) {
+					case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
+								.hasNext();) {
+							Edge incomingLink = (Edge) it.next();
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										incomingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										incomingLink));
+								continue;
+							}
+						}
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
+								.hasNext();) {
+							Edge outgoingLink = (Edge) it.next();
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+								DestroyReferenceRequest r = new DestroyReferenceRequest(
+										outgoingLink.getSource().getElement(),
+										null, outgoingLink.getTarget()
+												.getElement(), false);
+								cmd.add(new DestroyReferenceCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+						}
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
+						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
+						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+						break;
+					case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
+								.hasNext();) {
+							Edge incomingLink = (Edge) it.next();
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										incomingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										incomingLink));
+								continue;
+							}
+						}
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
+								.hasNext();) {
+							Edge outgoingLink = (Edge) it.next();
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+								DestroyReferenceRequest r = new DestroyReferenceRequest(
+										outgoingLink.getSource().getElement(),
+										null, outgoingLink.getTarget()
+												.getElement(), false);
+								cmd.add(new DestroyReferenceCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+						}
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
+						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
+						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+						break;
 					case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
 								.hasNext();) {
@@ -170,68 +294,6 @@ public class ExecutableNodeItemSemanticEditPolicy
 								DestroyElementRequest r = new DestroyElementRequest(
 										outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
-								continue;
-							}
-						}
-						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
-						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
-						break;
-					case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
-							Edge incomingLink = (Edge) it.next();
-							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
-								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
-								continue;
-							}
-							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getVisualID(incomingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
-								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
-								continue;
-							}
-						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
-							Edge outgoingLink = (Edge) it.next();
-							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
-								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
-								continue;
-							}
-							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
-								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
-								continue;
-							}
-							if (serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceProcess.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
-								DestroyReferenceRequest r = new DestroyReferenceRequest(
-										outgoingLink.getSource().getElement(),
-										null, outgoingLink.getTarget()
-												.getElement(), false);
-								cmd.add(new DestroyReferenceCommand(r));
 								cmd.add(new DeleteCommand(getEditingDomain(),
 										outgoingLink));
 								continue;

@@ -272,10 +272,13 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 	public List<IElementType> getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -296,10 +299,13 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNodeEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -320,10 +326,13 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNodeEditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNodeEditPart) {
@@ -344,10 +353,13 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNodeEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
-		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ExecutableNode2EditPart) {
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ObjectNode2EditPart) {
@@ -377,39 +389,43 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 		} else if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 		}
 		return types;
 	}
@@ -430,39 +446,43 @@ public class ObjectNodeEditPart extends ShapeNodeEditPart {
 	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 		} else if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_2002);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_2004);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_2005);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3001);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3003);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3004);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3005);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3006);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3007);
-			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3009);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3010);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3011);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3012);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.InitialNode_3013);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.FinalNode_3014);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3015);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3016);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3017);
 		}
 		return types;
 	}

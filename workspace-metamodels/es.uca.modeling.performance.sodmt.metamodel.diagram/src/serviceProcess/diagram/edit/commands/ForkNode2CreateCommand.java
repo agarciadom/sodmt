@@ -56,7 +56,7 @@ public class ForkNode2CreateCommand extends EditElementCommand {
 		serviceProcess.ForkNode newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
 				.createForkNode();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);

@@ -50,13 +50,13 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class ExecutableNodeName2EditPart extends CompartmentEditPart implements
-		ITextAwareEditPart {
+public class StructuredActivityNodeNameEditPart extends CompartmentEditPart
+		implements ITextAwareEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5012;
+	public static final int VISUAL_ID = 5027;
 
 	/**
 	 * @generated
@@ -86,7 +86,7 @@ public class ExecutableNodeName2EditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeName2EditPart(View view) {
+	public StructuredActivityNodeNameEditPart(View view) {
 		super(view);
 	}
 
@@ -304,10 +304,10 @@ public class ExecutableNodeName2EditPart extends CompartmentEditPart implements
 		if (parser == null) {
 			parser = serviceProcess.diagram.providers.ServiceProcessParserProvider
 					.getParser(
-							serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNode_3002,
+							serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011,
 							getParserElement(),
 							serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
-									.getType(serviceProcess.diagram.edit.parts.ExecutableNodeName2EditPart.VISUAL_ID));
+									.getType(serviceProcess.diagram.edit.parts.StructuredActivityNodeNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

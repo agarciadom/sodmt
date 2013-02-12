@@ -70,7 +70,8 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION: return createLocalPerformanceAnnotation();
       case ServiceProcessPackage.CONTROL_FLOW: return createControlFlow();
       case ServiceProcessPackage.OBJECT_FLOW: return createObjectFlow();
-      case ServiceProcessPackage.EXECUTABLE_NODE: return createExecutableNode();
+      case ServiceProcessPackage.ACTION: return createAction();
+      case ServiceProcessPackage.STRUCTURED_ACTIVITY_NODE: return createStructuredActivityNode();
       case ServiceProcessPackage.OBJECT_NODE: return createObjectNode();
       case ServiceProcessPackage.INITIAL_NODE: return createInitialNode();
       case ServiceProcessPackage.FINAL_NODE: return createFinalNode();
@@ -184,10 +185,21 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExecutableNode createExecutableNode()
+  public Action createAction()
   {
-    ExecutableNodeImpl executableNode = new ExecutableNodeImpl();
-    return executableNode;
+    ActionImpl action = new ActionImpl();
+    return action;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StructuredActivityNode createStructuredActivityNode()
+  {
+    StructuredActivityNodeImpl structuredActivityNode = new StructuredActivityNodeImpl();
+    return structuredActivityNode;
   }
 
   /**

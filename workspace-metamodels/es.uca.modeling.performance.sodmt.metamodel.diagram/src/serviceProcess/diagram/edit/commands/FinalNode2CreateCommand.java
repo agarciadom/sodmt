@@ -56,7 +56,7 @@ public class FinalNode2CreateCommand extends EditElementCommand {
 		serviceProcess.FinalNode newElement = serviceProcess.ServiceProcessFactory.eINSTANCE
 				.createFinalNode();
 
-		serviceProcess.ExecutableNode owner = (serviceProcess.ExecutableNode) getElementToEdit();
+		serviceProcess.StructuredActivityNode owner = (serviceProcess.StructuredActivityNode) getElementToEdit();
 		owner.getSubnodes().add(newElement);
 
 		doConfigure(newElement, monitor, info);

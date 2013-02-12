@@ -52,11 +52,17 @@ public class ServiceProcessElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType LocalPerformanceAnnotation_2001 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"); //$NON-NLS-1$
+	public static final IElementType Action_2010 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.Action_2010"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType ExecutableNode_2002 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_2002"); //$NON-NLS-1$
+	public static final IElementType StructuredActivityNode_2011 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_2011"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType LocalPerformanceAnnotation_2001 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_2001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
@@ -88,35 +94,48 @@ public class ServiceProcessElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType LocalPerformanceAnnotation_3001 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3001"); //$NON-NLS-1$
+	public static final IElementType Action_3009 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.Action_3009"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType ExecutableNode_3002 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ExecutableNode_3002"); //$NON-NLS-1$
+	public static final IElementType StructuredActivityNode_3010 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.StructuredActivityNode_3010"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType ObjectNode_3003 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3003"); //$NON-NLS-1$
+	public static final IElementType LocalPerformanceAnnotation_3011 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.LocalPerformanceAnnotation_3011"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType InitialNode_3004 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3004"); //$NON-NLS-1$
+	public static final IElementType ObjectNode_3012 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ObjectNode_3012"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType FinalNode_3005 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3005"); //$NON-NLS-1$
+	public static final IElementType InitialNode_3013 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.InitialNode_3013"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType DecisionNode_3006 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3006"); //$NON-NLS-1$
+	public static final IElementType FinalNode_3014 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.FinalNode_3014"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType ForkNode_3007 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3007"); //$NON-NLS-1$
+	public static final IElementType DecisionNode_3015 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.DecisionNode_3015"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
-	public static final IElementType JoinNode_3008 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3008"); //$NON-NLS-1$
+	public static final IElementType ForkNode_3016 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.ForkNode_3016"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType JoinNode_3017 = getElementType("es.uca.modeling.performance.sodmt.metamodel.diagram.JoinNode_3017"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -245,13 +264,16 @@ public class ServiceProcessElementTypes {
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getServiceProcess());
 
+			elements.put(Action_2010,
+					serviceProcess.ServiceProcessPackage.eINSTANCE.getAction());
+
+			elements.put(StructuredActivityNode_2011,
+					serviceProcess.ServiceProcessPackage.eINSTANCE
+							.getStructuredActivityNode());
+
 			elements.put(LocalPerformanceAnnotation_2001,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getLocalPerformanceAnnotation());
-
-			elements.put(ExecutableNode_2002,
-					serviceProcess.ServiceProcessPackage.eINSTANCE
-							.getExecutableNode());
 
 			elements.put(ObjectNode_2003,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
@@ -281,35 +303,38 @@ public class ServiceProcessElementTypes {
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getPerformanceAnnotation());
 
-			elements.put(LocalPerformanceAnnotation_3001,
+			elements.put(Action_3009,
+					serviceProcess.ServiceProcessPackage.eINSTANCE.getAction());
+
+			elements.put(StructuredActivityNode_3010,
+					serviceProcess.ServiceProcessPackage.eINSTANCE
+							.getStructuredActivityNode());
+
+			elements.put(LocalPerformanceAnnotation_3011,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getLocalPerformanceAnnotation());
 
-			elements.put(ExecutableNode_3002,
-					serviceProcess.ServiceProcessPackage.eINSTANCE
-							.getExecutableNode());
-
-			elements.put(ObjectNode_3003,
+			elements.put(ObjectNode_3012,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getObjectNode());
 
-			elements.put(InitialNode_3004,
+			elements.put(InitialNode_3013,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getInitialNode());
 
-			elements.put(FinalNode_3005,
+			elements.put(FinalNode_3014,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getFinalNode());
 
-			elements.put(DecisionNode_3006,
+			elements.put(DecisionNode_3015,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getDecisionNode());
 
-			elements.put(ForkNode_3007,
+			elements.put(ForkNode_3016,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getForkNode());
 
-			elements.put(JoinNode_3008,
+			elements.put(JoinNode_3017,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getJoinNode());
 
@@ -342,8 +367,9 @@ public class ServiceProcessElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(ServiceProcess_1000);
+			KNOWN_ELEMENT_TYPES.add(Action_2010);
+			KNOWN_ELEMENT_TYPES.add(StructuredActivityNode_2011);
 			KNOWN_ELEMENT_TYPES.add(LocalPerformanceAnnotation_2001);
-			KNOWN_ELEMENT_TYPES.add(ExecutableNode_2002);
 			KNOWN_ELEMENT_TYPES.add(ObjectNode_2003);
 			KNOWN_ELEMENT_TYPES.add(InitialNode_2004);
 			KNOWN_ELEMENT_TYPES.add(FinalNode_2005);
@@ -351,14 +377,15 @@ public class ServiceProcessElementTypes {
 			KNOWN_ELEMENT_TYPES.add(ForkNode_2007);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_2008);
 			KNOWN_ELEMENT_TYPES.add(PerformanceAnnotation_2009);
-			KNOWN_ELEMENT_TYPES.add(LocalPerformanceAnnotation_3001);
-			KNOWN_ELEMENT_TYPES.add(ExecutableNode_3002);
-			KNOWN_ELEMENT_TYPES.add(ObjectNode_3003);
-			KNOWN_ELEMENT_TYPES.add(InitialNode_3004);
-			KNOWN_ELEMENT_TYPES.add(FinalNode_3005);
-			KNOWN_ELEMENT_TYPES.add(DecisionNode_3006);
-			KNOWN_ELEMENT_TYPES.add(ForkNode_3007);
-			KNOWN_ELEMENT_TYPES.add(JoinNode_3008);
+			KNOWN_ELEMENT_TYPES.add(Action_3009);
+			KNOWN_ELEMENT_TYPES.add(StructuredActivityNode_3010);
+			KNOWN_ELEMENT_TYPES.add(LocalPerformanceAnnotation_3011);
+			KNOWN_ELEMENT_TYPES.add(ObjectNode_3012);
+			KNOWN_ELEMENT_TYPES.add(InitialNode_3013);
+			KNOWN_ELEMENT_TYPES.add(FinalNode_3014);
+			KNOWN_ELEMENT_TYPES.add(DecisionNode_3015);
+			KNOWN_ELEMENT_TYPES.add(ForkNode_3016);
+			KNOWN_ELEMENT_TYPES.add(JoinNode_3017);
 			KNOWN_ELEMENT_TYPES.add(ControlFlow_4001);
 			KNOWN_ELEMENT_TYPES.add(ObjectFlow_4002);
 			KNOWN_ELEMENT_TYPES.add(ExecutableNodeAnnotation_4003);
@@ -373,10 +400,12 @@ public class ServiceProcessElementTypes {
 		switch (visualID) {
 		case serviceProcess.diagram.edit.parts.ServiceProcessEditPart.VISUAL_ID:
 			return ServiceProcess_1000;
+		case serviceProcess.diagram.edit.parts.ActionEditPart.VISUAL_ID:
+			return Action_2010;
+		case serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
+			return StructuredActivityNode_2011;
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 			return LocalPerformanceAnnotation_2001;
-		case serviceProcess.diagram.edit.parts.ExecutableNodeEditPart.VISUAL_ID:
-			return ExecutableNode_2002;
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			return ObjectNode_2003;
 		case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -391,22 +420,24 @@ public class ServiceProcessElementTypes {
 			return JoinNode_2008;
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return PerformanceAnnotation_2009;
+		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
+			return Action_3009;
+		case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
+			return StructuredActivityNode_3010;
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-			return LocalPerformanceAnnotation_3001;
-		case serviceProcess.diagram.edit.parts.ExecutableNode2EditPart.VISUAL_ID:
-			return ExecutableNode_3002;
+			return LocalPerformanceAnnotation_3011;
 		case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-			return ObjectNode_3003;
+			return ObjectNode_3012;
 		case serviceProcess.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-			return InitialNode_3004;
+			return InitialNode_3013;
 		case serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-			return FinalNode_3005;
+			return FinalNode_3014;
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-			return DecisionNode_3006;
+			return DecisionNode_3015;
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-			return ForkNode_3007;
+			return ForkNode_3016;
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-			return JoinNode_3008;
+			return JoinNode_3017;
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return ControlFlow_4001;
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
