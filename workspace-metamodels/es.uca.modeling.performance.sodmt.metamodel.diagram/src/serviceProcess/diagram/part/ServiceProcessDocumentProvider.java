@@ -583,7 +583,9 @@ public class ServiceProcessDocumentProvider extends AbstractDocumentProvider
 	}
 
 	/**
-	 * @generated
+	 * The last line in the method has been manually modified, adding a call to the validation service.
+	 *
+	 * @generated NOT
 	 */
 	protected void doSaveDocument(IProgressMonitor monitor, Object element,
 			IDocument document, boolean overwrite) throws CoreException {
@@ -708,6 +710,7 @@ public class ServiceProcessDocumentProvider extends AbstractDocumentProvider
 			}
 			newResource.unload();
 		}
+		ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)document.getContent());
 	}
 
 	/**
