@@ -18,7 +18,7 @@ import org.eclipse.osgi.util.NLS;
 /**
  * @generated
  */
-public class ControlFlowLabelParser extends
+public class NumbersToDoubleLabelParser extends
 		serviceProcess.diagram.parsers.AbstractParser {
 
 	/**
@@ -49,14 +49,14 @@ public class ControlFlowLabelParser extends
 	/**
 	 * @generated
 	 */
-	public ControlFlowLabelParser(EAttribute[] features) {
+	public NumbersToDoubleLabelParser(EAttribute[] features) {
 		super(features);
 	}
 
 	/**
 	 * @generated
 	 */
-	public ControlFlowLabelParser(EAttribute[] features,
+	public NumbersToDoubleLabelParser(EAttribute[] features,
 			EAttribute[] editableFeatures) {
 		super(features, editableFeatures);
 	}
@@ -200,19 +200,12 @@ public class ControlFlowLabelParser extends
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	public String getPrintString(IAdaptable adapter, int flags) {
-		org.eclipse.emf.ecore.EObject element = (org.eclipse.emf.ecore.EObject) adapter
-				.getAdapter(org.eclipse.emf.ecore.EObject.class);
-		Object[] values = getValues(element);
-		if (values.length > 0 && values[0] instanceof String
-				&& ((String) values[0]).trim().length() > 0) {
-			return getViewProcessor().format(getValues(element),
-					new StringBuffer(), new java.text.FieldPosition(0))
-					.toString();
-		} else
-			return "";
+		EObject element = (EObject) adapter.getAdapter(EObject.class);
+		return getViewProcessor().format(getValues(element),
+				new StringBuffer(), new FieldPosition(0)).toString();
 	}
 
 }

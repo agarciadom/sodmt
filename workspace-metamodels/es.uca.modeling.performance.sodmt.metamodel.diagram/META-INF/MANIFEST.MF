@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: serviceProcess.diagram.part.ServiceProcessDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: serviceProcess.diagram.edit.parts, 
+Export-Package: serviceProcess.diagram.edit.parts,
  serviceProcess.diagram.part,
  serviceProcess.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
