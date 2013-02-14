@@ -1,0 +1,158 @@
+@namespace(uri="www.uca.es/modeling/performance/sodmt", prefix="perf")
+package serviceProcess;
+
+
+/* DIAGRAM AND BASE ABSTRACT CLASSES */
+
+
+@gmf.diagram(model.extension="sp", diagram.extension="spdiag")
+class ServiceProcess {
+  val ActivityNode[*] nodes;
+  val ActivityEdge[*] edges;
+  val PerformanceAnnotation processPerformance;
+}
+
+@gmf.link(source="source", target="target", width="3",
+          target.decoration="arrow")
+abstract class ActivityEdge {
+  ref ActivityNode#outgoing source;
+  ref ActivityNode#incoming target;
+}
+
+abstract class ActivityNode {
+  ref ActivityEdge[*]#target incoming;
+  ref ActivityEdge[*]#source outgoing;
+}
+
+
+/* ANNOTATIONS */
+
+// We only mention 'concurrentUsers' to make sure that PerformanceAnnotation
+// and LocalPerformanceAnnotation get their labels
+@gmf.node(figure="rectangle",
+          label="concurrentUsers",
+          label.pattern="«gpc»",
+          label.readOnly="true",
+          tool.name="Global Performance Constraint")
+class PerformanceAnnotation {
+   @gmf.label(label.view.pattern = "users = {0}",
+              label.edit.pattern="{0, number}",
+              label.parser="NumbersToDoubleLabelParser")
+   attr Double concurrentUsers = 1;
+
+   @gmf.label(label.view.pattern = "timeLimit = {0}",
+              label.edit.pattern="{0, number}",
+              label.parser="NumbersToDoubleLabelParser")
+   attr Double secsTimeLimit = 0;
+}
+
+@gmf.node(label.pattern="«lpc»",
+          tool.name="Local Performance Constraint")
+class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
+   @gmf.label(label.view.pattern = "minimum = {0}",
+              label.edit.pattern="{0, number}",
+              label.parser="NumbersToDoubleLabelParser")
+   attr Double minimumTime = 0;
+
+   @gmf.label(label.view.pattern = "weight = {0}",
+              label.edit.pattern="{0, number}",
+              label.parser="NumbersToDoubleLabelParser")
+   attr Double weight = 1;
+
+   ref ExecutableNode#annotation execNode;
+}
+
+
+/* EDGES */
+
+
+@gmf.link(tool.name="Control Flow",
+          label="condition,probability",
+          label.view.pattern="[{0}] (p = {1})",
+          label.edit.pattern="{0} : {1,number}",
+          label.parser="ControlFlowLabelParser",
+          label.text=" ",
+          source.constraint="self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
+          target.constraint="self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)")
+class ControlFlow extends ActivityEdge {
+    attr String condition = "";
+    attr Double probability = 1;
+}
+
+@gmf.link(tool.name="Object Flow", style="dash",
+          source.constraint="self.oclIsKindOf(PerformanceAnnotation)",
+          target.constraint="(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)")
+class ObjectFlow extends ActivityEdge {}
+
+
+/* NODES */
+
+
+@gmf.node(label="name")
+abstract class NamedElement {
+   attr String name;
+}
+
+@gmf.node(label.icon="false")
+abstract class ExecutableNode extends ActivityNode, NamedElement {
+  @gmf.link(incoming="true", style="dash", tool.name="Link Performance Annotation")
+  ref LocalPerformanceAnnotation#execNode annotation;
+}
+
+class Action extends ExecutableNode {}
+
+@gmf.node(border.style="dash",
+          label.view.pattern="«structured» {0}",
+          label.edit.pattern="{0}",
+          tool.name="Structured Activity Node")
+class StructuredActivityNode extends ExecutableNode {
+  @gmf.compartment
+  val ActivityNode[*] nodes;
+}
+
+@gmf.node(figure="rectangle", label.icon="false", tool.name="Object Node")
+class ObjectNode extends ActivityNode, NamedElement {}
+
+@gmf.node(figure="svg", svg.uri="platform:/plugin/es.uca.modeling.performance.sodmt.sprocess/svg/initial.svg",
+          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Start")
+class InitialNode extends ActivityNode {}
+
+@gmf.node(figure="svg", svg.uri="platform:/plugin/es.uca.modeling.performance.sodmt.sprocess/svg/flow-final.svg",
+          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Finish")
+class FinalNode extends ActivityNode {}
+
+@gmf.node(figure="polygon", polygon.x="0 15 30 15", polygon.y="15 30 15 0", border.color="0,0,0",
+          size="30,30", label.placement="none", resizable="false", tool.name="Decision")
+class DecisionNode extends ActivityNode {}
+
+@gmf.node(figure="polygon", polygon.x="0 10 10 0", polygon.y="0 0 30 30", color="0,0,0",
+          label.placement="none", size="10,30", resizable="false", tool.name="Fork")
+class ForkNode extends ActivityNode {}
+
+@gmf.node(figure="polygon", polygon.x="0 10 10 0", polygon.y="0 0 30 30", color="0,0,0",
+          label.placement="none", size="10,30", resizable="false", tool.name="Join")
+class JoinNode extends ActivityNode {}
+
+
+/* DATATYPES */
+
+
+enum ExpressionLanguage {
+   OCL;
+   JML;
+}
+
+/* Visit status for nodes: needed for the colored depth-first search
+   used to detect cycles in the graph in the EVL script. */
+enum VisitStatus {
+   NOT_VISITED;
+   VISITING;
+   VISITED;
+}
+
+/* Node side: useful for operations which need to distinguish between the
+   incoming side and the outgoing side */
+enum NodeSide {
+   INCOMING;
+   OUTGOING;
+}

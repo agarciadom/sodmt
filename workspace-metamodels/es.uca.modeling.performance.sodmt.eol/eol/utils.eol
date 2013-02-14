@@ -1,0 +1,274 @@
+-*
+  Miscellaneous utilities for both inference algorithms.
+
+  Copyright (c) 2009-2013 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+*-
+
+-- PERFORMANCE ANNOTATIONS ----------------------------------------------------
+
+operation ActivityNode hasManualPerformanceAnnotation() : Boolean {
+  return self.hasProperty('annotation') and self.annotation.isDefined() and self.annotation.manuallyAdded;
+}
+
+operation ActivityNode hasAutomaticPerformanceAnnotation() : Boolean {
+  return self.hasProperty('annotation') and self.annotation.isDefined() and not self.annotation.manuallyAdded;
+}
+
+-- Returns the weight of this node, or the default value if it has not been set.
+operation ActivityNode getWeight() : Real {
+  if (not self.hasProperty('annotation')) {
+    return 0.0d;
+  } else if (self.annotation.isDefined()){
+    return self.annotation.weight * 1.0d;
+  } else {
+    return 1.0d;
+  }
+}
+
+operation ActivityNode getMinimumTime() : Real {
+  if (self.hasProperty('annotation') and self.annotation.isDefined()) {
+    return self.annotation.minimumTime * 1.0d;
+  } else {
+    return 0.0d;
+  }
+}
+
+-- If set, returns the time limit for this node. Otherwise, returns 0.
+operation ActivityNode getTimeLimit() : Real {
+  if (self.hasProperty('annotation') and self.annotation.isDefined()) {
+    return self.annotation.secsTimeLimit * 1.0d;
+  } else {
+    return 0.0d;
+  }
+}
+
+-- Sets an automatic time limit restriction for this node. Restrictions can only
+-- be made stricter, and not relaxed. If this node cannot be annotated, it does
+-- nothing.
+operation ActivityNode setTimeLimit(newLimit : Real) {
+  if (self.hasProperty('annotation')) {
+    if (self.annotation.isUndefined()) {
+      self.createPerformanceAnnotation();
+    }
+    self.annotation.secsTimeLimit := newLimit * 1.0d;
+  }
+}
+
+-- CONSTRAINTS ----------------------------------------------------------------
+
+-*
+  Computes the slack per unit of weight of a path using its constraint, when
+  the path receives T seconds.
+*-
+operation Sequence slackPerWU(T : Real) : Real {
+  if (self.last() > 0) {
+    return (T-self.first())/self.last();
+  } else {
+    return 0;
+  }
+}
+
+-- GRAPH PREPROCESSING --------------------------------------------------------
+
+@cached
+$post _result >= 0
+operation ActivityNode getDepth() : Integer {
+  if (self.incoming.isEmpty()) {
+    return 0;
+  }
+  else {
+    return self.incoming.collect(r|r.source.getDepth()).max() + 1;
+  }
+}
+
+-- LOWEST COMMON ANCESTOR -----------------------------------------------------
+
+@cached
+$pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
+operation getLCA(nodeA : ActivityNode, nodeB : ActivityNode) : ActivityNode {
+  var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
+  var ancestorsA := nodeA.getAncestors();
+  var ancestorsB := nodeB.getAncestors();
+  var common := ancestorsA.intersect(ancestorsB);
+
+  if (common.isEmpty()) {
+    return;
+  }
+
+  return common.asSequence().sortBy(r|-r.getDepth()).first();
+}
+
+operation ActivityNode getAncestors() : Set {
+  var results := new Set;
+  self.addAllAncestors(results);
+  return results;
+}
+
+$pre results.isDefined()
+operation ActivityNode addAllAncestors(results : Collection) {
+  if (results.add(self)) {
+    for (parent in self.incoming.collect(r|r.source)) {
+      parent.addAllAncestors(results);
+    }
+  }
+}
+
+$pre otherSet.isDefined()
+operation Set intersect(otherSet : Set) : Set {
+  if (otherSet.size() < self.size()) {
+    return otherSet.intersect(self);
+  }
+
+  var results : Set;
+  for (element in self.select(r|otherSet.includes(r))) {
+    results.add(element);
+  }
+  return results;
+}
+
+----- REACHABLE NODES ---------------------------------------------------------
+
+-- Obtains all the nodes reachable from a node in the graph, in no
+-- particular order. Returns a Set: to convert it to a sequence, use asSequence().
+-- Note that if you only want the activities, you will need to filter them later
+-- on, using select(), for instance.
+@cached
+operation ActivityNode getAllReachableNodes() : Set {
+  var nodeSet := new Set;
+  nodeSet.add(self);
+  addAllReachableNodes(self, nodeSet);
+  return nodeSet;
+}
+
+-- Adds all the nodes which are reachable from a node in the graph to a set of
+-- nodes. Avoids nodes which have been already visited.
+operation addAllReachableNodes(node : ActivityNode, nodeSet : Set) {
+  for (child in node.outgoing.collect(r|r.target)) {
+    var oldSize := nodeSet.size();
+    nodeSet.add(child);
+    if (nodeSet.size() > oldSize) {
+      addAllReachableNodes(child, nodeSet);
+    }
+  }
+}
+
+----- ALL PATHS BETWEEN TWO NODES ---------------------------------------------
+
+-- Obtains all the paths starting from a node in the graph
+-- to every final node (if the starting node is a FinalNode,
+-- reports an empty set of paths)
+@cached
+operation getAllPathsFrom(start : ActivityNode) {
+  var allPaths := Sequence {};
+  auxPathsTo(Sequence { start }, allPaths);
+  return allPaths;
+}
+
+operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
+  var last_elem := partialPath.last();
+
+  if (last_elem.outgoing.isEmpty()) {
+    allPaths.add(partialPath.clone());
+  }
+
+  for (descendant in last_elem.outgoing.collect(r|r.target)) {
+    partialPath.add(descendant);
+    auxPathsTo(partialPath, allPaths);
+    partialPath.removeAt(partialPath.size()-1);
+  }
+}
+
+-- UTILITY OPERATIONS FOR VALIDATION --
+
+-- Edge creation
+
+$pre e.isDefined()
+operation createEdgeSimilarTo(e : ActivityEdge) {
+  var utilsTool := new Native('es.uca.modeling.eol.tools.ECoreUtilsTool');
+  var newEdge := utilsTool.copy(e);
+  addEdge(newEdge);
+  return newEdge;
+}
+
+-- Adds another node between a node and its direct ancestors or descendants
+-- FIXME: Cannot use "NodeSide" as the parameter type (Eclipse Bugzilla #286412)
+$pre  newNode.isDefined() and side.isDefined()
+$pre  (side = NodeSide#OUTGOING and self.outgoing.size() >= 1) or (side = NodeSide#INCOMING and self.incoming.size() >= 1)
+$post (side = NodeSide#OUTGOING and self.outgoing.size() = 1) or (side = NodeSide#INCOMING and self.incoming.size() = 1)
+operation ActivityNode placeNodeBetween(newNode : ActivityNode, side : Any) {
+  if (side = NodeSide#OUTGOING) {
+    var newEdge := createEdgeSimilarTo(self.outgoing.first());
+    for (e in self.outgoing.clone()) {
+       e.source := newNode;
+    }
+    newEdge.source := self;
+    newEdge.target := newNode;
+  } else {
+    var newEdge := createEdgeSimilarTo(self.incoming.first());
+    for (e in self.incoming.clone()) {
+      e.target := newNode;
+    }
+    newEdge.source := newNode;
+    newEdge.target := self;
+  }
+}
+
+-- Cycle testing
+
+operation graphIsAcyclic(start : ActivityNode) {
+  -- Mark all vertices as not visited
+  for (v in ActivityNode.all) {
+    v.~visitStatus := VisitStatus#NOT_VISITED;
+  }
+  start.~firstEdgeProducingCycle := getFirstEdgeProducingCycle(start);
+  return start.~firstEdgeProducingCycle.isUndefined();
+}
+
+$pre node.~visitStatus <> VisitStatus#VISITING
+operation getFirstEdgeProducingCycle(node : ActivityNode) {
+  -- All ancestors already visited: nothing to do
+  if (node.~visitStatus = VisitStatus#VISITED) {
+    return;
+  }
+
+  node.~visitStatus := VisitStatus#VISITING;
+  for (edge in node.outgoing) {
+    if (edge.target.~visitStatus = VisitStatus#VISITING) {
+      return edge;
+    }
+
+    var firstEdgeProducingCycle := getFirstEdgeProducingCycle(edge.target);
+    if (firstEdgeProducingCycle.isDefined()) {
+      return firstEdgeProducingCycle;
+    }
+  }
+  node.~visitStatus := VisitStatus#VISITED;
+}
+
+-- COMPARISON OF REAL NUMBERS -----------------------------
+
+$pre epsilon > 0
+operation isApproximatelyEqual(a, b, epsilon) : Boolean {
+  return (a - b).abs() <= epsilon;
+}
+
+-- COLLECTION UTILITIES -----------------------------------
+
+operation Sequence popLast() : Any {
+  var elem = self.last();
+  self.removeAt(self.size()-1);
+  return elem;
+}
+
+operation OrderedSet popLast() : Any {
+  var elem = self.last();
+  self.removeAt(self.size()-1);
+  return elem;
+}

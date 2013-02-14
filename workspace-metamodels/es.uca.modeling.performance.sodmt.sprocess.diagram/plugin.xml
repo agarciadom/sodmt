@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+
+-->
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="spdiag"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="spdiag"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/ServiceProcessDiagramFile.gif"
+         extensions="spdiag"
+         default="true"
+         class="serviceProcess.diagram.part.ServiceProcessDiagramEditor"
+         matchingStrategy="serviceProcess.diagram.part.ServiceProcessMatchingStrategy"
+         contributorClass="serviceProcess.diagram.part.ServiceProcessDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="serviceProcess.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/ServiceProcessDiagramFile.gif"
+  	     category="org.eclipse.ui.Examples"
+  	     class="serviceProcess.diagram.part.ServiceProcessCreationWizard"
+  	     id="serviceProcess.diagram.part.ServiceProcessCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.InitDiagram"
+            nameFilter="*.sp"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="serviceProcess.diagram.part.ServiceProcessInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="ServiceProcessPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="ServiceProcessPresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="ServiceProcessPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="ServiceProcessRender">
+         <Priority name="Lowest"/>
+         <ViewId id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="serviceProcess.diagram.providers.ServiceProcessMarkerNavigationProvider">
+         <MarkerType name="es.uca.modeling.performance.sodmt.sprocess.diagram.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+   <extension id="diagnostic" name="ServiceProcess Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>   
+
+   <extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="serviceProcess.diagram.providers.ServiceProcessValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="serviceProcess.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            name="%prefpage.es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            class="serviceProcess.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.appearance"
+            name="%prefpage.es.uca.modeling.performance.sodmt.sprocess.diagram.appearance"
+            category="es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            class="serviceProcess.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.connections"
+            name="%prefpage.es.uca.modeling.performance.sodmt.sprocess.diagram.connections"
+            category="es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            class="serviceProcess.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.printing"
+            name="%prefpage.es.uca.modeling.performance.sodmt.sprocess.diagram.printing"
+            category="es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            class="serviceProcess.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.rulersAndGrid"
+            name="%prefpage.es.uca.modeling.performance.sodmt.sprocess.diagram.rulersAndGrid"
+            category="es.uca.modeling.performance.sodmt.sprocess.diagram.general"
+            class="serviceProcess.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="es.uca.modeling.performance.sodmt.sprocess.diagram"
+            labelProvider="serviceProcess.diagram.sheet.ServiceProcessSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="es.uca.modeling.performance.sodmt.sprocess.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="es.uca.modeling.performance.sodmt.sprocess.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="serviceProcess.diagram.sheet.ServiceProcessPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="serviceProcess.diagram.providers.ServiceProcessViewProvider">
+         <Priority name="Lowest"/>
+         <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
+            <method name="getType()" value="sp"/>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ServiceProcess"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="serviceProcess.diagram.providers.ServiceProcessEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="ServiceProcess"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001,4002,4003"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5018,5027,5001,5002,5003,5004,5005,5014,5015,5016,5017,5028,5035,5029,5030,5031,5032,5033,5034"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7003,7005"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="serviceProcess.diagram.providers.ServiceProcessModelingAssistantProvider">
+         <Priority name="Lowest"/>
+         <object class="serviceProcess.diagram.edit.parts.ServiceProcessEditPart" id="ServiceProcess_1000"/>
+         <object class="serviceProcess.diagram.edit.parts.ActionEditPart" id="Action_2010"/>
+         <object class="serviceProcess.diagram.edit.parts.StructuredActivityNodeEditPart" id="StructuredActivityNode_2011"/>
+         <object class="serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart" id="LocalPerformanceAnnotation_2001"/>
+         <object class="serviceProcess.diagram.edit.parts.ObjectNodeEditPart" id="ObjectNode_2003"/>
+         <object class="serviceProcess.diagram.edit.parts.InitialNodeEditPart" id="InitialNode_2004"/>
+         <object class="serviceProcess.diagram.edit.parts.FinalNodeEditPart" id="FinalNode_2005"/>
+         <object class="serviceProcess.diagram.edit.parts.DecisionNodeEditPart" id="DecisionNode_2006"/>
+         <object class="serviceProcess.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2007"/>
+         <object class="serviceProcess.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2008"/>
+         <object class="serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2009"/>
+         <object class="serviceProcess.diagram.edit.parts.Action2EditPart" id="Action_3018"/>
+         <object class="serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3019"/>
+         <object class="serviceProcess.diagram.edit.parts.LocalPerformanceAnnotation2EditPart" id="LocalPerformanceAnnotation_3020"/>
+         <object class="serviceProcess.diagram.edit.parts.ObjectNode2EditPart" id="ObjectNode_3021"/>
+         <object class="serviceProcess.diagram.edit.parts.InitialNode2EditPart" id="InitialNode_3022"/>
+         <object class="serviceProcess.diagram.edit.parts.FinalNode2EditPart" id="FinalNode_3023"/>
+         <object class="serviceProcess.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3024"/>
+         <object class="serviceProcess.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3025"/>
+         <object class="serviceProcess.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3026"/>
+         <context elements="ServiceProcess_1000,Action_2010,StructuredActivityNode_2011,LocalPerformanceAnnotation_2001,ObjectNode_2003,InitialNode_2004,FinalNode_2005,DecisionNode_2006,ForkNode_2007,JoinNode_2008,PerformanceAnnotation_2009,Action_3018,StructuredActivityNode_3019,LocalPerformanceAnnotation_3020,ObjectNode_3021,InitialNode_3022,FinalNode_3023,DecisionNode_3024,ForkNode_3025,JoinNode_3026"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="serviceProcess.diagram.providers.ServiceProcessIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="serviceProcess.diagram.providers.ServiceProcessParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders" id="decorator-provider">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="serviceProcess.diagram.providers.ServiceProcessShortcutsDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009"/>
+         </object>
+         <context decoratorTargets="generated-top-nodes"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ServiceProcess_1000"
+               name="%metatype.name.ServiceProcess_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ServiceProcess"
+               edithelper="serviceProcess.diagram.edit.helpers.ServiceProcessEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_2010"
+               name="%metatype.name.Action_2010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Action"
+               edithelper="serviceProcess.diagram.edit.helpers.ActionEditHelper">
+            <param name="semanticHint" value="2010"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_2011"
+               name="%metatype.name.StructuredActivityNode_2011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StructuredActivityNode"
+               edithelper="serviceProcess.diagram.edit.helpers.StructuredActivityNodeEditHelper">
+            <param name="semanticHint" value="2011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_2001"
+               name="%metatype.name.LocalPerformanceAnnotation_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_3020"/>
+            <param name="semanticHint" value="2001"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_2003"
+               name="%metatype.name.ObjectNode_2003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_3021"/>
+            <param name="semanticHint" value="2003"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_2004"
+               name="%metatype.name.InitialNode_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_3022"/>
+            <param name="semanticHint" value="2004"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_2005"
+               name="%metatype.name.FinalNode_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_3023"/>
+            <param name="semanticHint" value="2005"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_2006"
+               name="%metatype.name.DecisionNode_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_3024"/>
+            <param name="semanticHint" value="2006"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_2007"
+               name="%metatype.name.ForkNode_2007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_3025"/>
+            <param name="semanticHint" value="2007"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_2008"
+               name="%metatype.name.JoinNode_2008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"/>
+            <param name="semanticHint" value="2008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.PerformanceAnnotation_2009"
+               name="%metatype.name.PerformanceAnnotation_2009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="PerformanceAnnotation"
+               edithelper="serviceProcess.diagram.edit.helpers.PerformanceAnnotationEditHelper">
+            <param name="semanticHint" value="2009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_3018"
+               name="%metatype.name.Action_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_2010"/>
+            <param name="semanticHint" value="3018"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_3019"
+               name="%metatype.name.StructuredActivityNode_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_2011"/>
+            <param name="semanticHint" value="3019"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_3020"
+               name="%metatype.name.LocalPerformanceAnnotation_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="LocalPerformanceAnnotation"
+               edithelper="serviceProcess.diagram.edit.helpers.LocalPerformanceAnnotationEditHelper">
+            <param name="semanticHint" value="3020"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_3021"
+               name="%metatype.name.ObjectNode_3021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ObjectNode"
+               edithelper="serviceProcess.diagram.edit.helpers.ObjectNodeEditHelper">
+            <param name="semanticHint" value="3021"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_3022"
+               name="%metatype.name.InitialNode_3022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InitialNode"
+               edithelper="serviceProcess.diagram.edit.helpers.InitialNodeEditHelper">
+            <param name="semanticHint" value="3022"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_3023"
+               name="%metatype.name.FinalNode_3023"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="FinalNode"
+               edithelper="serviceProcess.diagram.edit.helpers.FinalNodeEditHelper">
+            <param name="semanticHint" value="3023"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_3024"
+               name="%metatype.name.DecisionNode_3024"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DecisionNode"
+               edithelper="serviceProcess.diagram.edit.helpers.DecisionNodeEditHelper">
+            <param name="semanticHint" value="3024"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_3025"
+               name="%metatype.name.ForkNode_3025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForkNode"
+               edithelper="serviceProcess.diagram.edit.helpers.ForkNodeEditHelper">
+            <param name="semanticHint" value="3025"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"
+               name="%metatype.name.JoinNode_3026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="JoinNode"
+               edithelper="serviceProcess.diagram.edit.helpers.JoinNodeEditHelper">
+            <param name="semanticHint" value="3026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ControlFlow_4001"
+               name="%metatype.name.ControlFlow_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ControlFlow"
+               edithelper="serviceProcess.diagram.edit.helpers.ControlFlowEditHelper">
+            <param name="semanticHint" value="4001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectFlow_4002"
+               name="%metatype.name.ObjectFlow_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ObjectFlow"
+               edithelper="serviceProcess.diagram.edit.helpers.ObjectFlowEditHelper">
+            <param name="semanticHint" value="4002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.ExecutableNodeAnnotation_4003"
+               name="%metatype.name.ExecutableNodeAnnotation_4003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4003"/>
+         </specializationType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="es.uca.modeling.performance.sodmt.sprocess.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="es.uca.modeling.performance.sodmt.sprocess.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="es.uca.modeling.performance.sodmt.sprocess.diagram.TypeContext">
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ServiceProcess_1000"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_2010"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_2011"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_2001"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_2003"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_2004"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_2005"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_2006"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_2007"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_2008"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.PerformanceAnnotation_2009"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_3018"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_3019"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_3020"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_3021"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_3022"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_3023"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_3024"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_3025"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ControlFlow_4001"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectFlow_4002"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ExecutableNodeAnnotation_4003"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="es.uca.modeling.performance.sodmt.sprocess.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="es.uca.modeling.performance.sodmt.sprocess.diagram"
+           properties="isURIEditorInput"
+           class="serviceProcess.diagram.part.ServiceProcessUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isShortcut">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="es.uca.modeling.performance.sodmt.sprocess.diagram.ShortcutPropertyTester"
+           type="org.eclipse.gmf.runtime.notation.View"
+           namespace="es.uca.modeling.performance.sodmt.sprocess.diagram"
+           properties="isShortcut"
+           class="serviceProcess.diagram.part.ServiceProcessShortcutPropertyTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="es.uca.modeling.performance.sodmt.sprocess.diagram.resourceContent"/>
+			<contentExtension pattern="es.uca.modeling.performance.sodmt.sprocess.diagram.domainResourceContent"/>
+            <contentExtension pattern="es.uca.modeling.performance.sodmt.sprocess.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="es.uca.modeling.performance.sodmt.sprocess.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="serviceProcess.diagram.navigator.ServiceProcessNavigatorContentProvider" 
+            labelProvider="serviceProcess.diagram.navigator.ServiceProcessNavigatorLabelProvider"
+            icon="icons/obj16/ServiceProcessDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="spdiag"/>
+               </and>
+               <instanceof value="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="es.uca.modeling.performance.sodmt.sprocess.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="es.uca.modeling.performance.sodmt.sprocess.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.navigatorSorter" 
+               class="serviceProcess.diagram.navigator.ServiceProcessNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="spdiag"/>
+                  </and>
+                  <instanceof value="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="serviceProcess.diagram.navigator.ServiceProcessDomainNavigatorContentProvider" 
+            labelProvider="serviceProcess.diagram.navigator.ServiceProcessDomainNavigatorLabelProvider"
+            icon="icons/obj16/ServiceProcessDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="sp"/>
+               </and>
+               <instanceof value="serviceProcess.diagram.navigator.ServiceProcessDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="serviceProcess.diagram.navigator.ServiceProcessDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.navigatorActionProvider"
+            class="serviceProcess.diagram.navigator.ServiceProcessNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="es.uca.modeling.performance.sodmt.sprocess.diagram.isShortcut"/>
+           	   </adapt>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="es.uca.modeling.performance.sodmt.sprocess.diagram.navigatorLinkHelper"
+            class="serviceProcess.diagram.navigator.ServiceProcessNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="es.uca.modeling.performance.sodmt.sprocess.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="serviceProcess.diagram.navigator.ServiceProcessAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="serviceProcess.diagram.part.ServiceProcessDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="serviceProcess.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="serviceProcess.diagram.updateDiagram"
+         contextId="serviceProcess.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="es.uca.modeling.performance.sodmt.sprocess.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="serviceProcess.diagram.part.ServiceProcessDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="serviceProcess.diagram.edit.parts.ServiceProcessEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="serviceProcess.diagram.part.ServiceProcessDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="es.uca.modeling.performance.sodmt.sprocess.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="serviceProcess.diagram.part.ServiceProcessDiagramEditorID"
+         defaultHandler="serviceProcess.diagram.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+   <!-- optionally, specify keybindings -->
+</plugin>

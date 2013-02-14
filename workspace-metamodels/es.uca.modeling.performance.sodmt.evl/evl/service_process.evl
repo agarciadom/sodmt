@@ -1,0 +1,26 @@
+-- Diagram constraints --------------------------
+
+import 'common.evl';
+
+context ServiceProcess {
+  constraint ExactlyOneProcessStart {
+    check : InitialNode.all.select(s | s.eContainer.isKindOf(ServiceProcess)).size() = 1
+    message : 'There must be exactly one initial node for the whole service process'
+  }
+
+  constraint ProcessPerformanceMustBeDefined {
+    check : self.processPerformance.isDefined()
+    message : 'The performance constraints for the process must be defined'
+    fix {
+      title : 'Create a default global performance constraint'
+      do {
+        self.processPerformance := new ProcessPerformanceAnnotation;
+      }
+    }
+  }
+
+  constraint MinimumOneFinalNode {
+    check : not FinalNode.all.select(f | f.eContainer.isKindOf(ServiceProcess)).isEmpty()
+    message : 'There must be at least one final node for the whole service process'
+  }
+}

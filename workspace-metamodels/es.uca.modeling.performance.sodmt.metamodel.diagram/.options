@@ -1,7 +1,0 @@
-# Tracing options for the es.uca.modeling.performance.sodmt.metamodel.diagram plug-in
-
-# Common issues
-es.uca.modeling.performance.sodmt.metamodel.diagram/debug=false
-
-# Visual IDs
-es.uca.modeling.performance.sodmt.metamodel.diagram/debug/visualID=false
