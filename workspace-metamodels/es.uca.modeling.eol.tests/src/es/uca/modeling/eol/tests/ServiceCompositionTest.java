@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.eol.execute.operations.contributors.OperationContributor;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eunit.junit.EUnitTestRunner;
 import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
@@ -37,4 +38,8 @@ public class ServiceCompositionTest implements IEUnitSuite {
 		return models;
 	}
 
+	@Override
+	public OperationContributor getOperationContributor() {
+		return null;
+	}
 }

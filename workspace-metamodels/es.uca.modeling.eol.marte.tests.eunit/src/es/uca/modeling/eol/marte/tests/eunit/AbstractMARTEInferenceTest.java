@@ -7,11 +7,17 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.eol.execute.operations.contributors.OperationContributor;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
 
 public abstract class AbstractMARTEInferenceTest implements IEUnitSuite {
+
+	@Override
+	public OperationContributor getOperationContributor() {
+		return null;
+	}
 
 	@Override
 	public List<IModel> prepareModels() throws Exception {

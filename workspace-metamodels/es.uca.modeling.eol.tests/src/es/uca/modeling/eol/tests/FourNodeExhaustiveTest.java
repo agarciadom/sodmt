@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.eol.execute.operations.contributors.OperationContributor;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eunit.junit.EUnitTestRunner;
 import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
@@ -31,5 +32,10 @@ public class FourNodeExhaustiveTest implements IEUnitSuite {
 		model.load();
 
 		return Arrays.asList((IModel)model);
+	}
+
+	@Override
+	public OperationContributor getOperationContributor() {
+		return null;
 	}
 }
