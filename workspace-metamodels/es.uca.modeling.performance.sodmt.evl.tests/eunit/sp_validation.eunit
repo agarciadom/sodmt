@@ -1,53 +1,920 @@
-@test
-operation emptyModelIsNotValid() {
-  new SP!ServiceProcess;
-  validate();
-  assertHasProblems(Sequence {
-    'ExactlyOneProcessStart',
-    'MinimumOneFinalNode',
-    'ProcessPerformanceMustBeDefined'
-  });
+@setup
+operation setUp() {
+  -- available directly within the @test
+  var sp = new SP!ServiceProcess;
 }
 
 @test
-operation onlyProcessStart() {
-  var sp = new SP!ServiceProcess;
-  sp.nodes.add(new SP!InitialNode);
+operation ExactlyOneProcessStart_noStart() {
   validate();
-
-  assertNoProblems(Sequence {
-    'ExactlyOneProcessStart',
-    'MinimumOneIncoming', // not applicable to initial node
-    'MaximumOneIncoming', // max is OK
-    'MaximumOneOutgoing'  // max is OK
-  });
-  assertHasProblems(Sequence {
-    'MinimumOneFinalNode',
-    'ProcessPerformanceMustBeDefined',
-    'MinimumOneOutgoing',  // initial node has no outgoing edges
-    'AllPathsFromInitialNodeMustEndInFinalNode', // no valid paths
-    'ProcessPerformanceMustBeDefined'
-  });
+  assertHasProblem('ExactlyOneProcessStart');  
 }
 
 @test
-operation multipleProcessStart() {
-  var sp = new SP!ServiceProcess;
-  sp.nodes.add(new SP!InitialNode);
-  sp.nodes.add(new SP!InitialNode);
+operation ExactlyOneProcessStart_oneStart() {
+  sp.newInitial();
   validate();
+  assertNoProblem('ExactlyOneProcessStart');
+}
 
+@test
+operation ExactlyOneProcessStart_twoStart() {
+  sp.newInitial();
+  sp.newInitial();
+  validate();
   assertHasProblem('ExactlyOneProcessStart');
 }
 
 @test
-operation oneProcessFinish() {
-  var sp = new SP!ServiceProcess;
-  sp.nodes.add(new SP!FinalNode);
+operation ProcessPerformanceMustBeDefined_noProcessPerformance() {
+  validate();
+  assertHasProblem('ProcessPerformanceMustBeDefined');  
+}
+
+@test
+operation ProcessPerformanceMustBeDefined_withProcessPerformance() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  validate();
+  assertNoProblem('ProcessPerformanceMustBeDefined');  
+}
+
+@test
+operation MinimumOneFinalNode_noFinalNodes() {
+  validate();
+  assertHasProblem('MinimumOneFinalNode');
+}
+
+@test
+operation MinimumOneFinalNode_oneFinalNode() {
+  sp.newFinal();
   validate();
   assertNoProblem('MinimumOneFinalNode');
-  assertHasProblem('ExactlyOneProcessStart');
 }
+
+@test
+operation MinimumOneFinalNode_twoFinalNodes() {
+  sp.newFinal();
+  sp.newFinal();
+  validate();
+  assertNoProblem('MinimumOneFinalNode');
+}
+
+@test
+operation MinimumOneIncoming_initialNode() {
+  sp.newInitial();
+  validate();
+  assertNoProblem('MinimumOneIncoming');
+}
+
+@test
+operation MinimumOneIncoming_perfAnnotation() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertNoProblem('MinimumOneIncoming');
+}
+
+@test
+operation MinimumOneIncoming_action() {
+  sp.newAction();
+  validate();
+  assertHasProblem('MinimumOneIncoming');
+}
+
+@test
+operation MaximumOneIncoming_action() {
+  var ini = sp.newInitial();
+  var act = ini.newAction();
+  ini.linkTo(act);
+  validate();
+  assertHasProblem('MaximumOneIncoming');
+}
+
+@test
+operation MaximumOneIncoming_join() {
+  var ini = sp.newInitial();
+  var join = ini.newJoin();
+  ini.linkTo(join);
+  validate();
+  assertNoProblem('MaximumOneIncoming');
+}
+
+@test
+operation MinimumOneOutgoing_finalNode() {
+  sp.newFinal();
+  validate();
+  assertNoProblem('MinimumOneOutgoing');
+}
+
+@test
+operation MinimumOneOutgoing_perfAnnotation() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertNoProblem('MinimumOneOutgoing');
+}
+
+@test
+operation MinimumOneOutgoing_action() {
+  sp.newAction();
+  validate();
+  assertHasProblem('MinimumOneOutgoing');
+}
+
+@test
+operation MaximumOneOutgoing_action() {
+  var act = sp.newAction();
+  var fin = act.newFinal();
+  act.linkTo(fin);
+  validate();
+  assertHasProblem('MaximumOneOutgoing');
+}
+
+@test
+operation MaximumOneOutgoing_fork() {
+  var fork = sp.newFork();
+  var fin = fork.newFinal();
+  fork.linkTo(fin);
+  validate();
+  assertNoProblem('MaximumOneOutgoing');
+}
+
+@test
+operation MaximumOneOutgoing_decision() {
+  var dec = sp.newDecision();
+  var fin = dec.newFinal();
+  dec.linkTo(fin);
+  validate();
+  assertNoProblem('MaximumOneOutgoing');
+}
+
+@test
+operation BothEndsDefined_none() {
+  sp.edges.add(new SP!ControlFlow);
+  validate();
+  assertHasProblem('BothEndsDefined');
+}
+
+@test
+operation BothEndsDefined_onlySource() {
+  var act = sp.newAction();
+  act.linkTo(null);
+  validate();
+  assertHasProblem('BothEndsDefined');
+}
+
+@test
+operation BothEndsDefined_onlyTarget() {
+  var act = sp.newAction();
+  var edge = new SP!ControlFlow;
+  edge.target = act;
+  sp.edges.add(edge);
+  validate();
+  assertHasProblem('BothEndsDefined');
+}
+
+@test
+operation BothEndsDefined_both() {
+  var act = sp.newAction();
+  act.linkTo(act);
+  validate();
+  assertNoProblem('BothEndsDefined');
+}
+
+@test
+operation NoSelfCycles_noEdges() {
+  sp.newAction();
+  validate();
+  assertNoProblem('NoSelfCycles');
+}
+
+@test
+operation NoSelfCycles_singleEdge() {
+  var a = sp.newAction().newAction();
+  validate();
+  assertNoProblem('NoSelfCycles');
+}
+
+@test
+operation NoSelfCycles_selfLoop() {
+  var a = sp.newAction();
+  a.linkTo(a);
+  validate();
+  assertHasProblem('NoSelfCycles');
+}
+
+@test
+operation ConditionsOnlyFromDecisionNode_notFromDecision() {
+  var a = sp.newAction();
+  var b = sp.newAction();
+  var e = a.linkTo(b);
+  e.condition = 'foo';
+  validate();
+  assertHasProblem('ConditionsOnlyFromDecisionNode');
+}
+
+@test
+operation ConditionsOnlyFromDecisionNode_fromDecision() {
+  var a = sp.newDecision();
+  var b = sp.newAction();
+  var e = a.linkTo(b);
+  e.condition = 'foo';
+
+  validate();
+  assertNoProblem('ConditionsOnlyFromDecisionNode');
+}
+
+@test
+operation ConditionsAlwaysFromDecisionNode_noCondition() {
+  var a = sp.newDecision();
+  var b = sp.newAction();
+  var e = a.linkTo(b);
+  validate();
+  assertHasProblem('ConditionsAlwaysFromDecisionNode');
+}
+
+@test
+operation ConditionsAlwaysFromDecisionNode_withCondition() {
+  var a = sp.newDecision();
+  var b = sp.newAction();
+  var e = a.linkTo(b);
+  e.condition = 'foo';
+  validate();
+  assertNoProblem('ConditionsAlwaysFromDecisionNode');
+}
+
+@test
+operation ValidProbabilityWithCondition_negativeProbability() {
+  conditionProbabilityTest(-1d);
+  validate();
+  assertHasProblem('ValidProbabilityWithCondition');
+}
+
+@test
+operation ValidProbabilityWithCondition_zeroProbability() {
+  conditionProbabilityTest(0d);
+  validate();
+  assertHasProblem('ValidProbabilityWithCondition');
+}
+
+@test
+operation ValidProbabilityWithCondition_oneProbability() {
+  conditionProbabilityTest(1d);
+  validate();
+  assertHasProblem('ValidProbabilityWithCondition');
+}
+
+@test
+operation ValidProbabilityWithCondition_twoProbability() {
+  conditionProbabilityTest(2d);
+  validate();
+  assertHasProblem('ValidProbabilityWithCondition');
+}
+
+@test
+operation ValidProbabilityWithCondition_halfProbability() {
+  conditionProbabilityTest(0.5d);
+  validate();
+  assertNoProblem('ValidProbabilityWithCondition');
+}
+
+@test
+operation ValidProbabilityWithoutCondition_defaultProbability() {
+  sp.newAction().newAction();
+  validate();
+  assertNoProblem('ValidProbabilityWithoutCondition');
+}
+
+@test
+operation ValidProbabilityWithoutCondition_customProbability() {
+  var a = sp.newAction();
+  var b = sp.newAction();
+  a.linkTo(b).probability = 0.1d;
+  validate();
+  assertHasProblem('ValidProbabilityWithoutCondition');
+}
+
+@test
+operation ControlFlow_SourceMustNotBeObjectNode_sourceIsNotObjectNode() {
+  sp.newAction().newAction();
+  validate();
+  assertNoProblem('SourceMustNotBeObjectNode');
+}
+
+@test
+operation ControlFlow_SourceMustNotBeObjectNode_sourceIsObjectNode() {
+  sp.newObject().newAction();
+  validate();
+  assertHasProblem('SourceMustNotBeObjectNode');
+}
+
+@test
+operation ControlFlow_TargetMustNotBeObjectNode_targetIsNotObjectNode() {
+  sp.newAction().newAction();
+  validate();
+  assertNoProblem('TargetMustNotBeObjectNode');
+}
+
+@test
+operation ControlFlow_TargetMustNotBeObjectNode_targetIsObjectNode() {
+  sp.newAction().newObject();
+  validate();
+  assertHasProblem('TargetMustNotBeObjectNode');
+}
+
+@test
+operation ObjectFlow_neitherObjectNode() {
+  var a = sp.newAction();
+  var b = sp.newSActivity();
+  a.linkToObject(b);
+  validate();
+  assertHasProblems(Sequence {'EitherSourceOrTargetMustBeObjectNode', 'EitherSourceOrTargetMustBeExecutableNode'});
+}
+
+@test
+operation ObjectFlow_sourceObjectNode() {
+  var a = sp.newObject();
+  var b = sp.newSActivity();
+  a.linkToObject(b);
+  validate();
+  assertNoProblems(Sequence {'EitherSourceOrTargetMustBeObjectNode', 'EitherSourceOrTargetMustBeExecutableNode'});
+}
+
+@test
+operation ObjectFlow_targetObjectNode() {
+  var a = sp.newAction();
+  var b = sp.newObject();
+  a.linkToObject(b);
+  validate();
+  assertNoProblems(Sequence {'EitherSourceOrTargetMustBeObjectNode', 'EitherSourceOrTargetMustBeExecutableNode'});
+}
+
+@test
+operation ObjectFlow_bothObjectNode() {
+  var a = sp.newObject();
+  var b = sp.newObject();
+  a.linkToObject(b);
+  validate();
+  assertHasProblems(Sequence {'EitherSourceOrTargetMustBeObjectNode', 'EitherSourceOrTargetMustBeExecutableNode'});
+}
+
+@test
+operation PerformanceAnnotation_ValidConcurrentUsers_negativeConcurrentUsers() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.concurrentUsers = -1.0d;
+  validate();
+  assertHasProblem('ValidConcurrentUsers');
+}
+
+@test
+operation PerformanceAnnotation_ValidConcurrentUsers_zeroConcurrentUsers() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.concurrentUsers = 0.0d;
+  validate();
+  assertHasProblem('ValidConcurrentUsers');
+}
+
+@test
+operation PerformanceAnnotation_ValidConcurrentUsers_twoConcurrentUsers() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.concurrentUsers = 2.0d;
+  validate();
+  assertNoProblem('ValidConcurrentUsers');
+}
+
+@test
+operation PerformanceAnnotation_ValidGlobalTimeLimit_negativeTimeLimit() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.secsTimeLimit = -1.0d;
+  validate();
+  assertHasProblem('ValidGlobalTimeLimit');
+}
+
+@test
+operation PerformanceAnnotation_ValidGlobalTimeLimit_zeroTimeLimit() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.secsTimeLimit = 0.0d;
+  validate();
+  assertHasProblem('ValidGlobalTimeLimit');
+}
+
+@test
+operation PerformanceAnnotation_ValidGlobalTimeLimit_positiveTimeLimit() {
+  sp.processPerformance = new SP!PerformanceAnnotation;
+  sp.processPerformance.secsTimeLimit = 1.0d;
+  validate();
+  assertNoProblem('ValidGlobalTimeLimit');
+}
+
+@test
+operation PerformanceAnnotation_ValidGlobalTimeLimit_noGlobalTimeLimits() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertNoProblem('ValidGlobalTimeLimit');
+}
+
+@test
+operation LocalPerformanceAnnotation_IsLinkedToNode_noLink() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertHasProblem('IsLinkedToNode');
+}
+
+@test
+operation LocalPerformanceAnnotation_IsLinkedToNode_withLink() {
+  var lpa = new SP!LocalPerformanceAnnotation;
+  sp.nodes.add(lpa);
+
+  var ac = sp.newAction();
+  lpa.execNode = ac;
+  validate();
+  assertNoProblem('IsLinkedToNode');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidMinTime_negative() {
+  minTimeTest(-1.0d);
+  assertHasProblem('ValidMinTime');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidMinTime_zero() {
+  minTimeTest(0.0d);
+  assertNoProblem('ValidMinTime');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidMinTime_positive() {
+  minTimeTest(1.0d);
+  assertNoProblem('ValidMinTime');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidWeight_negative() {
+  weightTest(-1.0d);
+  assertHasProblem('ValidWeight');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidWeight_zero() {
+  weightTest(0.0d);
+  assertNoProblem('ValidWeight');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidWeight_positive() {
+  weightTest(1.0d);
+  assertNoProblem('ValidWeight');
+}
+
+@test
+operation LocalPerformanceAnnotation_NoIncomingForPerformanceAnnotation_withIncoming() {
+  var lpa = new SP!LocalPerformanceAnnotation;
+  var act = sp.newAction();
+  act.linkTo(lpa);
+  sp.nodes.add(lpa);
+  validate();
+  assertHasProblem('NoIncomingForPerformanceAnnotation');
+}
+
+@test
+operation LocalPerformanceAnnotation_NoIncomingForPerformanceAnnotation_noIncoming() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertNoProblem('NoIncomingForPerformanceAnnotation');
+}
+
+@test
+operation LocalPerformanceAnnotation_NoOutgoingForPerformanceAnnotation_withOutgoing() {
+  var lpa = new SP!LocalPerformanceAnnotation;
+  sp.nodes.add(lpa);
+  var act = lpa.newAction();
+  validate();
+  assertHasProblem('NoOutgoingForPerformanceAnnotation');
+}
+
+@test
+operation LocalPerformanceAnnotation_NoIncomingForPerformanceAnnotation_noOutgoing() {
+  sp.nodes.add(new SP!LocalPerformanceAnnotation);
+  validate();
+  assertNoProblem('NoOutgoingForPerformanceAnnotation');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_empty() {
+  validate();
+  assertNoProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_singleInitial() {
+  sp.newInitial();
+  validate();
+  assertHasProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithoutFinal() {
+  sp.newInitial().newAction().newAction();
+  validate();
+  assertHasProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithFinal() {
+  sp.newInitial().newAction().newAction().newFinal();
+  validate();
+  assertNoProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithFinal_onePathWithoutFinal() {
+  var f = sp.newInitial().newFork();
+  f.newAction().newAction().newFinal();
+  f.newAction();
+  validate();
+  assertHasProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_twoPathsWithFinal() {
+  var f = sp.newInitial().newFork();
+  f.newAction().newAction().newFinal();
+  f.newAction().newFinal();
+  validate();
+  assertNoProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
+operation InitialNode_NoIncomingForInitialNode_noIncoming() {
+  sp.newInitial();
+  validate();
+  assertNoProblem('NoIncomingForInitialNode');
+}
+
+@test
+operation InitialNode_NoIncomingForInitialNode_oneIncoming() {
+  sp.newAction().linkTo(sp.newInitial());
+  validate();
+  assertHasProblem('NoIncomingForInitialNode');
+}
+
+@test
+operation InitialNode_NoIncomingForInitialNode_twoIncoming() {
+  var ini = sp.newInitial();
+  sp.newAction().linkTo(ini);
+  sp.newAction().linkTo(ini);
+  validate();
+  assertHasProblem('NoIncomingForInitialNode');
+}
+
+@test
+operation InitialNode_AtLeastOneActivityNodeBetweenInitialAndFinalNodes_without() {
+  sp.newInitial().newFinal();
+  validate();
+  assertHasProblem('AtLeastOneActivityNodeBetweenInitialAndFinalNodes');
+}
+
+@test
+operation InitialNode_AtLeastOneActivityNodeBetweenInitialAndFinalNodes_with() {
+  sp.newInitial().newAction().newFinal();
+  validate();
+  assertNoProblem('AtLeastOneActivityNodeBetweenInitialAndFinalNodes');
+}
+
+@test
+operation InitialNode_NoCyclesCompleteGraph_noCycles() {
+  sp.newInitial().newAction().newAction().newFinal();
+  validate();
+  assertNoProblem('NoCyclesCompleteGraph');
+}
+
+@test
+operation InitialNode_NoCyclesCompleteGraph_withCycles() {
+  var a1 = sp.newInitial();
+  var a2 = a1.newAction();
+  a2.newAction().newFinal();
+  a2.linkTo(a1);
+  validate();
+  assertHasProblem('NoCyclesCompleteGraph');
+}
+
+@test
+operation FinalNode_NoOutgoingForFinalNode_noOutgoing() {
+  sp.newFinal();
+  validate();
+  assertNoProblem('NoOutgoingForFinalNode');
+}
+
+@test
+operation FinalNode_NoOutgoingForFinalNode_oneOutgoing() {
+  sp.newFinal().newAction();
+  validate();
+  assertHasProblem('NoOutgoingForFinalNode');
+}
+
+@test
+operation NamedElement_NameMustNotBeEmpty_noName() {
+  sp.newAction().name = null;
+  validate();
+  assertHasProblem('NameMustNotBeEmpty');
+}
+
+@test
+operation NamedElement_NameMustNotBeEmpty_withName() {
+  sp.newAction().name = 'Foo';
+  validate();
+  assertNoProblem('NameMustNotBeEmpty');
+}
+
+@test
+operation ForkNode_MoreThanOneOutgoingFlowWithFix_oneOutgoing() {
+  sp.newInitial().newFork().newAction();
+  validate();
+  assertHasProblem('MoreThanOneOutgoingFlowWithFix');
+}
+
+@test
+operation ForkNode_MoreThanOneOutgoingFlowWithFix_twoOutgoing() {
+  var f = sp.newFork();
+  f.newAction();
+  f.newAction();
+  validate();
+  assertNoProblem('MoreThanOneOutgoingFlowWithFix');
+}
+
+@test
+operation JoinNode_MoreThanOneIncomingFlow_oneIncoming() {
+  sp.newAction().newJoin().newAction();
+  validate();
+  assertHasProblem('MoreThanOneIncomingFlow');
+}
+
+@test
+operation JoinNode_MoreThanOneIncomingFlow_twoIncoming() {
+  var a1 = sp.newAction();
+  var j = a1.newJoin();
+  var a2 = sp.newAction();
+  a2.linkTo(j);
+  validate();
+  assertNoProblem('MoreThanOneOutgoingFlowWithFix');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_onePath() {
+  sp.newInitial().newAction().newFinal();
+  validate();
+  assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoForkedPaths() {
+  var f = sp.newAction().newFork();
+  var j = sp.newJoin();
+  j.newAction();
+  f.newAction().linkTo(j);
+  f.newAction().linkTo(j);
+  validate();
+  assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoDecisions() {
+  var d = sp.newAction().newDecision();
+  var j = sp.newJoin();
+  j.newAction();
+  d.newAction().linkTo(j);
+  d.newAction().linkTo(j);
+  validate();
+  assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_noCommonLCA() {
+  var j = sp.newAction().newFork().newAction().newJoin();
+  j.newAction();
+  sp.newAction().newFork().newAction().linkTo(j);
+  validate();
+  assertHasProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_differentLCA() {
+  var d = sp.newAction().newDecision();
+  var f = d.newFork();
+  var j = f.newAction().newJoin();
+  f.newAction().linkTo(j);
+  d.newAction().linkTo(j);
+  j.newAction();
+  validate();
+  assertHasProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_samePairwiseLCA() {
+  var d = sp.newAction().newDecision();
+  var f = d.newFork();
+  var j = f.newAction().newJoin();
+  f.newAction().linkTo(j);
+  var j2 = j.newJoin();
+  d.newAction().linkTo(j2); 
+  validate();
+  assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_noOutgoing() {
+  sp.newDecision();
+  validate();
+  assertHasProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_oneOutgoingSumOne() {
+  var d = sp.newDecision();
+  sp.newAction().linkFrom(d, 'a', 1.0d);
+  validate();
+  assertNoProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_oneOutgoingSumLessThanOne() {
+  var d = sp.newDecision();
+  var e = sp.newAction().linkFrom(d, 'a', 0.5d);
+  validate();
+  assertHasProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_twoOutgoingSumOne() {
+  var d = sp.newDecision();
+  sp.newAction().linkFrom(d, 'a', 0.3d);
+  sp.newAction().linkFrom(d, 'b', 0.7d);
+  validate();
+  assertNoProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_twoOutgoingSumLessThanOne() {
+  var d = sp.newDecision();
+  sp.newAction().linkFrom(d, 'a', 0.4d);
+  sp.newAction().linkFrom(d, 'b', 0.4d);
+  validate();
+  assertHasProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation DecisionNode_TotalProbabilityIsOne_twoOutgoingSumMoreThanOne() {
+  var d = sp.newDecision();
+  sp.newAction().linkFrom(d, 'a', 0.6d);
+  sp.newAction().linkFrom(d, 'b', 0.6d);
+  validate();
+  assertHasProblem('TotalProbabilityIsOne');
+}
+
+-- TEST TEMPLATES --
+
+operation weightTest(w : Real) {
+  var sp = new SP!ServiceProcess;
+  var lpa = new SP!LocalPerformanceAnnotation;
+  lpa.weight = w;
+  sp.nodes.add(lpa);
+  validate();
+}
+
+operation minTimeTest(minTime : Real) {
+  var sp = new SP!ServiceProcess;
+  var lpa = new SP!LocalPerformanceAnnotation;
+  lpa.minimumTime = minTime;
+  sp.nodes.add(lpa);
+  validate();
+}
+
+operation conditionProbabilityTest(prob : Real) {
+  var sp = new SP!ServiceProcess;
+  var a = new SP!DecisionNode;
+  var b = new SP!Action;
+  sp.nodes.add(a);
+  sp.nodes.add(b);
+  var e = a.linkTo(b);
+  e.condition = 'foo';
+  e.probability = prob;
+ 
+  validate();
+}
+
+-- SERVICE PROCESS OPERATIONS --
+
+operation SP!ServiceProcess newAction() : SP!Action {
+  var n = new SP!Action;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newDecision() : SP!DecisionNode {
+  var n = new SP!DecisionNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newFinal() : SP!FinalNode {
+  var n = new SP!FinalNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newFork() : SP!ForkNode {
+  var n = new SP!ForkNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newInitial() : SP!InitialNode {
+  var n = new SP!InitialNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newJoin() : SP!JoinNode {
+  var n = new SP!JoinNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newObject() : SP!ObjectNode {
+  var n = new SP!ObjectNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newSActivity() : SP!StructuredActivityNode {
+  var n = new SP!StructuredActivityNode;
+  self.nodes.add(n);
+  return n;
+}
+
+-- ACTIVITY NODE OPERATIONS --
+
+operation SP!ActivityNode newAction() : SP!Action {
+  return self.linkTo(self.eContainer.newAction()).target;
+}
+
+operation SP!ActivityNode newDecision() : SP!DecisionNode {
+  return self.linkTo(self.eContainer.newDecision()).target;
+}
+
+operation SP!ActivityNode newFinal() : SP!FinalNode {
+  return self.linkTo(self.eContainer.newFinal()).target;
+}
+
+operation SP!ActivityNode newFork() : SP!ForkNode {
+  return self.linkTo(self.eContainer.newFork()).target;
+}
+
+operation SP!ActivityNode newJoin() : SP!JoinNode {
+  return self.linkTo(self.eContainer.newJoin()).target;
+}
+
+operation SP!ActivityNode newObject() : SP!ObjectNode {
+  return self.linkTo(self.eContainer.newObject()).target;
+}
+
+operation SP!ActivityNode newSActivity() : SP!StructuredActivityNode {
+  return self.linkTo(self.eContainer.newSActivity()).target;
+}
+
+operation SP!ActivityNode linkTo(other : SP!ActivityNode, condition : String, prob : Real) : SP!ControlFlow {
+  var edge = self.linkTo(other);
+  edge.condition = condition;
+  edge.probability = prob;
+  return edge;
+}
+
+operation SP!ActivityNode linkFrom(other : SP!ActivityNode, condition : String, prob : Real) : SP!ControlFlow {
+  return other.linkTo(self, condition, prob);
+}
+
+operation SP!ActivityNode linkToObject(other : SP!ActivityNode) : SP!ObjectFlow {
+  var sp = SP!ServiceProcess.all.first;
+  var edge = new SP!ObjectFlow;
+  edge.source = self;
+  edge.target = other;
+  sp.edges.add(edge);
+  return edge;
+}
+
+operation SP!ActivityNode linkTo(other : SP!ActivityNode) : SP!ControlFlow {
+  var sp = SP!ServiceProcess.all.first;
+  var edge = new SP!ControlFlow;
+  edge.source = self;
+  edge.target = other;
+  sp.edges.add(edge);
+  return edge;
+}
+
+operation SP!ActivityNode linkFrom(other : SP!ActivityNode) : SP!ControlFlow {
+  return other.linkTo(self);
+}
+
+-- UTILITY OPERATIONS --
 
 operation assertHasProblem(ruleName : String) {
   assertHasProblems(Sequence { ruleName });

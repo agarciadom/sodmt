@@ -63,7 +63,7 @@ context ActivityEdge {
     message : 'Source and target of an edge must be defined'
   }
 
-  constraint NoCycles {
+  constraint NoSelfCycles {
     check : self.source <> self.target
     message : 'Source and target of an edge must not be the same'
     fix {
@@ -140,7 +140,7 @@ context ObjectFlow {
     message : 'Either the source or the target of an object flow must be an object node, but not both'
   }
 
-  constraint EitherSourceOrTargetMustBeActivity {
+  constraint EitherSourceOrTargetMustBeExecutableNode {
     guard : self.source.isDefined() and self.target.isDefined()
     check : self.source.isKindOf(ExecutableNode) xor self.target.isKindOf(ExecutableNode)
     message : 'Either the source or the target of an object flow must be an executable node, but not both'
@@ -152,7 +152,13 @@ context ObjectFlow {
 context PerformanceAnnotation {
   constraint ValidConcurrentUsers {
     check : self.concurrentUsers > 0
-    message : 'Transactions per sec must be a natural number'
+    message : 'Transactions per sec must be greater than 0'
+  }
+
+  constraint ValidGlobalTimeLimit {
+    guard : not self.isKindOf(ActivityNode)
+    check : self.secsTimeLimit > 0
+    message : 'Global time limit must be greater than 0'
   }
 }
 
@@ -266,7 +272,7 @@ context FinalNode {
 
 context NamedElement {
   constraint NameMustNotBeEmpty {
-    check : self.name <> ''
+    check : self.name.isDefined() and self.name <> ''
     message : 'The name of a named element must not be empty'
   }
 }
@@ -317,7 +323,7 @@ context JoinNode {
         while (iSecond < nElems) {
           var second := parents.at(iSecond);
           var currentLca := getLCA(first, second);
-          if (lca.isDefined() and lca <> currentLca) {
+          if (not currentLca.isDefined() or (lca.isDefined() and lca <> currentLca)) {
             return false;
           }
           lca     := currentLca;
