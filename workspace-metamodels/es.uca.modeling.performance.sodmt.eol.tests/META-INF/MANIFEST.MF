@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests for the Ad-Hoc Inference Algorithms
+Bundle-SymbolicName: es.uca.modeling.performance.sodmt.eol.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: University of Cádiz
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.epsilon.eol.engine,
+ org.eclipse.epsilon.emc.emf,
+ org.eclipse.epsilon.eunit.junit,
+ es.uca.modeling.performance.sodmt.sprocess;bundle-version="1.0.0",
+ es.uca.modeling.performance.sodmt.eol,
+ org.junit4

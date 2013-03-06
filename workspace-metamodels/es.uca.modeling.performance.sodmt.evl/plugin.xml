@@ -2,6 +2,17 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecore.diagnostic">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="es.uca.modeling.performance.sodmt.sprocess.diagram.diagnostic">
+      </markerResolutionGenerator>
+   </extension>
+   <extension
          point="org.eclipse.epsilon.evl.emf.validation">
       <constraintsBinding
             constraints="evl/service_process.evl"

@@ -1,0 +1,32 @@
+import '../eol/concurrent_users.eol';
+import '../eol/time_limits_new.eol';
+import '../eol/time_limits.eol';
+
+wizard InferTimeLimitsNew {
+  title : 'Infer performance annotations'
+  do {
+    transaction {
+      for (start in InitialNode.all) {
+        if (not distributeTime(start.getGlobalTimeLimit(), ProcessFinish.all)
+            or not annotateConcurrentUsers(start)) {
+          abort;
+          return;
+        }
+      }
+    } -- transaction
+  } -- do
+}
+
+wizard InferPerformanceAnnotations {
+  title : 'Infer time limits (old algorithm)'
+  do {
+    transaction {
+      for (start in InitialNode.all) {
+        if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)) {
+          abort;
+          return;
+        }
+      }
+    } -- transaction
+  } -- do
+}

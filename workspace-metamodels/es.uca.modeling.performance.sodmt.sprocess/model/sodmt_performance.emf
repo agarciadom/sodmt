@@ -1,9 +1,7 @@
 @namespace(uri="www.uca.es/modeling/performance/sodmt", prefix="perf")
 package serviceProcess;
 
-
 /* DIAGRAM AND BASE ABSTRACT CLASSES */
-
 
 @gmf.diagram(model.extension="sp", diagram.extension="spdiag")
 class ServiceProcess {

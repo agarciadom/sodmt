@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<perf:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:perf="www.uca.es/modeling/performance/sodmt">
+  <nodes xsi:type="perf:InitialNode" outgoing="//@edges.0"/>
+  <nodes xsi:type="perf:FinalNode" incoming="//@edges.0"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.0" target="//@nodes.1"/>
+  <processPerformance/>
+</perf:ServiceProcess>

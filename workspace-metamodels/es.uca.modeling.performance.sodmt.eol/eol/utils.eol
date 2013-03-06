@@ -13,6 +13,33 @@
 
 -- PERFORMANCE ANNOTATIONS ----------------------------------------------------
 
+operation ActivityNode getGlobalPerformanceAnnotation() : PerformanceAnnotation {
+  if (self.eContainer.hasProperty("processPerformance")) {
+    // Initial node at the outermost level
+    return self.eContainer.processPerformance;
+  }
+  else {
+    // Only the StructuredActivityNode can contain other nodes inside it
+    return self.eContainer.annotation;
+  }
+}
+
+@cached
+operation ActivityNode getGlobalTimeLimit() : Real {
+  return self.getGlobalPerformanceAnnotation().secsTimeLimit;
+}
+
+@cached
+operation ActivityNode getConcurrentUsers() : Real {
+  return self.getGlobalPerformanceAnnotation().concurrentUsers;
+}
+
+operation ActivityNode createPerformanceAnnotation() {
+  var lpa = new LocalPerformanceAnnotation;
+  self.eContainer.nodes.add(lpa);
+  lpa.execNode = self;
+}
+
 operation ActivityNode hasManualPerformanceAnnotation() : Boolean {
   return self.hasProperty('annotation') and self.annotation.isDefined() and self.annotation.manuallyAdded;
 }

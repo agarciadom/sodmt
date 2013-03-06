@@ -1,0 +1,164 @@
+-*
+  Heuristic algorithm for computing the concurrent users expected
+  for each activity node in the ServiceComposition and ServiceProcess
+  models.
+
+  Copyright (c) 2009-2013 Antonio García Domínguez.  All rights
+  reserved. This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License v1.0 which
+  accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+     Antonio García Domínguez - initial API and implementation
+
+  The algorithm computes the concurrent users of every node and
+  edge, but only adds annotation model elements to the executable
+  nodes. IMPORTANT: the model must have been validated with the EVL
+  script in es.uca.modeling.validation and pass with no errors.
+
+  The algorithm works like this:
+
+    Starting from the initial node, we perform a breadth-first
+    traversal of the graph, making sure that each node is only visited
+    once all its ancestors have been visited (i.e. annotated with the
+    computed concurrent users). The computed value depends on
+    the kind of node visited. If C(x) is the concurrent users for
+    any node and P(e) the traversal probability annotated on an edge,
+    then the formulas are as follows:
+
+    * C(initial node) = T(only ProcessPerformanceAnnotation)
+    * C(edge) = P(edge) * T(source)
+    * C(node, except JoinNode) = T(only incoming edge)
+    * C(JoinNode): described more in detail below.
+
+  JoinNodes have to be handled in a different way. Their concurrent
+  user counts depend on how each pair of the paths joined split off
+  originally.
+
+  For instance, if they split at a DecisionNode, we'll have to sum
+  their concurrent user limits. However, if they split at a
+  ForkNode, we'll just use the minimum value (we previously used the
+  maximum value, but as Francisco said, it didn't make sense). We do not
+  check all pairs, however: we simply perform this calculation with
+  the first and second path, then with its result and that of the
+  third path, and so on. The idea is that if we're handling this
+  graph:
+
+    A --> Decision --> Fork --> B --> Join --> C
+                    |        \> D -/
+                    \---------> E -/
+
+  as this one, which is restricted to binary joins but otherwise works
+  the same:
+
+    A --> Decision --> Fork --> B --> Join --> Join --> C
+                    |        \> D -/        |
+                    \---------> E ----------/
+
+  Knowing where B and D or B and E split off is a well-known problem
+  in graph theory known as the Lowest Common Ancestor (LCA). There are
+  many algorithms for this. We're using the simplest algorithm, and
+  also the least efficient when used repeatedly: we obtain all the
+  ancestors of both nodes, intersect the resulting sets, sort them by
+  depth in descending order and take the first element. It is good
+  enough for now: we only need to do this at join nodes, and graphs
+  don't tend to get large enough.
+
+  Finally, by using Epsilon EMC's facilities, the whole annotation
+  process is performed with transactional semantics. If it is aborted
+  in the middle, all changes will be rolled back. Undo and redo also
+  work as usual.
+
+*-
+
+import 'utils.eol';
+
+-*
+  This operation returns true if all nodes reachable from the starting node
+  have been successfully annotated, and false otherwise.
+*-
+operation annotateConcurrentUsers(start : ActivityNode) : Boolean {
+  -- Since the precondition must hold, all activities are reachable from the
+  -- initial node. Get all reachable nodes and filter only the executable nodes.
+  var allNodes := start.getAllReachableNodes().asSequence().select(r|r.isKindOf(ExecutableNode));
+
+  for (node in allNodes.sortBy(r|r.getDepth())) {
+	var auto := node.getConcurrentUsers();
+    node.setConcurrentUsers(auto);
+  }
+  return true;
+}
+
+-- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
+
+-*
+  All nodes and edges have a minimum number of concurrent users
+  that they can handle. However, only the executable nodes can have performance
+  restrictions manually assigned to them. That's why though all edges and nodes
+  have the getConcurrentUsers method, only Activities have the
+  setConcurrentUsers method.
+
+  Note: for some reason, Epsilon (as of r597) doesn't use the most specific
+  operation for a particular class, but rather the first applicable operation.
+  Therefore, the getConcurrentUsers operations below MUST be ordered from
+  least to most specific: first the edges, and then the nodes.
+*-
+
+@cached
+$pre self.source.isDefined() and self.target.isDefined()
+operation ControlFlow getConcurrentUsers() : Real {
+  return self.probability * self.source.getConcurrentUsers();
+}
+
+@cached
+$pre self.source.isDefined() and self.target.isDefined()
+operation ObjectFlow getConcurrentUsers() : Real {
+  return self.source.getConcurrentUsers();
+}
+
+@cached
+$pre self.incoming.notEmpty()
+operation JoinNode getConcurrentUsers() : Real {
+  var firstParent;
+  var result;
+
+  for (incomingEdge in self.incoming) {
+    var parent := incomingEdge.source;
+
+    if (firstParent.isUndefined()) {
+      firstParent := parent;
+      result      := incomingEdge.getConcurrentUsers();
+      continue;
+    }
+
+    var lca := getLCA(firstParent, parent);
+    if (lca.isKindOf(DecisionNode)) {
+      result := result + incomingEdge.getConcurrentUsers();
+    }
+    else if (lca.isKindOf(ForkNode)) {
+      if (incomingEdge.getConcurrentUsers() < result) {
+        result := incomingEdge.getConcurrentUsers();
+      }
+    } else {
+      System.user.inform('BUG: LCA ' + lca + ' of ' + firstParent
+        + ' and ' + parent + ' is neither a DecisionNode nor a ForkNode');
+    }
+  }
+
+  return result;
+}
+
+@cached
+$pre self.incoming.size() = 1
+operation ActivityNode getConcurrentUsers() : Real {
+  return self.incoming.first.getConcurrentUsers();
+}
+
+$pre newValue >= 0
+operation ExecutableNode setConcurrentUsers(newValue : Real) {
+  if (self.annotation.isUndefined()) {
+    self.createPerformanceAnnotation();
+  }
+  self.annotation.concurrentUsers := newValue;
+}

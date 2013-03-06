@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<perf:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:perf="www.uca.es/modeling/performance/sodmt">
+  <nodes xsi:type="perf:InitialNode" outgoing="//@edges.0"/>
+  <nodes xsi:type="perf:FinalNode" incoming="//@edges.2"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.0" outgoing="//@edges.1" name="A" annotation="//@nodes.4"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.1" outgoing="//@edges.2" name="B"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" minimumTime="0.3" weight="0.0" execNode="//@nodes.2"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.0" target="//@nodes.2"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.2" target="//@nodes.3"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.3" target="//@nodes.1"/>
+  <processPerformance/>
+</perf:ServiceProcess>

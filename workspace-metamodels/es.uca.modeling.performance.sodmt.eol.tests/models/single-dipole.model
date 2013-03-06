@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<perf:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:perf="www.uca.es/modeling/performance/sodmt">
+  <nodes xsi:type="perf:Action" outgoing="//@edges.0" name="S"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.0" outgoing="//@edges.1 //@edges.3 //@edges.5" name="F0"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.2 //@edges.4 //@edges.6" name="J0"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.1" outgoing="//@edges.2" name="B00"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.3" outgoing="//@edges.4" name="B01"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.5" outgoing="//@edges.6" name="B02"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.0" target="//@nodes.1"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.1" target="//@nodes.3"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.3" target="//@nodes.2"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.1" target="//@nodes.4"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.4" target="//@nodes.2"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.1" target="//@nodes.5"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.5" target="//@nodes.2"/>
+  <processPerformance/>
+</perf:ServiceProcess>

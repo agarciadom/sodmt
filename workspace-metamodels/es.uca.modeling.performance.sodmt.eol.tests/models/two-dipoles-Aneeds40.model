@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<perf:ServiceProcess xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:perf="www.uca.es/modeling/performance/sodmt">
+  <nodes xsi:type="perf:InitialNode" outgoing="//@edges.0"/>
+  <nodes xsi:type="perf:FinalNode" incoming="//@edges.15"/>
+  <nodes xsi:type="perf:DecisionNode" incoming="//@edges.1" outgoing="//@edges.2 //@edges.4"/>
+  <nodes xsi:type="perf:DecisionNode" incoming="//@edges.8" outgoing="//@edges.9 //@edges.12"/>
+  <nodes xsi:type="perf:JoinNode" incoming="//@edges.3 //@edges.6" outgoing="//@edges.7"/>
+  <nodes xsi:type="perf:JoinNode" incoming="//@edges.11 //@edges.13" outgoing="//@edges.14"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.0" outgoing="//@edges.1" name="A" annotation="//@nodes.17"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.2" outgoing="//@edges.3" name="B" annotation="//@nodes.15"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.4" outgoing="//@edges.5" name="C"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.5" outgoing="//@edges.6" name="D"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.7" outgoing="//@edges.8" name="E"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.9" outgoing="//@edges.10" name="F"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.10" outgoing="//@edges.11" name="G" annotation="//@nodes.16"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.12" outgoing="//@edges.13" name="H"/>
+  <nodes xsi:type="perf:Action" incoming="//@edges.14" outgoing="//@edges.15" name="I"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" minimumTime="20.0" weight="0.0" execNode="//@nodes.7"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" minimumTime="30.0" weight="0.0" execNode="//@nodes.12"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" minimumTime="40.0" weight="0.0" execNode="//@nodes.6"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.0" target="//@nodes.6"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.6" target="//@nodes.2"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.2" target="//@nodes.7"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.7" target="//@nodes.4"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.2" target="//@nodes.8"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.8" target="//@nodes.9"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.9" target="//@nodes.4"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.4" target="//@nodes.10"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.10" target="//@nodes.3"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.3" target="//@nodes.11"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.11" target="//@nodes.12"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.12" target="//@nodes.5"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.3" target="//@nodes.13"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.13" target="//@nodes.5"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.5" target="//@nodes.14"/>
+  <edges xsi:type="perf:ControlFlow" source="//@nodes.14" target="//@nodes.1"/>
+  <processPerformance secsTimeLimit="100.0"/>
+</perf:ServiceProcess>

@@ -1,0 +1,22 @@
+import "common.eol";
+
+-*
+  Example of how @data and $with can be combined.
+*-
+
+@data elems
+operation mydata() {
+  return Sequence {
+    Sequence {"minimal",  1, Sequence { pair(0, 0) }},
+    Sequence {"sequence", 1, Sequence { pair(0.3, 1) }},
+    Sequence {"single-dipole", 1, Sequence { pair(0, 4) }},
+    Sequence {"two-dipoles", 100, Sequence { pair(50, 4), pair(30, 6) }},
+    Sequence {"two-dipoles",  60, Sequence { pair(50, 4) }}
+  };
+}
+
+$with Map {"" = elems.get(0)}
+@test
+operation aggregation() {
+	assertConstraintsEquals(elems.get(1), elems.get(2));
+}

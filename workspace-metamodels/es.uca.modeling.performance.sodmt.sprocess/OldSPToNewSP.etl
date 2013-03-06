@@ -1,0 +1,56 @@
+rule SPtoSP
+  transform oldSP : Old!ServiceProcess
+  to newSP : New!ServiceProcess
+{
+  newSP.nodes ::= oldSP.nodes;
+  newSP.edges ::= oldSP.edges;
+  newSP.processPerformance ::= oldSP.processPerformance;
+  newSP.nodes.addAll(Old!ActivityPerformanceAnnotation.all.equivalents().flatten());
+}
+
+rule GlobalAnnotation
+  transform oldGlobal : Old!ProcessPerformanceAnnotation
+  to newGlobal : New!PerformanceAnnotation
+{
+  newGlobal.concurrentUsers := oldGlobal.concurrentUsers;
+  newGlobal.secsTimeLimit := oldGlobal.secsTimeLimit;
+}
+
+rule LocalAnnotation
+  transform oldLocal : Old!ActivityPerformanceAnnotation
+  to newLocal : New!LocalPerformanceAnnotation
+{
+  newLocal.concurrentUsers := oldLocal.concurrentUsers;
+  newLocal.secsTimeLimit := oldLocal.secsTimeLimit;
+  newLocal.minimumTime := oldLocal.minimumTime;
+  newLocal.weight := oldLocal.weight;
+
+  newLocal.execNode ::= oldLocal.execNode;
+}
+
+rule ControlFlow
+  transform oldCF : Old!ProcessControlFlow
+  to newCF : New!ControlFlow
+{
+  newCF.condition := oldCF.condition;
+  newCF.probability := oldCF.probability;
+  newCF.source ::= oldCF.source;
+  newCF.target ::= oldCF.target;
+}
+
+rule Activity
+  transform oldA : Old!ServiceActivity
+  to newA : New!Action
+{
+  newA.name := oldA.name;
+}
+
+rule InitialNode transform oOld : Old!ProcessStart to oNew : New!InitialNode {}
+
+rule FinalNode transform oOld : Old!ProcessFinish to oNew : New!FinalNode {}
+
+rule ForkNode transform oOld : Old!ProcessFork to oNew : New!ForkNode {}
+
+rule JoinNode transform oOld : Old!ProcessJoin to oNew : New!JoinNode {}
+
+rule DecisionNode transform oOld : Old!ProcessDecision to oNew : New!DecisionNode {}
