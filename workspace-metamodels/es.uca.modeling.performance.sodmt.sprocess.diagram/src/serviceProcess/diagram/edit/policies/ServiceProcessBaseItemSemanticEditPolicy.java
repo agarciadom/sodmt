@@ -427,6 +427,25 @@ public class ServiceProcessBaseItemSemanticEditPolicy extends
 				serviceProcess.ActivityNode source,
 				serviceProcess.ActivityNode target) {
 			try {
+				if (source == null) {
+					return true;
+				} else {
+					Map<String, EClassifier> env = Collections
+							.<String, EClassifier> singletonMap(
+									"oppositeEnd", serviceProcess.ServiceProcessPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
+					Object sourceVal = serviceProcess.diagram.expressions.ServiceProcessOCLFactory
+							.getExpression(
+									2,
+									serviceProcess.ServiceProcessPackage.eINSTANCE
+											.getActivityNode(), env).evaluate(
+									source,
+									Collections.singletonMap(
+											"oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean
+							|| !((Boolean) sourceVal).booleanValue()) {
+						return false;
+					} // else fall-through
+				}
 				if (target == null) {
 					return true;
 				} else {
@@ -435,7 +454,7 @@ public class ServiceProcessBaseItemSemanticEditPolicy extends
 									"oppositeEnd", serviceProcess.ServiceProcessPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
 					Object targetVal = serviceProcess.diagram.expressions.ServiceProcessOCLFactory
 							.getExpression(
-									2,
+									3,
 									serviceProcess.ServiceProcessPackage.eINSTANCE
 											.getActivityNode(), env).evaluate(
 									target,

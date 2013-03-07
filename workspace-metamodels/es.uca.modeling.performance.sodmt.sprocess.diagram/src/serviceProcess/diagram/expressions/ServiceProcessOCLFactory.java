@@ -38,11 +38,12 @@ public class ServiceProcessOCLFactory {
 	 * @generated
 	 */
 	protected ServiceProcessOCLFactory() {
-		this.expressions = new serviceProcess.diagram.expressions.ServiceProcessAbstractExpression[3];
+		this.expressions = new serviceProcess.diagram.expressions.ServiceProcessAbstractExpression[4];
 		this.expressionBodies = new String[] {
-				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)", //$NON-NLS-1$
-				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)", //$NON-NLS-1$
-				"self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)", //$NON-NLS-1$
+				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
+				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
+				"self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
+				"(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
 		};
 	}
 

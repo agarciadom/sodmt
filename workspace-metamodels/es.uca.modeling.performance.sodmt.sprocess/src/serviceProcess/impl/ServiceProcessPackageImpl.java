@@ -877,8 +877,8 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "label.edit.pattern", "{0} : {1,number}",
        "label.parser", "ControlFlowLabelParser",
        "label.text", " ",
-       "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)",
-       "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode)"
+       "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
+       "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)"
        });		
     addAnnotation
       (objectFlowEClass, 
@@ -887,7 +887,8 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "tool.name", "Object Flow",
        "style", "dash",
-       "target.constraint", "self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)"
+       "source.constraint", "self.oclIsKindOf(PerformanceAnnotation)",
+       "target.constraint", "(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)"
        });				
     addAnnotation
       (getExecutableNode_Annotation(), 
