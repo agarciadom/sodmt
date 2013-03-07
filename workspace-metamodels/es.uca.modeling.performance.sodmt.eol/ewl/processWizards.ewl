@@ -7,7 +7,9 @@ wizard InferTimeLimitsNew {
   do {
     transaction {
       for (start in InitialNode.all) {
-        if (not distributeTime(start.getGlobalTimeLimit(), ProcessFinish.all)
+        var finalSiblings =
+          start.eContainer.nodes.select(n|n.isKindOf(FinalNode));
+        if (not distributeTime(start.getGlobalTimeLimit(), finalSiblings)
             or not annotateConcurrentUsers(start)) {
           abort;
           return;

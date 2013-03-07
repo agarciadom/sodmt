@@ -3,11 +3,11 @@ import "platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/time_limits.e
 import "platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/concurrent_users.eol";
 
 operation getStartNode() {
-  return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
+  return ActivityNode.all.select(e|e.incoming.isEmpty() and not e.isKindOf(PerformanceAnnotation)).first();
 }
 
 operation getEndNodes() {
-  return FlowNode.allInstances.select(e|e.outgoing.isEmpty());
+  return ActivityNode.all.select(e|e.outgoing.isEmpty() and not e.isKindOf(PerformanceAnnotation));
 }
 
 operation assertConstraintsEquals(globalLimit : Real, expectedConstraints : Sequence) {
