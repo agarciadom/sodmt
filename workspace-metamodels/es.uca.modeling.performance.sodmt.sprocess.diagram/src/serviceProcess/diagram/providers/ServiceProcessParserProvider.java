@@ -97,7 +97,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationConcurrentUsers_5002Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_ConcurrentUsers() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -119,7 +119,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationSecsTimeLimit_5003Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_SecsTimeLimit() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -141,7 +141,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationMinimumTime_5004Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_MinimumTime() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("minimum = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -163,7 +163,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationWeight_5005Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_Weight() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -226,7 +226,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (performanceAnnotationConcurrentUsers_5016Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_ConcurrentUsers() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -248,7 +248,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (performanceAnnotationSecsTimeLimit_5017Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_SecsTimeLimit() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -333,7 +333,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationConcurrentUsers_5030Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_ConcurrentUsers() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -355,7 +355,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationSecsTimeLimit_5031Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getPerformanceAnnotation_SecsTimeLimit() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -377,7 +377,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationMinimumTime_5032Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_MinimumTime() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("minimum = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -399,7 +399,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 		if (localPerformanceAnnotationWeight_5033Parser == null) {
 			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
 					.getLocalPerformanceAnnotation_Weight() };
-			serviceProcess.diagram.parsers.NumbersToDoubleLabelParser parser = new serviceProcess.diagram.parsers.NumbersToDoubleLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
 			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
@@ -443,7 +443,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 							.getControlFlow_Condition(),
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getControlFlow_Probability() };
-			serviceProcess.diagram.parsers.ControlFlowLabelParser parser = new serviceProcess.diagram.parsers.ControlFlowLabelParser(
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("[{0}] (p = {1})"); //$NON-NLS-1$
 			parser.setEditorPattern("{0} : {1,number}"); //$NON-NLS-1$

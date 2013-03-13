@@ -67,7 +67,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * @generated
    * @ordered
    */
-  protected static final Double MINIMUM_TIME_EDEFAULT = new Double(0.0);
+  protected static final double MINIMUM_TIME_EDEFAULT = 0.0;
 
   /**
    * The cached value of the '{@link #getMinimumTime() <em>Minimum Time</em>}' attribute.
@@ -77,7 +77,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * @generated
    * @ordered
    */
-  protected Double minimumTime = MINIMUM_TIME_EDEFAULT;
+  protected double minimumTime = MINIMUM_TIME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
@@ -87,7 +87,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * @generated
    * @ordered
    */
-  protected static final Double WEIGHT_EDEFAULT = new Double(1.0);
+  protected static final double WEIGHT_EDEFAULT = 1.0;
 
   /**
    * The cached value of the '{@link #getWeight() <em>Weight</em>}' attribute.
@@ -97,7 +97,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * @generated
    * @ordered
    */
-  protected Double weight = WEIGHT_EDEFAULT;
+  protected double weight = WEIGHT_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExecNode() <em>Exec Node</em>}' reference.
@@ -163,7 +163,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public Double getMinimumTime()
+  public double getMinimumTime()
   {
     return minimumTime;
   }
@@ -173,9 +173,9 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMinimumTime(Double newMinimumTime)
+  public void setMinimumTime(double newMinimumTime)
   {
-    Double oldMinimumTime = minimumTime;
+    double oldMinimumTime = minimumTime;
     minimumTime = newMinimumTime;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME, oldMinimumTime, minimumTime));
@@ -186,7 +186,7 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public Double getWeight()
+  public double getWeight()
   {
     return weight;
   }
@@ -196,9 +196,9 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWeight(Double newWeight)
+  public void setWeight(double newWeight)
   {
-    Double oldWeight = weight;
+    double oldWeight = weight;
     weight = newWeight;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT, oldWeight, weight));
@@ -416,9 +416,9 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__OUTGOING:
         return outgoing != null && !outgoing.isEmpty();
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME:
-        return MINIMUM_TIME_EDEFAULT == null ? minimumTime != null : !MINIMUM_TIME_EDEFAULT.equals(minimumTime);
+        return minimumTime != MINIMUM_TIME_EDEFAULT;
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
-        return WEIGHT_EDEFAULT == null ? weight != null : !WEIGHT_EDEFAULT.equals(weight);
+        return weight != WEIGHT_EDEFAULT;
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE:
         return execNode != null;
     }

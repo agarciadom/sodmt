@@ -36,7 +36,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * @generated
    * @ordered
    */
-  protected static final Double CONCURRENT_USERS_EDEFAULT = new Double(1.0);
+  protected static final double CONCURRENT_USERS_EDEFAULT = 1.0;
 
   /**
    * The cached value of the '{@link #getConcurrentUsers() <em>Concurrent Users</em>}' attribute.
@@ -46,7 +46,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * @generated
    * @ordered
    */
-  protected Double concurrentUsers = CONCURRENT_USERS_EDEFAULT;
+  protected double concurrentUsers = CONCURRENT_USERS_EDEFAULT;
 
   /**
    * The default value of the '{@link #getSecsTimeLimit() <em>Secs Time Limit</em>}' attribute.
@@ -56,7 +56,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * @generated
    * @ordered
    */
-  protected static final Double SECS_TIME_LIMIT_EDEFAULT = new Double(0.0);
+  protected static final double SECS_TIME_LIMIT_EDEFAULT = 0.0;
 
   /**
    * The cached value of the '{@link #getSecsTimeLimit() <em>Secs Time Limit</em>}' attribute.
@@ -66,7 +66,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * @generated
    * @ordered
    */
-  protected Double secsTimeLimit = SECS_TIME_LIMIT_EDEFAULT;
+  protected double secsTimeLimit = SECS_TIME_LIMIT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -94,7 +94,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * <!-- end-user-doc -->
    * @generated
    */
-  public Double getConcurrentUsers()
+  public double getConcurrentUsers()
   {
     return concurrentUsers;
   }
@@ -104,9 +104,9 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setConcurrentUsers(Double newConcurrentUsers)
+  public void setConcurrentUsers(double newConcurrentUsers)
   {
-    Double oldConcurrentUsers = concurrentUsers;
+    double oldConcurrentUsers = concurrentUsers;
     concurrentUsers = newConcurrentUsers;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceProcessPackage.PERFORMANCE_ANNOTATION__CONCURRENT_USERS, oldConcurrentUsers, concurrentUsers));
@@ -117,7 +117,7 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * <!-- end-user-doc -->
    * @generated
    */
-  public Double getSecsTimeLimit()
+  public double getSecsTimeLimit()
   {
     return secsTimeLimit;
   }
@@ -127,9 +127,9 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSecsTimeLimit(Double newSecsTimeLimit)
+  public void setSecsTimeLimit(double newSecsTimeLimit)
   {
-    Double oldSecsTimeLimit = secsTimeLimit;
+    double oldSecsTimeLimit = secsTimeLimit;
     secsTimeLimit = newSecsTimeLimit;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceProcessPackage.PERFORMANCE_ANNOTATION__SECS_TIME_LIMIT, oldSecsTimeLimit, secsTimeLimit));
@@ -204,9 +204,9 @@ public class PerformanceAnnotationImpl extends EObjectImpl implements Performanc
     switch (featureID)
     {
       case ServiceProcessPackage.PERFORMANCE_ANNOTATION__CONCURRENT_USERS:
-        return CONCURRENT_USERS_EDEFAULT == null ? concurrentUsers != null : !CONCURRENT_USERS_EDEFAULT.equals(concurrentUsers);
+        return concurrentUsers != CONCURRENT_USERS_EDEFAULT;
       case ServiceProcessPackage.PERFORMANCE_ANNOTATION__SECS_TIME_LIMIT:
-        return SECS_TIME_LIMIT_EDEFAULT == null ? secsTimeLimit != null : !SECS_TIME_LIMIT_EDEFAULT.equals(secsTimeLimit);
+        return secsTimeLimit != SECS_TIME_LIMIT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }

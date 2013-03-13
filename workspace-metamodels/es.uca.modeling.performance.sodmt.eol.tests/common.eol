@@ -61,7 +61,7 @@ operation assertOldAndNewResultsAreEqual(globalLimit : Real, shouldSucceed : Boo
 
 operation getTimeLimitMap() : Map {
     var results : Map;
-    for (act in ServiceActivity.allInstances) {
+    for (act in ExecutableNode.all) {
       results.put(act.name, act.annotation.secsTimeLimit);
     }
     return results;

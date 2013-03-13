@@ -17,7 +17,7 @@ package serviceProcess;
  * </p>
  *
  * @see serviceProcess.ServiceProcessPackage#getControlFlow()
- * @model annotation="gmf.link tool.name='Control Flow' label='condition,probability' label.view.pattern='[{0}] (p = {1})' label.edit.pattern='{0} : {1,number}' label.parser='ControlFlowLabelParser' label.text=' ' source.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)' target.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)'"
+ * @model annotation="gmf.link tool.name='Control Flow' label='condition,probability' label.view.pattern='[{0}] (p = {1})' label.edit.pattern='{0} : {1,number}' label.text=' ' source.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)' target.constraint='self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)'"
  * @generated
  */
 public interface ControlFlow extends ActivityEdge
@@ -59,12 +59,12 @@ public interface ControlFlow extends ActivityEdge
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Probability</em>' attribute.
-   * @see #setProbability(Double)
+   * @see #setProbability(double)
    * @see serviceProcess.ServiceProcessPackage#getControlFlow_Probability()
    * @model default="1"
    * @generated
    */
-  Double getProbability();
+  double getProbability();
 
   /**
    * Sets the value of the '{@link serviceProcess.ControlFlow#getProbability <em>Probability</em>}' attribute.
@@ -74,6 +74,6 @@ public interface ControlFlow extends ActivityEdge
    * @see #getProbability()
    * @generated
    */
-  void setProbability(Double value);
+  void setProbability(double value);
 
 } // ControlFlow

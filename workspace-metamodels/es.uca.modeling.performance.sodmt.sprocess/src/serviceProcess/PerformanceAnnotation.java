@@ -33,13 +33,13 @@ public interface PerformanceAnnotation extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Concurrent Users</em>' attribute.
-   * @see #setConcurrentUsers(Double)
+   * @see #setConcurrentUsers(double)
    * @see serviceProcess.ServiceProcessPackage#getPerformanceAnnotation_ConcurrentUsers()
    * @model default="1"
-   *        annotation="gmf.label label.view.pattern='users = {0}' label.edit.pattern='{0, number}' label.parser='NumbersToDoubleLabelParser'"
+   *        annotation="gmf.label label.view.pattern='users = {0}' label.edit.pattern='{0, number}'"
    * @generated
    */
-  Double getConcurrentUsers();
+  double getConcurrentUsers();
 
   /**
    * Sets the value of the '{@link serviceProcess.PerformanceAnnotation#getConcurrentUsers <em>Concurrent Users</em>}' attribute.
@@ -49,7 +49,7 @@ public interface PerformanceAnnotation extends EObject
    * @see #getConcurrentUsers()
    * @generated
    */
-  void setConcurrentUsers(Double value);
+  void setConcurrentUsers(double value);
 
   /**
    * Returns the value of the '<em><b>Secs Time Limit</b></em>' attribute.
@@ -61,13 +61,13 @@ public interface PerformanceAnnotation extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Secs Time Limit</em>' attribute.
-   * @see #setSecsTimeLimit(Double)
+   * @see #setSecsTimeLimit(double)
    * @see serviceProcess.ServiceProcessPackage#getPerformanceAnnotation_SecsTimeLimit()
    * @model default="0"
-   *        annotation="gmf.label label.view.pattern='timeLimit = {0}' label.edit.pattern='{0, number}' label.parser='NumbersToDoubleLabelParser'"
+   *        annotation="gmf.label label.view.pattern='timeLimit = {0}' label.edit.pattern='{0, number}'"
    * @generated
    */
-  Double getSecsTimeLimit();
+  double getSecsTimeLimit();
 
   /**
    * Sets the value of the '{@link serviceProcess.PerformanceAnnotation#getSecsTimeLimit <em>Secs Time Limit</em>}' attribute.
@@ -77,6 +77,6 @@ public interface PerformanceAnnotation extends EObject
    * @see #getSecsTimeLimit()
    * @generated
    */
-  void setSecsTimeLimit(Double value);
+  void setSecsTimeLimit(double value);
 
 } // PerformanceAnnotation

@@ -55,7 +55,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow
    * @generated
    * @ordered
    */
-  protected static final Double PROBABILITY_EDEFAULT = new Double(1.0);
+  protected static final double PROBABILITY_EDEFAULT = 1.0;
 
   /**
    * The cached value of the '{@link #getProbability() <em>Probability</em>}' attribute.
@@ -65,7 +65,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow
    * @generated
    * @ordered
    */
-  protected Double probability = PROBABILITY_EDEFAULT;
+  protected double probability = PROBABILITY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow
    * <!-- end-user-doc -->
    * @generated
    */
-  public Double getProbability()
+  public double getProbability()
   {
     return probability;
   }
@@ -126,9 +126,9 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProbability(Double newProbability)
+  public void setProbability(double newProbability)
   {
-    Double oldProbability = probability;
+    double oldProbability = probability;
     probability = newProbability;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceProcessPackage.CONTROL_FLOW__PROBABILITY, oldProbability, probability));
@@ -205,7 +205,7 @@ public class ControlFlowImpl extends ActivityEdgeImpl implements ControlFlow
       case ServiceProcessPackage.CONTROL_FLOW__CONDITION:
         return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
       case ServiceProcessPackage.CONTROL_FLOW__PROBABILITY:
-        return PROBABILITY_EDEFAULT == null ? probability != null : !PROBABILITY_EDEFAULT.equals(probability);
+        return probability != PROBABILITY_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }

@@ -134,7 +134,7 @@ public class LocalPerformanceAnnotationItemProvider
          true,
          false,
          false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
          null,
          null));
   }
@@ -157,7 +157,7 @@ public class LocalPerformanceAnnotationItemProvider
          true,
          false,
          false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
          null,
          null));
   }
@@ -206,11 +206,8 @@ public class LocalPerformanceAnnotationItemProvider
   @Override
   public String getText(Object object)
   {
-    Double labelValue = ((LocalPerformanceAnnotation)object).getConcurrentUsers();
-    String label = labelValue == null ? null : labelValue.toString();
-    return label == null || label.length() == 0 ?
-      getString("_UI_LocalPerformanceAnnotation_type") :
-      getString("_UI_LocalPerformanceAnnotation_type") + " " + label;
+    LocalPerformanceAnnotation localPerformanceAnnotation = (LocalPerformanceAnnotation)object;
+    return getString("_UI_LocalPerformanceAnnotation_type") + " " + localPerformanceAnnotation.getConcurrentUsers();
   }
 
   /**

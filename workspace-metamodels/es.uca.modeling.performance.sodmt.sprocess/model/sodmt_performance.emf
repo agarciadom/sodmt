@@ -34,28 +34,24 @@ abstract class ActivityNode {
           tool.name="Global Performance Constraint")
 class PerformanceAnnotation {
    @gmf.label(label.view.pattern = "users = {0}",
-              label.edit.pattern="{0, number}",
-              label.parser="NumbersToDoubleLabelParser")
-   attr Double concurrentUsers = 1;
+              label.edit.pattern="{0, number}")
+   attr double concurrentUsers = 1;
 
    @gmf.label(label.view.pattern = "timeLimit = {0}",
-              label.edit.pattern="{0, number}",
-              label.parser="NumbersToDoubleLabelParser")
-   attr Double secsTimeLimit = 0;
+              label.edit.pattern="{0, number}")
+   attr double secsTimeLimit = 0;
 }
 
 @gmf.node(label.pattern="«lpc»",
           tool.name="Local Performance Constraint")
 class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
    @gmf.label(label.view.pattern = "minimum = {0}",
-              label.edit.pattern="{0, number}",
-              label.parser="NumbersToDoubleLabelParser")
-   attr Double minimumTime = 0;
+              label.edit.pattern="{0, number}")
+   attr double minimumTime = 0;
 
    @gmf.label(label.view.pattern = "weight = {0}",
-              label.edit.pattern="{0, number}",
-              label.parser="NumbersToDoubleLabelParser")
-   attr Double weight = 1;
+              label.edit.pattern="{0, number}")
+   attr double weight = 1;
 
    ref ExecutableNode#annotation execNode;
 }
@@ -68,13 +64,12 @@ class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
           label="condition,probability",
           label.view.pattern="[{0}] (p = {1})",
           label.edit.pattern="{0} : {1,number}",
-          label.parser="ControlFlowLabelParser",
           label.text=" ",
           source.constraint="self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
           target.constraint="self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)")
 class ControlFlow extends ActivityEdge {
     attr String condition = "";
-    attr Double probability = 1;
+    attr double probability = 1;
 }
 
 @gmf.link(tool.name="Object Flow", style="dash",

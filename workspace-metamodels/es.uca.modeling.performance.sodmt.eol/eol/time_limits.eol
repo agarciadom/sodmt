@@ -1,6 +1,6 @@
 -*
   Heuristic algorithm for computing the time limits in seconds for
-  each activity node in the ServiceComposition and ServiceProcess
+  each ExecutableNode node in the ServiceComposition and ServiceProcess
   models.
 
   Copyright (c) 2009-2010 Antonio García Domínguez.  All rights
@@ -14,7 +14,7 @@
 
   This algorithm annotates every executable node with an estimation of
   the maximum time that it can take to run so the whole service
-  activity is completed before a specific time interval has
+  ExecutableNode is completed before a specific time interval has
   elapsed. If the node already has a manual restriction applied to it,
   it will also make sure that a consistent solution can be achieved.
   Unless explicitly told otherwise, it assumes that all executable
@@ -49,7 +49,7 @@
 
     * If the slack is negative, report an error and abort. The sum of
       the manual annotations exceeded the time limit which had been
-      set for the whole path in the Service Activity.
+      set for the whole path in the Service ExecutableNode.
 
     * If the slack is zero and there exist free nodes in the path,
       report an error and abort. Every node needs to have a time limit
@@ -94,14 +94,14 @@ operation annotateTimeLimits(global_limit : Real, start : ActivityNode) : Boolea
     if (isApproximatelyEqual(slack, 0.0, 0.0001)) {
       if (totalWeight > 0) {
         System.user.inform('Nodes with manual restrictions in path '
-          + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
+          + path.select(r|r.isKindOf(ExecutableNode)).collect(r|r.name).asString()
           + ' left no slack to establish the automatic restrictions (had '
           + global_limit + ' seconds)');
         return false;
       }
     } else if (slack < 0) {
       System.user.inform('Nodes with manual restrictions in path '
-        + path.select(r|r.isKindOf(Activity)).collect(r|r.name).asString()
+        + path.select(r|r.isKindOf(ExecutableNode)).collect(r|r.name).asString()
         + ' have used up more than the available time ('
         + path.~minSum + ', with ' + global_limit + ' available)');
       return false;

@@ -761,17 +761,17 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     initEReference(getActivityNode_Outgoing(), this.getActivityEdge(), this.getActivityEdge_Source(), "outgoing", null, 0, -1, ActivityNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(performanceAnnotationEClass, PerformanceAnnotation.class, "PerformanceAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPerformanceAnnotation_ConcurrentUsers(), ecorePackage.getEDoubleObject(), "concurrentUsers", "1", 0, 1, PerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPerformanceAnnotation_SecsTimeLimit(), ecorePackage.getEDoubleObject(), "secsTimeLimit", "0", 0, 1, PerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPerformanceAnnotation_ConcurrentUsers(), ecorePackage.getEDouble(), "concurrentUsers", "1", 0, 1, PerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPerformanceAnnotation_SecsTimeLimit(), ecorePackage.getEDouble(), "secsTimeLimit", "0", 0, 1, PerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localPerformanceAnnotationEClass, LocalPerformanceAnnotation.class, "LocalPerformanceAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLocalPerformanceAnnotation_MinimumTime(), ecorePackage.getEDoubleObject(), "minimumTime", "0", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLocalPerformanceAnnotation_Weight(), ecorePackage.getEDoubleObject(), "weight", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalPerformanceAnnotation_MinimumTime(), ecorePackage.getEDouble(), "minimumTime", "0", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalPerformanceAnnotation_Weight(), ecorePackage.getEDouble(), "weight", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocalPerformanceAnnotation_ExecNode(), this.getExecutableNode(), this.getExecutableNode_Annotation(), "execNode", null, 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(controlFlowEClass, ControlFlow.class, "ControlFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getControlFlow_Condition(), ecorePackage.getEString(), "condition", "", 0, 1, ControlFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getControlFlow_Probability(), ecorePackage.getEDoubleObject(), "probability", "1", 0, 1, ControlFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getControlFlow_Probability(), ecorePackage.getEDouble(), "probability", "1", 0, 1, ControlFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectFlowEClass, ObjectFlow.class, "ObjectFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -875,7 +875,6 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "label", "condition,probability",
        "label.view.pattern", "[{0}] (p = {1})",
        "label.edit.pattern", "{0} : {1,number}",
-       "label.parser", "ControlFlowLabelParser",
        "label.text", " ",
        "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
        "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)"
@@ -1047,8 +1046,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        new String[] 
        {
        "label.view.pattern", "users = {0}",
-       "label.edit.pattern", "{0, number}",
-       "label.parser", "NumbersToDoubleLabelParser"
+       "label.edit.pattern", "{0, number}"
        });		
     addAnnotation
       (getPerformanceAnnotation_SecsTimeLimit(), 
@@ -1056,8 +1054,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        new String[] 
        {
        "label.view.pattern", "timeLimit = {0}",
-       "label.edit.pattern", "{0, number}",
-       "label.parser", "NumbersToDoubleLabelParser"
+       "label.edit.pattern", "{0, number}"
        });			
     addAnnotation
       (getLocalPerformanceAnnotation_MinimumTime(), 
@@ -1065,8 +1062,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        new String[] 
        {
        "label.view.pattern", "minimum = {0}",
-       "label.edit.pattern", "{0, number}",
-       "label.parser", "NumbersToDoubleLabelParser"
+       "label.edit.pattern", "{0, number}"
        });		
     addAnnotation
       (getLocalPerformanceAnnotation_Weight(), 
@@ -1074,8 +1070,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        new String[] 
        {
        "label.view.pattern", "weight = {0}",
-       "label.edit.pattern", "{0, number}",
-       "label.parser", "NumbersToDoubleLabelParser"
+       "label.edit.pattern", "{0, number}"
        });													
   }
 

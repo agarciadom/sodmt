@@ -33,13 +33,13 @@ public interface LocalPerformanceAnnotation extends PerformanceAnnotation, Activ
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Minimum Time</em>' attribute.
-   * @see #setMinimumTime(Double)
+   * @see #setMinimumTime(double)
    * @see serviceProcess.ServiceProcessPackage#getLocalPerformanceAnnotation_MinimumTime()
    * @model default="0"
-   *        annotation="gmf.label label.view.pattern='minimum = {0}' label.edit.pattern='{0, number}' label.parser='NumbersToDoubleLabelParser'"
+   *        annotation="gmf.label label.view.pattern='minimum = {0}' label.edit.pattern='{0, number}'"
    * @generated
    */
-  Double getMinimumTime();
+  double getMinimumTime();
 
   /**
    * Sets the value of the '{@link serviceProcess.LocalPerformanceAnnotation#getMinimumTime <em>Minimum Time</em>}' attribute.
@@ -49,7 +49,7 @@ public interface LocalPerformanceAnnotation extends PerformanceAnnotation, Activ
    * @see #getMinimumTime()
    * @generated
    */
-  void setMinimumTime(Double value);
+  void setMinimumTime(double value);
 
   /**
    * Returns the value of the '<em><b>Weight</b></em>' attribute.
@@ -61,13 +61,13 @@ public interface LocalPerformanceAnnotation extends PerformanceAnnotation, Activ
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Weight</em>' attribute.
-   * @see #setWeight(Double)
+   * @see #setWeight(double)
    * @see serviceProcess.ServiceProcessPackage#getLocalPerformanceAnnotation_Weight()
    * @model default="1"
-   *        annotation="gmf.label label.view.pattern='weight = {0}' label.edit.pattern='{0, number}' label.parser='NumbersToDoubleLabelParser'"
+   *        annotation="gmf.label label.view.pattern='weight = {0}' label.edit.pattern='{0, number}'"
    * @generated
    */
-  Double getWeight();
+  double getWeight();
 
   /**
    * Sets the value of the '{@link serviceProcess.LocalPerformanceAnnotation#getWeight <em>Weight</em>}' attribute.
@@ -77,7 +77,7 @@ public interface LocalPerformanceAnnotation extends PerformanceAnnotation, Activ
    * @see #getWeight()
    * @generated
    */
-  void setWeight(Double value);
+  void setWeight(double value);
 
   /**
    * Returns the value of the '<em><b>Exec Node</b></em>' reference.

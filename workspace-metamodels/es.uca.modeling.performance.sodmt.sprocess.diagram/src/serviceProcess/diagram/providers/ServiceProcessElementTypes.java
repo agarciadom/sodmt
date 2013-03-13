@@ -53,12 +53,10 @@ public class ServiceProcessElementTypes {
 	 * @generated
 	 */
 	public static final IElementType Action_2010 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.Action_2010"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType StructuredActivityNode_2011 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_2011"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
@@ -95,47 +93,38 @@ public class ServiceProcessElementTypes {
 	 * @generated
 	 */
 	public static final IElementType Action_3018 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.Action_3018"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType StructuredActivityNode_3019 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_3019"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType LocalPerformanceAnnotation_3020 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.LocalPerformanceAnnotation_3020"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType ObjectNode_3021 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectNode_3021"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType InitialNode_3022 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.InitialNode_3022"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType FinalNode_3023 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.FinalNode_3023"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType DecisionNode_3024 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_3024"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType ForkNode_3025 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_3025"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType JoinNode_3026 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */

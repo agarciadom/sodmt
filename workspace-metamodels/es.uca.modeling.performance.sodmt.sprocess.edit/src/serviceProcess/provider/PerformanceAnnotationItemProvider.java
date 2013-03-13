@@ -88,7 +88,7 @@ public class PerformanceAnnotationItemProvider
          true,
          false,
          false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
          null,
          null));
   }
@@ -111,7 +111,7 @@ public class PerformanceAnnotationItemProvider
          true,
          false,
          false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
          null,
          null));
   }
@@ -137,11 +137,8 @@ public class PerformanceAnnotationItemProvider
   @Override
   public String getText(Object object)
   {
-    Double labelValue = ((PerformanceAnnotation)object).getConcurrentUsers();
-    String label = labelValue == null ? null : labelValue.toString();
-    return label == null || label.length() == 0 ?
-      getString("_UI_PerformanceAnnotation_type") :
-      getString("_UI_PerformanceAnnotation_type") + " " + label;
+    PerformanceAnnotation performanceAnnotation = (PerformanceAnnotation)object;
+    return getString("_UI_PerformanceAnnotation_type") + " " + performanceAnnotation.getConcurrentUsers();
   }
 
   /**
