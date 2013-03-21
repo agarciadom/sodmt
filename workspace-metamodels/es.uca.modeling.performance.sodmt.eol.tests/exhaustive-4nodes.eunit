@@ -20,21 +20,21 @@ operation minTimes() {
 operation createModel() {
   var sp = new ServiceProcess;
 
-  var start = new ProcessStart;
-  var decAB = new ProcessDecision;
-  var decCD = new ProcessDecision;
-  var mrgAB = new ProcessJoin;
-  var mrgCD = new ProcessJoin;
-  var fin = new ProcessFinish;
+  var start = new InitialNode;
+  var decAB = new DecisionNode;
+  var decCD = new DecisionNode;
+  var mrgAB = new JoinNode;
+  var mrgCD = new JoinNode;
+  var fin = new FinalNode;
   sp.nodes.add(start);
   sp.nodes.add(decAB); sp.nodes.add(mrgAB);
   sp.nodes.add(decCD); sp.nodes.add(mrgCD);
   sp.nodes.add(fin);
 
-  var nodeA = createActivity(sp, "A", wA, mA);
-  var nodeB = createActivity(sp, "B", wB, mB);
-  var nodeC = createActivity(sp, "C", wC, mC);
-  var nodeD = createActivity(sp, "D", wD, mD);
+  var nodeA = createAction(sp, "A", wA, mA);
+  var nodeB = createAction(sp, "B", wB, mB);
+  var nodeC = createAction(sp, "C", wC, mC);
+  var nodeD = createAction(sp, "D", wD, mD);
 
   createEdge(sp, start, decAB);
   createDiamondEdges(sp, decAB, nodeA, nodeB, mrgAB);
@@ -50,7 +50,7 @@ operation correctResults() {
   var startNode   := getStartNode();
   annotateTimeLimits(globalLimit, startNode);
   for (path in getAllPathsFrom(startNode)) {
-    var total := path.collect(a:ServiceActivity | a.getTimeLimit()).sum;
+    var total := path.collect(a : ExecutableNode | a.getTimeLimit()).sum;
     if (total > globalLimit + epsilon) {
       fail("Total was " + total + ", which is greater than " + globalLimit);
     }
@@ -58,22 +58,22 @@ operation correctResults() {
 }
 
 operation getStartNode() {
-  return FlowNode.allInstances.select(e|e.incoming.isEmpty()).first();
+  return ActivityNode.allInstances.select(e|e.incoming.isEmpty()).first();
 }
 
-operation createActivity(sp : ServiceProcess, name : String, weight : Real, minLimit : Real) : ServiceActivity {
-  var node = new ServiceActivity;
+operation createAction(sp : ServiceProcess, name : String, weight : Real, minLimit : Real) : Action {
+  var node = new Action;
   node.name = name;
+  sp.nodes.add(node);
+
   node.createPerformanceAnnotation();
-  node.annotation.manuallyAdded := true;
   node.annotation.weight      := weight.asReal();
   node.annotation.minimumTime := minLimit.asReal();
-  sp.nodes.add(node);
   return node;
 }
 
-operation createEdge(sp, source, target) : ProcessControlFlow {
-  var edge = new ProcessControlFlow;
+operation createEdge(sp, source, target) : ControlFlow {
+  var edge = new ControlFlow;
   edge.source := source;
   edge.target := target;
   sp.edges.add(edge);
