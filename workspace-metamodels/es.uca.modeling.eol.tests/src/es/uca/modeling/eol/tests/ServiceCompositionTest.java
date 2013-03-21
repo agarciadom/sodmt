@@ -38,7 +38,7 @@ public class ServiceCompositionTest implements IEUnitSuite {
 		return models;
 	}
 
-	@Override
+	//@Override
 	public OperationContributor getOperationContributor() {
 		return null;
 	}

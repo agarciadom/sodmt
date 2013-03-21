@@ -14,7 +14,7 @@ public class RunAggregationTest extends AbstractModelTest {
 		return new File("caggregation.eunit").toURI();
 	}
 
-	@Override
+	//@Override
 	public OperationContributor getOperationContributor() {
 		return null;
 	}

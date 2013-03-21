@@ -34,7 +34,7 @@ public class FourNodeExhaustiveTest implements IEUnitSuite {
 		return Arrays.asList((IModel)model);
 	}
 
-	@Override
+	//@Override
 	public OperationContributor getOperationContributor() {
 		return null;
 	}

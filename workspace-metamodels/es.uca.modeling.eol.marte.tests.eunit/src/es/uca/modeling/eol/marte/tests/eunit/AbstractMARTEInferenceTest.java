@@ -14,7 +14,7 @@ import org.eclipse.papyrus.MARTE.MARTEPackage;
 
 public abstract class AbstractMARTEInferenceTest implements IEUnitSuite {
 
-	@Override
+	//@Override
 	public OperationContributor getOperationContributor() {
 		return null;
 	}
