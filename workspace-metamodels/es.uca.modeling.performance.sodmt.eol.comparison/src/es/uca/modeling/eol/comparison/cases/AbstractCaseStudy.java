@@ -36,14 +36,13 @@ import org.jfree.data.statistics.BoxAndWhiskerItem;
 import org.jfree.data.xy.YIntervalSeries;
 import org.jfree.data.xy.YIntervalSeriesCollection;
 
-import serviceProcess.ActivityPerformanceAnnotation;
+import serviceProcess.ActivityEdge;
+import serviceProcess.ActivityNode;
 import serviceProcess.ControlFlow;
 import serviceProcess.DecisionNode;
-import serviceProcess.FlowEdge;
-import serviceProcess.FlowNode;
-import serviceProcess.ProcessControlFlow;
-import serviceProcess.ProcessPerformanceAnnotation;
-import serviceProcess.ServiceActivity;
+import serviceProcess.ExecutableNode;
+import serviceProcess.LocalPerformanceAnnotation;
+import serviceProcess.PerformanceAnnotation;
 import serviceProcess.ServiceProcess;
 import serviceProcess.ServiceProcessPackage;
 import es.uca.modeling.eol.comparison.model.CaseStudyResult;
@@ -162,7 +161,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				addGlobalPerformanceConstraint(model);
 				normalizeProbabilities(model);
 
-				final FlowNode startNode = getStartNode(model);
+				final ActivityNode startNode = getStartNode(model);
 				final List<EObject> endNodes = getEndNodes(model);
 				final List<Long> lOldNanos = new ArrayList<Long>();
 				final List<Long> lNewNanos = new ArrayList<Long>();
@@ -228,10 +227,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 	protected void configureRandomManualAnnotations(
 			EmfModel model, Random rnd,
-			Map<String, ActivityPerformanceAnnotation> annotationMap,
+			Map<String, LocalPerformanceAnnotation> annotationMap,
 			final double globalLimit, final double maxWeight) {
 		double available = globalLimit;
-		for (ActivityPerformanceAnnotation ann : annotationMap.values()) {
+		for (LocalPerformanceAnnotation ann : annotationMap.values()) {
 			final double timeLimit = rnd.nextDouble() * available;
 			ann.setSecsTimeLimit(timeLimit);
 			ann.setWeight(rnd.nextDouble()*maxWeight);
@@ -264,21 +263,20 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected static FlowNode addNode(EmfModel model, final EList nodes, String type)
+	protected static ActivityNode addNode(EmfModel model, final EList nodes, String type)
 			throws EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException {
-		final FlowNode node = (FlowNode) model.createInstance(type);
+		final ActivityNode node = (ActivityNode) model.createInstance(type);
 		nodes.add(node);
 		return node;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected static void addEdge(EmfModel model, final EList edges,
-			FlowNode source, final FlowNode target)
+			ActivityNode source, final ActivityNode target)
 			throws EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException {
-		final ProcessControlFlow edge = (ProcessControlFlow) model
-				.createInstance("ProcessControlFlow");
+		final ControlFlow edge = (ControlFlow) model.createInstance("ControlFlow");
 		edge.setSource(source);
 		edge.setTarget(target);
 		edges.add(edge);
@@ -287,8 +285,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private void addGlobalPerformanceConstraint(EmfModel model)
 			throws EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException {
-		final ProcessPerformanceAnnotation ann
-			= (ProcessPerformanceAnnotation)model.createInstance("ProcessPerformanceAnnotation");
+		final PerformanceAnnotation ann = (PerformanceAnnotation)model.createInstance("PerformanceAnnotation");
 		ann.setConcurrentUsers(fGlobalThroughput);
 		ann.setSecsTimeLimit(fGlobalLimit);
 		final ServiceProcess process = (ServiceProcess)model.getAllOfType("ServiceProcess").iterator().next();
@@ -319,8 +316,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private Map<String, Double> computeAnnotationMap(EmfModel model)
 			throws EolModelElementTypeNotFoundException {
 		final Map<String, Double> mapResults = new HashMap<String, Double>();
-		for (EObject o : model.getAllOfKind("ServiceActivity")) {
-			ServiceActivity node = (ServiceActivity) o;
+		for (EObject o : model.getAllOfKind("ExecutableNode")) {
+			ExecutableNode node = (ExecutableNode) o;
 			if (node.getAnnotation() != null) {
 				mapResults.put(node.getName(), node.getAnnotation()
 						.getSecsTimeLimit());
@@ -350,10 +347,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 	private List<EObject> getEndNodes(EmfModel model)
 			throws EolModelElementTypeNotFoundException {
-		Collection<EObject> flowNodes = model.getAllOfKind("FlowNode");
+		Collection<EObject> activityNodes = model.getAllOfKind("ActivityNode");
 		List<EObject> endNodes = new ArrayList<EObject>();
-		for (EObject o : flowNodes) {
-			final FlowNode node = (FlowNode) o;
+		for (EObject o : activityNodes) {
+			final ActivityNode node = 	(ActivityNode) o;
 			if (node.getOutgoing().isEmpty()) {
 				endNodes.add(node);
 			}
@@ -365,19 +362,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		ServiceProcess process = (ServiceProcess)model.getAllOfType("ServiceProcess").iterator().next();
 		int size = 0;
 		for (Object o : process.getNodes()) {
-			if (o instanceof ServiceActivity) {
+			if (o instanceof ExecutableNode) {
 				++size;
 			}
 		}
 		return size;
 	}
 
-	private FlowNode getStartNode(EmfModel model)
+	private ActivityNode getStartNode(EmfModel model)
 			throws EolModelElementTypeNotFoundException {
-		Collection<EObject> flowNodes = model.getAllOfKind("FlowNode");
-		FlowNode startNode = null;
+		Collection<EObject> flowNodes = model.getAllOfKind("ActivityNode");
+		ActivityNode startNode = null;
 		for (EObject o : flowNodes) {
-			final FlowNode node = (FlowNode) o;
+			final ActivityNode node = (ActivityNode) o;
 			if (node.getIncoming().isEmpty()) {
 				startNode = node;
 			}
@@ -452,7 +449,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			final DecisionNode d = (DecisionNode)o;
 			final double prob = d.getOutgoing().isEmpty() ? 1 : 1/d.getOutgoing().size();
 		
-			for (FlowEdge out : d.getOutgoing()) {
+			for (ActivityEdge out : d.getOutgoing()) {
 				if (out instanceof ControlFlow) {
 					((ControlFlow)out).setProbability(prob);
 				}
@@ -478,20 +475,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		result.setRawText(result.getRawText() + sb.toString());
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void addRandomManualAnnotations(EmfModel model, Random rnd) throws EolRuntimeException {
 		// Remove all manual annotations
-		final List<EObject> manualAnnotations = new ArrayList<EObject>(model.getAllOfType("ActivityPerformanceAnnotation"));
+		final List<EObject> manualAnnotations = new ArrayList<EObject>(model.getAllOfType("LocalPerformanceAnnotation"));
 		for (EObject o : manualAnnotations) {
 			model.deleteElement(o);
 		}
 
 		// Compute how many service activities should be annotated at random
-		final List<EObject> allActivities = new ArrayList<EObject>(model.getAllOfKind("ServiceActivity"));
+		final List<EObject> allActivities = new ArrayList<EObject>(model.getAllOfKind("ExecutableNode"));
 		final long nShuffled = Math.round(allActivities.size() / 100.0d * fPercentageManual);
 
 		// If any decision nodes exist, use the fork-join annotation method
-		final List<EObject> allDecisions = new ArrayList<EObject>(model.getAllOfKind("ProcessDecision"));
+		final List<EObject> allDecisions = new ArrayList<EObject>(model.getAllOfKind("DecisionNode"));
 		if (allDecisions.isEmpty()) {
 			randomAnnotationsWithoutDecisions(model, rnd, allActivities, nShuffled);
 		} else {
@@ -508,10 +504,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		for (EObject o : allDecisions) {
 			// Collect all the children activities
 			final DecisionNode decision = (DecisionNode)o;
-			final List<ServiceActivity> children = new ArrayList<ServiceActivity>();
-			for (FlowEdge out : decision.getOutgoing()) {
-				if (out.getTarget() instanceof ServiceActivity) {
-					children.add((ServiceActivity)out.getTarget());
+			final List<ExecutableNode> children = new ArrayList<ExecutableNode>();
+			for (ActivityEdge out : decision.getOutgoing()) {
+				if (out.getTarget() instanceof ExecutableNode) {
+					children.add((ExecutableNode)out.getTarget());
 				}
 			}
 
@@ -530,9 +526,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 			// Add the annotations
 			for (int i = 0; i < children.size(); ++i) {
-				final ServiceActivity child = children.get(i);
+				final ExecutableNode child = children.get(i);
 
-				ActivityPerformanceAnnotation ann = createActivityPerformanceAnnotation(model, child);
+				LocalPerformanceAnnotation ann = createActivityPerformanceAnnotation(model, child);
 				ann.setMinimumTime(assignedTimes.get(i));
 				ann.setWeight(assignedWeights.get(i));
 				if (++annotatedActivities >= total) {
@@ -551,9 +547,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		final List<EObject> annotatedNodes = allActivities.subList(0, (int)nShuffled);
 
 		// Create their manual annotations
-		final Map<String, ActivityPerformanceAnnotation> annotationMap = new HashMap<String, ActivityPerformanceAnnotation>();
+		final Map<String, LocalPerformanceAnnotation> annotationMap = new HashMap<String, LocalPerformanceAnnotation>();
 		for (EObject node : annotatedNodes) {
-			final ServiceActivity activity = (ServiceActivity)node;
+			final ExecutableNode activity = (ExecutableNode)node;
 			annotationMap.put(activity.getName(), createActivityPerformanceAnnotation(model, activity));
 		}
 
@@ -561,19 +557,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		configureRandomManualAnnotations(model, rnd, annotationMap, fGlobalLimit, fMaxWeight);
 	}
 
-	private ActivityPerformanceAnnotation createActivityPerformanceAnnotation(
-			EmfModel model, final ServiceActivity child)
+	private LocalPerformanceAnnotation createActivityPerformanceAnnotation(
+			EmfModel model, final ExecutableNode child)
 			throws EolModelElementTypeNotFoundException,
 			EolNotInstantiableModelElementTypeException {
 		final ServiceProcess process = (ServiceProcess)model.getAllOfKind("ServiceProcess").iterator().next();
-		final EList<ActivityPerformanceAnnotation> annotations = process.getActivityPerformance();
+		final EList<ActivityNode> nodes = process.getNodes();
 	
-		ActivityPerformanceAnnotation ann = (ActivityPerformanceAnnotation)model.createInstance("ActivityPerformanceAnnotation");
-		ann.setManuallyAdded(true);
+		LocalPerformanceAnnotation ann = (LocalPerformanceAnnotation)model.createInstance("LocalPerformanceAnnotation");
 		ann.setExecNode(child);
 		// Use a large value by default, to avoid having the algorithm ask us to increase the value and block the process
 		ann.setConcurrentUsers(fGlobalThroughput);
-		annotations.add(ann);
+		nodes.add(ann);
+
 		return ann;
 	}
 

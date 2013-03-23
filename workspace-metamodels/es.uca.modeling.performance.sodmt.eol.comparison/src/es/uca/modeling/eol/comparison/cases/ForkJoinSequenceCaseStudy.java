@@ -12,13 +12,13 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundExce
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
-import serviceProcess.ActivityPerformanceAnnotation;
-import serviceProcess.FlowNode;
-import serviceProcess.ProcessDecision;
-import serviceProcess.ProcessFinish;
-import serviceProcess.ProcessJoin;
-import serviceProcess.ProcessStart;
-import serviceProcess.ServiceActivity;
+import serviceProcess.Action;
+import serviceProcess.ActivityNode;
+import serviceProcess.DecisionNode;
+import serviceProcess.FinalNode;
+import serviceProcess.InitialNode;
+import serviceProcess.JoinNode;
+import serviceProcess.LocalPerformanceAnnotation;
 import serviceProcess.ServiceProcess;
 
 public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
@@ -92,15 +92,15 @@ public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
-		FlowNode prevLevel = start;
+		final InitialNode start = (InitialNode)addNode(model, nodes, "InitialNode");
+		ActivityNode prevLevel = start;
 		for (int i = 0; i < numDipoles; ++i) {
-			final ProcessDecision decision = (ProcessDecision)addNode(model, nodes, "ProcessDecision");
-			final ProcessJoin join = (ProcessJoin)addNode(model, nodes, "ProcessJoin");
+			final DecisionNode decision = (DecisionNode)addNode(model, nodes, "DecisionNode");
+			final JoinNode join = (JoinNode)addNode(model, nodes, "JoinNode");
 			addEdge(model, edges, prevLevel, decision);
 
 			for (int j = 0; j < branchFactor; ++j) {
-				final ServiceActivity branchNode = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
+				final Action branchNode = (Action)addNode(model, nodes, "Action");
 				branchNode.setName("B" + i + j);
 				addEdge(model, edges, decision, branchNode);
 				addEdge(model, edges, branchNode, join);
@@ -109,18 +109,18 @@ public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
 			prevLevel = join;
 		}
 
-		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		final FinalNode finish = (FinalNode)addNode(model, nodes, "FinalNode");
 		addEdge(model, edges, prevLevel, finish);
 		return model;
 	}
 
 	@Override
 	protected void configureRandomManualAnnotations(EmfModel model, Random rnd,
-			Map<String, ActivityPerformanceAnnotation> annotations, double globalLimit, double maxWeight) {
+			Map<String, LocalPerformanceAnnotation> annotations, double globalLimit, double maxWeight) {
 		double available = globalLimit;
-		for (Map.Entry<String, ActivityPerformanceAnnotation> entry : annotations.entrySet()) {
+		for (Map.Entry<String, LocalPerformanceAnnotation> entry : annotations.entrySet()) {
 			final String name = entry.getKey();
-			final ActivityPerformanceAnnotation ann = entry.getValue();
+			final LocalPerformanceAnnotation ann = entry.getValue();
 			if (ann.getSecsTimeLimit() > 0) continue;
 
 			final double timeLimit = rnd.nextDouble() * available;
@@ -131,10 +131,10 @@ public class ForkJoinSequenceCaseStudy extends AbstractCaseStudy {
 			// Ensure that the generated graphs are valid
 			if (name.startsWith("B")) {
 				final String branchPrefix = name.substring(0, name.length()-1);
-				for (Map.Entry<String, ActivityPerformanceAnnotation> subentry : annotations.entrySet()) {
+				for (Map.Entry<String, LocalPerformanceAnnotation> subentry : annotations.entrySet()) {
 					if (subentry.getKey().startsWith(branchPrefix)) {
 						final double subTimeLimit = rnd.nextDouble() * timeLimit;
-						final ActivityPerformanceAnnotation subann = subentry.getValue();
+						final LocalPerformanceAnnotation subann = subentry.getValue();
 						subann.setSecsTimeLimit(subTimeLimit);
 						subann.setWeight(rnd.nextDouble() * maxWeight);
 					}

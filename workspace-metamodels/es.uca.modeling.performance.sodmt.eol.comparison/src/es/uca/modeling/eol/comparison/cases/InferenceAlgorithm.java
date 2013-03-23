@@ -15,8 +15,8 @@ public class InferenceAlgorithm {
 	public static final String OPERATION_OLD = "annotateTimeLimits";
 	public static final String OPERATION_THROUGHPUT = "annotateConcurrentUsers";
 
-	private static final String MAIN_EOL_BUNDLE = "es.uca.modeling.eol";
-	private static final String MAIN_EOL_PATH = "/wizards/algorithms_sp.eol";
+	private static final String MAIN_EOL_BUNDLE = "es.uca.modeling.performance.sodmt.eol";
+	private static final String MAIN_EOL_PATH = "/eol/algorithms.eol";
 
 	private static EolModule _module;
 

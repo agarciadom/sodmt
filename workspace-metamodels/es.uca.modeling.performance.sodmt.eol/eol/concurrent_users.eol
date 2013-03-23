@@ -150,6 +150,11 @@ operation JoinNode getConcurrentUsers() : Real {
 }
 
 @cached
+operation InitialNode getConcurrentUsers() : Real {
+  return self.getGlobalPerformanceAnnotation().concurrentUsers;
+}
+
+@cached
 $pre self.incoming.size() = 1
 operation ActivityNode getConcurrentUsers() : Real {
   return self.incoming.first.getConcurrentUsers();

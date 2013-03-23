@@ -10,12 +10,12 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundExce
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
-import serviceProcess.FlowNode;
-import serviceProcess.ProcessDecision;
-import serviceProcess.ProcessFinish;
-import serviceProcess.ProcessJoin;
-import serviceProcess.ProcessStart;
-import serviceProcess.ServiceActivity;
+import serviceProcess.Action;
+import serviceProcess.ActivityNode;
+import serviceProcess.DecisionNode;
+import serviceProcess.FinalNode;
+import serviceProcess.InitialNode;
+import serviceProcess.JoinNode;
 import serviceProcess.ServiceProcess;
 
 /**
@@ -89,14 +89,14 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
-		final List<ProcessDecision> decisions = new ArrayList<ProcessDecision>();
-		FlowNode prevLevel = start;
+		final InitialNode start = (InitialNode)addNode(model, nodes, "InitialNode");
+		final List<DecisionNode> decisions = new ArrayList<DecisionNode>();
+		ActivityNode prevLevel = start;
 
 		for (int i = 0; i < size; ++i) {
-			final ProcessDecision decision = (ProcessDecision)addNode(model, nodes, "ProcessDecision");
-			final ServiceActivity activity = (ServiceActivity)addNode(model, nodes, "ServiceActivity");
-			final ProcessJoin join = (ProcessJoin)addNode(model, nodes, "ProcessJoin");
+			final DecisionNode decision = (DecisionNode)addNode(model, nodes, "DecisionNode");
+			final Action activity = (Action)addNode(model, nodes, "Action");
+			final JoinNode join = (JoinNode)addNode(model, nodes, "JoinNode");
 			decisions.add(decision);
 
 			// Add edge from the join of the previous level to this level's decision node
@@ -108,12 +108,12 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 			addEdge(model, edges, activity, join);
 
 			// Add edges from previous decisions to the current join node
-			for (ProcessDecision d : decisions) {
+			for (DecisionNode d : decisions) {
 				addEdge(model, edges, d, join);
 			}
 		}
 
-		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		final FinalNode finish = (FinalNode)addNode(model, nodes, "FinalNode");
 		addEdge(model, edges, prevLevel, finish);
 		return model;
 	}

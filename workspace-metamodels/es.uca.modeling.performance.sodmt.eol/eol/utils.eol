@@ -29,11 +29,6 @@ operation ActivityNode getGlobalTimeLimit() : Real {
   return self.getGlobalPerformanceAnnotation().secsTimeLimit;
 }
 
-@cached
-operation ActivityNode getConcurrentUsers() : Real {
-  return self.getGlobalPerformanceAnnotation().concurrentUsers;
-}
-
 operation ActivityNode createPerformanceAnnotation() {
   var lpa = new LocalPerformanceAnnotation;
   self.eContainer.nodes.add(lpa);
@@ -52,7 +47,7 @@ operation ActivityNode hasAutomaticPerformanceAnnotation() : Boolean {
 operation ActivityNode getWeight() : Real {
   if (not self.hasProperty('annotation')) {
     return 0.0d;
-  } else if (self.annotation.isDefined()){
+  } else if (self.annotation.isDefined()) {
     return self.annotation.weight * 1.0d;
   } else {
     return 1.0d;

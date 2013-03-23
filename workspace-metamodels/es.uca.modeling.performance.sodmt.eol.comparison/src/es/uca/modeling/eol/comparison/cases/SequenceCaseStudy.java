@@ -10,10 +10,10 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundExce
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.exceptions.models.EolNotInstantiableModelElementTypeException;
 
-import serviceProcess.FlowNode;
-import serviceProcess.ProcessFinish;
-import serviceProcess.ProcessStart;
-import serviceProcess.ServiceActivity;
+import serviceProcess.Action;
+import serviceProcess.ActivityNode;
+import serviceProcess.FinalNode;
+import serviceProcess.InitialNode;
 import serviceProcess.ServiceProcess;
 
 /**
@@ -97,13 +97,12 @@ public class SequenceCaseStudy extends AbstractCaseStudy {
 		final EList nodes = process.getNodes();
 		final EList edges = process.getEdges();
 
-		final ProcessStart start = (ProcessStart)addNode(model, nodes, "ProcessStart");
-		final ProcessFinish finish = (ProcessFinish)addNode(model, nodes, "ProcessFinish");
+		final InitialNode start = (InitialNode)addNode(model, nodes, "InitialNode");
+		final FinalNode finish = (FinalNode)addNode(model, nodes, "FinalNode");
 
-		FlowNode previousNode = start;
+		ActivityNode previousNode = start;
 		for (int i = 0; i < size; ++i) {
-			final ServiceActivity activity
-				= (ServiceActivity)addNode(model, nodes, "ServiceActivity");
+			final Action activity = (Action)addNode(model, nodes, "Action");
 			activity.setName("A" + i);
 
 			addEdge(model, edges, previousNode, activity);
