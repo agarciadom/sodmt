@@ -1,0 +1,16 @@
+<project default="generate-editor">
+
+	<property name="models.sp" location="../es.uca.modeling.performance.sodmt.sprocess/model"/>
+	
+  <target name="generate-editor">
+  	<epsilon.emf.register file="${models.sp}/sodmt_performance.ecore"/>
+
+  	<epsilon.emf.loadModel name="SPGenModel" modelfile="${models.sp}/sodmt_performance.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+
+	<epsilon.eugenia src="model/scomp.emf">
+		<model step="genmodel" ref="SPGenModel" />
+	</epsilon.eugenia>
+  	
+  	<epsilon.disposeModels/>
+  </target>
+</project>
