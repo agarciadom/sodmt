@@ -1,0 +1,7 @@
+# Tracing options for the es.uca.modeling.performance.sodmt.scomp.diagram plug-in
+
+# Common issues
+es.uca.modeling.performance.sodmt.scomp.diagram/debug=false
+
+# Visual IDs
+es.uca.modeling.performance.sodmt.scomp.diagram/debug/visualID=false

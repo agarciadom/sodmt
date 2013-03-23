@@ -10,6 +10,9 @@ class ServiceProcess {
   val PerformanceAnnotation processPerformance;
 }
 
+// Do NOT change the line below! It is used by the Ant script for sodmt.scomp.
+/* --- SHARED TYPES WITH SERVICE COMPOSITIONS --- */
+
 @gmf.link(source="source", target="target", width="3",
           target.decoration="arrow")
 abstract class ActivityEdge {

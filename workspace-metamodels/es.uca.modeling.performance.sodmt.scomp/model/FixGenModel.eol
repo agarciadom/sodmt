@@ -1,5 +1,0 @@
-var spGenPak := SPGenModel!GenPackage.all.selectOne(p|p.prefix='ServiceProcess');
-
-var mainGenModel := GenModel!GenModel.all.first;
-var usedPaks := mainGenModel.usedGenPackages;
-usedPaks.add(spGenPak);

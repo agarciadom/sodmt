@@ -1,0 +1,18 @@
+@namespace(uri="www.uca.es/modeling/performance/sodmt/scomp", prefix="sc")
+package serviceComposition;
+
+/* DIAGRAM AND BASE ABSTRACT CLASSES */
+
+@gmf.diagram(model.extension="sp", diagram.extension="spdiag")
+class ServiceComposition {
+  val ActivityPartition[*] partitions;
+  val ActivityNode[*] nodes;
+  val ActivityEdge[*] edges;
+  val PerformanceAnnotation processPerformance;
+}
+
+class ActivityPartition extends NamedElement {
+   @gmf.compartment
+   val ActivityNode[*] nodes;
+}
+

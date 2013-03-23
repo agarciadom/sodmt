@@ -1,16 +1,25 @@
 <project default="generate-editor">
+  <property name="models.sp" location="../es.uca.modeling.performance.sodmt.sprocess/model"/>
 
-	<property name="models.sp" location="../es.uca.modeling.performance.sodmt.sprocess/model"/>
-	
   <target name="generate-editor">
-  	<epsilon.emf.register file="${models.sp}/sodmt_performance.ecore"/>
+  	<copy tofile="model/scomp.emf" file="${models.sp}/sodmt_performance.emf" overwrite="true">
+  	  <filterchain>
+  	  	<tokenfilter>
+  	      <scriptfilter language="javascript"><![CDATA[
+  	      	if (self.getToken().indexOf("SHARED TYPES") != -1) {
+  	      	   project.setProperty("scompHeaderFound", 1);
+  	      	}
 
-  	<epsilon.emf.loadModel name="SPGenModel" modelfile="${models.sp}/sodmt_performance.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+  	      	found = project.getProperty("scompHeaderFound")
+  	      	if (found != 1) {
+  	      	   self.setToken(null);
+  	      	}
+  	      ]]></scriptfilter>
+  	  	</tokenfilter>
+  	  	<concatfilter prepend="model/scomp.emf.prefix"/>
+  	  </filterchain>
+  	</copy>
 
-	<epsilon.eugenia src="model/scomp.emf">
-		<model step="genmodel" ref="SPGenModel" />
-	</epsilon.eugenia>
-  	
-  	<epsilon.disposeModels/>
+  	<epsilon.eugenia src="model/scomp.emf"/>
   </target>
 </project>
