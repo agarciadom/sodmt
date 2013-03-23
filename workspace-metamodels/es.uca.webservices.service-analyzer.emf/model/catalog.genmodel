@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uca.webservices.service-analyzer.emf/src" modelPluginID="es.uca.webservices.service-analyzer.emf"
+    modelName="Catalog" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>catalog.ecore</foreignModel>
+  <genPackages prefix="MessageCatalog" basePackage="es.uca.webservices.wsdl.analyzer.emf"
+      resource="XML" disposableProviderFactory="true" generateExampleClass="false"
+      fileExtensions="msgcat" ecorePackage="catalog.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="catalog.ecore#//TypeGA">
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/int"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/float"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/list"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/tuple"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/date"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/dateTime"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/time"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/duration"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeGA/string"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="catalog.ecore#//TypeGAObject"/>
+    <genClasses ecoreClass="catalog.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/services"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//ServicesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//ServicesType/service"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeDecls">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeDecls/typedef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeDecls/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeFault">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeFault/decls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeFault/template"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeFault/name"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeInput">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeInput/decls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeInput/template"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeOperation/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeOperation/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeOperation/fault"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeOperation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeOutput">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeOutput/decls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeOutput/template"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypePort">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypePort/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypePort/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypePort/name"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//TypeService/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeService/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeService/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeTemplate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTemplate/value"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeTypedef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/element"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/fractionDigits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/totalDigits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeTypedef/values"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//TypeVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeVariable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//TypeVariable/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
