@@ -583,7 +583,7 @@ public class ServiceCompositionDocumentProvider extends
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void doSaveDocument(IProgressMonitor monitor, Object element,
 			IDocument document, boolean overwrite) throws CoreException {
@@ -708,6 +708,9 @@ public class ServiceCompositionDocumentProvider extends
 			}
 			newResource.unload();
 		}
+		ValidateAction
+				.runValidation((org.eclipse.gmf.runtime.notation.View) document
+						.getContent());
 	}
 
 	/**

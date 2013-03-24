@@ -234,14 +234,14 @@ public class ServiceCompositionNavigatorContentProvider implements
 		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getVisualID(view)) {
 
-		case serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_2006_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_3016_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_2006_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_3016_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(
@@ -277,109 +277,14 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			result.addAll(getForeignShortcuts((Diagram) view, parentElement));
-			Diagram sv = (Diagram) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup links = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ServiceComposition_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ActivityPartitionEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getDiagramLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			if (!links.isEmpty()) {
-				result.add(links);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3018_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3001_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3018_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(
@@ -404,6 +309,243 @@ public class ServiceCompositionNavigatorContentProvider implements
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3006_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3006_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3002_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3002_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_2001_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_2001_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -758,153 +900,14 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3011_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3005_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3011_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3010_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3010_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3005_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(
@@ -929,110 +932,6 @@ public class ServiceCompositionNavigatorContentProvider implements
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3001_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3001_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_2001_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_2001_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1117,352 +1016,97 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_2003_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_2003_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			result.addAll(getForeignShortcuts((Diagram) view, parentElement));
+			Diagram sv = (Diagram) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup links = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ServiceComposition_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ActivityPartitionEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_2010_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_2010_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.InitialNode3EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3014_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3014_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3004_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3004_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_2008_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_2008_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_2004_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_2004_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_3016_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_3016_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3005_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3005_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
 			}
 			return result.toArray();
 		}
@@ -1595,6 +1239,270 @@ public class ServiceCompositionNavigatorContentProvider implements
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.FinalNode3EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3015_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3015_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_2003_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_2003_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3009_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3009_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_2006_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_2006_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_2004_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_2004_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_2007_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_2007_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1949,6 +1857,231 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
+		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_2010_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_2010_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3011_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3011_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(
+					connectedViews,
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3013_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3013_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
 		case serviceComposition.diagram.edit.parts.ActivityPartitionEditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
@@ -2046,14 +2179,14 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.InitialNode3EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_3008_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3014_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_3008_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_InitialNode_3014_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(
@@ -2089,106 +2222,16 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3002_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_3012_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_StructuredActivityNode_3002_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_3012_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(
-					connectedViews,
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
 			connectedViews = getIncomingLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
@@ -2213,10 +2256,53 @@ public class ServiceCompositionNavigatorContentProvider implements
 							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
-			connectedViews = getOutgoingLinksByType(
+			connectedViews = getIncomingLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_2009_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_2009_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -2277,14 +2363,14 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart.VISUAL_ID: {
+		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_3012_incominglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3010_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_LocalPerformanceAnnotation_3012_outgoinglinks,
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_Action_3010_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(
@@ -2311,12 +2397,98 @@ public class ServiceCompositionNavigatorContentProvider implements
 							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
+			connectedViews = getOutgoingLinksByType(
 					Collections.singleton(sv),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_2008_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_2008_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3018_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3018_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
 			}
@@ -2369,6 +2541,92 @@ public class ServiceCompositionNavigatorContentProvider implements
 			return result.toArray();
 		}
 
+		case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3004_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3004_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID: {
+			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_3008_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
+					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_3008_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
 		case serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID: {
 			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
 			Node sv = (Node) view;
@@ -2377,264 +2635,6 @@ public class ServiceCompositionNavigatorContentProvider implements
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
 					serviceComposition.diagram.part.Messages.NavigatorGroupName_DecisionNode_3007_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3009_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_JoinNode_3009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3013_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ObjectNode_3013_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_2007_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_2007_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.FinalNode3EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3015_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3015_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_2009_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_ForkNode_2009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(sv),
-					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getType(serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID: {
-			LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem> result = new LinkedList<serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup incominglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3006_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup outgoinglinks = new serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup(
-					serviceComposition.diagram.part.Messages.NavigatorGroupName_FinalNode_3006_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(

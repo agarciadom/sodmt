@@ -276,12 +276,12 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String Finish3CreationTool_title;
+	public static String FinalNode3CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Finish3CreationTool_desc;
+	public static String FinalNode3CreationTool_desc;
 
 	/**
 	 * @generated
@@ -306,42 +306,42 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String Join6CreationTool_title;
+	public static String InitialNode6CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Join6CreationTool_desc;
+	public static String InitialNode6CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String LocalPerformanceConstraint7CreationTool_title;
+	public static String Join7CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String LocalPerformanceConstraint7CreationTool_desc;
+	public static String Join7CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode8CreationTool_title;
+	public static String LocalPerformanceConstraint8CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode8CreationTool_desc;
+	public static String LocalPerformanceConstraint8CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String Start9CreationTool_title;
+	public static String ObjectNode9CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Start9CreationTool_desc;
+	public static String ObjectNode9CreationTool_desc;
 
 	/**
 	 * @generated

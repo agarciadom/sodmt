@@ -42,7 +42,7 @@ public class ServiceCompositionOCLFactory {
 		this.expressionBodies = new String[] {
 				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
 				"self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
-				"self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
+				"not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
 				"(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)", //$NON-NLS-1$
 		};
 	}

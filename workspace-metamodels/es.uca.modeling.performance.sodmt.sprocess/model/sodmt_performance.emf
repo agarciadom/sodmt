@@ -76,7 +76,7 @@ class ControlFlow extends ActivityEdge {
 }
 
 @gmf.link(tool.name="Object Flow", style="dash",
-          source.constraint="self.oclIsKindOf(PerformanceAnnotation)",
+          source.constraint="not self.oclIsKindOf(PerformanceAnnotation)",
           target.constraint="(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)")
 class ObjectFlow extends ActivityEdge {}
 
@@ -110,11 +110,11 @@ class StructuredActivityNode extends ExecutableNode {
 class ObjectNode extends ActivityNode, NamedElement {}
 
 @gmf.node(figure="svg", svg.uri="platform:/plugin/es.uca.modeling.performance.sodmt.sprocess/svg/initial.svg",
-          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Start")
+          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Initial Node")
 class InitialNode extends ActivityNode {}
 
 @gmf.node(figure="svg", svg.uri="platform:/plugin/es.uca.modeling.performance.sodmt.sprocess/svg/flow-final.svg",
-          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Finish")
+          size="30,30", label.placement="none", resizable="false", margin="0", tool.name="Final Node")
 class FinalNode extends ActivityNode {}
 
 @gmf.node(figure="polygon", polygon.x="0 15 30 15", polygon.y="15 30 15 0", border.color="0,0,0",

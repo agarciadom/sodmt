@@ -11,6 +11,10 @@
             class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
             markerType="es.uca.modeling.performance.sodmt.sprocess.diagram.diagnostic">
       </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="es.uca.modeling.performance.sodmt.scomp.diagram.diagnostic">
+      </markerResolutionGenerator>
    </extension>
    <extension
          point="org.eclipse.epsilon.evl.emf.validation">
@@ -18,6 +22,11 @@
             constraints="evl/service_process.evl"
             modelName="Model"
             namespaceURI="www.uca.es/modeling/performance/sodmt">
+      </constraintsBinding>
+      <constraintsBinding
+            constraints="evl/service_composition.evl"
+            modelName="Model"
+            namespaceURI="www.uca.es/modeling/performance/sodmt/scomp">
       </constraintsBinding>
    </extension>
 

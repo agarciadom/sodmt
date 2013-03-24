@@ -974,7 +974,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "label.placement", "none",
        "resizable", "false",
        "margin", "0",
-       "tool.name", "Start"
+       "tool.name", "Initial Node"
        });		
     addAnnotation
       (finalNodeEClass, 
@@ -987,7 +987,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "label.placement", "none",
        "resizable", "false",
        "margin", "0",
-       "tool.name", "Finish"
+       "tool.name", "Final Node"
        });		
     addAnnotation
       (decisionNodeEClass, 
@@ -1096,7 +1096,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "tool.name", "Object Flow",
        "style", "dash",
-       "source.constraint", "self.oclIsKindOf(PerformanceAnnotation)",
+       "source.constraint", "not self.oclIsKindOf(PerformanceAnnotation)",
        "target.constraint", "(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)"
        });				
     addAnnotation
