@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RoundedRectangle;
@@ -527,6 +529,12 @@ public class ActionEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ActionFigure() {
+
+			GridLayout layoutThis = new GridLayout();
+			layoutThis.numColumns = 1;
+			layoutThis.makeColumnsEqualWidth = true;
+			this.setLayoutManager(layoutThis);
+
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
 					getMapMode().DPtoLP(8)));
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
@@ -544,7 +552,16 @@ public class ActionEditPart extends ShapeNodeEditPart {
 
 			fFigureActionLabelFigure.setText("Action");
 
-			this.add(fFigureActionLabelFigure);
+			GridData constraintFFigureActionLabelFigure = new GridData();
+			constraintFFigureActionLabelFigure.verticalAlignment = GridData.CENTER;
+			constraintFFigureActionLabelFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureActionLabelFigure.horizontalIndent = 0;
+			constraintFFigureActionLabelFigure.horizontalSpan = 1;
+			constraintFFigureActionLabelFigure.verticalSpan = 1;
+			constraintFFigureActionLabelFigure.grabExcessHorizontalSpace = true;
+			constraintFFigureActionLabelFigure.grabExcessVerticalSpace = true;
+			this.add(fFigureActionLabelFigure,
+					constraintFFigureActionLabelFigure);
 
 		}
 

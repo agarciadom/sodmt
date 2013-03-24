@@ -1,0 +1,20 @@
+findFigure('ActionFigure').centerContents();
+findFigure('ObjectNodeFigure').centerContents();
+
+operation findFigureDescriptor(name : String) {
+  return GmfGraph!FigureDescriptor.all.selectOne(f|f.name = name);
+}
+
+operation findFigure(name : String) {
+  return GmfGraph!Shape.all.selectOne(f|f.name = name);
+}
+
+$pre self.children.size() = 1
+operation GmfGraph!Shape centerContents() {
+  self.layout = new GmfGraph!GridLayout;
+ 
+  var child = self.children.first;
+  child.layoutData = new GmfGraph!GridLayoutData;
+  child.layoutData.grabExcessVerticalSpace = true;
+  child.layoutData.grabExcessHorizontalSpace = true;
+}
