@@ -3,7 +3,7 @@ package serviceComposition;
 
 /* DIAGRAM AND BASE ABSTRACT CLASSES */
 
-@gmf.diagram(model.extension="sp", diagram.extension="spdiag")
+@gmf.diagram(model.extension="sc", diagram.extension="scdiag")
 class ServiceComposition {
   val ActivityPartition[*] partitions;
   val ActivityNode[*] nodes;
