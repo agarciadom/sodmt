@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
@@ -589,6 +591,12 @@ public class ObjectNode2EditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ObjectNodeFigure() {
+
+			GridLayout layoutThis = new GridLayout();
+			layoutThis.numColumns = 1;
+			layoutThis.makeColumnsEqualWidth = true;
+			this.setLayoutManager(layoutThis);
+
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
@@ -604,7 +612,16 @@ public class ObjectNode2EditPart extends ShapeNodeEditPart {
 
 			fFigureObjectNodeLabelFigure.setText("ObjectNode");
 
-			this.add(fFigureObjectNodeLabelFigure);
+			GridData constraintFFigureObjectNodeLabelFigure = new GridData();
+			constraintFFigureObjectNodeLabelFigure.verticalAlignment = GridData.CENTER;
+			constraintFFigureObjectNodeLabelFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureObjectNodeLabelFigure.horizontalIndent = 0;
+			constraintFFigureObjectNodeLabelFigure.horizontalSpan = 1;
+			constraintFFigureObjectNodeLabelFigure.verticalSpan = 1;
+			constraintFFigureObjectNodeLabelFigure.grabExcessHorizontalSpace = true;
+			constraintFFigureObjectNodeLabelFigure.grabExcessVerticalSpace = true;
+			this.add(fFigureObjectNodeLabelFigure,
+					constraintFFigureObjectNodeLabelFigure);
 
 		}
 

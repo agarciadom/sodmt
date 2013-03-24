@@ -84,12 +84,13 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					NonResizableEditPolicy nrPolicy = new NonResizableEditPolicy();
 					nrPolicy.setDragAllowed(false);
 					result = nrPolicy;
-					
+
 				}
 				return result;
 			}
@@ -351,8 +352,9 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 
 			fActivityPartitionNodesCompartmentFigure = new RectangleFigure();
 
-			fActivityPartitionNodesCompartmentFigure.setFill(false);
 			fActivityPartitionNodesCompartmentFigure.setOutline(false);
+			fActivityPartitionNodesCompartmentFigure.setFill(false);
+			fActivityPartitionNodesCompartmentFigure.setOpaque(false);
 			fActivityPartitionNodesCompartmentFigure.setBorder(createBorder0());
 
 			GridData constraintFActivityPartitionNodesCompartmentFigure = new GridData();

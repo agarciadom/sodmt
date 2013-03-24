@@ -1,4 +1,5 @@
-var partFD = GmfGraph!FigureDescriptor.all.selectOne(f|f.name = 'ActivityPartitionFigure');
+// --- ACTIVITY PARTITIONS ---
+var partFD = findFigureDescriptor('ActivityPartitionFigure');
 var partF = partFD.actualFigure;
 var oldLabel = partF.children.selectOne(f|f.name='ActivityPartitionLabelFigure');
 var oldCompartment = partF.children.selectOne(f|f.name='ActivityPartitionNodesCompartmentFigure');
@@ -41,3 +42,25 @@ compartment.layoutData.horizontalAlignment = GmfGraph!Alignment#FILL;
 compartment.layoutData.verticalAlignment = GmfGraph!Alignment#FILL;
 compartment.border = new GmfGraph!CustomBorder;
 compartment.border.qualifiedClassName = 'serviceComposition.diagram.borders.LeftBorder';
+
+// --- ACTION NODES ---
+findFigure('ActionFigure').centerContents();
+findFigure('ObjectNodeFigure').centerContents();
+
+operation findFigureDescriptor(name : String) {
+  return GmfGraph!FigureDescriptor.all.selectOne(f|f.name = name);
+}
+
+operation findFigure(name : String) {
+  return GmfGraph!Shape.all.selectOne(f|f.name = name);
+}
+
+$pre self.children.size() = 1
+operation GmfGraph!Shape centerContents() {
+  self.layout = new GmfGraph!GridLayout;
+
+  var child = self.children.first;
+  child.layoutData = new GmfGraph!GridLayoutData;
+  child.layoutData.grabExcessVerticalSpace = true;
+  child.layoutData.grabExcessHorizontalSpace = true;
+}

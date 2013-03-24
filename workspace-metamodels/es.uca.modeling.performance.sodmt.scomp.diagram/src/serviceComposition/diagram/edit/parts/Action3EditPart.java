@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RoundedRectangle;
@@ -29,6 +31,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.draw2d.CenterLayout;
 import org.eclipse.swt.graphics.Color;
 
 /**
@@ -606,6 +609,12 @@ public class Action3EditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ActionFigure() {
+
+			GridLayout layoutThis = new GridLayout();
+			layoutThis.numColumns = 1;
+			layoutThis.makeColumnsEqualWidth = true;
+			this.setLayoutManager(layoutThis);
+
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
 					getMapMode().DPtoLP(8)));
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
@@ -623,7 +632,16 @@ public class Action3EditPart extends ShapeNodeEditPart {
 
 			fFigureActionLabelFigure.setText("Action");
 
-			this.add(fFigureActionLabelFigure);
+			GridData constraintFFigureActionLabelFigure = new GridData();
+			constraintFFigureActionLabelFigure.verticalAlignment = GridData.CENTER;
+			constraintFFigureActionLabelFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureActionLabelFigure.horizontalIndent = 0;
+			constraintFFigureActionLabelFigure.horizontalSpan = 1;
+			constraintFFigureActionLabelFigure.verticalSpan = 1;
+			constraintFFigureActionLabelFigure.grabExcessHorizontalSpace = true;
+			constraintFFigureActionLabelFigure.grabExcessVerticalSpace = true;
+			this.add(fFigureActionLabelFigure,
+					constraintFFigureActionLabelFigure);
 
 		}
 
