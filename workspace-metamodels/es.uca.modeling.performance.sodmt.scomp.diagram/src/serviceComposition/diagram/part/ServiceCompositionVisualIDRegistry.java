@@ -105,7 +105,7 @@ public class ServiceCompositionVisualIDRegistry {
 		String containerModelID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getModelID(containerView);
 		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID) && !"sp".equals(containerModelID)) { //$NON-NLS-1$
+				.equals(containerModelID) && !"sc".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
@@ -342,7 +342,7 @@ public class ServiceCompositionVisualIDRegistry {
 		String containerModelID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getModelID(containerView);
 		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID) && !"sp".equals(containerModelID)) { //$NON-NLS-1$
+				.equals(containerModelID) && !"sc".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;

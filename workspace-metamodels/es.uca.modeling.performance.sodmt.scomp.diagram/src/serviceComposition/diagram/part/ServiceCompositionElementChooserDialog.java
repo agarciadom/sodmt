@@ -132,7 +132,7 @@ public class ServiceCompositionElementChooserDialog extends Dialog {
 	 */
 	private boolean isValidModelFile(IFile file) {
 		String fileExtension = file.getFullPath().getFileExtension();
-		return "sp".equals(fileExtension); //$NON-NLS-1$
+		return "sc".equals(fileExtension); //$NON-NLS-1$
 	}
 
 	/**

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see serviceComposition.ServiceCompositionPackage#getServiceComposition()
- * @model annotation="gmf.diagram model.extension='sp' diagram.extension='spdiag'"
+ * @model annotation="gmf.diagram model.extension='sc' diagram.extension='scdiag'"
  * @generated
  */
 public interface ServiceComposition extends EObject

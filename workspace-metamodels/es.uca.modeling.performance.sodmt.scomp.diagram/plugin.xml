@@ -7,13 +7,13 @@
 
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
-      <fileTypes type="text" extension="spdiag"/>
+      <fileTypes type="text" extension="scdiag"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
       <?gmfgen generated="true"?>
       <parser
-         type="spdiag"
+         type="scdiag"
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
@@ -24,7 +24,7 @@
          id="serviceComposition.diagram.part.ServiceCompositionDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/ServiceCompositionDiagramFile.gif"
-         extensions="spdiag"
+         extensions="scdiag"
          default="true"
          class="serviceComposition.diagram.part.ServiceCompositionDiagramEditor"
          matchingStrategy="serviceComposition.diagram.part.ServiceCompositionMatchingStrategy"
@@ -58,7 +58,7 @@
       <?gmfgen generated="true"?>
       <objectContribution
             id="es.uca.modeling.performance.sodmt.scomp.diagram.InitDiagram"
-            nameFilter="*.sp"
+            nameFilter="*.sc"
             objectClass="org.eclipse.core.resources.IFile">
          <action
                label="%initDiagramActionLabel"
@@ -254,7 +254,7 @@
       <viewProvider class="serviceComposition.diagram.providers.ServiceCompositionViewProvider">
          <Priority name="Lowest"/>
          <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
-            <method name="getType()" value="sp"/>
+            <method name="getType()" value="sc"/>
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ServiceComposition"/>
@@ -762,7 +762,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="spdiag"/>
+        	      <test property="org.eclipse.core.resources.extension" value="scdiag"/>
                </and>
                <instanceof value="serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem"/>
            	   <adapt type="org.eclipse.gmf.runtime.notation.View">
@@ -785,7 +785,7 @@
                <or>
 	              <and>
     	             <instanceof value="org.eclipse.core.resources.IFile"/>
-        	         <test property="org.eclipse.core.resources.extension" value="spdiag"/>
+        	         <test property="org.eclipse.core.resources.extension" value="scdiag"/>
                   </and>
                   <instanceof value="serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem"/>
                </or>
@@ -804,7 +804,7 @@
             <or>
 	           <and>
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
-        	      <test property="org.eclipse.core.resources.extension" value="sp"/>
+        	      <test property="org.eclipse.core.resources.extension" value="sc"/>
                </and>
                <instanceof value="serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem"/>
             </or>

@@ -889,8 +889,8 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        source, 
        new String[] 
        {
-       "model.extension", "sp",
-       "diagram.extension", "spdiag"
+       "model.extension", "sc",
+       "diagram.extension", "scdiag"
        });																					
   }
 

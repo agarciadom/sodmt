@@ -106,7 +106,7 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 	 */
 	public void addPages() {
 		diagramModelFilePage = new serviceComposition.diagram.part.ServiceCompositionCreationWizardPage(
-				"DiagramModelFile", getSelection(), "spdiag"); //$NON-NLS-1$ //$NON-NLS-2$
+				"DiagramModelFile", getSelection(), "scdiag"); //$NON-NLS-1$ //$NON-NLS-2$
 		diagramModelFilePage
 				.setTitle(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage
@@ -114,16 +114,16 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 		addPage(diagramModelFilePage);
 
 		domainModelFilePage = new serviceComposition.diagram.part.ServiceCompositionCreationWizardPage(
-				"DomainModelFile", getSelection(), "sp") { //$NON-NLS-1$ //$NON-NLS-2$
+				"DomainModelFile", getSelection(), "sc") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
 					fileName = fileName.substring(0, fileName.length()
-							- ".spdiag".length()); //$NON-NLS-1$
+							- ".scdiag".length()); //$NON-NLS-1$
 					setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
 							.getUniqueFileName(getContainerFullPath(),
-									fileName, "sp")); //$NON-NLS-1$
+									fileName, "sc")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}

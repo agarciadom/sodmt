@@ -20,7 +20,7 @@ public class ServiceCompositionUriEditorInputTester extends PropertyTester {
 			return false;
 		}
 		URIEditorInput editorInput = (URIEditorInput) receiver;
-		return "spdiag".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
+		return "scdiag".equals(editorInput.getURI().fileExtension()); //$NON-NLS-1$
 	}
 
 }

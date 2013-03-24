@@ -85,7 +85,7 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 		myFileCreationPage.setContainerFullPath(filePath);
 		myFileCreationPage
 				.setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-						.getUniqueFileName(filePath, fileName, "spdiag")); //$NON-NLS-1$
+						.getUniqueFileName(filePath, fileName, "scdiag")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageName);
