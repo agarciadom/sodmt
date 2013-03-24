@@ -865,11 +865,11 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     // Create annotations
     // gmf.diagram
     createGmfAnnotations();
-    // gmf.compartment
-    createGmf_1Annotations();
-    // gmf.link
-    createGmf_2Annotations();
     // gmf.node
+    createGmf_1Annotations();
+    // gmf.compartment
+    createGmf_2Annotations();
+    // gmf.link
     createGmf_3Annotations();
     // gmf.label
     createGmf_4Annotations();
@@ -891,83 +891,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "model.extension", "sc",
        "diagram.extension", "scdiag"
-       });																					
-  }
-
-  /**
-   * Initializes the annotations for <b>gmf.compartment</b>.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void createGmf_1Annotations()
-  {
-    String source = "gmf.compartment";			
-    addAnnotation
-      (getActivityPartition_Nodes(), 
-       source, 
-       new String[] 
-       {
-       });															
-    addAnnotation
-      (getStructuredActivityNode_Nodes(), 
-       source, 
-       new String[] 
-       {
-       });						
-  }
-
-  /**
-   * Initializes the annotations for <b>gmf.link</b>.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void createGmf_2Annotations()
-  {
-    String source = "gmf.link";				
-    addAnnotation
-      (activityEdgeEClass, 
-       source, 
-       new String[] 
-       {
-       "source", "source",
-       "target", "target",
-       "width", "3",
-       "target.decoration", "arrow"
-       });								
-    addAnnotation
-      (controlFlowEClass, 
-       source, 
-       new String[] 
-       {
-       "tool.name", "Control Flow",
-       "label", "condition,probability",
-       "label.view.pattern", "[{0}] (p = {1})",
-       "label.edit.pattern", "{0} : {1,number}",
-       "label.text", " ",
-       "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
-       "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)"
-       });		
-    addAnnotation
-      (objectFlowEClass, 
-       source, 
-       new String[] 
-       {
-       "tool.name", "Object Flow",
-       "style", "dash",
-       "source.constraint", "self.oclIsKindOf(PerformanceAnnotation)",
-       "target.constraint", "(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)"
-       });				
-    addAnnotation
-      (getExecutableNode_Annotation(), 
-       source, 
-       new String[] 
-       {
-       "incoming", "true",
-       "style", "dash",
-       "tool.name", "Link Performance Annotation"
-       });								
+       });																						
   }
 
   /**
@@ -976,9 +900,17 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void createGmf_3Annotations()
+  protected void createGmf_1Annotations()
   {
-    String source = "gmf.node";					
+    String source = "gmf.node";			
+    addAnnotation
+      (activityPartitionEClass, 
+       source, 
+       new String[] 
+       {
+       "label", "name",
+       "label.icon", "false"
+       });				
     addAnnotation
       (performanceAnnotationEClass, 
        source, 
@@ -1102,6 +1034,83 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
   }
 
   /**
+   * Initializes the annotations for <b>gmf.compartment</b>.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void createGmf_2Annotations()
+  {
+    String source = "gmf.compartment";				
+    addAnnotation
+      (getActivityPartition_Nodes(), 
+       source, 
+       new String[] 
+       {
+       "collapsible", "false"
+       });															
+    addAnnotation
+      (getStructuredActivityNode_Nodes(), 
+       source, 
+       new String[] 
+       {
+       });						
+  }
+
+  /**
+   * Initializes the annotations for <b>gmf.link</b>.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void createGmf_3Annotations()
+  {
+    String source = "gmf.link";					
+    addAnnotation
+      (activityEdgeEClass, 
+       source, 
+       new String[] 
+       {
+       "source", "source",
+       "target", "target",
+       "width", "3",
+       "target.decoration", "arrow"
+       });								
+    addAnnotation
+      (controlFlowEClass, 
+       source, 
+       new String[] 
+       {
+       "tool.name", "Control Flow",
+       "label", "condition,probability",
+       "label.view.pattern", "[{0}] (p = {1})",
+       "label.edit.pattern", "{0} : {1,number}",
+       "label.text", " ",
+       "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
+       "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)"
+       });		
+    addAnnotation
+      (objectFlowEClass, 
+       source, 
+       new String[] 
+       {
+       "tool.name", "Object Flow",
+       "style", "dash",
+       "source.constraint", "self.oclIsKindOf(PerformanceAnnotation)",
+       "target.constraint", "(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)"
+       });				
+    addAnnotation
+      (getExecutableNode_Annotation(), 
+       source, 
+       new String[] 
+       {
+       "incoming", "true",
+       "style", "dash",
+       "tool.name", "Link Performance Annotation"
+       });								
+  }
+
+  /**
    * Initializes the annotations for <b>gmf.label</b>.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1109,7 +1118,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    */
   protected void createGmf_4Annotations()
   {
-    String source = "gmf.label";						
+    String source = "gmf.label";							
     addAnnotation
       (getPerformanceAnnotation_ConcurrentUsers(), 
        source, 

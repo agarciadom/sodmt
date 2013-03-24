@@ -3,6 +3,9 @@
  */
 package serviceComposition.diagram.edit.parts;
 
+import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.GridData;
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
@@ -23,11 +26,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.draw2d.labels.VerticalLabel;
 import org.eclipse.swt.graphics.Color;
+
+import serviceComposition.diagram.borders.LeftBorder;
 
 /**
  * @generated
@@ -73,16 +78,18 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated no
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					result = new NonResizableEditPolicy();
+					NonResizableEditPolicy nrPolicy = new NonResizableEditPolicy();
+					nrPolicy.setDragAllowed(false);
+					result = nrPolicy;
+					
 				}
 				return result;
 			}
@@ -296,7 +303,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
-		private WrappingLabel fFigureActivityPartitionLabelFigure;
+		private VerticalLabel fFigureActivityPartitionLabelFigure;
 		/**
 		 * @generated
 		 */
@@ -306,10 +313,16 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public ActivityPartitionFigure() {
+
+			GridLayout layoutThis = new GridLayout();
+			layoutThis.numColumns = 2;
+			layoutThis.makeColumnsEqualWidth = false;
+			this.setLayoutManager(layoutThis);
+
 			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
 					getMapMode().DPtoLP(8)));
-			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(-4),
+					getMapMode().DPtoLP(5), getMapMode().DPtoLP(-4),
 					getMapMode().DPtoLP(5)));
 			createContents();
 		}
@@ -319,26 +332,55 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 		 */
 		private void createContents() {
 
-			fFigureActivityPartitionLabelFigure = new WrappingLabel();
+			fFigureActivityPartitionLabelFigure = new VerticalLabel();
 
 			fFigureActivityPartitionLabelFigure.setText("ActivityPartition");
 			fFigureActivityPartitionLabelFigure.setMaximumSize(new Dimension(
 					getMapMode().DPtoLP(10000), getMapMode().DPtoLP(50)));
 
-			this.add(fFigureActivityPartitionLabelFigure);
+			GridData constraintFFigureActivityPartitionLabelFigure = new GridData();
+			constraintFFigureActivityPartitionLabelFigure.verticalAlignment = GridData.FILL;
+			constraintFFigureActivityPartitionLabelFigure.horizontalAlignment = GridData.CENTER;
+			constraintFFigureActivityPartitionLabelFigure.horizontalIndent = 0;
+			constraintFFigureActivityPartitionLabelFigure.horizontalSpan = 1;
+			constraintFFigureActivityPartitionLabelFigure.verticalSpan = 1;
+			constraintFFigureActivityPartitionLabelFigure.grabExcessHorizontalSpace = false;
+			constraintFFigureActivityPartitionLabelFigure.grabExcessVerticalSpace = true;
+			this.add(fFigureActivityPartitionLabelFigure,
+					constraintFFigureActivityPartitionLabelFigure);
 
 			fActivityPartitionNodesCompartmentFigure = new RectangleFigure();
 
+			fActivityPartitionNodesCompartmentFigure.setFill(false);
 			fActivityPartitionNodesCompartmentFigure.setOutline(false);
+			fActivityPartitionNodesCompartmentFigure.setBorder(createBorder0());
 
-			this.add(fActivityPartitionNodesCompartmentFigure);
+			GridData constraintFActivityPartitionNodesCompartmentFigure = new GridData();
+			constraintFActivityPartitionNodesCompartmentFigure.verticalAlignment = GridData.FILL;
+			constraintFActivityPartitionNodesCompartmentFigure.horizontalAlignment = GridData.FILL;
+			constraintFActivityPartitionNodesCompartmentFigure.horizontalIndent = 0;
+			constraintFActivityPartitionNodesCompartmentFigure.horizontalSpan = 1;
+			constraintFActivityPartitionNodesCompartmentFigure.verticalSpan = 1;
+			constraintFActivityPartitionNodesCompartmentFigure.grabExcessHorizontalSpace = true;
+			constraintFActivityPartitionNodesCompartmentFigure.grabExcessVerticalSpace = true;
+			this.add(fActivityPartitionNodesCompartmentFigure,
+					constraintFActivityPartitionNodesCompartmentFigure);
 
 		}
 
 		/**
 		 * @generated
 		 */
-		public WrappingLabel getFigureActivityPartitionLabelFigure() {
+		private Border createBorder0() {
+			serviceComposition.diagram.borders.LeftBorder result = new serviceComposition.diagram.borders.LeftBorder();
+
+			return result;
+		}
+
+		/**
+		 * @generated
+		 */
+		public VerticalLabel getFigureActivityPartitionLabelFigure() {
 			return fFigureActivityPartitionLabelFigure;
 		}
 

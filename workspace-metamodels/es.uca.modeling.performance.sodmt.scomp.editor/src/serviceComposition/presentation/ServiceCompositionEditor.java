@@ -157,8 +157,6 @@ import serviceComposition.provider.ServiceCompositionItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
-import serviceProcess.provider.ServiceProcessItemProviderAdapterFactory;
-
 
 /**
  * This is an example of a ServiceComposition model editor.

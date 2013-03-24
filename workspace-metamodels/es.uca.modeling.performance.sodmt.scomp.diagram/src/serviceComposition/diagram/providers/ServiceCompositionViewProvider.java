@@ -651,7 +651,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				node,
 				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 						.getType(serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart.VISUAL_ID),
-				true, false, false, false);
+				false, false, false, false);
 		return node;
 	}
 

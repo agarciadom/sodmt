@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see serviceComposition.ServiceCompositionPackage#getActivityPartition()
- * @model
+ * @model annotation="gmf.node label='name' label.icon='false'"
  * @generated
  */
 public interface ActivityPartition extends NamedElement
@@ -34,6 +34,7 @@ public interface ActivityPartition extends NamedElement
    * @return the value of the '<em>Nodes</em>' containment reference list.
    * @see serviceComposition.ServiceCompositionPackage#getActivityPartition_Nodes()
    * @model containment="true"
+   *        annotation="gmf.compartment collapsible='false'"
    * @generated
    */
   EList<ActivityNode> getNodes();

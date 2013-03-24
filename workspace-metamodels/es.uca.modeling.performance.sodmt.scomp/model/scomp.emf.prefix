@@ -11,8 +11,9 @@ class ServiceComposition {
   val PerformanceAnnotation processPerformance;
 }
 
+@gmf.node(label="name", label.icon="false")
 class ActivityPartition extends NamedElement {
-   @gmf.compartment
+   @gmf.compartment(collapsible="false")
    val ActivityNode[*] nodes;
 }
 

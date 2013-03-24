@@ -8,8 +8,6 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import serviceProcess.provider.ServiceProcessEditPlugin;
-
 /**
  * This is the central singleton for the ServiceComposition editor plugin.
  * <!-- begin-user-doc -->

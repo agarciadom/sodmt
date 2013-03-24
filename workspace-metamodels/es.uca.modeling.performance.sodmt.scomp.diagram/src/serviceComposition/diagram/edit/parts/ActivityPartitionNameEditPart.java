@@ -38,6 +38,8 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.directedit.TextDirectEditManager2;
 import org.eclipse.gmf.tooling.runtime.draw2d.labels.SimpleLabelDelegate;
+import org.eclipse.gmf.tooling.runtime.draw2d.labels.VerticalLabel;
+import org.eclipse.gmf.tooling.runtime.draw2d.labels.VerticalLabelDelegate;
 import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
@@ -111,6 +113,8 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 	protected String getLabelTextHelper(IFigure figure) {
 		if (figure instanceof WrappingLabel) {
 			return ((WrappingLabel) figure).getText();
+		} else if (figure instanceof VerticalLabel) {
+			return ((VerticalLabel) figure).getText();
 		} else if (figure instanceof Label) {
 			return ((Label) figure).getText();
 		} else {
@@ -124,6 +128,8 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 	protected void setLabelTextHelper(IFigure figure, String text) {
 		if (figure instanceof WrappingLabel) {
 			((WrappingLabel) figure).setText(text);
+		} else if (figure instanceof VerticalLabel) {
+			((VerticalLabel) figure).setText(text);
 		} else if (figure instanceof Label) {
 			((Label) figure).setText(text);
 		} else {
@@ -137,6 +143,9 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 	protected Image getLabelIconHelper(IFigure figure) {
 		if (figure instanceof WrappingLabel) {
 			return ((WrappingLabel) figure).getIcon();
+		} else if (figure instanceof VerticalLabel) {
+			//icons are not supported for verical labels now
+			return null;
 		} else if (figure instanceof Label) {
 			return ((Label) figure).getIcon();
 		} else {
@@ -151,6 +160,9 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 		if (figure instanceof WrappingLabel) {
 			((WrappingLabel) figure).setIcon(icon);
 			return;
+		} else if (figure instanceof VerticalLabel) {
+			//icons are not supported for verical labels now, nothing to do
+			return;
 		} else if (figure instanceof Label) {
 			((Label) figure).setIcon(icon);
 			return;
@@ -162,7 +174,7 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 	/**
 	 * @generated
 	 */
-	public void setLabel(WrappingLabel figure) {
+	public void setLabel(VerticalLabel figure) {
 		unregisterVisuals();
 		setFigure(figure);
 		defaultText = getLabelTextHelper(figure);
@@ -196,12 +208,7 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 	 * @generated
 	 */
 	protected Image getLabelIcon() {
-		EObject parserElement = getParserElement();
-		if (parserElement == null) {
-			return null;
-		}
-		return serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImage(parserElement.eClass());
+		return null;
 	}
 
 	/**
@@ -546,6 +553,8 @@ public class ActivityPartitionNameEditPart extends CompartmentEditPart
 			IFigure label = getFigure();
 			if (label instanceof WrappingLabel) {
 				labelDelegate = new WrappingLabelDelegate((WrappingLabel) label);
+			} else if (label instanceof VerticalLabel) {
+				labelDelegate = new VerticalLabelDelegate((VerticalLabel) label);
 			} else {
 				labelDelegate = new SimpleLabelDelegate((Label) label);
 			}

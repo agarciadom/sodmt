@@ -40,12 +40,13 @@ public class ActivityPartitionActivityPartitionNodesCompartmentEditPart extends
 	}
 
 	/**
-	 * @generated
+	 * @generated no
 	 */
 	public IFigure createFigure() {
 		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super
 				.createFigure();
 		result.setTitleVisibility(false);
+		result.setBorder(null);
 		return result;
 	}
 
@@ -54,8 +55,6 @@ public class ActivityPartitionActivityPartitionNodesCompartmentEditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new ResizableCompartmentEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.ActivityPartitionActivityPartitionNodesCompartmentItemSemanticEditPolicy());
