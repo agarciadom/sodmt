@@ -49,7 +49,7 @@ operation correctResults() {
   var epsilon     := 0.0001;
   var startNode   := getStartNode();
   annotateTimeLimits(globalLimit, startNode);
-  for (path in getAllPathsFrom(startNode)) {
+  for (path in getAllExecutionPathsFrom(startNode)) {
     var total := path.collect(a : ExecutableNode | a.getTimeLimit()).sum;
     if (total > globalLimit + epsilon) {
       fail("Total was " + total + ", which is greater than " + globalLimit);

@@ -82,7 +82,7 @@ import '../common/utils.eol';
 *-
 $pre start.isDefined()
 operation annotateTimeLimits(global_limit : Real, start : FlowNode) : Boolean {
-  var paths        := getAllPathsFrom(start);
+  var paths        := getAllExecutionPathsFrom(start);
 
   -- Cache all manual time limits and relax all automatic constraints
   for (path in paths) {

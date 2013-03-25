@@ -4,8 +4,12 @@
    <extension
          point="org.eclipse.epsilon.ewl.emf.wizards">
       <wizards
-            file="ewl/processWizards.ewl"
+            file="ewl/wizards.ewl"
             namespaceURI="www.uca.es/modeling/performance/sodmt">
+      </wizards>
+      <wizards
+            file="ewl/wizards.ewl"
+            namespaceURI="www.uca.es/modeling/performance/sodmt/scomp">
       </wizards>
    </extension>
 

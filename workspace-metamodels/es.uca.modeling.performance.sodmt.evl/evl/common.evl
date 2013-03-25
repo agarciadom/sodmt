@@ -5,16 +5,16 @@ import 'platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/utils.eol';
 context ActivityNode {
 
   constraint MinimumOneIncoming {
-    guard : not self.isKindOf(InitialNode) and not self.isKindOf(PerformanceAnnotation)
-    check : self.incoming.size() >= 1
-    message : 'All activity nodes except initial nodes must have at least one incoming edge'
+    guard : not self.isKindOf(InitialNode) and not self.isKindOf(PerformanceAnnotation) and not self.isKindOf(ObjectNode)
+    check : self.incoming.select(i | i.isKindOf(ControlFlow)).size() >= 1
+    message : 'All activity nodes except initial nodes must have at least one incoming control flow'
   }
 
   constraint MaximumOneIncoming {
     guard : not self.isKindOf(JoinNode)
             and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
-    check : self.incoming.size() <= 1
-    message : 'All activity nodes except joins must have at most one incoming edge'
+    check : self.incoming.select(i | i.isKindOf(ControlFlow)).size() <= 1
+    message : 'All activity nodes except joins must have at most one incoming control flow'
     fix {
       title : 'Add join node in the middle'
       do {
@@ -27,17 +27,17 @@ context ActivityNode {
   -- See above comment for an explanation of why we use both min and max
   -- constraints instead of just one
   constraint MinimumOneOutgoing {
-    guard : not self.isKindOf(FinalNode) and not self.isKindOf(PerformanceAnnotation)
-    check : self.outgoing.size() >= 1
-    message : 'All activity nodes except final nodes must have at least one outgoing edge'
+    guard : not self.isKindOf(FinalNode) and not self.isKindOf(PerformanceAnnotation) and not self.isKindOf(ObjectNode)
+    check : self.outgoing.select(i | i.isKindOf(ControlFlow)).size() >= 1
+    message : 'All activity nodes except final nodes must have at least one outgoing control flow'
   }
 
   constraint MaximumOneOutgoing {
     guard : not self.isKindOf(ForkNode)
             and not self.isKindOf(DecisionNode)
             and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
-    check : self.outgoing.size() <= 1
-    message : 'All activity nodes except forks and decisions must have at most one outgoing edge'
+    check : self.outgoing.select(i | i.isKindOf(ControlFlow)).size() <= 1
+    message : 'All activity nodes except forks and decisions must have at most one outgoing control flow'
     fix {
       title : 'Add fork node in the middle'
       do {
@@ -211,7 +211,7 @@ context InitialNode {
 
   constraint AllPathsFromInitialNodeMustEndInFinalNode {
     guard : self.satisfies('NoCyclesCompleteGraph')
-    check : getAllPathsFrom(self).forAll(r|r.last().isKindOf(FinalNode))
+    check : getAllExecutionPathsFrom(self).forAll(r|r.last().isKindOf(FinalNode))
     message : 'All paths from an initial node must end in a final node'
   }
 
@@ -349,6 +349,42 @@ context DecisionNode {
       return delta <= 0.001;
     }
     message : 'The sum of the probabilities of all the decision outcomes must be equal to 1'
+  }
+}
+
+context ObjectNode {
+  constraint MinimumOneIncomingObjectFlow {
+    check : self.incoming.select(i|i.isKindOf(ObjectFlow)).size() >= 1
+    message : 'Object nodes must have one or more incoming object flows'
+  }
+  constraint MinimumOneOutgoingObjectFlow {
+    check : self.outgoing.select(i|i.isKindOf(ObjectFlow)).size() >= 1
+    message : 'Object nodes must have one or more outgoing object flows'
+  }
+
+  constraint NoIncomingControlFlows {
+    check : self.incoming.select(i|i.isKindOf(ControlFlow)).isEmpty()
+    message : 'Object nodes should not have any incoming control flows'
+    fix {
+      title : 'Remove all incoming control flows'
+      do {
+        for (cf in self.incoming.select(i|i.isKindOf(ControlFlow))) {
+          delete cf;
+        }
+      }
+    }
+  }
+  constraint NoOutgoingControlFlows {
+    check : self.outgoing.select(i|i.isKindOf(ControlFlow)).isEmpty()
+    message : 'Object nodes should not have any outgoing control flows'
+    fix {
+      title : 'Remove all outgoing control flows'
+      do {
+        for (cf in self.outgoing.select(i|i.isKindOf(ControlFlow))) {
+          delete cf;
+        }
+      }
+    }
   }
 }
 

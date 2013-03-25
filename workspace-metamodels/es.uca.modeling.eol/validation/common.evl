@@ -208,7 +208,7 @@ context InitialNode {
 
   constraint AllPathsFromInitialNodeMustEndInFinalNode {
     guard : self.satisfies('NoCyclesCompleteGraph')
-    check : getAllPathsFrom(self).forAll(r|r.last().isKindOf(FinalNode))
+    check : getAllExecutionPathsFrom(self).forAll(r|r.last().isKindOf(FinalNode))
     message : 'All paths from an initial node must end in a final node'
   }
 

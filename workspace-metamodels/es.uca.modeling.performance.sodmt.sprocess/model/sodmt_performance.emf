@@ -75,6 +75,7 @@ class ControlFlow extends ActivityEdge {
     attr double probability = 1;
 }
 
+// In this simplified metamodel, we elide all input/output pins and use regular object flows instead
 @gmf.link(tool.name="Object Flow", style="dash",
           source.constraint="not self.oclIsKindOf(PerformanceAnnotation)",
           target.constraint="(self.oclIsKindOf(ObjectNode) xor oppositeEnd.oclIsKindOf(ObjectNode)) and not self.oclIsKindOf(PerformanceAnnotation)")

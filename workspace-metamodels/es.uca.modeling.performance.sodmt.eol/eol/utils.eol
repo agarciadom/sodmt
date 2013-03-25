@@ -187,7 +187,7 @@ operation addAllReachableNodes(node : ActivityNode, nodeSet : Set) {
 -- to every final node (if the starting node is a FinalNode,
 -- reports an empty set of paths)
 @cached
-operation getAllPathsFrom(start : ActivityNode) {
+operation getAllExecutionPathsFrom(start : ActivityNode) {
   var allPaths := Sequence {};
   auxPathsTo(Sequence { start }, allPaths);
   return allPaths;
@@ -196,11 +196,11 @@ operation getAllPathsFrom(start : ActivityNode) {
 operation auxPathsTo(partialPath : Sequence, allPaths : Sequence) {
   var last_elem := partialPath.last();
 
-  if (last_elem.outgoing.isEmpty()) {
+  var outgoingCF = last_elem.outgoing.select(o|o.isKindOf(ControlFlow));
+  if (outgoingCF.isEmpty()) {
     allPaths.add(partialPath.clone());
   }
-
-  for (descendant in last_elem.outgoing.collect(r|r.target)) {
+  for (descendant in outgoingCF.collect(r|r.target)) {
     partialPath.add(descendant);
     auxPathsTo(partialPath, allPaths);
     partialPath.removeAt(partialPath.size()-1);

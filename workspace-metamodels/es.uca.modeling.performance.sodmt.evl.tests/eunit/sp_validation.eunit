@@ -67,10 +67,26 @@ operation MinimumOneIncoming_initialNode() {
 }
 
 @test
+operation MinimumOneIncoming_objectNode() {
+  sp.newObject();
+  validate();
+  assertNoProblem('MinimumOneIncoming');
+}
+
+@test
 operation MinimumOneIncoming_perfAnnotation() {
   sp.nodes.add(new SP!LocalPerformanceAnnotation);
   validate();
   assertNoProblem('MinimumOneIncoming');
+}
+
+@test
+operation MinimumOneIncoming_objectFlowDoesNotCount() {
+  var a1 = sp.newAction();
+  var a2 = sp.newAction();
+  a1.linkToObject(a1);
+  validate();
+  assertHasProblem('MinimumOneIncoming');
 }
 
 @test
@@ -90,6 +106,15 @@ operation MaximumOneIncoming_action() {
 }
 
 @test
+operation MaximumOneIncoming_actionsWithBothFlowsIsOK() {
+  var a1 = sp.newInitial().newAction();
+  var a2 = a1.newAction();
+  a1.linkToObject(a2);
+  validate();
+  assertNoProblem('MaximumOneIncoming');
+}
+
+@test
 operation MaximumOneIncoming_join() {
   var ini = sp.newInitial();
   var join = ini.newJoin();
@@ -106,6 +131,13 @@ operation MinimumOneOutgoing_finalNode() {
 }
 
 @test
+operation MinimumOneOutgoing_objectNode() {
+  sp.newObject();
+  validate();
+  assertNoProblem('MinimumOneOutgoing');
+}
+
+@test
 operation MinimumOneOutgoing_perfAnnotation() {
   sp.nodes.add(new SP!LocalPerformanceAnnotation);
   validate();
@@ -115,6 +147,15 @@ operation MinimumOneOutgoing_perfAnnotation() {
 @test
 operation MinimumOneOutgoing_action() {
   sp.newAction();
+  validate();
+  assertHasProblem('MinimumOneOutgoing');
+}
+
+@test
+operation MinimumOneOutgoing_objectFlowDoesNotCount() {
+  var a1 = sp.newAction();
+  var a2 = sp.newAction();
+  a1.linkToObject(a1);
   validate();
   assertHasProblem('MinimumOneOutgoing');
 }
@@ -142,6 +183,15 @@ operation MaximumOneOutgoing_decision() {
   var dec = sp.newDecision();
   var fin = dec.newFinal();
   dec.linkTo(fin);
+  validate();
+  assertNoProblem('MaximumOneOutgoing');
+}
+
+@test
+operation MaximumOneOutgoing_actionsWithBotFlowsIsOK() {
+  var a1 = sp.newInitial().newAction();
+  var a2 = a1.newAction();
+  a1.linkToObject(a2);
   validate();
   assertNoProblem('MaximumOneOutgoing');
 }
@@ -526,6 +576,15 @@ operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithFinal
 }
 
 @test
+operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithFinalAfterObjectFlow() {
+  var a = sp.newInitial().newAction();
+  var f = sp.newFinal();
+  a.linkToObject(f);
+  validate();
+  assertHasProblem('AllPathsFromInitialNodeMustEndInFinalNode');
+}
+
+@test
 operation InitialNode_AllPathsFromInitialNodeMustEndInFinalNode_onePathWithFinal_onePathWithoutFinal() {
   var f = sp.newInitial().newFork();
   f.newAction().newAction().newFinal();
@@ -768,6 +827,65 @@ operation DecisionNode_TotalProbabilityIsOne_twoOutgoingSumMoreThanOne() {
   sp.newAction().linkFrom(d, 'b', 0.6d);
   validate();
   assertHasProblem('TotalProbabilityIsOne');
+}
+
+@test
+operation ObjectNode_noIncomingAndNoOutgoing() {
+  sp.newObject();
+  validate();
+  assertHasProblems(Sequence {'MinimumOneIncomingObjectFlow', 'MinimumOneOutgoingObjectFlow'});
+  assertNoProblems(Sequence {'NoIncomingControlFlows', 'NoOutgoingControlFlows'});
+}
+
+@test
+operation ObjectNode_onlyIncoming() {
+  var a = sp.newAction();
+  var o = sp.newObject();
+  a.linkToObject(o);
+  validate();
+  assertNoProblems(Sequence {'MinimumOneIncomingObjectFlow', 'NoIncomingControlFlows', 'NoOutgoingControlFlows'});
+  assertHasProblem('MinimumOneOutgoingObjectFlow');
+}
+
+@test
+operation ObjectNode_onlyOutgoing() {
+  var a = sp.newAction();
+  var o = sp.newObject();
+  o.linkToObject(a);
+  validate();
+  assertHasProblem('MinimumOneIncomingObjectFlow');
+  assertNoProblems(Sequence {'MinimumOneOutgoingObjectFlow', 'NoIncomingControlFlows', 'NoOutgoingControlFlows'});
+}
+
+@test
+operation ObjectNode_bothIncomingAndOutgoing() {
+  var a = sp.newAction();
+  var o = sp.newObject();
+  var b = sp.newAction();
+  a.linkToObject(o);
+  o.linkToObject(b);
+  validate();
+  assertNoProblems(Sequence {'MinimumOneIncomingObjectFlow', 'MinimumOneOutgoingObjectFlow', 'NoIncomingControlFlows', 'NoOutgoingControlFlows'});
+}
+
+@Test
+operation ObjectNode_incomingControlFlow() {
+  var a = sp.newAction();
+  var o = sp.newObject();
+  a.linkTo(o);
+  validate();
+  assertHasProblem('NoIncomingControlFlows');
+  assertNoProblem('NoOutgoingControlFlows');
+}
+
+@Test
+operation ObjectNode_outgoingControlFlow() {
+  var a = sp.newAction();
+  var o = sp.newObject();
+  o.linkTo(a);
+  validate();
+  assertNoProblem('NoIncomingControlFlows');
+  assertHasProblem('NoOutgoingControlFlows');
 }
 
 -- TEST TEMPLATES --

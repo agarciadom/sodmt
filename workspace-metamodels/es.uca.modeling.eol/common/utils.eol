@@ -165,7 +165,7 @@ operation addAllReachableNodes(node : FlowNode, nodeSet : Set) {
 -- to every final node (if the starting node is a FinalNode,
 -- reports an empty set of paths)
 @cached
-operation getAllPathsFrom(start : FlowNode) {
+operation getAllExecutionPathsFrom(start : FlowNode) {
   var allPaths := Sequence {};
   auxPathsTo(Sequence { start }, allPaths);
   return allPaths;
