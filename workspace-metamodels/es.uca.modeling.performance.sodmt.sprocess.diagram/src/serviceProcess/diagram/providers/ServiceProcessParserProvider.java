@@ -443,7 +443,7 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 							.getControlFlow_Condition(),
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getControlFlow_Probability() };
-			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+			serviceProcess.diagram.parsers.ControlFlowLabelParser parser = new serviceProcess.diagram.parsers.ControlFlowLabelParser(
 					features);
 			parser.setViewPattern("[{0}] (p = {1})"); //$NON-NLS-1$
 			parser.setEditorPattern("{0} : {1,number}"); //$NON-NLS-1$

@@ -1086,6 +1086,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "label.view.pattern", "[{0}] (p = {1})",
        "label.edit.pattern", "{0} : {1,number}",
        "label.text", " ",
+       "label.parser", "ControlFlowLabelParser",
        "source.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)",
        "target.constraint", "self <> oppositeEnd and not self.oclIsKindOf(ObjectNode) and not self.oclIsKindOf(PerformanceAnnotation)"
        });		

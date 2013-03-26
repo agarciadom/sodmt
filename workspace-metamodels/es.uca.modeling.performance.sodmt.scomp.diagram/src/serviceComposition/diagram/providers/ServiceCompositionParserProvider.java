@@ -632,7 +632,7 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 							.getControlFlow_Condition(),
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getControlFlow_Probability() };
-			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
+			serviceComposition.diagram.parsers.ControlFlowLabelParser parser = new serviceComposition.diagram.parsers.ControlFlowLabelParser(
 					features);
 			parser.setViewPattern("[{0}] (p = {1})"); //$NON-NLS-1$
 			parser.setEditorPattern("{0} : {1,number}"); //$NON-NLS-1$
