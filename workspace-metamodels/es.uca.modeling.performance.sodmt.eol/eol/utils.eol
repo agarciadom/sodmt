@@ -18,8 +18,12 @@ operation ActivityNode getGlobalPerformanceAnnotation() : PerformanceAnnotation 
     // Initial node at the outermost level
     return self.eContainer.processPerformance;
   }
+  else if (self.eContainer.eClass.name = "ActivityPartition") {
+    // Activity partition (node is inside two eContainers)
+  	return self.eContainer.eContainer.processPerformance;
+  }
   else {
-    // Only the StructuredActivityNode can contain other nodes inside it
+    // StructuredActivityNode can contain other nodes inside it
     return self.eContainer.annotation;
   }
 }

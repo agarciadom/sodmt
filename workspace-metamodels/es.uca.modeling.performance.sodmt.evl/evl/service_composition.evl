@@ -1,0 +1,51 @@
+-- Diagram constraints --------------------------
+
+import 'common.evl';
+
+context ServiceComposition {
+  constraint ProcessPerformanceMustBeDefined {
+    check : self.processPerformance.isDefined()
+    message : 'The performance constraints for the process must be defined'
+    fix {
+      title : 'Create a default global performance constraint'
+      do {
+        self.processPerformance := new ProcessPerformanceAnnotation;
+      }
+    }
+  }
+
+  constraint MinimumOneFinalNode {
+    check : not FinalNode.all.isEmpty()
+    message : 'There must be at least one final node in the service composition'
+  }
+
+  constraint MinimumOnePartition {
+    check : not self.partitions.isEmpty()
+    message : 'There must be at least one partition in the service composition'
+  }
+
+  constraint OnlyObjectNodesOutsidePartitions {
+    check : self.nodes.forAll(n | n.isKindOf(ObjectNode))
+    message : 'Only object nodes are allowed outside the partitions'
+    fix {
+      title : 'Remove offending nodes'
+      do {
+        for (n in self.nodes.select(n | not n.isKindOf(ObjectNode))) {
+          delete n;
+        }
+      }
+    }
+  }
+
+  constraint OneInitialOverAllPartitions {
+    check : self.partitions.collect(p | p.nodes.select(n|n.isKindOf(InitialNode))).flatten().size() = 1
+    message : 'There should be exactly one initial node over all partitions'
+  }
+}
+
+context ActivityPartition {
+  constraint PartitionMustHaveName {
+    check : self.name.isDefined()
+    message : 'Every partition should have a name'
+  }
+}

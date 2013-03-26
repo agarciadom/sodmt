@@ -131,6 +131,14 @@ context ControlFlow {
     check : not self.target.isKindOf(ObjectNode)
     message : 'The target of a control flow cannot be an object node'
   }
+
+  constraint CannotCrossStructuredNodes {
+    guard : self.satisfies('BothEndsDefined')
+            and (self.source.eContainer.isKindOf(StructuredActivityNode)
+                 or self.target.eContainer.isKindOf(StructuredActivityNode))
+    check : self.source.eContainer == self.target.eContainer
+    message : 'Control flows should not cross the boundaries of a structured node'
+  }
 }
 
 context ObjectFlow {

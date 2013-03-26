@@ -14,23 +14,23 @@
 <booleanAttribute key="includeOptional" value="true"/>
 <stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/es.uca.modeling.performance.sodmt.evl.tests/src/es/uca/modelling/performance/sodmt/evl/tests/ServiceProcessValidationTests.java"/>
+<listEntry value="/es.uca.modeling.performance.sodmt.evl.tests"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-<listEntry value="1"/>
+<listEntry value="4"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=es.uca.modeling.performance.sodmt.evl.tests"/>
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="es.uca.modelling.performance.sodmt.evl.tests.ServiceProcessValidationTests"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value=""/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="es.uca.modeling.performance.sodmt.evl.tests"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dosgi.requiredJavaVersion=1.5 -Dhelp.lucene.tokenizer=standard -Dosgi.requiredJavaVersion=1.5 -Dhelp.lucene.tokenizer=standard -Dorg.eclipse.swt.browser.UseWebKitGTK=true -XX:MaxPermSize=256m -Xms512m -Xmx1024m -XX:+UseParallelGC"/>
 <stringAttribute key="pde.version" value="3.3"/>
 <stringAttribute key="product" value="org.eclipse.platform.ide"/>
-<booleanAttribute key="run_in_ui_thread" value="true"/>
+<booleanAttribute key="run_in_ui_thread" value="false"/>
 <booleanAttribute key="show_selected_only" value="false"/>
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>

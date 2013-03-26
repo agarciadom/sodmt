@@ -1,0 +1,98 @@
+import 'evl_utils.eol';
+
+@setup
+operation setUp() {
+  -- available directly within the @test
+  var sc = new SC!ServiceComposition;
+}
+
+@test
+operation ServiceComposition_noPartitions() {
+  validate();
+  assertHasProblem('MinimumOnePartition');
+}
+
+@test
+operation ServiceComposition_objectNodesOutsidePartitionsIsOK() {
+  sc.newObject('A');
+  validate();
+  assertNoProblem('OnlyObjectNodesOutsidePartitions');
+}
+
+@test
+operation ServiceComposition_objectNodesOutsidePartitionsIsOK() {
+  sc.nodes.add(new SC!InitialNode);
+  validate();
+  assertHasProblem('OnlyObjectNodesOutsidePartitions');
+}
+
+@test
+operation ActivityPartition_undefinedName() {
+  sc.partitions.add(new SC!ActivityPartition);
+  validate();
+  assertHasProblem('PartitionMustHaveName');
+  assertNoProblem('MinimumOnePartition');
+}
+
+@test
+operation ActivityPartition_noInitialNodesIsBad() {
+  sc.newPartition('A');
+  sc.newPartition('B');
+  validate();
+  assertNoProblems(Sequence {'PartitionMustHaveName', 'MinimumOnePartition'});
+  assertHasProblem('OneInitialOverAllPartitions');
+}
+
+@test
+operation ActivityPartition_oneInitialNodeIsGood() {
+  var pa = sc.newPartition('A');
+  sc.newPartition('B');
+  pa.newInitial();
+  validate();
+  assertNoProblems(Sequence {'PartitionMustHaveName', 'MinimumOnePartition', 'OneInitialOverAllPartitions'});
+}
+
+@test
+operation ActivityPartition_twoInitialNodesIsBad() {
+  var pa = sc.newPartition('A');
+  var pb = sc.newPartition('B');
+  pa.newInitial();
+  pb.newInitial();
+  validate();
+  assertNoProblems(Sequence {'PartitionMustHaveName', 'MinimumOnePartition'});
+  assertHasProblem('OneInitialOverAllPartitions');
+}
+
+@test
+operation ActivityPartition_threeInitialNodesIsBad() {
+  var pa = sc.newPartition('A');
+  var pb = sc.newPartition('B');
+  pa.newInitial(); pa.newInitial();
+  pb.newInitial();
+  validate();
+  assertNoProblems(Sequence {'PartitionMustHaveName', 'MinimumOnePartition'});
+  assertHasProblem('OneInitialOverAllPartitions');
+}
+
+
+-- UTILITY OPERATIONS
+
+operation ServiceComposition newPartition(name: String) {
+  var p = new SC!ActivityPartition;
+  p.name = name;
+  self.partitions.add(p);
+  return p;
+}
+
+operation ServiceComposition newObject(name: String) {
+  var o = new SC!ObjectNode;
+  o.name = name;
+  self.nodes.add(o);
+  return o;
+}
+
+operation ActivityPartition newInitial() {
+  var i = new SC!InitialNode;
+  self.nodes.add(i);
+  return i;
+}

@@ -1,3 +1,5 @@
+import 'evl_utils.eol';
+
 @setup
 operation setUp() {
   -- available directly within the @test
@@ -368,6 +370,22 @@ operation ControlFlow_TargetMustNotBeObjectNode_targetIsObjectNode() {
   sp.newAction().newObject();
   validate();
   assertHasProblem('TargetMustNotBeObjectNode');
+}
+
+@test
+operation ControlFlow_CannotCrossStructuredNodes_different() {
+  var a1 = sp.newSActivity().newAction();
+  var a2 = sp.newSActivity().newAction();
+  a1.linkTo(a2);
+  validate();
+  assertHasProblem('CannotCrossStructuredNodes');
+}
+
+@test
+operation ControlFlow_CannotCrossStructuredNodes_same() {
+  sp.newSActivity().newAction().newAction();
+  validate();
+  assertNoProblem('CannotCrossStructuredNodes');
 }
 
 @test
@@ -969,6 +987,14 @@ operation SP!ServiceProcess newSActivity() : SP!StructuredActivityNode {
   return n;
 }
 
+-- STRUCTURED NODE OPERATIONS --
+
+operation SP!StructuredActivityNode newAction() : SP!Action {
+  var a = new SP!Action;
+  self.nodes.add(a);
+  return a;
+}
+
 -- ACTIVITY NODE OPERATIONS --
 
 operation SP!ActivityNode newAction() : SP!Action {
@@ -1030,37 +1056,4 @@ operation SP!ActivityNode linkTo(other : SP!ActivityNode) : SP!ControlFlow {
 
 operation SP!ActivityNode linkFrom(other : SP!ActivityNode) : SP!ControlFlow {
   return other.linkTo(self);
-}
-
--- UTILITY OPERATIONS --
-
-operation assertHasProblem(ruleName : String) {
-  assertHasProblems(Sequence { ruleName });
-}
-
-operation assertNoProblem(ruleName : String) {
-  assertNoProblems(Sequence { ruleName });
-}
-
-operation assertHasProblems(ruleNames : Sequence) {
-  var problems = EVL!EvlUnsatisfiedConstraint.allInstances;
-
-  for (ruleName in ruleNames) {
-    if (not problems.exists(p|p.constraint.name = ruleName)) {
-      if (problems.isEmpty) {
-        fail("The model did not violate rule '" + ruleName + "' nor any other");
-      } else {
-        var problemNames = problems.collect(p|p.constraint.name).concat(",");
-        fail("The model did not violate rule '" + ruleName + "', but these ones: " + problemNames);
-      }
-    }
-  }
-}
-
-operation assertNoProblems(ruleNames : Sequence) {
-  var problems = EVL!EvlUnsatisfiedConstraint.allInstances;
-
-  for (ruleName in ruleNames) {
-    assertFalse("The model should not violate rule '" + ruleName + "'", problems.exists(p|p.constraint.name = ruleName));
-  }
 }

@@ -8,4 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: es.uca.modeling.performance.sodmt.sprocess,
  org.eclipse.epsilon.eunit.junit,
  org.eclipse.epsilon.emc.emf,
- org.junit
+ org.junit,
+ es.uca.modeling.performance.sodmt.scomp;bundle-version="1.0.0"
