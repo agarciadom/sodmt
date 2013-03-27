@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="es.uca.modeling.performance.sodmt.sprocess"
+            name="SODM+T Service Process Models">
+      </category>
+      <command
+            categoryId="es.uca.modeling.performance.sodmt.sprocess"
+            id="es.uca.modeling.performance.sodmt.sprocess.contextmenu.genscomp"
+            name="Generate Service Composition Model">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uca.modeling.performance.sodmt.sprocess.contextmenu.handlers.GenerateServiceCompositionModelHandler"
+            commandId="es.uca.modeling.performance.sodmt.sprocess.contextmenu.genscomp">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <command
+               commandId="es.uca.modeling.performance.sodmt.sprocess.contextmenu.genscomp"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="es.uca.modeling.performance.sodmt.sprocess.contextmenu.isOneServiceProcess">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+         <command
+               commandId="es.uca.modeling.performance.sodmt.sprocess.contextmenu.genscomp"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="es.uca.modeling.performance.sodmt.sprocess.contextmenu.isOneServiceProcess">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="es.uca.modeling.performance.sodmt.sprocess.contextmenu.isOneServiceProcess">
+            <iterate
+                  ifEmpty="false"
+                  operator="and">
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        property="org.eclipse.core.resources.extension"
+                        value="sp">
+                  </test>
+               </adapt>
+            </iterate>
+      </definition>
+   </extension>
+
+</plugin>

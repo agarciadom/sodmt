@@ -1,0 +1,25 @@
+retype serviceProcess::ServiceProcess to serviceComposition::ServiceComposition
+
+retype serviceProcess::Action to serviceComposition::Action
+retype serviceProcess::DecisionNode to serviceComposition::DecisionNode
+retype serviceProcess::FinalNode to serviceComposition::FinalNode
+retype serviceProcess::ForkNode to serviceComposition::ForkNode
+retype serviceProcess::InitialNode to serviceComposition::InitialNode
+retype serviceProcess::JoinNode to serviceComposition::JoinNode
+retype serviceProcess::LocalPerformanceAnnotation to serviceComposition::LocalPerformanceAnnotation
+retype serviceProcess::ObjectNode to serviceComposition::ObjectNode
+retype serviceProcess::PerformanceAnnotation to serviceComposition::PerformanceAnnotation
+retype serviceProcess::StructuredActivityNode to serviceComposition::StructuredActivityNode
+
+retype serviceProcess::ControlFlow to serviceComposition::ControlFlow
+retype serviceProcess::ObjectFlow to serviceComposition::ObjectFlow
+
+migrate ServiceProcess {
+  var partition = new SC!ActivityPartition;
+  partition.name = 'Main';
+  migrated.partitions.add(partition);
+
+  for (node in original.nodes) {
+    partition.nodes.add(node.equivalent());
+  }
+}
