@@ -29,21 +29,21 @@
         <module>UCM.diagram</module>
 
         <!-- Ad-hoc models and algorithms -->
-        <module>es.uca.modeling.eol.feature</module>
-        <module>es.uca.modeling.eol</module>
-        <module>es.uca.modeling.eol.comparison</module>
-        <module>es.uca.modeling.eol.contextmenu</module>
-        <module>es.uca.modeling.eol.tools</module>
-        <module>es.uca.modeling.eol.tests</module>
-        <module>es.uca.modeling.figures</module>
-        <module>ServiceProcess</module>
-        <module>ServiceProcess.diagram</module>
-        <module>ServiceProcess.edit</module>
-        <module>ServiceProcess.editor</module>
-        <module>ServiceComposition</module>
-        <module>ServiceComposition.diagram</module>
-        <module>ServiceComposition.edit</module>
-        <module>ServiceComposition.editor</module>
+        <module>es.uca.modeling.performance.sodmt.eol</module>
+        <module>es.uca.modeling.performance.sodmt.eol.comparison</module>
+        <module>es.uca.modeling.performance.sodmt.eol.tests</module>
+        <module>es.uca.modeling.performance.sodmt.evl</module>
+        <module>es.uca.modeling.performance.sodmt.evl.tests</module>
+        <module>es.uca.modeling.performance.sodmt.feature</module>
+        <module>es.uca.modeling.performance.sodmt.scomp</module>
+        <module>es.uca.modeling.performance.sodmt.scomp.diagram</module>
+        <module>es.uca.modeling.performance.sodmt.scomp.edit</module>
+        <module>es.uca.modeling.performance.sodmt.scomp.editor</module>
+        <module>es.uca.modeling.performance.sodmt.sprocess</module>
+        <module>es.uca.modeling.performance.sodmt.sprocess.contextmenu</module>
+        <module>es.uca.modeling.performance.sodmt.sprocess.diagram</module>
+        <module>es.uca.modeling.performance.sodmt.sprocess.edit</module>
+        <module>es.uca.modeling.performance.sodmt.sprocess.editor</module>
 
         <!-- MARTE-annotated models -->
         <module>es.uca.modeling.eol.marte</module>
