@@ -93,8 +93,13 @@
             <layout>p2</layout>
         </repository>
         <repository>
-            <id>epsilon-stable</id>
-            <url>http://download.eclipse.org/epsilon/updates</url>
+            <id>epsilon-interim</id>
+            <url>http://download.eclipse.org/epsilon/interim/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <id>gmf-experimental-svg</id>
+            <url>http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/</url>
             <layout>p2</layout>
         </repository>
         <repository>
