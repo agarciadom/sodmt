@@ -1,7 +1,0 @@
-# Tracing options for the ServiceProcess.diagram plug-in
-
-# Common issues
-ServiceProcess.diagram/debug=false
-
-# Visual IDs
-ServiceProcess.diagram/debug/visualID=false

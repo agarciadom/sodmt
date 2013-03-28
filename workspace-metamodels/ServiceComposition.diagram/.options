@@ -1,7 +1,0 @@
-# Tracing options for the ServiceComposition.diagram plug-in
-
-# Common issues
-ServiceComposition.diagram/debug=false
-
-# Visual IDs
-ServiceComposition.diagram/debug/visualID=false
