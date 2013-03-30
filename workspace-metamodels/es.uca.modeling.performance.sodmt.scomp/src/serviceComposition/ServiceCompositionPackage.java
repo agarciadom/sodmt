@@ -868,16 +868,6 @@ public interface ServiceCompositionPackage extends EPackage
   int JOIN_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link serviceComposition.ExpressionLanguage <em>Expression Language</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see serviceComposition.ExpressionLanguage
-   * @see serviceComposition.impl.ServiceCompositionPackageImpl#getExpressionLanguage()
-   * @generated
-   */
-  int EXPRESSION_LANGUAGE = 18;
-
-  /**
    * The meta object id for the '{@link serviceComposition.VisitStatus <em>Visit Status</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -885,7 +875,7 @@ public interface ServiceCompositionPackage extends EPackage
    * @see serviceComposition.impl.ServiceCompositionPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 19;
+  int VISIT_STATUS = 18;
 
   /**
    * The meta object id for the '{@link serviceComposition.NodeSide <em>Node Side</em>}' enum.
@@ -895,7 +885,7 @@ public interface ServiceCompositionPackage extends EPackage
    * @see serviceComposition.impl.ServiceCompositionPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 20;
+  int NODE_SIDE = 19;
 
 
   /**
@@ -1288,16 +1278,6 @@ public interface ServiceCompositionPackage extends EPackage
   EClass getJoinNode();
 
   /**
-   * Returns the meta object for enum '{@link serviceComposition.ExpressionLanguage <em>Expression Language</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Expression Language</em>'.
-   * @see serviceComposition.ExpressionLanguage
-   * @generated
-   */
-  EEnum getExpressionLanguage();
-
-  /**
    * Returns the meta object for enum '{@link serviceComposition.VisitStatus <em>Visit Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1671,16 +1651,6 @@ public interface ServiceCompositionPackage extends EPackage
      * @generated
      */
     EClass JOIN_NODE = eINSTANCE.getJoinNode();
-
-    /**
-     * The meta object literal for the '{@link serviceComposition.ExpressionLanguage <em>Expression Language</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see serviceComposition.ExpressionLanguage
-     * @see serviceComposition.impl.ServiceCompositionPackageImpl#getExpressionLanguage()
-     * @generated
-     */
-    EEnum EXPRESSION_LANGUAGE = eINSTANCE.getExpressionLanguage();
 
     /**
      * The meta object literal for the '{@link serviceComposition.VisitStatus <em>Visit Status</em>}' enum.

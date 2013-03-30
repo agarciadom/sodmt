@@ -47,7 +47,7 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/ServiceCompositionDiagramFile.gif"
-  	     category="es.uca.modeling.sodmt.wizards"
+  	     category="org.eclipse.ui.Examples"
   	     class="serviceComposition.diagram.part.ServiceCompositionCreationWizard"
   	     id="serviceComposition.diagram.part.ServiceCompositionCreationWizardID">
   	  	 <description>%newWizardDesc</description>  

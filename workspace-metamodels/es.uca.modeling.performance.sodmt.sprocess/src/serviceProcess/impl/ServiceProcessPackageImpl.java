@@ -165,13 +165,6 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum expressionLanguageEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EEnum visitStatusEEnum = null;
 
   /**
@@ -589,16 +582,6 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getExpressionLanguage()
-  {
-    return expressionLanguageEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EEnum getVisitStatus()
   {
     return visitStatusEEnum;
@@ -696,7 +679,6 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     joinNodeEClass = createEClass(JOIN_NODE);
 
     // Create enums
-    expressionLanguageEEnum = createEEnum(EXPRESSION_LANGUAGE);
     visitStatusEEnum = createEEnum(VISIT_STATUS);
     nodeSideEEnum = createEEnum(NODE_SIDE);
   }
@@ -799,10 +781,6 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
-    initEEnum(expressionLanguageEEnum, ExpressionLanguage.class, "ExpressionLanguage");
-    addEEnumLiteral(expressionLanguageEEnum, ExpressionLanguage.OCL);
-    addEEnumLiteral(expressionLanguageEEnum, ExpressionLanguage.JML);
-
     initEEnum(visitStatusEEnum, VisitStatus.class, "VisitStatus");
     addEEnumLiteral(visitStatusEEnum, VisitStatus.NOT_VISITED);
     addEEnumLiteral(visitStatusEEnum, VisitStatus.VISITING);

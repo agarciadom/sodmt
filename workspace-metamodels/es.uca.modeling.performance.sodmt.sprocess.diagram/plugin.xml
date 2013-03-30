@@ -47,7 +47,7 @@
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/ServiceProcessDiagramFile.gif"
-  	     category="es.uca.modeling.sodmt.wizards"
+  	     category="org.eclipse.ui.Examples"
   	     class="serviceProcess.diagram.part.ServiceProcessCreationWizard"
   	     id="serviceProcess.diagram.part.ServiceProcessCreationWizardID">
   	  	 <description>%newWizardDesc</description>  

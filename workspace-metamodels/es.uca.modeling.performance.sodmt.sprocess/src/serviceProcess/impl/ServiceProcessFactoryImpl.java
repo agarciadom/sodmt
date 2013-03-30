@@ -93,8 +93,6 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
   {
     switch (eDataType.getClassifierID())
     {
-      case ServiceProcessPackage.EXPRESSION_LANGUAGE:
-        return createExpressionLanguageFromString(eDataType, initialValue);
       case ServiceProcessPackage.VISIT_STATUS:
         return createVisitStatusFromString(eDataType, initialValue);
       case ServiceProcessPackage.NODE_SIDE:
@@ -114,8 +112,6 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
   {
     switch (eDataType.getClassifierID())
     {
-      case ServiceProcessPackage.EXPRESSION_LANGUAGE:
-        return convertExpressionLanguageToString(eDataType, instanceValue);
       case ServiceProcessPackage.VISIT_STATUS:
         return convertVisitStatusToString(eDataType, instanceValue);
       case ServiceProcessPackage.NODE_SIDE:
@@ -266,28 +262,6 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
   {
     JoinNodeImpl joinNode = new JoinNodeImpl();
     return joinNode;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExpressionLanguage createExpressionLanguageFromString(EDataType eDataType, String initialValue)
-  {
-    ExpressionLanguage result = ExpressionLanguage.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertExpressionLanguageToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

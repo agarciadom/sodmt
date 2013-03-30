@@ -822,16 +822,6 @@ public interface ServiceProcessPackage extends EPackage
   int JOIN_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link serviceProcess.ExpressionLanguage <em>Expression Language</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see serviceProcess.ExpressionLanguage
-   * @see serviceProcess.impl.ServiceProcessPackageImpl#getExpressionLanguage()
-   * @generated
-   */
-  int EXPRESSION_LANGUAGE = 17;
-
-  /**
    * The meta object id for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -839,7 +829,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 18;
+  int VISIT_STATUS = 17;
 
   /**
    * The meta object id for the '{@link serviceProcess.NodeSide <em>Node Side</em>}' enum.
@@ -849,7 +839,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 19;
+  int NODE_SIDE = 18;
 
 
   /**
@@ -1210,16 +1200,6 @@ public interface ServiceProcessPackage extends EPackage
   EClass getJoinNode();
 
   /**
-   * Returns the meta object for enum '{@link serviceProcess.ExpressionLanguage <em>Expression Language</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Expression Language</em>'.
-   * @see serviceProcess.ExpressionLanguage
-   * @generated
-   */
-  EEnum getExpressionLanguage();
-
-  /**
    * Returns the meta object for enum '{@link serviceProcess.VisitStatus <em>Visit Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1567,16 +1547,6 @@ public interface ServiceProcessPackage extends EPackage
      * @generated
      */
     EClass JOIN_NODE = eINSTANCE.getJoinNode();
-
-    /**
-     * The meta object literal for the '{@link serviceProcess.ExpressionLanguage <em>Expression Language</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see serviceProcess.ExpressionLanguage
-     * @see serviceProcess.impl.ServiceProcessPackageImpl#getExpressionLanguage()
-     * @generated
-     */
-    EEnum EXPRESSION_LANGUAGE = eINSTANCE.getExpressionLanguage();
 
     /**
      * The meta object literal for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.
