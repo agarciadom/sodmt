@@ -4,3 +4,5 @@ runtime-EclipseApplication
 FilterByClassRule.java
 *.iml
 .idea
+*.scomp.tests
+*.sprocess.tests
