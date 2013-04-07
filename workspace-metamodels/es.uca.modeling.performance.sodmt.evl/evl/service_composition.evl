@@ -39,7 +39,7 @@ context ServiceComposition {
 
   constraint OneInitialOverAllPartitions {
     check : self.partitions.collect(p | p.nodes.select(n|n.isKindOf(InitialNode))).flatten().size() = 1
-    message : 'There should be exactly one initial node over all partitions'
+    message : 'There should be exactly one initial node at the global level over all partitions'
   }
 }
 

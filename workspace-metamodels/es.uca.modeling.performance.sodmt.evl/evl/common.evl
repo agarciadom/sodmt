@@ -396,6 +396,13 @@ context ObjectNode {
   }
 }
 
+context StructuredActivityNode {
+  constraint AtMostOneNestedInitial {
+    check : self.nodes.select(i|i.isKindOf(InitialNode)).size() <= 1
+    message : 'Structured activity nodes should have at most one initial node'
+  }
+}
+
 -- OPERATIONS --------------------
 
 operation ActivityNode newExecutableNode() {

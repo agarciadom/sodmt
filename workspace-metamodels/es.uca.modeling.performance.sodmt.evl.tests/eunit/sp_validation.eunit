@@ -886,7 +886,7 @@ operation ObjectNode_bothIncomingAndOutgoing() {
   assertNoProblems(Sequence {'MinimumOneIncomingObjectFlow', 'MinimumOneOutgoingObjectFlow', 'NoIncomingControlFlows', 'NoOutgoingControlFlows'});
 }
 
-@Test
+@test
 operation ObjectNode_incomingControlFlow() {
   var a = sp.newAction();
   var o = sp.newObject();
@@ -896,7 +896,7 @@ operation ObjectNode_incomingControlFlow() {
   assertNoProblem('NoOutgoingControlFlows');
 }
 
-@Test
+@test
 operation ObjectNode_outgoingControlFlow() {
   var a = sp.newAction();
   var o = sp.newObject();
@@ -904,6 +904,30 @@ operation ObjectNode_outgoingControlFlow() {
   validate();
   assertNoProblem('NoIncomingControlFlows');
   assertHasProblem('NoOutgoingControlFlows');
+}
+
+@test
+operation StructuredActivityNode_emptyIsOK() {
+  var a = sp.newSActivity();
+  validate();
+  assertNoProblem('AtMostOneNestedInitial');
+}
+
+@test
+operation StructuredActivityNode_oneIsOK() {
+  var a = sp.newSActivity();
+  a.newInitial();
+  validate();
+  assertNoProblem('AtMostOneNestedInitial');
+}
+
+@test
+operation StructuredActivityNode_twoIsBad() {
+  var a = sp.newSActivity();
+  a.newInitial();
+  a.newInitial();
+  validate();
+  assertHasProblem('AtMostOneNestedInitial');
 }
 
 -- TEST TEMPLATES --
@@ -991,6 +1015,12 @@ operation SP!ServiceProcess newSActivity() : SP!StructuredActivityNode {
 
 operation SP!StructuredActivityNode newAction() : SP!Action {
   var a = new SP!Action;
+  self.nodes.add(a);
+  return a;
+}
+
+operation SP!StructuredActivityNode newInitial() : SP!InitialNode {
+  var a = new SP!InitialNode;
   self.nodes.add(a);
   return a;
 }
