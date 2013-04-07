@@ -87,6 +87,17 @@ operation ActivityNode setTimeLimit(newLimit : Real) {
   }
 }
 
+-- NESTING --------------------------------------------------------------------
+
+@cached
+operation ActivityNode getNestingLevel() : Integer {
+  if (self.eContainer.isDefined() and self.eContainer.isKindOf(StructuredActivityNode)) {
+    return self.eContainer.getNestingLevel() + 1;
+  } else {
+    return 0;
+  }
+}
+
 -- CONSTRAINTS ----------------------------------------------------------------
 
 -*

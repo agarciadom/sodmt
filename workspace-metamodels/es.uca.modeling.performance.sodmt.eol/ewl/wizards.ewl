@@ -6,9 +6,9 @@ wizard InferTimeLimitsNew {
   title : 'Infer performance annotations'
   do {
     transaction {
-      for (start in InitialNode.all) {
+      for (start in InitialNode.all.sortBy(i | i.getNestingLevel())) {
         var finalSiblings =
-          start.eContainer.nodes.select(n|n.isKindOf(FinalNode));
+          start.eContainer.nodes.select(n | n.isKindOf(FinalNode));
         if (not distributeTime(start.getGlobalTimeLimit(), finalSiblings)
             or not annotateConcurrentUsers(start)) {
           abort;
@@ -23,7 +23,7 @@ wizard InferPerformanceAnnotations {
   title : 'Infer time limits (old algorithm)'
   do {
     transaction {
-      for (start in InitialNode.all) {
+      for (start in InitialNode.all.sortBy(i | i.getNestingLevel())) {
         if (not annotateTimeLimits(start.getGlobalTimeLimit(), start)) {
           abort;
           return;
