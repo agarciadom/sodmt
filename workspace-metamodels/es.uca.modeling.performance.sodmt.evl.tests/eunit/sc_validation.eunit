@@ -74,6 +74,34 @@ operation ActivityPartition_threeInitialNodesIsBad() {
   assertHasProblem('OneInitialOverAllPartitions');
 }
 
+@test
+operation ServiceComposition_namesShouldBeUnique_empty() {
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceComposition_namesShouldBeUnique_one() {
+  sc.newAction('A');
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceComposition_namesShouldBeUnique_twoUnique() {
+  sc.newAction('A');
+  sc.newAction('B');
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceComposition_namesShouldBeUnique_twoNotUnique() {
+  sc.newAction('A');
+  sc.newAction('A');
+  validate();
+  assertHasProblem('NamesShouldBeUnique');
+}
 
 -- UTILITY OPERATIONS
 
@@ -82,6 +110,13 @@ operation ServiceComposition newPartition(name: String) {
   p.name = name;
   self.partitions.add(p);
   return p;
+}
+
+operation ServiceComposition newAction(name: String) {
+  var a = new SC!Action;
+  a.name = name;
+  self.nodes.add(a);
+  return a;
 }
 
 operation ServiceComposition newObject(name: String) {

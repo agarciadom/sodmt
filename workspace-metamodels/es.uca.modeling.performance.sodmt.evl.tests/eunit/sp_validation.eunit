@@ -930,6 +930,36 @@ operation StructuredActivityNode_twoIsBad() {
   assertHasProblem('AtMostOneNestedInitial');
 }
 
+
+@test
+operation ServiceProcess_namesShouldBeUnique_empty() {
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceProcess_namesShouldBeUnique_one() {
+  sp.newAction('A');
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceProcess_namesShouldBeUnique_twoUnique() {
+  sp.newAction('A');
+  sp.newAction('B');
+  validate();
+  assertNoProblem('NamesShouldBeUnique');
+}
+
+@test
+operation ServiceProcess_namesShouldBeUnique_twoNotUnique() {
+  sp.newAction('A');
+  sp.newAction('A');
+  validate();
+  assertHasProblem('NamesShouldBeUnique');
+}
+
 -- TEST TEMPLATES --
 
 operation weightTest(w : Real) {
@@ -967,6 +997,12 @@ operation SP!ServiceProcess newAction() : SP!Action {
   var n = new SP!Action;
   self.nodes.add(n);
   return n;
+}
+
+operation SP!ServiceProcess newAction(name: String) {
+  var a = self.newAction();
+  a.name = name;
+  return a;
 }
 
 operation SP!ServiceProcess newDecision() : SP!DecisionNode {

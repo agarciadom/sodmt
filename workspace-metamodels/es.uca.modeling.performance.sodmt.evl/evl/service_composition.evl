@@ -41,6 +41,19 @@ context ServiceComposition {
     check : self.partitions.collect(p | p.nodes.select(n|n.isKindOf(InitialNode))).flatten().size() = 1
     message : 'There should be exactly one initial node at the global level over all partitions'
   }
+
+  constraint NamesShouldBeUnique {
+    check {
+      var names : Set;
+      for (node in NamedElement.all) {
+        if (not names.add(node.name)) {
+          return false;
+        }
+      }
+      return true;
+    }
+    message : 'Named elements should have unique names'
+  }
 }
 
 context ActivityPartition {

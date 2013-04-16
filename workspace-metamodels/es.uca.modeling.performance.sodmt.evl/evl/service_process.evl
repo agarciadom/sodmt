@@ -23,4 +23,17 @@ context ServiceProcess {
     check : not FinalNode.all.select(f | f.eContainer.isKindOf(ServiceProcess)).isEmpty()
     message : 'There must be at least one final node for the whole service process'
   }
+
+  constraint NamesShouldBeUnique {
+    check {
+      var names : Set;
+      for (node in NamedElement.all) {
+        if (not names.add(node.name)) {
+          return false;
+        }
+      }
+      return true;
+    }
+    message : 'Named elements should have unique names'
+  }
 }
