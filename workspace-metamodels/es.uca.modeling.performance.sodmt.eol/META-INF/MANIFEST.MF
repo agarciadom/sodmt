@@ -6,4 +6,5 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.epsilon.eol.engine,
  org.eclipse.epsilon.ewl.gmf,
  org.eclipse.epsilon.ewl.engine,
- org.eclipse.epsilon.ewl.emf
+ org.eclipse.epsilon.ewl.emf,
+ es.uca.modeling.performance.sodmt.egl.glpk
