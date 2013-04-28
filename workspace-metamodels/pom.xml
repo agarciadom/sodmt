@@ -45,6 +45,9 @@
         <module>es.uca.modeling.performance.sodmt.sprocess.edit</module>
         <module>es.uca.modeling.performance.sodmt.sprocess.editor</module>
 
+        <!-- Linear programming support -->
+        <module>es.uca.modeling.performance.sodmt.egl.glpk</module>
+
         <!-- MARTE-annotated models -->
         <module>es.uca.modeling.eol.marte</module>
         <module>es.uca.modeling.eol.marte.feature</module>
