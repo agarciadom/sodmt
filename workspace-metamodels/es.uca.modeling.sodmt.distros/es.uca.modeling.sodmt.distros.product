@@ -60,8 +60,6 @@
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.edit"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.editor"/>
-      <plugin id="es.uca.modeling.eol.tools"/>
-      <plugin id="es.uca.modeling.figures"/>
       <plugin id="es.uca.modeling.sodmt.product"/>
       <plugin id="es.uca.webservices.service-analyzer"/>
       <plugin id="es.uca.webservices.service-analyzer.emf"/>
