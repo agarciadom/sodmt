@@ -13,7 +13,7 @@ import org.eclipse.epsilon.evl.EvlModule;
 import org.eclipse.epsilon.evl.EvlUnsatisfiedConstraint;
 
 
-public abstract class AbstractValidationTests implements IEUnitSuite {
+public abstract class AbstractValidationTest implements IEUnitSuite {
 
 	public final class ValidationOperatorContributor extends OperationContributor {
 		private IModel evlModel;
@@ -33,8 +33,8 @@ public abstract class AbstractValidationTests implements IEUnitSuite {
 
 			EvlModule evl = new EvlModule();
 			evl.parse(
-				ServiceProcessValidationTests.class
-				.getResource(AbstractValidationTests.this.getPathToEVL())
+				ServiceProcessValidationTest.class
+				.getResource(AbstractValidationTest.this.getPathToEVL())
 				.toURI());
 			evl.getContext().setModelRepository(context.getModelRepository());
 			evl.execute();
