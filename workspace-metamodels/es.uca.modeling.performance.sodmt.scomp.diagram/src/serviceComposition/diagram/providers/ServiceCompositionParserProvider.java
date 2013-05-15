@@ -176,6 +176,28 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	/**
 	 * @generated
 	 */
+	private IParser localPerformanceAnnotationReps_5030Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationReps_5030Parser() {
+		if (localPerformanceAnnotationReps_5030Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getLocalPerformanceAnnotation_Reps() };
+			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
+			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
+			localPerformanceAnnotationReps_5030Parser = parser;
+		}
+		return localPerformanceAnnotationReps_5030Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser objectNodeName_5016Parser;
 
 	/**
@@ -431,6 +453,28 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	/**
 	 * @generated
 	 */
+	private IParser localPerformanceAnnotationReps_5029Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationReps_5029Parser() {
+		if (localPerformanceAnnotationReps_5029Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getLocalPerformanceAnnotation_Reps() };
+			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
+			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
+			localPerformanceAnnotationReps_5029Parser = parser;
+		}
+		return localPerformanceAnnotationReps_5029Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser objectNodeName_5008Parser;
 
 	/**
@@ -601,6 +645,28 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	/**
 	 * @generated
 	 */
+	private IParser localPerformanceAnnotationReps_5031Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationReps_5031Parser() {
+		if (localPerformanceAnnotationReps_5031Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getLocalPerformanceAnnotation_Reps() };
+			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
+			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
+			localPerformanceAnnotationReps_5031Parser = parser;
+		}
+		return localPerformanceAnnotationReps_5031Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser objectNodeName_5024Parser;
 
 	/**
@@ -661,6 +727,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 			return getLocalPerformanceAnnotationMinimumTime_5014Parser();
 		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5015Parser();
+		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotationReps_5030Parser();
 		case serviceComposition.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID:
 			return getObjectNodeName_5016Parser();
 		case serviceComposition.diagram.edit.parts.ActivityPartitionNameEditPart.VISUAL_ID:
@@ -685,6 +753,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 			return getLocalPerformanceAnnotationMinimumTime_5006Parser();
 		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5007Parser();
+		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotationReps_5029Parser();
 		case serviceComposition.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID:
 			return getObjectNodeName_5008Parser();
 		case serviceComposition.diagram.edit.parts.ActionName3EditPart.VISUAL_ID:
@@ -701,6 +771,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 			return getLocalPerformanceAnnotationMinimumTime_5022Parser();
 		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5023Parser();
+		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotationReps_5031Parser();
 		case serviceComposition.diagram.edit.parts.ObjectNodeName3EditPart.VISUAL_ID:
 			return getObjectNodeName_5024Parser();
 		case serviceComposition.diagram.edit.parts.ControlFlowConditionProbabilityEditPart.VISUAL_ID:

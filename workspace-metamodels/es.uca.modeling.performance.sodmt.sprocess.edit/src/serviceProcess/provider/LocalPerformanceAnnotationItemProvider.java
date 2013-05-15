@@ -65,6 +65,7 @@ public class LocalPerformanceAnnotationItemProvider
       addOutgoingPropertyDescriptor(object);
       addMinimumTimePropertyDescriptor(object);
       addWeightPropertyDescriptor(object);
+      addRepsPropertyDescriptor(object);
       addExecNodePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -163,6 +164,29 @@ public class LocalPerformanceAnnotationItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Reps feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRepsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LocalPerformanceAnnotation_reps_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_reps_feature", "_UI_LocalPerformanceAnnotation_type"),
+         ServiceProcessPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__REPS,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
    * This adds a property descriptor for the Exec Node feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -226,6 +250,7 @@ public class LocalPerformanceAnnotationItemProvider
     {
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME:
       case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
+      case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
     }

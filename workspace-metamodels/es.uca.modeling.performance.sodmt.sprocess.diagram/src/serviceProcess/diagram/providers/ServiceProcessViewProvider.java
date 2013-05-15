@@ -499,6 +499,10 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID));
+		Node label5037 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -979,6 +983,10 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				node,
 				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID));
+		Node label5036 = createLabel(
+				node,
+				serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+						.getType(serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID));
 		return node;
 	}
 

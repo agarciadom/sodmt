@@ -549,6 +549,10 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				node,
 				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID));
+		Node label5030 = createLabel(
+				node,
+				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -1084,6 +1088,10 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				node,
 				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID));
+		Node label5029 = createLabel(
+				node,
+				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -1502,6 +1510,10 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				node,
 				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart.VISUAL_ID));
+		Node label5031 = createLabel(
+				node,
+				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+						.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart.VISUAL_ID));
 		return node;
 	}
 

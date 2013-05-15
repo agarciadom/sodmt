@@ -38,6 +38,9 @@
     <nodeLabelTraces
         visualID="5015"
         queryText="true"/>
+    <nodeLabelTraces
+        visualID="5030"
+        queryText="true"/>
   </nodeTraces>
   <nodeTraces
       visualID="2004"
@@ -119,6 +122,9 @@
     <nodeLabelTraces
         visualID="5007"
         queryText="true"/>
+    <nodeLabelTraces
+        visualID="5029"
+        queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
       visualID="3004"
@@ -176,6 +182,9 @@
         queryText="true"/>
     <nodeLabelTraces
         visualID="5023"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5031"
         queryText="true"/>
   </childNodeTraces>
   <childNodeTraces

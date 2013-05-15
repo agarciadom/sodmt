@@ -56,6 +56,10 @@ class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
               label.edit.pattern="{0, number}")
    attr double weight = 1;
 
+   @gmf.label(label.view.pattern = "reps = {0}",
+              label.edit.pattern = "{0, number}")
+   attr double reps = 1;
+
    ref ExecutableNode#annotation execNode;
 }
 

@@ -334,6 +334,9 @@ public class ServiceProcessVisualIDRegistry {
 			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			if (serviceProcess.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID == nodeVisualID) {
@@ -378,6 +381,9 @@ public class ServiceProcessVisualIDRegistry {
 				return true;
 			}
 			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

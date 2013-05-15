@@ -402,9 +402,19 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLocalPerformanceAnnotation_Reps()
+  {
+    return (EAttribute)localPerformanceAnnotationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getLocalPerformanceAnnotation_ExecNode()
   {
-    return (EReference)localPerformanceAnnotationEClass.getEStructuralFeatures().get(2);
+    return (EReference)localPerformanceAnnotationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -647,6 +657,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     localPerformanceAnnotationEClass = createEClass(LOCAL_PERFORMANCE_ANNOTATION);
     createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME);
     createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__WEIGHT);
+    createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__REPS);
     createEReference(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE);
 
     controlFlowEClass = createEClass(CONTROL_FLOW);
@@ -749,6 +760,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     initEClass(localPerformanceAnnotationEClass, LocalPerformanceAnnotation.class, "LocalPerformanceAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalPerformanceAnnotation_MinimumTime(), ecorePackage.getEDouble(), "minimumTime", "0", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLocalPerformanceAnnotation_Weight(), ecorePackage.getEDouble(), "weight", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalPerformanceAnnotation_Reps(), ecorePackage.getEDouble(), "reps", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocalPerformanceAnnotation_ExecNode(), this.getExecutableNode(), this.getExecutableNode_Annotation(), "execNode", null, 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(controlFlowEClass, ControlFlow.class, "ControlFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -822,7 +834,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "model.extension", "sp",
        "diagram.extension", "spdiag"
-       });																				
+       });																					
   }
 
   /**
@@ -843,7 +855,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "target", "target",
        "width", "3",
        "target.decoration", "arrow"
-       });								
+       });									
     addAnnotation
       (controlFlowEClass, 
        source, 
@@ -906,7 +918,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "label.pattern", "\u00ablpc\u00bb",
        "tool.name", "Local Performance Constraint"
-       });						
+       });							
     addAnnotation
       (namedElementEClass, 
        source, 
@@ -1050,6 +1062,14 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "label.view.pattern", "weight = {0}",
        "label.edit.pattern", "{0, number}"
+       });		
+    addAnnotation
+      (getLocalPerformanceAnnotation_Reps(), 
+       source, 
+       new String[] 
+       {
+       "label.view.pattern", "reps = {0}",
+       "label.edit.pattern", "{0, number}"
        });													
   }
 
@@ -1061,7 +1081,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    */
   protected void createGmf_4Annotations()
   {
-    String source = "gmf.compartment";																
+    String source = "gmf.compartment";																	
     addAnnotation
       (getStructuredActivityNode_Nodes(), 
        source, 

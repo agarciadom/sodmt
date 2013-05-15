@@ -422,6 +422,9 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 			if (serviceComposition.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID == nodeVisualID) {
@@ -476,6 +479,9 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 			if (serviceComposition.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID == nodeVisualID) {
@@ -509,6 +515,9 @@ public class ServiceCompositionVisualIDRegistry {
 				return true;
 			}
 			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

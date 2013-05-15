@@ -68,6 +68,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.ObjectNodeEditPart(
 						view);
@@ -160,6 +164,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.ObjectNode2EditPart(
 						view);
@@ -226,6 +234,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 
 			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart(
+						view);
+
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart(
 						view);
 
 			case serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID:

@@ -68,6 +68,10 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart(
 						view);
 
+			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart(
+						view);
+
 			case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.ObjectNodeEditPart(
 						view);
@@ -150,6 +154,10 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 
 			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart(
 						view);
 
 			case serviceProcess.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:

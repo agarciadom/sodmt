@@ -146,6 +146,12 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 							.getFigureLocalPerformanceAnnotationWeightLabelFigure());
 			return true;
 		}
+		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) {
+			((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureLocalPerformanceAnnotationRepsLabelFigure());
+			return true;
+		}
 		return false;
 	}
 
@@ -166,6 +172,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) {
 			return true;
 		}
 		return false;
@@ -571,6 +580,11 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
+		private WrappingLabel fFigureLocalPerformanceAnnotationRepsLabelFigure;
+
+		/**
+		 * @generated
+		 */
 		public LocalPerformanceAnnotationFigure() {
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
@@ -614,6 +628,12 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 
 			this.add(fFigureLocalPerformanceAnnotationWeightLabelFigure);
 
+			fFigureLocalPerformanceAnnotationRepsLabelFigure = new WrappingLabel();
+
+			fFigureLocalPerformanceAnnotationRepsLabelFigure.setText("");
+
+			this.add(fFigureLocalPerformanceAnnotationRepsLabelFigure);
+
 		}
 
 		/**
@@ -649,6 +669,13 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureLocalPerformanceAnnotationWeightLabelFigure() {
 			return fFigureLocalPerformanceAnnotationWeightLabelFigure;
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureLocalPerformanceAnnotationRepsLabelFigure() {
+			return fFigureLocalPerformanceAnnotationRepsLabelFigure;
 		}
 
 	}

@@ -279,13 +279,22 @@ public interface ServiceProcessPackage extends EPackage
   int LOCAL_PERFORMANCE_ANNOTATION__WEIGHT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Reps</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_PERFORMANCE_ANNOTATION__REPS = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Exec Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 4;
+  int LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Local Performance Annotation</em>' class.
@@ -294,7 +303,7 @@ public interface ServiceProcessPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCAL_PERFORMANCE_ANNOTATION_FEATURE_COUNT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 5;
+  int LOCAL_PERFORMANCE_ANNOTATION_FEATURE_COUNT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link serviceProcess.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -1014,6 +1023,17 @@ public interface ServiceProcessPackage extends EPackage
   EAttribute getLocalPerformanceAnnotation_Weight();
 
   /**
+   * Returns the meta object for the attribute '{@link serviceProcess.LocalPerformanceAnnotation#getReps <em>Reps</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Reps</em>'.
+   * @see serviceProcess.LocalPerformanceAnnotation#getReps()
+   * @see #getLocalPerformanceAnnotation()
+   * @generated
+   */
+  EAttribute getLocalPerformanceAnnotation_Reps();
+
+  /**
    * Returns the meta object for the reference '{@link serviceProcess.LocalPerformanceAnnotation#getExecNode <em>Exec Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1379,6 +1399,14 @@ public interface ServiceProcessPackage extends EPackage
      * @generated
      */
     EAttribute LOCAL_PERFORMANCE_ANNOTATION__WEIGHT = eINSTANCE.getLocalPerformanceAnnotation_Weight();
+
+    /**
+     * The meta object literal for the '<em><b>Reps</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCAL_PERFORMANCE_ANNOTATION__REPS = eINSTANCE.getLocalPerformanceAnnotation_Reps();
 
     /**
      * The meta object literal for the '<em><b>Exec Node</b></em>' reference feature.
