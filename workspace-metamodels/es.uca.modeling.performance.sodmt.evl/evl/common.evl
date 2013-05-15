@@ -178,12 +178,17 @@ context LocalPerformanceAnnotation {
 
   constraint ValidMinTime {
     check : self.minimumTime >= 0
-    message : 'The minimum time for a single activity must be greater or equal than 0'
+    message : 'The minimum time for a node must be greater or equal than 0'
   }
 
   constraint ValidWeight {
     check : self.weight >= 0
-    message : 'The weight for a single activity must be greater or equal than 0'
+    message : 'The weight for a node must be greater or equal than 0'
+  }
+
+  constraint ValidReps {
+    check : self.reps >= 1
+    message : 'The repetitions for a node must be greater or equal than 1'
   }
 
   constraint NoIncomingForPerformanceAnnotation {

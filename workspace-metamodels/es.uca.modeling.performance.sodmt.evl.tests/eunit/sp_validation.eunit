@@ -534,6 +534,36 @@ operation LocalPerformanceAnnotation_ValidWeight_positive() {
 }
 
 @test
+operation LocalPerformanceAnnotation_ValidReps_negative() {
+  repTest(-1.0d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_zero() {
+  repTest(0.0d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_lessThanOne() {
+  repTest(0.5d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_one() {
+  repTest(1.0d);
+  assertNoProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_greaterThanOne() {
+  repTest(1.5d);
+  assertNoProblem('ValidReps');
+}
+
+@test
 operation LocalPerformanceAnnotation_NoIncomingForPerformanceAnnotation_withIncoming() {
   var lpa = new SP!LocalPerformanceAnnotation;
   var act = sp.newAction();
@@ -974,6 +1004,14 @@ operation minTimeTest(minTime : Real) {
   var sp = new SP!ServiceProcess;
   var lpa = new SP!LocalPerformanceAnnotation;
   lpa.minimumTime = minTime;
+  sp.nodes.add(lpa);
+  validate();
+}
+
+operation repTest(reps : Real) {
+  var sp = new SP!ServiceProcess;
+  var lpa = new SP!LocalPerformanceAnnotation;
+  lpa.reps = reps;
   sp.nodes.add(lpa);
   validate();
 }
