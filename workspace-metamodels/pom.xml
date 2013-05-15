@@ -97,7 +97,7 @@
         </repository>
         <repository>
             <id>epsilon-interim</id>
-            <url>http://download.eclipse.org/epsilon/interim/</url>
+            <url>http://download.eclipse.org/epsilon/interim-very-new/</url>
             <layout>p2</layout>
         </repository>
         <repository>
