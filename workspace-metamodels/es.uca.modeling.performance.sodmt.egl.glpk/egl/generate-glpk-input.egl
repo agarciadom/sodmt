@@ -15,8 +15,7 @@ param r{a in A}, default 1;
 param paths{a in A, p in P}, default 0, binary;
 
 # Path containment (path is fully contained inside a single activity)
-# TODO: change this into a set (might be more efficient)
-param cpaths{p in P, a in A}, default 0, binary;
+set CP within P cross A;
 
 # Minimum time and total weight of each path
 param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
@@ -32,14 +31,14 @@ var suw{a in A};
 maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
 
 # Global time limit on paths which are not inside any activity
-s.t. glpath 'global limit on path' {p in P: forall {a in A} cpaths[p, a] == 0}:
+s.t. glpath 'global limit on path' {p in P: not exists {a in A} (p, a) in CP}:
   sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
 
 # Local time limit on paths which are inside some activity
-s.t. llpath 'local limit on path' {p in P: exists {a in A} cpaths[p, a] == 1}:
+s.t. llpath 'local limit on path' {(p, whole) in CP}:
   sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a])
     <=
-  sum{a in A} (cpaths[p, a] * (suw[a] * w[a] + m[a]));
+  suw[whole] * w[whole] + m[whole];
 
 # Minimum slack restriction
 s.t. minslack 'min slack' {a in A}: suw[a] >= msuw[a];
@@ -96,12 +95,12 @@ param paths :=
   [%='[' + '*, p_' + pathCounter + '] ' + path.select(t | nodeToNumber.containsKey(t)).collect(t | 't_' + nodeToNumber.get(t) + ' 1').concat(' ')%]
 [% pathCounter = pathCounter + 1; } %];
 
-param cpaths :=
+set CP :=
 [%
   pathCounter = 1;
   for (path in allPaths) {
     if (path.first.eContainer.isKindOf(StructuredActivityNode)) {%]
-  [%='p_' + pathCounter + ' t_' + nodeToNumber.get(path.first.eContainer) + ' 1'%]
+  [%='(p_' + pathCounter + ', t_' + nodeToNumber.get(path.first.eContainer) + ')'%]
 [%  }
     pathCounter = pathCounter + 1;
   }%];

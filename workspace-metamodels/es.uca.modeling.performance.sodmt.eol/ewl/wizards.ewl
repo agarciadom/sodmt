@@ -34,10 +34,10 @@ wizard InferPerformanceAnnotations {
 }
 
 wizard GenGLPK {
-  guard : self.isKindOf(InitialNode)
+  guard : self.isKindOf(ActivityNode)
   title : 'Generate glpsol model...'
   do {
     var glpkTool = new Native('es.uca.modeling.performance.sodmt.egl.glpk.GLPKInputGen');
-    glpkTool.sayHello(self);
+    glpkTool.generate(self);
   }
 }

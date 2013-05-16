@@ -23,11 +23,11 @@ import org.eclipse.ui.PlatformUI;
 public class GLPKInputGen {
 	private static final String PATH_TO_EGL = "/egl/generate-glpk-input.egl";
 
-	public void sayHello(serviceProcess.InitialNode node) throws Exception {
+	public void generate(serviceProcess.ActivityNode node) throws Exception {
 		generateGLPKInput(node);
 	}
 
-	public void sayHello(serviceComposition.InitialNode node) throws Exception {
+	public void generate(serviceComposition.ActivityNode node) throws Exception {
 		generateGLPKInput(node);
 	}
 
