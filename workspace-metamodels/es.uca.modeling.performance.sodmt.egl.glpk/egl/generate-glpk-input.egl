@@ -1,27 +1,26 @@
 [% import 'platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/utils.eol'; %]
-# Activities
+# Activities and path names
 set A;
-
-# Paths
 set P;
 
 # Global time limit
 param G;
 
-# Minimum times
-param m{a in A};
+# Minimum times, weights and repetitions
+param m{a in A}, default 0;
+param w{a in A}, default 1;
+param r{a in A}, default 1;
 
-# Weights
-param w{a in A};
+# Paths (activity belongs in an activity)
+param paths{a in A, p in P}, default 0, binary;
 
-# Paths
-param paths{a in A, p in P};
+# Path containment (path is fully contained inside a single activity)
+# TODO: change this into a set (might be more efficient)
+param cpaths{p in P, a in A}, default 0, binary;
 
-# Minimum time of each path
-param mp{p in P} := sum{a in A} paths[a, p] * m[a];
-
-# Total weight of each path
-param tw{p in P} := sum{a in A} paths[a, p] * w[a];
+# Minimum time and total weight of each path
+param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
+param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
 
 # Minimum slack per unit of weight by task
 param msuw{a in A} := min{p in P} (G-mp[p])/tw[p];
@@ -29,11 +28,18 @@ param msuw{a in A} := min{p in P} (G-mp[p])/tw[p];
 # Slack per unit of weight for each activity (must be positive)
 var suw{a in A};
 
-# Objective function: use as much time as possible
-maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]));
+# Objective function: use as much time as possible over all paths (honoring minimum times, weights and repetitions)
+maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
 
-# Restrictions by path
-s.t. lpath 'global limit on path' {p in P}: sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a])) <= G;
+# Global time limit on paths which are not inside any activity
+s.t. glpath 'global limit on path' {p in P: forall {a in A} cpaths[p, a] == 0}:
+  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
+
+# Local time limit on paths which are inside some activity
+s.t. llpath 'local limit on path' {p in P: exists {a in A} cpaths[p, a] == 1}:
+  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a])
+    <=
+  sum{a in A} (cpaths[p, a] * (suw[a] * w[a] + m[a]));
 
 # Minimum slack restriction
 s.t. minslack 'min slack' {a in A}: suw[a] >= msuw[a];
@@ -44,12 +50,17 @@ s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p
 data;
 
 [%
-  var allTasks : Sequence = selected.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name);
+  var mainInitial = InitialNode.all.selectOne(n | not n.eContainer.isKindOf(StructuredActivityNode));
+  var allTasks : Sequence;
   var allPaths : Sequence;
-  for (seq in getAllExecutionPathsFrom(selected)) {
-    var newSet : Set;
-    newSet.addAll(seq);
-    allPaths.add(newSet);
+
+  for (initial in InitialNode.all) {
+    allTasks.addAll(initial.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name));
+    for (seq in getAllExecutionPathsFrom(initial)) {
+      var newSet : Set;
+      newSet.addAll(seq);
+      allPaths.add(newSet);
+    }
   }
 
   var nodeCounter = 1;
@@ -63,22 +74,37 @@ set A := [%=allTasks.collect(n | 't_' + nodeToNumber.get(n)).concat(' ')%];
 
 set P := [%=allPathIdentifiers(allPaths.size)%];
 
-param G := [%=selected.getGlobalTimeLimit()%];
+param G := [%=mainInitial.getGlobalTimeLimit()%];
 
 param m :=
-[% for (task in allTasks) {%]
+[% for (task in allTasks) { if (task.getMinimumTime() > 0) {%]
   t_[%=nodeToNumber.get(task)%]	[%=task.getMinimumTime()%]
-[% } %];
+[% }} %];
 
 param w :=
-[% for (task in allTasks) {%]
+[% for (task in allTasks) { if (task.getWeight() > 1) {%]
   t_[%=nodeToNumber.get(task)%] [%=task.getWeight()%]
-[% } %];
+[% }} %];
 
-param paths : [%=allPathIdentifiers(allPaths.size)%] :=
-[% for (task in allTasks) {%]
-  t_[%=nodeToNumber.get(task)%] [%=allPaths.collect(p|bool2num(p.contains(task))).concat(' ')%]
-[% } %];
+param r :=
+[% for (task in allTasks) { if (task.getRepetitions() > 1) {%]
+  t_[%=nodeToNumber.get(task)%] [%=task.getRepetitions()%]
+[% }} %];
+
+param paths :=
+[% var pathCounter = 1; for (path in allPaths) { %]
+  [%='[' + '*, p_' + pathCounter + '] ' + path.select(t | nodeToNumber.containsKey(t)).collect(t | 't_' + nodeToNumber.get(t) + ' 1').concat(' ')%]
+[% pathCounter = pathCounter + 1; } %];
+
+param cpaths :=
+[%
+  pathCounter = 1;
+  for (path in allPaths) {
+    if (path.first.eContainer.isKindOf(StructuredActivityNode)) {%]
+  [%='p_' + pathCounter + ' t_' + nodeToNumber.get(path.first.eContainer) + ' 1'%]
+[%  }
+    pathCounter = pathCounter + 1;
+  }%];
 
 end;
 
