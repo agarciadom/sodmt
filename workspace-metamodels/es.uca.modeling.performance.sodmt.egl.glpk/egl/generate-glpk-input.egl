@@ -46,12 +46,21 @@ s.t. minslack 'min slack' {a in A}: suw[a] >= msuw[a];
 # Restrictions by set of paths
 s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
 
+solve;
+
+# Print the solution so it can be easily retrieved
+printf "\nBEGIN_SUW\n";
+for {a in A} {
+  printf "%s\t%g\n", a, suw[a];
+}
+printf "END_SUW\n\n";
+
 data;
 
 [%
   var mainInitial = InitialNode.all.selectOne(n | not n.eContainer.isKindOf(StructuredActivityNode));
-  var allTasks : Sequence;
-  var allPaths : Sequence;
+  var allTasks : Set;
+  var allPaths : Set;
 
   for (initial in InitialNode.all) {
     allTasks.addAll(initial.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name));
@@ -61,15 +70,9 @@ data;
       allPaths.add(newSet);
     }
   }
+%]
 
-  var nodeCounter = 1;
-  var nodeToNumber : Map; 
-  for (task in allTasks) {
-     nodeToNumber.put(task, nodeCounter); %]
-# [%=task.name%] -> t_[%=nodeCounter%]
-[% nodeCounter = nodeCounter + 1; } %]
-
-set A := [%=allTasks.collect(n | 't_' + nodeToNumber.get(n)).concat(' ')%];
+set A := [%=allTasks.collect(t | '"' + t.name + '"').concat(', ')%];
 
 set P := [%=allPathIdentifiers(allPaths.size)%];
 
@@ -77,22 +80,22 @@ param G := [%=mainInitial.getGlobalTimeLimit()%];
 
 param m :=
 [% for (task in allTasks) { if (task.getMinimumTime() > 0) {%]
-  t_[%=nodeToNumber.get(task)%]	[%=task.getMinimumTime()%]
+  "[%=task.name%]"	[%=task.getMinimumTime()%]
 [% }} %];
 
 param w :=
 [% for (task in allTasks) { if (task.getWeight() > 1) {%]
-  t_[%=nodeToNumber.get(task)%] [%=task.getWeight()%]
+  "[%=task.name%]" [%=task.getWeight()%]
 [% }} %];
 
 param r :=
 [% for (task in allTasks) { if (task.getRepetitions() > 1) {%]
-  t_[%=nodeToNumber.get(task)%] [%=task.getRepetitions()%]
+  "[%=task.name%]" [%=task.getRepetitions()%]
 [% }} %];
 
 param paths :=
 [% var pathCounter = 1; for (path in allPaths) { %]
-  [%='[' + '*, p_' + pathCounter + '] ' + path.select(t | nodeToNumber.containsKey(t)).collect(t | 't_' + nodeToNumber.get(t) + ' 1').concat(' ')%]
+  [%='[' + '*, p_' + pathCounter + '] ' + path.select(t | allTasks.contains(t)).collect(t | '"' + t.name + '" 1').concat(' ')%]
 [% pathCounter = pathCounter + 1; } %];
 
 set CP :=
@@ -100,7 +103,7 @@ set CP :=
   pathCounter = 1;
   for (path in allPaths) {
     if (path.first.eContainer.isKindOf(StructuredActivityNode)) {%]
-  [%='(p_' + pathCounter + ', t_' + nodeToNumber.get(path.first.eContainer) + ')'%]
+  [%='(p_' + pathCounter + ', "' + path.first.eContainer.name + '")'%]
 [%  }
     pathCounter = pathCounter + 1;
   }%];
@@ -110,9 +113,5 @@ end;
 [%
 operation allPathIdentifiers(n: Integer): String {
   return 1.to(n).collect(x | 'p_' + x).concat(' ');
-}
-
-operation bool2num(flag: Boolean): Integer {
-  if (flag) return 1; else return 0;
 }
 %]
