@@ -22,8 +22,10 @@ import org.eclipse.epsilon.eol.models.Model;
 import org.eclipse.epsilon.eol.types.EolModelElementType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 public class GLPKInputGen {
@@ -40,23 +42,28 @@ public class GLPKInputGen {
 		if (path == null) return;
 		final File outputFile = new File(path);
 
+		final String outputFilePath = outputFile.getCanonicalPath();
 		try {
 			runEGL(node, loadResourceAsModel(node.eResource()), PATH_TO_EGL, outputFile);
-
-			MessageDialog.openInformation(
-					getShell(),
-					"GLPK input model generation",
-					"GLPK input model successfully generated at "
-							+ outputFile.getCanonicalPath());
+			Display.getDefault().asyncExec(new Runnable() {
+				public void run() {
+					MessageDialog.openInformation(getShell(),
+							"GLPK input model generation",
+							"GLPK input model successfully generated at "
+									+ outputFilePath);
+				}
+			});
 		} catch (Exception ex) {
-			MessageDialog
-					.openError(
+			Display.getDefault().asyncExec(new Runnable() {
+				public void run() {
+					MessageDialog.openError(
 							getShell(),
 							"GLPK input model generation",
 							String.format(
 									"Failed to generate GLPK input model at '%s'. Please check your Error Log view.",
-									outputFile.getCanonicalPath()));
-
+									outputFilePath));
+				}
+			});
 			throw ex;
 		}
 	}
@@ -64,14 +71,20 @@ public class GLPKInputGen {
 	public Map<String, BigDecimal> solve(EObject node) throws Exception {
 		final File fTmpProblem = File.createTempFile("sodmtglpk", ".model");
 		try {
+			System.err.println("Solving " + fTmpProblem);
 			runEGL(node, loadResourceAsModel(node.eResource()), PATH_TO_EGL, fTmpProblem);
 			return solveWithGlpsol(fTmpProblem);
 		}
-		catch (Exception e) {
-			MessageDialog.openError(
-					getShell(),
-					"GLPK time limit inference algorithm failed",
-					"The time limits could not be inferred.\n\n" + e.getMessage());
+		catch (final Exception e) {
+			Display.getDefault().asyncExec(new Runnable() {
+				public void run() {
+					MessageDialog.openError(
+							getShell(),
+							"GLPK time limit inference algorithm failed",
+							"The time limits could not be inferred.\n\n"
+									+ e.getMessage());
+				}
+			});
 			throw e;
 		} finally {
 			fTmpProblem.delete();
@@ -163,6 +176,10 @@ public class GLPKInputGen {
 	}
 
 	private static Shell getShell() {
-		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		if (workbench != null & workbench.getActiveWorkbenchWindow() != null) {
+			return workbench.getActiveWorkbenchWindow().getShell();
+		}
+		return null;
 	}
 }

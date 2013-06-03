@@ -60,8 +60,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private static final String PARAM_RANDOM_SEED = "randomSeed";
 	private static final String PARAM_OLD_ENABLED = "enableOldTime";
 	private static final String PARAM_NEW_ENABLED = "enabledNewTime";
+	private static final String PARAM_GLPK_ENABLED = "enabledGLPKTime";
 	private static final String PARAM_THROUGHPUT_ENABLED = "enableThroughput";
 	private static final String PARAM_EQ_ULPS = "eqThresholdUlps";
+	private static final String PARAM_EQ_REL = "eqThresholdRelative";
 
 	private int fIterations = 5;
 	private int fPercentageManual = 20;
@@ -71,12 +73,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private double fGlobalThroughput = 10;
 	private boolean fOldTimeAlgoEnabled = true;
 	private boolean fNewTimeAlgoEnabled = true;
-	private boolean fThroughputAlgoEnabled = true;
-	private int fEqualityThresholdUlps = 10;
+	private boolean fGLPKTimeAlgoEnabled = true;
+	private boolean fThroughputAlgoEnabled = false;		// normally, this one isn't compared to the others
+	private int fEqualityThresholdUlps = 0; 			// equality by ulps, by default disabled (too sensitive)
+	private double fEqualityThresholdRelative = 0.001; 	// equality by relative error
 
 	@Override
 	public Collection<String> getParameterNames() {
-		return Arrays.asList(PARAM_NEW_ENABLED, PARAM_OLD_ENABLED, PARAM_THROUGHPUT_ENABLED, PARAM_EQ_ULPS, PARAM_GLOBAL_TIMELIMIT, PARAM_GLOBAL_THROUGHPUT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
+		return Arrays.asList(PARAM_NEW_ENABLED, PARAM_OLD_ENABLED, PARAM_GLPK_ENABLED, PARAM_THROUGHPUT_ENABLED, PARAM_EQ_ULPS, PARAM_EQ_REL, PARAM_GLOBAL_TIMELIMIT, PARAM_GLOBAL_THROUGHPUT, PARAM_ITERATIONS, PARAM_MAX_WEIGHT, PARAM_PERCENTAGE_MANUAL, PARAM_RANDOM_SEED);
 	}
 
 	@Override
@@ -101,6 +105,10 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 			return Boolean.toString(fThroughputAlgoEnabled);
 		} else if (PARAM_EQ_ULPS.equals(name)) {
 			return Integer.toString(fEqualityThresholdUlps);
+		} else if (PARAM_GLPK_ENABLED.equals(name)) {
+			return Boolean.toString(fGLPKTimeAlgoEnabled);
+		} else if (PARAM_EQ_REL.equals(name)) {
+			return Double.toString(fEqualityThresholdRelative);
 		} else return null;
 	}
 
@@ -127,7 +135,12 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				fThroughputAlgoEnabled = Boolean.valueOf(value);
 			} else if (PARAM_EQ_ULPS.equals(name)) {
 				fEqualityThresholdUlps = Integer.valueOf(value);
-			} else {
+			} else if (PARAM_GLPK_ENABLED.equals(name)) {
+				fGLPKTimeAlgoEnabled = Boolean.valueOf(value);
+			} else if (PARAM_EQ_REL.equals(name)) {
+				fEqualityThresholdRelative = Double.valueOf(value);
+			}
+			else {
 				throw new IllegalArgumentException("Unknown parameter: " + name);
 			}
 		} catch (NumberFormatException e) {
@@ -140,12 +153,14 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		validateConfiguration();
 		final InferenceAlgorithm oldAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_OLD);
 		final InferenceAlgorithm newAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_NEW);
+		final InferenceAlgorithm glpkAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_GLPK);
 		final InferenceAlgorithm throughputAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_THROUGHPUT);
 		final YIntervalSeries
 			seriesNew = new YIntervalSeries("Incremental"),
 			seriesOld = new YIntervalSeries("Exhaustive"),
+			seriesGLPK = new YIntervalSeries("glpsol"),
 			seriesThroughput = new YIntervalSeries("Throughput");
-		initXYLineChart(result, seriesNew, seriesOld, seriesThroughput);
+		initXYLineChart(result, seriesNew, seriesOld, seriesGLPK, seriesThroughput);
 
 		final Random rnd = new Random(fRandomSeed);
 		List<EmfModel> models = buildModels();
@@ -165,6 +180,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 				final List<EObject> endNodes = getEndNodes(model);
 				final List<Long> lOldNanos = new ArrayList<Long>();
 				final List<Long> lNewNanos = new ArrayList<Long>();
+				final List<Long> lGLPKNanos = new ArrayList<Long>();
 				final List<Long> lThroughputNanos = new ArrayList<Long>();
 
 				for (int i = 0; i < fIterations; ++i) {
@@ -188,14 +204,28 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 						newNanos = newAlgo.runAndTimeNanos(model, fGlobalLimit, endNodes);
 						annotationsNew = computeAnnotationMap(model);
 					}
-					
+
+					long glpkNanos = 0;
+					Map<String, Double> annotationsGLPK = null;
+					if (fGLPKTimeAlgoEnabled) {
+						glpkNanos = glpkAlgo.runAndTimeNanos(model, startNode);
+						annotationsGLPK = computeAnnotationMap(model);
+					}
+
+					// If two or more algorithms were run, ensure they were comparable
 					if (fOldTimeAlgoEnabled && fNewTimeAlgoEnabled) {
-						// If both algorithms were run but the results are not equivalent, the algorithms are not comparable
-						checkResultsMatch(annotationsNew, annotationsOld);
+						checkResultsMatch("incremental", "exhaustive", annotationsNew, annotationsOld);
+					}
+					if (fOldTimeAlgoEnabled && fGLPKTimeAlgoEnabled) {
+						checkResultsMatch("GLPK-based", "exhaustive", annotationsGLPK, annotationsOld);
+					}
+					if (fNewTimeAlgoEnabled && fGLPKTimeAlgoEnabled) {
+						checkResultsMatch("incremental", "GLPK-based", annotationsNew, annotationsGLPK);
 					}
 
 					lOldNanos.add(oldNanos);
 					lNewNanos.add(newNanos);
+					lGLPKNanos.add(glpkNanos);
 					lThroughputNanos.add(throughputNanos);
 				}
 
@@ -205,13 +235,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewNanos);
 				final BoxAndWhiskerItem oldStats
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldNanos);
+				final BoxAndWhiskerItem glpkStats
+					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lGLPKNanos);
 				final BoxAndWhiskerItem throughputStats
 					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lThroughputNanos);
 				addToSeries(seriesNew, size, newStats);
 				addToSeries(seriesOld, size, oldStats);
+				addToSeries(seriesGLPK, size, glpkStats);
 				addToSeries(seriesThroughput, size, throughputStats);
-				updateRawText(result, size, newStats, oldStats, throughputStats);
+				updateRawText(result, size, newStats, oldStats, glpkStats, throughputStats);
 				monitor.worked(1);
+			} catch (Exception ex) {
+				model.setStoredOnDisposal(true);
+				throw ex;
 			} finally {
 				model.dispose();
 			}
@@ -307,10 +343,19 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		});
 	}
 
-	private boolean approximatelyEqual(double x, double y, long ulps) {
+	private boolean approximatelyEqualByUlps(double x, double y) {
+		if (fEqualityThresholdUlps <= 0) return true;
+		
 		final double max = Math.max(x, y);
 		final double ulp = Math.ulp(max);
-		return Math.abs(x - y) <= ulps * ulp;
+		return Math.abs(x - y) <= fEqualityThresholdUlps * ulp;
+	}
+
+	private boolean approximatelyEqualByRel(double x, double y) {
+		if (fEqualityThresholdRelative <= 0) return true;
+
+		final double max = Math.max(x, y);
+		return Math.abs(x - y) / max <= fEqualityThresholdRelative;
 	}
 
 	private Map<String, Double> computeAnnotationMap(EmfModel model)
@@ -326,12 +371,15 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		return mapResults;
 	}
 
-	private void checkResultsMatch(final Map<String, Double> resultsNew,
-			final Map<String, Double> resultsOld) {
+	private void checkResultsMatch(final String nameA, final String nameB,
+			final Map<String, Double> resultsA,
+			final Map<String, Double> resultsB) {
 		String firstNotEqualKey = null;
 
-		for (String key : resultsOld.keySet()) {
-			if (!resultsNew.containsKey(key) || !approximatelyEqual(resultsOld.get(key), resultsNew.get(key), fEqualityThresholdUlps)) {
+		for (String key : resultsB.keySet()) {
+			if (!resultsA.containsKey(key)
+					|| !approximatelyEqualByUlps(resultsB.get(key), resultsA.get(key))
+					|| !approximatelyEqualByRel(resultsB.get(key), resultsA.get(key))) {
 				firstNotEqualKey = key;
 				break;
 			}
@@ -339,9 +387,9 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 		if (firstNotEqualKey != null) {
 			throw new IllegalStateException(
-					"Results from the old and the new algorithm do not match, starting from key " + firstNotEqualKey + "."
-							+ "\nOld algorithm: " + resultsOld.toString()
-							+ "\nNew algorithm: " + resultsNew.toString());
+					"Results from the " + nameA + " and the " + nameB + " algorithms do not match, starting from key " + firstNotEqualKey + "."
+							+ "\n" + nameA + " algorithm: " + resultsB.toString()
+							+ "\n" + nameB + " algorithm: " + resultsA.toString());
 		}
 	}
 

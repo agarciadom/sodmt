@@ -65,8 +65,13 @@ data;
   for (initial in InitialNode.all) {
     allTasks.addAll(initial.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name));
     for (seq in getAllExecutionPathsFrom(initial)) {
+      var execNodes = seq.select(t | t.isKindOf(ExecutableNode));
+      if (execNodes.isEmpty()) {
+        continue;
+      }
+
       var newSet : Set;
-      newSet.addAll(seq);
+      newSet.addAll(execNodes);
       allPaths.add(newSet);
     }
   }
@@ -79,23 +84,23 @@ set P := [%=allPathIdentifiers(allPaths.size)%];
 param G := [%=mainInitial.getGlobalTimeLimit()%];
 
 param m :=
-[% for (task in allTasks) { if (task.getMinimumTime() > 0) {%]
+[% for (task in allTasks) { if (task.getMinimumTime() <> 0) {%]
   "[%=task.name%]"	[%=task.getMinimumTime()%]
 [% }} %];
 
 param w :=
-[% for (task in allTasks) { if (task.getWeight() > 1) {%]
+[% for (task in allTasks) { if (task.getWeight() <> 1) {%]
   "[%=task.name%]" [%=task.getWeight()%]
 [% }} %];
 
 param r :=
-[% for (task in allTasks) { if (task.getRepetitions() > 1) {%]
+[% for (task in allTasks) { if (task.getRepetitions() <> 1) {%]
   "[%=task.name%]" [%=task.getRepetitions()%]
 [% }} %];
 
 param paths :=
 [% var pathCounter = 1; for (path in allPaths) { %]
-  [%='[' + '*, p_' + pathCounter + '] ' + path.select(t | allTasks.contains(t)).collect(t | '"' + t.name + '" 1').concat(' ')%]
+  [%='[' + '*, p_' + pathCounter + '] ' + path.collect(t | '"' + t.name + '" 1').concat(' ')%]
 [% pathCounter = pathCounter + 1; } %];
 
 set CP :=

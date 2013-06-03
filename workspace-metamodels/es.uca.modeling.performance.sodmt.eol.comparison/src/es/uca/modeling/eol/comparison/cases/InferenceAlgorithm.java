@@ -7,12 +7,14 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.dt.launching.EclipseContextManager;
 import org.eclipse.epsilon.eol.execute.context.IEolContext;
 
 public class InferenceAlgorithm {
 
 	public static final String OPERATION_NEW = "distributeTime";
 	public static final String OPERATION_OLD = "annotateTimeLimits";
+	public static final String OPERATION_GLPK = "distributeTimeGlpsol";
 	public static final String OPERATION_THROUGHPUT = "annotateConcurrentUsers";
 
 	private static final String MAIN_EOL_BUNDLE = "es.uca.modeling.performance.sodmt.eol";
@@ -26,6 +28,9 @@ public class InferenceAlgorithm {
 			_module = new EolModule();
 			_module.parse(uri);
 			_module.execute();
+
+			// We need this in order to use Java-based tools
+			EclipseContextManager.setup(_module.getContext());
 		}
 		return _module;
 	}
