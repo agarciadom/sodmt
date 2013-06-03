@@ -25,7 +25,7 @@ param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
 param msuw{a in A} := min{p in P} (G-mp[p])/tw[p];
 
 # Slack per unit of weight for each activity (must be positive)
-var suw{a in A};
+var suw{a in A} >= 0;
 
 # Objective function: use as much time as possible over all paths (honoring minimum times, weights and repetitions)
 maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);

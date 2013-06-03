@@ -1,4 +1,5 @@
 import '../eol/concurrent_users.eol';
+import '../eol/time_limits_glpk.eol';
 import '../eol/time_limits_new.eol';
 import '../eol/time_limits.eol';
 
@@ -39,5 +40,13 @@ wizard GenGLPK {
   do {
     var glpkTool = new Native('es.uca.modeling.performance.sodmt.egl.glpk.GLPKInputGen');
     glpkTool.generate(self);
+  }
+}
+
+wizard RunGLPK {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Infer time limits (GLPK)'
+  do {
+    distributeTimeGlpsol(self);
   }
 }

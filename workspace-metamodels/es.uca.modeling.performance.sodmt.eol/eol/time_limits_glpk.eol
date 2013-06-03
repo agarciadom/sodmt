@@ -1,0 +1,18 @@
+import 'utils.eol';
+
+operation distributeTimeGlpsol(node) {
+  var glpkTool = new Native('es.uca.modeling.performance.sodmt.egl.glpk.GLPKInputGen');
+  var results = glpkTool.solve(node);
+  for (taskName in results.keySet) {
+    var task = ExecutableNode.all.selectOne(n | n.name = taskName);
+    var suw = results.get(taskName);
+    var m = task.getMinimumTime();
+    var w = task.getWeight();
+
+    -- Try to use arbitrary precision arithmetic until the last moment      
+    var bdm = new Native('java.math.BigDecimal')(m);
+    var bdw = new Native('java.math.BigDecimal')(w);
+    var bdtl = bdm.add(suw.multiply(bdw));
+    task.setTimeLimit(bdtl.doubleValue());
+  }
+}
