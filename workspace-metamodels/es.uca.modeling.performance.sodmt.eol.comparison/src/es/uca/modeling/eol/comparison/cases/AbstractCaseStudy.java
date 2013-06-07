@@ -58,8 +58,8 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 	private static final String PARAM_PERCENTAGE_MANUAL = "percentageManual";
 	private static final String PARAM_MAX_WEIGHT = "maxManualWeight";
 	private static final String PARAM_RANDOM_SEED = "randomSeed";
-	private static final String PARAM_OLD_ENABLED = "enableOldTime";
-	private static final String PARAM_NEW_ENABLED = "enabledNewTime";
+	private static final String PARAM_OLD_ENABLED = "enableExhaTime";
+	private static final String PARAM_NEW_ENABLED = "enabledIncrTime";
 	private static final String PARAM_GLPK_ENABLED = "enabledGLPKTime";
 	private static final String PARAM_THROUGHPUT_ENABLED = "enableThroughput";
 	private static final String PARAM_EQ_ULPS = "eqThresholdUlps";
@@ -158,7 +158,7 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		final YIntervalSeries
 			seriesNew = new YIntervalSeries("Incremental"),
 			seriesOld = new YIntervalSeries("Exhaustive"),
-			seriesGLPK = new YIntervalSeries("glpsol"),
+			seriesGLPK = new YIntervalSeries("GLPK"),
 			seriesThroughput = new YIntervalSeries("Throughput");
 		initXYLineChart(result, seriesNew, seriesOld, seriesGLPK, seriesThroughput);
 
