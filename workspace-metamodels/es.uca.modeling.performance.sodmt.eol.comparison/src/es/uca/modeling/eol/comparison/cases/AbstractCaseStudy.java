@@ -157,10 +157,16 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		final InferenceAlgorithm throughputAlgo = new InferenceAlgorithm(InferenceAlgorithm.OPERATION_THROUGHPUT);
 		final YIntervalSeries
 			seriesNew = new YIntervalSeries("Incremental"),
-			seriesOld = new YIntervalSeries("Exhaustive"),
 			seriesGLPK = new YIntervalSeries("GLPK"),
+			seriesOld = new YIntervalSeries("Exhaustive"),
 			seriesThroughput = new YIntervalSeries("Throughput");
-		initXYLineChart(result, seriesNew, seriesOld, seriesGLPK, seriesThroughput);
+
+		final List<YIntervalSeries> series = new ArrayList<YIntervalSeries>();
+		if (fNewTimeAlgoEnabled) series.add(seriesNew);
+		if (fGLPKTimeAlgoEnabled) series.add(seriesGLPK);
+		if (fOldTimeAlgoEnabled) series.add(seriesOld);
+		if (fThroughputAlgoEnabled) series.add(seriesThroughput);
+		initXYLineChart(result, series.toArray(new YIntervalSeries[series.size()]));
 
 		final Random rnd = new Random(fRandomSeed);
 		List<EmfModel> models = buildModels();

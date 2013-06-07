@@ -71,7 +71,6 @@ public class GLPKInputGen {
 	public Map<String, BigDecimal> solve(EObject node) throws Exception {
 		final File fTmpProblem = File.createTempFile("sodmtglpk", ".model");
 		try {
-			System.err.println("Solving " + fTmpProblem);
 			runEGL(node, loadResourceAsModel(node.eResource()), PATH_TO_EGL, fTmpProblem);
 			return solveWithGlpsol(fTmpProblem);
 		}
