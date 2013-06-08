@@ -35,8 +35,8 @@ wizard InferPerformanceAnnotations {
 }
 
 wizard GenGLPK {
-  guard : self.isKindOf(ActivityNode)
-  title : 'Generate glpsol model...'
+  guard : self.isKindOf(InitialNode)
+  title : 'Generate glpsol model starting from here...'
   do {
     var glpkTool = new Native('es.uca.modeling.performance.sodmt.egl.glpk.GLPKInputGen');
     glpkTool.generate(self);
@@ -44,9 +44,10 @@ wizard GenGLPK {
 }
 
 wizard RunGLPK {
-  guard : self.isKindOf(ActivityNode)
   title : 'Infer time limits (GLPK)'
   do {
-    distributeTimeGlpsol(self);
+    for (initial in InitialNode.all.sortBy(n | n.getNestingLevel())) {
+    	distributeTimeGlpsol(initial);
+    }
   }
 }

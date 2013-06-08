@@ -14,9 +14,6 @@ param r{a in A}, default 1;
 # Paths (activity belongs in an activity)
 param paths{a in A, p in P}, default 0, binary;
 
-# Path containment (path is fully contained inside a single activity)
-set CP within P cross A;
-
 # Minimum time and total weight of each path
 param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
 param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
@@ -30,22 +27,11 @@ var suw{a in A} >= 0;
 # Objective function: use as much time as possible over all paths (honoring minimum times, weights and repetitions)
 maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
 
-# Global time limit on paths which are not inside any activity
-s.t. glpath 'global limit on path' {p in P: not exists {a in A} (p, a) in CP}:
-  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
-
-# Local time limit on paths which are inside some activity
-s.t. llpath 'local limit on path' {(p, whole) in CP}:
-  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a])
-    <=
-  suw[whole] * w[whole] + m[whole];
+# Global time limit on paths
+s.t. glpath 'global limit on path' {p in P}: sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
 
 # Minimum slack restriction on paths which are not inside any activity
-s.t. minslackg 'min slack: global' {a in A: not exists {p in P, b in A} paths[a, p] == 1 && (p, b) in CP}: suw[a] >= gminsuw;
-
-# Minimum slack restriction on paths which are inside some activity (a bit more restrictive than the global case, in order to stay linear)
-s.t. minslackn 'min slack: nested' {a in A, b in A: exists {p in P} paths[a, p] == 1 && (p, b) in CP}:
-  suw[a] >= (m[b] + w[b] * suw[b] - (max{p in P: paths[a, p] == 1} mp[p])) / (max{p in P: paths[a, p] == 1} tw[p]);
+s.t. minslackg 'min slack: global' {a in A}: suw[a] >= gminsuw;
 
 # Activities on all the same paths must have the same SUW
 s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
@@ -62,22 +48,18 @@ printf "END_SUW\n\n";
 data;
 
 [%
-  var mainInitial = InitialNode.all.selectOne(n | not n.eContainer.isKindOf(StructuredActivityNode));
+  -- this template receives one argument (selected: the InitialNode from which we want to launch the computation)
   var allTasks : Set;
   var allPaths : Set;
 
-  for (initial in InitialNode.all) {
-    allTasks.addAll(initial.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name));
-    for (seq in getAllExecutionPathsFrom(initial)) {
-      var execNodes = seq.select(t | t.isKindOf(ExecutableNode));
-      if (execNodes.isEmpty()) {
-        continue;
-      }
-
-      var newSet : Set;
-      newSet.addAll(execNodes);
-      allPaths.add(newSet);
+  for (seq in getAllExecutionPathsFrom(selected)) {
+    var execNodes = seq.select(t | t.isKindOf(ExecutableNode)).asSequence();
+    if (execNodes.isEmpty()) {
+      continue;
     }
+
+	allTasks.addAll(execNodes);
+    allPaths.add(execNodes);
   }
 %]
 
@@ -85,7 +67,7 @@ set A := [%=allTasks.collect(t | '"' + t.name + '"').concat(', ')%];
 
 set P := [%=allPathIdentifiers(allPaths.size)%];
 
-param G := [%=mainInitial.getGlobalTimeLimit()%];
+param G := [%=selected.getGlobalTimeLimit()%];
 
 param m :=
 [% for (task in allTasks) { if (task.getMinimumTime() <> 0) {%]
@@ -106,16 +88,6 @@ param paths :=
 [% var pathCounter = 1; for (path in allPaths) { %]
   [%='[' + '*, p_' + pathCounter + '] ' + path.collect(t | '"' + t.name + '" 1').concat(' ')%]
 [% pathCounter = pathCounter + 1; } %];
-
-set CP :=
-[%
-  pathCounter = 1;
-  for (path in allPaths) {
-    if (path.first.eContainer.isKindOf(StructuredActivityNode)) {%]
-  [%='(p_' + pathCounter + ', "' + path.first.eContainer.name + '")'%]
-[%  }
-    pathCounter = pathCounter + 1;
-  }%];
 
 end;
 
