@@ -18,8 +18,8 @@ param paths{a in A, p in P}, default 0, binary;
 param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
 param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
 
-# Minimum global SUW
-param gminsuw := min{p in P} (G-mp[p])/tw[p];
+# Minimum slack per unit of weight by task
+param msuw{a in A} := min{p in P: paths[a, p] == 1 && tw[p] > 0} (G-mp[p])/tw[p];
 
 # Slack per unit of weight for each activity (must be positive)
 var suw{a in A} >= 0;
@@ -31,7 +31,7 @@ maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
 s.t. glpath 'global limit on path' {p in P}: sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
 
 # Minimum slack restriction on paths which are not inside any activity
-s.t. minslackg 'min slack: global' {a in A}: suw[a] >= gminsuw;
+s.t. minslackg 'min slack: global' {a in A}: suw[a] >= msuw[a];
 
 # Activities on all the same paths must have the same SUW
 s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
