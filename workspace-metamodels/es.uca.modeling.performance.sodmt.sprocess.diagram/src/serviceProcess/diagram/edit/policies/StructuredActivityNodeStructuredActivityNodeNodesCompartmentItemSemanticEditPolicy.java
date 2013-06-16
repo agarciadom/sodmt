@@ -70,6 +70,11 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartmentItemSem
 			return getGEFWrapper(new serviceProcess.diagram.edit.commands.JoinNode2CreateCommand(
 					req));
 		}
+		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027 == req
+				.getElementType()) {
+			return getGEFWrapper(new serviceProcess.diagram.edit.commands.MergeNode2CreateCommand(
+					req));
+		}
 		return super.getCreateCommand(req);
 	}
 

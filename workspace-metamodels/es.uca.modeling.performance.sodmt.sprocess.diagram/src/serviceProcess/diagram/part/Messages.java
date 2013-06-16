@@ -336,22 +336,32 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode9CreationTool_title;
+	public static String Merge9CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode9CreationTool_desc;
+	public static String Merge9CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String StructuredActivityNode10CreationTool_title;
+	public static String ObjectNode10CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String StructuredActivityNode10CreationTool_desc;
+	public static String ObjectNode10CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String StructuredActivityNode11CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String StructuredActivityNode11CreationTool_desc;
 
 	/**
 	 * @generated
@@ -471,6 +481,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_MergeNode_2012_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_2012_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_DecisionNode_3024_incominglinks;
 
 	/**
@@ -507,6 +527,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_ExecutableNodeAnnotation_4003_source;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_3027_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_3027_outgoinglinks;
 
 	/**
 	 * @generated

@@ -108,6 +108,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.JoinNodeEditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNodeEditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart(
 						view);
@@ -196,6 +200,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.JoinNode2EditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNode2EditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.Action3EditPart(
 						view);
@@ -266,6 +274,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 
 			case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.JoinNode3EditPart(
+						view);
+
+			case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNode3EditPart(
 						view);
 
 			case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart.VISUAL_ID:

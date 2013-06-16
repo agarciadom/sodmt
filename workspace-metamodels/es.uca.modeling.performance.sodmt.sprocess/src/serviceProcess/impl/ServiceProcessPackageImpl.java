@@ -22,6 +22,7 @@ import serviceProcess.ForkNode;
 import serviceProcess.InitialNode;
 import serviceProcess.JoinNode;
 import serviceProcess.LocalPerformanceAnnotation;
+import serviceProcess.MergeNode;
 import serviceProcess.NamedElement;
 import serviceProcess.NodeSide;
 import serviceProcess.ObjectFlow;
@@ -159,6 +160,13 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * @generated
    */
   private EClass joinNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mergeNodeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -592,6 +600,16 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMergeNode()
+  {
+    return mergeNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getVisitStatus()
   {
     return visitStatusEEnum;
@@ -689,6 +707,8 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
 
     joinNodeEClass = createEClass(JOIN_NODE);
 
+    mergeNodeEClass = createEClass(MERGE_NODE);
+
     // Create enums
     visitStatusEEnum = createEEnum(VISIT_STATUS);
     nodeSideEEnum = createEEnum(NODE_SIDE);
@@ -738,6 +758,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
     decisionNodeEClass.getESuperTypes().add(this.getActivityNode());
     forkNodeEClass.getESuperTypes().add(this.getActivityNode());
     joinNodeEClass.getESuperTypes().add(this.getActivityNode());
+    mergeNodeEClass.getESuperTypes().add(this.getActivityNode());
 
     // Initialize classes and features; add operations and parameters
     initEClass(serviceProcessEClass, ServiceProcess.class, "ServiceProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -792,6 +813,8 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
 
     initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(mergeNodeEClass, MergeNode.class, "MergeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     // Initialize enums and add enum literals
     initEEnum(visitStatusEEnum, VisitStatus.class, "VisitStatus");
     addEEnumLiteral(visitStatusEEnum, VisitStatus.NOT_VISITED);
@@ -834,7 +857,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "model.extension", "sp",
        "diagram.extension", "spdiag"
-       });																					
+       });																						
   }
 
   /**
@@ -888,7 +911,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "incoming", "true",
        "style", "dash",
        "tool.name", "Link Performance Annotation"
-       });								
+       });									
   }
 
   /**
@@ -1019,6 +1042,20 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        "size", "10,30",
        "resizable", "false",
        "tool.name", "Join"
+       });		
+    addAnnotation
+      (mergeNodeEClass, 
+       source, 
+       new String[] 
+       {
+       "figure", "polygon",
+       "polygon.x", "0 10 10 0",
+       "polygon.y", "0 0 30 30",
+       "color", "0,0,0",
+       "label.placement", "none",
+       "size", "10,30",
+       "resizable", "false",
+       "tool.name", "Merge"
        });
   }
 
@@ -1070,7 +1107,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        {
        "label.view.pattern", "reps = {0}",
        "label.edit.pattern", "{0, number}"
-       });													
+       });														
   }
 
   /**
@@ -1087,7 +1124,7 @@ public class ServiceProcessPackageImpl extends EPackageImpl implements ServicePr
        source, 
        new String[] 
        {
-       });						
+       });							
   }
 
 } //ServiceProcessPackageImpl

@@ -90,6 +90,7 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		case serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

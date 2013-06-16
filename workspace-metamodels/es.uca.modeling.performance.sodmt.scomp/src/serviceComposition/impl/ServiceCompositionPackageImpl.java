@@ -23,6 +23,7 @@ import serviceComposition.ForkNode;
 import serviceComposition.InitialNode;
 import serviceComposition.JoinNode;
 import serviceComposition.LocalPerformanceAnnotation;
+import serviceComposition.MergeNode;
 import serviceComposition.NamedElement;
 import serviceComposition.NodeSide;
 import serviceComposition.ObjectFlow;
@@ -167,6 +168,13 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * @generated
    */
   private EClass joinNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mergeNodeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -630,6 +638,16 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMergeNode()
+  {
+    return mergeNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getVisitStatus()
   {
     return visitStatusEEnum;
@@ -731,6 +749,8 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
 
     joinNodeEClass = createEClass(JOIN_NODE);
 
+    mergeNodeEClass = createEClass(MERGE_NODE);
+
     // Create enums
     visitStatusEEnum = createEEnum(VISIT_STATUS);
     nodeSideEEnum = createEEnum(NODE_SIDE);
@@ -781,6 +801,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     decisionNodeEClass.getESuperTypes().add(this.getActivityNode());
     forkNodeEClass.getESuperTypes().add(this.getActivityNode());
     joinNodeEClass.getESuperTypes().add(this.getActivityNode());
+    mergeNodeEClass.getESuperTypes().add(this.getActivityNode());
 
     // Initialize classes and features; add operations and parameters
     initEClass(serviceCompositionEClass, ServiceComposition.class, "ServiceComposition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -839,6 +860,8 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
 
     initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(mergeNodeEClass, MergeNode.class, "MergeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     // Initialize enums and add enum literals
     initEEnum(visitStatusEEnum, VisitStatus.class, "VisitStatus");
     addEEnumLiteral(visitStatusEEnum, VisitStatus.NOT_VISITED);
@@ -881,7 +904,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "model.extension", "sc",
        "diagram.extension", "scdiag"
-       });																							
+       });																								
   }
 
   /**
@@ -1020,6 +1043,20 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "size", "10,30",
        "resizable", "false",
        "tool.name", "Join"
+       });		
+    addAnnotation
+      (mergeNodeEClass, 
+       source, 
+       new String[] 
+       {
+       "figure", "polygon",
+       "polygon.x", "0 10 10 0",
+       "polygon.y", "0 0 30 30",
+       "color", "0,0,0",
+       "label.placement", "none",
+       "size", "10,30",
+       "resizable", "false",
+       "tool.name", "Merge"
        });
   }
 
@@ -1044,7 +1081,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        source, 
        new String[] 
        {
-       });						
+       });							
   }
 
   /**
@@ -1098,7 +1135,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "incoming", "true",
        "style", "dash",
        "tool.name", "Link Performance Annotation"
-       });								
+       });									
   }
 
   /**
@@ -1149,7 +1186,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "label.view.pattern", "reps = {0}",
        "label.edit.pattern", "{0, number}"
-       });													
+       });														
   }
 
 } //ServiceCompositionPackageImpl

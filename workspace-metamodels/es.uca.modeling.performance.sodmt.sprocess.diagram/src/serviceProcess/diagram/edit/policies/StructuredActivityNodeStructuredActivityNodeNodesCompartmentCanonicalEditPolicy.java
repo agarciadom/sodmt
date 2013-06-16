@@ -90,6 +90,7 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartmentCanonic
 		case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

@@ -831,6 +831,43 @@ public interface ServiceProcessPackage extends EPackage
   int JOIN_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link serviceProcess.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see serviceProcess.impl.MergeNodeImpl
+   * @see serviceProcess.impl.ServiceProcessPackageImpl#getMergeNode()
+   * @generated
+   */
+  int MERGE_NODE = 17;
+
+  /**
+   * The feature id for the '<em><b>Incoming</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__INCOMING = ACTIVITY_NODE__INCOMING;
+
+  /**
+   * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__OUTGOING = ACTIVITY_NODE__OUTGOING;
+
+  /**
+   * The number of structural features of the '<em>Merge Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -838,7 +875,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 17;
+  int VISIT_STATUS = 18;
 
   /**
    * The meta object id for the '{@link serviceProcess.NodeSide <em>Node Side</em>}' enum.
@@ -848,7 +885,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 18;
+  int NODE_SIDE = 19;
 
 
   /**
@@ -1220,6 +1257,16 @@ public interface ServiceProcessPackage extends EPackage
   EClass getJoinNode();
 
   /**
+   * Returns the meta object for class '{@link serviceProcess.MergeNode <em>Merge Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Merge Node</em>'.
+   * @see serviceProcess.MergeNode
+   * @generated
+   */
+  EClass getMergeNode();
+
+  /**
    * Returns the meta object for enum '{@link serviceProcess.VisitStatus <em>Visit Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1575,6 +1622,16 @@ public interface ServiceProcessPackage extends EPackage
      * @generated
      */
     EClass JOIN_NODE = eINSTANCE.getJoinNode();
+
+    /**
+     * The meta object literal for the '{@link serviceProcess.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see serviceProcess.impl.MergeNodeImpl
+     * @see serviceProcess.impl.ServiceProcessPackageImpl#getMergeNode()
+     * @generated
+     */
+    EClass MERGE_NODE = eINSTANCE.getMergeNode();
 
     /**
      * The meta object literal for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.

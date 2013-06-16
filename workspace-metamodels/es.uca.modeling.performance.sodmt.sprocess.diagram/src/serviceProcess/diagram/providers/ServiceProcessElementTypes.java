@@ -88,6 +88,11 @@ public class ServiceProcessElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType MergeNode_2012 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_2012"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType PerformanceAnnotation_2009 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.PerformanceAnnotation_2009"); //$NON-NLS-1$
 	/**
 	 * @generated
@@ -125,6 +130,11 @@ public class ServiceProcessElementTypes {
 	 * @generated
 	 */
 	public static final IElementType JoinNode_3026 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType MergeNode_3027 = getElementType("es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_3027"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -288,6 +298,10 @@ public class ServiceProcessElementTypes {
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getJoinNode());
 
+			elements.put(MergeNode_2012,
+					serviceProcess.ServiceProcessPackage.eINSTANCE
+							.getMergeNode());
+
 			elements.put(PerformanceAnnotation_2009,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getPerformanceAnnotation());
@@ -327,6 +341,10 @@ public class ServiceProcessElementTypes {
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getJoinNode());
 
+			elements.put(MergeNode_3027,
+					serviceProcess.ServiceProcessPackage.eINSTANCE
+							.getMergeNode());
+
 			elements.put(ControlFlow_4001,
 					serviceProcess.ServiceProcessPackage.eINSTANCE
 							.getControlFlow());
@@ -365,6 +383,7 @@ public class ServiceProcessElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DecisionNode_2006);
 			KNOWN_ELEMENT_TYPES.add(ForkNode_2007);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_2008);
+			KNOWN_ELEMENT_TYPES.add(MergeNode_2012);
 			KNOWN_ELEMENT_TYPES.add(PerformanceAnnotation_2009);
 			KNOWN_ELEMENT_TYPES.add(Action_3018);
 			KNOWN_ELEMENT_TYPES.add(StructuredActivityNode_3019);
@@ -375,6 +394,7 @@ public class ServiceProcessElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DecisionNode_3024);
 			KNOWN_ELEMENT_TYPES.add(ForkNode_3025);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_3026);
+			KNOWN_ELEMENT_TYPES.add(MergeNode_3027);
 			KNOWN_ELEMENT_TYPES.add(ControlFlow_4001);
 			KNOWN_ELEMENT_TYPES.add(ObjectFlow_4002);
 			KNOWN_ELEMENT_TYPES.add(ExecutableNodeAnnotation_4003);
@@ -407,6 +427,8 @@ public class ServiceProcessElementTypes {
 			return ForkNode_2007;
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return JoinNode_2008;
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return MergeNode_2012;
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return PerformanceAnnotation_2009;
 		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -427,6 +449,8 @@ public class ServiceProcessElementTypes {
 			return ForkNode_3025;
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return JoinNode_3026;
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return MergeNode_3027;
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return ControlFlow_4001;
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:

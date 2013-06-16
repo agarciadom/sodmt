@@ -78,6 +78,7 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
       case ServiceProcessPackage.DECISION_NODE: return createDecisionNode();
       case ServiceProcessPackage.FORK_NODE: return createForkNode();
       case ServiceProcessPackage.JOIN_NODE: return createJoinNode();
+      case ServiceProcessPackage.MERGE_NODE: return createMergeNode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -262,6 +263,17 @@ public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServicePr
   {
     JoinNodeImpl joinNode = new JoinNodeImpl();
     return joinNode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MergeNode createMergeNode()
+  {
+    MergeNodeImpl mergeNode = new MergeNodeImpl();
+    return mergeNode;
   }
 
   /**

@@ -100,6 +100,10 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 				return new serviceProcess.diagram.edit.parts.JoinNodeEditPart(
 						view);
 
+			case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.MergeNodeEditPart(
+						view);
+
 			case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart(
 						view);
@@ -186,6 +190,10 @@ public class ServiceProcessEditPartFactory implements EditPartFactory {
 
 			case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 				return new serviceProcess.diagram.edit.parts.JoinNode2EditPart(
+						view);
+
+			case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+				return new serviceProcess.diagram.edit.parts.MergeNode2EditPart(
 						view);
 
 			case serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart.VISUAL_ID:

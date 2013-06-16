@@ -152,6 +152,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				case serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+				case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -159,6 +160,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				case serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
+				case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
@@ -170,6 +172,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				case serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID:
 				case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
+				case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -192,6 +195,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				|| serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID == visualID
+				|| serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID == visualID
@@ -202,6 +206,7 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				|| serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == visualID
+				|| serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart.VISUAL_ID == visualID
@@ -210,7 +215,8 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 				|| serviceComposition.diagram.edit.parts.FinalNode3EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID == visualID
 				|| serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID == visualID
-				|| serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID == visualID;
+				|| serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID == visualID
+				|| serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -300,6 +306,9 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return createJoinNode_2010(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return createMergeNode_2012(domainElement, containerView, index,
+					persisted, preferencesHint);
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return createPerformanceAnnotation_2011(domainElement,
 					containerView, index, persisted, preferencesHint);
@@ -330,6 +339,9 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return createJoinNode_3009(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return createMergeNode_3019(domainElement, containerView, index,
+					persisted, preferencesHint);
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 			return createAction_3010(domainElement, containerView, index,
 					persisted, preferencesHint);
@@ -356,6 +368,9 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 					persisted, preferencesHint);
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 			return createJoinNode_3018(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+			return createMergeNode_3020(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -875,6 +890,48 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	public Node createMergeNode_2012(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles()
+				.add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+				.getType(serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
 	public Node createPerformanceAnnotation_2011(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
@@ -1353,6 +1410,47 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	public Node createMergeNode_3019(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles()
+				.add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+				.getType(serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
 	public Node createAction_3010(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
@@ -1744,6 +1842,47 @@ public class ServiceCompositionViewProvider extends AbstractProvider implements
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getType(serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createMergeNode_3020(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles()
+				.add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+				.getType(serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 

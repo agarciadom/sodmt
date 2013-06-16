@@ -90,6 +90,7 @@ public class ActivityPartitionActivityPartitionNodesCompartmentCanonicalEditPoli
 		case serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

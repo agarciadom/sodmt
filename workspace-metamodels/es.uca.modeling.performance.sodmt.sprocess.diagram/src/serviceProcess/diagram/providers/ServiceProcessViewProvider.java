@@ -151,6 +151,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				case serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID:
@@ -158,6 +159,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
+				case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
 				case serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
 					if (domainElement == null
@@ -181,6 +183,7 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				|| serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID == visualID
@@ -190,7 +193,8 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 				|| serviceProcess.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID == visualID
 				|| serviceProcess.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID == visualID
-				|| serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == visualID;
+				|| serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == visualID
+				|| serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -277,6 +281,9 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return createJoinNode_2008(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return createMergeNode_2012(domainElement, containerView, index,
+					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return createPerformanceAnnotation_2009(domainElement,
 					containerView, index, persisted, preferencesHint);
@@ -306,6 +313,9 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 					persisted, preferencesHint);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return createJoinNode_3026(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return createMergeNode_3027(domainElement, containerView, index,
 					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
@@ -738,6 +748,48 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getType(serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createMergeNode_2012(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles()
+				.add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		stampShortcut(containerView, node);
@@ -1217,6 +1269,47 @@ public class ServiceProcessViewProvider extends AbstractProvider implements
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
 				.getType(serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createMergeNode_3027(EObject domainElement, View containerView,
+			int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles()
+				.add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(serviceProcess.diagram.part.ServiceProcessVisualIDRegistry
+				.getType(serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 

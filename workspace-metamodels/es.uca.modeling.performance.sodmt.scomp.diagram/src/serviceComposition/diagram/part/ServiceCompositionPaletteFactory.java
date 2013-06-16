@@ -46,8 +46,9 @@ public class ServiceCompositionPaletteFactory {
 		paletteContainer.add(createInitialNode7CreationTool());
 		paletteContainer.add(createJoin8CreationTool());
 		paletteContainer.add(createLocalPerformanceConstraint9CreationTool());
-		paletteContainer.add(createObjectNode10CreationTool());
-		paletteContainer.add(createStructuredActivityNode11CreationTool());
+		paletteContainer.add(createMerge10CreationTool());
+		paletteContainer.add(createObjectNode11CreationTool());
+		paletteContainer.add(createStructuredActivityNode12CreationTool());
 		return paletteContainer;
 	}
 
@@ -233,16 +234,35 @@ public class ServiceCompositionPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createObjectNode10CreationTool() {
+	private ToolEntry createMerge10CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(3);
+		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
+		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
+		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
+		NodeToolEntry entry = new NodeToolEntry(
+				serviceComposition.diagram.part.Messages.Merge10CreationTool_title,
+				serviceComposition.diagram.part.Messages.Merge10CreationTool_desc,
+				types);
+		entry.setId("createMerge10CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
+				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createObjectNode11CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(3);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceComposition.diagram.part.Messages.ObjectNode10CreationTool_title,
-				serviceComposition.diagram.part.Messages.ObjectNode10CreationTool_desc,
+				serviceComposition.diagram.part.Messages.ObjectNode11CreationTool_title,
+				serviceComposition.diagram.part.Messages.ObjectNode11CreationTool_desc,
 				types);
-		entry.setId("createObjectNode10CreationTool"); //$NON-NLS-1$
+		entry.setId("createObjectNode11CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -252,16 +272,16 @@ public class ServiceCompositionPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createStructuredActivityNode11CreationTool() {
+	private ToolEntry createStructuredActivityNode12CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(3);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceComposition.diagram.part.Messages.StructuredActivityNode11CreationTool_title,
-				serviceComposition.diagram.part.Messages.StructuredActivityNode11CreationTool_desc,
+				serviceComposition.diagram.part.Messages.StructuredActivityNode12CreationTool_title,
+				serviceComposition.diagram.part.Messages.StructuredActivityNode12CreationTool_desc,
 				types);
-		entry.setId("createStructuredActivityNode11CreationTool"); //$NON-NLS-1$
+		entry.setId("createStructuredActivityNode12CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002));
 		entry.setLargeIcon(entry.getSmallIcon());

@@ -135,6 +135,9 @@ class ForkNode extends ActivityNode {}
           label.placement="none", size="10,30", resizable="false", tool.name="Join")
 class JoinNode extends ActivityNode {}
 
+@gmf.node(figure="polygon", polygon.x="0 10 10 0", polygon.y="0 0 30 30", color="0,0,0",
+          label.placement="none", size="10,30", resizable="false", tool.name="Merge")
+class MergeNode extends ActivityNode {}
 
 /* DATATYPES */
 

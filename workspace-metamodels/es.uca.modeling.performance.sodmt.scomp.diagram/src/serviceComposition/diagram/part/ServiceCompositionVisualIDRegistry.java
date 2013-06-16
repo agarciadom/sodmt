@@ -166,6 +166,10 @@ public class ServiceCompositionVisualIDRegistry {
 				return serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID;
 			}
 			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+				return serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID;
+			}
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getPerformanceAnnotation().isSuperTypeOf(
 							domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID;
@@ -210,6 +214,10 @@ public class ServiceCompositionVisualIDRegistry {
 					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
 			}
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID:
 			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
@@ -249,6 +257,10 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
+			}
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
 			}
 			break;
 		case serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart.VISUAL_ID:
@@ -290,6 +302,10 @@ public class ServiceCompositionVisualIDRegistry {
 					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID;
 			}
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+				return serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID:
 			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
@@ -329,6 +345,10 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
+			}
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
+					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -387,6 +407,9 @@ public class ServiceCompositionVisualIDRegistry {
 				return true;
 			}
 			if (serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID == nodeVisualID) {
@@ -554,6 +577,9 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID:
 			if (serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID == nodeVisualID) {
@@ -581,6 +607,9 @@ public class ServiceCompositionVisualIDRegistry {
 				return true;
 			}
 			if (serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -612,6 +641,9 @@ public class ServiceCompositionVisualIDRegistry {
 			if (serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID:
 			if (serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID == nodeVisualID) {
@@ -639,6 +671,9 @@ public class ServiceCompositionVisualIDRegistry {
 				return true;
 			}
 			if (serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -730,6 +765,7 @@ public class ServiceCompositionVisualIDRegistry {
 		case serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
@@ -746,6 +782,8 @@ public class ServiceCompositionVisualIDRegistry {
 		case serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

@@ -346,22 +346,32 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode10CreationTool_title;
+	public static String Merge10CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String ObjectNode10CreationTool_desc;
+	public static String Merge10CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String StructuredActivityNode11CreationTool_title;
+	public static String ObjectNode11CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String StructuredActivityNode11CreationTool_desc;
+	public static String ObjectNode11CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
+	public static String StructuredActivityNode12CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String StructuredActivityNode12CreationTool_desc;
 
 	/**
 	 * @generated
@@ -531,6 +541,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_MergeNode_2012_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_2012_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_FinalNode_2007_incominglinks;
 
 	/**
@@ -611,6 +631,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_MergeNode_3019_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_3019_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_DecisionNode_3007_incominglinks;
 
 	/**
@@ -677,6 +707,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_InitialNode_3005_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_3020_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_MergeNode_3020_outgoinglinks;
 
 	/**
 	 * @generated

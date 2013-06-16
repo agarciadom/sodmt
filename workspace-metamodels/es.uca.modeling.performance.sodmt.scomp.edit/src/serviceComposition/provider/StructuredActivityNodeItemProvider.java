@@ -203,6 +203,11 @@ public class StructuredActivityNodeItemProvider
       (createChildParameter
         (ServiceCompositionPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODES,
          ServiceCompositionFactory.eINSTANCE.createJoinNode()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (ServiceCompositionPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODES,
+         ServiceCompositionFactory.eINSTANCE.createMergeNode()));
   }
 
 }

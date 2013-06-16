@@ -877,6 +877,43 @@ public interface ServiceCompositionPackage extends EPackage
   int JOIN_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link serviceComposition.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see serviceComposition.impl.MergeNodeImpl
+   * @see serviceComposition.impl.ServiceCompositionPackageImpl#getMergeNode()
+   * @generated
+   */
+  int MERGE_NODE = 18;
+
+  /**
+   * The feature id for the '<em><b>Incoming</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__INCOMING = ACTIVITY_NODE__INCOMING;
+
+  /**
+   * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__OUTGOING = ACTIVITY_NODE__OUTGOING;
+
+  /**
+   * The number of structural features of the '<em>Merge Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link serviceComposition.VisitStatus <em>Visit Status</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -884,7 +921,7 @@ public interface ServiceCompositionPackage extends EPackage
    * @see serviceComposition.impl.ServiceCompositionPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 18;
+  int VISIT_STATUS = 19;
 
   /**
    * The meta object id for the '{@link serviceComposition.NodeSide <em>Node Side</em>}' enum.
@@ -894,7 +931,7 @@ public interface ServiceCompositionPackage extends EPackage
    * @see serviceComposition.impl.ServiceCompositionPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 19;
+  int NODE_SIDE = 20;
 
 
   /**
@@ -1298,6 +1335,16 @@ public interface ServiceCompositionPackage extends EPackage
   EClass getJoinNode();
 
   /**
+   * Returns the meta object for class '{@link serviceComposition.MergeNode <em>Merge Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Merge Node</em>'.
+   * @see serviceComposition.MergeNode
+   * @generated
+   */
+  EClass getMergeNode();
+
+  /**
    * Returns the meta object for enum '{@link serviceComposition.VisitStatus <em>Visit Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1679,6 +1726,16 @@ public interface ServiceCompositionPackage extends EPackage
      * @generated
      */
     EClass JOIN_NODE = eINSTANCE.getJoinNode();
+
+    /**
+     * The meta object literal for the '{@link serviceComposition.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see serviceComposition.impl.MergeNodeImpl
+     * @see serviceComposition.impl.ServiceCompositionPackageImpl#getMergeNode()
+     * @generated
+     */
+    EClass MERGE_NODE = eINSTANCE.getMergeNode();
 
     /**
      * The meta object literal for the '{@link serviceComposition.VisitStatus <em>Visit Status</em>}' enum.

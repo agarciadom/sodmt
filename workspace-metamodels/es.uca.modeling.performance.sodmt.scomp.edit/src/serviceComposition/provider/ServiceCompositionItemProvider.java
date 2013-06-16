@@ -217,6 +217,11 @@ public class ServiceCompositionItemProvider
 
     newChildDescriptors.add
       (createChildParameter
+        (ServiceCompositionPackage.Literals.SERVICE_COMPOSITION__NODES,
+         ServiceCompositionFactory.eINSTANCE.createMergeNode()));
+
+    newChildDescriptors.add
+      (createChildParameter
         (ServiceCompositionPackage.Literals.SERVICE_COMPOSITION__EDGES,
          ServiceCompositionFactory.eINSTANCE.createControlFlow()));
 
