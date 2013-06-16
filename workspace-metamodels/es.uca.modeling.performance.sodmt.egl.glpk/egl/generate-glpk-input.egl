@@ -11,10 +11,10 @@ param m{a in A}, default 0;
 param w{a in A}, default 1;
 param r{a in A}, default 1;
 
-# Paths (activity belongs in an activity)
+# Paths (1 if activity belongs to path)
 param paths{a in A, p in P}, default 0, binary;
 
-# Minimum time and total weight of each path
+# Total minimum time and weight of each path
 param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
 param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
 

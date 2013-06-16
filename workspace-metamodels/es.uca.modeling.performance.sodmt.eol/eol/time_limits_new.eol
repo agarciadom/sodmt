@@ -247,12 +247,12 @@ operation compareConstraints(L : Real, first : Sequence, second : Sequence) : In
   var rightCmpExpr = b*c-a*d;
 
   -- ¿(a,b) <= (c,d)?
-  if (a <= c and (b <= d or (a < L and b > d and leftCmpExpr <= rightCmpExpr))) {
+  if (a <= c and (b <= d or (a < L and leftCmpExpr <= rightCmpExpr))) {
     return 1;
   }
 
   -- (a,b) <= (c,d) is false, and <= is antisymmetric: if (c,d) <= (a,b), then (c,d) < (a,b)
-  if(c <= a and (d <= b or (c < L and d > b and -leftCmpExpr <= -rightCmpExpr))) {
+  if(c <= a and (d <= b or (c < L and -leftCmpExpr <= -rightCmpExpr))) {
     return -1;
   }
 
