@@ -237,19 +237,22 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 
 				// Update the current results
 				final int size = getModelSize(model);
-				final BoxAndWhiskerItem newStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNewNanos);
-				final BoxAndWhiskerItem oldStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lOldNanos);
-				final BoxAndWhiskerItem glpkStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lGLPKNanos);
-				final BoxAndWhiskerItem throughputStats
-					= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lThroughputNanos);
-				addToSeries(seriesNew, size, newStats);
-				addToSeries(seriesOld, size, oldStats);
-				addToSeries(seriesGLPK, size, glpkStats);
-				addToSeries(seriesThroughput, size, throughputStats);
-				updateRawText(result, size, newStats, oldStats, glpkStats, throughputStats);
+				final List<BoxAndWhiskerItem> items = new ArrayList<BoxAndWhiskerItem>();
+
+				if (fNewTimeAlgoEnabled) {
+					updateStats(seriesNew, lNewNanos, size, items);
+				}
+				if (fOldTimeAlgoEnabled) {
+					updateStats(seriesOld, lOldNanos, size, items);
+				}
+				if (fGLPKTimeAlgoEnabled) {
+					updateStats(seriesGLPK, lGLPKNanos, size, items);
+				}
+				if (fThroughputAlgoEnabled) {
+					updateStats(seriesThroughput, lThroughputNanos, size, items);
+				}
+				updateRawText(result, size, items.toArray(new BoxAndWhiskerItem[items.size()]));
+
 				monitor.worked(1);
 			} catch (Exception ex) {
 				model.setStoredOnDisposal(true);
@@ -260,6 +263,15 @@ public abstract class AbstractCaseStudy implements ICaseStudy {
 		}
 		monitor.done();
 		result.setSuccessful(true);
+	}
+
+	private void updateStats(final YIntervalSeries ySeries,
+			final List<Long> lNanos, final int size,
+			final List<BoxAndWhiskerItem> addToItems) {
+		final BoxAndWhiskerItem newStats
+			= BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(lNanos);
+		addToSeries(ySeries, size, newStats);
+		addToItems.add(newStats);
 	}
 
 	@Override
