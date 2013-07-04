@@ -46,6 +46,7 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
 
   var slackPerWU := c_pms.slackPerWU(T);
   var newLimit   := v.getMinimumTime() + slackPerWU * v.getWeight();
+  --("New time limit for " + v.name + " " + newLimit + ": T " + T + ", mintime " + v.getMinimumTime() + ", suw " + slackPerWU + ", weight " + v.getWeight() + ", reps " + v.getRepetitions()).println();
   v.setTimeLimit(newLimit);
   v.~visited = true;
   if (v.getSinks().notEmpty() and not distributeTime(v.getTimeLimit(), v.getSinks())) {
@@ -146,6 +147,7 @@ $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.getNext().isEmpty())
 $post _result = null or (_result.size() = 2 and _result.first().isKindOf(ActivityNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
 operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequence {
+  --('aggregateConstraints, end nodes: ' + endNodes).println();
 
   -- Create stack for traversing the nodes
   var stack : Sequence;
@@ -223,6 +225,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
     }
 
     -- Propagate the constraints to the edges
+    --("Prev of " + currentNode + ": " + currentNode.getPrev()).println();
     for (prev in currentNode.getPrev()) {
       prev.setConstraintsTo(currentNode, constraints);
       stack.add(prev);

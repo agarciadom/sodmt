@@ -89,6 +89,16 @@ operation Set intersect(otherSet : Set) : Set {
 ----- NODE TRAVERSAL ----------------------------------------------------------
 
 @cached
+operation ActivityNode getLoopPart() : Integer {
+  if (self.inStructuredNode.isDefined() and self.inStructuredNode.isKindOf(LoopNode)) {
+    return self.getLoopPart(self.inStructuredNode);
+  }
+  else {
+    return -1;
+  }
+}
+
+@cached
 operation ActivityNode getLoopPart(ln : LoopNode) : Integer {
   if (ln.setupPart.contains(self)) {
     return 0;
