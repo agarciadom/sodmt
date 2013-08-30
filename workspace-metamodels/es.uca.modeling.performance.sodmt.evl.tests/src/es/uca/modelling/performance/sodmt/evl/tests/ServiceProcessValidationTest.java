@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import serviceProcess.ServiceProcessPackage;
 
 @RunWith(EUnitTestRunner.class)
-public class ServiceProcessValidationTests extends AbstractValidationTests {
+public class ServiceProcessValidationTest extends AbstractValidationTest {
 	@Override
 	protected String getPathToEVL() {
 		return "/evl/service_process.evl";

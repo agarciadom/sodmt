@@ -107,6 +107,11 @@ public class ServiceProcessDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		{
 			serviceProcess.PerformanceAnnotation childElement = modelElement
@@ -186,6 +191,11 @@ public class ServiceProcessDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -255,6 +265,11 @@ public class ServiceProcessDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
+				result.add(new serviceProcess.diagram.part.ServiceProcessNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -286,6 +301,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_2007ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2008ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -306,6 +323,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_3025ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3026ContainedLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3027ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001ContainedLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -339,6 +358,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_2007IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2008IncomingLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -359,6 +380,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_3025IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3026IncomingLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3027IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001IncomingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -392,6 +415,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_2007OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2008OutgoingLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2009OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -412,6 +437,8 @@ public class ServiceProcessDiagramUpdater {
 			return getForkNode_3025OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3026OutgoingLinks(view);
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3027OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001OutgoingLinks(view);
 		case serviceProcess.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -516,6 +543,14 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_2012ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getPerformanceAnnotation_2009ContainedLinks(
 			View view) {
 		return Collections.emptyList();
@@ -597,6 +632,14 @@ public class ServiceProcessDiagramUpdater {
 	 * @generated
 	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3026ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_3027ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -775,6 +818,23 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_2012IncomingLinks(
+			View view) {
+		serviceProcess.MergeNode modelElement = (serviceProcess.MergeNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getPerformanceAnnotation_2009IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -938,6 +998,23 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_3027IncomingLinks(
+			View view) {
+		serviceProcess.MergeNode modelElement = (serviceProcess.MergeNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getControlFlow_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -1073,6 +1150,19 @@ public class ServiceProcessDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_2012OutgoingLinks(
+			View view) {
+		serviceProcess.MergeNode modelElement = (serviceProcess.MergeNode) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getPerformanceAnnotation_2009OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -1190,6 +1280,19 @@ public class ServiceProcessDiagramUpdater {
 	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getJoinNode_3026OutgoingLinks(
 			View view) {
 		serviceProcess.JoinNode modelElement = (serviceProcess.JoinNode) view
+				.getElement();
+		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> getMergeNode_3027OutgoingLinks(
+			View view) {
+		serviceProcess.MergeNode modelElement = (serviceProcess.MergeNode) view
 				.getElement();
 		LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor> result = new LinkedList<serviceProcess.diagram.part.ServiceProcessLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));

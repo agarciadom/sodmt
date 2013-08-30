@@ -210,6 +210,11 @@ public class ServiceProcessItemProvider
 
     newChildDescriptors.add
       (createChildParameter
+        (ServiceProcessPackage.Literals.SERVICE_PROCESS__NODES,
+         ServiceProcessFactory.eINSTANCE.createMergeNode()));
+
+    newChildDescriptors.add
+      (createChildParameter
         (ServiceProcessPackage.Literals.SERVICE_PROCESS__EDGES,
          ServiceProcessFactory.eINSTANCE.createControlFlow()));
 

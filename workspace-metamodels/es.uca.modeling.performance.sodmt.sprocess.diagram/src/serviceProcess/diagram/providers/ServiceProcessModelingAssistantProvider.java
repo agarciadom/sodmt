@@ -37,7 +37,7 @@ public class ServiceProcessModelingAssistantProvider extends
 		IGraphicalEditPart editPart = (IGraphicalEditPart) host
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof serviceProcess.diagram.edit.parts.ServiceProcessEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(10);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(11);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_2001);
@@ -47,11 +47,12 @@ public class ServiceProcessModelingAssistantProvider extends
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.PerformanceAnnotation_2009);
 			return types;
 		}
 		if (editPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(9);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(10);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -61,10 +62,11 @@ public class ServiceProcessModelingAssistantProvider extends
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 			return types;
 		}
 		if (editPart instanceof serviceProcess.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(9);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(10);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -74,6 +76,7 @@ public class ServiceProcessModelingAssistantProvider extends
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -121,6 +124,10 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNodeEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
@@ -155,6 +162,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.JoinNode2EditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNode2EditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		return Collections.EMPTY_LIST;
@@ -202,6 +213,10 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNodeEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.Action2EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
@@ -236,6 +251,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.JoinNode2EditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNode2EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
@@ -286,6 +305,10 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNodeEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
@@ -320,6 +343,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.JoinNode2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNode2EditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		return Collections.EMPTY_LIST;
@@ -368,6 +395,10 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNodeEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.Action2EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
@@ -402,6 +433,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.JoinNode2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNode2EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		return Collections.EMPTY_LIST;
@@ -450,6 +485,10 @@ public class ServiceProcessModelingAssistantProvider extends
 			return ((serviceProcess.diagram.edit.parts.JoinNodeEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNodeEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.Action2EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
@@ -484,6 +523,10 @@ public class ServiceProcessModelingAssistantProvider extends
 		}
 		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			return ((serviceProcess.diagram.edit.parts.JoinNode2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			return ((serviceProcess.diagram.edit.parts.MergeNode2EditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		return Collections.EMPTY_LIST;

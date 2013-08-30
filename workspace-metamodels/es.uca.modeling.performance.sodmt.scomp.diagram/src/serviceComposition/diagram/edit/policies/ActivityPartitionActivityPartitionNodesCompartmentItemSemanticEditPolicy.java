@@ -70,6 +70,11 @@ public class ActivityPartitionActivityPartitionNodesCompartmentItemSemanticEditP
 			return getGEFWrapper(new serviceComposition.diagram.edit.commands.JoinNode3CreateCommand(
 					req));
 		}
+		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020 == req
+				.getElementType()) {
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.MergeNode3CreateCommand(
+					req));
+		}
 		return super.getCreateCommand(req);
 	}
 

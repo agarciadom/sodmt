@@ -34,6 +34,7 @@ import serviceComposition.ServiceCompositionPackage;
  *   <li>{@link serviceComposition.impl.LocalPerformanceAnnotationImpl#getOutgoing <em>Outgoing</em>}</li>
  *   <li>{@link serviceComposition.impl.LocalPerformanceAnnotationImpl#getMinimumTime <em>Minimum Time</em>}</li>
  *   <li>{@link serviceComposition.impl.LocalPerformanceAnnotationImpl#getWeight <em>Weight</em>}</li>
+ *   <li>{@link serviceComposition.impl.LocalPerformanceAnnotationImpl#getReps <em>Reps</em>}</li>
  *   <li>{@link serviceComposition.impl.LocalPerformanceAnnotationImpl#getExecNode <em>Exec Node</em>}</li>
  * </ul>
  * </p>
@@ -101,6 +102,26 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
    * @ordered
    */
   protected double weight = WEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getReps() <em>Reps</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReps()
+   * @generated
+   * @ordered
+   */
+  protected static final double REPS_EDEFAULT = 1.0;
+
+  /**
+   * The cached value of the '{@link #getReps() <em>Reps</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReps()
+   * @generated
+   * @ordered
+   */
+  protected double reps = REPS_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExecNode() <em>Exec Node</em>}' reference.
@@ -205,6 +226,29 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
     weight = newWeight;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT, oldWeight, weight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public double getReps()
+  {
+    return reps;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReps(double newReps)
+  {
+    double oldReps = reps;
+    reps = newReps;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS, oldReps, reps));
   }
 
   /**
@@ -336,6 +380,8 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
         return getMinimumTime();
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
         return getWeight();
+      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
+        return getReps();
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE:
         if (resolve) return getExecNode();
         return basicGetExecNode();
@@ -368,6 +414,9 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
         setWeight((Double)newValue);
         return;
+      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
+        setReps((Double)newValue);
+        return;
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE:
         setExecNode((ExecutableNode)newValue);
         return;
@@ -397,6 +446,9 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
         setWeight(WEIGHT_EDEFAULT);
         return;
+      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
+        setReps(REPS_EDEFAULT);
+        return;
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE:
         setExecNode((ExecutableNode)null);
         return;
@@ -422,6 +474,8 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
         return minimumTime != MINIMUM_TIME_EDEFAULT;
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
         return weight != WEIGHT_EDEFAULT;
+      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
+        return reps != REPS_EDEFAULT;
       case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE:
         return execNode != null;
     }
@@ -483,6 +537,8 @@ public class LocalPerformanceAnnotationImpl extends PerformanceAnnotationImpl im
     result.append(minimumTime);
     result.append(", weight: ");
     result.append(weight);
+    result.append(", reps: ");
+    result.append(reps);
     result.append(')');
     return result.toString();
   }

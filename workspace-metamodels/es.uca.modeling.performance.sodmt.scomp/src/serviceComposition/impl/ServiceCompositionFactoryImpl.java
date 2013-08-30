@@ -79,6 +79,7 @@ public class ServiceCompositionFactoryImpl extends EFactoryImpl implements Servi
       case ServiceCompositionPackage.DECISION_NODE: return createDecisionNode();
       case ServiceCompositionPackage.FORK_NODE: return createForkNode();
       case ServiceCompositionPackage.JOIN_NODE: return createJoinNode();
+      case ServiceCompositionPackage.MERGE_NODE: return createMergeNode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -274,6 +275,17 @@ public class ServiceCompositionFactoryImpl extends EFactoryImpl implements Servi
   {
     JoinNodeImpl joinNode = new JoinNodeImpl();
     return joinNode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MergeNode createMergeNode()
+  {
+    MergeNodeImpl mergeNode = new MergeNodeImpl();
+    return mergeNode;
   }
 
   /**

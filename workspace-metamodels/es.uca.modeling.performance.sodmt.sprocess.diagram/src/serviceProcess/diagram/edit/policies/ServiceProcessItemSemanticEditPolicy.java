@@ -74,6 +74,11 @@ public class ServiceProcessItemSemanticEditPolicy
 			return getGEFWrapper(new serviceProcess.diagram.edit.commands.JoinNodeCreateCommand(
 					req));
 		}
+		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012 == req
+				.getElementType()) {
+			return getGEFWrapper(new serviceProcess.diagram.edit.commands.MergeNodeCreateCommand(
+					req));
+		}
 		if (serviceProcess.diagram.providers.ServiceProcessElementTypes.PerformanceAnnotation_2009 == req
 				.getElementType()) {
 			return getGEFWrapper(new serviceProcess.diagram.edit.commands.PerformanceAnnotationCreateCommand(

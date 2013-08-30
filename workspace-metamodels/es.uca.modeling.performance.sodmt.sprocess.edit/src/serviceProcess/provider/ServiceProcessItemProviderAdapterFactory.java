@@ -399,6 +399,31 @@ public class ServiceProcessItemProviderAdapterFactory extends ServiceProcessAdap
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link serviceProcess.MergeNode} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected MergeNodeItemProvider mergeNodeItemProvider;
+
+  /**
+   * This creates an adapter for a {@link serviceProcess.MergeNode}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createMergeNodeAdapter()
+  {
+    if (mergeNodeItemProvider == null)
+    {
+      mergeNodeItemProvider = new MergeNodeItemProvider(this);
+    }
+
+    return mergeNodeItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -522,6 +547,7 @@ public class ServiceProcessItemProviderAdapterFactory extends ServiceProcessAdap
     if (decisionNodeItemProvider != null) decisionNodeItemProvider.dispose();
     if (forkNodeItemProvider != null) forkNodeItemProvider.dispose();
     if (joinNodeItemProvider != null) joinNodeItemProvider.dispose();
+    if (mergeNodeItemProvider != null) mergeNodeItemProvider.dispose();
   }
 
 }

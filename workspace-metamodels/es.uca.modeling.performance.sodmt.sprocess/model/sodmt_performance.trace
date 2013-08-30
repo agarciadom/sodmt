@@ -21,6 +21,9 @@
     <nodeLabelTraces
         visualID="5005"
         queryText="true"/>
+    <nodeLabelTraces
+        visualID="5037"
+        queryText="true"/>
   </nodeTraces>
   <nodeTraces
       visualID="2003"
@@ -74,6 +77,9 @@
         visualID="7003"
         queryText="true"/>
   </nodeTraces>
+  <nodeTraces
+      visualID="2012"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'MergeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'ServiceProcess') and _containmentMF_.name = 'nodes')"/>
   <childNodeTraces
       visualID="3018"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'Action') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'StructuredActivityNode') and _containmentMF_.name = 'nodes')">
@@ -109,6 +115,9 @@
     <nodeLabelTraces
         visualID="5033"
         queryText="true"/>
+    <nodeLabelTraces
+        visualID="5036"
+        queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
       visualID="3021"
@@ -132,6 +141,9 @@
   <childNodeTraces
       visualID="3026"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'JoinNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'StructuredActivityNode') and _containmentMF_.name = 'nodes')"/>
+  <childNodeTraces
+      visualID="3027"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'MergeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'StructuredActivityNode') and _containmentMF_.name = 'nodes')"/>
   <linkTraces
       visualID="4001"
       queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'www.uca.es/modeling/performance/sodmt' and _eClass_.name = 'ControlFlow')">

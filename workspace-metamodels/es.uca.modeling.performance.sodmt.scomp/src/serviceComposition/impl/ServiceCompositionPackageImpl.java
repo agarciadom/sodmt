@@ -23,6 +23,7 @@ import serviceComposition.ForkNode;
 import serviceComposition.InitialNode;
 import serviceComposition.JoinNode;
 import serviceComposition.LocalPerformanceAnnotation;
+import serviceComposition.MergeNode;
 import serviceComposition.NamedElement;
 import serviceComposition.NodeSide;
 import serviceComposition.ObjectFlow;
@@ -167,6 +168,13 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * @generated
    */
   private EClass joinNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mergeNodeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -440,9 +448,19 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLocalPerformanceAnnotation_Reps()
+  {
+    return (EAttribute)localPerformanceAnnotationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getLocalPerformanceAnnotation_ExecNode()
   {
-    return (EReference)localPerformanceAnnotationEClass.getEStructuralFeatures().get(2);
+    return (EReference)localPerformanceAnnotationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -620,6 +638,16 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMergeNode()
+  {
+    return mergeNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getVisitStatus()
   {
     return visitStatusEEnum;
@@ -689,6 +717,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     localPerformanceAnnotationEClass = createEClass(LOCAL_PERFORMANCE_ANNOTATION);
     createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME);
     createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__WEIGHT);
+    createEAttribute(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__REPS);
     createEReference(localPerformanceAnnotationEClass, LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE);
 
     controlFlowEClass = createEClass(CONTROL_FLOW);
@@ -719,6 +748,8 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     forkNodeEClass = createEClass(FORK_NODE);
 
     joinNodeEClass = createEClass(JOIN_NODE);
+
+    mergeNodeEClass = createEClass(MERGE_NODE);
 
     // Create enums
     visitStatusEEnum = createEEnum(VISIT_STATUS);
@@ -770,6 +801,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     decisionNodeEClass.getESuperTypes().add(this.getActivityNode());
     forkNodeEClass.getESuperTypes().add(this.getActivityNode());
     joinNodeEClass.getESuperTypes().add(this.getActivityNode());
+    mergeNodeEClass.getESuperTypes().add(this.getActivityNode());
 
     // Initialize classes and features; add operations and parameters
     initEClass(serviceCompositionEClass, ServiceComposition.class, "ServiceComposition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -796,6 +828,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     initEClass(localPerformanceAnnotationEClass, LocalPerformanceAnnotation.class, "LocalPerformanceAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLocalPerformanceAnnotation_MinimumTime(), ecorePackage.getEDouble(), "minimumTime", "0", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLocalPerformanceAnnotation_Weight(), ecorePackage.getEDouble(), "weight", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalPerformanceAnnotation_Reps(), ecorePackage.getEDouble(), "reps", "1", 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocalPerformanceAnnotation_ExecNode(), this.getExecutableNode(), this.getExecutableNode_Annotation(), "execNode", null, 0, 1, LocalPerformanceAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(controlFlowEClass, ControlFlow.class, "ControlFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -826,6 +859,8 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
     initEClass(forkNodeEClass, ForkNode.class, "ForkNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(joinNodeEClass, JoinNode.class, "JoinNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(mergeNodeEClass, MergeNode.class, "MergeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(visitStatusEEnum, VisitStatus.class, "VisitStatus");
@@ -869,7 +904,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "model.extension", "sc",
        "diagram.extension", "scdiag"
-       });																						
+       });																								
   }
 
   /**
@@ -907,7 +942,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "label.pattern", "\u00ablpc\u00bb",
        "tool.name", "Local Performance Constraint"
-       });						
+       });							
     addAnnotation
       (namedElementEClass, 
        source, 
@@ -1008,6 +1043,20 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "size", "10,30",
        "resizable", "false",
        "tool.name", "Join"
+       });		
+    addAnnotation
+      (mergeNodeEClass, 
+       source, 
+       new String[] 
+       {
+       "figure", "polygon",
+       "polygon.x", "0 10 10 0",
+       "polygon.y", "0 0 30 30",
+       "color", "0,0,0",
+       "label.placement", "none",
+       "size", "10,30",
+       "resizable", "false",
+       "tool.name", "Merge"
        });
   }
 
@@ -1026,13 +1075,13 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        new String[] 
        {
        "collapsible", "false"
-       });															
+       });																
     addAnnotation
       (getStructuredActivityNode_Nodes(), 
        source, 
        new String[] 
        {
-       });						
+       });							
   }
 
   /**
@@ -1053,7 +1102,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "target", "target",
        "width", "3",
        "target.decoration", "arrow"
-       });								
+       });									
     addAnnotation
       (controlFlowEClass, 
        source, 
@@ -1086,7 +1135,7 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        "incoming", "true",
        "style", "dash",
        "tool.name", "Link Performance Annotation"
-       });								
+       });									
   }
 
   /**
@@ -1129,7 +1178,15 @@ public class ServiceCompositionPackageImpl extends EPackageImpl implements Servi
        {
        "label.view.pattern", "weight = {0}",
        "label.edit.pattern", "{0, number}"
-       });													
+       });		
+    addAnnotation
+      (getLocalPerformanceAnnotation_Reps(), 
+       source, 
+       new String[] 
+       {
+       "label.view.pattern", "reps = {0}",
+       "label.edit.pattern", "{0, number}"
+       });														
   }
 
 } //ServiceCompositionPackageImpl

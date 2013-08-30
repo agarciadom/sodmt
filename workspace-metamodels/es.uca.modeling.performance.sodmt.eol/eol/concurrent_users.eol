@@ -1,6 +1,6 @@
 -*
-  Heuristic algorithm for computing the concurrent users expected
-  for each activity node in the ServiceComposition and ServiceProcess
+  Algorithm for computing the concurrent users expected for each
+  activity node in the ServiceComposition and ServiceProcess
   models.
 
   Copyright (c) 2009-2013 Antonio García Domínguez.  All rights
@@ -28,48 +28,18 @@
     then the formulas are as follows:
 
     * C(initial node) = T(only ProcessPerformanceAnnotation)
+
     * C(edge) = P(edge) * T(source)
+
     * C(node, except JoinNode) = T(only incoming edge)
-    * C(JoinNode): described more in detail below.
 
-  JoinNodes have to be handled in a different way. Their concurrent
-  user counts depend on how each pair of the paths joined split off
-  originally.
+    * C(JoinNode): we assume that the incoming paths split off at a
+      ForkNode. Therefore, the result is the minimum of all the
+      concurrent users (for sync).
 
-  For instance, if they split at a DecisionNode, we'll have to sum
-  their concurrent user limits. However, if they split at a
-  ForkNode, we'll just use the minimum value (we previously used the
-  maximum value, but as Francisco said, it didn't make sense). We do not
-  check all pairs, however: we simply perform this calculation with
-  the first and second path, then with its result and that of the
-  third path, and so on. The idea is that if we're handling this
-  graph:
-
-    A --> Decision --> Fork --> B --> Join --> C
-                    |        \> D -/
-                    \---------> E -/
-
-  as this one, which is restricted to binary joins but otherwise works
-  the same:
-
-    A --> Decision --> Fork --> B --> Join --> Join --> C
-                    |        \> D -/        |
-                    \---------> E ----------/
-
-  Knowing where B and D or B and E split off is a well-known problem
-  in graph theory known as the Lowest Common Ancestor (LCA). There are
-  many algorithms for this. We're using the simplest algorithm, and
-  also the least efficient when used repeatedly: we obtain all the
-  ancestors of both nodes, intersect the resulting sets, sort them by
-  depth in descending order and take the first element. It is good
-  enough for now: we only need to do this at join nodes, and graphs
-  don't tend to get large enough.
-
-  Finally, by using Epsilon EMC's facilities, the whole annotation
-  process is performed with transactional semantics. If it is aborted
-  in the middle, all changes will be rolled back. Undo and redo also
-  work as usual.
-
+    * C(MergeNode): in this case, the incoming paths split off at a
+      DecisionNode. Therefeore, the result of the sum of all the
+      concurrent users (mutually exclusive paths).
 *-
 
 import 'utils.eol';
@@ -120,32 +90,26 @@ operation ObjectFlow getConcurrentUsers() : Real {
 @cached
 $pre self.incoming.notEmpty()
 operation JoinNode getConcurrentUsers() : Real {
-  var firstParent;
   var result;
-
   for (incomingEdge in self.incoming) {
-    var parent := incomingEdge.source;
-
-    if (firstParent.isUndefined()) {
-      firstParent := parent;
-      result      := incomingEdge.getConcurrentUsers();
-      continue;
-    }
-
-    var lca := getLCA(firstParent, parent);
-    if (lca.isKindOf(DecisionNode)) {
-      result := result + incomingEdge.getConcurrentUsers();
-    }
-    else if (lca.isKindOf(ForkNode)) {
-      if (incomingEdge.getConcurrentUsers() < result) {
-        result := incomingEdge.getConcurrentUsers();
-      }
+    if (result.isUndefined()) {
+      result = incomingEdge.getConcurrentUsers();
     } else {
-      System.user.inform('BUG: LCA ' + lca + ' of ' + firstParent
-        + ' and ' + parent + ' is neither a DecisionNode nor a ForkNode');
+      -- use minimum (the join waits for the least frequent branch)
+      result = result.min(incomingEdge.getConcurrentUsers());
     }
   }
+  return result;
+}
 
+@cached
+$pre self.incoming.notEmpty()
+operation MergeNode getConcurrentUsers() : Real {
+  var result = 0;
+  for (incomingEdge in self.incoming) {
+    -- use sum (merge brings together mutually exclusive paths)
+    result = result + incomingEdge.getConcurrentUsers();
+  }
   return result;
 }
 

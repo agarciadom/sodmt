@@ -56,6 +56,10 @@ class LocalPerformanceAnnotation extends PerformanceAnnotation, ActivityNode {
               label.edit.pattern="{0, number}")
    attr double weight = 1;
 
+   @gmf.label(label.view.pattern = "reps = {0}",
+              label.edit.pattern = "{0, number}")
+   attr double reps = 1;
+
    ref ExecutableNode#annotation execNode;
 }
 
@@ -131,6 +135,9 @@ class ForkNode extends ActivityNode {}
           label.placement="none", size="10,30", resizable="false", tool.name="Join")
 class JoinNode extends ActivityNode {}
 
+@gmf.node(figure="polygon", polygon.x="0 10 10 0", polygon.y="0 0 30 30", color="0,0,0",
+          label.placement="none", size="10,30", resizable="false", tool.name="Merge")
+class MergeNode extends ActivityNode {}
 
 /* DATATYPES */
 

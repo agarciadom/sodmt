@@ -369,13 +369,13 @@
       </edge>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_79qKMLo3EeGzmcMwgoMnpg" name="ObjectFlow4" source="_sSHeYLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_Cvax4Lo4EeGzmcMwgoMnpg" name="ObjectFlow5" source="_8nX1kLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
-      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" outgoing="_jL-9ILozEeG_n-mswuuavA" incoming="_2GCeQLoxEeG_n-mswuuavA" bodyPart="_PZh7wLoyEeG_n-mswuuavA" test="_KSE5wLoyEeG_n-mswuuavA">
+      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" outgoing="_jL-9ILozEeG_n-mswuuavA" incoming="_2GCeQLoxEeG_n-mswuuavA" bodyPart="_OuGr4OPaEeKeB8xbWTaooQ" test="_KSE5wLoyEeG_n-mswuuavA">
         <node xmi:type="uml:OpaqueAction" xmi:id="_KSE5wLoyEeG_n-mswuuavA" name="Select Next Order Item"/>
-        <node xmi:type="uml:LoopNode" xmi:id="_PZh7wLoyEeG_n-mswuuavA" name="CheckIfWarehouseHasStock">
+        <node xmi:type="uml:StructuredActivityNode" xmi:id="_OuGr4OPaEeKeB8xbWTaooQ" name="CheckIfWarehouseHasStock">
           <node xmi:type="uml:CallOperationAction" xmi:id="_z8I9ELoyEeG_n-mswuuavA" name="Check Stock" outgoing="_Ahn24LozEeG_n-mswuuavA" operation="_6VmxMD4KEeGJV8Q8QNdEnw"/>
           <node xmi:type="uml:DecisionNode" xmi:id="_4MyS4LoyEeG_n-mswuuavA" name="DecisionNode1" outgoing="_BQQegLozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA" incoming="_Ahn24LozEeG_n-mswuuavA"/>
-          <node xmi:type="uml:DecisionNode" xmi:id="_CmTrcLozEeG_n-mswuuavA" name="DecisionNode2" incoming="_EmQxALozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA"/>
           <node xmi:type="uml:OpaqueAction" xmi:id="_5yiIsLoyEeG_n-mswuuavA" name="Remove Warehouse" outgoing="_EmQxALozEeG_n-mswuuavA" incoming="_BQQegLozEeG_n-mswuuavA"/>
+          <node xmi:type="uml:DecisionNode" xmi:id="_CmTrcLozEeG_n-mswuuavA" name="DecisionNode2" incoming="_EmQxALozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA"/>
         </node>
       </group>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_ABKgELoxEeG_n-mswuuavA" name="order" outgoing="_Lb5eALoxEeG_n-mswuuavA" isControlType="true" parameter="_AARIMLoxEeG_n-mswuuavA"/>
@@ -461,10 +461,6 @@
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGflMLyLEeGgiLFmvEYgwg" base_NamedElement="_PZh7wLoyEeG_n-mswuuavA">
-    <hostDemand>(value=1.0,unit=s,source=calc)</hostDemand>
-    <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_SGjPkLyLEeGgiLFmvEYgwg" base_NamedElement="_KSE5wLoyEeG_n-mswuuavA">
     <hostDemand>(value=1.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
@@ -472,10 +468,6 @@
   <GQAM:GaStep xmi:id="_SGuOsLyLEeGgiLFmvEYgwg" base_NamedElement="_5yiIsLoyEeG_n-mswuuavA">
     <hostDemand>(value=0.5,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.0000000298023224,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SG08YLyLEeGgiLFmvEYgwg" base_NamedElement="_z8I9ELoyEeG_n-mswuuavA">
-    <hostDemand>(value=0.5,unit=s,source=calc)</hostDemand>
-    <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaAnalysisContext xmi:id="_SHC-0LyLEeGgiLFmvEYgwg" base_NamedElement="_o8SPMLowEeG_n-mswuuavA">
     <context>$swRemoveWarehouse : Real = 0.5</context>
@@ -512,4 +504,10 @@
     <context>$swShipOrder : Real = 6.400000095367432</context>
     <context>$swEO : Real = 0</context>
   </GQAM:GaAnalysisContext>
+  <GQAM:GaStep xmi:id="_r4q2sOPcEeKeB8xbWTaooQ" base_NamedElement="_OuGr4OPaEeKeB8xbWTaooQ">
+    <hostDemand>(value=1.0,unit=s,source=calc)</hostDemand>
+  </GQAM:GaStep>
+  <GQAM:GaStep xmi:id="_wekq0OPcEeKeB8xbWTaooQ" base_NamedElement="_z8I9ELoyEeG_n-mswuuavA">
+    <hostDemand>(value=0.5,unit=s,source=calc)</hostDemand>
+  </GQAM:GaStep>
 </xmi:XMI>

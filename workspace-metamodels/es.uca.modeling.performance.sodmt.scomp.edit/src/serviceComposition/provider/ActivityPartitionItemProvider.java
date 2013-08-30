@@ -203,6 +203,11 @@ public class ActivityPartitionItemProvider
       (createChildParameter
         (ServiceCompositionPackage.Literals.ACTIVITY_PARTITION__NODES,
          ServiceCompositionFactory.eINSTANCE.createJoinNode()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (ServiceCompositionPackage.Literals.ACTIVITY_PARTITION__NODES,
+         ServiceCompositionFactory.eINSTANCE.createMergeNode()));
   }
 
 }

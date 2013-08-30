@@ -10,6 +10,7 @@
   Contributors:
      Antonio García Domínguez - initial API and implementation
 *-
+import 'utils.eol';
 
 -*
   OPERATIONS FOR Activity
@@ -148,9 +149,9 @@ operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
 
 $pre self.getStep().isDefined()
 operation ExecutableNode getThroughput() : Real {
-  var tool       := self.getActivity().getVSLTool();
   var throughput := self.getStep().throughput.first();
   if (throughput.isDefined()) {
+    var tool       := self.getActivity().getVSLTool();
     return tool.getKeyvalMap(throughput).get("value").asReal();
   } else {
     return null;
@@ -181,13 +182,30 @@ operation ExecutableNode getRepetitions() : Real {
   if (step.isUndefined()) {
     return 1.0d;
   }
+
+  var loopPart = self.getLoopPart();
+  if (loopPart == 0) {
+    -- the setup part is always run once: since the algorithm assumes that *everything* is run once per iteration,
+    -- we simply scale down its repetitions
+    return 1.0d / self.inStructuredNode.getRepetitions();
+  }
+  else if (loopPart > 0) {
+    -- test, body and the rest are run once per iteration
+    return 1.0d;
+  }
   else {
-    return step.rep.asReal();
+    var tool := self.getActivity().getVSLTool();
+    var value := tool.getKeyvalMap(step.rep).get("value");
+    if (not value.isDefined()) {
+      -- The default value is still a literal number, instead of a proper NFP
+      value := step.rep;
+    } 
+    return value.asReal();
   }
 }
 
 operation ExecutableNode setRepetitions(newRep : Real) {
-  self.getStep(true).rep := newRep;
+  self.getStep(true).rep := '(value=' + newRep + ', source = req)';
 }
 
 @cached
@@ -212,14 +230,20 @@ operation ActivityEdge getProbability() : Real {
   var step := self.getStep();
 
   if (step.isDefined()) {
-    return step.prob.asReal();
+    var tool := self.getActivity().getVSLTool();
+    var value := tool.getKeyvalMap(step.prob).get("value");
+    if (not value.isDefined()) {
+      -- The default value is still a literal number
+      value = step.prob;
+    }
+    return value.asReal();
   } else {
     return 1.0d;
   }
 }
 
 operation ActivityEdge setProbability(newProb : Real) {
-  self.getStep(true).prob := newProb;
+  self.getStep(true).prob := '(value=' + newProb + ', source = req)';
 }
 
 -*

@@ -29,14 +29,6 @@
       <plugin id="UCM.edit" />
       <plugin id="UCM.editor" />
       <plugin id="UCM.diagram" />
-      <plugin id="ServiceComposition"/>
-      <plugin id="ServiceComposition.diagram"/>
-      <plugin id="ServiceComposition.edit"/>
-      <plugin id="ServiceComposition.editor"/>
-      <plugin id="ServiceProcess"/>
-      <plugin id="ServiceProcess.diagram"/>
-      <plugin id="ServiceProcess.edit"/>
-      <plugin id="ServiceProcess.editor"/>
       <plugin id="ch.qos.logback.classic"/>
       <plugin id="ch.qos.logback.core"/>
       <plugin id="ch.qos.logback.slf4j" fragment="true"/>
@@ -46,9 +38,19 @@
       <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ning.async-http-client"/>
-      <plugin id="es.uca.modeling.eol"/>
-      <plugin id="es.uca.modeling.eol.comparison"/>
-      <plugin id="es.uca.modeling.eol.contextmenu"/>
+      <plugin id="es.uca.modeling.performance.sodmt.egl.glpk"/>
+      <plugin id="es.uca.modeling.performance.sodmt.eol"/>
+      <plugin id="es.uca.modeling.performance.sodmt.eol.comparison"/>
+      <plugin id="es.uca.modeling.performance.sodmt.evl"/>
+      <plugin id="es.uca.modeling.performance.sodmt.scomp"/>
+      <plugin id="es.uca.modeling.performance.sodmt.scomp.diagram"/>
+      <plugin id="es.uca.modeling.performance.sodmt.scomp.edit"/>
+      <plugin id="es.uca.modeling.performance.sodmt.scomp.editor"/>
+      <plugin id="es.uca.modeling.performance.sodmt.sprocess"/>
+      <plugin id="es.uca.modeling.performance.sodmt.sprocess.contextmenu"/>
+      <plugin id="es.uca.modeling.performance.sodmt.sprocess.diagram"/>
+      <plugin id="es.uca.modeling.performance.sodmt.sprocess.edit"/>
+      <plugin id="es.uca.modeling.performance.sodmt.sprocess.editor"/>
       <plugin id="es.uca.modeling.eol.marte"/>
       <plugin id="es.uca.modeling.eol.marte.codegen.modisco"/>
       <plugin id="es.uca.modeling.eol.marte.codegen.wsdl"/>
@@ -58,8 +60,6 @@
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.edit"/>
       <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.editor"/>
-      <plugin id="es.uca.modeling.eol.tools"/>
-      <plugin id="es.uca.modeling.figures"/>
       <plugin id="es.uca.modeling.sodmt.product"/>
       <plugin id="es.uca.webservices.service-analyzer"/>
       <plugin id="es.uca.webservices.service-analyzer.emf"/>

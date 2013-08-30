@@ -111,6 +111,11 @@ public class ServiceCompositionDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID) {
+				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		for (Iterator<?> it = modelElement.getPartitions().iterator(); it
 				.hasNext();) {
@@ -202,6 +207,11 @@ public class ServiceCompositionDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
+				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -267,6 +277,11 @@ public class ServiceCompositionDiagramUpdater {
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID) {
+				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
+			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
 				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
 						childElement, visualID));
 				continue;
@@ -340,6 +355,11 @@ public class ServiceCompositionDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID) {
+				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -409,6 +429,11 @@ public class ServiceCompositionDiagramUpdater {
 						childElement, visualID));
 				continue;
 			}
+			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
+				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
+						childElement, visualID));
+				continue;
+			}
 		}
 		return result;
 	}
@@ -442,6 +467,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_2009ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2010ContainedLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2011ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -462,6 +489,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3008ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3009ContainedLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3019ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 			return getAction_3010ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID:
@@ -480,6 +509,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3017ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 			return getJoinNode_3018ContainedLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+			return getMergeNode_3020ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -515,6 +546,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_2009IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2010IncomingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2011IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -535,6 +568,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3008IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3009IncomingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3019IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 			return getAction_3010IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID:
@@ -553,6 +588,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3017IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 			return getJoinNode_3018IncomingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+			return getMergeNode_3020IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -588,6 +625,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_2009OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return getJoinNode_2010OutgoingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_2012OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return getPerformanceAnnotation_2011OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -608,6 +647,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3008OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return getJoinNode_3009OutgoingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return getMergeNode_3019OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 			return getAction_3010OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID:
@@ -626,6 +667,8 @@ public class ServiceCompositionDiagramUpdater {
 			return getForkNode_3017OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 			return getJoinNode_3018OutgoingLinks(view);
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+			return getMergeNode_3020OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return getControlFlow_4001OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
@@ -738,6 +781,14 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_2012ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getPerformanceAnnotation_2011ContainedLinks(
 			View view) {
 		return Collections.emptyList();
@@ -826,6 +877,14 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3019ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3010ContainedLinks(
 			View view) {
 		serviceComposition.Action modelElement = (serviceComposition.Action) view
@@ -899,6 +958,14 @@ public class ServiceCompositionDiagramUpdater {
 	 * @generated
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3018ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3020ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -1085,6 +1152,23 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_2012IncomingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getPerformanceAnnotation_2011IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -1234,6 +1318,23 @@ public class ServiceCompositionDiagramUpdater {
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3009IncomingLinks(
 			View view) {
 		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3019IncomingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
 				.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
@@ -1403,6 +1504,23 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3020IncomingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
+				.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
+				modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getControlFlow_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -1546,6 +1664,19 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_2012OutgoingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
+				.getElement();
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getPerformanceAnnotation_2011OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -1673,6 +1804,19 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3019OutgoingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
+				.getElement();
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3010OutgoingLinks(
 			View view) {
 		serviceComposition.Action modelElement = (serviceComposition.Action) view
@@ -1782,6 +1926,19 @@ public class ServiceCompositionDiagramUpdater {
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3018OutgoingLinks(
 			View view) {
 		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
+				.getElement();
+		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3020OutgoingLinks(
+			View view) {
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
 				.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));

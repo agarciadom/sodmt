@@ -534,6 +534,36 @@ operation LocalPerformanceAnnotation_ValidWeight_positive() {
 }
 
 @test
+operation LocalPerformanceAnnotation_ValidReps_negative() {
+  repTest(-1.0d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_zero() {
+  repTest(0.0d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_lessThanOne() {
+  repTest(0.5d);
+  assertHasProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_one() {
+  repTest(1.0d);
+  assertNoProblem('ValidReps');
+}
+
+@test
+operation LocalPerformanceAnnotation_ValidReps_greaterThanOne() {
+  repTest(1.5d);
+  assertNoProblem('ValidReps');
+}
+
+@test
 operation LocalPerformanceAnnotation_NoIncomingForPerformanceAnnotation_withIncoming() {
   var lpa = new SP!LocalPerformanceAnnotation;
   var act = sp.newAction();
@@ -732,7 +762,7 @@ operation JoinNode_MoreThanOneIncomingFlow_twoIncoming() {
   var a2 = sp.newAction();
   a2.linkTo(j);
   validate();
-  assertNoProblem('MoreThanOneOutgoingFlowWithFix');
+  assertNoProblems(Sequence {'MaximumOneIncoming', 'MoreThanOneIncomingFlow'});
 }
 
 @test
@@ -753,8 +783,10 @@ operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoForkedPaths() {
   assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
 }
 
+-- add test for checking that branches from a decisionnode cannot be joined on a joinnode and same with the fork/merge pairs
+
 @test
-operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoDecisions() {
+operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_joinCannotBeLCAOfDecision() {
   var d = sp.newAction().newDecision();
   var j = sp.newJoin();
   j.newAction();
@@ -762,6 +794,7 @@ operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoDecisions() {
   d.newAction().linkTo(j);
   validate();
   assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+  assertHasProblem('JoinLCAMustBeFork');
 }
 
 @test
@@ -791,11 +824,64 @@ operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_samePairwiseLCA() {
   var f = d.newFork();
   var j = f.newAction().newJoin();
   f.newAction().linkTo(j);
-  var j2 = j.newJoin();
-  d.newAction().linkTo(j2); 
+  var m = j.newMerge();
+  d.newAction().linkTo(m); 
+  validate();
+  assertNoProblems(Sequence {'JoinedBranchesMustPairwiseHaveSameLCA', 'JoinLCAMustBeFork', 'MergeLCAMustBeDecision'});
+}
+
+-- MergeNode
+
+@test
+operation MergeNode_MoreThanOneIncomingFlow_oneIncoming() {
+  sp.newAction().newMerge().newAction();
+  validate();
+  assertHasProblem('MoreThanOneIncomingFlow');
+}
+
+@test
+operation MergeNode_MoreThanOneIncomingFlow_twoIncoming() {
+  var a1 = sp.newAction();
+  var j = a1.newMerge();
+  var a2 = sp.newAction();
+  a2.linkTo(j);
+  validate();
+  assertNoProblems(Sequence {'MaximumOneIncoming', 'MoreThanOneIncomingFlow'});
+}
+
+@test
+operation MergeNode_JoinedBranchesMustPairwiseHaveSameLCA_mergeCannotBeLCAOfFork() {
+  var f = sp.newAction().newFork();
+  var j = sp.newMerge();
+  j.newAction();
+  f.newAction().linkTo(j);
+  f.newAction().linkTo(j);
+  validate();
+  assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+  assertHasProblem('MergeLCAMustBeDecision');
+}
+
+@test
+operation MergeNode_JoinedBranchesMustPairwiseHaveSameLCA_twoConditionalPaths() {
+  var d = sp.newAction().newDecision();
+  var j = sp.newMerge();
+  j.newAction();
+  d.newAction().linkTo(j);
+  d.newAction().linkTo(j);
   validate();
   assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
 }
+
+@test
+operation MergeNode_JoinedBranchesMustPairwiseHaveSameLCA_noCommonLCA() {
+  var j = sp.newAction().newDecision().newAction().newMerge();
+  j.newAction();
+  sp.newAction().newDecision().newAction().linkTo(j);
+  validate();
+  assertHasProblem('JoinedBranchesMustPairwiseHaveSameLCA');
+}
+
+-- DecisionNode
 
 @test
 operation DecisionNode_TotalProbabilityIsOne_noOutgoing() {
@@ -978,6 +1064,14 @@ operation minTimeTest(minTime : Real) {
   validate();
 }
 
+operation repTest(reps : Real) {
+  var sp = new SP!ServiceProcess;
+  var lpa = new SP!LocalPerformanceAnnotation;
+  lpa.reps = reps;
+  sp.nodes.add(lpa);
+  validate();
+}
+
 operation conditionProbabilityTest(prob : Real) {
   var sp = new SP!ServiceProcess;
   var a = new SP!DecisionNode;
@@ -1031,6 +1125,12 @@ operation SP!ServiceProcess newInitial() : SP!InitialNode {
 
 operation SP!ServiceProcess newJoin() : SP!JoinNode {
   var n = new SP!JoinNode;
+  self.nodes.add(n);
+  return n;
+}
+
+operation SP!ServiceProcess newMerge() : SP!MergeNode {
+  var n = new SP!MergeNode;
   self.nodes.add(n);
   return n;
 }
@@ -1089,6 +1189,10 @@ operation SP!ActivityNode newObject() : SP!ObjectNode {
 
 operation SP!ActivityNode newSActivity() : SP!StructuredActivityNode {
   return self.linkTo(self.eContainer.newSActivity()).target;
+}
+
+operation SP!ActivityNode newMerge() : SP!MergeNode {
+  return self.linkTo(self.eContainer.newMerge()).target;
 }
 
 operation SP!ActivityNode linkTo(other : SP!ActivityNode, condition : String, prob : Real) : SP!ControlFlow {

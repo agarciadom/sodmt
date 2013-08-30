@@ -12,6 +12,7 @@ context ActivityNode {
 
   constraint MaximumOneIncoming {
     guard : not self.isKindOf(JoinNode)
+            and not self.isKindOf(MergeNode)
             and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
     check : self.incoming.select(i | i.isKindOf(ControlFlow)).size() <= 1
     message : 'All activity nodes except joins must have at most one incoming control flow'
@@ -52,6 +53,79 @@ context ActivityNode {
         self.placeNodeBetween(newDecision, NodeSide#OUTGOING);
       }
     }
+  }
+
+  constraint MoreThanOneOutgoingFlowWithFix {
+    guard : self.satisfies('MinimumOneIncoming')
+            and self.satisfies('MinimumOneOutgoing') 
+            and (self.isKindOf(ForkNode) or self.isKindOf(DecisionNode))
+    check : self.outgoing.size() > 1
+    message : 'A fork node must have more than one outgoing edge'
+    fix {
+      title : 'Convert fork node and edges into a single edge'      
+      do {
+        self.incoming.first.target := self.outgoing.first.target;
+        delete self.outgoing.first;
+        delete self;
+      }
+    }
+  }
+
+  constraint MoreThanOneIncomingFlow {
+    guard : self.satisfies('MinimumOneIncoming')
+            and self.satisfies('MinimumOneOutgoing')   
+            and (self.isKindOf(JoinNode) or self.isKindOf(MergeNode))
+    check : self.incoming.size() > 1
+    message : 'A join node must have more than one incoming edge'
+    fix {
+      title : 'Convert join node and edges into a single edge'
+      do {
+        self.incoming.first.target := self.outgoing.first.target;
+        delete self.outgoing.first;
+        delete self;
+      }
+    }
+  }
+
+  constraint JoinedBranchesMustPairwiseHaveSameLCA {
+    guard : self.satisfies('MoreThanOneIncomingFlow')
+            and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
+            and (self.isKindOf(JoinNode) or self.isKindOf(MergeNode))
+    check {
+      var parents := self.incoming.collect(r|r.source);
+      var nElems  := parents.size();
+      var iFirst  := 0;
+      var lca;
+      while (iFirst < nElems) {
+        var first   := parents.at(iFirst);
+        var iSecond := iFirst + 1;
+        while (iSecond < nElems) {
+          var second := parents.at(iSecond);
+          var currentLca := getLCA(first, second);
+          if (not currentLca.isDefined() or (lca.isDefined() and lca <> currentLca)) {
+            return false;
+          }
+          lca     := currentLca;
+          iSecond := iSecond + 1;
+        }
+        iFirst := iFirst + 1;
+      }
+      self.~lca = lca;
+      return true;
+    }
+    message : 'A join node must only join branches which split off from the exact same node'
+  }
+
+  constraint JoinLCAMustBeFork {
+    guard : self.satisfies('JoinedBranchesMustPairwiseHaveSameLCA') and self.isKindOf(JoinNode)
+    check : self.~lca.isKindOf(ForkNode)
+    message : 'JoinNodes must only join branches of a ForkNode'
+  }
+
+  constraint MergeLCAMustBeDecision {
+    guard : self.satisfies('JoinedBranchesMustPairwiseHaveSameLCA') and self.isKindOf(MergeNode)
+    check : self.~lca.isKindOf(DecisionNode)
+    message : 'MergeNodes must only join branches of a DecisionNode'
   }
 }
 
@@ -178,12 +252,17 @@ context LocalPerformanceAnnotation {
 
   constraint ValidMinTime {
     check : self.minimumTime >= 0
-    message : 'The minimum time for a single activity must be greater or equal than 0'
+    message : 'The minimum time for a node must be greater or equal than 0'
   }
 
   constraint ValidWeight {
     check : self.weight >= 0
-    message : 'The weight for a single activity must be greater or equal than 0'
+    message : 'The weight for a node must be greater or equal than 0'
+  }
+
+  constraint ValidReps {
+    check : self.reps >= 1
+    message : 'The repetitions for a node must be greater or equal than 1'
   }
 
   constraint NoIncomingForPerformanceAnnotation {
@@ -282,66 +361,6 @@ context NamedElement {
   constraint NameMustNotBeEmpty {
     check : self.name.isDefined() and self.name <> ''
     message : 'The name of a named element must not be empty'
-  }
-}
-
-context ForkNode {
-  constraint MoreThanOneOutgoingFlowWithFix {
-    guard : self.satisfies('MinimumOneIncoming')
-            and self.satisfies('MinimumOneOutgoing') 
-    check : self.outgoing.size() > 1
-    message : 'A fork node must have more than one outgoing edge'
-    fix {
-      title : 'Convert fork node and edges into a single edge'      
-      do {
-        self.incoming.first.target := self.outgoing.first.target;
-        delete self.outgoing.first;
-        delete self;
-      }
-    }
-  }
-}
-
-context JoinNode {
-  constraint MoreThanOneIncomingFlow {
-    guard : self.satisfies('MinimumOneIncoming')
-            and self.satisfies('MinimumOneOutgoing')   
-    check : self.incoming.size() > 1
-    message : 'A join node must have more than one incoming edge'
-    fix {
-      title : 'Convert join node and edges into a single edge'
-      do {
-        self.incoming.first.target := self.outgoing.first.target;
-        delete self.outgoing.first;
-        delete self;
-      }
-    }
-  }
-  constraint JoinedBranchesMustPairwiseHaveSameLCA {
-    guard : self.satisfies('MoreThanOneIncomingFlow')
-            and InitialNode.all.forAll(r|r.satisfies('NoCyclesCompleteGraph'))
-    check {
-      var parents := self.incoming.collect(r|r.source);
-      var nElems  := parents.size();
-      var iFirst  := 0;
-      var lca;
-      while (iFirst < nElems) {
-        var first   := parents.at(iFirst);
-        var iSecond := iFirst + 1;
-        while (iSecond < nElems) {
-          var second := parents.at(iSecond);
-          var currentLca := getLCA(first, second);
-          if (not currentLca.isDefined() or (lca.isDefined() and lca <> currentLca)) {
-            return false;
-          }
-          lca     := currentLca;
-          iSecond := iSecond + 1;
-        }
-        iFirst := iFirst + 1;
-      }
-      return true;
-    }
-    message : 'A join node must only join branches which split off from the exact same node'
   }
 }
 

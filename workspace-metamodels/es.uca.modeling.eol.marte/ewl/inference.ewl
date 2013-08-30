@@ -23,7 +23,7 @@ wizard InferTimeLimits {
   title : 'Infer time limits'
   do {
     transaction {
-      var finalNodes := self.node.select(e|e.isKindOf(FinalNode));
+      var finalNodes := self.getSinks();
       if (not distributeTime(self.getTimeLimit(), finalNodes)) {
         abort;
         return;
@@ -37,8 +37,13 @@ wizard InferThroughput {
   title : 'Infer throughput'
   do {
     transaction {
-      var initialNode := self.node.select(e|e.isKindOf(InitialNode)).first();
-      if (not annotateThroughput(initialNode)) {
+      var initialNode := self.getSources();
+      if (initialNode.size() <> 1) {
+        System.user.inform('There should only be one source');
+        abort;
+        return;
+      }
+      if (not annotateThroughput(initialNode.first)) {
         abort;
         return;
       }

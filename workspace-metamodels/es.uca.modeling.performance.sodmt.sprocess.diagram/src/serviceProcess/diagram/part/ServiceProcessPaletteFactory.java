@@ -45,8 +45,9 @@ public class ServiceProcessPaletteFactory {
 		paletteContainer.add(createInitialNode6CreationTool());
 		paletteContainer.add(createJoin7CreationTool());
 		paletteContainer.add(createLocalPerformanceConstraint8CreationTool());
-		paletteContainer.add(createObjectNode9CreationTool());
-		paletteContainer.add(createStructuredActivityNode10CreationTool());
+		paletteContainer.add(createMerge9CreationTool());
+		paletteContainer.add(createObjectNode10CreationTool());
+		paletteContainer.add(createStructuredActivityNode11CreationTool());
 		return paletteContainer;
 	}
 
@@ -209,15 +210,33 @@ public class ServiceProcessPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createObjectNode9CreationTool() {
+	private ToolEntry createMerge9CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
+		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
+		NodeToolEntry entry = new NodeToolEntry(
+				serviceProcess.diagram.part.Messages.Merge9CreationTool_title,
+				serviceProcess.diagram.part.Messages.Merge9CreationTool_desc,
+				types);
+		entry.setId("createMerge9CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
+				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createObjectNode10CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3021);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_2003);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceProcess.diagram.part.Messages.ObjectNode9CreationTool_title,
-				serviceProcess.diagram.part.Messages.ObjectNode9CreationTool_desc,
+				serviceProcess.diagram.part.Messages.ObjectNode10CreationTool_title,
+				serviceProcess.diagram.part.Messages.ObjectNode10CreationTool_desc,
 				types);
-		entry.setId("createObjectNode9CreationTool"); //$NON-NLS-1$
+		entry.setId("createObjectNode10CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
 				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectNode_3021));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -227,15 +246,15 @@ public class ServiceProcessPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createStructuredActivityNode10CreationTool() {
+	private ToolEntry createStructuredActivityNode11CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
 		types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 		NodeToolEntry entry = new NodeToolEntry(
-				serviceProcess.diagram.part.Messages.StructuredActivityNode10CreationTool_title,
-				serviceProcess.diagram.part.Messages.StructuredActivityNode10CreationTool_desc,
+				serviceProcess.diagram.part.Messages.StructuredActivityNode11CreationTool_title,
+				serviceProcess.diagram.part.Messages.StructuredActivityNode11CreationTool_desc,
 				types);
-		entry.setId("createStructuredActivityNode10CreationTool"); //$NON-NLS-1$
+		entry.setId("createStructuredActivityNode11CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceProcess.diagram.providers.ServiceProcessElementTypes
 				.getImageDescriptor(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011));
 		entry.setLargeIcon(entry.getSmallIcon());

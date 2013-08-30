@@ -279,13 +279,22 @@ public interface ServiceProcessPackage extends EPackage
   int LOCAL_PERFORMANCE_ANNOTATION__WEIGHT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Reps</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_PERFORMANCE_ANNOTATION__REPS = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Exec Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 4;
+  int LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Local Performance Annotation</em>' class.
@@ -294,7 +303,7 @@ public interface ServiceProcessPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCAL_PERFORMANCE_ANNOTATION_FEATURE_COUNT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 5;
+  int LOCAL_PERFORMANCE_ANNOTATION_FEATURE_COUNT = PERFORMANCE_ANNOTATION_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link serviceProcess.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -822,6 +831,43 @@ public interface ServiceProcessPackage extends EPackage
   int JOIN_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link serviceProcess.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see serviceProcess.impl.MergeNodeImpl
+   * @see serviceProcess.impl.ServiceProcessPackageImpl#getMergeNode()
+   * @generated
+   */
+  int MERGE_NODE = 17;
+
+  /**
+   * The feature id for the '<em><b>Incoming</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__INCOMING = ACTIVITY_NODE__INCOMING;
+
+  /**
+   * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE__OUTGOING = ACTIVITY_NODE__OUTGOING;
+
+  /**
+   * The number of structural features of the '<em>Merge Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -829,7 +875,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getVisitStatus()
    * @generated
    */
-  int VISIT_STATUS = 17;
+  int VISIT_STATUS = 18;
 
   /**
    * The meta object id for the '{@link serviceProcess.NodeSide <em>Node Side</em>}' enum.
@@ -839,7 +885,7 @@ public interface ServiceProcessPackage extends EPackage
    * @see serviceProcess.impl.ServiceProcessPackageImpl#getNodeSide()
    * @generated
    */
-  int NODE_SIDE = 18;
+  int NODE_SIDE = 19;
 
 
   /**
@@ -1012,6 +1058,17 @@ public interface ServiceProcessPackage extends EPackage
    * @generated
    */
   EAttribute getLocalPerformanceAnnotation_Weight();
+
+  /**
+   * Returns the meta object for the attribute '{@link serviceProcess.LocalPerformanceAnnotation#getReps <em>Reps</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Reps</em>'.
+   * @see serviceProcess.LocalPerformanceAnnotation#getReps()
+   * @see #getLocalPerformanceAnnotation()
+   * @generated
+   */
+  EAttribute getLocalPerformanceAnnotation_Reps();
 
   /**
    * Returns the meta object for the reference '{@link serviceProcess.LocalPerformanceAnnotation#getExecNode <em>Exec Node</em>}'.
@@ -1200,6 +1257,16 @@ public interface ServiceProcessPackage extends EPackage
   EClass getJoinNode();
 
   /**
+   * Returns the meta object for class '{@link serviceProcess.MergeNode <em>Merge Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Merge Node</em>'.
+   * @see serviceProcess.MergeNode
+   * @generated
+   */
+  EClass getMergeNode();
+
+  /**
    * Returns the meta object for enum '{@link serviceProcess.VisitStatus <em>Visit Status</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1381,6 +1448,14 @@ public interface ServiceProcessPackage extends EPackage
     EAttribute LOCAL_PERFORMANCE_ANNOTATION__WEIGHT = eINSTANCE.getLocalPerformanceAnnotation_Weight();
 
     /**
+     * The meta object literal for the '<em><b>Reps</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCAL_PERFORMANCE_ANNOTATION__REPS = eINSTANCE.getLocalPerformanceAnnotation_Reps();
+
+    /**
      * The meta object literal for the '<em><b>Exec Node</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1547,6 +1622,16 @@ public interface ServiceProcessPackage extends EPackage
      * @generated
      */
     EClass JOIN_NODE = eINSTANCE.getJoinNode();
+
+    /**
+     * The meta object literal for the '{@link serviceProcess.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see serviceProcess.impl.MergeNodeImpl
+     * @see serviceProcess.impl.ServiceProcessPackageImpl#getMergeNode()
+     * @generated
+     */
+    EClass MERGE_NODE = eINSTANCE.getMergeNode();
 
     /**
      * The meta object literal for the '{@link serviceProcess.VisitStatus <em>Visit Status</em>}' enum.

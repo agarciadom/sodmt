@@ -258,7 +258,7 @@
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ServiceProcess"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2010,2011,2001,2003,2004,2005,2006,2007,2008,2012,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003"/>
       </viewProvider>
    </extension>
@@ -271,13 +271,13 @@
             <method name="getType()" value="ServiceProcess"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026"/>
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2012,2009,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001,4002,4003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5018,5027,5001,5002,5003,5004,5005,5014,5015,5016,5017,5028,5035,5029,5030,5031,5032,5033,5034"/>
+            <method name="getType()" value="5018,5027,5001,5002,5003,5004,5005,5037,5014,5015,5016,5017,5028,5035,5029,5030,5031,5032,5033,5036,5034"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7003,7005"/>
@@ -300,6 +300,7 @@
          <object class="serviceProcess.diagram.edit.parts.DecisionNodeEditPart" id="DecisionNode_2006"/>
          <object class="serviceProcess.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2007"/>
          <object class="serviceProcess.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2008"/>
+         <object class="serviceProcess.diagram.edit.parts.MergeNodeEditPart" id="MergeNode_2012"/>
          <object class="serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2009"/>
          <object class="serviceProcess.diagram.edit.parts.Action2EditPart" id="Action_3018"/>
          <object class="serviceProcess.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3019"/>
@@ -310,7 +311,8 @@
          <object class="serviceProcess.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3024"/>
          <object class="serviceProcess.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3025"/>
          <object class="serviceProcess.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3026"/>
-         <context elements="ServiceProcess_1000,Action_2010,StructuredActivityNode_2011,LocalPerformanceAnnotation_2001,ObjectNode_2003,InitialNode_2004,FinalNode_2005,DecisionNode_2006,ForkNode_2007,JoinNode_2008,PerformanceAnnotation_2009,Action_3018,StructuredActivityNode_3019,LocalPerformanceAnnotation_3020,ObjectNode_3021,InitialNode_3022,FinalNode_3023,DecisionNode_3024,ForkNode_3025,JoinNode_3026"/>
+         <object class="serviceProcess.diagram.edit.parts.MergeNode2EditPart" id="MergeNode_3027"/>
+         <context elements="ServiceProcess_1000,Action_2010,StructuredActivityNode_2011,LocalPerformanceAnnotation_2001,ObjectNode_2003,InitialNode_2004,FinalNode_2005,DecisionNode_2006,ForkNode_2007,JoinNode_2008,MergeNode_2012,PerformanceAnnotation_2009,Action_3018,StructuredActivityNode_3019,LocalPerformanceAnnotation_3020,ObjectNode_3021,InitialNode_3022,FinalNode_3023,DecisionNode_3024,ForkNode_3025,JoinNode_3026,MergeNode_3027"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -333,7 +335,7 @@
       <decoratorProvider class="serviceProcess.diagram.providers.ServiceProcessShortcutsDecoratorProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
-            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2009"/>
+            <method name="getType()" value="2010,2011,2001,2003,2004,2005,2006,2007,2008,2012,2009"/>
          </object>
          <context decoratorTargets="generated-top-nodes"/>
       </decoratorProvider>
@@ -432,6 +434,15 @@
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"/>
             <param name="semanticHint" value="2008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_2012"
+               name="%metatype.name.MergeNode_2012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_3027"/>
+            <param name="semanticHint" value="2012"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
@@ -534,6 +545,16 @@
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
          <metamodelType
+               id="es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_3027"
+               name="%metatype.name.MergeNode_3027"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="MergeNode"
+               edithelper="serviceProcess.diagram.edit.helpers.MergeNodeEditHelper">
+            <param name="semanticHint" value="3027"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt">
+         <metamodelType
                id="es.uca.modeling.performance.sodmt.sprocess.diagram.ControlFlow_4001"
                name="%metatype.name.ControlFlow_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -583,6 +604,7 @@
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_2006"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_2007"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_2008"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_2012"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.PerformanceAnnotation_2009"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.Action_3018"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.StructuredActivityNode_3019"/>
@@ -593,6 +615,7 @@
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.DecisionNode_3024"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ForkNode_3025"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.JoinNode_3026"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.MergeNode_3027"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ControlFlow_4001"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ObjectFlow_4002"/>
          <elementType ref="es.uca.modeling.performance.sodmt.sprocess.diagram.ExecutableNodeAnnotation_4003"/>

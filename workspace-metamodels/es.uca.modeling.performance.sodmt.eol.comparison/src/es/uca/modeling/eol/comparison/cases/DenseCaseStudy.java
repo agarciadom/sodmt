@@ -98,6 +98,7 @@ public class DenseCaseStudy extends AbstractCaseStudy {
 			final Action activity = (Action)addNode(model, nodes, "Action");
 			final JoinNode join = (JoinNode)addNode(model, nodes, "JoinNode");
 			decisions.add(decision);
+			activity.setName("A" + i);
 
 			// Add edge from the join of the previous level to this level's decision node
 			addEdge(model, edges, prevLevel, decision);

@@ -13,6 +13,7 @@ package serviceProcess;
  * <ul>
  *   <li>{@link serviceProcess.LocalPerformanceAnnotation#getMinimumTime <em>Minimum Time</em>}</li>
  *   <li>{@link serviceProcess.LocalPerformanceAnnotation#getWeight <em>Weight</em>}</li>
+ *   <li>{@link serviceProcess.LocalPerformanceAnnotation#getReps <em>Reps</em>}</li>
  *   <li>{@link serviceProcess.LocalPerformanceAnnotation#getExecNode <em>Exec Node</em>}</li>
  * </ul>
  * </p>
@@ -78,6 +79,34 @@ public interface LocalPerformanceAnnotation extends PerformanceAnnotation, Activ
    * @generated
    */
   void setWeight(double value);
+
+  /**
+   * Returns the value of the '<em><b>Reps</b></em>' attribute.
+   * The default value is <code>"1"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reps</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reps</em>' attribute.
+   * @see #setReps(double)
+   * @see serviceProcess.ServiceProcessPackage#getLocalPerformanceAnnotation_Reps()
+   * @model default="1"
+   *        annotation="gmf.label label.view.pattern='reps = {0}' label.edit.pattern='{0, number}'"
+   * @generated
+   */
+  double getReps();
+
+  /**
+   * Sets the value of the '{@link serviceProcess.LocalPerformanceAnnotation#getReps <em>Reps</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reps</em>' attribute.
+   * @see #getReps()
+   * @generated
+   */
+  void setReps(double value);
 
   /**
    * Returns the value of the '<em><b>Exec Node</b></em>' reference.

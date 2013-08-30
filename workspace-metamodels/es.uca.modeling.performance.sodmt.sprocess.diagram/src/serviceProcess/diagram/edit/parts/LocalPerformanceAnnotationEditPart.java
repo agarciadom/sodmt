@@ -146,6 +146,12 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 							.getFigureLocalPerformanceAnnotationWeightLabelFigure());
 			return true;
 		}
+		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) {
+			((serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureLocalPerformanceAnnotationRepsLabelFigure());
+			return true;
+		}
 		return false;
 	}
 
@@ -166,6 +172,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart) {
 			return true;
 		}
 		return false;
@@ -335,6 +344,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNodeEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
+		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
@@ -360,6 +372,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
+		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ControlFlow_4001);
 		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.ActionEditPart) {
@@ -389,6 +404,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNodeEditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNodeEditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
+		}
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.Action2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
@@ -416,6 +434,9 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.JoinNode2EditPart) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
 		}
+		if (targetEditPart instanceof serviceProcess.diagram.edit.parts.MergeNode2EditPart) {
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002);
+		}
 		return types;
 	}
 
@@ -434,6 +455,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -443,6 +465,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 		} else if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
@@ -453,6 +476,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -462,6 +486,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 		}
 		return types;
 	}
@@ -492,6 +517,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -501,6 +527,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 		} else if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ObjectFlow_4002) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
@@ -511,6 +538,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_2006);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_2007);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_2008);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_2012);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_3018);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_3019);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.LocalPerformanceAnnotation_3020);
@@ -520,6 +548,7 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.DecisionNode_3024);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.ForkNode_3025);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.JoinNode_3026);
+			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.MergeNode_3027);
 		} else if (relationshipType == serviceProcess.diagram.providers.ServiceProcessElementTypes.ExecutableNodeAnnotation_4003) {
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.Action_2010);
 			types.add(serviceProcess.diagram.providers.ServiceProcessElementTypes.StructuredActivityNode_2011);
@@ -571,6 +600,11 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated
 		 */
+		private WrappingLabel fFigureLocalPerformanceAnnotationRepsLabelFigure;
+
+		/**
+		 * @generated
+		 */
 		public LocalPerformanceAnnotationFigure() {
 			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
@@ -614,6 +648,12 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 
 			this.add(fFigureLocalPerformanceAnnotationWeightLabelFigure);
 
+			fFigureLocalPerformanceAnnotationRepsLabelFigure = new WrappingLabel();
+
+			fFigureLocalPerformanceAnnotationRepsLabelFigure.setText("");
+
+			this.add(fFigureLocalPerformanceAnnotationRepsLabelFigure);
+
 		}
 
 		/**
@@ -649,6 +689,13 @@ public class LocalPerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureLocalPerformanceAnnotationWeightLabelFigure() {
 			return fFigureLocalPerformanceAnnotationWeightLabelFigure;
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureLocalPerformanceAnnotationRepsLabelFigure() {
+			return fFigureLocalPerformanceAnnotationRepsLabelFigure;
 		}
 
 	}

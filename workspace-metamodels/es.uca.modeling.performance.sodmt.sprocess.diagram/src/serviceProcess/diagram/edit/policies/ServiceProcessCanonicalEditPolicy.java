@@ -116,6 +116,7 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceProcess.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return true;
 		}
@@ -367,6 +368,14 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case serviceProcess.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
+						.getMergeNode_2012ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
@@ -443,6 +452,14 @@ public class ServiceProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
 						.getJoinNode_3026ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case serviceProcess.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceProcess.diagram.part.ServiceProcessDiagramUpdater
+						.getMergeNode_3027ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

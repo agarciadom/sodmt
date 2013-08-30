@@ -1,90 +1,98 @@
 [% import 'platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/utils.eol'; %]
-# Activities
+# Activities and path names
 set A;
-
-# Paths
 set P;
 
 # Global time limit
 param G;
 
-# Minimum times
-param m{a in A};
+# Minimum times, weights and repetitions
+param m{a in A}, default 0;
+param w{a in A}, default 1;
+param r{a in A}, default 1;
 
-# Weights
-param w{a in A};
+# Paths (1 if activity belongs to path)
+param paths{a in A, p in P}, default 0, binary;
 
-# Paths
-param paths{a in A, p in P};
+# Total minimum time and weight of each path
+param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
+param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
 
-# Minimum time of each path
-param mp{p in P} := sum{a in A} paths[a, p] * m[a];
+# Minimum slack per unit of weight by task
+param msuw{a in A} := min{p in P: paths[a, p] == 1 && tw[p] > 0} (G-mp[p])/tw[p];
 
-# Total weight of each path
-param tw{p in P} := sum{a in A} paths[a, p] * w[a];
+# Slack per unit of weight for each activity (must be positive)
+var suw{a in A} >= 0;
 
-# Strictest lower bound by task
-param slb{a in A} := m[a] + min{p in P} (G-mp[p])/tw[p] * w[a];
+# Objective function: use as much time as possible over all paths (honoring minimum times, weights and repetitions)
+maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
 
-# Time limit for each activity (must be positive)
-var tl{a in A} >= 0.0001;
+# Global time limit on paths
+s.t. glpath 'global limit on path' {p in P}: sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
 
-# Objective function: use as much time as possible
-maximize usage: sum{a in A, p in P} tl[a] * paths[a, p];
+# Minimum slack restriction on paths which are not inside any activity
+s.t. minslackg 'min slack: global' {a in A}: suw[a] >= msuw[a];
 
-# Restrictions by path
-s.t. lpath 'limit by path' {p in P}: sum{a in A} paths[a, p] * tl[a] <= G;
+# Activities on all the same paths must have the same SUW
+s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
 
-# Restrictions by task
-s.t. ltask 'limit by task' {a in A}: tl[a] >= slb[a];
+solve;
+
+# Print the solution so it can be easily retrieved
+printf "\nBEGIN_SUW\n";
+for {a in A} {
+  printf "%s\t%g\n", a, suw[a];
+}
+printf "END_SUW\n\n";
 
 data;
 
 [%
-  var allTasks : Sequence = selected.getAllReachableNodes().select(t|t.isKindOf(ExecutableNode)).sortBy(t|t.name);
-  var allPaths : Sequence;
+  -- this template receives one argument (selected: the InitialNode from which we want to launch the computation)
+  var allTasks : Set;
+  var allPaths : Set;
+
   for (seq in getAllExecutionPathsFrom(selected)) {
-    var newSet : Set;
-    newSet.addAll(seq);
-    allPaths.add(newSet);
+    var execNodes = seq.select(t | t.isKindOf(ExecutableNode)).asSequence();
+    if (execNodes.isEmpty()) {
+      continue;
+    }
+
+	allTasks.addAll(execNodes);
+    allPaths.add(execNodes);
   }
+%]
 
-  var nodeCounter = 1;
-  var nodeToNumber : Map; 
-  for (task in allTasks) {
-     nodeToNumber.put(task, nodeCounter); %]
-# [%=task.name%] -> t_[%=nodeCounter%]
-[% nodeCounter = nodeCounter + 1; } %]
-
-set A := [%=allTasks.collect(n | 't_' + nodeToNumber.get(n)).concat(' ')%];
+set A := [%=allTasks.collect(t | '"' + t.name + '"').concat(', ')%];
 
 set P := [%=allPathIdentifiers(allPaths.size)%];
 
 param G := [%=selected.getGlobalTimeLimit()%];
 
 param m :=
-[% for (task in allTasks) {%]
-  t_[%=nodeToNumber.get(task)%]	[%=task.getMinimumTime()%]
-[% } %];
+[% for (task in allTasks) { if (task.getMinimumTime() <> 0) {%]
+  "[%=task.name%]"	[%=task.getMinimumTime()%]
+[% }} %];
 
 param w :=
-[% for (task in allTasks) {%]
-  t_[%=nodeToNumber.get(task)%] [%=task.getWeight()%]
-[% } %];
+[% for (task in allTasks) { if (task.getWeight() <> 1) {%]
+  "[%=task.name%]" [%=task.getWeight()%]
+[% }} %];
 
-param paths : [%=allPathIdentifiers(allPaths.size)%] :=
-[% for (task in allTasks) {%]
-  t_[%=nodeToNumber.get(task)%] [%=allPaths.collect(p|bool2num(p.contains(task))).concat(' ')%]
-[% } %];
+param r :=
+[% for (task in allTasks) { if (task.getRepetitions() <> 1) {%]
+  "[%=task.name%]" [%=task.getRepetitions()%]
+[% }} %];
+
+param paths :=
+[% var pathCounter = 1; for (path in allPaths) { %]
+  [%='[' + '*, p_' + pathCounter + '] ' + path.collect(t | '"' + t.name + '" 1').concat(' ')%]
+[% pathCounter = pathCounter + 1; } %];
 
 end;
 
 [%
 operation allPathIdentifiers(n: Integer): String {
   return 1.to(n).collect(x | 'p_' + x).concat(' ');
-}
-
-operation bool2num(flag: Boolean): Integer {
-  if (flag) return 1; else return 0;
 }
 %]

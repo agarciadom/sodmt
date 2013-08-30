@@ -1679,14 +1679,30 @@
               <element xmi:type="uml:OpaqueAction" href="multimodel.uml#_KSE5wLoyEeG_n-mswuuavA"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KSOqwroyEeG_n-mswuuavA" x="64" y="24" width="167"/>
             </children>
-            <children xmi:type="notation:Shape" xmi:id="_PZnbULoyEeG_n-mswuuavA" type="3071">
-              <children xmi:type="notation:DecorationNode" xmi:id="_PZnbU7oyEeG_n-mswuuavA" type="5121"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_PZnbVLoyEeG_n-mswuuavA" type="7010">
+            <children xmi:type="notation:Shape" xmi:id="_OvSXoOPaEeKeB8xbWTaooQ" type="3065" fontName="Sans" fontHeight="10" lineColor="0">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OvUz4OPaEeKeB8xbWTaooQ" source="ShadowFigure">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OvUz4ePaEeKeB8xbWTaooQ" key="ShadowFigure_Value" value="false"/>
+              </eAnnotations>
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OvVa8OPaEeKeB8xbWTaooQ" source="displayNameLabelIcon">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OvVa8ePaEeKeB8xbWTaooQ" key="displayNameLabelIcon_value" value="false"/>
+              </eAnnotations>
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OvVa8uPaEeKeB8xbWTaooQ" source="QualifiedName">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OvVa8-PaEeKeB8xbWTaooQ" key="QualifiedNameDepth" value="1000"/>
+              </eAnnotations>
+              <children xmi:type="notation:DecorationNode" xmi:id="_OvVa9OPaEeKeB8xbWTaooQ" type="5117"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_OvVa9ePaEeKeB8xbWTaooQ" type="7005">
                 <children xmi:type="notation:Shape" xmi:id="_z8MAYLoyEeG_n-mswuuavA" type="3010">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vOSHoOPcEeKeB8xbWTaooQ" source="Stereotype_Annotation">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOSHoePcEeKeB8xbWTaooQ" key="StereotypeWithQualifiedNameList" value=""/>
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOSusOPcEeKeB8xbWTaooQ" key="StereotypeList" value=""/>
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOSusePcEeKeB8xbWTaooQ" key="Stereotype_Presentation_Kind" value="HorizontalStereo"/>
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOSusuPcEeKeB8xbWTaooQ" key="PropStereoDisplay" value=""/>
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vOSus-PcEeKeB8xbWTaooQ" key="StereotypePropertyLocation" value="Compartment"/>
+                  </eAnnotations>
                   <children xmi:type="notation:DecorationNode" xmi:id="_z8MAY7oyEeG_n-mswuuavA" type="5006"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_z8MAYboyEeG_n-mswuuavA"/>
                   <element xmi:type="uml:CallOperationAction" href="multimodel.uml#_z8I9ELoyEeG_n-mswuuavA"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z8MAYroyEeG_n-mswuuavA" x="9" y="24" width="106"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z8MAYroyEeG_n-mswuuavA" x="20" y="14" width="106"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_4M1WMLoyEeG_n-mswuuavA" type="3038">
                   <children xmi:type="notation:DecorationNode" xmi:id="_4M1WM7oyEeG_n-mswuuavA" type="5043">
@@ -1697,13 +1713,13 @@
                   </children>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_4M1WMboyEeG_n-mswuuavA"/>
                   <element xmi:type="uml:DecisionNode" href="multimodel.uml#_4MyS4LoyEeG_n-mswuuavA"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4M1WMroyEeG_n-mswuuavA" x="49" y="84"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4M1WMroyEeG_n-mswuuavA" x="60" y="79"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_5yjW0LoyEeG_n-mswuuavA" type="3007">
                   <children xmi:type="notation:DecorationNode" xmi:id="_5yjW07oyEeG_n-mswuuavA" type="5003"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_5yjW0boyEeG_n-mswuuavA"/>
                   <element xmi:type="uml:OpaqueAction" href="multimodel.uml#_5yiIsLoyEeG_n-mswuuavA"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5yjW0royEeG_n-mswuuavA" x="129" y="24" width="136"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5yjW0royEeG_n-mswuuavA" x="135" y="14" width="136"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_CmWuwLozEeG_n-mswuuavA" type="3038">
                   <children xmi:type="notation:DecorationNode" xmi:id="_CmWuw7ozEeG_n-mswuuavA" type="5043">
@@ -1714,13 +1730,13 @@
                   </children>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_CmWuwbozEeG_n-mswuuavA"/>
                   <element xmi:type="uml:DecisionNode" href="multimodel.uml#_CmTrcLozEeG_n-mswuuavA"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CmWuwrozEeG_n-mswuuavA" x="189" y="84"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CmWuwrozEeG_n-mswuuavA" x="200" y="74"/>
                 </children>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PZnbVboyEeG_n-mswuuavA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvVa9uPaEeKeB8xbWTaooQ"/>
               </children>
-              <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_PZnbUboyEeG_n-mswuuavA"/>
-              <element xmi:type="uml:LoopNode" href="multimodel.uml#_PZh7wLoyEeG_n-mswuuavA"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PZnbUroyEeG_n-mswuuavA" x="9" y="74" width="281" height="136"/>
+              <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_OvSXoePaEeKeB8xbWTaooQ"/>
+              <element xmi:type="uml:StructuredActivityNode" href="multimodel.uml#_OuGr4OPaEeKeB8xbWTaooQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvSXouPaEeKeB8xbWTaooQ" x="14" y="79" width="271" height="131"/>
             </children>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2CKq5boxEeG_n-mswuuavA"/>
           </children>

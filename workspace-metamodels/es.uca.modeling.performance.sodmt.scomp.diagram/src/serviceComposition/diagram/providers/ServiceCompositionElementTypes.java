@@ -92,6 +92,11 @@ public class ServiceCompositionElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType MergeNode_2012 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_2012"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType PerformanceAnnotation_2011 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.PerformanceAnnotation_2011"); //$NON-NLS-1$
 	/**
 	 * @generated
@@ -132,6 +137,11 @@ public class ServiceCompositionElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType MergeNode_3019 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType Action_3010 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.Action_3010"); //$NON-NLS-1$
 	/**
 	 * @generated
@@ -165,6 +175,11 @@ public class ServiceCompositionElementTypes {
 	 * @generated
 	 */
 	public static final IElementType JoinNode_3018 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3018"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType MergeNode_3020 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3020"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -333,6 +348,10 @@ public class ServiceCompositionElementTypes {
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getJoinNode());
 
+			elements.put(MergeNode_2012,
+					serviceComposition.ServiceCompositionPackage.eINSTANCE
+							.getMergeNode());
+
 			elements.put(PerformanceAnnotation_2011,
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getPerformanceAnnotation());
@@ -373,6 +392,10 @@ public class ServiceCompositionElementTypes {
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getJoinNode());
 
+			elements.put(MergeNode_3019,
+					serviceComposition.ServiceCompositionPackage.eINSTANCE
+							.getMergeNode());
+
 			elements.put(Action_3010,
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getAction());
@@ -408,6 +431,10 @@ public class ServiceCompositionElementTypes {
 			elements.put(JoinNode_3018,
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
 							.getJoinNode());
+
+			elements.put(MergeNode_3020,
+					serviceComposition.ServiceCompositionPackage.eINSTANCE
+							.getMergeNode());
 
 			elements.put(ControlFlow_4001,
 					serviceComposition.ServiceCompositionPackage.eINSTANCE
@@ -448,6 +475,7 @@ public class ServiceCompositionElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DecisionNode_2008);
 			KNOWN_ELEMENT_TYPES.add(ForkNode_2009);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_2010);
+			KNOWN_ELEMENT_TYPES.add(MergeNode_2012);
 			KNOWN_ELEMENT_TYPES.add(PerformanceAnnotation_2011);
 			KNOWN_ELEMENT_TYPES.add(Action_3001);
 			KNOWN_ELEMENT_TYPES.add(StructuredActivityNode_3002);
@@ -458,6 +486,7 @@ public class ServiceCompositionElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DecisionNode_3007);
 			KNOWN_ELEMENT_TYPES.add(ForkNode_3008);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_3009);
+			KNOWN_ELEMENT_TYPES.add(MergeNode_3019);
 			KNOWN_ELEMENT_TYPES.add(Action_3010);
 			KNOWN_ELEMENT_TYPES.add(StructuredActivityNode_3011);
 			KNOWN_ELEMENT_TYPES.add(LocalPerformanceAnnotation_3012);
@@ -467,6 +496,7 @@ public class ServiceCompositionElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DecisionNode_3016);
 			KNOWN_ELEMENT_TYPES.add(ForkNode_3017);
 			KNOWN_ELEMENT_TYPES.add(JoinNode_3018);
+			KNOWN_ELEMENT_TYPES.add(MergeNode_3020);
 			KNOWN_ELEMENT_TYPES.add(ControlFlow_4001);
 			KNOWN_ELEMENT_TYPES.add(ObjectFlow_4002);
 			KNOWN_ELEMENT_TYPES.add(ExecutableNodeAnnotation_4003);
@@ -501,6 +531,8 @@ public class ServiceCompositionElementTypes {
 			return ForkNode_2009;
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 			return JoinNode_2010;
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+			return MergeNode_2012;
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return PerformanceAnnotation_2011;
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
@@ -521,6 +553,8 @@ public class ServiceCompositionElementTypes {
 			return ForkNode_3008;
 		case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 			return JoinNode_3009;
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+			return MergeNode_3019;
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
 			return Action_3010;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID:
@@ -539,6 +573,8 @@ public class ServiceCompositionElementTypes {
 			return ForkNode_3017;
 		case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 			return JoinNode_3018;
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+			return MergeNode_3020;
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
 			return ControlFlow_4001;
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:

@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import serviceComposition.ServiceCompositionPackage;
 
 @RunWith(EUnitTestRunner.class)
-public class ServiceCompositionValidationTests extends AbstractValidationTests {
+public class ServiceCompositionValidationTest extends AbstractValidationTest {
 	@Override
 	public List<IModel> prepareModels() throws Exception {
 		final List<IModel> models = new ArrayList<IModel>();

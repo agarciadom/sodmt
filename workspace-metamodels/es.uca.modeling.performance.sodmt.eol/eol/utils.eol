@@ -58,6 +58,16 @@ operation ActivityNode getWeight() : Real {
   }
 }
 
+operation ActivityNode getRepetitions() : Real {
+  if (not self.hasProperty('annotation')) {
+    return 0.0d;
+  } else if (self.annotation.isDefined()) {
+    return self.annotation.reps * 1.0d;
+  } else {
+    return 1.0d;
+  }
+}
+
 operation ActivityNode getMinimumTime() : Real {
   if (self.hasProperty('annotation') and self.annotation.isDefined()) {
     return self.annotation.minimumTime * 1.0d;

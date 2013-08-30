@@ -176,6 +176,28 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser localPerformanceAnnotationReps_5037Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationReps_5037Parser() {
+		if (localPerformanceAnnotationReps_5037Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getLocalPerformanceAnnotation_Reps() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
+			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
+			localPerformanceAnnotationReps_5037Parser = parser;
+		}
+		return localPerformanceAnnotationReps_5037Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser objectNodeName_5014Parser;
 
 	/**
@@ -412,6 +434,28 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser localPerformanceAnnotationReps_5036Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getLocalPerformanceAnnotationReps_5036Parser() {
+		if (localPerformanceAnnotationReps_5036Parser == null) {
+			EAttribute[] features = new EAttribute[] { serviceProcess.ServiceProcessPackage.eINSTANCE
+					.getLocalPerformanceAnnotation_Reps() };
+			serviceProcess.diagram.parsers.MessageFormatParser parser = new serviceProcess.diagram.parsers.MessageFormatParser(
+					features);
+			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
+			parser.setEditorPattern("{0, number}"); //$NON-NLS-1$
+			parser.setEditPattern("{0, number}"); //$NON-NLS-1$
+			localPerformanceAnnotationReps_5036Parser = parser;
+		}
+		return localPerformanceAnnotationReps_5036Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser objectNodeName_5034Parser;
 
 	/**
@@ -472,6 +516,8 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			return getLocalPerformanceAnnotationMinimumTime_5004Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5005Parser();
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotationReps_5037Parser();
 		case serviceProcess.diagram.edit.parts.ObjectNodeNameEditPart.VISUAL_ID:
 			return getObjectNodeName_5014Parser();
 		case serviceProcess.diagram.edit.parts.PerformanceAnnotationConcurrentUsersEditPart.VISUAL_ID:
@@ -494,6 +540,8 @@ public class ServiceProcessParserProvider extends AbstractProvider implements
 			return getLocalPerformanceAnnotationMinimumTime_5032Parser();
 		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart.VISUAL_ID:
 			return getLocalPerformanceAnnotationWeight_5033Parser();
+		case serviceProcess.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID:
+			return getLocalPerformanceAnnotationReps_5036Parser();
 		case serviceProcess.diagram.edit.parts.ObjectNodeName2EditPart.VISUAL_ID:
 			return getObjectNodeName_5034Parser();
 		case serviceProcess.diagram.edit.parts.ControlFlowConditionProbabilityEditPart.VISUAL_ID:

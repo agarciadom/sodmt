@@ -120,6 +120,7 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		case serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
 			return true;
 		}
@@ -379,6 +380,14 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
+						.getMergeNode_2012ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
@@ -459,6 +468,14 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
+						.getMergeNode_3019ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
@@ -527,6 +544,14 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
 						.getJoinNode_3018ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
+						.getMergeNode_3020ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

@@ -1,4 +1,5 @@
 import '../eol/concurrent_users.eol';
+import '../eol/time_limits_glpk.eol';
 import '../eol/time_limits_new.eol';
 import '../eol/time_limits.eol';
 
@@ -35,9 +36,18 @@ wizard InferPerformanceAnnotations {
 
 wizard GenGLPK {
   guard : self.isKindOf(InitialNode)
-  title : 'Generate glpsol model...'
+  title : 'Generate glpsol model starting from here...'
   do {
     var glpkTool = new Native('es.uca.modeling.performance.sodmt.egl.glpk.GLPKInputGen');
-    glpkTool.sayHello(self);
+    glpkTool.generate(self);
+  }
+}
+
+wizard RunGLPK {
+  title : 'Infer time limits (GLPK)'
+  do {
+    for (initial in InitialNode.all.sortBy(n | n.getNestingLevel())) {
+    	distributeTimeGlpsol(initial);
+    }
   }
 }

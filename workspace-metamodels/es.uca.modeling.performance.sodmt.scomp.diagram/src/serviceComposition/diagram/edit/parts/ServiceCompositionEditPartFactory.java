@@ -68,6 +68,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeightEditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationRepsEditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.ObjectNodeEditPart(
 						view);
@@ -102,6 +106,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 
 			case serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.JoinNodeEditPart(
+						view);
+
+			case serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNodeEditPart(
 						view);
 
 			case serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID:
@@ -160,6 +168,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.ObjectNode2EditPart(
 						view);
@@ -186,6 +198,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 
 			case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.JoinNode2EditPart(
+						view);
+
+			case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNode2EditPart(
 						view);
 
 			case serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID:
@@ -228,6 +244,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight3EditPart(
 						view);
 
+			case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps3EditPart(
+						view);
+
 			case serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.ObjectNode3EditPart(
 						view);
@@ -254,6 +274,10 @@ public class ServiceCompositionEditPartFactory implements EditPartFactory {
 
 			case serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID:
 				return new serviceComposition.diagram.edit.parts.JoinNode3EditPart(
+						view);
+
+			case serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID:
+				return new serviceComposition.diagram.edit.parts.MergeNode3EditPart(
 						view);
 
 			case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart.VISUAL_ID:

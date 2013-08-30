@@ -258,7 +258,7 @@
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ServiceComposition"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2012,2011,3001,3002,3003,3004,3005,3006,3007,3008,3009,3019,3010,3011,3012,3013,3014,3015,3016,3017,3018,3020"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002,4003"/>
       </viewProvider>
    </extension>
@@ -271,13 +271,13 @@
             <method name="getType()" value="ServiceComposition"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2012,2011,3001,3002,3003,3004,3005,3006,3007,3008,3009,3019,3010,3011,3012,3013,3014,3015,3016,3017,3018,3020"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001,4002,4003"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001,5010,5011,5012,5013,5014,5015,5016,5025,5026,5027,5028,5002,5009,5003,5004,5005,5006,5007,5008,5017,5018,5019,5020,5021,5022,5023,5024"/>
+            <method name="getType()" value="5001,5010,5011,5012,5013,5014,5015,5030,5016,5025,5026,5027,5028,5002,5009,5003,5004,5005,5006,5007,5029,5008,5017,5018,5019,5020,5021,5022,5023,5031,5024"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7001,7002,7003,7004"/>
@@ -301,6 +301,7 @@
          <object class="serviceComposition.diagram.edit.parts.DecisionNodeEditPart" id="DecisionNode_2008"/>
          <object class="serviceComposition.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2009"/>
          <object class="serviceComposition.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2010"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNodeEditPart" id="MergeNode_2012"/>
          <object class="serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2011"/>
          <object class="serviceComposition.diagram.edit.parts.Action2EditPart" id="Action_3001"/>
          <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3002"/>
@@ -311,6 +312,7 @@
          <object class="serviceComposition.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3007"/>
          <object class="serviceComposition.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3008"/>
          <object class="serviceComposition.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3009"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNode2EditPart" id="MergeNode_3019"/>
          <object class="serviceComposition.diagram.edit.parts.Action3EditPart" id="Action_3010"/>
          <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart" id="StructuredActivityNode_3011"/>
          <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart" id="LocalPerformanceAnnotation_3012"/>
@@ -320,7 +322,8 @@
          <object class="serviceComposition.diagram.edit.parts.DecisionNode3EditPart" id="DecisionNode_3016"/>
          <object class="serviceComposition.diagram.edit.parts.ForkNode3EditPart" id="ForkNode_3017"/>
          <object class="serviceComposition.diagram.edit.parts.JoinNode3EditPart" id="JoinNode_3018"/>
-         <context elements="ServiceComposition_1000,Action_2001,StructuredActivityNode_2002,LocalPerformanceAnnotation_2003,ObjectNode_2004,ActivityPartition_2005,InitialNode_2006,FinalNode_2007,DecisionNode_2008,ForkNode_2009,JoinNode_2010,PerformanceAnnotation_2011,Action_3001,StructuredActivityNode_3002,LocalPerformanceAnnotation_3003,ObjectNode_3004,InitialNode_3005,FinalNode_3006,DecisionNode_3007,ForkNode_3008,JoinNode_3009,Action_3010,StructuredActivityNode_3011,LocalPerformanceAnnotation_3012,ObjectNode_3013,InitialNode_3014,FinalNode_3015,DecisionNode_3016,ForkNode_3017,JoinNode_3018"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNode3EditPart" id="MergeNode_3020"/>
+         <context elements="ServiceComposition_1000,Action_2001,StructuredActivityNode_2002,LocalPerformanceAnnotation_2003,ObjectNode_2004,ActivityPartition_2005,InitialNode_2006,FinalNode_2007,DecisionNode_2008,ForkNode_2009,JoinNode_2010,MergeNode_2012,PerformanceAnnotation_2011,Action_3001,StructuredActivityNode_3002,LocalPerformanceAnnotation_3003,ObjectNode_3004,InitialNode_3005,FinalNode_3006,DecisionNode_3007,ForkNode_3008,JoinNode_3009,MergeNode_3019,Action_3010,StructuredActivityNode_3011,LocalPerformanceAnnotation_3012,ObjectNode_3013,InitialNode_3014,FinalNode_3015,DecisionNode_3016,ForkNode_3017,JoinNode_3018,MergeNode_3020"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -343,7 +346,7 @@
       <decoratorProvider class="serviceComposition.diagram.providers.ServiceCompositionShortcutsDecoratorProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
-            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011"/>
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2012,2011"/>
          </object>
          <context decoratorTargets="generated-top-nodes"/>
       </decoratorProvider>
@@ -455,6 +458,15 @@
          </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_2012"
+               name="%metatype.name.MergeNode_2012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"/>
+            <param name="semanticHint" value="2012"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
          <metamodelType
                id="es.uca.modeling.performance.sodmt.scomp.diagram.PerformanceAnnotation_2011"
                name="%metatype.name.PerformanceAnnotation_2011"
@@ -553,6 +565,16 @@
          </metamodelType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
+         <metamodelType
+               id="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"
+               name="%metatype.name.MergeNode_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="MergeNode"
+               edithelper="serviceComposition.diagram.edit.helpers.MergeNodeEditHelper">
+            <param name="semanticHint" value="3019"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
          <specializationType
                id="es.uca.modeling.performance.sodmt.scomp.diagram.Action_3010"
                name="%metatype.name.Action_3010"
@@ -634,6 +656,15 @@
          </specializationType>
       </metamodel>
       <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
+         <specializationType
+               id="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3020"
+               name="%metatype.name.MergeNode_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"/>
+            <param name="semanticHint" value="3020"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="www.uca.es/modeling/performance/sodmt/scomp">
          <metamodelType
                id="es.uca.modeling.performance.sodmt.scomp.diagram.ControlFlow_4001"
                name="%metatype.name.ControlFlow_4001"
@@ -685,6 +716,7 @@
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_2008"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_2009"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_2010"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_2012"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.PerformanceAnnotation_2011"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.Action_3001"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3002"/>
@@ -695,6 +727,7 @@
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3007"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3008"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3009"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.Action_3010"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3011"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_3012"/>
@@ -704,6 +737,7 @@
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3016"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3017"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3018"/>
+         <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3020"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ControlFlow_4001"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ObjectFlow_4002"/>
          <elementType ref="es.uca.modeling.performance.sodmt.scomp.diagram.ExecutableNodeAnnotation_4003"/>

@@ -210,6 +210,14 @@ public class ServiceProcessSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ServiceProcessPackage.MERGE_NODE:
+      {
+        MergeNode mergeNode = (MergeNode)theEObject;
+        T result = caseMergeNode(mergeNode);
+        if (result == null) result = caseActivityNode(mergeNode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -482,6 +490,22 @@ public class ServiceProcessSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJoinNode(JoinNode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Merge Node</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Merge Node</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMergeNode(MergeNode object)
   {
     return null;
   }

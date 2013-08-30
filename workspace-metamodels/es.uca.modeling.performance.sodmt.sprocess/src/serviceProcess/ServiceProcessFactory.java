@@ -140,6 +140,15 @@ public interface ServiceProcessFactory extends EFactory
   JoinNode createJoinNode();
 
   /**
+   * Returns a new object of class '<em>Merge Node</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Merge Node</em>'.
+   * @generated
+   */
+  MergeNode createMergeNode();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
