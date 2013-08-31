@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EUC:ExtendedUseCasesModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EUC="http://kybele.es/EUC">
+  <actors name="Sales Department" useCase="//@classifier.0/@ownedUseCase.0"/>
+  <classifier name="SOA Keraben">
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Production status reporting" actors="//@actors.0">
+      <include addition="//@classifier.0/@ownedUseCase.1"/>
+      <include addition="//@classifier.0/@ownedUseCase.2"/>
+      <include addition="//@classifier.0/@ownedUseCase.5"/>
+    </ownedUseCase>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Authenticate user"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Select product range">
+      <extend extendedCase="//@classifier.0/@ownedUseCase.3"/>
+      <extend extendedCase="//@classifier.0/@ownedUseCase.4"/>
+    </ownedUseCase>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Select by family"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Select by ID"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Query production status">
+      <extend extendedCase="//@classifier.0/@ownedUseCase.6"/>
+      <extend extendedCase="//@classifier.0/@ownedUseCase.7"/>
+      <extend extendedCase="//@classifier.0/@ownedUseCase.8"/>
+    </ownedUseCase>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Compare with expected production"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="List open issues"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="List issue history"/>
+  </classifier>
+</EUC:ExtendedUseCasesModel>
