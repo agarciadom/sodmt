@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EUC:ExtendedUseCasesModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EUC="http://kybele.es/EUC">
+  <actors name="Customer" useCase="//@classifier.0/@ownedUseCase.0"/>
+  <classifier name="SOA Keraben">
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Order submission" actors="//@actors.0">
+      <include addition="//@classifier.0/@ownedUseCase.1"/>
+      <include addition="//@classifier.0/@ownedUseCase.2"/>
+      <include addition="//@classifier.0/@ownedUseCase.3"/>
+      <include addition="//@classifier.0/@ownedUseCase.4"/>
+      <include addition="//@classifier.0/@ownedUseCase.5"/>
+    </ownedUseCase>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Authenticate user"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Review order feasibility"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Check shipping availability"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Review estimate"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Finalise order">
+      <include addition="//@classifier.0/@ownedUseCase.6"/>
+    </ownedUseCase>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Perform Payment"/>
+  </classifier>
+</EUC:ExtendedUseCasesModel>
