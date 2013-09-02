@@ -15,6 +15,9 @@
    <feature url="features/es.uca.modeling.performance.sodmt.feature_1.0.0.qualifier.jar" id="es.uca.modeling.performance.sodmt.feature" version="1.0.0.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
+   <feature url="features/es.uca.modeling.papyrus.feature_1.0.0.qualifier.jar" id="es.uca.modeling.papyrus.feature" version="1.0.0.qualifier">
+      <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
+   </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodm" label="SODM"/>
 </site>

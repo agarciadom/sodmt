@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="es.uca.modeling.papyrus.utils.category"
+            name="SODM+T Papyrus Utilities">
+      </category>
+      <command
+            categoryId="es.uca.modeling.papyrus.utils.category"
+            defaultHandler="es.uca.modeling.papyrus.utils.handlers.DefaultDuplicateHandler"
+            id="es.uca.modeling.papyrus.utils.duplicate"
+            name="Duplicate Papyrus files">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+         <menu
+               label="SODM+T &amp;Papyrus Utilities">
+            <command
+                  commandId="es.uca.modeling.papyrus.utils.duplicate"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <count
+                        value="1">
+                  </count>
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <adapt
+                           type="org.eclipse.papyrus.infra.onefile.model.IPapyrusFile">
+                     </adapt>
+                  </iterate>
+               </and>
+            </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

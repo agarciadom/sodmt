@@ -51,6 +51,20 @@ wizard InferThroughput {
   } -- do
 } -- wizard
 
+wizard UpdatePartitionNames {
+  guard : self.isKindOf(Activity)
+  title : 'Decorate with partition names'
+  do {
+    for (exec in self.node.select(n|n.isKindOf(ExecutableNode))) {
+      exec.updateNameWithPartitions();
+    }
+  }
+}
+
+-*
+    ExecutableNode wizards
+*-
+
 wizard SetTimeLimit {
   guard : self.isKindOf(ExecutableNode)
   title : 'Set time limit expression'
@@ -82,6 +96,28 @@ wizard SetRepetitions {
       }
       self.setRepetitions(reps);
     }
+  }
+}
+
+wizard SetPartitions {
+  guard : self.isKindOf(ExecutableNode)
+  title : 'Set activity partitions'
+  do {
+    var allPartitionsByName : Map;
+    for (partition in self.activity.`group`.select(g|g.isKindOf(ActivityPartition))) {
+      allPartitionsByName.put(partition.name, partition);
+    }
+
+    var allPartitionNames := allPartitionsByName.keySet().asSequence();
+    var currentPartitionNames := self.inPartition.collect(p|p.name);
+    var selectedPartitions := System.user.chooseMany('Choose the activity partitions for this node', allPartitionNames, currentPartitionNames);
+
+    self.inPartition.clear();
+    for (selected in selectedPartitions) {
+      self.inPartition.add(allPartitionsByName.get(selected));
+    }
+
+    self.updateNameWithPartitions();
   }
 }
 

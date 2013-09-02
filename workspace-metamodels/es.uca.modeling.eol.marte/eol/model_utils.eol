@@ -108,6 +108,7 @@ operation Activity getStepMap() : Map {
 -*
   OPERATIONS FOR ExecutableNode
 *-
+
 operation ExecutableNode setThroughput(newThroughput : Real) {
   var step := self.getStep(true);
   step.throughput.clear();
@@ -143,7 +144,7 @@ operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
   step.hostDemand.clear();
 
   var expr := minTime + ' + ' + weight + ' * ' + self.getContextParameterName();
-  var entry := '(expr=' + expr + ',unit=s,source = req)';
+  var entry := '(expr=' + expr + ',unit=s,source=req)';
   step.hostDemand.add(entry);
 }
 
@@ -205,7 +206,7 @@ operation ExecutableNode getRepetitions() : Real {
 }
 
 operation ExecutableNode setRepetitions(newRep : Real) {
-  self.getStep(true).rep := '(value=' + newRep + ', source = req)';
+  self.getStep(true).rep := '(value=' + newRep + ', source=req)';
 }
 
 @cached
@@ -219,6 +220,23 @@ operation ExecutableNode getRequiredHostDemand() : Map {
     }
   }
   return Map { "expr" = "0.0 + 1.0 * " + self.getContextParameterName(), "unit" = "s", "source" = "req" };
+}
+
+operation ExecutableNode updateNameWithPartitions() {
+  var finalName = self.name;
+  if (finalName.startsWith('(')) {
+    -- Remove partition from final name - we'll add back the updated partitions later
+    var parenClose = finalName.indexOf(')');
+    if (parenClose >= 0) {
+      finalName = finalName.substring(parenClose + 1).trim();
+    }
+  }
+
+  if (not self.inPartition.isEmpty()) {
+    finalName = '(' + self.inPartition.collect(p|p.name).concat(', ') + ') ' + finalName;
+  }
+
+  self.name = finalName;
 }
 
 -*
@@ -243,7 +261,7 @@ operation ActivityEdge getProbability() : Real {
 }
 
 operation ActivityEdge setProbability(newProb : Real) {
-  self.getStep(true).prob := '(value=' + newProb + ', source = req)';
+  self.getStep(true).prob := '(value=' + newProb + ', source=req)';
 }
 
 -*
