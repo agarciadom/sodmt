@@ -80,6 +80,10 @@
         <module>es.uca.webservices.wsdl2xsdtree</module>
         <module>es.uca.webservices.xml-utils</module>
 
+        <!-- Papyrus utilities -->
+        <module>es.uca.modeling.papyrus.utils</module>
+        <module>es.uca.modeling.papyrus.feature</module>
+
         <!--
             RCP product definition and distributions: composite update
             site not included (it's only an Ant script that produces
@@ -97,7 +101,7 @@
         </repository>
         <repository>
             <id>epsilon-interim</id>
-            <url>http://download.eclipse.org/epsilon/interim-very-new/</url>
+            <url>http://download.eclipse.org/epsilon/updates/</url>
             <layout>p2</layout>
         </repository>
         <repository>

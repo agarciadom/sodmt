@@ -121,6 +121,10 @@ wizard SetPartitions {
   }
 }
 
+-*
+  ControFlow wizards
+*-
+
 wizard SetProbability {
   guard : self.isKindOf(ControlFlow) and self.source.isKindOf(DecisionNode)
   title : 'Set probability'
