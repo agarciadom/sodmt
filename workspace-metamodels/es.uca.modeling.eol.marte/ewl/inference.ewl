@@ -103,8 +103,9 @@ wizard SetPartitions {
   guard : self.isKindOf(ExecutableNode)
   title : 'Set activity partitions'
   do {
+    var activity = self.getActivity();
     var allPartitionsByName : Map;
-    for (partition in self.activity.`group`.select(g|g.isKindOf(ActivityPartition))) {
+    for (partition in activity.`group`.select(g|g.isKindOf(ActivityPartition))) {
       allPartitionsByName.put(partition.name, partition);
     }
 
