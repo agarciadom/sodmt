@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_eaf8IDBhEeOk5M7Ugc1wiw" name="SODMT" metaclassReference="_4HHrUDBhEeOk5M7Ugc1wiw">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5yMGADBhEeOk5M7Ugc1wiw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_7T8MoTBhEeOk5M7Ugc1wiw" name="SODMT" nsURI="http:///schemas/SODMT/_7T8MoDBhEeOk5M7Ugc1wiw/1" nsPrefix="SODMT">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7T8MpzBhEeOk5M7Ugc1wiw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7T8MqDBhEeOk5M7Ugc1wiw" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7T8MqTBhEeOk5M7Ugc1wiw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7T8MqjBhEeOk5M7Ugc1wiw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7T8MqzBhEeOk5M7Ugc1wiw" key="Date" value="2013-10-08"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7T8MrDBhEeOk5M7Ugc1wiw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_7T8MojBhEeOk5M7Ugc1wiw" name="WS">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7T8MozBhEeOk5M7Ugc1wiw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_4a5i8DBhEeOk5M7Ugc1wiw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_7T8MpDBhEeOk5M7Ugc1wiw" name="base_ExecutableNode" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//ExecutableNode"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_5yMGATBhEeOk5M7Ugc1wiw" name="profile" nsURI="http:///schemas/profile/_5yLe8DBhEeOk5M7Ugc1wiw/0" nsPrefix="profile">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5yMGBzBhEeOk5M7Ugc1wiw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5yMGCDBhEeOk5M7Ugc1wiw" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5yMGCTBhEeOk5M7Ugc1wiw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5yMGCjBhEeOk5M7Ugc1wiw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5yMGCzBhEeOk5M7Ugc1wiw" key="Date" value="2013-10-08"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5yMGDDBhEeOk5M7Ugc1wiw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_5yMGAjBhEeOk5M7Ugc1wiw" name="WS">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5yMGAzBhEeOk5M7Ugc1wiw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_4a5i8DBhEeOk5M7Ugc1wiw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_5yMGBDBhEeOk5M7Ugc1wiw" name="base_ExecutableNode" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//ExecutableNode"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_4HHrUDBhEeOk5M7Ugc1wiw" alias="ExecutableNode">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ExecutableNode"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_4a5i8DBhEeOk5M7Ugc1wiw" name="WS">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5E7XYDBhEeOk5M7Ugc1wiw" name="base_ExecutableNode" association="_5E7XYTBhEeOk5M7Ugc1wiw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ExecutableNode"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_5E7XYTBhEeOk5M7Ugc1wiw" name="E_WS_ExecutableNode1" memberEnd="_5E7XYjBhEeOk5M7Ugc1wiw _5E7XYDBhEeOk5M7Ugc1wiw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_5E7XYjBhEeOk5M7Ugc1wiw" name="extension_WS" type="_4a5i8DBhEeOk5M7Ugc1wiw" aggregation="composite" association="_5E7XYTBhEeOk5M7Ugc1wiw"/>
+  </packagedElement>
+</uml:Profile>
