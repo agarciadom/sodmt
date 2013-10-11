@@ -2,7 +2,7 @@
 <EUC:ExtendedUseCasesModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EUC="http://kybele.es/EUC">
   <actors name="Customer" useCase="//@classifier.0/@ownedUseCase.0"/>
   <classifier name="SOA Keraben">
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Order issue notification" actors="//@actors.0">
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Order issue handling" actors="//@actors.0">
       <include addition="//@classifier.0/@ownedUseCase.1"/>
       <include addition="//@classifier.0/@ownedUseCase.2"/>
       <include addition="//@classifier.0/@ownedUseCase.5"/>
@@ -14,7 +14,7 @@
       <extend extendedCase="//@classifier.0/@ownedUseCase.4"/>
     </ownedUseCase>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate order by user"/>
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate user by ID"/>
+    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate order by ID"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Inspect issues">
       <extend extendedCase="//@classifier.0/@ownedUseCase.6"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.8"/>

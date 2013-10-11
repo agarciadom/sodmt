@@ -835,7 +835,7 @@
           <children xmi:type="notation:DecorationNode" xmi:id="_6YbIMTBTEeOk5M7Ugc1wiw" type="5003"/>
           <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_6YbIMjBTEeOk5M7Ugc1wiw"/>
           <element xmi:type="uml:OpaqueAction" href="order-status.uml#_6YYr8DBTEeOk5M7Ugc1wiw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6YbINjBTEeOk5M7Ugc1wiw" x="265" y="35"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6YbINjBTEeOk5M7Ugc1wiw" x="265" y="35" width="176"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_6YbINzBTEeOk5M7Ugc1wiw" type="3007" fontName="Sans Serif" fontHeight="10" lineColor="0">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6YbIODBTEeOk5M7Ugc1wiw" source="ShadowFigure">
@@ -1588,6 +1588,13 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ksqCQDBXEeOk5M7Ugc1wiw" id="(0.05194805194805195,0.5)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_lrDkMDBXEeOk5M7Ugc1wiw" type="4004" source="_TnVgEDBXEeOk5M7Ugc1wiw" target="_6YbIaTBTEeOk5M7Ugc1wiw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pXI2MDKNEeOEcP40rrie6w" source="Stereotype_Annotation">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pXI2MTKNEeOEcP40rrie6w" key="StereotypeWithQualifiedNameList" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pXI2MjKNEeOEcP40rrie6w" key="StereotypeList" value="MARTE::MARTE_AnalysisModel::GQAM::GaStep"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pXI2MzKNEeOEcP40rrie6w" key="Stereotype_Presentation_Kind" value="HorizontalStereo"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pXI2NDKNEeOEcP40rrie6w" key="PropStereoDisplay" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pXI2NTKNEeOEcP40rrie6w" key="StereotypePropertyLocation" value="Compartment"/>
+      </eAnnotations>
       <children xmi:type="notation:DecorationNode" xmi:id="_lrELQDBXEeOk5M7Ugc1wiw" visible="false" type="6003">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_lrELQTBXEeOk5M7Ugc1wiw" y="20"/>
       </children>

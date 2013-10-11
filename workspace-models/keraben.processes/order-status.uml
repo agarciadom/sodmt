@@ -256,14 +256,14 @@
       </group>
       <group xmi:type="uml:ActivityPartition" xmi:id="_YnhR4DBWEeOk5M7Ugc1wiw" name="Auth" node="_6YYr7zBTEeOk5M7Ugc1wiw"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_bYVzsDBWEeOk5M7Ugc1wiw" name="Orders" node="_6YYr8jBTEeOk5M7Ugc1wiw _6YYr8TBTEeOk5M7Ugc1wiw _JYLkcDBXEeOk5M7Ugc1wiw"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_eaYBUDBWEeOk5M7Ugc1wiw" name="Customer" node="_PiTZ0DBWEeOk5M7Ugc1wiw _6YYr8DBTEeOk5M7Ugc1wiw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_eaYBUDBWEeOk5M7Ugc1wiw" name="Customer" node="_PiTZ0DBWEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:InitialNode" xmi:id="_6YYr7jBTEeOk5M7Ugc1wiw" name="InitialNode1" outgoing="_6YYruDBTEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr7zBTEeOk5M7Ugc1wiw" name="(Auth) Verify credentials" inPartition="_YnhR4DBWEeOk5M7Ugc1wiw" outgoing="_6YYruzBTEeOk5M7Ugc1wiw" incoming="_V_VusDBWEeOk5M7Ugc1wiw">
         <inputValue xmi:type="uml:InputPin" xmi:id="_FCcc0DBjEeOk5M7Ugc1wiw" name="creds" incoming="_FDHLMDBjEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_FDJncDBjEeOk5M7Ugc1wiw" value="1"/>
         </inputValue>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8DBTEeOk5M7Ugc1wiw" name="(Customer) Specify locate field" inPartition="_eaYBUDBWEeOk5M7Ugc1wiw" outgoing="_6YYrvjBTEeOk5M7Ugc1wiw" incoming="_6YYruzBTEeOk5M7Ugc1wiw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8DBTEeOk5M7Ugc1wiw" name="(Customer) Specify field" outgoing="_6YYrvjBTEeOk5M7Ugc1wiw" incoming="_6YYruzBTEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8TBTEeOk5M7Ugc1wiw" name="(Orders) Locate orders by user" inPartition="_bYVzsDBWEeOk5M7Ugc1wiw" outgoing="_6YYrxzBTEeOk5M7Ugc1wiw" incoming="_6YYrwTBTEeOk5M7Ugc1wiw">
         <outputValue xmi:type="uml:OutputPin" xmi:id="_kBpZkDBbEeOk5M7Ugc1wiw" name="order" outgoing="_kBrOwDBbEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_kBsc4DBbEeOk5M7Ugc1wiw" value="1"/>
