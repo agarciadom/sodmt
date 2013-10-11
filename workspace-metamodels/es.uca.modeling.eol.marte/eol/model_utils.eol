@@ -265,6 +265,13 @@ operation ActivityEdge setProbability(newProb : Real) {
 }
 
 -*
+  OPERATIOSN FOR ControlFlow
+*-
+operation ControlFlow getGuard() : String {
+  return self.guard.body.first;
+}
+
+-*
   OPERATIONS FOR NamedElement
 *-
 operation NamedElement setThroughput(newThroughput : Real) {
@@ -346,6 +353,9 @@ operation ActivityNode getStepMap() : Map {
 operation ActivityNode getActivity() {
   if (self.activity.isDefined()) {
     return self.activity;
+  }
+  else if (self.eContainer.isDefined()) {
+    return self.eContainer.getActivity();
   }
   else {
     return self.inGroup.first().getActivity();

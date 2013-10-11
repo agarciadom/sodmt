@@ -70,12 +70,12 @@ wizard SetTimeLimit {
   title : 'Set time limit expression'
   do {
     transaction {
-      var minTime := System.user.promptReal("Please enter the minimum time (in seconds):", self.getMinimumTime());
+      var minTime := System.user.promptReal("Please enter the minimum time (in seconds) for \"" + self.name + "\":", self.getMinimumTime());
       if (minTime.isUndefined()) {
         abort; return;
       }
 
-      var weight := System.user.promptReal("Please enter the weight:", self.getWeight());
+      var weight := System.user.promptReal("Please enter the weight for \"" + self.name + "\":", self.getWeight());
       if (weight.isUndefined()) {
         abort; return;
       }
@@ -90,7 +90,7 @@ wizard SetRepetitions {
   title : 'Set repetitions'
   do {
     transaction {
-      var reps := System.user.promptReal("Please enter the number of repetitions:", self.getRepetitions());
+      var reps := System.user.promptReal("Please enter the number of repetitions for \"" + self.name + "\":", self.getRepetitions());
       if (reps.isUndefined()) {
         abort; return;
       }
@@ -111,7 +111,7 @@ wizard SetPartitions {
 
     var allPartitionNames := allPartitionsByName.keySet().asSequence();
     var currentPartitionNames := self.inPartition.collect(p|p.name);
-    var selectedPartitions := System.user.chooseMany('Choose the activity partitions for this node', allPartitionNames, currentPartitionNames);
+    var selectedPartitions := System.user.chooseMany('Choose the activity partitions for "' + self.name + '"', allPartitionNames, currentPartitionNames);
 
     self.inPartition.clear();
     for (selected in selectedPartitions) {
@@ -123,22 +123,36 @@ wizard SetPartitions {
 }
 
 -*
-  ControFlow wizards
+  DecisionNode wizards
 *-
 
-wizard SetProbability {
-  guard : self.isKindOf(ControlFlow) and self.source.isKindOf(DecisionNode)
-  title : 'Set probability'
+wizard SetProbabilityBranches {
+  guard : self.isKindOf(DecisionNode) and self.outgoing.size > 1
+  title : 'Set probabilities'
   do {
     transaction {
-      var prob := 0.0;
-      while (prob <= 0.0 or prob > 1) {
-        prob := System.user.promptReal("Please enter a probability within (0, 1]", prob);
-        if (prob.isUndefined()) {
-          abort; return;
+      var sum := 0.0d;
+      for (edge in self.outgoing) {
+        var prob = 0;
+        while (prob <= 0 or prob > 1) {
+           prob = System.user.promptReal("Please enter a probability within (0, 1] for \"" + edge.getGuard() + "\"", edge.getProbability());
+           if (prob.isUndefined()) {
+             abort; return;
+           }
         }
+        edge.setProbability(prob);
+
+        sum = sum + prob;
       }
-      self.setProbability(prob);
+
+      if (sum > 1.0d) {
+        System.user.inform("Sum of probabilities exceeded 1. Aborting wizard.");
+        abort; return;
+      }
+      else if (sum < 0.999999d) {
+        System.user.inform("Sum of probabilities was not equal to 1. Aborting wizard.");
+        abort; return;
+      }
     }
   }
 }

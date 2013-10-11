@@ -1266,7 +1266,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_6YbvOzBTEeOk5M7Ugc1wiw" x="21" y="-36"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_6YbvPDBTEeOk5M7Ugc1wiw" type="6011">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_6YbvPTBTEeOk5M7Ugc1wiw" x="-4" y="-56"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6YbvPTBTEeOk5M7Ugc1wiw" x="-1" y="-65"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_6YbvPjBTEeOk5M7Ugc1wiw" fontName="Sans Serif" fontHeight="12"/>
       <element xmi:type="uml:ControlFlow" href="order-status.uml#_6YYrwTBTEeOk5M7Ugc1wiw"/>

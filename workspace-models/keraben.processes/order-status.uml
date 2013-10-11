@@ -254,22 +254,22 @@
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_FZ2w4DBbEeOk5M7Ugc1wiw" value="1"/>
         </loopVariableInput>
       </group>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_YnhR4DBWEeOk5M7Ugc1wiw" name="Auth"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_bYVzsDBWEeOk5M7Ugc1wiw" name="Orders"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_eaYBUDBWEeOk5M7Ugc1wiw" name="Employee" node="_PiTZ0DBWEeOk5M7Ugc1wiw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_YnhR4DBWEeOk5M7Ugc1wiw" name="Auth" node="_6YYr7zBTEeOk5M7Ugc1wiw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_bYVzsDBWEeOk5M7Ugc1wiw" name="Orders" node="_6YYr8jBTEeOk5M7Ugc1wiw _6YYr8TBTEeOk5M7Ugc1wiw _JYLkcDBXEeOk5M7Ugc1wiw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_eaYBUDBWEeOk5M7Ugc1wiw" name="Customer" node="_PiTZ0DBWEeOk5M7Ugc1wiw _6YYr8DBTEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:InitialNode" xmi:id="_6YYr7jBTEeOk5M7Ugc1wiw" name="InitialNode1" outgoing="_6YYruDBTEeOk5M7Ugc1wiw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr7zBTEeOk5M7Ugc1wiw" name="(Auth) Verify credentials" outgoing="_6YYruzBTEeOk5M7Ugc1wiw" incoming="_V_VusDBWEeOk5M7Ugc1wiw">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr7zBTEeOk5M7Ugc1wiw" name="(Auth) Verify credentials" inPartition="_YnhR4DBWEeOk5M7Ugc1wiw" outgoing="_6YYruzBTEeOk5M7Ugc1wiw" incoming="_V_VusDBWEeOk5M7Ugc1wiw">
         <inputValue xmi:type="uml:InputPin" xmi:id="_FCcc0DBjEeOk5M7Ugc1wiw" name="creds" incoming="_FDHLMDBjEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_FDJncDBjEeOk5M7Ugc1wiw" value="1"/>
         </inputValue>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8DBTEeOk5M7Ugc1wiw" name="(Employee) Specify locate field" outgoing="_6YYrvjBTEeOk5M7Ugc1wiw" incoming="_6YYruzBTEeOk5M7Ugc1wiw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8TBTEeOk5M7Ugc1wiw" name="(Orders) Locate orders by user" outgoing="_6YYrxzBTEeOk5M7Ugc1wiw" incoming="_6YYrwTBTEeOk5M7Ugc1wiw">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8DBTEeOk5M7Ugc1wiw" name="(Customer) Specify locate field" inPartition="_eaYBUDBWEeOk5M7Ugc1wiw" outgoing="_6YYrvjBTEeOk5M7Ugc1wiw" incoming="_6YYruzBTEeOk5M7Ugc1wiw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8TBTEeOk5M7Ugc1wiw" name="(Orders) Locate orders by user" inPartition="_bYVzsDBWEeOk5M7Ugc1wiw" outgoing="_6YYrxzBTEeOk5M7Ugc1wiw" incoming="_6YYrwTBTEeOk5M7Ugc1wiw">
         <outputValue xmi:type="uml:OutputPin" xmi:id="_kBpZkDBbEeOk5M7Ugc1wiw" name="order" outgoing="_kBrOwDBbEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_kBsc4DBbEeOk5M7Ugc1wiw" value="1"/>
         </outputValue>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8jBTEeOk5M7Ugc1wiw" name="(Orders) Locate orders by ID" outgoing="_6YYryjBTEeOk5M7Ugc1wiw" incoming="_6YYrxDBTEeOk5M7Ugc1wiw">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6YYr8jBTEeOk5M7Ugc1wiw" name="(Orders) Locate orders by ID" inPartition="_bYVzsDBWEeOk5M7Ugc1wiw" outgoing="_6YYryjBTEeOk5M7Ugc1wiw" incoming="_6YYrxDBTEeOk5M7Ugc1wiw">
         <outputValue xmi:type="uml:OutputPin" xmi:id="_qu1DQDBbEeOk5M7Ugc1wiw" name="order" outgoing="_qu1DQTBbEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_qu1qUDBbEeOk5M7Ugc1wiw" value="1"/>
         </outputValue>
@@ -277,12 +277,12 @@
       <node xmi:type="uml:DecisionNode" xmi:id="_6YYr8zBTEeOk5M7Ugc1wiw" name="DecisionNode1" outgoing="_6YYrwTBTEeOk5M7Ugc1wiw _6YYrxDBTEeOk5M7Ugc1wiw" incoming="_6YYrvjBTEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:MergeNode" xmi:id="_6YYr9DBTEeOk5M7Ugc1wiw" name="MergeNode1" outgoing="_jwEeMDBXEeOk5M7Ugc1wiw" incoming="_6YYrxzBTEeOk5M7Ugc1wiw _6YYryjBTEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_6YYr9TBTEeOk5M7Ugc1wiw" name="ActivityFinalNode1" incoming="_6YYr4jBTEeOk5M7Ugc1wiw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_PiTZ0DBWEeOk5M7Ugc1wiw" name="(Employee) Send credentials" inPartition="_eaYBUDBWEeOk5M7Ugc1wiw" outgoing="_V_VusDBWEeOk5M7Ugc1wiw" incoming="_6YYruDBTEeOk5M7Ugc1wiw">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_PiTZ0DBWEeOk5M7Ugc1wiw" name="(Customer) Send credentials" inPartition="_eaYBUDBWEeOk5M7Ugc1wiw" outgoing="_V_VusDBWEeOk5M7Ugc1wiw" incoming="_6YYruDBTEeOk5M7Ugc1wiw">
         <outputValue xmi:type="uml:OutputPin" xmi:id="_FCb1wDBjEeOk5M7Ugc1wiw" name="creds" outgoing="_FDHLMDBjEeOk5M7Ugc1wiw">
           <upperBound xmi:type="uml:LiteralInteger" xmi:id="_FDJAYDBjEeOk5M7Ugc1wiw" value="1"/>
         </outputValue>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_JYLkcDBXEeOk5M7Ugc1wiw" name="(Orders) Show error message" outgoing="_OFiO8DBYEeOk5M7Ugc1wiw" incoming="_ksSO0DBXEeOk5M7Ugc1wiw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_JYLkcDBXEeOk5M7Ugc1wiw" name="(Orders) Show error message" inPartition="_bYVzsDBWEeOk5M7Ugc1wiw" outgoing="_OFiO8DBYEeOk5M7Ugc1wiw" incoming="_ksSO0DBXEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_TnMWIDBXEeOk5M7Ugc1wiw" name="DecisionNode2" outgoing="_ksSO0DBXEeOk5M7Ugc1wiw _lq3W8DBXEeOk5M7Ugc1wiw" incoming="_jwEeMDBXEeOk5M7Ugc1wiw"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_M0QNQDBYEeOk5M7Ugc1wiw" name="ActivityFinalNode2" incoming="_OFiO8DBYEeOk5M7Ugc1wiw"/>
     </packagedElement>
