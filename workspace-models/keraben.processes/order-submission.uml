@@ -196,13 +196,13 @@
         <node xmi:type="uml:OpaqueAction" xmi:id="_yku-IDGQEeOFfIbHvJgVIw" name="(Products) Retrieve prod. segments" outgoing="_CZ3OUDGSEeOFfIbHvJgVIw" incoming="_WCRQ8DGVEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:OpaqueAction" xmi:id="_DHm6kDGREeOFfIbHvJgVIw" name="(Orders) Estimate prod. dates" outgoing="_3nTOMDGSEeOFfIbHvJgVIw" incoming="_D-vhcDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:DecisionNode" xmi:id="__PzGEDGREeOFfIbHvJgVIw" name="DecisionNode1" outgoing="_DCUVcDGSEeOFfIbHvJgVIw _RJ5UIDGSEeOFfIbHvJgVIw" incoming="_CZ3OUDGSEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:OpaqueAction" xmi:id="_O-0jsDGSEeOFfIbHvJgVIw" name="(Orders) Report bad product" inPartition="_KZr8EDHIEeOUZ9JirvobTA" outgoing="_3A_cIDGSEeOFfIbHvJgVIw" incoming="_RJ5UIDGSEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_O-0jsDGSEeOFfIbHvJgVIw" name="(Orders) Report bad product" outgoing="_3A_cIDGSEeOFfIbHvJgVIw" incoming="_RJ5UIDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:ActivityFinalNode" xmi:id="_y2pioDGSEeOFfIbHvJgVIw" name="ActivityFinalNode1" incoming="_3A_cIDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:FlowFinalNode" xmi:id="_2RQBQDGSEeOFfIbHvJgVIw" name="FlowFinalNode1" incoming="_3nTOMDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:InitialNode" xmi:id="_Ugq7UDGVEeOFfIbHvJgVIw" name="InitialNode1" outgoing="_WCRQ8DGVEeOFfIbHvJgVIw"/>
       </group>
       <group xmi:type="uml:ActivityPartition" xmi:id="_F9fdkDHIEeOUZ9JirvobTA" name="Auth"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_KZr8EDHIEeOUZ9JirvobTA" name="Orders" node="_O-0jsDGSEeOFfIbHvJgVIw"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_KZr8EDHIEeOUZ9JirvobTA" name="Orders"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_Mru3MDHIEeOUZ9JirvobTA" name="Customer"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_Ol-9YDHIEeOUZ9JirvobTA" name="Products"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_-QHswDHIEeOUZ9JirvobTA" name="Inventory"/>

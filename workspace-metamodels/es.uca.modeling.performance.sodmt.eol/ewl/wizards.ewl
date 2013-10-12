@@ -51,3 +51,77 @@ wizard RunGLPK {
     }
   }
 }
+
+-* Examples for the new ability to access the notation model *-
+
+wizard MakeBold {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Toggle bold font'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.bold = not node.bold;
+  }
+}
+
+wizard MoveLeft {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Move left 10px'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.layoutConstraint.x = node.layoutConstraint.x - 10;
+  }
+}
+
+wizard FillWhite {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Fill white'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fillColor = 0.parseInt("ffffff", 16);
+  }
+}
+
+wizard FillRed {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Fill red'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fillColor = 0.parseInt("0000ff", 16);
+  }
+}
+
+wizard FillGreen {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Fill green'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fillColor = 0.parseInt("00ff00", 16);
+  }
+}
+
+wizard FillBlue {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Fill blue'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fillColor = 0.parseInt("ff0000", 16);
+  }
+}
+
+wizard TextRed {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Text red'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fontColor = 0.parseInt("0000ff", 16);
+  }
+}
+
+wizard TextBlack {
+  guard : self.isKindOf(ActivityNode)
+  title : 'Text black'
+  do {
+    var node = Spdiag!Diagram.all.first.children.selectOne(c|c.element = self);
+    node.fontColor = 0.parseInt("000000", 16);
+  }
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:SODMT="http:///schemas/SODMT/_7T8MoDBhEeOk5M7Ugc1wiw/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM http:///schemas/SODMT/_7T8MoDBhEeOk5M7Ugc1wiw/1 ../ws.profile/model.profile.uml#_7T8MoTBhEeOk5M7Ugc1wiw">
   <uml:Model xmi:id="_UVP7IDJpEeOHsdzeWup29Q" name="model">
-    <packagedElement xmi:type="uml:Activity" xmi:id="_UVWo0DJpEeOHsdzeWup29Q" name="Order Issue Handling CM" group="_dQUAkDKIEeOHsdzeWup29Q _Juf_EDKOEeOEcP40rrie6w _LFmU4DKOEeOEcP40rrie6w _YWOdcDKOEeOEcP40rrie6w" node="_dDAVcDJpEeOHsdzeWup29Q _eJfcYDJpEeOHsdzeWup29Q _fPhQUDJpEeOHsdzeWup29Q _icj0EDJpEeOHsdzeWup29Q _31VvgDJpEeOHsdzeWup29Q _5D3YIDJpEeOHsdzeWup29Q _8HlAwDJpEeOHsdzeWup29Q _-VJEgDJpEeOHsdzeWup29Q _QrUKkDJqEeOHsdzeWup29Q _RY-h0DJqEeOHsdzeWup29Q _SYA88DJqEeOHsdzeWup29Q _TOLI4DJqEeOHsdzeWup29Q _UdEk8DJqEeOHsdzeWup29Q _U8XwEDJqEeOHsdzeWup29Q _bl0qIDKHEeOHsdzeWup29Q _B1FagDKIEeOHsdzeWup29Q _DNrlIDKIEeOHsdzeWup29Q _K3eBADKIEeOHsdzeWup29Q _CuPTQDKMEeOb5cvof2egsA _V4oEgDKMEeOb5cvof2egsA _2mJ7kDKVEeOEcP40rrie6w">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_UVWo0DJpEeOHsdzeWup29Q" name="Order Issue Handling CM" group="_dQUAkDKIEeOHsdzeWup29Q _Juf_EDKOEeOEcP40rrie6w _LFmU4DKOEeOEcP40rrie6w _YWOdcDKOEeOEcP40rrie6w _mzzEwDNTEeOV1_DFQOsUNg _GTWlcDNgEeOBFrOVkztDpw _MesGUDNgEeOBFrOVkztDpw _bDS_QDNgEeOBFrOVkztDpw" node="_dDAVcDJpEeOHsdzeWup29Q _eJfcYDJpEeOHsdzeWup29Q _fPhQUDJpEeOHsdzeWup29Q _icj0EDJpEeOHsdzeWup29Q _31VvgDJpEeOHsdzeWup29Q _5D3YIDJpEeOHsdzeWup29Q _8HlAwDJpEeOHsdzeWup29Q _-VJEgDJpEeOHsdzeWup29Q _QrUKkDJqEeOHsdzeWup29Q _RY-h0DJqEeOHsdzeWup29Q _SYA88DJqEeOHsdzeWup29Q _TOLI4DJqEeOHsdzeWup29Q _UdEk8DJqEeOHsdzeWup29Q _U8XwEDJqEeOHsdzeWup29Q _bl0qIDKHEeOHsdzeWup29Q _B1FagDKIEeOHsdzeWup29Q _DNrlIDKIEeOHsdzeWup29Q _K3eBADKIEeOHsdzeWup29Q _CuPTQDKMEeOb5cvof2egsA _V4oEgDKMEeOb5cvof2egsA _2mJ7kDKVEeOEcP40rrie6w">
       <edge xmi:type="uml:ControlFlow" xmi:id="_E9DzsDJqEeOHsdzeWup29Q" name="ControlFlow1" source="_dDAVcDJpEeOHsdzeWup29Q" target="_bl0qIDKHEeOHsdzeWup29Q">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_E9EawDJqEeOHsdzeWup29Q" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_E9EawTJqEeOHsdzeWup29Q"/>
@@ -182,11 +182,11 @@
       <group xmi:type="uml:LoopNode" xmi:id="_dQUAkDKIEeOHsdzeWup29Q" name="Inspect Issues" visibility="public" outgoing="_yrSNADKLEeOb5cvof2egsA" incoming="_f3YoIDKWEeOEcP40rrie6w" bodyPart="_hT81IDKIEeOHsdzeWup29Q" test="_el_aEDKIEeOHsdzeWup29Q">
         <node xmi:type="uml:OpaqueAction" xmi:id="_el_aEDKIEeOHsdzeWup29Q" name="(Orders) Issues remaining"/>
         <node xmi:type="uml:StructuredActivityNode" xmi:id="_hT81IDKIEeOHsdzeWup29Q" name="Inspect Issues Body">
-          <node xmi:type="uml:OpaqueAction" xmi:id="_hmsjEDJpEeOHsdzeWup29Q" name="(Orders) Show next issue" outgoing="_LbvHUDJqEeOHsdzeWup29Q" incoming="_39XSADKIEeOHsdzeWup29Q"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="_hmsjEDJpEeOHsdzeWup29Q" name="(Orders) Pick next" outgoing="_LbvHUDJqEeOHsdzeWup29Q" incoming="_39XSADKIEeOHsdzeWup29Q"/>
           <node xmi:type="uml:DecisionNode" xmi:id="_C_rhADJqEeOHsdzeWup29Q" name="DecisionNode2" outgoing="_L5KqMDJqEeOHsdzeWup29Q _MgDrEDJqEeOHsdzeWup29Q _NDGtwDJqEeOHsdzeWup29Q" incoming="_LbvHUDJqEeOHsdzeWup29Q"/>
-          <node xmi:type="uml:OpaqueAction" xmi:id="__k3nADJpEeOHsdzeWup29Q" name="Inspect production delay" outgoing="_NfdSkDJqEeOHsdzeWup29Q" incoming="_L5KqMDJqEeOHsdzeWup29Q"/>
-          <node xmi:type="uml:OpaqueAction" xmi:id="_AcvDIDJqEeOHsdzeWup29Q" name="Inspect supplier delay" outgoing="_N-h0MDJqEeOHsdzeWup29Q" incoming="_MgDrEDJqEeOHsdzeWup29Q"/>
-          <node xmi:type="uml:OpaqueAction" xmi:id="_BnsaYDJqEeOHsdzeWup29Q" name="Inspect product changes" outgoing="_Oc7ncDJqEeOHsdzeWup29Q" incoming="_NDGtwDJqEeOHsdzeWup29Q"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="__k3nADJpEeOHsdzeWup29Q" name="(Manufacturing) Explain prod. delay" outgoing="_NfdSkDJqEeOHsdzeWup29Q" incoming="_L5KqMDJqEeOHsdzeWup29Q"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="_AcvDIDJqEeOHsdzeWup29Q" name="(Logistics) Explain supplier delay" outgoing="_N-h0MDJqEeOHsdzeWup29Q" incoming="_MgDrEDJqEeOHsdzeWup29Q"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="_BnsaYDJqEeOHsdzeWup29Q" name="(Products) Explain product changes" outgoing="_Oc7ncDJqEeOHsdzeWup29Q" incoming="_NDGtwDJqEeOHsdzeWup29Q"/>
           <node xmi:type="uml:MergeNode" xmi:id="_EInfADJqEeOHsdzeWup29Q" name="MergeNode2" outgoing="_1yDRADKIEeOHsdzeWup29Q" incoming="_NfdSkDJqEeOHsdzeWup29Q _N-h0MDJqEeOHsdzeWup29Q _Oc7ncDJqEeOHsdzeWup29Q"/>
           <node xmi:type="uml:FlowFinalNode" xmi:id="_0yRPADKIEeOHsdzeWup29Q" name="FlowFinalNode1" incoming="_1yDRADKIEeOHsdzeWup29Q"/>
           <node xmi:type="uml:InitialNode" xmi:id="_3HuqgDKIEeOHsdzeWup29Q" name="InitialNode1" outgoing="_39XSADKIEeOHsdzeWup29Q"/>
@@ -195,6 +195,10 @@
       <group xmi:type="uml:ActivityPartition" xmi:id="_Juf_EDKOEeOEcP40rrie6w" name="Customer"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_LFmU4DKOEeOEcP40rrie6w" name="Auth"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_YWOdcDKOEeOEcP40rrie6w" name="Orders"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_mzzEwDNTEeOV1_DFQOsUNg" name="Inventory"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_GTWlcDNgEeOBFrOVkztDpw" name="Logistics"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_MesGUDNgEeOBFrOVkztDpw" name="Products"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_bDS_QDNgEeOBFrOVkztDpw" name="Manufacturing"/>
       <node xmi:type="uml:InitialNode" xmi:id="_dDAVcDJpEeOHsdzeWup29Q" name="InitialNode1" outgoing="_E9DzsDJqEeOHsdzeWup29Q"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_eJfcYDJpEeOHsdzeWup29Q" name="(Auth) Verify credentials" outgoing="_GRmkwDJqEeOHsdzeWup29Q" incoming="_ttmH0DKHEeOHsdzeWup29Q">
         <inputValue xmi:type="uml:InputPin" xmi:id="_wuVU8DKHEeOHsdzeWup29Q" name="creds" incoming="_wuz2EDKHEeOHsdzeWup29Q">
@@ -398,83 +402,85 @@
     <respT>(value=10.0,unit=s,source=req)</respT>
   </GQAM:GaScenario>
   <GQAM:GaStep xmi:id="__wvDgDKPEeOEcP40rrie6w" base_NamedElement="_V4oEgDKMEeOb5cvof2egsA">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__w-7IDKPEeOEcP40rrie6w" base_NamedElement="_SYA88DJqEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.20000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xEasDKPEeOEcP40rrie6w" base_NamedElement="_TOLI4DJqEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.20000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xLIYDKPEeOEcP40rrie6w" base_NamedElement="_QrUKkDJqEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.20000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xTrQDKPEeOEcP40rrie6w" base_NamedElement="_RY-h0DJqEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.20000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xdcQDKPEeOEcP40rrie6w" base_NamedElement="_icj0EDJpEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xhtsDKPEeOEcP40rrie6w" base_NamedElement="_CuPTQDKMEeOb5cvof2egsA">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384603,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xl_IDKPEeOEcP40rrie6w" base_NamedElement="_dQUAkDKIEeOHsdzeWup29Q" rep="(value=3.0, source=req)">
     <hostDemand>(expr=0.0 + 5.0 * swInspectIssues,unit=s,source=req)</hostDemand>
+    <hostDemand>(value=1.730769230769231,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xq3oDKPEeOEcP40rrie6w" base_NamedElement="_DNrlIDKIEeOHsdzeWup29Q">
-    <hostDemand>(value=5.555555555555556,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=6.923076923076923,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.20000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__xyzcDKPEeOEcP40rrie6w" base_NamedElement="_5D3YIDJpEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111114,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384615,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.699999988079071,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__x3r8DKPEeOEcP40rrie6w" base_NamedElement="_8HlAwDJpEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111114,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384615,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.30000001192092896,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="__x9ykDKPEeOEcP40rrie6w" base_NamedElement="_fPhQUDJpEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+  <GQAM:GaStep xmi:id="__x9ykDKPEeOEcP40rrie6w" base_NamedElement="_fPhQUDJpEeOHsdzeWup29Q" blockT="">
+    <hostDemand>(value=0.34615384615384615,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__yBc8DKPEeOEcP40rrie6w" base_NamedElement="_eJfcYDJpEeOHsdzeWup29Q" blockT="">
     <hostDemand>(expr=1.0 + 3.0 * swAuthVerifycredentials,unit=s,source=req)</hostDemand>
+    <hostDemand>(value=2.0384615384615383,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__yFuYDKPEeOEcP40rrie6w" base_NamedElement="_bl0qIDKHEeOHsdzeWup29Q">
-    <hostDemand>(value=1.1111111111111112,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.34615384615384615,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__yev8DKPEeOEcP40rrie6w" base_NamedElement="_hT81IDKIEeOHsdzeWup29Q">
-    <hostDemand>(value=0.5555555820465088,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.8653846383094788,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__yjBYDKPEeOEcP40rrie6w" base_NamedElement="_el_aEDKIEeOHsdzeWup29Q">
-    <hostDemand>(value=0.5555555820465088,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.8653846383094788,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__yxq4DKPEeOEcP40rrie6w" base_NamedElement="_BnsaYDJqEeOHsdzeWup29Q">
-    <hostDemand>(value=0.2777777910232544,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4326923191547394,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.16000000476837162,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__y3xgDKPEeOEcP40rrie6w" base_NamedElement="__k3nADJpEeOHsdzeWup29Q">
-    <hostDemand>(value=0.2777777910232544,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4326923191547394,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.32000000953674324,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__zA7cDKPEeOEcP40rrie6w" base_NamedElement="_AcvDIDJqEeOHsdzeWup29Q">
-    <hostDemand>(value=0.2777777910232544,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4326923191547394,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.32000000953674324,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="__zIQMDKPEeOEcP40rrie6w" base_NamedElement="_hmsjEDJpEeOHsdzeWup29Q">
-    <hostDemand>(value=0.2777777910232544,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4326923191547394,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.800000011920929,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaAnalysisContext xmi:id="__zdnYDKPEeOEcP40rrie6w" base_NamedElement="_UVWo0DJpEeOHsdzeWup29Q">
@@ -482,24 +488,32 @@
     <context>$swInspectproductiondelay : Real = 0.2777777910232544</context>
     <context>$swInspectproductchanges : Real = 0.2777777910232544</context>
     <context>$swOrdersFetchnextissue : Real = 0.2777777910232544</context>
-    <context>$swInspectIssuesBody : Real = 0.5555555820465088</context>
-    <context>$swOrdersIssuesremaining : Real = 0.5555555820465088</context>
-    <context>$swOrdersShowconfirmation : Real = 1.1111111640930176</context>
-    <context>$swOrdersChangequantities : Real = 1.1111111640930176</context>
-    <context>$swOrdersCancelorder : Real = 1.1111111640930176</context>
-    <context>$swOrdersSplitorder : Real = 1.1111111640930176</context>
-    <context>$swOrdersChangedeadline : Real = 1.1111111640930176</context>
-    <context>$swCustomerSelectresponse : Real = 1.1111111640930176</context>
-    <context>$swOrdersShowavailableresponses : Real = 1.1111111640930176</context>
-    <context>$swInspectIssues : Real = 1.1111111640930176</context>
-    <context>$swOrdersShowerrormessage : Real = 5.55555534362793</context>
-    <context>$swOrdersLocateordersbyID : Real = 1.1111111640930176</context>
-    <context>$swOrdersLocateordersbyuser : Real = 1.1111111640930176</context>
-    <context>$swCustomerSpecifyfield : Real = 1.1111111640930176</context>
-    <context>$swAuthVerifycredentials : Real = 1.1111111640930176</context>
-    <context>$swCustomerSendcredentials : Real = 1.1111111640930176</context>
+    <context>$swInspectIssuesBody : Real = 0.8653846383094788</context>
+    <context>$swOrdersIssuesremaining : Real = 0.8653846383094788</context>
+    <context>$swOrdersShowconfirmation : Real = 0.3461538553237915</context>
+    <context>$swOrdersChangequantities : Real = 0.3461538553237915</context>
+    <context>$swOrdersCancelorder : Real = 0.3461538553237915</context>
+    <context>$swOrdersSplitorder : Real = 0.3461538553237915</context>
+    <context>$swOrdersChangedeadline : Real = 0.3461538553237915</context>
+    <context>$swCustomerSelectresponse : Real = 0.3461538553237915</context>
+    <context>$swOrdersShowavailableresponses : Real = 0.3461538553237915</context>
+    <context>$swInspectIssues : Real = 0.3461538553237915</context>
+    <context>$swOrdersShowerrormessage : Real = 6.92307710647583</context>
+    <context>$swOrdersLocateordersbyID : Real = 0.3461538553237915</context>
+    <context>$swOrdersLocateordersbyuser : Real = 0.3461538553237915</context>
+    <context>$swCustomerSpecifyfield : Real = 0.3461538553237915</context>
+    <context>$swAuthVerifycredentials : Real = 0.34615381558736164</context>
+    <context>$swCustomerSendcredentials : Real = 0.3461538553237915</context>
+    <context>$swLogisticsExplainsupplierdelay : Real = 0.4326923191547394</context>
+    <context>$swProductsExplainproductchanges : Real = 0.4326923191547394</context>
+    <context>$swManufacturingExplainproddelay : Real = 0.4326923191547394</context>
+    <context>$swOrdersPicknext : Real = 0.4326923191547394</context>
+    <context>$swOrdersFetchopenissues : Real = 0.3461538553237915</context>
   </GQAM:GaAnalysisContext>
   <SODMT:WS xmi:id="_OrytkDKQEeOEcP40rrie6w" base_ExecutableNode="_eJfcYDJpEeOHsdzeWup29Q"/>
   <SODMT:WS xmi:id="_p0TZsDKVEeOEcP40rrie6w" base_ExecutableNode="_5D3YIDJpEeOHsdzeWup29Q"/>
   <SODMT:WS xmi:id="_qjuEcDKVEeOEcP40rrie6w" base_ExecutableNode="_8HlAwDJpEeOHsdzeWup29Q"/>
+  <GQAM:GaStep xmi:id="_npAlwDNkEeOfGZETOHP4ig" base_NamedElement="_2mJ7kDKVEeOEcP40rrie6w">
+    <hostDemand>(value=0.34615384615384615,unit=s,source=calc)</hostDemand>
+  </GQAM:GaStep>
 </xmi:XMI>

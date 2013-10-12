@@ -32,7 +32,7 @@ operation distributeTime(globalLimit : Real, endNodes : Collection) : Boolean {
   return distributeTime(initial, globalLimit, strictestGraphConstraint);
 }
 
-operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean {
+operation distributeTime(v : uml::ActivityNode, T : Real, c_pms : Sequence) : Boolean {
   var M_m   = v.~maxMinTimeLimit;
 
   if (T + 0.0001 < M_m) {
@@ -93,7 +93,7 @@ operation distributeTime(v : ActivityNode, T : Real, c_pms : Sequence) : Boolean
 }
 
 -- Backs up starting at a node, trying to reuse extra time without disturbing other paths.
-operation reuseSurplusTime(slack : Real, start : ActivityNode) {
+operation reuseSurplusTime(slack : Real, start : uml::ActivityNode) {
   var backNodes : Sequence;
   var totalWeight = 0;
   var current = start;
@@ -127,7 +127,7 @@ operation reuseSurplusTime(slack : Real, start : ActivityNode) {
   Returns the outgoing edges of the current node, sorted according to their
   slack per unit of weight in ascending order.
 *-
-operation ActivityNode getNextFromMostToLeastStrict(received : Real) : Sequence {
+operation uml::ActivityNode getNextFromMostToLeastStrict(received : Real) : Sequence {
   return self.getNext().sortBy(n | self.getStrictestConstraintTo(n, received).slackPerWU(received));
 }
 
@@ -145,7 +145,7 @@ operation ActivityNode getNextFromMostToLeastStrict(received : Real) : Sequence 
 *-
 $pre not endNodes.isEmpty()
 $pre endNodes.forAll(e|e.getNext().isEmpty())
-$post _result = null or (_result.size() = 2 and _result.first().isKindOf(ActivityNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
+$post _result = null or (_result.size() = 2 and _result.first().isKindOf(uml::ActivityNode) and not _result.last().isEmpty() and _result.last().forAll(e|e.forAll(f|f>=0)))
 operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequence {
   --('aggregateConstraints, end nodes: ' + endNodes).println();
 
@@ -157,7 +157,7 @@ operation aggregateConstraints(globalLimit : Real, endNodes : Collection) : Sequ
 
   while (not stack.isEmpty()) {
     -- Take the top of the stack
-    var currentNode : ActivityNode = stack.popLast();
+    var currentNode : uml::ActivityNode = stack.popLast();
 
     -- Skip this node for now if not all the nodes after it have been visited yet.
     -- We will visit it later through another node.
@@ -317,41 +317,41 @@ nodes themselves.
 
 *-
 
-operation ActivityNode getTimeSent() : Map {
+operation uml::ActivityNode getTimeSent() : Map {
   if (self.~distributedTime.isUndefined()) {
     self.~distributedTime := Map {};
   }
   return self.~distributedTime;
 }
 
-operation ActivityNode getTimeSentTo(node : ActivityNode) : Real {
+operation uml::ActivityNode getTimeSentTo(node : uml::ActivityNode) : Real {
   return self.getTimeSent().get(node);
 }
 
-operation ActivityNode getTimeSentFrom(node : ActivityNode) : Real {
+operation uml::ActivityNode getTimeSentFrom(node : uml::ActivityNode) : Real {
   return node.getTimeSentTo(self);
 }
 
-operation ActivityNode setTimeSentTo(node : ActivityNode, time : Real) {
+operation uml::ActivityNode setTimeSentTo(node : uml::ActivityNode, time : Real) {
   self.getTimeSent().put(node, time);
 }
 
-operation ActivityNode getConstraints() : Map {
+operation uml::ActivityNode getConstraints() : Map {
   if (self.~constraints.isUndefined()) {
     self.~constraints := Map {};
   }
   return self.~constraints;
 }
 
-operation ActivityNode getConstraintsTo(node : ActivityNode) : Sequence {
+operation uml::ActivityNode getConstraintsTo(node : uml::ActivityNode) : Sequence {
   return self.getConstraints().get(node);
 }
 
-operation ActivityNode setConstraintsTo(node : ActivityNode, constraints : Sequence) {
+operation uml::ActivityNode setConstraintsTo(node : uml::ActivityNode, constraints : Sequence) {
   self.getConstraints().put(node, constraints);
 }
 
 $pre self.getConstraintsTo(node).isDefined() and self.getConstraintsTo(node).notEmpty()
-operation ActivityNode getStrictestConstraintTo(node : ActivityNode, received : Real) : Sequence {
+operation uml::ActivityNode getStrictestConstraintTo(node : uml::ActivityNode, received : Real) : Sequence {
   return self.getConstraintsTo(node).sortBy(c|c.slackPerWU(received)).first();
 }

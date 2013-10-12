@@ -2,7 +2,7 @@ import '../eol/throughput.eol';
 import '../eol/time_limits.eol';
 
 wizard SetGlobalConstraints {
-  guard : self.isKindOf(Activity)
+  guard : self.isKindOf(Model!uml::Activity)
   title : 'Set global constraints'
   do {
     transaction {
@@ -19,7 +19,7 @@ wizard SetGlobalConstraints {
 }
 
 wizard InferTimeLimits {
-  guard : self.isKindOf(Activity) and self.getScenario().isDefined()
+  guard : self.isKindOf(Model!uml::Activity) and self.getScenario().isDefined()
   title : 'Infer time limits'
   do {
     transaction {
@@ -33,7 +33,7 @@ wizard InferTimeLimits {
 } -- wizard
 
 wizard InferThroughput {
-  guard : self.isKindOf(Activity) and self.getScenario().isDefined()
+  guard : self.isKindOf(Model!uml::Activity) and self.getScenario().isDefined()
   title : 'Infer throughput'
   do {
     transaction {
@@ -52,10 +52,10 @@ wizard InferThroughput {
 } -- wizard
 
 wizard UpdatePartitionNames {
-  guard : self.isKindOf(Activity)
+  guard : self.isKindOf(Model!uml::Activity)
   title : 'Decorate with partition names'
   do {
-    for (exec in self.node.select(n|n.isKindOf(ExecutableNode))) {
+    for (exec in self.node.select(n|n.isKindOf(uml::ExecutableNode))) {
       exec.updateNameWithPartitions();
     }
   }
@@ -66,7 +66,7 @@ wizard UpdatePartitionNames {
 *-
 
 wizard SetTimeLimit {
-  guard : self.isKindOf(ExecutableNode)
+  guard : self.isKindOf(Model!uml::ExecutableNode)
   title : 'Set time limit expression'
   do {
     transaction {
@@ -86,7 +86,7 @@ wizard SetTimeLimit {
 }
 
 wizard SetRepetitions {
-  guard : self.isKindOf(ExecutableNode)
+  guard : self.isKindOf(Model!uml::ExecutableNode)
   title : 'Set repetitions'
   do {
     transaction {
@@ -100,12 +100,12 @@ wizard SetRepetitions {
 }
 
 wizard SetPartitions {
-  guard : self.isKindOf(ExecutableNode)
+  guard : self.isKindOf(Model!uml::ExecutableNode)
   title : 'Set activity partitions'
   do {
     var activity = self.getActivity();
     var allPartitionsByName : Map;
-    for (partition in activity.`group`.select(g|g.isKindOf(ActivityPartition))) {
+    for (partition in activity.`group`.select(g|g.isKindOf(Model!uml::ActivityPartition))) {
       allPartitionsByName.put(partition.name, partition);
     }
 
@@ -127,7 +127,7 @@ wizard SetPartitions {
 *-
 
 wizard SetProbabilityBranches {
-  guard : self.isKindOf(DecisionNode) and self.outgoing.size > 1
+  guard : self.isKindOf(Model!uml::DecisionNode) and self.outgoing.size > 1
   title : 'Set probabilities'
   do {
     transaction {

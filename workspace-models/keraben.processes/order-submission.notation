@@ -429,7 +429,7 @@
           </children>
           <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_fM3xkTGQEeOFfIbHvJgVIw"/>
           <element xmi:type="uml:StructuredActivityNode" href="order-submission.uml#_fMvOsDGQEeOFfIbHvJgVIw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fM3xkjGQEeOFfIbHvJgVIw" x="45" y="139" width="891" height="176"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fM3xkjGQEeOFfIbHvJgVIw" x="45" y="128" width="891" height="196"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_FyVJgDGTEeOFfIbHvJgVIw" type="3038">
           <children xmi:type="notation:DecorationNode" xmi:id="_FyVJgzGTEeOFfIbHvJgVIw" type="5043">

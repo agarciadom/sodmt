@@ -29,7 +29,7 @@ operation Sequence slackPerWU(T : Real) : Real {
 
 @cached
 $post _result >= 0
-operation ActivityNode getDepth() : Integer {
+operation uml::ActivityNode getDepth() : Integer {
   if (self.incoming.isEmpty()) {
     return 0;
   }
@@ -42,7 +42,7 @@ operation ActivityNode getDepth() : Integer {
 
 @cached
 $pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
-operation getLCA(nodeA : ActivityNode, nodeB : ActivityNode) : ActivityNode {
+operation getLCA(nodeA : uml::ActivityNode, nodeB : uml::ActivityNode) : uml::ActivityNode {
   var depths     := Sequence { nodeA.getDepth(), nodeB.getDepth() };
   var maxDepth   := depths.min();
   var ancestorsA := nodeA.getAncestors(maxDepth);
@@ -57,14 +57,14 @@ operation getLCA(nodeA : ActivityNode, nodeB : ActivityNode) : ActivityNode {
 }
 
 $pre maxDepth >= 0
-operation ActivityNode getAncestors(maxDepth : Integer) : Set {
+operation uml::ActivityNode getAncestors(maxDepth : Integer) : Set {
   var results := new Set;
   self.addAllAncestors(maxDepth, results);
   return results;
 }
 
 $pre maxDepth >= 0 and results.isDefined()
-operation ActivityNode addAllAncestors(maxDepth : Integer, results : Collection) {
+operation uml::ActivityNode addAllAncestors(maxDepth : Integer, results : Collection) {
   if (self.getDepth() <= maxDepth) {
     results.add(self);
   }
@@ -89,7 +89,7 @@ operation Set intersect(otherSet : Set) : Set {
 ----- NODE TRAVERSAL ----------------------------------------------------------
 
 @cached
-operation ActivityNode getLoopPart() : Integer {
+operation uml::ActivityNode getLoopPart() : Integer {
   if (self.inStructuredNode.isDefined() and self.inStructuredNode.isKindOf(LoopNode)) {
     return self.getLoopPart(self.inStructuredNode);
   }
@@ -99,7 +99,7 @@ operation ActivityNode getLoopPart() : Integer {
 }
 
 @cached
-operation ActivityNode getLoopPart(ln : LoopNode) : Integer {
+operation uml::ActivityNode getLoopPart(ln : LoopNode) : Integer {
   if (ln.setupPart.contains(self)) {
     return 0;
   }
@@ -117,7 +117,7 @@ operation ActivityNode getLoopPart(ln : LoopNode) : Integer {
 -- Returns all the nodes that are directly after this one: normally it will use
 -- the outgoing edges, but it may need to work differently in some cases.
 @cached
-operation ActivityNode getNext() : Set {
+operation uml::ActivityNode getNext() : Set {
   if (self.outgoing.isEmpty()) {
     for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
       var part := self.getLoopPart(loopNode);
@@ -137,9 +137,9 @@ operation ActivityNode getNext() : Set {
 -- Returns all the nodes that are directly after this one: normally it will use
 -- the outgoing edges, but it may need to work differently in some cases.
 @cached
-operation ActivityNode getPrev() : Set {
+operation uml::ActivityNode getPrev() : Set {
   if (self.incoming.isEmpty()) {
-    for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
+    for (loopNode in self.inStructuredNode.select(s : uml::LoopNode | true)) {
       var part := self.getLoopPart(loopNode);
       if (part == 2 and not loopNode.test.isEmpty()) {
         return loopNode.test.getSinks();
@@ -154,54 +154,54 @@ operation ActivityNode getPrev() : Set {
   return Set {};
 }
 
-operation Activity getSources() : Set {
+operation uml::Activity getSources() : Set {
   return self.nodes.getSources();
 }
 
-operation Activity getSinks() : Set {
+operation uml::Activity getSinks() : Set {
   return self.nodes.getSinks();
 }
 
-operation LoopNode getSources() : Set {
+operation uml::LoopNode getSources() : Set {
   if (not self.setupPart.isEmpty()) { return self.setupPart.getSources(); }
   else if (not self.test.isEmpty()) { return self.test.getSources(); }
   else if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSources(); }
   else { return self.nodes.getSources(); }
 }
 
-operation LoopNode getSinks() : Set {
+operation uml::LoopNode getSinks() : Set {
   if (not self.bodyPart.isEmpty()) { return self.bodyPart.getSinks(); }
   else if (not self.test.isEmpty()) { return self.test.getSinks(); }
   else if (not self.setupPart.isEmpty()) { return self.setupPart.getSinks(); }
   else { return self.nodes.getSinks(); }
 }
 
-operation StructuredActivityNode getSources() : Set {
+operation uml::StructuredActivityNode getSources() : Set {
   return self.nodes.getSources();
 }
 
-operation StructuredActivityNode getSinks() : Set {
+operation uml::StructuredActivityNode getSinks() : Set {
   return self.nodes.getSinks();
 }
 
-operation ActivityNode getSources() : Set {
+operation uml::ActivityNode getSources() : Set {
   return Set {};
 }
 
-operation ActivityNode getSinks() : Set {
+operation uml::ActivityNode getSinks() : Set {
   return Set {};
 }
 
 operation Collection getSources() : Set {
-  return self.select(n | n.incoming.select(c : ControlFlow | true).isEmpty()).asSet();
+  return self.select(n | n.incoming.select(c : uml::ControlFlow | true).isEmpty()).asSet();
 }
 
 operation Collection getSinks() : Set {
-  return self.select(n | n.outgoing.select(c : ControlFlow | true).isEmpty()).asSet();
+  return self.select(n | n.outgoing.select(c : uml::ControlFlow | true).isEmpty()).asSet();
 }
 
 @cached
-operation ActivityNode getContainers() : Set {
+operation uml::ActivityNode getContainers() : Set {
   if (self.activity.isDefined()) {
     return Set { self.activity };
   } else {
@@ -215,7 +215,7 @@ operation ActivityNode getContainers() : Set {
 -- particular order. Returns a Set: to convert it to a sequence, use asSequence().
 -- Note that if you only want the activities, you will need to filter them later
 -- on, using select(), for instance.
-operation ActivityNode getAllReachableNodes() : Set {
+operation uml::ActivityNode getAllReachableNodes() : Set {
   var nodeSet := new Set;
   nodeSet.add(self);
   self.addAllReachableNodes(nodeSet);
@@ -224,7 +224,7 @@ operation ActivityNode getAllReachableNodes() : Set {
 
 -- Adds all the nodes which are reachable from a node in the graph to a set of
 -- nodes. Avoids nodes which have been already visited.
-operation ActivityNode addAllReachableNodes(nodeSet : Set) {
+operation uml::ActivityNode addAllReachableNodes(nodeSet : Set) {
   addAllReachableNodeSet(self.getSources(), nodeSet);
   addAllReachableNodeSet(self.getNext(), nodeSet);
 }

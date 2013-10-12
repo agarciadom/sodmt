@@ -40,7 +40,7 @@ import 'utils.eol';
   This operation returns true if all nodes reachable from the starting node
   have been successfully annotated, and false otherwise.
 *-
-operation annotateThroughput(start : ActivityNode) : Boolean {
+operation annotateThroughput(start : uml::ActivityNode) : Boolean {
   -- Since the precondition must hold, all activities are reachable from the
   -- initial node. Get all reachable nodes and filter only the activities.
   var allNodes := start.getAllReachableNodes().asSequence().select(r:ExecutableNode|true);
@@ -54,26 +54,26 @@ operation annotateThroughput(start : ActivityNode) : Boolean {
 
 -- AUTOMATIC TRANSACTIONS PER SEC RESTRICTION COMPUTATION ---------------------
 
-operation Activity computeThroughput() : Real {
+operation uml::Activity computeThroughput() : Real {
   return self.getThroughput();
 }
 
 @cached
 $pre self.source.isDefined() and self.target.isDefined()
-operation ActivityEdge computeThroughput() : Real {
+operation uml::ActivityEdge computeThroughput() : Real {
   return self.getProbability() * self.source.computeThroughput();
 }
 
 @cached
-operation ActivityNode computeThroughput() : Real {
-  var prev = self.incoming.select(e : ControlFlow | true);
+operation uml::ActivityNode computeThroughput() : Real {
+  var prev = self.incoming.select(e : uml::ControlFlow | true);
   if (prev.isEmpty()) {
     prev = self.getPrev();
   }
   if (prev.notEmpty()) {
-    if (self.isKindOf(JoinNode)) {
+    if (self.isKindOf(uml::JoinNode)) {
       return prev.collect(e|e.computeThroughput()).sortBy(e|e).first();
-    } else if (self.isKindOf(MergeNode)) {
+    } else if (self.isKindOf(uml::MergeNode)) {
       return prev.collect(e|e.computeThroughput()).sum();
     } else {
       -- We assume that anything that isn't a JoinNode or a MergeNode has exactly one incoming edge or one previous node

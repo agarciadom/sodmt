@@ -16,36 +16,36 @@ import 'utils.eol';
   OPERATIONS FOR Activity
 *-
 @cached
-operation Activity getVSLTool() {
+operation uml::Activity getVSLTool() {
   return new Native("es.uca.modeling.eol.marte.tools.VSLTupleTool");
 }
 
 $pre self.getScenario().isDefined() and not self.getScenario().respT.isEmpty()
-operation Activity getTimeLimit() : Real {
+operation uml::Activity getTimeLimit() : Real {
   var tool := self.getVSLTool();
   return tool.getKeyvalMap(self.getScenario().respT.first()).get("value").asReal() * 1.0d;
 }
 
-operation Activity getTimeLimitWithDefault(def : Real) : Real {
+operation uml::Activity getTimeLimitWithDefault(def : Real) : Real {
   if (self.getScenario().isUndefined() or self.getScenario().respT.isEmpty()) {
     return def;
   }
   return self.getTimeLimit();
 }
 
-operation Activity setTimeLimit(newTimeLimit : Real) {
+operation uml::Activity setTimeLimit(newTimeLimit : Real) {
   var scenario := self.getScenario(true);
   scenario.respT.clear();
   scenario.respT.add('(value=' + newTimeLimit + ',unit=s,source=req)');
 }
 
 $pre self.getScenario().isDefined() and not self.getScenario().throughput.isEmpty()
-operation Activity getThroughput() : Real {
+operation uml::Activity getThroughput() : Real {
   var tool := self.getVSLTool();
   return tool.getKeyvalMap(self.getScenario().throughput.first()).get("value").asReal() * 1.0d;
 }
 
-operation Activity getThroughputWithDefault(def : Real) : Real {
+operation uml::Activity getThroughputWithDefault(def : Real) : Real {
   if (self.getScenario().isUndefined() or self.getScenario().throughput.isEmpty()) {
     return def;
   }
@@ -53,14 +53,14 @@ operation Activity getThroughputWithDefault(def : Real) : Real {
 }
 
 $pre self.getScenario().isDefined()
-operation Activity setThroughput(newThroughput : Real) {
+operation uml::Activity setThroughput(newThroughput : Real) {
   var scenario := self.getScenario(true);
   scenario.throughput.clear();
   scenario.throughput.add('(value=' + newThroughput + ',unit=Hz,source=req)');
 }
 
 @cached
-operation Activity getAnalysisContext() : GaAnalysisContext {
+operation uml::Activity getAnalysisContext() : GaAnalysisContext {
   var context := GaAnalysisContext.allInstances.select(e|e.base_NamedElement == self).first();
   if (context.isDefined()) {
     return context;
@@ -73,7 +73,7 @@ operation Activity getAnalysisContext() : GaAnalysisContext {
 }
 
 -- Sets the value of a slack per unit of weight variable.
-operation Activity setSWVariable(name : String, value : Real) {
+operation uml::Activity setSWVariable(name : String, value : Real) {
   var tool     := self.getVSLTool();
   var ctx      := self.getAnalysisContext().context;
   var fullExpr := "$" + name + " : Real = " + value;
@@ -97,7 +97,7 @@ operation Activity setSWVariable(name : String, value : Real) {
 }
 
 @cached
-operation Activity getStepMap() : Map {
+operation uml::Activity getStepMap() : Map {
   var map : Map;
   for (step in GaStep.allInstances) {
     map.put(step.base_NamedElement, step);
@@ -109,14 +109,14 @@ operation Activity getStepMap() : Map {
   OPERATIONS FOR ExecutableNode
 *-
 
-operation ExecutableNode setThroughput(newThroughput : Real) {
+operation uml::ExecutableNode setThroughput(newThroughput : Real) {
   var step := self.getStep(true);
   step.throughput.clear();
   step.throughput.add('(value=' + newThroughput + ',unit=Hz,source=calc)');
 }
 
 $pre self.getStep().isDefined()
-operation ExecutableNode getTimeLimit() : Real {
+operation uml::ExecutableNode getTimeLimit() : Real {
   var tool   := self.getActivity().getVSLTool();
   var stepHD := self.getStep().hostDemand;
   var kvCalcHD := stepHD.collect(e|tool.getKeyvalMap(e)).select(kv|kv.get("source") == "calc").first();
@@ -128,7 +128,7 @@ operation ExecutableNode getTimeLimit() : Real {
   }
 }
 
-operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
+operation uml::ExecutableNode setTimeLimit(newTimeMillis : Real) {
   var tool := self.getActivity().getVSLTool();
   var step := self.getStep(true);
 
@@ -139,7 +139,7 @@ operation ExecutableNode setTimeLimit(newTimeMillis : Real) {
   step.hostDemand.add('(value=' + newTimeMillis + ',unit=s,source=calc)');
 }
 
-operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
+operation uml::ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
   var step := self.getStep(true);
   step.hostDemand.clear();
 
@@ -149,7 +149,7 @@ operation ExecutableNode setRequiredTimeLimit(minTime : Real, weight : Real) {
 }
 
 $pre self.getStep().isDefined()
-operation ExecutableNode getThroughput() : Real {
+operation uml::ExecutableNode getThroughput() : Real {
   var throughput := self.getStep().throughput.first();
   if (throughput.isDefined()) {
     var tool       := self.getActivity().getVSLTool();
@@ -160,25 +160,25 @@ operation ExecutableNode getThroughput() : Real {
 }
 
 @cached
-operation ExecutableNode getWeight() : Real {
+operation uml::ExecutableNode getWeight() : Real {
   var tool := self.getActivity().getVSLTool();
   return tool.getWeight(self.getRequiredHostDemand().get("expr"));
 }
 
 @cached
-operation ExecutableNode getMinimumTime() : Real {
+operation uml::ExecutableNode getMinimumTime() : Real {
   var tool := self.getActivity().getVSLTool();
   var rhd := self.getRequiredHostDemand();
   return tool.getMinimumTime(rhd.get("expr"));
 }
 
 @cached
-operation ExecutableNode getVariable() : String {
+operation uml::ExecutableNode getVariable() : String {
   var tool := self.getActivity().getVSLTool();
   return tool.getVariable(self.getRequiredHostDemand().get("expr"));
 }
 
-operation ExecutableNode getRepetitions() : Real {
+operation uml::ExecutableNode getRepetitions() : Real {
   var step := self.getStep();
   if (step.isUndefined()) {
     return 1.0d;
@@ -205,12 +205,12 @@ operation ExecutableNode getRepetitions() : Real {
   }
 }
 
-operation ExecutableNode setRepetitions(newRep : Real) {
+operation uml::ExecutableNode setRepetitions(newRep : Real) {
   self.getStep(true).rep := '(value=' + newRep + ', source=req)';
 }
 
 @cached
-operation ExecutableNode getRequiredHostDemand() : Map {
+operation uml::ExecutableNode getRequiredHostDemand() : Map {
   var tool := self.getActivity().getVSLTool();
   var step := self.getStep();
   if (step.isDefined()) {
@@ -222,7 +222,7 @@ operation ExecutableNode getRequiredHostDemand() : Map {
   return Map { "expr" = "0.0 + 1.0 * " + self.getContextParameterName(), "unit" = "s", "source" = "req" };
 }
 
-operation ExecutableNode updateNameWithPartitions() {
+operation uml::ExecutableNode updateNameWithPartitions() {
   var finalName = self.name;
   if (finalName.startsWith('(')) {
     -- Remove partition from final name - we'll add back the updated partitions later
@@ -244,7 +244,7 @@ operation ExecutableNode updateNameWithPartitions() {
 *-
 $pre not self.getStep().isDefined() or self.getStep().prob.isDefined()
 $post _result.isDefined() and _result >= 0 and _result <= 1
-operation ActivityEdge getProbability() : Real {
+operation uml::ActivityEdge getProbability() : Real {
   var step := self.getStep();
 
   if (step.isDefined()) {
@@ -260,61 +260,61 @@ operation ActivityEdge getProbability() : Real {
   }
 }
 
-operation ActivityEdge setProbability(newProb : Real) {
+operation uml::ActivityEdge setProbability(newProb : Real) {
   self.getStep(true).prob := '(value=' + newProb + ', source=req)';
 }
 
 -*
   OPERATIOSN FOR ControlFlow
 *-
-operation ControlFlow getGuard() : String {
+operation uml::ControlFlow getGuard() : String {
   return self.guard.body.first;
 }
 
 -*
   OPERATIONS FOR NamedElement
 *-
-operation NamedElement setThroughput(newThroughput : Real) {
+operation uml::NamedElement setThroughput(newThroughput : Real) {
   -- do nothing
 }
 
-operation NamedElement setTimeLimit(newTimeMillis : Real) {
+operation uml::NamedElement setTimeLimit(newTimeMillis : Real) {
   -- do nothing
 }
 
-operation NamedElement getContextParameterName() {
+operation uml::NamedElement getContextParameterName() {
   return 'sw' + self.getName().replaceAll('\\W', '');
 }
 
-operation NamedElement getThroughput() : Real {
+operation uml::NamedElement getThroughput() : Real {
   return 0.0d;
 }
 
-operation NamedElement getWeight() : Real {
+operation uml::NamedElement getWeight() : Real {
   return 0.0d;
 }
 
-operation NamedElement getMinimumTime() : Real {
+operation uml::NamedElement getMinimumTime() : Real {
   return 0.0d;
 }
 
-operation NamedElement getVariable() : String {
+operation uml::NamedElement getVariable() : String {
   return null;
 }
 
-operation NamedElement getRepetitions() : Real {
+operation uml::NamedElement getRepetitions() : Real {
   return 0.0d;
 }
 
-operation NamedElement getRequiredHostDemand() : Map {
+operation uml::NamedElement getRequiredHostDemand() : Map {
   return Map { "expr" = "0 + 0 * " + self.getContextParameterName(), "source" = "req" };
 }
 
-operation NamedElement getScenario() : GaScenario {
+operation uml::NamedElement getScenario() : GaScenario {
   return self.getScenario(false);
 }
 
-operation NamedElement getScenario(createIfMissing : Boolean) : GaScenario {
+operation uml::NamedElement getScenario(createIfMissing : Boolean) : GaScenario {
   var scenario := GaScenario.allInstances.selectOne(s|s.base_NamedElement == self);
   if (createIfMissing and scenario.isUndefined()) {
     scenario := new GaScenario;
@@ -323,11 +323,11 @@ operation NamedElement getScenario(createIfMissing : Boolean) : GaScenario {
   return scenario;
 }
 
-operation NamedElement getStep() : GaStep {
+operation uml::NamedElement getStep() : GaStep {
   return self.getStep(false);
 }
 
-operation NamedElement getStep(createIfMissing : Boolean) : GaStep {
+operation uml::NamedElement getStep(createIfMissing : Boolean) : GaStep {
   -- Cache node->GaStep mapping in the activity, to avoid having to perform
   -- several linear scans when searching for the GaStep of several nodes
   var stepMap := self.getStepMap();
@@ -339,18 +339,18 @@ operation NamedElement getStep(createIfMissing : Boolean) : GaStep {
   return stepMap.get(self);
 }
 
-operation NamedElement getAnalysisContext() : GaAnalysisContext {
+operation uml::NamedElement getAnalysisContext() : GaAnalysisContext {
   return GaAnalysisContext.allInstances.selectOne(s|s.base_NamedElement == self);
 }
 
 -* Operations for ActivityNode *-
 
-operation ActivityNode getStepMap() : Map {
+operation uml::ActivityNode getStepMap() : Map {
   return self.getActivity().getStepMap();
 }
 
 @cached
-operation ActivityNode getActivity() {
+operation uml::ActivityNode getActivity() {
   if (self.activity.isDefined()) {
     return self.activity;
   }
@@ -364,6 +364,6 @@ operation ActivityNode getActivity() {
 
 -* Operations for ActivityEdge *-
 
-operation ActivityEdge getStepMap() : Map {
+operation uml::ActivityEdge getStepMap() : Map {
   return self.source.getStepMap();
 }

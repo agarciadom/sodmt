@@ -223,7 +223,7 @@
                   <children xmi:type="notation:DecorationNode" xmi:id="_hmtKIzJpEeOHsdzeWup29Q" type="5003"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_hmtKITJpEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:OpaqueAction" href="order-issue.uml#_hmsjEDJpEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hmtKIjJpEeOHsdzeWup29Q" x="14" y="-20" width="166"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hmtKIjJpEeOHsdzeWup29Q" x="14" y="-20" width="116"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_C_vLYDJqEeOHsdzeWup29Q" type="3038">
                   <children xmi:type="notation:DecorationNode" xmi:id="_C_vLYzJqEeOHsdzeWup29Q" type="5043">
@@ -234,25 +234,25 @@
                   </children>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_C_vLYTJqEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:DecisionNode" href="order-issue.uml#_C_rhADJqEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_vLYjJqEeOHsdzeWup29Q" x="194" y="-15"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_vLYjJqEeOHsdzeWup29Q" x="149" y="-15"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="__k4OEDJpEeOHsdzeWup29Q" type="3007">
                   <children xmi:type="notation:DecorationNode" xmi:id="__k4OEzJpEeOHsdzeWup29Q" type="5003"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="__k4OETJpEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:OpaqueAction" href="order-issue.uml#__k3nADJpEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="__k4OEjJpEeOHsdzeWup29Q" x="399" y="-20" width="187"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="__k4OEjJpEeOHsdzeWup29Q" x="334" y="-20" width="252"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_AcvqMDJqEeOHsdzeWup29Q" type="3007">
                   <children xmi:type="notation:DecorationNode" xmi:id="_AcvqMzJqEeOHsdzeWup29Q" type="5003"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_AcvqMTJqEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:OpaqueAction" href="order-issue.uml#_AcvDIDJqEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AcvqMjJqEeOHsdzeWup29Q" x="399" y="27" width="187"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AcvqMjJqEeOHsdzeWup29Q" x="334" y="27" width="252"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_BntogDJqEeOHsdzeWup29Q" type="3007">
                   <children xmi:type="notation:DecorationNode" xmi:id="_BntogzJqEeOHsdzeWup29Q" type="5003"/>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_BntogTJqEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:OpaqueAction" href="order-issue.uml#_BnsaYDJqEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BntogjJqEeOHsdzeWup29Q" x="399" y="75" width="187"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BntogjJqEeOHsdzeWup29Q" x="334" y="75" width="252"/>
                 </children>
                 <children xmi:type="notation:Shape" xmi:id="_EIoGEDJqEeOHsdzeWup29Q" type="3039">
                   <children xmi:type="notation:DecorationNode" xmi:id="_EIoGEzJqEeOHsdzeWup29Q" type="5099">
@@ -276,7 +276,7 @@
                   </children>
                   <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_3H30cTKIEeOHsdzeWup29Q"/>
                   <element xmi:type="uml:InitialNode" href="order-issue.uml#_3HuqgDKIEeOHsdzeWup29Q"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3H30cjKIEeOHsdzeWup29Q" x="87" y="48"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3H30cjKIEeOHsdzeWup29Q" x="62" y="48"/>
                 </children>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hUHNNTKIEeOHsdzeWup29Q"/>
               </children>
@@ -488,10 +488,10 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_MgJxtjJqEeOHsdzeWup29Q" y="20"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_MgJxtzJqEeOHsdzeWup29Q" type="6009">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_MgJxuDJqEeOHsdzeWup29Q" x="2" y="-90"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MgJxuDJqEeOHsdzeWup29Q" x="6" y="-85"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_MgJxuTJqEeOHsdzeWup29Q" type="6011">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_MgJxujJqEeOHsdzeWup29Q" x="11" y="-22"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MgJxujJqEeOHsdzeWup29Q" x="22" y="-23"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_MgJxsTJqEeOHsdzeWup29Q"/>
       <element xmi:type="uml:ControlFlow" href="order-issue.uml#_MgDrEDJqEeOHsdzeWup29Q"/>
@@ -507,10 +507,10 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_NDMNVjJqEeOHsdzeWup29Q" y="20"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_NDMNVzJqEeOHsdzeWup29Q" type="6009">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_NDMNWDJqEeOHsdzeWup29Q" x="38" y="-89"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_NDMNWDJqEeOHsdzeWup29Q" x="35" y="-95"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_NDMNWTJqEeOHsdzeWup29Q" type="6011">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_NDMNWjJqEeOHsdzeWup29Q" x="37" y="-25"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_NDMNWjJqEeOHsdzeWup29Q" x="47" y="-26"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_NDMNUTJqEeOHsdzeWup29Q"/>
       <element xmi:type="uml:ControlFlow" href="order-issue.uml#_NDGtwDJqEeOHsdzeWup29Q"/>
