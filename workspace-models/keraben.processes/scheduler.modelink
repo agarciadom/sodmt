@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="true" forceExeedL="false" forceExeedM="true" forceExeedR="true">
+  <model path="/keraben.processes/order-submission.uml" position="LEFT" />
+  <model path="/keraben.processes/scheduler.wsdl_perfreq" position="MIDDLE" />
+  <model path="/keraben.processes/scheduler.msgcat" position="RIGHT" />
+</modelink>
+

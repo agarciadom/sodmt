@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:SODMT="http:///schemas/SODMT/_7T8MoDBhEeOk5M7Ugc1wiw/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM http:///schemas/SODMT/_7T8MoDBhEeOk5M7Ugc1wiw/1 ../ws.profile/model.profile.uml#_7T8MoTBhEeOk5M7Ugc1wiw">
   <uml:Model xmi:id="_ldl7ADGLEeOFfIbHvJgVIw" name="model">
-    <packagedElement xmi:type="uml:Activity" xmi:id="_m_2_ADGLEeOFfIbHvJgVIw" name="Order Submission Process" node="_RUGAsDGMEeOFfIbHvJgVIw _SJ8DkDGMEeOFfIbHvJgVIw _YIqr0DGMEeOFfIbHvJgVIw _ZL8twDGMEeOFfIbHvJgVIw _aNpbUDGMEeOFfIbHvJgVIw _bHU1UDGMEeOFfIbHvJgVIw _cB4ZEDGMEeOFfIbHvJgVIw _d7eX8DGMEeOFfIbHvJgVIw">
-      <edge xmi:type="uml:ControlFlow" xmi:id="_euJLADGMEeOFfIbHvJgVIw" name="ControlFlow1" source="_RUGAsDGMEeOFfIbHvJgVIw" target="_SJ8DkDGMEeOFfIbHvJgVIw">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_m_2_ADGLEeOFfIbHvJgVIw" name="Order Submission Process" node="_RUGAsDGMEeOFfIbHvJgVIw _YIqr0DGMEeOFfIbHvJgVIw _ZL8twDGMEeOFfIbHvJgVIw _aNpbUDGMEeOFfIbHvJgVIw _bHU1UDGMEeOFfIbHvJgVIw _cB4ZEDGMEeOFfIbHvJgVIw _d7eX8DGMEeOFfIbHvJgVIw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_euJLADGMEeOFfIbHvJgVIw" name="ControlFlow1" source="_RUGAsDGMEeOFfIbHvJgVIw" target="_YIqr0DGMEeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_euJLATGMEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_euJLAjGMEeOFfIbHvJgVIw"/>
-      </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_fOgGEDGMEeOFfIbHvJgVIw" name="ControlFlow2" source="_SJ8DkDGMEeOFfIbHvJgVIw" target="_YIqr0DGMEeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_fOgtIDGMEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_fOgtITGMEeOFfIbHvJgVIw"/>
       </edge>
       <edge xmi:type="uml:ControlFlow" xmi:id="_fqHrEDGMEeOFfIbHvJgVIw" name="ControlFlow3" source="_YIqr0DGMEeOFfIbHvJgVIw" target="_ZL8twDGMEeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_fqISIDGMEeOFfIbHvJgVIw" value="true"/>
@@ -31,49 +27,32 @@
         <weight xmi:type="uml:LiteralInteger" xmi:id="_iBXPQTGMEeOFfIbHvJgVIw"/>
       </edge>
       <node xmi:type="uml:InitialNode" xmi:id="_RUGAsDGMEeOFfIbHvJgVIw" name="InitialNode1" outgoing="_euJLADGMEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_SJ8DkDGMEeOFfIbHvJgVIw" name="Authenticate user" outgoing="_fOgGEDGMEeOFfIbHvJgVIw" incoming="_euJLADGMEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_YIqr0DGMEeOFfIbHvJgVIw" name="Review order feasibility" outgoing="_fqHrEDGMEeOFfIbHvJgVIw" incoming="_fOgGEDGMEeOFfIbHvJgVIw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_YIqr0DGMEeOFfIbHvJgVIw" name="Review order feasibility" outgoing="_fqHrEDGMEeOFfIbHvJgVIw" incoming="_euJLADGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_ZL8twDGMEeOFfIbHvJgVIw" name="Check shipping availability" outgoing="_gOC3gDGMEeOFfIbHvJgVIw" incoming="_fqHrEDGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_aNpbUDGMEeOFfIbHvJgVIw" name="Review estimate" outgoing="_guhHUDGMEeOFfIbHvJgVIw" incoming="_gOC3gDGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_bHU1UDGMEeOFfIbHvJgVIw" name="Perform Payment" outgoing="_hR5hMDGMEeOFfIbHvJgVIw" incoming="_guhHUDGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_cB4ZEDGMEeOFfIbHvJgVIw" name="Finalise order" outgoing="_iBWoMDGMEeOFfIbHvJgVIw" incoming="_hR5hMDGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_d7eX8DGMEeOFfIbHvJgVIw" name="ActivityFinalNode1" incoming="_iBWoMDGMEeOFfIbHvJgVIw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Activity" xmi:id="_9pdMoDGMEeOFfIbHvJgVIw" name="Order Submission Composition" group="_fMvOsDGQEeOFfIbHvJgVIw _F9fdkDHIEeOUZ9JirvobTA _KZr8EDHIEeOUZ9JirvobTA _Mru3MDHIEeOUZ9JirvobTA _Ol-9YDHIEeOUZ9JirvobTA _-QHswDHIEeOUZ9JirvobTA _bwbI8DHJEeOUZ9JirvobTA _-SRzcDHJEeOUZ9JirvobTA" node="_9pdMtjGMEeOFfIbHvJgVIw _9pdMtzGMEeOFfIbHvJgVIw _9pdMuTGMEeOFfIbHvJgVIw _9pdMujGMEeOFfIbHvJgVIw _9pdMuzGMEeOFfIbHvJgVIw _9pdMvDGMEeOFfIbHvJgVIw _C-eJgDGNEeOFfIbHvJgVIw _FyNNsDGTEeOFfIbHvJgVIw _Nvz9cDGTEeOFfIbHvJgVIw _fYqDcDGTEeOFfIbHvJgVIw _xh9yMDGTEeOFfIbHvJgVIw _b4c2oDGUEeOFfIbHvJgVIw _wHj0QDGUEeOFfIbHvJgVIw _rylioDGVEeOFfIbHvJgVIw _TDf9QDGWEeOFfIbHvJgVIw _mhBs8DGWEeOFfIbHvJgVIw _nNbDcDGXEeOFfIbHvJgVIw">
-      <edge xmi:type="uml:ControlFlow" xmi:id="_9pdMoTGMEeOFfIbHvJgVIw" name="ControlFlow1" source="_9pdMtjGMEeOFfIbHvJgVIw" target="_9pdMtzGMEeOFfIbHvJgVIw">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_9pdMoDGMEeOFfIbHvJgVIw" name="Order Submission Composition" group="_fMvOsDGQEeOFfIbHvJgVIw _KZr8EDHIEeOUZ9JirvobTA _Mru3MDHIEeOUZ9JirvobTA _Ol-9YDHIEeOUZ9JirvobTA _bwbI8DHJEeOUZ9JirvobTA _-SRzcDHJEeOUZ9JirvobTA" node="_9pdMtjGMEeOFfIbHvJgVIw _9pdMuTGMEeOFfIbHvJgVIw _9pdMujGMEeOFfIbHvJgVIw _9pdMuzGMEeOFfIbHvJgVIw _9pdMvDGMEeOFfIbHvJgVIw _FyNNsDGTEeOFfIbHvJgVIw _Nvz9cDGTEeOFfIbHvJgVIw _fYqDcDGTEeOFfIbHvJgVIw _xh9yMDGTEeOFfIbHvJgVIw _b4c2oDGUEeOFfIbHvJgVIw _wHj0QDGUEeOFfIbHvJgVIw _rylioDGVEeOFfIbHvJgVIw _TDf9QDGWEeOFfIbHvJgVIw _mhBs8DGWEeOFfIbHvJgVIw _nNbDcDGXEeOFfIbHvJgVIw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_9pdMoTGMEeOFfIbHvJgVIw" name="ControlFlow1" source="_9pdMtjGMEeOFfIbHvJgVIw" target="_fYqDcDGTEeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_9pdMojGMEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_9pdMozGMEeOFfIbHvJgVIw"/>
-      </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_9pdMpDGMEeOFfIbHvJgVIw" name="ControlFlow2" source="_9pdMtzGMEeOFfIbHvJgVIw" target="_C-eJgDGNEeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_9pdMpTGMEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_9pdMpjGMEeOFfIbHvJgVIw"/>
       </edge>
       <edge xmi:type="uml:ControlFlow" xmi:id="_9pdMrTGMEeOFfIbHvJgVIw" name="ControlFlow5" source="_9pdMujGMEeOFfIbHvJgVIw" target="_rylioDGVEeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_9pdMrjGMEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_9pdMrzGMEeOFfIbHvJgVIw"/>
       </edge>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_QHVdMDGNEeOFfIbHvJgVIw" name="ObjectFlow1" source="_QG-34DGNEeOFfIbHvJgVIw" target="_QG-34TGNEeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_QHWEQjGNEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_QHWEQzGNEeOFfIbHvJgVIw" value="1"/>
-      </edge>
       <edge xmi:type="uml:ControlFlow" xmi:id="_CZ3OUDGSEeOFfIbHvJgVIw" name="ControlFlow8" source="_yku-IDGQEeOFfIbHvJgVIw" target="__PzGEDGREeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_CZ31YDGSEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_CZ31YTGSEeOFfIbHvJgVIw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_DCUVcDGSEeOFfIbHvJgVIw" name="ControlFlow9" source="__PzGEDGREeOFfIbHvJgVIw" target="_p_EI0DGQEeOFfIbHvJgVIw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DCUVcDGSEeOFfIbHvJgVIw" name="ControlFlow9" source="__PzGEDGREeOFfIbHvJgVIw" target="_DHm6kDGREeOFfIbHvJgVIw">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_ZjA7MDGSEeOFfIbHvJgVIw">
           <language>Natural language</language>
           <body>else</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_DCU8gTGSEeOFfIbHvJgVIw"/>
-      </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_Dfq_0DGSEeOFfIbHvJgVIw" name="ControlFlow10" source="_p_EI0DGQEeOFfIbHvJgVIw" target="_uIbK4DGQEeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Dfq_0TGSEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_Dfq_0jGSEeOFfIbHvJgVIw"/>
-      </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_D-vhcDGSEeOFfIbHvJgVIw" name="ControlFlow11" source="_uIbK4DGQEeOFfIbHvJgVIw" target="_DHm6kDGREeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_D-vhcTGSEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_D-vhcjGSEeOFfIbHvJgVIw"/>
       </edge>
       <edge xmi:type="uml:ControlFlow" xmi:id="_RJ5UIDGSEeOFfIbHvJgVIw" name="ControlFlow12" source="__PzGEDGREeOFfIbHvJgVIw" target="_O-0jsDGSEeOFfIbHvJgVIw">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_copPYDGSEeOFfIbHvJgVIw">
@@ -86,13 +65,9 @@
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_3BADMDGSEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_3BADMTGSEeOFfIbHvJgVIw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_3nTOMDGSEeOFfIbHvJgVIw" name="ControlFlow14" source="_DHm6kDGREeOFfIbHvJgVIw" target="_2RQBQDGSEeOFfIbHvJgVIw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3nTOMDGSEeOFfIbHvJgVIw" name="ControlFlow14" source="_DHm6kDGREeOFfIbHvJgVIw" target="_gMDTkDnIEeOQ64wqrH5jeg">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_3nTOMTGSEeOFfIbHvJgVIw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_3nT1QDGSEeOFfIbHvJgVIw"/>
-      </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_5K2EkDGSEeOFfIbHvJgVIw" name="ControlFlow15" source="_C-eJgDGNEeOFfIbHvJgVIw" target="_fYqDcDGTEeOFfIbHvJgVIw">
-        <guard xmi:type="uml:LiteralBoolean" xmi:id="_5K2roDGSEeOFfIbHvJgVIw" value="true"/>
-        <weight xmi:type="uml:LiteralInteger" xmi:id="_5K2roTGSEeOFfIbHvJgVIw"/>
       </edge>
       <edge xmi:type="uml:ControlFlow" xmi:id="_HxGjUDGTEeOFfIbHvJgVIw" name="ControlFlow16" source="_fMvOsDGQEeOFfIbHvJgVIw" target="_FyNNsDGTEeOFfIbHvJgVIw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_HxHKYDGTEeOFfIbHvJgVIw" value="true"/>
@@ -101,7 +76,7 @@
       <edge xmi:type="uml:ControlFlow" xmi:id="_SsIGcDGTEeOFfIbHvJgVIw" name="ControlFlow17" source="_FyNNsDGTEeOFfIbHvJgVIw" target="_Nvz9cDGTEeOFfIbHvJgVIw">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_VVJXIDGTEeOFfIbHvJgVIw">
           <language>Natural language</language>
-          <body>unfeasible deadline</body>
+          <body>unfeasible or unacceptable deadline</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_SsItgTGTEeOFfIbHvJgVIw"/>
       </edge>
@@ -190,42 +165,33 @@
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_eaPhIjGYEeOFfIbHvJgVIw"/>
       </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_pJCcsDnIEeOQ64wqrH5jeg" name="ControlFlow34" source="_DHm6kDGREeOFfIbHvJgVIw" target="_2RQBQDGSEeOFfIbHvJgVIw">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_pJDq0DnIEeOQ64wqrH5jeg" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_pJDq0TnIEeOQ64wqrH5jeg"/>
+      </edge>
       <group xmi:type="uml:StructuredActivityNode" xmi:id="_fMvOsDGQEeOFfIbHvJgVIw" name="Review order feasibility" outgoing="_HxGjUDGTEeOFfIbHvJgVIw" incoming="_mTP3ADGTEeOFfIbHvJgVIw">
-        <node xmi:type="uml:OpaqueAction" xmi:id="_p_EI0DGQEeOFfIbHvJgVIw" name="(Products) Compute BOM" outgoing="_Dfq_0DGSEeOFfIbHvJgVIw" incoming="_DCUVcDGSEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:OpaqueAction" xmi:id="_uIbK4DGQEeOFfIbHvJgVIw" name="(Inventory) Review stock" outgoing="_D-vhcDGSEeOFfIbHvJgVIw" incoming="_Dfq_0DGSEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:OpaqueAction" xmi:id="_yku-IDGQEeOFfIbHvJgVIw" name="(Products) Retrieve prod. segments" outgoing="_CZ3OUDGSEeOFfIbHvJgVIw" incoming="_WCRQ8DGVEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:OpaqueAction" xmi:id="_DHm6kDGREeOFfIbHvJgVIw" name="(Orders) Estimate prod. dates" outgoing="_3nTOMDGSEeOFfIbHvJgVIw" incoming="_D-vhcDGSEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_yku-IDGQEeOFfIbHvJgVIw" name="(B2B) Check product availability" outgoing="_CZ3OUDGSEeOFfIbHvJgVIw" incoming="_WCRQ8DGVEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_DHm6kDGREeOFfIbHvJgVIw" name="(MES) Estimate prod. dates" outgoing="_3nTOMDGSEeOFfIbHvJgVIw _pJCcsDnIEeOQ64wqrH5jeg" incoming="_DCUVcDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:DecisionNode" xmi:id="__PzGEDGREeOFfIbHvJgVIw" name="DecisionNode1" outgoing="_DCUVcDGSEeOFfIbHvJgVIw _RJ5UIDGSEeOFfIbHvJgVIw" incoming="_CZ3OUDGSEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:OpaqueAction" xmi:id="_O-0jsDGSEeOFfIbHvJgVIw" name="(Orders) Report bad product" outgoing="_3A_cIDGSEeOFfIbHvJgVIw" incoming="_RJ5UIDGSEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_O-0jsDGSEeOFfIbHvJgVIw" name="(B2B) Report bad product" outgoing="_3A_cIDGSEeOFfIbHvJgVIw" incoming="_RJ5UIDGSEeOFfIbHvJgVIw"/>
         <node xmi:type="uml:ActivityFinalNode" xmi:id="_y2pioDGSEeOFfIbHvJgVIw" name="ActivityFinalNode1" incoming="_3A_cIDGSEeOFfIbHvJgVIw"/>
-        <node xmi:type="uml:FlowFinalNode" xmi:id="_2RQBQDGSEeOFfIbHvJgVIw" name="FlowFinalNode1" incoming="_3nTOMDGSEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:FlowFinalNode" xmi:id="_2RQBQDGSEeOFfIbHvJgVIw" name="FlowFinalNode1" incoming="_pJCcsDnIEeOQ64wqrH5jeg"/>
         <node xmi:type="uml:InitialNode" xmi:id="_Ugq7UDGVEeOFfIbHvJgVIw" name="InitialNode1" outgoing="_WCRQ8DGVEeOFfIbHvJgVIw"/>
+        <node xmi:type="uml:DecisionNode" xmi:id="_gMDTkDnIEeOQ64wqrH5jeg" name="DecisionNode2" incoming="_3nTOMDGSEeOFfIbHvJgVIw"/>
       </group>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_F9fdkDHIEeOUZ9JirvobTA" name="Auth"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_KZr8EDHIEeOUZ9JirvobTA" name="Orders"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_KZr8EDHIEeOUZ9JirvobTA" name="B2B" node="_9pdMujGMEeOFfIbHvJgVIw _9pdMvDGMEeOFfIbHvJgVIw"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_Mru3MDHIEeOUZ9JirvobTA" name="Customer"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_Ol-9YDHIEeOUZ9JirvobTA" name="Products"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_-QHswDHIEeOUZ9JirvobTA" name="Inventory"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_Ol-9YDHIEeOUZ9JirvobTA" name="MES"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_bwbI8DHJEeOUZ9JirvobTA" name="Logistics"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_-SRzcDHJEeOUZ9JirvobTA" name="Finances"/>
       <node xmi:type="uml:InitialNode" xmi:id="_9pdMtjGMEeOFfIbHvJgVIw" name="Start" outgoing="_9pdMoTGMEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMtzGMEeOFfIbHvJgVIw" name="(Customer) Send credentials" outgoing="_9pdMpDGMEeOFfIbHvJgVIw" incoming="_9pdMoTGMEeOFfIbHvJgVIw">
-        <outputValue xmi:type="uml:OutputPin" xmi:id="_QG-34DGNEeOFfIbHvJgVIw" name="creds" outgoing="_QHVdMDGNEeOFfIbHvJgVIw">
-          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_QHWEQDGNEeOFfIbHvJgVIw" value="1"/>
-        </outputValue>
-      </node>
       <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMuTGMEeOFfIbHvJgVIw" name="(Logistics) Check shipping info" outgoing="_xcyh0DGUEeOFfIbHvJgVIw" incoming="_VGR_QDGUEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMujGMEeOFfIbHvJgVIw" name="(Orders) Compute order total" outgoing="_9pdMrTGMEeOFfIbHvJgVIw" incoming="_e7BaUDGVEeOFfIbHvJgVIw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMujGMEeOFfIbHvJgVIw" name="(B2B) Compute order total" inPartition="_KZr8EDHIEeOUZ9JirvobTA" outgoing="_9pdMrTGMEeOFfIbHvJgVIw" incoming="_e7BaUDGVEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMuzGMEeOFfIbHvJgVIw" name="(Finances) Perform Payment" outgoing="_olPyADGXEeOFfIbHvJgVIw" incoming="_n6e9wDGXEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMvDGMEeOFfIbHvJgVIw" name="(Orders) Confirm order" outgoing="_jEVuMDGXEeOFfIbHvJgVIw" incoming="_eaPhIDGYEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_C-eJgDGNEeOFfIbHvJgVIw" name="(Auth) Verify credentials" outgoing="_5K2EkDGSEeOFfIbHvJgVIw" incoming="_9pdMpDGMEeOFfIbHvJgVIw">
-        <inputValue xmi:type="uml:InputPin" xmi:id="_QG-34TGNEeOFfIbHvJgVIw" name="creds" incoming="_QHVdMDGNEeOFfIbHvJgVIw">
-          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_QHWEQTGNEeOFfIbHvJgVIw" value="1"/>
-        </inputValue>
-      </node>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_9pdMvDGMEeOFfIbHvJgVIw" name="(B2B) Confirm order" inPartition="_KZr8EDHIEeOUZ9JirvobTA" outgoing="_jEVuMDGXEeOFfIbHvJgVIw" incoming="_eaPhIDGYEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_FyNNsDGTEeOFfIbHvJgVIw" name="DecisionNode1" outgoing="_SsIGcDGTEeOFfIbHvJgVIw _0YlaADGTEeOFfIbHvJgVIw" incoming="_HxGjUDGTEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_Nvz9cDGTEeOFfIbHvJgVIw" name="(Orders) Report bad deadline" outgoing="_c4APIDGUEeOFfIbHvJgVIw" incoming="_SsIGcDGTEeOFfIbHvJgVIw _2WPkEDGUEeOFfIbHvJgVIw"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_fYqDcDGTEeOFfIbHvJgVIw" name="(Customer) Provide production specs" outgoing="_mTP3ADGTEeOFfIbHvJgVIw" incoming="_5K2EkDGSEeOFfIbHvJgVIw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Nvz9cDGTEeOFfIbHvJgVIw" name="(B2B) Report cancelled order" outgoing="_c4APIDGUEeOFfIbHvJgVIw" incoming="_SsIGcDGTEeOFfIbHvJgVIw _2WPkEDGUEeOFfIbHvJgVIw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_fYqDcDGTEeOFfIbHvJgVIw" name="(Customer) Provide production specs" outgoing="_mTP3ADGTEeOFfIbHvJgVIw" incoming="_9pdMoTGMEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_xh9yMDGTEeOFfIbHvJgVIw" name="(Customer) Provide shipping address" outgoing="_VGR_QDGUEeOFfIbHvJgVIw" incoming="_0YlaADGTEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_b4c2oDGUEeOFfIbHvJgVIw" name="ActivityFinalNode2" incoming="_c4APIDGUEeOFfIbHvJgVIw _Ye-ugDGWEeOFfIbHvJgVIw _jEVuMDGXEeOFfIbHvJgVIw _-oaHMDGXEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_wHj0QDGUEeOFfIbHvJgVIw" name="DecisionNode2" outgoing="_2WPkEDGUEeOFfIbHvJgVIw _e7BaUDGVEeOFfIbHvJgVIw" incoming="_xcyh0DGUEeOFfIbHvJgVIw"/>
@@ -241,11 +207,6 @@
       <appliedProfile xmi:type="uml:Profile" href="../ws.profile/model.profile.uml#_eaf8IDBhEeOk5M7Ugc1wiw"/>
     </profileApplication>
   </uml:Model>
-  <GQAM:GaStep xmi:id="_ZDJYcDHLEeOUZ9JirvobTA" base_NamedElement="_9pdMtzGMEeOFfIbHvJgVIw">
-    <hostDemand>(expr=0.0 + 0.0 * swCustomerSendcredentials,unit=s,source=req)</hostDemand>
-    <hostDemand>(value=0.0,unit=s,source=calc)</hostDemand>
-    <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_Zz-YcDHLEeOUZ9JirvobTA" base_NamedElement="_fYqDcDGTEeOFfIbHvJgVIw" blockT="">
     <hostDemand>(expr=0.0 + 0.0 * swCustomerProvideproductionspecs,unit=s,source=req)</hostDemand>
     <hostDemand>(value=0.0,unit=s,source=calc)</hostDemand>
@@ -276,58 +237,46 @@
   <GQAM:GaStep xmi:id="_5TU3EDHSEeOUZ9JirvobTA" base_NamedElement="_xZwxEDGWEeOFfIbHvJgVIw" prob="(value=0.9, source=req)"/>
   <GQAM:GaStep xmi:id="_AXNwkDHTEeOUZ9JirvobTA" base_NamedElement="_-oaHMDGXEeOFfIbHvJgVIw" prob="(value=0.05, source=req)"/>
   <GQAM:GaStep xmi:id="_AjAw4DHTEeOUZ9JirvobTA" base_NamedElement="_eaPhIDGYEeOFfIbHvJgVIw" prob="(value=0.95, source=req)"/>
-  <GQAM:GaStep xmi:id="_ZEuMIDHTEeOUZ9JirvobTA" base_NamedElement="_C-eJgDGNEeOFfIbHvJgVIw">
-    <hostDemand>(expr=1.0 + 1.0 * swAuthVerifycredentials,unit=s,source=req)</hostDemand>
-    <hostDemand>(value=1.3,unit=s,source=calc)</hostDemand>
-    <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
   <GQAM:GaScenario xmi:id="_cL9p4DHTEeOUZ9JirvobTA" base_NamedElement="_9pdMoDGMEeOFfIbHvJgVIw">
     <throughput>(value=5.0,unit=Hz,source=req)</throughput>
     <respT>(value=5.0,unit=s,source=req)</respT>
   </GQAM:GaScenario>
   <GQAM:GaStep xmi:id="_sgHYYDHUEeOUZ9JirvobTA" base_NamedElement="_9pdMvDGMEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.30000000000000004,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4444444444444444,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.735999974727629,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_sgM38DHUEeOUZ9JirvobTA" base_NamedElement="_9pdMuzGMEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.30000000000000004,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4444444444444444,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.8800000095367415,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_sgdWoDHUEeOUZ9JirvobTA" base_NamedElement="_9pdMujGMEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.30000000000000004,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4444444444444444,unit=s,source=calc)</hostDemand>
     <throughput>(value=3.2000000953674324,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_sggZ8DHUEeOUZ9JirvobTA" base_NamedElement="_Nvz9cDGTEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.9000000000000001,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=1.3333333333333333,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.8000000238418581,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_sgkrYDHUEeOUZ9JirvobTA" base_NamedElement="_9pdMuTGMEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.30000000000000004,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.4444444444444444,unit=s,source=calc)</hostDemand>
     <throughput>(value=4.000000059604645,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_sgrZEDHUEeOUZ9JirvobTA" base_NamedElement="_fMvOsDGQEeOFfIbHvJgVIw">
     <hostDemand>(expr=1.0 + 5.0 * swRevieworderfeasibility,unit=s,source=req)</hostDemand>
-    <hostDemand>(value=2.5,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=3.2222222222222223,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shAwQDHUEeOUZ9JirvobTA" base_NamedElement="_O-0jsDGSEeOFfIbHvJgVIw">
-    <hostDemand>(value=1.875,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=2.2814815521240233,unit=s,source=calc)</hostDemand>
     <throughput>(value=4.4999998807907104,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shFBsDHUEeOUZ9JirvobTA" base_NamedElement="_DHm6kDGREeOFfIbHvJgVIw">
-    <hostDemand>(value=0.625,unit=s,source=calc)</hostDemand>
-    <throughput>(value=0.5000000074505806,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_shHd8DHUEeOUZ9JirvobTA" base_NamedElement="_uIbK4DGQEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.625,unit=s,source=calc)</hostDemand>
-    <throughput>(value=0.5000000074505806,unit=Hz,source=calc)</throughput>
-  </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_shKhQDHUEeOUZ9JirvobTA" base_NamedElement="_p_EI0DGQEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.625,unit=s,source=calc)</hostDemand>
+    <hostDemand>(expr=0.4 + 2.0 * swMESEstimateproddates,unit=s,source=req)</hostDemand>
+    <hostDemand>(value=2.2814815521240233,unit=s,source=calc)</hostDemand>
     <throughput>(value=0.5000000074505806,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shPZwDHUEeOUZ9JirvobTA" base_NamedElement="_yku-IDGQEeOFfIbHvJgVIw">
-    <hostDemand>(value=0.625,unit=s,source=calc)</hostDemand>
+    <hostDemand>(value=0.9407407760620118,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaAnalysisContext xmi:id="_shfRYDHUEeOUZ9JirvobTA" base_NamedElement="_9pdMoDGMEeOFfIbHvJgVIw">
@@ -337,23 +286,27 @@
     <context>$swProductsReportbadproduct : Real = 0.5</context>
     <context>$swProductsRetrieveprodsegments : Real = 0.625</context>
     <context>$swOrdersConfirmorder : Real = 0.30000001192092896</context>
-    <context>$swFinancesPerformPayment : Real = 0.30000001192092896</context>
+    <context>$swFinancesPerformPayment : Real = 0.4444444477558136</context>
     <context>$swCustomerProvidepaymentdetails : Real = 0</context>
     <context>$swCustomerReviewordertotal : Real = 0</context>
     <context>$swOrdersComputeordertotal : Real = 0.30000001192092896</context>
     <context>$swOrdersReportbaddeadline : Real = 0.8999999761581421</context>
-    <context>$swLogisticsCheckshippinginfo : Real = 0.30000001192092896</context>
+    <context>$swLogisticsCheckshippinginfo : Real = 0.4444444477558136</context>
     <context>$swCustomerProvideshippingaddress : Real = 0</context>
-    <context>$swRevieworderfeasibility : Real = 0.3</context>
+    <context>$swRevieworderfeasibility : Real = 0.444444465637207</context>
     <context>$swCustomerProvideproductionspecs : Real = 0</context>
     <context>$swAuthVerifycredentials : Real = 0.2999999523162842</context>
     <context>$swCustomerSendcredentials : Real = 0</context>
     <context>$swOrdersReportbadproduct : Real = 1.875</context>
+    <context>$swB2BReportbadproduct : Real = 2.2814815044403076</context>
+    <context>$swMESEstimateproddates : Real = 0.9407407522201539</context>
+    <context>$swB2BCheckproductavailability : Real = 0.9407407641410828</context>
+    <context>$swB2BConfirmorder : Real = 0.4444444477558136</context>
+    <context>$swB2BComputeordertotal : Real = 0.4444444477558136</context>
+    <context>$swB2BReportcancelledorder : Real = 1.3333333730697632</context>
   </GQAM:GaAnalysisContext>
   <SODMT:WS xmi:id="_URmJcDHVEeOUZ9JirvobTA" base_ExecutableNode="_9pdMuTGMEeOFfIbHvJgVIw"/>
   <SODMT:WS xmi:id="_V6D8EDHVEeOUZ9JirvobTA" base_ExecutableNode="_9pdMuzGMEeOFfIbHvJgVIw"/>
-  <SODMT:WS xmi:id="_YSpkEDHVEeOUZ9JirvobTA" base_ExecutableNode="_C-eJgDGNEeOFfIbHvJgVIw"/>
   <SODMT:WS xmi:id="_aoGYgDHVEeOUZ9JirvobTA" base_ExecutableNode="_yku-IDGQEeOFfIbHvJgVIw"/>
-  <SODMT:WS xmi:id="_bteFIDHVEeOUZ9JirvobTA" base_ExecutableNode="_p_EI0DGQEeOFfIbHvJgVIw"/>
-  <SODMT:WS xmi:id="_g25dEDHVEeOUZ9JirvobTA" base_ExecutableNode="_uIbK4DGQEeOFfIbHvJgVIw"/>
+  <SODMT:WS xmi:id="_rr4xIEslEeOSiMgYHAjfiQ" base_ExecutableNode="_DHm6kDGREeOFfIbHvJgVIw"/>
 </xmi:XMI>

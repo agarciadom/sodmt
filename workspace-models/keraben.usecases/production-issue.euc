@@ -5,16 +5,14 @@
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Production issue notification" actors="//@actors.0">
       <include addition="//@classifier.0/@ownedUseCase.1"/>
       <include addition="//@classifier.0/@ownedUseCase.2"/>
-      <include addition="//@classifier.0/@ownedUseCase.3"/>
-      <include addition="//@classifier.0/@ownedUseCase.8"/>
+      <include addition="//@classifier.0/@ownedUseCase.7"/>
     </ownedUseCase>
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Authenticate user"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Select pending issue"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Analyse issue">
+      <extend extendedCase="//@classifier.0/@ownedUseCase.3"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.4"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.5"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.6"/>
-      <extend extendedCase="//@classifier.0/@ownedUseCase.7"/>
     </ownedUseCase>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Analyse equipment issue"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Analyse personnel issue"/>

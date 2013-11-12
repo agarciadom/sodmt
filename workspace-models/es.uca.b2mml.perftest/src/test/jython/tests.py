@@ -1,29 +1,3 @@
-[%
-  import 'platform:/plugin/es.uca.modeling.eol.marte/eol/model_utils.eol';
-  import 'platform:/plugin/es.uca.modeling.eol.marte/eol/utils.eol';
-
-  var links := Weaving!PerformanceRequirementLinks.all.first();
-
-  -- We can't really get more than a millisecond of accuracy on most
-  -- systems, so anything more than 2 fractional digits is overkill.
-  var df := new Native('java.text.DecimalFormat')("0.#");
-  df.setMaximumFractionDigits(2);
-  var symbols := df.getDecimalFormatSymbols();
-  symbols.setDecimalSeparator('.'.charAt(0));
-  df.setDecimalFormatSymbols(symbols);
-
-  -- Group tests by port
-  var testsByPort : Map;
-  for (link in  links.links) {
-    var port := link.`operation`.eContainer();
-    var portTests := testsByPort.get(port);
-    if (portTests.isUndefined()) {
-      portTests := Sequence {};
-      testsByPort.put(port, portTests);
-    }
-    portTests.add(link);
-  }
-%]
 from es.uca.webservices.testgen import TestGeneratorCommand
 
 from java.io import StringWriter, FileInputStream, File
@@ -76,31 +50,13 @@ class TestRunner:
         Velocity.init()
 
         self.tests = (
-[%
-   var first := true;
-   for (port in testsByPort.keySet()) {
-     var service = port.eContainer();
-     var tests = testsByPort.get(port);
-     if (first) {
-       first = false;
-%]
             test_service(
-[% } else { %]
-          + test_service(
-[% } %]
-                name="[%=service.name%]",
-                url="[%=port.address%]",
+                name="SchedulerImplService",
+                url="http://localhost:8080/ws-mes-impl/scheduler",
                 operations=(
-[%   for (test in tests) {
-       var op := test.`operation`;
-       var node := test.execNode;
-       var limitMillis := node.getTimeLimit() * 1000;
-%]
-                    ("[%=op.name%]", {"maximum": [%=df.format(limitMillis)%]}),
-[%   } %]
+                    ("generateSchedule", {"maximum": 2281.48}),
                 ),
             )
-[% } %]
         )
 
     def __call__(self):

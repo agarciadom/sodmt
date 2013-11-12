@@ -4,30 +4,28 @@
   <classifier name="SOA Keraben">
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Order issue handling" actors="//@actors.0">
       <include addition="//@classifier.0/@ownedUseCase.1"/>
-      <include addition="//@classifier.0/@ownedUseCase.2"/>
-      <include addition="//@classifier.0/@ownedUseCase.5"/>
-      <include addition="//@classifier.0/@ownedUseCase.9"/>
+      <include addition="//@classifier.0/@ownedUseCase.4"/>
+      <include addition="//@classifier.0/@ownedUseCase.8"/>
     </ownedUseCase>
-    <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Authenticate user"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate order">
+      <extend extendedCase="//@classifier.0/@ownedUseCase.2"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.3"/>
-      <extend extendedCase="//@classifier.0/@ownedUseCase.4"/>
     </ownedUseCase>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate order by user"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Locate order by ID"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Inspect issues">
-      <extend extendedCase="//@classifier.0/@ownedUseCase.6"/>
-      <extend extendedCase="//@classifier.0/@ownedUseCase.8"/>
+      <extend extendedCase="//@classifier.0/@ownedUseCase.5"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.7"/>
+      <extend extendedCase="//@classifier.0/@ownedUseCase.6"/>
     </ownedUseCase>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Inspect production delay"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Inspect product changes"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Inspect supplier delay"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Respond to issues">
+      <extend extendedCase="//@classifier.0/@ownedUseCase.9"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.10"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.11"/>
       <extend extendedCase="//@classifier.0/@ownedUseCase.12"/>
-      <extend extendedCase="//@classifier.0/@ownedUseCase.13"/>
     </ownedUseCase>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Cancel order"/>
     <ownedUseCase xsi:type="EUC:FunctionalBasicUseCase" name="Change quantites"/>

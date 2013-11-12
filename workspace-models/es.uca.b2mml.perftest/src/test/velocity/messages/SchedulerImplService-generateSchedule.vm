@@ -1,0 +1,14 @@
+<s:generateSchedule xmlns:s="http://www.uca.es/sodmt/isa95study/scheduler">
+  <reason>
+    $generateSchedule.get(0)
+  </reason>
+  <productRuleId>
+    $generateSchedule.get(1)
+  </productRuleId>
+  <quantity>
+    $generateSchedule.get(2)
+  </quantity>
+  <unitId>
+    $generateSchedule.get(3)
+  </unitId>
+</s:generateSchedule>

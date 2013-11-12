@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mes:services xmlns:mes="http://serviceAnalyzer/messageCatalog">
+  <mes:service name="SchedulerImplService" uri="http://impl.scheduler.isa95study.sodmt.uca.es/">
+    <mes:port address="http://localhost:8080/ws-mes-impl/scheduler" name="SchedulerImplPort">
+      <mes:operation name="generateSchedule">
+        <mes:input>
+          <mes:decls>
+            <mes:typedef min="1" name="TQuantity" type="int"/>
+            <mes:typedef element="string, string, TQuantity, string" name="TGenerateSchedule" type="tuple"/>
+            <mes:variable name="generateSchedule" type="TGenerateSchedule"/>
+          </mes:decls>
+          <mes:template>&lt;s:generateSchedule xmlns:s=&quot;http://www.uca.es/sodmt/isa95study/scheduler&quot;>
+  &lt;reason>
+    $generateSchedule.get(0)
+  &lt;/reason>
+  &lt;productRuleId>
+    $generateSchedule.get(1)
+  &lt;/productRuleId>
+  &lt;quantity>
+    $generateSchedule.get(2)
+  &lt;/quantity>
+  &lt;unitId>
+    $generateSchedule.get(3)
+  &lt;/unitId>
+&lt;/s:generateSchedule></mes:template>
+        </mes:input>
+        <mes:output>
+          <mes:decls>
+            <mes:typedef element="string, dateTime, dateTime" name="TGenerateScheduleResponse" type="tuple"/>
+            <mes:variable name="generateScheduleResponse" type="TGenerateScheduleResponse"/>
+          </mes:decls>
+          <mes:template>&lt;s:generateScheduleResponse xmlns:s=&quot;http://www.uca.es/sodmt/isa95study/scheduler&quot;>
+  &lt;productionScheduleId>
+    $generateScheduleResponse.get(0)
+  &lt;/productionScheduleId>
+  &lt;earliestStart>
+    $generateScheduleResponse.get(1)
+  &lt;/earliestStart>
+  &lt;latestEnd>
+    $generateScheduleResponse.get(2)
+  &lt;/latestEnd>
+&lt;/s:generateScheduleResponse></mes:template>
+        </mes:output>
+        <mes:fault name="GenerateScheduleFault_Exception">
+          <mes:decls>
+            <mes:variable name="generateScheduleFault" type="string"/>
+          </mes:decls>
+          <mes:template>&lt;s:generateScheduleFault xmlns:s=&quot;http://www.uca.es/sodmt/isa95study/scheduler&quot;>
+  &lt;message>
+    $generateScheduleFault
+  &lt;/message>
+&lt;/s:generateScheduleFault></mes:template>
+        </mes:fault>
+      </mes:operation>
+    </mes:port>
+  </mes:service>
+</mes:services>
