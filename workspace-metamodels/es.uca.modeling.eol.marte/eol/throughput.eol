@@ -43,11 +43,12 @@ import 'utils.eol';
 operation annotateThroughput(start : uml::ActivityNode) : Boolean {
   -- Since the precondition must hold, all activities are reachable from the
   -- initial node. Get all reachable nodes and filter only the activities.
-  var allNodes := start.getAllReachableNodes().asSequence().select(r:ExecutableNode|true);
+  var allNodes := start.getAllReachableNodes().asSequence().select(r : uml::ExecutableNode | true);
 
   -- Relax all automatic constraints before continuing
   for (node in allNodes.sortBy(r|r.getDepth())) {
-	node.setThroughput(node.computeThroughput());
+    var tput = node.computeThroughput();
+	node.setThroughput(tput);
   }
   return true;
 }
