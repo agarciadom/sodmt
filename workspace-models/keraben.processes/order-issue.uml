@@ -172,7 +172,7 @@
         <node xmi:type="uml:StructuredActivityNode" xmi:id="_hT81IDKIEeOHsdzeWup29Q" name="Inspect Issues Body">
           <node xmi:type="uml:OpaqueAction" xmi:id="_hmsjEDJpEeOHsdzeWup29Q" name="(Orders) Pick next" outgoing="_LbvHUDJqEeOHsdzeWup29Q" incoming="_39XSADKIEeOHsdzeWup29Q"/>
           <node xmi:type="uml:DecisionNode" xmi:id="_C_rhADJqEeOHsdzeWup29Q" name="DecisionNode2" outgoing="_L5KqMDJqEeOHsdzeWup29Q _MgDrEDJqEeOHsdzeWup29Q _NDGtwDJqEeOHsdzeWup29Q" incoming="_LbvHUDJqEeOHsdzeWup29Q"/>
-          <node xmi:type="uml:OpaqueAction" xmi:id="__k3nADJpEeOHsdzeWup29Q" name="(Manufacturing) Explain prod. delay" outgoing="_NfdSkDJqEeOHsdzeWup29Q" incoming="_L5KqMDJqEeOHsdzeWup29Q"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="__k3nADJpEeOHsdzeWup29Q" name="(MES) Explain prod. delay" outgoing="_NfdSkDJqEeOHsdzeWup29Q" incoming="_L5KqMDJqEeOHsdzeWup29Q"/>
           <node xmi:type="uml:OpaqueAction" xmi:id="_AcvDIDJqEeOHsdzeWup29Q" name="(Logistics) Explain supplier delay" outgoing="_N-h0MDJqEeOHsdzeWup29Q" incoming="_MgDrEDJqEeOHsdzeWup29Q"/>
           <node xmi:type="uml:OpaqueAction" xmi:id="_BnsaYDJqEeOHsdzeWup29Q" name="(Products) Explain product changes" outgoing="_Oc7ncDJqEeOHsdzeWup29Q" incoming="_NDGtwDJqEeOHsdzeWup29Q"/>
           <node xmi:type="uml:MergeNode" xmi:id="_EInfADJqEeOHsdzeWup29Q" name="MergeNode2" outgoing="_1yDRADKIEeOHsdzeWup29Q" incoming="_NfdSkDJqEeOHsdzeWup29Q _N-h0MDJqEeOHsdzeWup29Q _Oc7ncDJqEeOHsdzeWup29Q"/>
@@ -180,32 +180,32 @@
           <node xmi:type="uml:InitialNode" xmi:id="_3HuqgDKIEeOHsdzeWup29Q" name="InitialNode1" outgoing="_39XSADKIEeOHsdzeWup29Q"/>
         </node>
       </group>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_Juf_EDKOEeOEcP40rrie6w" name="Customer"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_Juf_EDKOEeOEcP40rrie6w" name="Customer" node="_fPhQUDJpEeOHsdzeWup29Q"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_LFmU4DKOEeOEcP40rrie6w" name="Auth"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_YWOdcDKOEeOEcP40rrie6w" name="Orders"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_YWOdcDKOEeOEcP40rrie6w" name="Orders" node="_5D3YIDJpEeOHsdzeWup29Q _8HlAwDJpEeOHsdzeWup29Q _2mJ7kDKVEeOEcP40rrie6w _DNrlIDKIEeOHsdzeWup29Q _V4oEgDKMEeOb5cvof2egsA _icj0EDJpEeOHsdzeWup29Q _CuPTQDKMEeOb5cvof2egsA _QrUKkDJqEeOHsdzeWup29Q _RY-h0DJqEeOHsdzeWup29Q _SYA88DJqEeOHsdzeWup29Q _TOLI4DJqEeOHsdzeWup29Q"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_mzzEwDNTEeOV1_DFQOsUNg" name="Inventory"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_GTWlcDNgEeOBFrOVkztDpw" name="Logistics"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_MesGUDNgEeOBFrOVkztDpw" name="Products"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_bDS_QDNgEeOBFrOVkztDpw" name="Manufacturing"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_bDS_QDNgEeOBFrOVkztDpw" name="MES"/>
       <node xmi:type="uml:InitialNode" xmi:id="_dDAVcDJpEeOHsdzeWup29Q" name="InitialNode1" outgoing="_E9DzsDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_fPhQUDJpEeOHsdzeWup29Q" name="(Customer) Specify field" outgoing="_H9pP0DJqEeOHsdzeWup29Q" incoming="_E9DzsDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_icj0EDJpEeOHsdzeWup29Q" name="(Customer) Select response" outgoing="_WHBlUDJqEeOHsdzeWup29Q" incoming="_M0wQQDKMEeOb5cvof2egsA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_fPhQUDJpEeOHsdzeWup29Q" name="(Customer) Specify field" inPartition="_Juf_EDKOEeOEcP40rrie6w" outgoing="_H9pP0DJqEeOHsdzeWup29Q" incoming="_E9DzsDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_icj0EDJpEeOHsdzeWup29Q" name="(Orders) Select response" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_WHBlUDJqEeOHsdzeWup29Q" incoming="_M0wQQDKMEeOb5cvof2egsA"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_31VvgDJpEeOHsdzeWup29Q" name="DecisionNode1" outgoing="_IeDOMDJqEeOHsdzeWup29Q _JZOdADJqEeOHsdzeWup29Q" incoming="_H9pP0DJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_5D3YIDJpEeOHsdzeWup29Q" name="(Orders) Locate orders by user" outgoing="_I3BH0DJqEeOHsdzeWup29Q" incoming="_IeDOMDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_8HlAwDJpEeOHsdzeWup29Q" name="(Orders) Locate orders by ID" outgoing="_J5tT4DJqEeOHsdzeWup29Q" incoming="_JZOdADJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_5D3YIDJpEeOHsdzeWup29Q" name="(Orders) Locate orders by user" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_I3BH0DJqEeOHsdzeWup29Q" incoming="_IeDOMDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_8HlAwDJpEeOHsdzeWup29Q" name="(Orders) Locate orders by ID" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_J5tT4DJqEeOHsdzeWup29Q" incoming="_JZOdADJqEeOHsdzeWup29Q"/>
       <node xmi:type="uml:MergeNode" xmi:id="_-VJEgDJpEeOHsdzeWup29Q" name="MergeNode1" outgoing="_I3KWIDKIEeOHsdzeWup29Q" incoming="_I3BH0DJqEeOHsdzeWup29Q _J5tT4DJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_QrUKkDJqEeOHsdzeWup29Q" name="(Orders) Cancel order" outgoing="_Y88CgDJqEeOHsdzeWup29Q" incoming="_WqxLkDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_RY-h0DJqEeOHsdzeWup29Q" name="(Orders) Change quantities" outgoing="_Zf0GEDJqEeOHsdzeWup29Q" incoming="_XKJPMDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_SYA88DJqEeOHsdzeWup29Q" name="(Orders) Change deadline" outgoing="_aGVTgDJqEeOHsdzeWup29Q" incoming="_XuWIcDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_TOLI4DJqEeOHsdzeWup29Q" name="(Orders) Split order" outgoing="_a8opYDJqEeOHsdzeWup29Q" incoming="_YQnvEDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_QrUKkDJqEeOHsdzeWup29Q" name="(Orders) Cancel order" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_Y88CgDJqEeOHsdzeWup29Q" incoming="_WqxLkDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_RY-h0DJqEeOHsdzeWup29Q" name="(Orders) Change quantities" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_Zf0GEDJqEeOHsdzeWup29Q" incoming="_XKJPMDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_SYA88DJqEeOHsdzeWup29Q" name="(Orders) Change deadline" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_aGVTgDJqEeOHsdzeWup29Q" incoming="_XuWIcDJqEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_TOLI4DJqEeOHsdzeWup29Q" name="(Orders) Split order" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_a8opYDJqEeOHsdzeWup29Q" incoming="_YQnvEDJqEeOHsdzeWup29Q"/>
       <node xmi:type="uml:MergeNode" xmi:id="_UdEk8DJqEeOHsdzeWup29Q" name="MergeNode3" outgoing="_g8dlYDKMEeOb5cvof2egsA" incoming="_Y88CgDJqEeOHsdzeWup29Q _Zf0GEDJqEeOHsdzeWup29Q _aGVTgDJqEeOHsdzeWup29Q _a8opYDJqEeOHsdzeWup29Q"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_U8XwEDJqEeOHsdzeWup29Q" name="DecisionNode3" outgoing="_WqxLkDJqEeOHsdzeWup29Q _XKJPMDJqEeOHsdzeWup29Q _XuWIcDJqEeOHsdzeWup29Q _YQnvEDJqEeOHsdzeWup29Q" incoming="_WHBlUDJqEeOHsdzeWup29Q"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_B1FagDKIEeOHsdzeWup29Q" name="DecisionNode4" outgoing="_JuYSADKIEeOHsdzeWup29Q _qyqLQDKIEeOHsdzeWup29Q" incoming="_I3KWIDKIEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_DNrlIDKIEeOHsdzeWup29Q" name="(Orders) Show error message" outgoing="_Lu-QwDKIEeOHsdzeWup29Q" incoming="_JuYSADKIEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_DNrlIDKIEeOHsdzeWup29Q" name="(Orders) Show error message" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_Lu-QwDKIEeOHsdzeWup29Q" incoming="_JuYSADKIEeOHsdzeWup29Q"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_K3eBADKIEeOHsdzeWup29Q" name="ActivityFinalNode2" incoming="_Lu-QwDKIEeOHsdzeWup29Q _bgjOwDJqEeOHsdzeWup29Q"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_CuPTQDKMEeOb5cvof2egsA" name="(Orders) Show available responses" outgoing="_M0wQQDKMEeOb5cvof2egsA" incoming="_yrSNADKLEeOb5cvof2egsA"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_V4oEgDKMEeOb5cvof2egsA" name="(Orders) Show confirmation" outgoing="_bgjOwDJqEeOHsdzeWup29Q" incoming="_g8dlYDKMEeOb5cvof2egsA"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_2mJ7kDKVEeOEcP40rrie6w" name="(Orders) Fetch open issues" outgoing="_f3YoIDKWEeOEcP40rrie6w" incoming="_qyqLQDKIEeOHsdzeWup29Q"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_CuPTQDKMEeOb5cvof2egsA" name="(Orders) Show available responses" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_M0wQQDKMEeOb5cvof2egsA" incoming="_yrSNADKLEeOb5cvof2egsA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_V4oEgDKMEeOb5cvof2egsA" name="(Orders) Show confirmation" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_bgjOwDJqEeOHsdzeWup29Q" incoming="_g8dlYDKMEeOb5cvof2egsA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_2mJ7kDKVEeOEcP40rrie6w" name="(Orders) Fetch open issues" inPartition="_YWOdcDKOEeOEcP40rrie6w" outgoing="_f3YoIDKWEeOEcP40rrie6w" incoming="_qyqLQDKIEeOHsdzeWup29Q"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Activity" xmi:id="_XJ0_8DKHEeOHsdzeWup29Q" name="Order Issue Handling PM" node="_XJ1APzKHEeOHsdzeWup29Q _XJ1AQTKHEeOHsdzeWup29Q _XJ1AQjKHEeOHsdzeWup29Q _XJ1AQzKHEeOHsdzeWup29Q _XJ1ARDKHEeOHsdzeWup29Q _XJ1ARTKHEeOHsdzeWup29Q _XJ1ARjKHEeOHsdzeWup29Q _XJ1ARzKHEeOHsdzeWup29Q _XJ1ASDKHEeOHsdzeWup29Q _XJ1ASTKHEeOHsdzeWup29Q _XJ1ASjKHEeOHsdzeWup29Q _XJ1ASzKHEeOHsdzeWup29Q _XJ1ATDKHEeOHsdzeWup29Q _XJ1ATTKHEeOHsdzeWup29Q _XJ1ATjKHEeOHsdzeWup29Q _XJ1ATzKHEeOHsdzeWup29Q _XJ1AUDKHEeOHsdzeWup29Q _XJ1AUTKHEeOHsdzeWup29Q _XJ1AUjKHEeOHsdzeWup29Q _XJ1AUzKHEeOHsdzeWup29Q">
       <edge xmi:type="uml:ControlFlow" xmi:id="_XJ0_8TKHEeOHsdzeWup29Q" name="ControlFlow1" source="_XJ1APzKHEeOHsdzeWup29Q" target="_XJ1AQTKHEeOHsdzeWup29Q">

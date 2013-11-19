@@ -200,11 +200,11 @@
       <node xmi:type="uml:OpaqueAction" xmi:id="_mhBs8DGWEeOFfIbHvJgVIw" name="(Customer) Provide payment details" outgoing="_n6e9wDGXEeOFfIbHvJgVIw" incoming="_xZwxEDGWEeOFfIbHvJgVIw"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_nNbDcDGXEeOFfIbHvJgVIw" name="DecisionNode4" outgoing="_-oaHMDGXEeOFfIbHvJgVIw _eaPhIDGYEeOFfIbHvJgVIw" incoming="_olPyADGXEeOFfIbHvJgVIw"/>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_3EmZ4DHLEeOUZ9JirvobTA">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3FGJIDHLEeOUZ9JirvobTA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_3EmZ4DHLEeOUZ9JirvobTA">
+      <eAnnotations xmi:id="_3FGJIDHLEeOUZ9JirvobTA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="../ws.profile/model.profile.uml#_7T8MoTBhEeOk5M7Ugc1wiw"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="../ws.profile/model.profile.uml#_eaf8IDBhEeOk5M7Ugc1wiw"/>
+      <appliedProfile href="../ws.profile/model.profile.uml#_eaf8IDBhEeOk5M7Ugc1wiw"/>
     </profileApplication>
   </uml:Model>
   <GQAM:GaStep xmi:id="_Zz-YcDHLEeOUZ9JirvobTA" base_NamedElement="_fYqDcDGTEeOFfIbHvJgVIw" blockT="">
@@ -227,8 +227,8 @@
     <hostDemand>(value=0.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=3.2000000953674324,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_ScbmUDHPEeOUZ9JirvobTA" base_NamedElement="_DCUVcDGSEeOFfIbHvJgVIw" prob="(value=0.1, source=req)"/>
-  <GQAM:GaStep xmi:id="_SzKrUDHPEeOUZ9JirvobTA" base_NamedElement="_RJ5UIDGSEeOFfIbHvJgVIw" prob="(value=0.9, source=req)"/>
+  <GQAM:GaStep xmi:id="_ScbmUDHPEeOUZ9JirvobTA" base_NamedElement="_DCUVcDGSEeOFfIbHvJgVIw" prob="(value=0.9, source=req)"/>
+  <GQAM:GaStep xmi:id="_SzKrUDHPEeOUZ9JirvobTA" base_NamedElement="_RJ5UIDGSEeOFfIbHvJgVIw" prob="(value=0.1, source=req)"/>
   <GQAM:GaStep xmi:id="_dwJ9UDHPEeOUZ9JirvobTA" base_NamedElement="_SsIGcDGTEeOFfIbHvJgVIw" prob="(value=0.2, source=req)"/>
   <GQAM:GaStep xmi:id="_d_KCoDHPEeOUZ9JirvobTA" base_NamedElement="_0YlaADGTEeOFfIbHvJgVIw" prob="(value=0.8, source=req)"/>
   <GQAM:GaStep xmi:id="_0TSEoDHSEeOUZ9JirvobTA" base_NamedElement="_2WPkEDGUEeOFfIbHvJgVIw" prob="(value=0.2, source=req)"/>
@@ -268,12 +268,12 @@
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shAwQDHUEeOUZ9JirvobTA" base_NamedElement="_O-0jsDGSEeOFfIbHvJgVIw">
     <hostDemand>(value=2.2814815521240233,unit=s,source=calc)</hostDemand>
-    <throughput>(value=4.4999998807907104,unit=Hz,source=calc)</throughput>
+    <throughput>(value=0.5000000074505806,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shFBsDHUEeOUZ9JirvobTA" base_NamedElement="_DHm6kDGREeOFfIbHvJgVIw">
     <hostDemand>(expr=0.4 + 2.0 * swMESEstimateproddates,unit=s,source=req)</hostDemand>
     <hostDemand>(value=2.2814815521240233,unit=s,source=calc)</hostDemand>
-    <throughput>(value=0.5000000074505806,unit=Hz,source=calc)</throughput>
+    <throughput>(value=4.4999998807907104,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
   <GQAM:GaStep xmi:id="_shPZwDHUEeOUZ9JirvobTA" base_NamedElement="_yku-IDGQEeOFfIbHvJgVIw">
     <hostDemand>(value=0.9407407760620118,unit=s,source=calc)</hostDemand>
