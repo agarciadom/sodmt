@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:WSInterfaceProfile.WSInterface="http:///WSInterfaceProfile/WSInterface.ecore" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///WSInterfaceProfile/WSInterface.ecore ../wsdl.profile/model.profile.uml#_Eao0UVLxEeOe3pO2A1_sDQ">
+  <uml:Model xmi:id="_641u8FLlEeOe3pO2A1_sDQ" name="model">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_na_jQFLyEeOe3pO2A1_sDQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Rnn0AFLmEeOe3pO2A1_sDQ" name="MES">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_41Ob8FLmEeOe3pO2A1_sDQ" name="schedulerService" type="_iMWKkFLmEeOe3pO2A1_sDQ" aggregation="composite" association="_41Ob81LmEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_41Ob8VLmEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41Ob8lLmEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XZrAQFLoEeOe3pO2A1_sDQ" name="schedulerServiceBinding" type="_J_n18FLoEeOe3pO2A1_sDQ" aggregation="composite" association="_XZrnUFLoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XZrAQVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XZrAQlLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_37fssFLoEeOe3pO2A1_sDQ" name="schedulerInterface" type="_sH_pcFLoEeOe3pO2A1_sDQ" aggregation="composite" association="_37fss1LoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_37fssVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_37fsslLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MbnTEFLvEeOe3pO2A1_sDQ" name="generateScheduleResponse" type="_HyM38FLvEeOe3pO2A1_sDQ" aggregation="composite" association="_Mbn6IFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MbnTEVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MbnTElLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_My_4UFLvEeOe3pO2A1_sDQ" name="generateScheduleRequest" type="_JNdVAFLvEeOe3pO2A1_sDQ" aggregation="composite" association="_My_4U1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_My_4UVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_My_4UlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iMWKkFLmEeOe3pO2A1_sDQ" name="SchedulerService">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FKD1MFLoEeOe3pO2A1_sDQ" name="mESEndpoint" type="_ZyXLYFLnEeOe3pO2A1_sDQ" aggregation="composite" association="_FKEcQFLoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FKD1MVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FKD1MlLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GFdRAFLpEeOe3pO2A1_sDQ" name="schedulerInterface" type="_sH_pcFLoEeOe3pO2A1_sDQ" association="_GFd4EFLpEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GFdRAVLpEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GFdRAlLpEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_41Ob81LmEeOe3pO2A1_sDQ" name="mES_schedulerService_1" memberEnd="_41Ob9FLmEeOe3pO2A1_sDQ _41Ob8FLmEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_41Ob9FLmEeOe3pO2A1_sDQ" name="mES" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_41Ob81LmEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_41Ob9VLmEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41Ob9lLmEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZyXLYFLnEeOe3pO2A1_sDQ" name="MESEndpoint">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MU2ygFLpEeOe3pO2A1_sDQ" name="schedulerServiceBinding" type="_J_n18FLoEeOe3pO2A1_sDQ" association="_MU3ZkFLpEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MU2ygVLpEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MU2yglLpEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FKEcQFLoEeOe3pO2A1_sDQ" name="schedulerService_mESEndpoint_1" memberEnd="_FKEcQVLoEeOe3pO2A1_sDQ _FKD1MFLoEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_FKEcQVLoEeOe3pO2A1_sDQ" name="schedulerService" type="_iMWKkFLmEeOe3pO2A1_sDQ" association="_FKEcQFLoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FKEcQlLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FKEcQ1LoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_J_n18FLoEeOe3pO2A1_sDQ" name="SchedulerServiceBinding">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-3eAUFLoEeOe3pO2A1_sDQ" name="schedulerInterface" type="_sH_pcFLoEeOe3pO2A1_sDQ" association="_-3eAU1LoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-3eAUVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-3eAUlLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_XZrnUFLoEeOe3pO2A1_sDQ" name="mES_schedulerServiceBinding_1" memberEnd="_XZrnUVLoEeOe3pO2A1_sDQ _XZrAQFLoEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_XZrnUVLoEeOe3pO2A1_sDQ" name="mES" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_XZrnUFLoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XZrnUlLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XZrnU1LoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sH_pcFLoEeOe3pO2A1_sDQ" name="SchedulerInterface">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6dSFQFLuEeOe3pO2A1_sDQ" name="generateSchedule" type="_e8_1gFLtEeOe3pO2A1_sDQ" aggregation="shared" association="_6dSsUFLuEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6dSFQVLuEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6dSFQlLuEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_37fss1LoEeOe3pO2A1_sDQ" name="mES_schedulerInterface_1" memberEnd="_37fstFLoEeOe3pO2A1_sDQ _37fssFLoEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_37fstFLoEeOe3pO2A1_sDQ" name="mES" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_37fss1LoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_37fstVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_37fstlLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-3eAU1LoEeOe3pO2A1_sDQ" name="schedulerServiceBinding_schedulerInterface_1" memberEnd="_-3eAVFLoEeOe3pO2A1_sDQ _-3eAUFLoEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_-3eAVFLoEeOe3pO2A1_sDQ" name="schedulerServiceBinding" type="_J_n18FLoEeOe3pO2A1_sDQ" association="_-3eAU1LoEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-3eAVVLoEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-3eAVlLoEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_GFd4EFLpEeOe3pO2A1_sDQ" name="schedulerService_schedulerInterface_1" memberEnd="_GFd4EVLpEeOe3pO2A1_sDQ _GFdRAFLpEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_GFd4EVLpEeOe3pO2A1_sDQ" name="schedulerService" type="_iMWKkFLmEeOe3pO2A1_sDQ" association="_GFd4EFLpEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GFd4ElLpEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GFd4E1LpEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MU3ZkFLpEeOe3pO2A1_sDQ" name="mESEndpoint_schedulerServiceBinding_1" memberEnd="_MU3ZkVLpEeOe3pO2A1_sDQ _MU2ygFLpEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_MU3ZkVLpEeOe3pO2A1_sDQ" name="mESEndpoint" type="_ZyXLYFLnEeOe3pO2A1_sDQ" association="_MU3ZkFLpEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MU3ZklLpEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MU3Zk1LpEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_e8_1gFLtEeOe3pO2A1_sDQ" name="GenerateSchedule">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Zb4rcFLvEeOe3pO2A1_sDQ" name="generateScheduleResponse" type="_HyM38FLvEeOe3pO2A1_sDQ" association="_Zb4rc1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Zb4rcVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Zb4rclLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ak9zYFLvEeOe3pO2A1_sDQ" name="generateScheduleRequest" type="_JNdVAFLvEeOe3pO2A1_sDQ" association="_ak-acFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ak9zYVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ak9zYlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_bGRwsFLvEeOe3pO2A1_sDQ" name="generateScheduleFault" type="_KIdksFLvEeOe3pO2A1_sDQ" association="_bGRws1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bGRwsVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bGRwslLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_6dSsUFLuEeOe3pO2A1_sDQ" name="schedulerInterface_generateSchedule_1" memberEnd="_6dSsUVLuEeOe3pO2A1_sDQ _6dSFQFLuEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_6dSsUVLuEeOe3pO2A1_sDQ" name="schedulerInterface" type="_sH_pcFLoEeOe3pO2A1_sDQ" association="_6dSsUFLuEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6dSsUlLuEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6dSsU1LuEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HyM38FLvEeOe3pO2A1_sDQ" name="GenerateScheduleResponse">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_omTVQFLxEeOe3pO2A1_sDQ" name="generateScheduleResponsePart" type="_BnohMFLxEeOe3pO2A1_sDQ" aggregation="composite" association="_omT8UFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_omTVQVLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_omTVQlLxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JNdVAFLvEeOe3pO2A1_sDQ" name="GenerateScheduleRequest"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_KIdksFLvEeOe3pO2A1_sDQ" name="GenerateScheduleFault">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_iD4xIFLxEeOe3pO2A1_sDQ" name="generateScheduleFaultPart" type="_NG4ywFLxEeOe3pO2A1_sDQ" aggregation="composite" association="_iD5YMFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iD4xIVLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iD4xIlLxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Mbn6IFLvEeOe3pO2A1_sDQ" name="mES_generateScheduleResponse_1" memberEnd="_Mbn6IVLvEeOe3pO2A1_sDQ _MbnTEFLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Mbn6IVLvEeOe3pO2A1_sDQ" name="mES" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_Mbn6IFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Mbn6IlLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Mbn6I1LvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_My_4U1LvEeOe3pO2A1_sDQ" name="mES_generateScheduleRequest_1" memberEnd="_My_4VFLvEeOe3pO2A1_sDQ _My_4UFLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_My_4VFLvEeOe3pO2A1_sDQ" name="mES" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_My_4U1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_My_4VVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_My_4VlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NLZKMFLvEeOe3pO2A1_sDQ" name="mES_schedulerServiceBinding_1_generateScheduleFault_1" memberEnd="_NLZKNFLvEeOe3pO2A1_sDQ _NLZKMVLvEeOe3pO2A1_sDQ" navigableOwnedEnd="_NLZKMVLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_NLZKMVLvEeOe3pO2A1_sDQ" name="generateScheduleFault" type="_KIdksFLvEeOe3pO2A1_sDQ" aggregation="composite" association="_NLZKMFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NLZKMlLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NLZKM1LvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_NLZKNFLvEeOe3pO2A1_sDQ" name="mES_schedulerServiceBinding_1" type="_Rnn0AFLmEeOe3pO2A1_sDQ" association="_NLZKMFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NLZKNVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NLZKNlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Zb4rc1LvEeOe3pO2A1_sDQ" name="generateSchedule_generateScheduleResponse_1" memberEnd="_Zb4rdFLvEeOe3pO2A1_sDQ _Zb4rcFLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Zb4rdFLvEeOe3pO2A1_sDQ" name="generateSchedule" type="_e8_1gFLtEeOe3pO2A1_sDQ" association="_Zb4rc1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Zb4rdVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Zb4rdlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ak-acFLvEeOe3pO2A1_sDQ" name="generateSchedule_generateScheduleRequest_1" memberEnd="_ak-acVLvEeOe3pO2A1_sDQ _ak9zYFLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ak-acVLvEeOe3pO2A1_sDQ" name="generateSchedule" type="_e8_1gFLtEeOe3pO2A1_sDQ" association="_ak-acFLvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ak-aclLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ak-ac1LvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_bGRws1LvEeOe3pO2A1_sDQ" name="generateSchedule_generateScheduleFault_1" memberEnd="_bGRwtFLvEeOe3pO2A1_sDQ _bGRwsFLvEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_bGRwtFLvEeOe3pO2A1_sDQ" name="generateSchedule" type="_e8_1gFLtEeOe3pO2A1_sDQ" association="_bGRws1LvEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bGRwtVLvEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bGRwtlLvEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BnohMFLxEeOe3pO2A1_sDQ" name="GenerateScheduleResponsePart">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WT44YFLyEeOe3pO2A1_sDQ" name="generateScheduleResponseElement" type="_Cl31oFLyEeOe3pO2A1_sDQ" association="_WT44Y1LyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WT44YVLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WT44YlLyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_L7zfsFLxEeOe3pO2A1_sDQ" name="GenerateScheduleRequestPart">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_USjSwFLyEeOe3pO2A1_sDQ" name="generateScheduleRequestElement" type="_OZfNoFLyEeOe3pO2A1_sDQ" association="_USj50FLyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_USjSwVLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_USjSwlLyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_NG4ywFLxEeOe3pO2A1_sDQ" name="GenerateScheduleFaultPart">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_V5314FLyEeOe3pO2A1_sDQ" name="generateScheduleFaultElement" type="_H68c4FLyEeOe3pO2A1_sDQ" association="_V53141LyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V5314VLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V5314lLyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hEkpMFLxEeOe3pO2A1_sDQ" name="generateScheduleRequest_generateScheduleRequestPart_1" memberEnd="_hEkpMVLxEeOe3pO2A1_sDQ _hEkCIFLxEeOe3pO2A1_sDQ" navigableOwnedEnd="_hEkCIFLxEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_hEkpMVLxEeOe3pO2A1_sDQ" name="generateScheduleRequest" type="_JNdVAFLvEeOe3pO2A1_sDQ" association="_hEkpMFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hEkpMlLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hEkpM1LxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_hEkCIFLxEeOe3pO2A1_sDQ" name="generateScheduleRequestPart" type="_L7zfsFLxEeOe3pO2A1_sDQ" aggregation="composite" association="_hEkpMFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hEkCIVLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hEkCIlLxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iD5YMFLxEeOe3pO2A1_sDQ" name="generateScheduleFault_generateScheduleFaultPart_1" memberEnd="_iD5YMVLxEeOe3pO2A1_sDQ _iD4xIFLxEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_iD5YMVLxEeOe3pO2A1_sDQ" name="generateScheduleFault" type="_KIdksFLvEeOe3pO2A1_sDQ" association="_iD5YMFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iD5YMlLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iD5YM1LxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_omT8UFLxEeOe3pO2A1_sDQ" name="generateScheduleResponse_generateScheduleResponsePart_1" memberEnd="_omT8UVLxEeOe3pO2A1_sDQ _omTVQFLxEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_omT8UVLxEeOe3pO2A1_sDQ" name="generateScheduleResponse" type="_HyM38FLvEeOe3pO2A1_sDQ" association="_omT8UFLxEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_omT8UlLxEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_omT8U1LxEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Cl31oFLyEeOe3pO2A1_sDQ" name="GenerateScheduleResponseElement">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gn_lcFLyEeOe3pO2A1_sDQ" name="reason" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ps0b8FLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ps1DAFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_ps4tYFLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rcDk8FLyEeOe3pO2A1_sDQ" name="productRuleId" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tYdAMFLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tYdnQFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_tYhRoFLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_t1zqkFLyEeOe3pO2A1_sDQ" name="quantity" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wby1YFLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wbzccFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_wb2fwFLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_w8IiUFLyEeOe3pO2A1_sDQ" name="unitId" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yih4YFLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yiifcFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_yimJ0FLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_H68c4FLyEeOe3pO2A1_sDQ" name="GenerateScheduleFaultElement">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_02RcoFLyEeOe3pO2A1_sDQ" name="message" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2HkscFLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2HlTgFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_2Ho94FLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_OZfNoFLyEeOe3pO2A1_sDQ" name="GenerateScheduleRequestElement">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_3cf4AFLyEeOe3pO2A1_sDQ" name="productionScheduleId" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5DiHQFLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5DiuUFLyEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_5DlxoFLyEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DlVSEFLzEeOe3pO2A1_sDQ" name="earliestStart" visibility="public" type="__T-xoFLyEeOe3pO2A1_sDQ" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FIMzAFLzEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FINaEFLzEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_FIREcFLzEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FxLekFLzEeOe3pO2A1_sDQ" name="latestEnd" visibility="public" type="__T-xoFLyEeOe3pO2A1_sDQ" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G5g_oFLzEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G5iNwFLzEeOe3pO2A1_sDQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_G5lREFLzEeOe3pO2A1_sDQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_USj50FLyEeOe3pO2A1_sDQ" name="generateScheduleRequestPart_generateScheduleRequestElement_1" memberEnd="_USj50VLyEeOe3pO2A1_sDQ _USjSwFLyEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_USj50VLyEeOe3pO2A1_sDQ" name="generateScheduleRequestPart" type="_L7zfsFLxEeOe3pO2A1_sDQ" association="_USj50FLyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_USj50lLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_USj501LyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_V53141LyEeOe3pO2A1_sDQ" name="generateScheduleFaultPart_generateScheduleFaultElement_1" memberEnd="_V5315FLyEeOe3pO2A1_sDQ _V5314FLyEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_V5315FLyEeOe3pO2A1_sDQ" name="generateScheduleFaultPart" type="_NG4ywFLxEeOe3pO2A1_sDQ" association="_V53141LyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V5315VLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V5315lLyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_WT44Y1LyEeOe3pO2A1_sDQ" name="generateScheduleResponsePart_generateScheduleResponseElement_1" memberEnd="_WT44ZFLyEeOe3pO2A1_sDQ _WT44YFLyEeOe3pO2A1_sDQ">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_WT44ZFLyEeOe3pO2A1_sDQ" name="generateScheduleResponsePart" type="_BnohMFLxEeOe3pO2A1_sDQ" association="_WT44Y1LyEeOe3pO2A1_sDQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WT44ZVLyEeOe3pO2A1_sDQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WT44ZlLyEeOe3pO2A1_sDQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="__T-xoFLyEeOe3pO2A1_sDQ" name="Date"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QVHDQFLmEeOe3pO2A1_sDQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QVOYAFLmEeOe3pO2A1_sDQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../wsdl.profile/model.profile.uml#_Eao0UFLxEeOe3pO2A1_sDQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../wsdl.profile/model.profile.uml#_38sOEFK9EeO0-qSuVa-TbQ"/>
+    </profileApplication>
+  </uml:Model>
+  <WSInterfaceProfile.WSInterface:Definition xmi:id="_X89lcFLmEeOe3pO2A1_sDQ" base_Class="_Rnn0AFLmEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Service xmi:id="_QywzIFLnEeOe3pO2A1_sDQ" base_Class="_iMWKkFLmEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Endpoint xmi:id="_x9eEgFLnEeOe3pO2A1_sDQ" base_Class="_ZyXLYFLnEeOe3pO2A1_sDQ" location="http://localhost:8080/ws-mes-impl/scheduler"/>
+  <WSInterfaceProfile.WSInterface:Binding xmi:id="_aEgO0FLoEeOe3pO2A1_sDQ" base_Class="_J_n18FLoEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Interface xmi:id="_2rSpEFLoEeOe3pO2A1_sDQ" base_Class="_sH_pcFLoEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Operation xmi:id="__Ged8FLuEeOe3pO2A1_sDQ" base_Class="_e8_1gFLtEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Input xmi:id="_h-Dg0FLvEeOe3pO2A1_sDQ" base_Association="_ak-acFLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Fault xmi:id="_je-hAFLvEeOe3pO2A1_sDQ" base_Association="_bGRws1LvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Output xmi:id="_nT2g0FLvEeOe3pO2A1_sDQ" base_Association="_Zb4rc1LvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_RJilUFLwEeOe3pO2A1_sDQ" base_Class="_KIdksFLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_R1V7YFLwEeOe3pO2A1_sDQ" base_Class="_JNdVAFLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_S9430FLwEeOe3pO2A1_sDQ" base_Class="_HyM38FLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Definition xmi:id="_PMfo0FL7EeO-rqRKclDK2w" base_Class="_Rnn0AFLmEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Service xmi:id="_QFftYFL7EeO-rqRKclDK2w" base_Class="_iMWKkFLmEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Endpoint xmi:id="_Qvo2kFL7EeO-rqRKclDK2w" base_Class="_ZyXLYFLnEeOe3pO2A1_sDQ" location="http://localhost:8080/ws-mes-impl/scheduler"/>
+  <WSInterfaceProfile.WSInterface:Binding xmi:id="_YPwZEFL7EeO-rqRKclDK2w" base_Class="_J_n18FLoEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Interface xmi:id="_ZFzQQFL7EeO-rqRKclDK2w" base_Class="_sH_pcFLoEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Operation xmi:id="_Z4MWgFL7EeO-rqRKclDK2w" base_Class="_e8_1gFLtEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_aqlcwFL7EeO-rqRKclDK2w" base_Class="_KIdksFLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_bTU3wFL7EeO-rqRKclDK2w" base_Class="_JNdVAFLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Message xmi:id="_b4WQYFL7EeO-rqRKclDK2w" base_Class="_HyM38FLvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Part xmi:id="_cmWl4FL7EeO-rqRKclDK2w" base_Class="_BnohMFLxEeOe3pO2A1_sDQ" name="output"/>
+  <WSInterfaceProfile.WSInterface:Part xmi:id="_dLesMFL7EeO-rqRKclDK2w" base_Class="_NG4ywFLxEeOe3pO2A1_sDQ" name="fault"/>
+  <WSInterfaceProfile.WSInterface:Part xmi:id="_d0raMFL7EeO-rqRKclDK2w" base_Class="_L7zfsFLxEeOe3pO2A1_sDQ" name="input"/>
+  <WSInterfaceProfile.WSInterface:Element xmi:id="_er7LQFL7EeO-rqRKclDK2w" base_Class="_H68c4FLyEeOe3pO2A1_sDQ" name="generateScheduleFault"/>
+  <WSInterfaceProfile.WSInterface:Element xmi:id="_f0FtMFL7EeO-rqRKclDK2w" base_Class="_Cl31oFLyEeOe3pO2A1_sDQ" name="generateSchedule"/>
+  <WSInterfaceProfile.WSInterface:Element xmi:id="_gmMfkFL7EeO-rqRKclDK2w" base_Class="_OZfNoFLyEeOe3pO2A1_sDQ" name="generateSchedule"/>
+  <WSInterfaceProfile.WSInterface:PartElementAssociation xmi:id="_taXVoFL7EeO-rqRKclDK2w" base_Association="_V53141LyEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:PartElementAssociation xmi:id="_uIHMcFL7EeO-rqRKclDK2w" base_Association="_WT44Y1LyEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:PartElementAssociation xmi:id="_uvbEEFL7EeO-rqRKclDK2w" base_Association="_USj50FLyEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Output xmi:id="_vuFEsFL7EeO-rqRKclDK2w" base_Association="_Zb4rc1LvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Fault xmi:id="_ywshIFL7EeO-rqRKclDK2w" base_Association="_bGRws1LvEeOe3pO2A1_sDQ"/>
+  <WSInterfaceProfile.WSInterface:Input xmi:id="_0cTHUFL7EeO-rqRKclDK2w" base_Association="_ak-acFLvEeOe3pO2A1_sDQ"/>
+</xmi:XMI>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.scheduler.isa95study.sodmt.uca.es/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.uca.es/sodmt/isa95study/scheduler" name="SchedulerImplService" targetNamespace="http://impl.scheduler.isa95study.sodmt.uca.es/">
+  <wsdl:import location="http://localhost:8080/ws-mes-impl/scheduler?wsdl=scheduler.wsdl" namespace="http://www.uca.es/sodmt/isa95study/scheduler">
+    </wsdl:import>
+  <wsdl:binding name="SchedulerImplServiceSoapBinding" type="ns1:scheduler">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="generateSchedule">
+      <soap:operation soapAction="http://www.uca.es/sodmt/isa95study/scheduler/NewOperation" style="document"/>
+      <wsdl:input name="generateSchedule">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateScheduleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="GenerateScheduleFault_Exception">
+        <soap:fault name="GenerateScheduleFault_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SchedulerImplService">
+    <wsdl:port binding="tns:SchedulerImplServiceSoapBinding" name="SchedulerImplPort">
+      <soap:address location="http://localhost:8080/ws-mes-impl/scheduler"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.uca.es/sodmt/isa95study/scheduler" name="scheduler" targetNamespace="http://www.uca.es/sodmt/isa95study/scheduler">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.uca.es/sodmt/isa95study/scheduler" version="1.0">
+
+  <xs:element name="generateSchedule">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="reason" type="xs:string"/>
+        <xs:element name="productRuleId" type="xs:string"/>
+        <xs:element name="quantity" type="xs:positiveInteger"/>
+        <xs:element name="unitId" type="xs:string"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="generateScheduleFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="message" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="generateScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="productionScheduleId" type="xs:string"/>
+        <xs:element name="earliestStart" type="xs:dateTime"/>
+        <xs:element name="latestEnd" type="xs:dateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="generateScheduleResponse">
+    <wsdl:part element="ns1:generateScheduleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenerateScheduleFault_Exception">
+    <wsdl:part element="ns1:generateScheduleFault" name="GenerateScheduleFault_Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateSchedule">
+    <wsdl:part element="ns1:generateSchedule" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="scheduler">
+    <wsdl:operation name="generateSchedule">
+      <wsdl:input message="ns1:generateSchedule" name="generateSchedule">
+    </wsdl:input>
+      <wsdl:output message="ns1:generateScheduleResponse" name="generateScheduleResponse">
+    </wsdl:output>
+      <wsdl:fault message="ns1:GenerateScheduleFault_Exception" name="GenerateScheduleFault_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
