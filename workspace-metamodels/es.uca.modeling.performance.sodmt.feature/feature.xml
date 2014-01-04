@@ -109,7 +109,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="es.uca.modeling.performance.sodmt.eol" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="es.uca.modeling.performance.sodmt.sprocess" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.eunit.junit"/>
-      <import plugin="org.junit4"/>
       <import plugin="org.eclipse.epsilon.evl.emf.validation"/>
       <import plugin="org.eclipse.epsilon.evl.engine"/>
       <import plugin="org.junit"/>
@@ -140,7 +139,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.gmf.tooling.runtime"/>
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
-      <import plugin="org.eclipse.gmf.runtime.lite"/>
       <import plugin="org.eclipse.gmf.runtime.lite.svg"/>
       <import plugin="org.eclipse.ocl.ecore"/>
       <import plugin="org.eclipse.emf.validation"/>
