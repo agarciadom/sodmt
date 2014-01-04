@@ -112,12 +112,12 @@
         </repository>
         <repository>
             <id>papyrus-nightlies</id>
-            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/</url>
+            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/kepler/</url>
             <layout>p2</layout>
         </repository>
         <repository>
             <id>papyrus-extra-nightlies</id>
-            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/extra/</url>
+            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/kepler/extra/</url>
             <layout>p2</layout>
         </repository>
     </repositories>

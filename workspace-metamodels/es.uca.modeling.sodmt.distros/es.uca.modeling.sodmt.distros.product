@@ -556,7 +556,6 @@
       <plugin id="org.jboss.netty"/>
       <plugin id="org.jdom_1.0"/>
       <plugin id="org.junit"/>
-      <plugin id="org.junit4"/>
       <plugin id="org.sat4j.core"/>
       <plugin id="org.sat4j.pb"/>
       <plugin id="org.slf4j.api"/>
