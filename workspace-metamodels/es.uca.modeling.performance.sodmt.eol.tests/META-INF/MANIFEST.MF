@@ -10,6 +10,6 @@ Require-Bundle: org.eclipse.epsilon.eol.engine,
  org.eclipse.epsilon.eunit.junit,
  es.uca.modeling.performance.sodmt.sprocess;bundle-version="1.0.0",
  es.uca.modeling.performance.sodmt.eol,
- org.junit4,
  org.eclipse.epsilon.eol.dt;bundle-version="1.0.0",
- org.eclipse.epsilon.eol.dt.tools;bundle-version="1.0.0"
+ org.eclipse.epsilon.eol.dt.tools;bundle-version="1.0.0",
+ org.junit;bundle-version="4.11.0"
