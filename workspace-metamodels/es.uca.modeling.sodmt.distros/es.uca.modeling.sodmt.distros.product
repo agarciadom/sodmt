@@ -21,23 +21,27 @@
    </vm>
 
    <plugins>
-      <plugin id="EUCM" />
-      <plugin id="EUCM.edit" />
-      <plugin id="EUCM.editor" />
-      <plugin id="EUCM.diagram" />
-      <plugin id="UCM" />
-      <plugin id="UCM.edit" />
-      <plugin id="UCM.editor" />
-      <plugin id="UCM.diagram" />
-      <plugin id="ch.qos.logback.classic"/>
-      <plugin id="ch.qos.logback.core"/>
-      <plugin id="ch.qos.logback.slf4j" fragment="true"/>
+      <plugin id="EUCM"/>
+      <plugin id="EUCM.diagram"/>
+      <plugin id="EUCM.edit"/>
+      <plugin id="EUCM.editor"/>
+      <plugin id="UCM"/>
+      <plugin id="UCM.diagram"/>
+      <plugin id="UCM.edit"/>
+      <plugin id="UCM.editor"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
-      <plugin id="com.google.inject.assistedinject" fragment="true"/>
-      <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.ning.async-http-client"/>
+      <plugin id="es.uca.modeling.eol.marte"/>
+      <plugin id="es.uca.modeling.eol.marte.codegen.modisco"/>
+      <plugin id="es.uca.modeling.eol.marte.codegen.wsdl"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.modisco"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.modisco.edit"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.modisco.editor"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.edit"/>
+      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.editor"/>
       <plugin id="es.uca.modeling.papyrus.utils"/>
       <plugin id="es.uca.modeling.performance.sodmt.egl.glpk"/>
       <plugin id="es.uca.modeling.performance.sodmt.eol"/>
@@ -52,15 +56,6 @@
       <plugin id="es.uca.modeling.performance.sodmt.sprocess.diagram"/>
       <plugin id="es.uca.modeling.performance.sodmt.sprocess.edit"/>
       <plugin id="es.uca.modeling.performance.sodmt.sprocess.editor"/>
-      <plugin id="es.uca.modeling.eol.marte"/>
-      <plugin id="es.uca.modeling.eol.marte.codegen.modisco"/>
-      <plugin id="es.uca.modeling.eol.marte.codegen.wsdl"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.modisco"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.modisco.edit"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.modisco.editor"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.edit"/>
-      <plugin id="es.uca.modeling.eol.marte.weaving.wsdl.editor"/>
       <plugin id="es.uca.modeling.sodmt.product"/>
       <plugin id="es.uca.webservices.service-analyzer"/>
       <plugin id="es.uca.webservices.service-analyzer.emf"/>
@@ -340,7 +335,6 @@
       <plugin id="org.eclipse.m2e.archetype.common"/>
       <plugin id="org.eclipse.m2e.core"/>
       <plugin id="org.eclipse.m2e.core.ui"/>
-      <plugin id="org.eclipse.m2e.logback.appender" fragment="true"/>
       <plugin id="org.eclipse.m2e.maven.indexer"/>
       <plugin id="org.eclipse.m2e.maven.runtime"/>
       <plugin id="org.eclipse.m2e.model.edit"/>
@@ -432,17 +426,6 @@
       <plugin id="org.eclipse.papyrus.infra.ui.resources"/>
       <plugin id="org.eclipse.papyrus.infra.widgets"/>
       <plugin id="org.eclipse.papyrus.infra.widgets.toolbox"/>
-      <plugin id="org.eclipse.papyrus.layout"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.gridAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.horizontalAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.horizontalSymmetryAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.horizontalTreeAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.radialAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.springAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.treeAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.verticalAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.algorithms.verticalSymmetryAlgorithm"/>
-      <plugin id="org.eclipse.papyrus.layout.subeditor.gmf"/>
       <plugin id="org.eclipse.papyrus.marte.static.profile"/>
       <plugin id="org.eclipse.papyrus.uml.appearance"/>
       <plugin id="org.eclipse.papyrus.uml.commands"/>
@@ -457,12 +440,10 @@
       <plugin id="org.eclipse.papyrus.uml.diagram.composite"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.deployment"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.dnd"/>
-      <plugin id="org.eclipse.papyrus.uml.diagram.emftree"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.icons"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.menu"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.modelexplorer"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.navigation"/>
-      <plugin id="org.eclipse.papyrus.uml.diagram.package"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.paletteconfiguration"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.paletteconfiguration.edit"/>
       <plugin id="org.eclipse.papyrus.uml.diagram.profile"/>
@@ -551,7 +532,6 @@
       <plugin id="org.eclipse.wst.xml.core"/>
       <plugin id="org.eclipse.wst.xsd.core"/>
       <plugin id="org.eclipse.xsd"/>
-      <plugin id="org.eclipse.zest.layouts"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.jboss.netty"/>
       <plugin id="org.jdom_1.0"/>
