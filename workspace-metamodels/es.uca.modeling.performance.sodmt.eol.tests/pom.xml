@@ -12,4 +12,22 @@
   <artifactId>es.uca.modeling.performance.sodmt.eol.tests</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-test-plugin</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <excludes>
+            <!-- Exclude inner classes -->
+            <exclude>**/*$*</exclude>
+            <!-- Exclude the exhaustive four-node test (takes too long on Jenkins) -->
+            <exclude>**/FourNodeExhaustiveTest*</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
