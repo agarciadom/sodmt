@@ -42,7 +42,8 @@ $onlyWith Map { "Model" = "UML" }
 @test
 operation handleOrderSW() {
   inferTimeLimits("Handle Order", 1, true);
-  var ctxParamMap := buildContextParameterMap();
+  var aHO = Activity.all.selectOne(a | a.name == 'Handle Order');
+  var ctxParamMap := aHO.buildContextParameterMap();
   var expectedParamMap := Map { "swEO" = 0.0, "swCI" = 0.2, "swPP" = 0.2, "swSO" = 0.4, "swCO" = 0.2 };
   assertContextParamsEqual(expectedParamMap, ctxParamMap);
 }
@@ -60,13 +61,12 @@ operation assertContextParamsEqual(expectedParamMap : Map, ctxParamMap : Map) {
   }
 }
 
-operation buildContextParameterMap() : Map {
-  var vslTool := Activity.all.first.getVSLTool();
-  return Activity.all
-                  .collect(a | a.stereotypeApplications).flatten
-                  .collect(c : GaAnalysisContext | c.context).flatten
-                  .collect(c | vslTool.parseContextParameter(c))
-                  .aggregate(c | c.left, c.right);
+operation Activity buildContextParameterMap() : Map {
+  var vslTool := self.getVSLTool();
+  return self.stereotypeApplications
+             .collect(c : GaAnalysisContext | c.context).flatten
+             .collect(c | vslTool.parseContextParameter(c))
+             .aggregate(c | c.left, c.right);
 }
 
 operation buildTimeLimitMap() : Map {
