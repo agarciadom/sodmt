@@ -53,7 +53,7 @@ operation assertTimeLimit(name : String, timeLimit : Real, tlMap : Map) {
 }
 
 operation assertContextParamsEqual(expectedParamMap : Map, ctxParamMap : Map) {
-  assertEquals("There should be " + expectedParamMap.size + " context parameters", expectedParamMap.size, ctxParamMap.size);
+  assertEquals("There should be " + expectedParamMap.size + " context parameters, but there were " + ctxParamMap.size + ": " + expectedParamMap + " <-> " + ctxParamMap, expectedParamMap.size, ctxParamMap.size);
   for (param in expectedParamMap.keySet) {
     var expected := expectedParamMap.get(param);
     var obtained := ctxParamMap.get(param);
