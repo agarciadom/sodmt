@@ -13,7 +13,7 @@
     <description>Common parent for all modules in this project</description>
 
     <properties>
-        <tycho-version>0.15.0</tycho-version>
+        <tycho-version>0.24.0</tycho-version>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -96,28 +96,18 @@
     
     <repositories>
         <repository>
-            <id>eclipse-juno</id>
-            <url>http://download.eclipse.org/releases/kepler</url>
+            <id>eclipse-mars</id>
+            <url>http://download.eclipse.org/releases/mars</url>
             <layout>p2</layout>
         </repository>
         <repository>
             <id>epsilon-interim</id>
-            <url>http://download.eclipse.org/epsilon/updates/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <id>gmf-experimental-svg</id>
-            <url>http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/</url>
+            <url>http://download.eclipse.org/epsilon/interim/</url>
             <layout>p2</layout>
         </repository>
         <repository>
             <id>papyrus-nightlies</id>
-            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/kepler/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <id>papyrus-extra-nightlies</id>
-            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/kepler/extra/</url>
+            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/mars</url>
             <layout>p2</layout>
         </repository>
     </repositories>

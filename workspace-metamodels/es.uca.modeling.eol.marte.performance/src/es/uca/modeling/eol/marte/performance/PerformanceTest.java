@@ -19,7 +19,7 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.EmfUtil;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.EolModule;
-import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.dom.Operation;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.papyrus.MARTE.MARTEPackage;
@@ -94,17 +94,17 @@ public class PerformanceTest {
 	}
 
 	private void annotateFixed(Activity activity) throws EolRuntimeException {
-		EolOperation opAnn = mModule.getOperations().getOperation("annotateFixed");
+		Operation opAnn = mModule.getOperations().getOperation("annotateFixed");
 		opAnn.execute(null, Arrays.asList(activity, RESPONSE_TIME, THROUGHPUT, FIXED_MTIME, FIXED_WEIGHT), mModule.getContext());
 	}
 
 	private void annotateRandomly(Activity activity) throws EolRuntimeException {
-		EolOperation opAnn = mModule.getOperations().getOperation("annotateRandom");
+		Operation opAnn = mModule.getOperations().getOperation("annotateRandom");
 		opAnn.execute(null, Arrays.asList(activity, RESPONSE_TIME, THROUGHPUT, MAX_WEIGHT, PRNG), mModule.getContext());
 	}
 
 	private Activity createForkJoinGraph(boolean fixedAnnotations) throws EolRuntimeException {
-		EolOperation op = mModule.getOperations().getOperation("createForkJoinActivity");
+		Operation op = mModule.getOperations().getOperation("createForkJoinActivity");
 		Activity activity = (Activity)op.execute(null, Arrays.asList(mLevels), mModule.getContext());
 		if (fixedAnnotations) {
 			annotateFixed(activity);
@@ -176,7 +176,7 @@ public class PerformanceTest {
 		print("\nname, levels, sample, time (ms)");
 		for (int i = 0; i < mSamples; ++i) {
 			Activity activity = prepareIteration(fixedAnnotations);
-			EolOperation opThroughputs = mModule.getOperations().getOperation("annotateThroughput");
+			Operation opThroughputs = mModule.getOperations().getOperation("annotateThroughput");
 			InitialNode initial = getInitialNode(activity);
 			assertNotNull(initial);
 
@@ -207,7 +207,7 @@ public class PerformanceTest {
 		for (int i = 0; i < mSamples; ++i) {
 			Activity activity = prepareIteration(fixedAnnotations);
 			List<FinalNode> finalNodes = getFinalNodes(activity);
-			EolOperation opDistrib = mModule.getOperations().getOperation("distributeTime");
+			Operation opDistrib = mModule.getOperations().getOperation("distributeTime");
 
 			// Warm-up, to avoid delays due to classloading and other matters
 			opDistrib.execute(null, Arrays.asList(RESPONSE_TIME, finalNodes), mModule.getContext());
@@ -229,7 +229,7 @@ public class PerformanceTest {
 	}
 
 	private void wipeModuleCaches() {
-		for (EolOperation op : mModule.getOperations()) {
+		for (Operation op : mModule.getOperations()) {
 			op.clearCache();
 		}
 		mModule.getContext().getExtendedProperties().clear();

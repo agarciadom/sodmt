@@ -166,7 +166,7 @@ public class GLPKInputGen {
 		// Run it
 		EclipseContextManager.setup(eglModule.getContext());
 		eglModule.getContext().getModelRepository().addModel(model);
-		final EolModelElementType eolType = EolModelElementType.forName(node.eClass().getName(), eglModule.getContext());
+		final EolModelElementType eolType = new EolModelElementType(node.eClass().getName(), eglModule.getContext());
 		eglModule.getContext().getFrameStack().putGlobal(new Variable("selected", node, eolType));
 
 		// Save the result to a file

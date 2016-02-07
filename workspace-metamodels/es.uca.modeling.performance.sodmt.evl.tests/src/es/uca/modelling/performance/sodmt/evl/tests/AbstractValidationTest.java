@@ -10,7 +10,7 @@ import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.java.JavaModel;
 import org.eclipse.epsilon.eunit.junit.IEUnitSuite;
 import org.eclipse.epsilon.evl.EvlModule;
-import org.eclipse.epsilon.evl.EvlUnsatisfiedConstraint;
+import org.eclipse.epsilon.evl.execute.UnsatisfiedConstraint;
 
 
 public abstract class AbstractValidationTest implements IEUnitSuite {
@@ -25,7 +25,6 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 			return true;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void validate() throws Exception {
 			if (evlModel != null) {
 				context.getModelRepository().removeModel(evlModel);
@@ -41,7 +40,7 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 
 			final IModel traceModel = new JavaModel(
 				new ArrayList<Object>(evl.getContext().getUnsatisfiedConstraints()),
-				Arrays.asList(EvlUnsatisfiedConstraint.class));
+				Arrays.asList(UnsatisfiedConstraint.class));
 			traceModel.setName("EVL");
 
 			context.getModelRepository().addModel(traceModel);

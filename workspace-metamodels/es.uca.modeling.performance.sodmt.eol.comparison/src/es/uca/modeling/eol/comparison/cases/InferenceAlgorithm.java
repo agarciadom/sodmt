@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
-import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.dom.Operation;
 import org.eclipse.epsilon.eol.dt.launching.EclipseContextManager;
 import org.eclipse.epsilon.eol.execute.context.IEolContext;
 
@@ -46,7 +46,7 @@ public class InferenceAlgorithm {
 		final IEolContext context = module.getContext();
 
 		context.getModelRepository().addModel(model);
-		final EolOperation operation = module.getOperations().getOperation(fOperation);
+		final Operation operation = module.getOperations().getOperation(fOperation);
 		operation.execute(null, Arrays.asList(args), context);
 		context.getModelRepository().removeModel(model);
 		module.clearCache();

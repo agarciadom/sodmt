@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
-import org.eclipse.epsilon.eol.EolOperation;
+import org.eclipse.epsilon.eol.dom.Operation;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.eol.exceptions.EolRuntimeException;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelElementTypeNotFoundException;
@@ -54,7 +54,7 @@ public class AbstractInferenceTest {
 
 	public Object callOperation(String name, Object... args)
 			throws EolRuntimeException {
-		EolOperation op = mEolModule.getOperations().getOperation(name);
+		Operation op = mEolModule.getOperations().getOperation(name);
 		return op.execute(null, Arrays.asList(args), mEolModule.getContext());
 	}
 

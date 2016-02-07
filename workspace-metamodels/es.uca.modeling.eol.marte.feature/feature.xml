@@ -97,24 +97,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.epsilon.emc.emf" version="0.9.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.eol.engine" version="0.9.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.papyrus.marte.static.profile" version="0.9.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.papyrus.extra.marte.feature" version="0.9.0.v201207031115"/>
-      <import feature="org.eclipse.papyrus.uml.diagram.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.uml.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.uml.properties.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.editor.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.core.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.emf.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.gmfdiag.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.queries.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.services.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.table.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.infra.widget.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.uml.modelexplorer.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.uml.table.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.uml.textedit.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.views.modelexplorer.feature" version="0.9.0.v201206131215"/>
-      <import feature="org.eclipse.papyrus.views.properties.feature" version="0.9.0.v201206131215"/>
+      <import plugin="org.junit"/>
    </requires>
 
    <plugin
