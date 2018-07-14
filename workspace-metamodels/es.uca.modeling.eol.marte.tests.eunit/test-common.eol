@@ -3,7 +3,7 @@ operation pair(x, y) : Sequence {
 }
 
 operation getActivity(activityName : String) : Activity {
-  return Activity.all.selectOne(s | s.name == activityName);
+  return Activity.all.selectOne(s | s.name = activityName);
 }
 
 operation getFinalNodes(activityName : String) : Collection {
@@ -11,5 +11,9 @@ operation getFinalNodes(activityName : String) : Collection {
 }
 
 operation getStartNode(activityName : String) : InitialNode {
-  return getActivity(activityName).ownedNodes.selectOne(s : InitialNode | true);
+  var activity = getActivity(activityName);
+  if (not activity.isDefined()) {
+    ('Warning: could not find activity ' + activityName).println(); 
+  }
+  return activity.ownedNodes.selectOne(s : InitialNode | true);
 }
