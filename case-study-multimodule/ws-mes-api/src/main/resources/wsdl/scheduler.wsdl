@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.uca.es/sodmt/isa95study/scheduler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="scheduler" targetNamespace="http://www.uca.es/sodmt/isa95study/scheduler">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.uca.es/sodmt/isa95study/scheduler">
+      <xsd:element name="generateSchedule">
+        <xsd:complexType>
+                    <xsd:all>
+                    	<xsd:element name="reason" type="xsd:string" />
+                    	<xsd:element name="productRuleId"
+                    		type="xsd:string">
+                    	</xsd:element>
+                    	<xsd:element name="quantity"
+                    		type="xsd:positiveInteger">
+                    	</xsd:element>
+                    	<xsd:element name="unitId"
+                    		type="xsd:string">
+                    	</xsd:element>
+                    </xsd:all>
+
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="generateScheduleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="productionScheduleId"
+          		type="xsd:string" />
+          	<xsd:element name="earliestStart" type="xsd:dateTime"></xsd:element>
+          	<xsd:element name="latestEnd" type="xsd:dateTime"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="generateScheduleFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="message"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="generateScheduleRequest">
+    <wsdl:part element="tns:generateSchedule" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="generateScheduleResponse">
+    <wsdl:part element="tns:generateScheduleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="generateScheduleFault">
+  	<wsdl:part name="parameters" element="tns:generateScheduleFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="scheduler">
+    <wsdl:operation name="generateSchedule">
+      <wsdl:input message="tns:generateScheduleRequest"/>
+      <wsdl:output message="tns:generateScheduleResponse"/>
+            <wsdl:fault name="fault" message="tns:generateScheduleFault"></wsdl:fault>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="schedulerSOAP" type="tns:scheduler">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="generateSchedule">
+      <soap:operation soapAction="http://www.uca.es/sodmt/isa95study/scheduler/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="scheduler">
+    <wsdl:port binding="tns:schedulerSOAP" name="schedulerSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

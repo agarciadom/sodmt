@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_material_MaterialClass" modelAttribute="materialClass" path="/materialclasses" versionField="Version" z="bfLGmofP/5A/Di0W1Xa3QeUtZ3E=">
+        <field:textarea field="classId" id="c_es_uca_b2mml_domain_material_MaterialClass_classId" required="true" z="YNKEznblLY8u+L+5Ch3G0d7E2ac="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_material_MaterialClass_description" z="L2SipH7dB+rCk/9CwSnrMQKvC2U="/>
+        <field:select field="definitions" id="c_es_uca_b2mml_domain_material_MaterialClass_definitions" itemValue="id" items="${materialdefinitions}" multiple="true" path="/materialdefinitions" z="eS65C+MrAeCZKJrRBdMzIB/kghg="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_material_MaterialClass_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Class Property" z="JySNZ0FiGb9K8zrNIevgULYFb5U="/>
+    </form:update>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_product_MaterialSpecProperty" modelAttribute="materialSpecProperty" path="/materialspecproperties" render="${empty dependencies}" z="N7Iz3/ga6tChW7Az7uP/W9axKjo=">
+        <field:select field="specification" id="c_es_uca_b2mml_domain_product_MaterialSpecProperty_specification" itemValue="id" items="${materialspecs}" path="/materialspecs" required="true" z="BcwQ3dG3AFc3svuQLstalVtdTG4="/>
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_product_MaterialSpecProperty_name" required="true" z="drpAiKxzBYkSkzA+vrPHLWqFsIk="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_MaterialSpecProperty_description" z="wcLQi+ADw8P4njnKd4xBOUjU17U="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_product_MaterialSpecProperty_value" required="true" z="Yz5Up/8Ppl8MLgO/2NX70t21zOM="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_product_MaterialSpecProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="zb4+T5VXhU1stLsykDCh1NNhLGU="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_product_MaterialSpecProperty" render="${not empty dependencies}" z="8mmioBFnbk4QfqVz56xJQRvNPAs="/>
+</div>

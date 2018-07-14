@@ -1,0 +1,57 @@
+# Activities and path names
+set A;
+set P;
+
+# Global time limit
+param G;
+
+# Minimum times, weights and repetitions
+param m{a in A}, default 0;
+param w{a in A}, default 1;
+param r{a in A}, default 1;
+
+# Paths (activity belongs in an activity)
+param paths{a in A, p in P}, default 0, binary;
+
+# Path containment (path is fully contained inside a single activity)
+set CP within P cross A;
+
+# Minimum time and total weight of each path
+param mp{p in P} := sum{a in A} paths[a, p] * m[a] * r[a];
+param tw{p in P} := sum{a in A} paths[a, p] * w[a] * r[a];
+
+# Minimum slack per unit of weight by task
+param msuw{a in A} := min{p in P} (G-mp[p])/tw[p];
+
+# Slack per unit of weight for each activity (must be positive)
+var suw{a in A};
+
+# Objective function: use as much time as possible over all paths (honoring minimum times, weights and repetitions)
+maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]) * r[a]);
+
+# Global time limit on paths which are not inside any activity
+s.t. glpath 'global limit on path' {p in P: not exists {a in A} (p, a) in CP}:
+  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a]) <= G;
+
+# Local time limit on paths which are inside some activity
+s.t. llpath 'local limit on path' {(p, whole) in CP}:
+  sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a]) * r[a])
+    <=
+  suw[whole] * w[whole] + m[whole];
+
+# Minimum slack restriction
+s.t. minslack 'min slack' {a in A}: suw[a] >= msuw[a];
+
+# Restrictions by set of paths
+s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
+
+solve;
+
+# Print the solution so it can be easily retrieved
+printf "\nBEGIN_SOLUTION\n";
+for {a in A} {
+  printf "%s\t%g\n", a, suw[a];
+}
+printf "END_SOLUTION\n\n";
+
+end;

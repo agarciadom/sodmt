@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_equip_MaintenanceResponse" modelAttribute="maintenanceResponse" path="/maintenanceresponses" render="${empty dependencies}" z="FuTSn+0MRc4Ufo6YjLkIw141i9M=">
+        <field:select field="workOrder" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_workOrder" itemValue="id" items="${maintenanceworkorders}" path="/maintenanceworkorders" required="true" z="PWlPoAiIkvHfj30+JbDCulPOaK8="/>
+        <field:textarea field="responseId" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_responseId" required="true" z="+UWC7iDw6SYHbBf9tNr87/Jco4A="/>
+        <field:textarea field="cause" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_cause" required="true" z="YC+HOizdv+bBGAKcankFdM4fK7I="/>
+        <field:textarea field="correction" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_correction" required="true" z="Kx+hMylUaRvuSGfZ8jp86e7kXaE="/>
+        <field:datetime dateTimePattern="${maintenanceResponse_actualstartdate_date_format}" field="actualStartDate" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_actualStartDate" required="true" z="b+W5RoKPLGJ4XdoUCRyhE+hR8fQ="/>
+        <field:datetime dateTimePattern="${maintenanceResponse_actualfinishdate_date_format}" field="actualFinishDate" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_actualFinishDate" z="2NFTmeSRFBuzchxKISVgctbeDJY="/>
+        <field:datetime dateTimePattern="${maintenanceResponse_publisheddate_date_format}" field="publishedDate" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_publishedDate" required="true" z="0pkVySBt/09Orl37PalbbWmeAQc="/>
+        <field:select field="status" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_status" itemValue="id" items="${maintenanceresponsestatuses}" path="/maintenanceresponsestatuses" required="true" z="8TdfgSg0Qakw0RqOKOGcuUlMqMU="/>
+        <field:datetime dateTimePattern="${maintenanceResponse_statusdate_date_format}" field="statusDate" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_statusDate" required="true" z="45mi8t0CyIvSK5/n5NKzZOgGtHo="/>
+        <field:select field="responsible" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_responsible" itemValue="id" items="${people}" path="/people" z="gFC1Q7gqom6vfOw1R99DAKNdlDs="/>
+        <field:input field="consumables" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_consumables" z="MiADfYZD1ol6+tGQtI9E/+b42uU="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_equip_MaintenanceResponse" render="${not empty dependencies}" z="zXET4pL+Y8ZykmWx6aaDglAS+Fw="/>
+</div>

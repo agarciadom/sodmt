@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_ProductionData" items="${productiondatas}" z="iNudRiAman/rlT7Ze9lClVaiFoY=">
+        <table:table data="${productiondatas}" id="l_es_uca_b2mml_domain_perform_ProductionData" path="/productiondatas" z="UjpUjntbJn4x1zBDYufDmCuj/jQ=">
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionData_name" property="name" z="f457LTCXS2eAeMO02FLFm+MsINM="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionData_description" property="description" z="cQJUUdtwO1H1fAbxBWuaoxUVl9w="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionData_value" property="value" z="97CAdoY068OhaSHgCerj20WUYQs="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionData_unit" property="unit" z="qgjCpvrvGWTfCt/c0ZHXidbii3g="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionData_segmentResponse" property="segmentResponse" z="0iRSzfUw3sgYTbVv/fUaJTjQhQE="/>
+        </table:table>
+    </page:list>
+</div>

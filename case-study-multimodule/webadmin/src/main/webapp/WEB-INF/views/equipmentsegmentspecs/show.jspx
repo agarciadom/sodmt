@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec" object="${equipmentsegmentspec}" path="/equipmentsegmentspecs" z="5Fg7zV7pLBwXDVpTUwLWWmHVyEM=">
+        <field:display field="processSegment" id="s_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_processSegment" object="${equipmentsegmentspec}" z="LsNXiCUEOpbR9b29cAiW2bMA4yQ="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_description" object="${equipmentsegmentspec}" z="c0Punx7Dyu2WLCMOr9R7SMZsvUE="/>
+        <field:display field="equipment" id="s_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_equipment" object="${equipmentsegmentspec}" z="ITK2OpcFzLzzQ8ZNgpUZ2e+SQFo="/>
+        <field:display field="equipmentClass" id="s_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_equipmentClass" object="${equipmentsegmentspec}" z="Q4/kg6f37Ioi4YY+W6LqfgBnstI="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_quantity" object="${equipmentsegmentspec}" z="user-managed"/>
+    </page:show>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec" modelAttribute="personnelSegmentSpec" path="/personnelsegmentspecs" versionField="Version" z="s9GsRcRyRmzddG37fZw1fM3H1Xw=">
+        <field:select field="processSegment" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_processSegment" itemValue="id" items="${processsegments}" path="/processsegments" required="true" z="cANN25xQMXztDj7rVhsv44ICSfM="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_description" z="WINILmFHb31DLADEeecz5DtOIt8="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_quantity" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="person" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_person" itemValue="id" items="${people}" path="/people" z="QQG3w4J2xXa/yU2vECX4ht5n0iU="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Personnel Segment Spec Property" z="9ltTtroLoczsHxdYjzaGJNGUFMg="/>
+        <field:select field="personClass" id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_personClass" itemValue="id" items="${personclasses}" path="/personclasses" z="VR35alXeOyoj4FBclQt/tYq2n4U="/>
+    </form:update>
+</div>

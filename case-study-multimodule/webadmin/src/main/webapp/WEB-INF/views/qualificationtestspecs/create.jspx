@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_people_QualificationTestSpec" modelAttribute="qualificationTestSpec" path="/qualificationtestspecs" render="${empty dependencies}" z="X0/bURU+XrrQjxotNQztA3SgeEk=">
+        <field:textarea field="testIdentifier" id="c_es_uca_b2mml_domain_people_QualificationTestSpec_testIdentifier" required="true" z="w2g3JyLdSGF2Kwgki3AioEm84eE="/>
+        <field:input field="testVersion" id="c_es_uca_b2mml_domain_people_QualificationTestSpec_testVersion" max="30" required="true" z="BEgDodjPWlk6VS2gL+SfeplyzzQ="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_people_QualificationTestSpec_description" required="true" z="nM9CwQ9bQv+853Wv3b/e/IDDUxU="/>
+        <field:select field="personClassProperty" id="c_es_uca_b2mml_domain_people_QualificationTestSpec_personClassProperty" itemValue="id" items="${personclassproperties}" path="/personclassproperties" required="true" z="m+YwLNnChuI3dkw5ICwIP5QbFBw="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_people_QualificationTestSpec" render="${not empty dependencies}" z="GUBBk/6xOgjQf6DsmkqPQ68/MqI="/>
+</div>

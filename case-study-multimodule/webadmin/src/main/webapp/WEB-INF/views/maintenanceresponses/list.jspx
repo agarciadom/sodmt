@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_MaintenanceResponse" items="${maintenanceresponses}" z="2j67bboWvCOb3W7rcTFatGX5pJo=">
+        <table:table data="${maintenanceresponses}" id="l_es_uca_b2mml_domain_equip_MaintenanceResponse" path="/maintenanceresponses" z="LCklZU4EDXU4jKuokK4fuY5RTuc=">
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_workOrder" property="workOrder" z="g2JR+9QK2t/XWSBRhxNl40X877g="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_responseId" property="responseId" z="+B+MvJuukWx4yCNd5pCOFa2YuZE="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_cause" property="cause" z="aa4BF4gcWLE85mlF87iZgim+ZMk="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_correction" property="correction" z="iuHjUPkpHYmbfOX2icKucH88Mcc="/>
+            <table:column calendar="true" dateTimePattern="${maintenanceResponse_actualstartdate_date_format}" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_actualStartDate" property="actualStartDate" z="aXUe+b5LEG/8NguyXIYtLKi9mzo="/>
+            <table:column calendar="true" dateTimePattern="${maintenanceResponse_actualfinishdate_date_format}" id="c_es_uca_b2mml_domain_equip_MaintenanceResponse_actualFinishDate" property="actualFinishDate" z="NsWKqtPPiwO5ScK6uaFHsn+0J7I="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,40 @@
+# Activities
+set A;
+
+# Paths
+set P;
+
+# Global time limit
+param G;
+
+# Minimum times
+param m{a in A};
+
+# Weights
+param w{a in A};
+
+# Paths
+param paths{a in A, p in P};
+
+# Minimum time of each path
+param mp{p in P} := sum{a in A} paths[a, p] * m[a];
+
+# Total weight of each path
+param tw{p in P} := sum{a in A} paths[a, p] * w[a];
+
+# Strictest lower bound by task
+param slb{a in A} := m[a] + min{p in P} (G-mp[p])/tw[p] * w[a];
+
+# Time limit for each activity (must be positive)
+var tl{a in A};
+
+# Objective function: use as much time as possible
+maximize usage: sum{a in A, p in P} tl[a] * paths[a, p];
+
+# Restrictions by path
+s.t. lpath 'limit by path' {p in P}: sum{a in A} paths[a, p] * tl[a] <= G;
+
+# Restrictions by task
+s.t. ltask 'limit by task' {a in A}: tl[a] >= slb[a];
+
+end;

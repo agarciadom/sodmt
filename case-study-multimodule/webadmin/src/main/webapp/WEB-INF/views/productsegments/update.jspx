@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_product_ProductSegment" modelAttribute="productSegment" path="/productsegments" versionField="Version" z="nojz4BiZYDGdv9ytHINJT5MlDPY=">
+        <field:select field="parent" id="c_es_uca_b2mml_domain_product_ProductSegment_parent" itemValue="id" items="${productsegments}" path="/productsegments" z="juNk2GMnJt1Ln/ySlUiFgMuDlpU="/>
+        <field:simple field="children" id="c_es_uca_b2mml_domain_product_ProductSegment_children" messageCode="entity_reference_not_managed" messageCodeAttribute="Product Segment" render="false" z="user-managed"/>
+        <field:select field="rule" id="c_es_uca_b2mml_domain_product_ProductSegment_rule" itemValue="id" items="${productproductionrules}" path="/productionrules" required="true" z="xsUkNzZqx5147m2r9QJqWY50Vog="/>
+        <field:input field="segmentId" id="c_es_uca_b2mml_domain_product_ProductSegment_segmentId" required="true" z="d2lA7P/NpCfenYZi2dVVLi7fMQY="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_ProductSegment_description" z="zfawYK1J8ZrT04w6xUtIuvArbQk="/>
+        <field:input field="durationValue" id="c_es_uca_b2mml_domain_product_ProductSegment_duration" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="durationUnit" id="c_es_uca_b2mml_domain_product_ProductSegment_durationUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="processSegment" id="c_es_uca_b2mml_domain_product_ProductSegment_processSegment" itemValue="id" items="${processsegments}" multiple="true" path="/processsegments" z="Ib6SzGjNxy/x6zEh+DBv/wBhcg4="/>
+        <field:simple field="parameters" id="c_es_uca_b2mml_domain_product_ProductSegment_parameters" messageCode="entity_reference_not_managed" messageCodeAttribute="Product Parameter" render="false" z="user-managed"/>
+        <field:simple field="personnel" id="c_es_uca_b2mml_domain_product_ProductSegment_personnel" messageCode="entity_reference_not_managed" messageCodeAttribute="Personnel Spec" render="false" z="user-managed"/>
+        <field:simple field="materials" id="c_es_uca_b2mml_domain_product_ProductSegment_materials" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Spec" render="false" z="user-managed"/>
+        <field:simple field="equipment" id="c_es_uca_b2mml_domain_product_ProductSegment_equipment" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment Spec" render="false" z="user-managed"/>
+        <field:simple field="outgoingDependencies" id="c_es_uca_b2mml_domain_product_ProductSegment_outgoingDependencies" messageCode="entity_reference_not_managed" messageCodeAttribute="Product Segment Dependency" z="Y1FFu5u7QxSWwi49pulKag3FOnU="/>
+        <field:simple field="incomingDependencies" id="c_es_uca_b2mml_domain_product_ProductSegment_incomingDependencies" messageCode="entity_reference_not_managed" messageCodeAttribute="Product Segment Dependency" z="30erNCKki4GrADu8yaSrPK28K6Q="/>
+    </form:update>
+</div>

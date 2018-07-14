@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_psegment_ProcessSegmentDependency" modelAttribute="processSegmentDependency" path="/processsegmentdependencies" versionField="Version" z="UUddSI/9pEmpXHjmGW8j0Og0y30=">
+        <field:select field="segmentA" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_segmentA" itemValue="id" items="${processsegments}" path="/processsegments" required="true" z="3E5lHZQR+k/gYxOQIa8CbXYY0Dg="/>
+        <field:select field="segmentB" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_segmentB" itemValue="id" items="${processsegments}" path="/processsegments" required="true" z="VqmujOvOi7ldNekJeJL/m1J/PxU="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_description" z="oSIfQOJUoxY8/HyxuZ2aZmHF+Nc="/>
+        <field:input field="timingFactorValue" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_timingFactor" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="timingFactorUnit" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_timeUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="dependencyType" id="c_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_dependencyType" items="${executiondependencytypes}" path="processsegmentdependencytypes" required="true" z="Un+mAssOMmIEU1HA64YWeD836R0="/>
+    </form:update>
+</div>

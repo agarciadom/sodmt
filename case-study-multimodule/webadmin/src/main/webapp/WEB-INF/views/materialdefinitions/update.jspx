@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_material_MaterialDefinition" modelAttribute="materialDefinition" path="/materialdefinitions" versionField="Version" z="YTGVdNxdvHz/k0/oybS0lAa0saM=">
+        <field:textarea field="definitionId" id="c_es_uca_b2mml_domain_material_MaterialDefinition_definitionId" required="true" z="aD4uGvYCB7+/R1p5hoCOV/i7lB0="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_material_MaterialDefinition_description" z="EToMYTO2Zwc28pkFSAYC544q7TY="/>
+        <field:select field="materialClasses" id="c_es_uca_b2mml_domain_material_MaterialDefinition_materialClasses" itemValue="id" items="${materialclasses}" multiple="true" path="/materialclasses" z="3dbbrfihS3TULHBQ8Lt1YIIhte0="/>
+        <field:simple field="materialLots" id="c_es_uca_b2mml_domain_material_MaterialDefinition_materialLots" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Lot" z="YsmVrEFUxzmz53g8hdmjY4p7NZA="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_material_MaterialDefinition_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Definition Property" z="SUfKlSRd0YW+vJSNuBds8dbev0E="/>
+    </form:update>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult" items="${equipmentcapabilitytestresults}" z="x7DihIYnsfwlEoUX5nkPtS0SA0U=">
+        <table:table data="${equipmentcapabilitytestresults}" id="l_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult" path="/equipmentcapabilitytestresults" z="gxeOpZIPNTQ4dLKSmxDfRAS2NBw=">
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testSpecification" property="testSpecification" z="IxRcv9850VVWaPETW5zenRTPlXo="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_personProperty" property="personProperty" z="pfzrHM8Qe6o4Sw2kUlgpkDDSAuI="/>
+            <table:column date="true" dateTimePattern="${equipmentCapabilityTestResult_testdate_date_format}" id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testDate" property="testDate" z="qVZsJgGP/Mbi6S4VIywTDvBJ1Gc="/>
+            <table:column date="true" dateTimePattern="${equipmentCapabilityTestResult_expiration_date_format}" id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_expiration" property="expiration" z="Lq05GZBRbz+Nqhc9q6XsWYcPRPo="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testResult" property="testResult" z="Lu3IR0yalPub3k9H2CHG6/JNyhM="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_unit" property="unit" z="CNKyjz4Bw3R8sl3H7HWu4b0nzfA="/>
+        </table:table>
+    </page:list>
+</div>

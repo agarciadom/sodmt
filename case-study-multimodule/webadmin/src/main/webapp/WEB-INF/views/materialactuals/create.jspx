@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_perform_MaterialActual" modelAttribute="materialActual" path="/materialactuals" render="${empty dependencies}" z="user-managed">
+        <field:select field="segmentResponse" id="c_es_uca_b2mml_domain_perform_MaterialActual_segmentResponse" itemValue="id" items="${segmentresponses}" path="/segmentresponses" required="true" z="LSfsUJoNyArpMj4rYnX6rHkhoN0="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_perform_MaterialActual_description" z="MQdS3TuPjtKHEhPYbSIUXTnZpYY="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_perform_MaterialActual_quantity" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_perform_MaterialActual_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="materialClasses" id="c_es_uca_b2mml_domain_perform_MaterialActual_materialClasses" itemValue="id" items="${materialclasses}" multiple="true" path="/materialclasses" z="2tnmVH315vTX4rdX+O4VwDNLsow="/>
+        <field:select field="materialDefinitions" id="c_es_uca_b2mml_domain_perform_MaterialActual_materialDefinitions" itemValue="id" items="${materialdefinitions}" multiple="true" path="/materialdefinitions" z="1R9w4Roty277jjqgSzyWV2H7VAw="/>
+        <field:select field="materialLots" id="c_es_uca_b2mml_domain_perform_MaterialActual_materialLots" itemValue="id" items="${materiallots}" multiple="true" path="/materiallots" z="ARlOhB5bozoCRE/IubdssgZrRA8="/>
+        <field:select field="materialSublots" id="c_es_uca_b2mml_domain_perform_MaterialActual_materialSublots" itemValue="id" items="${materialsublots}" multiple="true" path="/materialsublots" z="UAGofOTqbtnkW1D/a1KUulopDVc="/>
+        <field:select field="location" id="c_es_uca_b2mml_domain_perform_MaterialActual_location" itemValue="id" items="${equipments}" path="/equipments" required="true" z="XEShOb/I8/gMMEgXPYMnGPDsSOE="/>
+        <field:checkbox field="consumed" id="c_es_uca_b2mml_domain_perform_MaterialActual_consumed" z="B/IWK5eKXBI9XjBMAvBG/p23wTE="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_perform_MaterialActual_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Actual Property" z="UBXj/6io/24xH6HdgxpV7XU+hC4="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_perform_MaterialActual" render="${not empty dependencies}" z="bBEJRoqM7KKkYX+uKUT6BIk2hL0="/>
+</div>

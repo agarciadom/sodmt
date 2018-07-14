@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_equip_Equipment" modelAttribute="equipment" path="/equipments" render="${empty dependencies}" z="CghGZDYKY5mC1xdMj9PthLIXJj0=">
+        <field:textarea field="equipmentId" id="c_es_uca_b2mml_domain_equip_Equipment_equipmentId" required="true" z="qTE8TqGJ1XtPeb43CU2l3b1mAUo="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_equip_Equipment_description" z="haUPXqt1JoXQi3ohxYZ9ANWrYW0="/>
+        <field:select field="parent" id="c_es_uca_b2mml_domain_equip_Equipment_parent" itemValue="id" items="${equipments}" path="/equipments" z="zfEgh+x3S7w6Kc9d57pvyg+LjDM="/>
+        <field:simple field="children" id="c_es_uca_b2mml_domain_equip_Equipment_children" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment" render="false" z="user-managed"/>
+        <field:select field="type" id="c_es_uca_b2mml_domain_equip_Equipment_type" itemValue="id" items="${equipmenttypes}" path="/equipmenttypes" required="true" z="4MegzVxDAZBCL03INI+vRrBty5k="/>
+        <field:select field="classes" id="c_es_uca_b2mml_domain_equip_Equipment_classes" itemValue="id" items="${equipmentclasses}" multiple="true" path="/equipmentclasses" z="TV9JLKL+z8q+qGzKFCNO+92zlC0="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_equip_Equipment" render="${not empty dependencies}" z="r95OMnATydrhHH7jxLj47JhJRco="/>
+</div>

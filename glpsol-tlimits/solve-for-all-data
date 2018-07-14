@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MODEL_TL=tlimits.model
+MODEL_SW=slack_by_weight.model
+
+for i in *.data; do
+  NAME=${i%.data}
+  glpsol --model "$MODEL_TL" --data "$i" --wlp "$NAME-tl.clp" -o "$NAME-tl.txt" -w "$NAME-tl.sol"
+  glpsol --model "$MODEL_SW" --data "$i" --wlp "$NAME-sw.clp" -o "$NAME-sw.txt" -w "$NAME-sw.sol"
+done
+

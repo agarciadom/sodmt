@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_Unit" object="${unit}" path="/units" z="gkzmm/8rQIbpVknQ/3GW2Zefe7s=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_Unit_name" object="${unit}" z="7+wvpBBISdSmViiTuZZCB1Yl4u8="/>
+        <field:display field="baseUnit" id="s_es_uca_b2mml_domain_Unit_baseUnit" object="${unit}" z="ywfRBo8rUE5LzjM751tJ43l3vXg="/>
+        <field:display field="fractionUnit" id="s_es_uca_b2mml_domain_Unit_fractionUnit" object="${unit}" z="AqyvFR+DKQq5fG880d5rjJuCpBY="/>
+        <field:display field="conversionFactor" id="s_es_uca_b2mml_domain_Unit_conversionFactor" object="${unit}" z="fn37VmkqnT9i+LYhtFWB/yP61QE="/>
+        <field:display field="systemType" id="s_es_uca_b2mml_domain_Unit_systemType" object="${unit}" z="2sXCVL3NVcVwveDFJp01qyBYc+U="/>
+    </page:show>
+</div>

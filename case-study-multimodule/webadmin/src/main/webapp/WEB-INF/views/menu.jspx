@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_people" z="user-managed">
+            <menu:item id="i_person_new" messageCode="global_menu_new" render="false" url="/people?form" z="user-managed"/>
+            <menu:item id="i_personproperty_new" messageCode="global_menu_new" render="false" url="/personproperties?form" z="user-managed"/>
+            <menu:item id="i_personclass_new" messageCode="global_menu_new" render="false" url="/personclasses?form" z="user-managed"/>
+            <menu:item id="i_personclassproperty_new" messageCode="global_menu_new" render="false" url="/personclassproperties?form" z="user-managed"/>
+            <menu:item id="i_person_list" messageCode="global_generic" url="/people?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personproperty_list" messageCode="global_generic" url="/personproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personclass_list" messageCode="global_generic" url="/personclasses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personclassproperty_list" messageCode="global_generic" url="/personclassproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_qualificationtestspec_new" messageCode="global_menu_new" render="false" url="/qualificationtestspecs?form" z="user-managed"/>
+            <menu:item id="i_qualificationtestresult_new" messageCode="global_menu_new" render="false" url="/qualificationtestresults?form" z="user-managed"/>
+            <menu:item id="i_qualificationtestspec_list" messageCode="global_generic" url="/qualificationtestspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_qualificationtestresult_list" messageCode="global_generic" url="/qualificationtestresults?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_equipment" z="yKRPnfKMzsR9tDT2wPXuh1W+k80=">
+            <menu:item id="i_equipment_new" messageCode="global_menu_new" render="false" url="/equipments?form" z="user-managed"/>
+            <menu:item id="i_equipmentproperty_new" messageCode="global_menu_new" render="false" url="/equipmentproperties?form" z="user-managed"/>
+            <menu:item id="i_equipmentclass_new" messageCode="global_menu_new" render="false" url="/equipmentclasses?form" z="user-managed"/>
+            <menu:item id="i_equipmentclassproperty_new" messageCode="global_menu_new" render="false" url="/equipmentclassproperties?form" z="user-managed"/>
+            <menu:item id="i_equipment_list" messageCode="global_generic" url="/equipments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentproperty_list" messageCode="global_generic" url="/equipmentproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentclass_list" messageCode="global_generic" url="/equipmentclasses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentclassproperty_list" messageCode="global_generic" url="/equipmentclassproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentcapabilitytestspec_new" messageCode="global_menu_new" render="false" url="/equipmentcapabilitytestspecs?form" z="user-managed"/>
+            <menu:item id="i_equipmentcapabilitytestresult_new" messageCode="global_menu_new" render="false" url="/equipmentcapabilitytestresults?form" z="user-managed"/>
+            <menu:item id="i_equipmentcapabilitytestspec_list" messageCode="global_generic" url="/equipmentcapabilitytestspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentcapabilitytestresult_list" messageCode="global_generic" url="/equipmentcapabilitytestresults?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenancerequest_new" messageCode="global_menu_new" render="false" url="/maintenancerequests?form" z="user-managed"/>
+            <menu:item id="i_maintenanceworkorder_new" messageCode="global_menu_new" render="false" url="/maintenanceworkorders?form" z="user-managed"/>
+            <menu:item id="i_maintenanceresponse_new" messageCode="global_menu_new" render="false" url="/maintenanceresponses?form" z="user-managed"/>
+            <menu:item id="i_maintenancerequest_list" messageCode="global_generic" url="/maintenancerequests?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenanceworkorder_list" messageCode="global_generic" url="/maintenanceworkorders?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenanceresponse_list" messageCode="global_generic" url="/maintenanceresponses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_material" z="user-managed">
+            <menu:item id="i_materialclass_new" messageCode="global_menu_new" render="false" url="/materialclasses?form" z="user-managed"/>
+            <menu:item id="i_materialclassproperty_new" messageCode="global_menu_new" render="false" url="/materialclassproperties?form" z="user-managed"/>
+            <menu:item id="i_materialdefinition_new" messageCode="global_menu_new" render="false" url="/materialdefinitions?form" z="user-managed"/>
+            <menu:item id="i_materialdefinitionproperty_new" messageCode="global_menu_new" render="false" url="/materialdefinitionproperties?form" z="user-managed"/>
+            <menu:item id="i_materiallot_new" messageCode="global_menu_new" render="false" url="/materiallots?form" z="user-managed"/>
+            <menu:item id="i_materiallotproperty_new" messageCode="global_menu_new" render="false" url="/materiallotproperties?form" z="user-managed"/>
+            <menu:item id="i_materialsublot_new" messageCode="global_menu_new" render="false" url="/materialsublots?form" z="user-managed"/>
+            <menu:item id="i_materialclass_list" messageCode="global_generic" url="/materialclasses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialclassproperty_list" messageCode="global_generic" url="/materialclassproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialdefinition_list" messageCode="global_generic" url="/materialdefinitions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialdefinitionproperty_list" messageCode="global_generic" url="/materialdefinitionproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materiallot_list" messageCode="global_generic" url="/materiallots?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materiallotproperty_list" messageCode="global_generic" url="/materiallotproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialsublot_list" messageCode="global_generic" url="/materialsublots?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_qatestresult_new" messageCode="global_menu_new" render="false" url="/qatestresults?form" z="user-managed"/>
+            <menu:item id="i_qatestspec_new" messageCode="global_menu_new" render="false" url="/qatestspecs?form" z="user-managed"/>
+            <menu:item id="i_qatestresult_list" messageCode="global_generic" url="/qatestresults?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_qatestspec_list" messageCode="global_generic" url="/qatestspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_capability" z="user-managed">
+            <menu:item id="i_productioncapability_list" messageCode="global_generic" url="/productioncapabilities?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentcapability_list" messageCode="global_generic" url="/equipmentcapabilities?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentcapabilityproperty_list" messageCode="global_generic" url="/equipmentcapabilityproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialcapability_list" messageCode="global_generic" url="/materialcapabilities?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialcapabilityproperty_list" messageCode="global_generic" url="/materialcapabilityproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelcapability_list" messageCode="global_generic" url="/personnelcapabilities?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelcapabilityproperty_list" messageCode="global_generic" url="/personnelcapabilityproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_controller__gencapabilitiesindex_id" messageCode="global_generic" url="/gencapabilities/index" z="szM9tYmmlWn5lLkswXef0fyaaSw="/>
+        </menu:category>
+        <menu:category id="c_processsegment" z="8LuMps+0ccHf66JxNwW5uKKvsXQ=">
+            <menu:item id="i_processsegment_list" messageCode="global_generic" url="/processsegments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelsegmentspec_list" messageCode="global_generic" url="/personnelsegmentspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelsegmentspecproperty_list" messageCode="global_generic" url="/personnelsegmentspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentsegmentspec_list" messageCode="global_generic" url="/equipmentsegmentspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentsegmentspecproperty_list" messageCode="global_generic" url="/equipmentsegmentspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialsegmentspec_list" messageCode="global_generic" url="/materialsegmentspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialsegmentspecproperty_list" messageCode="global_generic" url="/materialsegmentspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_processsegmentdependency_list" messageCode="global_generic" url="/processsegmentdependencies?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_processsegmentparameter_list" messageCode="global_generic" url="/processsegmentparameters?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_productproductionrule" z="43SHlVIG8bY25Wzn6XgUdjR3M/c=">
+            <menu:item id="i_productproductionrule_list" messageCode="global_generic" url="/productionrules?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productsegment_list" messageCode="global_generic" url="/productsegments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productsegmentdependency_list" messageCode="global_generic" url="/productsegmentdependencies?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productparameter_list" messageCode="global_generic" url="/productparameters?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentspec_list" messageCode="global_generic" url="/equipmentspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentspecproperty_list" messageCode="global_generic" url="/equipmentspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialspec_list" messageCode="global_generic" url="/materialspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialspecproperty_list" messageCode="global_generic" url="/materialspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelspec_list" messageCode="global_generic" url="/personnelspecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelspecproperty_list" messageCode="global_generic" url="/personnelspecproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_productionschedule" z="u1gth+ydJmpNa1rO3o4JtqEojMI=">
+            <menu:item id="i_productionschedule_list" messageCode="global_generic" url="/productionschedules?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productionrequest_list" messageCode="global_generic" url="/productionrequests?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_segmentrequirement_list" messageCode="global_generic" url="/segmentrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productionparameter_list" messageCode="global_generic" url="/productionparameters?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelrequirement_list" messageCode="global_generic" url="/personnelrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelrequirementproperty_list" messageCode="global_generic" url="/personnelrequirementproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentrequirement_list" messageCode="global_generic" url="/equipmentrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentrequirementproperty_list" messageCode="global_generic" url="/equipmentrequirementproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialrequirement_list" messageCode="global_generic" url="/materialrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialrequirementproperty_list" messageCode="global_generic" url="/materialrequirementproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_productionperformance" z="A7IHA5z7KuuvMUSHNM3J9nbSHPo=">
+            <menu:item id="i_productionperformance_list" messageCode="global_generic" url="/productionperformances?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productionresponse_list" messageCode="global_generic" url="/productionresponses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_segmentresponse_list" messageCode="global_generic" url="/segmentresponses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_productiondata_list" messageCode="global_generic" url="/productiondatas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelactual_list" messageCode="global_generic" url="/personnelactuals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_personnelactualproperty_list" messageCode="global_generic" url="/personnelactualproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialactual_list" messageCode="global_generic" url="/materialactuals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materialactualproperty_list" messageCode="global_generic" url="/materialactualproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentactual_list" messageCode="global_generic" url="/equipmentactuals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_equipmentactualproperty_list" messageCode="global_generic" url="/equipmentactualproperties?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_types" z="user-managed">
+            <menu:item id="i_equipmenttype_list" messageCode="global_generic" url="/equipmenttypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenanceorderstatus_list" messageCode="global_generic" url="/maintenanceorderstatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenancerequeststatus_list" messageCode="global_generic" url="/maintenancerequeststatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_maintenanceresponsestatus_list" messageCode="global_generic" url="/maintenanceresponsestatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_materiallotstatus_list" messageCode="global_generic" url="/materiallotstatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_priority_list" messageCode="global_generic" url="/priorities?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+            <menu:item id="i_unit_list" messageCode="global_generic" url="/units?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        </menu:category>
+        <menu:category id="c_invisible" render="false">
+            <menu:category id="c_equipmentproperty" z="VSPjG2SsmT5RF0eo56ZrS1/ti4A="/>
+            <menu:category id="c_materialclass" z="FX8joQAYcelSgN9FCWLV0+Dsm5w="/>
+            <menu:category id="c_processsegmentdependency" z="auYh1jBYxl2tHkEsBsJTzZYlyj8=">
+                <menu:item id="i_processsegmentdependency_new" messageCode="global_menu_new" url="/processsegmentdependencies?form" z="qCmE9Mc1MRaSFf804/fxwsLmQxs="/>
+            </menu:category>
+            <menu:category id="c_materialsublot" z="UeFIaMau/rVWzMpM/9IQKkt5QyI="/>
+            <menu:category id="c_materiallotproperty" z="FSgWEoMoGqHZYhzpMagmQPusKTw="/>
+            <menu:category id="c_unit" z="o+Tl1QCuj7XJBjbkOUofJ6o7OTI=">
+                <menu:item id="i_unit_new" messageCode="global_menu_new" url="/units?form" z="oJDJNzw0PlIDkMTtID4g4gvkhTY="/>
+            </menu:category>
+            <menu:category id="c_personnelspec" z="dMG/yCol/lH1n1yj+iVkhj/TG64=">
+                <menu:item id="i_personnelspec_new" messageCode="global_menu_new" url="/personnelspecs?form" z="SndffUNbUE7KauQo5tvilqGnfYQ="/>
+            </menu:category>
+            <menu:category id="c_personclass" z="EC4TPS9wHNBWVDH7avx5/kFfEqE="/>
+            <menu:category id="c_materiallotstatus" z="ulj9KSqgfXnxGkvvpJmXYHut88M=">
+                <menu:item id="i_materiallotstatus_new" messageCode="global_menu_new" url="/materiallotstatuses?form" z="14HaW4fYtpa/hv75mmq2JqiLeMA="/>
+            </menu:category>
+            <menu:category id="c_personnelspecproperty" z="Grz6uZQ0yeS2E7iGgaaG3X1rI8E=">
+                <menu:item id="i_personnelspecproperty_new" messageCode="global_menu_new" url="/personnelspecproperties?form" z="jeriD/UNoijFwmRFy8u/lBG1Zsw="/>
+            </menu:category>
+            <menu:category id="c_maintenanceresponse" z="I/0/xtiW2TcLUiIFbxYh4TDpqQY="/>
+            <menu:category id="c_equipmentcapabilityproperty" z="NXfBDDIqHFGnoZZe9Mt7MMJ91mQ=">
+                <menu:item id="i_equipmentcapabilityproperty_new" messageCode="global_menu_new" url="/equipmentcapabilityproperties?form" z="kApuoc6EFhytGYa0P47NfY2iMPI="/>
+            </menu:category>
+            <menu:category id="c_priority" z="ZcX/cssHh6Fl+sRlMnxa97/iW+8=">
+                <menu:item id="i_priority_new" messageCode="global_menu_new" url="/priorities?form" z="rZjlYAocJZMSohR2fQHpLrrp7a4="/>
+            </menu:category>
+            <menu:category id="c_productsegmentdependency" z="HLpdC8j/a0uAaTwKel25z/CFwwk=">
+                <menu:item id="i_productsegmentdependency_new" messageCode="global_menu_new" url="/productsegmentdependencies?form" z="AU1PF4f+YFBFZ85qqijU0Yvqsxg="/>
+            </menu:category>
+            <menu:category id="c_equipmentcapability" z="4ZgruhYphscXJpa3MTWlcO0gIu0=">
+                <menu:item id="i_equipmentcapability_new" messageCode="global_menu_new" url="/equipmentcapabilities?form" z="SgV9t7ZssE98FahDK5PxtErQBRQ="/>
+            </menu:category>
+            <menu:category id="c_materialdefinition" z="x0YJ/jcwkhwn/RevoQeZC7RQzMQ="/>
+            <menu:category id="c_maintenanceworkorder" z="7WFlwT/5TMYNEpTlo/b/PbmdGgE="/>
+            <menu:category id="c_capabilitytype" z="9N7CVbSIaFInGS9ClDkuLdFDa+A=">
+                <menu:item id="i_capabilitytype_new" messageCode="global_menu_new" url="/capabilitytypes?form" z="Iwh3xD/qNWmFJ7/lsnYFOJ9Z0DU="/>
+            </menu:category>
+            <menu:category id="c_equipmentsegmentspec" z="F0luBBza/rTN+uhvv7MHaHcGQlQ=">
+                <menu:item id="i_equipmentsegmentspec_new" messageCode="global_menu_new" url="/equipmentsegmentspecs?form" z="H0aVNEzNQ7DcjsUELMZm8GCJ1Ek="/>
+            </menu:category>
+            <menu:category id="c_qualificationtestspec" z="xU06PcVrBtufa22/ZwE4y091VNQ="/>
+            <menu:category id="c_qatestspec" z="iEAfUAgNSyIOFC98pk0vs69rHcg="/>
+            <menu:category id="c_materialspecproperty" z="CCT+5uuQ3IdlTIK2pfDFSpysdXE=">
+                <menu:item id="i_materialspecproperty_new" messageCode="global_menu_new" url="/materialspecproperties?form" z="iqg6u42zbtD1Fa0UMaAe6+e6LBo="/>
+            </menu:category>
+            <menu:category id="c_maintenancerequest" z="ybIa7+ow+yUFxUEe9MUZ8dH53TY="/>
+            <menu:category id="c_executiondependencytype" z="7vhj9EuqhCZa9RX1RP6/juGNUP0=">
+                <menu:item id="i_executiondependencytype_new" messageCode="global_menu_new" url="/processsegmentdependencytypes?form" z="hMUv5yHXqlnAVg/eNuT3TskE3U8="/>
+            </menu:category>
+            <menu:category id="c_materialclassproperty" z="nZmyN7C9/ULuo2C6on6TkWnn3bA="/>
+            <menu:category id="c_personnelcapability" z="tNfbu2ziEXv3FluDmzbjegc37yQ=">
+                <menu:item id="i_personnelcapability_new" messageCode="global_menu_new" url="/personnelcapabilities?form" z="g8Npv1RQMwYs2C0ev9EEDNFScCg="/>
+            </menu:category>
+            <menu:category id="c_personnelcapabilityproperty" z="FcHO3jzBVIVJWVm7m7OjFTtmNQE=">
+                <menu:item id="i_personnelcapabilityproperty_new" messageCode="global_menu_new" url="/personnelcapabilityproperties?form" z="6tTjAEbDa8ct7csUSgzXEC2X5wQ="/>
+            </menu:category>
+            <menu:category id="c_materialspec" z="gbB7HzfVkG/5kiKe0P5ik2DHnnM=">
+                <menu:item id="i_materialspec_new" messageCode="global_menu_new" url="/materialspecs?form" z="2HFFR2j+f3E2zs+A+vumxMiiYQg="/>
+            </menu:category>
+            <menu:category id="c_equipmentclass" z="0AHYe5eoXuXKI/g69SERVd8ApMk="/>
+            <menu:category id="c_productsegment" z="mtVDzKrxbfU1fJwwWM2sAwJ10JI=">
+                <menu:item id="i_productsegment_new" messageCode="global_menu_new" url="/productsegments?form" z="V0k7I3AgEDCD2nuEY+5MbBGgk94="/>
+            </menu:category>
+            <menu:category id="c_equipmentsegmentspecproperty" z="Y8MaAa1im4GrhzOv3ElZMDjtJC4=">
+                <menu:item id="i_equipmentsegmentspecproperty_new" messageCode="global_menu_new" url="/equipmentsegmentspecproperties?form" z="MRjBzzm/NoAR1lSvIUSRr7sfSqM="/>
+            </menu:category>
+            <menu:category id="c_equipmentspec" z="PYxAlFBorBCbxPxlP1FyWaUDUlw=">
+                <menu:item id="i_equipmentspec_new" messageCode="global_menu_new" url="/equipmentspecs?form" z="/2tFdV/g5CR3I/yWctdxzB4iItg="/>
+            </menu:category>
+            <menu:category id="c_qatestresult" z="YESfiXR+gR2EaYZfwcqkcXozfsE="/>
+            <menu:category id="c_processsegmentparameter" z="FwSwNINx7xC7Cj26cPAOwgfjWfE=">
+                <menu:item id="i_processsegmentparameter_new" messageCode="global_menu_new" url="/processsegmentparameters?form" z="//o8Ie2XBDsCxoKTLF5uUuQbokU="/>
+            </menu:category>
+            <menu:category id="c_productioncapability" z="xZiZnEL6c/8xyPHXcV1euyrNu7w=">
+                <menu:item id="i_productioncapability_new" messageCode="global_menu_new" url="/productioncapabilities?form" z="qocE09C4TGMBcbV6FlXUfkJUazE="/>
+            </menu:category>
+            <menu:category id="c_materialdefinitionproperty" z="nfwRP5QQlWndWntqDhzh/WmYVE0="/>
+            <menu:category id="c_equipmentclassproperty" z="57zpAbuyM/18Nbk2cT7UxdT9bLs="/>
+            <menu:category id="c_personnelsegmentspec" z="TrixJnl7Q19Zu++cgPEaflKTRKs=">
+                <menu:item id="i_personnelsegmentspec_new" messageCode="global_menu_new" url="/personnelsegmentspecs?form" z="WewfIGJmATcVgNsrBpngloeOdeU="/>
+            </menu:category>
+            <menu:category id="c_equipmentspecproperty" z="/OchjWirfKmt0Oe9bizk1hHxINs=">
+                <menu:item id="i_equipmentspecproperty_new" messageCode="global_menu_new" url="/equipmentspecproperties?form" z="JabBi9dXSrS99TZ6bh/7NmGwke4="/>
+            </menu:category>
+            <menu:category id="c_personnelsegmentspecproperty" z="j1R9koG+kLHai/gzH27Po68TaJQ=">
+                <menu:item id="i_personnelsegmentspecproperty_new" messageCode="global_menu_new" url="/personnelsegmentspecproperties?form" z="JQm5MLJofnsUeCnv93kctoXrsYw="/>
+            </menu:category>
+            <menu:category id="c_equipmenttype" z="D6eWmvz+Oox6z6oARNRcOypLw8A=">
+                <menu:item id="i_equipmenttype_new" messageCode="global_menu_new" url="/equipmenttypes?form" z="kKFtJ19pAp6QzY33TfCocIO/Ais="/>
+            </menu:category>
+            <menu:category id="c_materialsegmentspec" z="5nNw1SU8Cq0ezJ6dvUW/Vbjr2MQ=">
+                <menu:item id="i_materialsegmentspec_new" messageCode="global_menu_new" url="/materialsegmentspecs?form" z="WrByKZKQ3cNhpXsLXLV+4KfHDbk="/>
+            </menu:category>
+            <menu:category id="c_materialcapabilityproperty" z="bPj1Ke7L1E5ldfZXX1BK5tgw8VY=">
+                <menu:item id="i_materialcapabilityproperty_new" messageCode="global_menu_new" url="/materialcapabilityproperties?form" z="dWKYtnCznwMX/vVcUuINrbyo9ds="/>
+            </menu:category>
+            <menu:category id="c_maintenancerequeststatus" z="RkXlgDm5NsSWz1UGQDI60MdCqqE=">
+                <menu:item id="i_maintenancerequeststatus_new" messageCode="global_menu_new" url="/maintenancerequeststatuses?form" z="SlAt+DOdMkHahE4oqDSg+aHcdsM="/>
+            </menu:category>
+            <menu:category id="c_maintenanceorderstatus" z="BDMuG57nA7qsYhYO3HDiZS83QE4=">
+                <menu:item id="i_maintenanceorderstatus_new" messageCode="global_menu_new" url="/maintenanceorderstatuses?form" z="yzfhmQYHdpa+M4OYrutdHET055o="/>
+            </menu:category>
+            <menu:category id="c_person" z="Cz66KzcF6GdyygpbYfiE+EkFFFA="/>
+            <menu:category id="c_materialusetype" z="Vz9YRqfxJvZ95YXEFh07rBncnLU=">
+                <menu:item id="i_materialusetype_new" messageCode="global_menu_new" url="/materialusetypes?form" z="2I92B+VQaKSWwxnvE/AfnZAtz24="/>
+            </menu:category>
+            <menu:category id="c_equipmentcapabilitytestspec" z="9eX6Sw6fG5kA3h0JzI7ZtjnLfLs="/>
+            <menu:category id="c_materiallot" z="wLE+JSpCVVwRxfLoofY1bwpAmi0="/>
+            <menu:category id="c_productparameter" z="JrBgyPkn3eMLYLEwMStYRv6FEx4=">
+                <menu:item id="i_productparameter_new" messageCode="global_menu_new" url="/productparameters?form" z="0Gw/pni1HXk7cXgGynkwdBw9DMQ="/>
+            </menu:category>
+            <menu:category id="c_materialcapability" z="H5n8FIqUgJM3ijI/Z2i5o3CX60c=">
+                <menu:item id="i_materialcapability_new" messageCode="global_menu_new" url="/materialcapabilities?form" z="VE6YC1Ko9AoXsIaErRNIWbDgM7s="/>
+            </menu:category>
+            <menu:category id="c_personproperty" z="PD9RLACQ4GYFC8hCny5A53YaElU="/>
+            <menu:category id="c_maintenanceresponsestatus" z="Qdi7ZHLI2TkMFYX74kpU4WlAHuE=">
+                <menu:item id="i_maintenanceresponsestatus_new" messageCode="global_menu_new" url="/maintenanceresponsestatuses?form" z="wpAuJC24XpdK+qmLqjYhNwoxcSw="/>
+            </menu:category>
+            <menu:category id="c_personclassproperty" z="vppC9NevZX7I+xhajU8NPJaxqGE="/>
+            <menu:category id="c_materialsegmentspecproperty" z="lGCCmRXI0/s1ZxAx+2q+E3aALMo=">
+                <menu:item id="i_materialsegmentspecproperty_new" messageCode="global_menu_new" url="/materialsegmentspecproperties?form" z="HF2U6AOXqgTiTRsYPBX5qJp1v2M="/>
+            </menu:category>
+            <menu:category id="c_equipmentcapabilitytestresult" z="cYUleYU9JJCeed673GHUIgt9OeA="/>
+            <menu:category id="c_qualificationtestresult" z="jO0fVWbEJZqljQ0TOKip7WRVbBM="/>
+            <menu:item id="i_productproductionrule_new" messageCode="global_menu_new" url="/productionrules?form" z="ezDivC/o6RRAMgHSyjRLHZlM+9E="/>
+            <menu:category id="c_equipmentrequirement" z="G7SkI+DUiwSw6lpxVYCt+UsdB8g=">
+                <menu:item id="i_equipmentrequirement_new" messageCode="global_menu_new" url="/equipmentrequirements?form" z="tKzX7X9VMxLIV5eD9tFrN25exxs="/>
+            </menu:category>
+            <menu:category id="c_materialrequirement" z="J0DWfgjEnZL2/XVwENvlXyBk298=">
+                <menu:item id="i_materialrequirement_new" messageCode="global_menu_new" url="/materialrequirements?form" z="7VHkOUO09qnwkm2OHh73+V9m/es="/>
+            </menu:category>
+            <menu:category id="c_personnelrequirement" z="hYeHa5jM5lj/H9/VJ2rvEn5Yu7g=">
+                <menu:item id="i_personnelrequirement_new" messageCode="global_menu_new" url="/personnelrequirements?form" z="+bGR1YgKYipiBIhUQD5qBDmtP8E="/>
+            </menu:category>
+            <menu:category id="c_personnelrequirementproperty" z="PPkzkHlqcdLYhv4ZoQ4J3UnYuXM=">
+                <menu:item id="i_personnelrequirementproperty_new" messageCode="global_menu_new" url="/personnelrequirementproperties?form" z="BVCidmsdzDL96MdhLTeITATpxpM="/>
+            </menu:category>
+            <menu:category id="c_materialrequirementproperty" z="/E3VPt16d+m6uQr3vq0ZwBrwA+U=">
+                <menu:item id="i_materialrequirementproperty_new" messageCode="global_menu_new" url="/materialrequirementproperties?form" z="mJ5hClxzMrICBBhEpVlfYHSkyUk="/>
+            </menu:category>
+            <menu:category id="c_equipmentrequirementproperty" z="3jmeL/NUI2kogmvgB/srlU6YCRI=">
+                <menu:item id="i_equipmentrequirementproperty_new" messageCode="global_menu_new" url="/equipmentrequirementproperties?form" z="3KCIRfUpkjNMbcxn88KyCUPgNR0="/>
+            </menu:category>
+            <menu:category id="c_productionparameter" z="PQDMjMV/UmCfHIvaanwrXQjBqUU=">
+                <menu:item id="i_productionparameter_new" messageCode="global_menu_new" url="/productionparameters?form" z="767MYAwDx0loSgGtgvHiAP5Y0/Q="/>
+            </menu:category>
+            <menu:category id="c_productionrequest" z="mUxl2bPvrvXf+YBZhSGwBZIz6Bc=">
+                <menu:item id="i_productionrequest_new" messageCode="global_menu_new" url="/productionrequests?form" z="FI8qO+PJ1VWfCBPN+/HzckDqinY="/>
+            </menu:category>
+            <menu:category id="c_segmentrequirement" z="nOQeHp/01a20JeiGjcMIsUU/iH4=">
+                <menu:item id="i_segmentrequirement_new" messageCode="global_menu_new" url="/segmentrequirements?form" z="XlR/xCR6Ak+EHgLptWY708KEm/w="/>
+            </menu:category>
+            <menu:item id="i_productionschedule_new" messageCode="global_menu_new" url="/productionschedules?form" z="aCvFEkgr2bzG+/zIxeDdLWsTKMI="/>
+            <menu:item id="i_productionperformance_new" messageCode="global_menu_new" url="/productionperformances?form" z="NWYZ7xf+rw05WJAGhrpCRVDTOqY="/>
+            <menu:category id="c_equipmentactual" z="KFPHTJtuZma0oPswBYFhhl9oHJ4=">
+                <menu:item id="i_equipmentactual_new" messageCode="global_menu_new" url="/equipmentactuals?form" z="Ve3/0hjZwc7Ump7c7GgWTid24Ao="/>
+            </menu:category>
+            <menu:category id="c_materialactual" z="XH8/0FZSGW+Tp7Xi2AlszyqMD6w=">
+                <menu:item id="i_materialactual_new" messageCode="global_menu_new" url="/materialactuals?form" z="LLTJxTjuw8VQS37i2tkNJfOM8eI="/>
+            </menu:category>
+            <menu:category id="c_personnelactual" z="D+B1MseBhOUqOAfUPtTi6aBY2no=">
+                <menu:item id="i_personnelactual_new" messageCode="global_menu_new" url="/personnelactuals?form" z="pdbz6Z1eWyio8/OeG+PfAXGcBJs="/>
+            </menu:category>
+            <menu:category id="c_personnelactualproperty" z="e11rA1+Er1jArUcvFEl0wRat5ZQ=">
+                <menu:item id="i_personnelactualproperty_new" messageCode="global_menu_new" url="/personnelactualproperties?form" z="u7h6D/hOzuhtsLe76Ux8q/TCFOs="/>
+            </menu:category>
+            <menu:category id="c_equipmentactualproperty" z="8tNMk0ZjgnS4lprExgJjNjCo3xY=">
+                <menu:item id="i_equipmentactualproperty_new" messageCode="global_menu_new" url="/equipmentactualproperties?form" z="7vFj/5LPFWgDPEP70jt/YJEbNYg="/>
+            </menu:category>
+            <menu:category id="c_materialactualproperty" z="NHywwo+YtEPr4JvUdEgThuH4jvY=">
+                <menu:item id="i_materialactualproperty_new" messageCode="global_menu_new" url="/materialactualproperties?form" z="OAne0LlzVcJe19Kp+4mRtAtZjvU="/>
+            </menu:category>
+            <menu:category id="c_productiondata" z="Wu20+7WyGQ9EwNvlKQ65mzOFeBs=">
+                <menu:item id="i_productiondata_new" messageCode="global_menu_new" url="/productiondatas?form" z="rukGsnLnZBw/+8RT0c6Gs5W52yM="/>
+            </menu:category>
+            <menu:category id="c_productionresponse" z="YQmQkvfWTEyP7wuchLw5oBmYstQ=">
+                <menu:item id="i_productionresponse_new" messageCode="global_menu_new" url="/productionresponses?form" z="4Mh3AhkRK54Dit2A88ZxRN/+Du0="/>
+            </menu:category>
+            <menu:category id="c_segmentresponse" z="Xym8uGtYsEU89vyS+7/6XlXBES0=">
+                <menu:item id="i_segmentresponse_new" messageCode="global_menu_new" url="/segmentresponses?form" z="I+zFhgubuicN6S9Bajgfxrbqi6g="/>
+            </menu:category>
+            <menu:item id="i_processsegment_new" messageCode="global_menu_new" url="/processsegments?form" z="uS/dK4wp6fxPUJFiA1iN6vzE7fA="/>
+            <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8="/>
+        </menu:category>
+    </menu:menu>
+</div>

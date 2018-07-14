@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_product_ProductParameter" items="${productparameters}" z="Vc2Zd9w8t1Sa00jr7CLE33gYCGY=">
+        <table:table data="${productparameters}" id="l_es_uca_b2mml_domain_product_ProductParameter" path="/productparameters" z="tDGTmBD6eHyr83GgPm7HYDXXROM=">
+            <table:column id="c_es_uca_b2mml_domain_product_ProductParameter_segment" property="segment" z="za6EaafTfuVDO9YPTly7D9qGlAE="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductParameter_description" property="description" z="JxOibBv9cz30dIKQFcstZCkoEoI="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductParameter_parameterName" property="parameterName" z="ePRbHj+fxgqgafNJ73DUTLxLHeo="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductParameter_parameterValue" property="parameterValue" z="MnWJrJ6M4SZVOZoimFdWxeJMYz0="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductParameter_unit" property="unit" z="viPefqY6/bu83GxXbUuu4YDSi9U="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="personnelrequirementproperties/list">
+        <put-attribute name="body" value="/WEB-INF/views/personnelrequirementproperties/list.jspx"/>
+    </definition>
+<definition extends="default" name="personnelrequirementproperties/show">
+        <put-attribute name="body" value="/WEB-INF/views/personnelrequirementproperties/show.jspx"/>
+    </definition>
+<definition extends="default" name="personnelrequirementproperties/create">
+        <put-attribute name="body" value="/WEB-INF/views/personnelrequirementproperties/create.jspx"/>
+    </definition>
+<definition extends="default" name="personnelrequirementproperties/update">
+        <put-attribute name="body" value="/WEB-INF/views/personnelrequirementproperties/update.jspx"/>
+    </definition>
+</tiles-definitions>

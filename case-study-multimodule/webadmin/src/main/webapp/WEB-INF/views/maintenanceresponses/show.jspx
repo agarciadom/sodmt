@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_MaintenanceResponse" object="${maintenanceresponse}" path="/maintenanceresponses" z="5gor2gRjm3nvGShUN7sjMfBChPE=">
+        <field:display field="workOrder" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_workOrder" object="${maintenanceresponse}" z="GM+A88buGHDUHma83jAZJ/mZLG4="/>
+        <field:display field="responseId" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_responseId" object="${maintenanceresponse}" z="DXETvGrJPEZr8kms91jJc5Wi6lA="/>
+        <field:display field="cause" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_cause" object="${maintenanceresponse}" z="FpO8EiovgqYKzcb7TCeIcfWW2+A="/>
+        <field:display field="correction" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_correction" object="${maintenanceresponse}" z="mZCgZoBdYfXlIeHzpi7FHB5yJq0="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceResponse_actualstartdate_date_format}" field="actualStartDate" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_actualStartDate" object="${maintenanceresponse}" z="xEKrgVeDTs7F7Nk6in8serCHnMo="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceResponse_actualfinishdate_date_format}" field="actualFinishDate" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_actualFinishDate" object="${maintenanceresponse}" z="Zgyly3wxe3R7OCCNlgB5uSd7aPA="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceResponse_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_publishedDate" object="${maintenanceresponse}" z="Pewn6fKruZFjLW3gTCONl5U2XL8="/>
+        <field:display field="status" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_status" object="${maintenanceresponse}" z="qgdavhRKHPM8gquaB8Y5oT3qVpI="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceResponse_statusdate_date_format}" field="statusDate" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_statusDate" object="${maintenanceresponse}" z="iVQeMR+7/8mdC2JtQo1CgYOWV08="/>
+        <field:display field="responsible" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_responsible" object="${maintenanceresponse}" z="/sSkLIh2J5giQYFuY/qixkefKvo="/>
+        <field:display field="consumables" id="s_es_uca_b2mml_domain_equip_MaintenanceResponse_consumables" object="${maintenanceresponse}" z="/7Bcawn0UC7j7H15OMPbQo8Cp8k="/>
+    </page:show>
+</div>

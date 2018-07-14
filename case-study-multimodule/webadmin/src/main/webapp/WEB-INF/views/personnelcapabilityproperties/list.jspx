@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty" items="${personnelcapabilitypropertys}" z="JFL2k6jzaPGanQhU09zzIAoLJxI=">
+        <table:table data="${personnelcapabilitypropertys}" id="l_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty" path="/personnelcapabilityproperties" z="tKmfQ/nI+eJmMjR79wvG3eZQaA4=">
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_capability" property="capability" z="oWAJErAx9quDfwc7Y/fab4uW1To="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_name" property="name" z="7t7gBd0NvMTpbIbTKXiQ39OK5Ls="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_description" property="description" z="x9dd282w9fECFuaomfdnA6f0y+k="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_value" property="value" z="2QLufUX7+Q1ikS4BSaAKZdB55GA="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_unit" property="unit" z="QzDaeqaznDG6nTCrr7Ts4Tu9RUQ="/>
+        </table:table>
+    </page:list>
+</div>

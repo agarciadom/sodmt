@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_SegmentRequirement" items="${segmentrequirements}" z="fPC+qK+9qhZu3+zsSc6tMj0mRjw=">
+        <table:table data="${segmentrequirements}" id="l_es_uca_b2mml_domain_schedule_SegmentRequirement" path="/segmentrequirements" z="PGjvasMNbTmtLrmMd74OOCWKv0g=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_segmentRequirementId" property="segmentRequirementId" z="AEA2ViwI6L9y0SJcdV0SNBcx+SE="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_processSegment" property="processSegment" z="6yYaHrroLOyi1wG8wsCCQUAmXKM="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_productSegment" property="productSegment" z="K1K4UAm3mTPLbQKTXRdL80IkmP4="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_description" property="description" z="hYAZe3xUl2F39/Hj2Xkdhk6t9iw="/>
+            <table:column calendar="true" dateTimePattern="${segmentRequirement_earlieststarttime_date_format}" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_earliestStartTime" property="earliestStartTime" z="iVKTHuRWcuBhtcXZ4JZZ8vUNnhY="/>
+            <table:column calendar="true" dateTimePattern="${segmentRequirement_latestendtime_date_format}" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_latestEndTime" property="latestEndTime" z="i4EN7rhtoMXsSkf9Kk///S5PRrE="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec" modelAttribute="equipmentSegmentSpec" path="/equipmentsegmentspecs" versionField="Version" z="hhsOVpB7TXTC0DRtKbAS6YW5IO8=">
+        <field:select field="processSegment" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_processSegment" itemValue="id" items="${processsegments}" path="/processsegments" required="true" z="NsMKTiKTPT3ZNmhe7PUi05ersCQ="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_description" z="8PUikWMgfZRsrS5Gn3E+CpeyJ+o="/>
+        <field:select field="equipment" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_equipment" itemValue="id" items="${equipments}" path="/equipments" z="SDba7Uxp/GMifBqIoll5Unfzbh8="/>
+        <field:select field="equipmentClass" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_equipmentClass" itemValue="id" items="${equipmentclasses}" path="/equipmentclasses" z="KtGWH/Tmry3BuN0J3PC8t15IL1w="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_quantity" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpec_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment Segment Spec Property" z="Yh5PjdgZ9PB5qtf/evPdVZ7Al14="/>
+    </form:update>
+</div>

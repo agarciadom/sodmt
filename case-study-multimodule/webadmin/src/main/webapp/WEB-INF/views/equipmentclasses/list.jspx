@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_EquipmentClass" items="${equipmentclasses}" z="2dhTOKws/2aeGE30kGq8DXDvU54=">
+        <table:table data="${equipmentclasses}" id="l_es_uca_b2mml_domain_equip_EquipmentClass" path="/equipmentclasses" z="RyErwGFND3MKik/OiDsCk5VPI6Q=">
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClass_name" property="name" z="0kg1V6c/wzk1e7ULQAraoiFD+8k="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClass_description" property="description" z="K6hGid3Vn+P4RgPg1s3Qn3pimxo="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClass_members" property="members" z="+rr4fjv+fZdOr0DAyESkAYJ0vvc="/>
+        </table:table>
+    </page:list>
+</div>

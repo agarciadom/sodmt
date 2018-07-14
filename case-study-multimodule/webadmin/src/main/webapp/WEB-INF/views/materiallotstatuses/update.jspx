@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_material_MaterialLotStatus" modelAttribute="materialLotStatus" path="/materiallotstatuses" versionField="Version" z="wO7/fzo5E1RufaGY7piVSIIjtrg=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_material_MaterialLotStatus_name" required="true" z="6Q/qdY9xrW7iGtQ3DlDj1pm8Uj0="/>
+    </form:update>
+</div>

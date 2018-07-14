@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="personnelsegmentspecs/list">
+        <put-attribute name="body" value="/WEB-INF/views/personnelsegmentspecs/list.jspx"/>
+    </definition>
+<definition extends="default" name="personnelsegmentspecs/show">
+        <put-attribute name="body" value="/WEB-INF/views/personnelsegmentspecs/show.jspx"/>
+    </definition>
+<definition extends="default" name="personnelsegmentspecs/create">
+        <put-attribute name="body" value="/WEB-INF/views/personnelsegmentspecs/create.jspx"/>
+    </definition>
+<definition extends="default" name="personnelsegmentspecs/update">
+        <put-attribute name="body" value="/WEB-INF/views/personnelsegmentspecs/update.jspx"/>
+    </definition>
+</tiles-definitions>

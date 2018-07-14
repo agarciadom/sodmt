@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_people_QualificationTestResult" modelAttribute="qualificationTestResult" path="/qualificationtestresults" render="${empty dependencies}" z="r+0QyvGJd0EIhSrlcIm6B028KNg=">
+        <field:select field="testSpecification" id="c_es_uca_b2mml_domain_people_QualificationTestResult_testSpecification" itemValue="id" items="${qualificationtestspecs}" path="/qualificationtestspecs" required="true" z="Vvgk5D5o1wRmfnyuKC7LP4j0qGk="/>
+        <field:select field="personProperty" id="c_es_uca_b2mml_domain_people_QualificationTestResult_personProperty" itemValue="id" items="${personproperties}" path="/personproperties" required="true" z="eNJJqt+nGnSPaEEcKx+gfXqYBWI="/>
+        <field:datetime dateTimePattern="${qualificationTestResult_testdate_date_format}" field="testDate" id="c_es_uca_b2mml_domain_people_QualificationTestResult_testDate" required="true" z="A1muEPl19NxluPQhVbLdeCFqzdY="/>
+        <field:datetime dateTimePattern="${qualificationTestResult_expiration_date_format}" field="expiration" id="c_es_uca_b2mml_domain_people_QualificationTestResult_expiration" required="true" z="hazlKbvUQP4AS6qxSUhdmwfZIX8="/>
+        <field:input field="testResult" id="c_es_uca_b2mml_domain_people_QualificationTestResult_testResult" required="true" z="1B0uE+REy9BIOedUf55/JA/Tpmw="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_people_QualificationTestResult_unit" itemValue="id" items="${units}" path="/units" required="true" z="xB8JR3VWQas+QrCyegxFPf2WWvE="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_people_QualificationTestResult" render="${not empty dependencies}" z="P0Q8Ytwnh8hCJiax+qt32ljrSQw="/>
+</div>

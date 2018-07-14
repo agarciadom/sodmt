@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_EquipmentCapabilityTestSpec" object="${equipmentcapabilitytestspec}" path="/equipmentcapabilitytestspecs" z="Hzxp3ElsJLYt+03ByipNjOM4KR4=">
+        <field:display field="testIdentifier" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestSpec_testIdentifier" object="${equipmentcapabilitytestspec}" z="q+Vg9BW3IfXrCIMA7rZvSpkHb0c="/>
+        <field:display field="testVersion" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestSpec_testVersion" object="${equipmentcapabilitytestspec}" z="CfzrkPg55tOsyZF/DUmq4xFR4dw="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestSpec_description" object="${equipmentcapabilitytestspec}" z="JMvhNKqkdT+C1Bery6rUXzfeV58="/>
+        <field:display field="equipmentClassProperty" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestSpec_equipmentClassProperty" object="${equipmentcapabilitytestspec}" z="t70nPl/wjdO+qw2njFuJB+6kLtQ="/>
+    </page:show>
+</div>

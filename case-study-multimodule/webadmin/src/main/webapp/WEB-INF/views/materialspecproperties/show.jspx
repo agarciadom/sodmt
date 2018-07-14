@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_product_MaterialSpecProperty" object="${materialspecproperty}" path="/materialspecproperties" z="xZGIH8GRoHJ+PFyLiR2BOipPh3Q=">
+        <field:display field="specification" id="s_es_uca_b2mml_domain_product_MaterialSpecProperty_specification" object="${materialspecproperty}" z="G1HE7exQbjaofnJf/mwkwoIBvWw="/>
+        <field:display field="name" id="s_es_uca_b2mml_domain_product_MaterialSpecProperty_name" object="${materialspecproperty}" z="sIdLObcYKK+MKT35eDheSSGej3c="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_product_MaterialSpecProperty_description" object="${materialspecproperty}" z="Mrg3BQ85vKwA/BZAuXeCXOfdCoI="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_product_MaterialSpecProperty_value" object="${materialspecproperty}" z="siBy8h+Z93i90QPgqWEAqc95ps8="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_product_MaterialSpecProperty_unit" object="${materialspecproperty}" z="fZPtVq66Z9DVZCjRUjKw21VtHeA="/>
+    </page:show>
+</div>

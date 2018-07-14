@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_Priority" modelAttribute="priority" path="/priorities" render="${empty dependencies}" z="TUcGDGsI7J/zlj/B2HRzUBE9ZY8=">
+        <field:input field="name" id="c_es_uca_b2mml_domain_Priority_name" required="true" z="MNks6JkS/xS2yDg02f+UjsNZLnc="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_Priority" render="${not empty dependencies}" z="sPfRknEF0FzYdsy6X0y+LPngjkw="/>
+</div>

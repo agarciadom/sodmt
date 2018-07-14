@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_schedule_SegmentRequirement" modelAttribute="segmentRequirement" path="/segmentrequirements" render="${empty dependencies}" z="xxiUgvY9oyDQUaGfEXMVY1T/9Vc=">
+        <field:textarea field="segmentRequirementId" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_segmentRequirementId" required="true" z="cTpa3bn8DyXUZKF45txXY+riDPY="/>
+        <field:select field="processSegment" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_processSegment" itemValue="id" items="${processsegments}" path="/processsegments" z="ic56NOy9ISx9VtNTi9lCL2JDApw="/>
+        <field:select field="productSegment" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_productSegment" itemValue="id" items="${productsegments}" path="/productsegments" z="hGFL8nj0dGPDOb5OrbSUSpRSX/Y="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_description" z="Mg+ytCxrH13JX7urBr7oOKwYSFc="/>
+        <field:datetime dateTimePattern="${segmentRequirement_earlieststarttime_date_format}" field="earliestStartTime" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_earliestStartTime" z="i/AW+9kBQUQ5BNxdx62GSBOZDn4="/>
+        <field:datetime dateTimePattern="${segmentRequirement_latestendtime_date_format}" field="latestEndTime" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_latestEndTime" z="EFcIf98gDMtn1Pb11Kpo90OWM+o="/>
+        <field:input field="durationValue" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_duration" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="durationUnit" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_durationUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="productionRequest" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_productionRequest" itemValue="id" items="${productionrequests}" path="/productionrequests" required="true" z="J/PezVsDngPWhY0r6TFqp9cHXwQ="/>
+        <field:simple field="equipmentRequirements" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_equipmentRequirements" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment Requirement" z="v+g68ne9dFsrSNotTDTNDiH50g8="/>
+        <field:simple field="personnelRequirements" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_personnelRequirements" messageCode="entity_reference_not_managed" messageCodeAttribute="Personnel Requirement" z="tEB4uRFEn02SDSPNENVFfnnhZP8="/>
+        <field:simple field="materialRequirements" id="c_es_uca_b2mml_domain_schedule_SegmentRequirement_materialRequirements" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Requirement" z="TMFGYD6JcvDU4itQJokFSCQvIv4="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_schedule_SegmentRequirement" render="${not empty dependencies}" z="ejgTgkfzT0HGMDYdsVMm/K5OShw="/>
+</div>

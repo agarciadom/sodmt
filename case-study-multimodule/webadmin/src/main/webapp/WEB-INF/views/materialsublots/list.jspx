@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_MaterialSublot" items="${materialsublots}" z="gg1Ja1fURBtbM0+03kxqVJxUTHU=">
+        <table:table data="${materialsublots}" id="l_es_uca_b2mml_domain_material_MaterialSublot" path="/materialsublots" z="vxRVIiadJdaIQzOrklxm3/KFTCg=">
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_lot" property="lot" z="sZ7GXPmlknpnbV2GHSul7dM5YLo="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_parent" property="parent" z="kAMR1kFdAzbghy62x9oT2/dcKJg="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_sublotId" property="sublotId" z="UzAJ0CSg1OVlfGt/4AMoiNl3fGM="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_status" property="status" z="xx+ZyXluVafyJAoDUUptbQhYZZE="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_description" property="description" z="ZvDh0nzISEjRRHtIbXIAZhiJVzY="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialSublot_quantity" property="quantity" z="GN+IA4pfr30dxw01isCqyqx4moo="/>
+        </table:table>
+    </page:list>
+</div>

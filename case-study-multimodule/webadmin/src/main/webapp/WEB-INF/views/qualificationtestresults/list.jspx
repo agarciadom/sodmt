@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_people_QualificationTestResult" items="${qualificationtestresults}" z="KpdmiY5aCCU918IE4DkPMd8PpG0=">
+        <table:table data="${qualificationtestresults}" id="l_es_uca_b2mml_domain_people_QualificationTestResult" path="/qualificationtestresults" z="+j4hrPtrO6Oto/MSZuwS6REdBU8=">
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestResult_testSpecification" property="testSpecification" z="DCLuZRPYmBWrBqnZHoH33tBMfGA="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestResult_personProperty" property="personProperty" z="eK8I7Cz99bDUpNDJUqXQIvUtCFA="/>
+            <table:column date="true" dateTimePattern="${qualificationTestResult_testdate_date_format}" id="c_es_uca_b2mml_domain_people_QualificationTestResult_testDate" property="testDate" z="6s9rD8bBkvGh8QL+Pyao0qr4KNM="/>
+            <table:column date="true" dateTimePattern="${qualificationTestResult_expiration_date_format}" id="c_es_uca_b2mml_domain_people_QualificationTestResult_expiration" property="expiration" z="/RlINLZo0sb87I1UbOXcUX2+IlE="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestResult_testResult" property="testResult" z="wh9O4Dy/UX3sNSYYtnSPP6Ce0ag="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestResult_unit" property="unit" z="B/DSIREzZqPba9+rshCOMqN+Mnc="/>
+        </table:table>
+    </page:list>
+</div>

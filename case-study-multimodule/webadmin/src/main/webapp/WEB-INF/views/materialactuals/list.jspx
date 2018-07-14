@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_MaterialActual" items="${materialactuals}" z="NSLOK/crI5UmcjvGDU9HuGXpwJg=">
+        <table:table data="${materialactuals}" id="l_es_uca_b2mml_domain_perform_MaterialActual" path="/materialactuals" z="i8BLB6DFQU9bHlog7ZsiFWEF/Bc=">
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_segmentResponse" property="segmentResponse" z="5laQOZYUUiTJtI9UGvWB7OkQvt8="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_description" property="description" z="v+DfE2tgJNKC2WbH4Jk4ft+23y8="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_materialClasses" property="materialClasses" z="Huv/xTAQw6ESKNbti2kgqIdjjAg="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_materialDefinitions" property="materialDefinitions" z="ZqU+QTgfXXaIWZncNnzatDj4YY8="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_materialLots" property="materialLots" z="xVB16aLeuSDyv8pmho3g/pnvm9w="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActual_materialSublots" property="materialSublots" z="7s6wFQrJj8mjt04Qzc9Tbhnjmjo="/>
+        </table:table>
+    </page:list>
+</div>

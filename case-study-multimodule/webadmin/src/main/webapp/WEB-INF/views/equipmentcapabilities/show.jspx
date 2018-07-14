@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_capability_EquipmentCapability" object="${equipmentcapability}" path="/equipmentcapabilities" z="fyxQ8vS+3JIHHmA77R358t91xN0=">
+        <field:display field="productionCapability" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_productionCapability" object="${equipmentcapability}" z="OBqajEaxM82LgDep6KILfsvBd+g="/>
+        <field:display field="type" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_type" object="${equipmentcapability}" z="844gfiHi0KKWYZkxWmDIuAtpk9Q="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_location" object="${equipmentcapability}" z="2pEsKjOri1etlkCLs9pIGx3BYu4="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_description" object="${equipmentcapability}" z="KUdvp2cNvBUNJq7l4M9FXeMqgfs="/>
+        <field:display field="reason" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_reason" object="${equipmentcapability}" z="5gRgCMRMWuUCyppQBCBamAauwrQ="/>
+        <field:display calendar="true" dateTimePattern="${equipmentCapability_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_startTime" object="${equipmentcapability}" z="OYroNi2oMapEN3juT8SpoP6LYGw="/>
+        <field:display calendar="true" dateTimePattern="${equipmentCapability_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_endTime" object="${equipmentcapability}" z="SaOCkOn3qkWvQWudZiV20phM5zg="/>
+        <field:display field="equipment" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_equipment" object="${equipmentcapability}" z="bCmUh0iVGglaBurI1wuRcMx+pYE="/>
+        <field:display field="equipmentClass" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_equipmentClass" object="${equipmentcapability}" z="HsyabhpkaZPyJqxMpWlXpBiUBCA="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_capability_EquipmentCapability_quantity" object="${equipmentcapability}" z="user-managed"/>
+    </page:show>
+</div>

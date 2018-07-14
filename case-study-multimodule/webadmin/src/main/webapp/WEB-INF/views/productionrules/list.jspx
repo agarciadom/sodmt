@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_product_ProductProductionRule" items="${productproductionrules}" z="SbExVYoYam4kMsMNcnoIpX8D3gE=">
+        <table:table data="${productproductionrules}" id="l_es_uca_b2mml_domain_product_ProductProductionRule" path="/productionrules" z="sVzsCkrvwJ6ArIQWktpf7cJtEco=">
+            <table:column id="c_es_uca_b2mml_domain_product_ProductProductionRule_ruleId" property="ruleId" z="efHu++/q7czf5rZAHpNPini8M+Q="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductProductionRule_version" property="version" z="0O2xJodYjQz+W+eKNQAe78GFol8="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductProductionRule_description" property="description" z="+M7pbzcm4uYb0ebijR6fHBxGzww="/>
+            <table:column calendar="true" dateTimePattern="${productProductionRule_publisheddate_date_format}" id="c_es_uca_b2mml_domain_product_ProductProductionRule_publishedDate" property="publishedDate" z="/agBcRxCiDF1ZrmissR7urBH380="/>
+        </table:table>
+    </page:list>
+</div>

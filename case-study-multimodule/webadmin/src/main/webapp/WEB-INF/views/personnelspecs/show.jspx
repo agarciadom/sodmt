@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_product_PersonnelSpec" object="${personnelspec}" path="/personnelspecs" z="53dEGhrJeTn6EUxSSuiLcl/4AQA=">
+        <field:display field="description" id="s_es_uca_b2mml_domain_product_PersonnelSpec_description" object="${personnelspec}" z="dzqhKwtoSAiRctIuwkclbpwT0tI="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_product_PersonnelSpec_quantity" object="${personnelspec}" z="user-managed"/>
+        <field:display field="segment" id="s_es_uca_b2mml_domain_product_PersonnelSpec_segment" object="${personnelspec}" z="aMpnFUxUnsLiwiv0jwb2klmvvEo="/>
+        <field:display field="people" id="s_es_uca_b2mml_domain_product_PersonnelSpec_people" object="${personnelspec}" z="Ke72HGkYR4jcKBaJ5xBaRCsgF8s="/>
+        <field:display field="personnelClass" id="s_es_uca_b2mml_domain_product_PersonnelSpec_personnelClass" object="${personnelspec}" z="3rnuVazMBelwA3cPhTE3TzLS1jM="/>
+    </page:show>
+</div>

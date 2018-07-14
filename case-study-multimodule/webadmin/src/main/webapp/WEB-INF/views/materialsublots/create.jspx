@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_material_MaterialSublot" modelAttribute="materialSublot" path="/materialsublots" render="${empty dependencies}" z="user-managed">
+        <field:textarea field="sublotId" id="c_es_uca_b2mml_domain_material_MaterialSublot_sublotId" required="true" z="2Qw6GE9bhlkk/98pUwEx4JAjBcc="/>
+        <field:select field="lot" id="c_es_uca_b2mml_domain_material_MaterialSublot_lot" itemValue="id" items="${materiallots}" path="/materiallots" required="true" z="D+jqcLl2sOOaUzDzSRa3rijbpWs="/>
+        <field:select field="parent" id="c_es_uca_b2mml_domain_material_MaterialSublot_parent" itemValue="id" items="${materialsublots}" path="/materialsublots" z="CoSZC0I3YVpt2JrWBtl5mRTptPs="/>
+
+        <field:select field="storageLocation" id="c_es_uca_b2mml_domain_material_MaterialSublot_storageLocation" itemValue="id" items="${equipments}" path="/equipments" required="true" z="AuuRr0OavXdC3fWEBMQbD23wl7E="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_material_MaterialSublot_quantity" required="true" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_material_MaterialSublot_unit" itemValue="id" items="${units}" path="/units" required="true" z="user-managed"/>
+
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_material_MaterialSublot_description" z="ssC1PK9ivMMJ/xZG1ZWeDHydI+k="/>
+        <field:select field="status" id="c_es_uca_b2mml_domain_material_MaterialSublot_status" itemValue="id" items="${materiallotstatuses}" path="/materiallotstatuses" required="true" z="0TVMw62JKgG+nsZEbBqI83zTOPo="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_material_MaterialSublot" render="${not empty dependencies}" z="JqYWyRfu/iJpB3l3fXzWGjsUyZs="/>
+</div>

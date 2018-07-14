@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_product_ProductSegmentDependency" items="${productsegmentdependencies}" z="qu6w4dtA6lv5Hm8Z1scCVw//jvc=">
+        <table:table data="${productsegmentdependencies}" id="l_es_uca_b2mml_domain_product_ProductSegmentDependency" path="/productsegmentdependencies" z="nbax/fTvt2ya25BtURDOiMVzkuk=">
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegmentDependency_description" property="description" z="03Ozb8uwQCUriR4am8YXDXBoLVk="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegmentDependency_dependencyType" property="dependencyType" z="rCPkJt7pgzXnlaeswYvOrDIkIbQ="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegmentDependency_timingFactor" property="timingFactor" z="h0f4UGywQgk8QYYi78Zsua/g3F8="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegmentDependency_segmentA" property="segmentA" z="ySjpJ8iEaFkYcUPKQMHzrs5fYTo="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegmentDependency_segmentB" property="segmentB" z="0B04X4pT8m4ueeCTtfoMXb/eCNY="/>
+        </table:table>
+    </page:list>
+</div>

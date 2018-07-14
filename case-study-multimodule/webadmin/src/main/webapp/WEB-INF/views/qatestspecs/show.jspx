@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_material_QATestSpec" object="${qatestspec_}" path="/qatestspecs" z="EqLXL9at+Q3f7g8kPlTf8vrfL3w=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_material_QATestSpec_name" object="${qatestspec_}" z="FBRyVugE0fqNUPnYTbsXv2DVVSk="/>
+        <field:display field="testVersion" id="s_es_uca_b2mml_domain_material_QATestSpec_testVersion" object="${qatestspec_}" z="RGgIEOvh2mmvCskmsqcx90SgLiU="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_material_QATestSpec_description" object="${qatestspec_}" z="hNiM2e9Vlo9bHTGbZwiFFp0GU6A="/>
+        <field:display field="classProperties" id="s_es_uca_b2mml_domain_material_QATestSpec_classProperties" object="${qatestspec_}" z="xK+1DDNuzbJOFPOlpuzDS2TKIJY="/>
+        <field:display field="definitionProperties" id="s_es_uca_b2mml_domain_material_QATestSpec_definitionProperties" object="${qatestspec_}" z="P++0ldbisxruGLU9coTRH6mHVqA="/>
+    </page:show>
+</div>

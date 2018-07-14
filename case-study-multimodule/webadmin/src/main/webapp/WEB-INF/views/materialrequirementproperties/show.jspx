@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_MaterialRequirementProperty" object="${materialrequirementproperty}" path="/materialrequirementproperties" z="gxclYwoFC8bNfi+idA/KUcti1pE=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_name" object="${materialrequirementproperty}" z="biwu/FfHNlfTpO4s+5h2TfCaM4w="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_description" object="${materialrequirementproperty}" z="FfaDmqfTZaCxfKW53UclSX8DX0A="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_value" object="${materialrequirementproperty}" z="fuR/bDVV9eRpRTO2iCe1Ildg3RE="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_unit" object="${materialrequirementproperty}" z="oZLqcxXP1Pd+rhvffUnwP0pG0M0="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_quantity" object="${materialrequirementproperty}" z="user-managed"/>
+        <field:display field="materialRequirement" id="s_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_materialRequirement" object="${materialrequirementproperty}" z="uNYp4frnwuvQkQWfiQK7xWEdUUg="/>
+    </page:show>
+</div>

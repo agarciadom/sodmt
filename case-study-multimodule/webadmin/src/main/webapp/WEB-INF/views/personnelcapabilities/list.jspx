@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_capability_PersonnelCapability" items="${personnelcapabilities}" z="user-managed">
+        <table:table data="${personnelcapabilities}" id="l_es_uca_b2mml_domain_capability_PersonnelCapability" path="/personnelcapabilities" z="NitJvfoeV9Fqi/g1UT/+MbY8yFg=">
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_type" property="type" z="czcKJoCC8+xgO4RiCNChWwIM+UM="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_location" property="location" z="E6Bulp8QGbgTojhrJLV+OsEMk3E="/>
+            <table:column calendar="true" dateTimePattern="${personnelCapability_starttime_date_format}" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_startTime" property="startTime" z="3NM69itE0SZHgf+kPUf+U4rnIyo="/>
+            <table:column calendar="true" dateTimePattern="${personnelCapability_endtime_date_format}" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_endTime" property="endTime" z="9wOxmwtmHKPyegN8pUgPNcVwKKU="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_reason" property="reason" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_person" property="person" z="E6Bulp8QGbgTojhrJLV+OsEMk3E="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_PersonnelCapability_personnelClass" property="personnelClass" z="E6Bulp8QGbgTojhrJLV+OsEMk3E="/>
+        </table:table>
+    </page:list>
+</div>

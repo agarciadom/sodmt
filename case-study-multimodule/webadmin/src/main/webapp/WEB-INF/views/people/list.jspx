@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_people_Person" items="${people}" z="M2yy/Lu4yq0mTzTruOPZS7VCHSw=">
+        <table:table data="${people}" id="l_es_uca_b2mml_domain_people_Person" path="/people" z="2sJ7X+Pv8DGn2+kvxu3Vqfi3n6E=">
+            <table:column id="c_es_uca_b2mml_domain_people_Person_name" property="name" z="XM386caxU8QVkr+LrctstVBiPZw="/>
+            <table:column id="c_es_uca_b2mml_domain_people_Person_surnames" property="surnames" z="sBAdSG0wwURFZeCK+aW7r8NVs5s="/>
+            <table:column id="c_es_uca_b2mml_domain_people_Person_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_people_Person_nationalID" property="nationalID" z="IuP66xYQRzZzAX8dR5zGi9mP1rM="/>
+            <table:column id="c_es_uca_b2mml_domain_people_Person_classes" property="classes" z="LAVwomSsZa77PRF6rNhvat2svRM="/>
+        </table:table>
+    </page:list>
+</div>

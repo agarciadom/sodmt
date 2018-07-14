@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty" items="${personnelsegmentspecproperties}" z="ZT8elDzfH5Vo+lF7XSV39cOBQgw=">
+        <table:table data="${personnelsegmentspecproperties}" id="l_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty" path="/personnelsegmentspecproperties" z="Yf3MaHjzQnKkDe9JL9CE2JR/PSE=">
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty_specification" property="specification" z="MnKcAf3CJu1eUdtJ6voyr4LjasU="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty_name" property="name" z="7cJAJWksAmFn7g7m6zz2XbdmGVA="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty_description" property="description" z="3YwJrZ6zoKJ1BiuWYrdDrFSILp0="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty_value" property="value" z="siI3qE2C4bNb12HLs/v5S5tBAgg="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpecProperty_unit" property="unit" z="4wtbHS7mIgnY8MyMpyK8IJA/82s="/>
+        </table:table>
+    </page:list>
+</div>

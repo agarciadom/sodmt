@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_MaterialDefinitionProperty" items="${materialdefinitionproperties}" z="ijb4eORt3aCKJeAuw58KOp7EKPQ=">
+        <table:table data="${materialdefinitionproperties}" id="l_es_uca_b2mml_domain_material_MaterialDefinitionProperty" path="/materialdefinitionproperties" z="ZIG+PP6jl0Wukt9dDh+4bs30c/s=">
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_name" property="name" z="neWEga5+k1+cvODiiKCcTm88rTc="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_description" property="description" z="2qhKh4woNbjp/nZRkPIK0e1ZvMo="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_value" property="value" z="p3UsLawTCRH/uMK8PDGhwedotxQ="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_definition" property="definition" z="NnxjTXic38dqncozH7/NOTHnisk="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_qualityTestSpecs" property="qualityTestSpecs" z="HLWIKz8mt4tBhCPaWzGtunp5FHk="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialDefinitionProperty_unit" property="unit" z="RMqpwaXeRvSS0dz/4VEFsusSUXw="/>
+        </table:table>
+    </page:list>
+</div>

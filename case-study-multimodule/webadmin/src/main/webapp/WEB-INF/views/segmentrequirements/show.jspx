@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_SegmentRequirement" object="${segmentrequirement}" path="/segmentrequirements" z="uK8yw1aamstwkh3GPR86KByD/Aw=">
+        <field:display field="segmentRequirementId" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_segmentRequirementId" object="${segmentrequirement}" z="cHjJWXtz7bQhPgDlayW+6sNbPpE="/>
+        <field:display field="processSegment" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_processSegment" object="${segmentrequirement}" z="8q7kU0uqBAKk1NSxX4j5WdnpdF8="/>
+        <field:display field="productSegment" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_productSegment" object="${segmentrequirement}" z="juD01qhRzcgWQi34Ui1c5u8NZGk="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_description" object="${segmentrequirement}" z="8O+f6hY5M7hBlApZxJbUq6PKMRo="/>
+        <field:display calendar="true" dateTimePattern="${segmentRequirement_earlieststarttime_date_format}" field="earliestStartTime" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_earliestStartTime" object="${segmentrequirement}" z="OTKy9p53iWRwKRzRAofcUFkPMQU="/>
+        <field:display calendar="true" dateTimePattern="${segmentRequirement_latestendtime_date_format}" field="latestEndTime" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_latestEndTime" object="${segmentrequirement}" z="UJ/W5dJqGJmN0mUiNxOkb2xmWWk="/>
+        <field:display field="duration" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_duration" object="${segmentrequirement}" z="0PO/BP/xaKr4dhF8mNe4J1qsfDo="/>
+        <field:display field="productionRequest" id="s_es_uca_b2mml_domain_schedule_SegmentRequirement_productionRequest" object="${segmentrequirement}" z="NOqiXvjpyxmoe8JSOOhF4xuYkZw="/>
+    </page:show>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_MaterialRequirementProperty" items="${materialrequirementproperties}" z="C4t9Slw4m7M66WxNoqW54iOFIms=">
+        <table:table data="${materialrequirementproperties}" id="l_es_uca_b2mml_domain_schedule_MaterialRequirementProperty" path="/materialrequirementproperties" z="msBFT49EPXtWDh+BzVPs3gVL2cY=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_name" property="name" z="NTCJ6MfTyFoGFphtb/fYbsnKwwc="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_description" property="description" z="c5HrqO2CUZrPPEnTYTAcPweDuZQ="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_value" property="value" z="Y0f4EfJ3qPOsazxr82e1LrFrSTw="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_unit" property="unit" z="g8SzRz1V0mqW4bW0vP9QKouRrOM="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_MaterialRequirementProperty_materialRequirement" property="materialRequirement" z="UPe7kbAY+YYHDtYGEeYq1wM8Owg="/>
+        </table:table>
+    </page:list>
+</div>

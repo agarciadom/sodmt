@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_ProductionResponse" items="${productionresponses}" z="IJWv2DN/gldo4mlrLsiigz6UfSw=">
+        <table:table data="${productionresponses}" id="l_es_uca_b2mml_domain_perform_ProductionResponse" path="/productionresponses" z="Cjxc/jbbohlkU8IiTrdfZ9MFd8w=">
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionPerformance" property="productionPerformance" z="9O5TkC95+AqudiAgmlv1KKgX3Ds="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionRequest" property="productionRequest" z="q7sO7YLeFWnIXeYpP7LBNtauAok="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionRule" property="productionRule" z="uFeDTBKoNm7casT4/y/m4vQuGxo="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_ProductionResponse_responseId" property="responseId" z="wLGXyOI0iZGrPdG0Y+bzbKsptTQ="/>
+            <table:column calendar="true" dateTimePattern="${productionResponse_starttime_date_format}" id="c_es_uca_b2mml_domain_perform_ProductionResponse_startTime" property="startTime" z="HLVbWbXCLJaK5H5Yk4qU16ep1No="/>
+            <table:column calendar="true" dateTimePattern="${productionResponse_endtime_date_format}" id="c_es_uca_b2mml_domain_perform_ProductionResponse_endTime" property="endTime" z="X6P64Z8dakkMTt/CjKmHaujJckg="/>
+        </table:table>
+    </page:list>
+</div>

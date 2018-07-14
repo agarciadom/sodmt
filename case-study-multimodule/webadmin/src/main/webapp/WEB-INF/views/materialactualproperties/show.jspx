@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_perform_MaterialActualProperty" object="${materialactualproperty}" path="/materialactualproperties" z="SmNuwk/CkbQsFGUNoUN1mGIGvVw=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_name" object="${materialactualproperty}" z="c1BmMpLPE8CmR+CI2NhMy5KNe74="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_description" object="${materialactualproperty}" z="T09S7FTC06B+d4ywnrddr4pJHTs="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_value" object="${materialactualproperty}" z="XbGJTg3k3V51IbFKf9lI8IJ0mFc="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_unit" object="${materialactualproperty}" z="gOuDPOMayPnGHRKXXWi/wXJtp9s="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_quantity" object="${materialactualproperty}" z="user-managed"/>
+        <field:display field="materialActual" id="s_es_uca_b2mml_domain_perform_MaterialActualProperty_materialActual" object="${materialactualproperty}" z="/amkvNuPPp0xeQVGjAZwNArQjzI="/>
+    </page:show>
+</div>

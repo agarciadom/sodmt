@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_ProductionParameter" items="${productionparameters}" z="4mcrxjKNrETn9X5nvxxFqSgqnbM=">
+        <table:table data="${productionparameters}" id="l_es_uca_b2mml_domain_schedule_ProductionParameter" path="/productionparameters" z="0W09Ccm77lgY0bjQrCOsvxLOFp8=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionParameter_name" property="name" z="N5zvo2+NvI70z318aoGG21FaEcw="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionParameter_description" property="description" z="739OUw8e3RRaKryqrlfTIfbm2J4="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionParameter_value" property="value" z="21bw3QjfTDSbNn1smHMwKb5+6T0="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionParameter_unit" property="unit" z="UgkH2DGpbNzm6sAI7g9VzmJx6BA="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionParameter_segmentRequirement" property="segmentRequirement" z="9o+UQu6TV0Kh73DtnKa6LharqHI="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_MaterialClass" items="${materialclasses}" z="KL3+l6IJjXt41AfB89JPIp5f3oA=">
+        <table:table data="${materialclasses}" id="l_es_uca_b2mml_domain_material_MaterialClass" path="/materialclasses" z="HnKXyhA4SHHm2dibg/IssolYuJk=">
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialClass_classId" property="classId" z="h8POztTPsbVCxW6FDChnFi+WcYA="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialClass_description" property="description" z="mYmZpAJ+u5TEtPTqD3dVg3DxyGc="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialClass_definitions" property="definitions" z="yG8apLTG8QT3+LqhPiG/c0K+sqk="/>
+        </table:table>
+    </page:list>
+</div>

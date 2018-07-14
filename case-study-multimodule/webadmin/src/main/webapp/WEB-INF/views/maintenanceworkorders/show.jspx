@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_MaintenanceWorkOrder" object="${maintenanceworkorder}" path="/maintenanceworkorders" z="xsQXFe3TV4E7szjqFjIJO0MTkW0=">
+        <field:display field="orderID" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_orderID" object="${maintenanceworkorder}" z="MxDHpJgOrg24/aPpK3MDqTVMdZA="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceWorkOrder_plannedstart_date_format}" field="plannedStart" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedStart" object="${maintenanceworkorder}" z="CbMBifcsCq+q5f+ikexaV97+blc="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceWorkOrder_plannedfinish_date_format}" field="plannedFinish" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedFinish" object="${maintenanceworkorder}" z="eJj4BVnNqIALmHqJ04YEXo7saFY="/>
+        <field:display field="responsible" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_responsible" object="${maintenanceworkorder}" z="+qiBZMSNIv9jp8XpSIku1/6hNiI="/>
+        <field:display field="status" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_status" object="${maintenanceworkorder}" z="qaKNlOkqZwec22cDnsKPo8Y79dc="/>
+        <field:display field="resources" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_resources" object="${maintenanceworkorder}" z="TSXERMP/d6lNM7ORgKVupyTH0ho="/>
+        <field:display field="requests" id="s_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_requests" object="${maintenanceworkorder}" z="SA5ejpyQ8YaltRjvzhVhBL6qxXg="/>
+    </page:show>
+</div>

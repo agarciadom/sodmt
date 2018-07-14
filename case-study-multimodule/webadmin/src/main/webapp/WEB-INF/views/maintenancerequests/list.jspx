@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_MaintenanceRequest" items="${maintenancerequests}" z="JfD2xlPq0QZERvePndpau25hVHc=">
+        <table:table data="${maintenancerequests}" id="l_es_uca_b2mml_domain_equip_MaintenanceRequest" path="/maintenancerequests" z="ilAS+f3qM6cQscwF7ciLGluOJZc=">
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_equipment" property="equipment" z="T/YgWK+vzhtCr4+j4FNhRTz78aA="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_requestId" property="requestId" z="Y6buK/R+knw2zU4yrq8988o7MHs="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_description" property="description" z="UN6ixlBZkaQsHvnU040ckXEkO14="/>
+            <table:column calendar="true" dateTimePattern="${maintenanceRequest_requestedcompletiondate_date_format}" id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_requestedCompletionDate" property="requestedCompletionDate" z="a0dqrbJEEDw+FZEWHrTjqyqlI8Y="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_priority" property="priority" z="slZG1apRMCIzfhG4WJl2/45obww="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceRequest_requestor" property="requestor" z="P0e44/A1UtE87wMufUPj0abLIv0="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_capability_MaterialCapabilityProperty" items="${materialcapabilityproperties}" z="VNX5bqELJ7MZIBb97jp9Hgu2sfc=">
+        <table:table data="${materialcapabilityproperties}" id="l_es_uca_b2mml_domain_capability_MaterialCapabilityProperty" path="/materialcapabilityproperties" z="HYXdqfOKQwBQTYv+Se0ajJDzNPA=">
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_capability" property="capability" z="hYcX7eDmD85vuRuOPpPmSwfMvgs="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_name" property="name" z="BiGnPXid3n4sWbH7bTEmSEPkqI0="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_description" property="description" z="eKi09O1HMSJiTR4g64jDSFhzgX8="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_value" property="value" z="o/ucpT6CDt3fujChrOJSK6faQDo="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_unit" property="unit" z="2xJ8B17dwVTO/+eIxmivyDqSSbA="/>
+        </table:table>
+    </page:list>
+</div>

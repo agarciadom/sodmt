@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_EquipmentActualProperty" items="${equipmentactualproperties}" z="GMGC+NIsljEOd4lJWxkNW7PxBZY=">
+        <table:table data="${equipmentactualproperties}" id="l_es_uca_b2mml_domain_perform_EquipmentActualProperty" path="/equipmentactualproperties" z="g5VlYEpSIGbsWjbYeCZwI8OkU/U=">
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_name" property="name" z="w0dzbTsiXwI3SkL9wcJzsTRWxj0="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_description" property="description" z="Bjec3V0RJeKdg8hE1jq8Lnow5lk="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_value" property="value" z="CE470DyQzoDl+0iftWPQLPZbvkE="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_unit" property="unit" z="5KmozICjJPHQS5tKanTtVbVO4l8="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_perform_EquipmentActualProperty_equipmentActual" property="equipmentActual" z="q1Xr83AxFXgCI7eS5JbwDWqGOEw="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_ProductionSchedule" object="${productionschedule}" path="/productionschedules" z="vrnbG+wq/uen/VeBtBYNWubJeqA=">
+        <field:display field="scheduleId" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_scheduleId" object="${productionschedule}" z="nRNzy2NUtBegIFlz8FiZHywNDEY="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_description" object="${productionschedule}" z="izIlCHgZRcfrWavnFxXxau/fgZk="/>
+        <field:display calendar="true" dateTimePattern="${productionSchedule_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_startTime" object="${productionschedule}" z="KIg/157dPKkxt3pr2C1wrvB27JA="/>
+        <field:display calendar="true" dateTimePattern="${productionSchedule_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_endTime" object="${productionschedule}" z="SI2lar65tb0AWgzNSLdC/sLI3D0="/>
+        <field:display calendar="true" dateTimePattern="${productionSchedule_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_publishedDate" object="${productionschedule}" z="pH3hUlq8lue0AT8iOy26siVUDJI="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_schedule_ProductionSchedule_location" object="${productionschedule}" z="FAx4Zft0ps559OF7iT32C486hzk="/>
+    </page:show>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_product_ProductParameter" object="${productparameter}" path="/productparameters" z="9VWKvsogAOcuEBSqcCpZ5DnwGc0=">
+        <field:display field="segment" id="s_es_uca_b2mml_domain_product_ProductParameter_segment" object="${productparameter}" z="Lmrtx/1QLlgLeW14ope4cx48wIU="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_product_ProductParameter_description" object="${productparameter}" z="OZDhUJeElaRwQ2+aZOOP3Umw+8w="/>
+        <field:display field="parameterName" id="s_es_uca_b2mml_domain_product_ProductParameter_parameterName" object="${productparameter}" z="Ycorv24TFI+v7ygCkjNTSEKcuao="/>
+        <field:display field="parameterValue" id="s_es_uca_b2mml_domain_product_ProductParameter_parameterValue" object="${productparameter}" z="mwMkqPcEcHTnxbJr3uluNSNSgYM="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_product_ProductParameter_unit" object="${productparameter}" z="fC3y3KSj0PwXEOCfXfV+EUdoJsE="/>
+    </page:show>
+</div>

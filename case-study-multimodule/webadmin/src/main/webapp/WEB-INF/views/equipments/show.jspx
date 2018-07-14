@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_Equipment" object="${equipment}" path="/equipments" z="JR5XUcjeP6WSQzIDdPv0IiI3f0Q=">
+        <field:display field="equipmentId" id="s_es_uca_b2mml_domain_equip_Equipment_equipmentId" object="${equipment}" z="vlLx0ORasB/g1dzVdPDkwH44Mas="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_equip_Equipment_description" object="${equipment}" z="gMX81dl5n3Y3dulqy6hekJXn+vM="/>
+        <field:display field="parent" id="s_es_uca_b2mml_domain_equip_Equipment_parent" object="${equipment}" z="OJR8+3gS04zzvorDAWbyGkXX/S8="/>
+        <field:display field="children" id="s_es_uca_b2mml_domain_equip_Equipment_children" object="${equipment}" z="OJR8+3gS04zzvorDAWbyGkXX/S8="/>
+        <field:display field="type" id="s_es_uca_b2mml_domain_equip_Equipment_type" object="${equipment}" z="IOYypL9TDVqyT+W06J1Ik0O8RRc="/>
+        <field:display field="classes" id="s_es_uca_b2mml_domain_equip_Equipment_classes" object="${equipment}" z="AlgOk5jZDBfJh1WF8jzu+60XAVc="/>
+    </page:show>
+</div>

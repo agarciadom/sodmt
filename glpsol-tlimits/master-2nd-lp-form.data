@@ -1,0 +1,36 @@
+# This is the case that I used on my Master's Thesis to show that the
+# second formulation (based on how much extra time was left after
+# considering an equitative split) didn't work either.
+
+set A := t_a t_b t_c t_d t_e t_f;
+
+set P := p_1 p_2;
+
+param G := 40;
+
+param m := t_a 0
+           t_b 0
+           t_c 0
+           t_d 0
+           t_e 0
+           t_f 0
+           ;
+
+param w := t_a 1
+           t_b 1
+           t_c 1
+           t_d 1
+           t_e 1
+           t_f 1
+           ;
+
+param paths :  p_1 p_2 :=
+          t_a    1   0
+          t_b    1   0
+          t_c    0   1
+          t_d    0   1
+          t_e    0   1
+          t_f    1   1
+          ;
+
+end;

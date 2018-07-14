@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_Unit" items="${units}" z="Eij1osXalcOYAuiwfpixM0U0B1E=">
+        <table:table data="${units}" id="l_es_uca_b2mml_domain_Unit" path="/units" z="oaEPcJ4jvWqzoT4jatNxp7jDxXE=">
+            <table:column id="c_es_uca_b2mml_domain_Unit_name" property="name" z="Y3mB95rMwu/d07ORul1q4mH9aFE="/>
+            <table:column id="c_es_uca_b2mml_domain_Unit_baseUnit" property="baseUnit" z="hJQVtFkdSxRr8yXPnvPMtDN15bc="/>
+            <table:column id="c_es_uca_b2mml_domain_Unit_fractionUnit" property="fractionUnit" z="UE5hi0beWHd+KEFq5EScl4+iBHc="/>
+            <table:column id="c_es_uca_b2mml_domain_Unit_conversionFactor" property="conversionFactor" z="ST4+f7MdcLsUwARgnwNw6CE0rpo="/>
+            <table:column id="c_es_uca_b2mml_domain_Unit_systemType" property="systemType" z="PjtoFnhlZ/ILFBiv6ZbW3/DLToE="/>
+        </table:table>
+    </page:list>
+</div>

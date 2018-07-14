@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_MaterialActualProperty" items="${materialactualproperties}" z="j93pSQL3QrL4tzt9rvJNGcte8ds=">
+        <table:table data="${materialactualproperties}" id="l_es_uca_b2mml_domain_perform_MaterialActualProperty" path="/materialactualproperties" z="EV7xhROMuavMCIe5q/SlQOQHHH0=">
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_name" property="name" z="SCznSXwJegzoFkvhCV4ckvf7UTI="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_description" property="description" z="hoomBPXvuyVDCmH5TPeu2nSiKcI="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_value" property="value" z="hpSoWZFw1DWdrq6ftuIL0cTNSog="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_unit" property="unit" z="dp8VhQFhtVot8/BycQaey/tOvaI="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_perform_MaterialActualProperty_materialActual" property="materialActual" z="Lazk2OGTqfda20ICzp9JrMaFSxg="/>
+        </table:table>
+    </page:list>
+</div>

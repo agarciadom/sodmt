@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_MaterialLot" items="${materiallots}" z="n6aOfaTNQyZOt/arvFTT8DLmv8A=">
+        <table:table data="${materiallots}" id="l_es_uca_b2mml_domain_material_MaterialLot" path="/materiallots" z="WDU0/WqBc/7YVGaFmTR7D2Kc0G4=">
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLot_lotId" property="lotId" z="ECd/AvNGYCgdv3gejVcos5v92x0="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLot_description" property="description" z="bidv/X2CuZ6xH4YWl4UGtZh9tM0="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLot_definition" property="definition" z="dZf7I3/tbdWc4AzBfuGHj5tLs3I="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLot_status" property="status" z="muFq3+tLpED7yXA88YvTmG5K3As="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty" modelAttribute="equipmentSegmentSpecProperty" path="/equipmentsegmentspecproperties" versionField="Version" z="sMUUBSTbm4v7cRHKTgTuFS1OdP8=">
+        <field:select field="specification" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty_specification" itemValue="id" items="${equipmentsegmentspecs}" path="/equipmentsegmentspecs" required="true" z="tx4ua2HZ7zIy5BV5H3piC6iUhcQ="/>
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty_name" required="true" z="avUmIWNqqvqsP3S72snazsBDb2E="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty_description" z="A7Ji1OJJKkrAa3oh6hYJ6ExJbGA="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty_value" required="true" z="sKHsu+ovX98d1d55mQlQcyYruew="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_psegment_EquipmentSegmentSpecProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="koxxErOtXntvgwGL5joew4z9DZ8="/>
+    </form:update>
+</div>

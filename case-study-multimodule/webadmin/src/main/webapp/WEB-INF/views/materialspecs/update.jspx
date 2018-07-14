@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_product_MaterialSpec" modelAttribute="materialSpec" path="/materialspecs" versionField="Version" z="OwlnzPth7poYWamoHtVT+5XiTrA=">
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_MaterialSpec_description" z="xKXt9DOEuPJl3VzF4kRsentHCKE="/>
+        <field:textarea field="quantityValue" id="c_es_uca_b2mml_domain_product_MaterialSpec_quantity" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_product_MaterialSpec_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:select field="segment" id="c_es_uca_b2mml_domain_product_MaterialSpec_segment" itemValue="id" items="${productsegments}" path="/productsegments" required="true" z="f8ebDv1spToCjY3DLXE6ckBKU9s="/>
+        <field:select field="materialClasses" id="c_es_uca_b2mml_domain_product_MaterialSpec_materialClasses" itemValue="id" items="${materialclasses}" multiple="true" path="/materialclasses" z="oa3w9wIWIDQw0u3yyOqv4/Xjq5M="/>
+        <field:select field="materialDefinitions" id="c_es_uca_b2mml_domain_product_MaterialSpec_materialDefinitions" itemValue="id" items="${materialdefinitions}" multiple="true" path="/materialdefinitions" z="m4PO/XYkOERE+4FUYmFI3miSLZU="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_product_MaterialSpec_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Spec Property" z="uv7dBGr0mJYbLLNGyjIZdaKORV8="/>
+    </form:update>
+</div>

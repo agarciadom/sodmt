@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_equip_EquipmentClassProperty" modelAttribute="equipmentClassProperty" path="/equipmentclassproperties" versionField="Version" z="5sJweE8mkI10XdpbNplh8N0MrjY=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_name" required="true" z="T06sJRJGGXKGk3rC3Mb6uguu1FA="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_description" z="DZT6NkeWrPLJS4ZwshPGeyJJHso="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_value" required="true" z="CL2ekJh1vgwxEzU4I2D57mSy10E="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="xE+YHGHAawHis2s9n4vxD4JuQIs="/>
+        <field:select field="equipmentClass" id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_equipmentClass" itemValue="id" items="${equipmentclasses}" path="/equipmentclasses" required="true" z="f8n8mt7j0Vb5PkoP2Kq3ZARZktM="/>
+    </form:update>
+</div>

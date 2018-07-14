@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_product_ProductProductionRule" object="${productproductionrule}" path="/productionrules" z="nLVEyW61xNV3oWY6IP9k+X5cF0E=">
+        <field:display field="ruleId" id="s_es_uca_b2mml_domain_product_ProductProductionRule_ruleId" object="${productproductionrule}" z="i9v4y2Kmgqzf4SFDIXv3s7WAepE="/>
+        <field:display field="version" id="s_es_uca_b2mml_domain_product_ProductProductionRule_version" object="${productproductionrule}" z="Kvg9IWbjYp+QO/N+ufJOwwtRpMo="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_product_ProductProductionRule_description" object="${productproductionrule}" z="chCvJK2/vvh19O1s8i7yyQJ+E+8="/>
+        <field:display calendar="true" dateTimePattern="${productProductionRule_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_product_ProductProductionRule_publishedDate" object="${productproductionrule}" z="9AV1pHmIZwW17ebQz1SBmzCHMs0="/>
+    </page:show>
+</div>

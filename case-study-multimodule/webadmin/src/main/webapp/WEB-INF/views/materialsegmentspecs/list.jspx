@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_psegment_MaterialSegmentSpec" items="${materialsegmentspecs}" z="Z/WKoiHlAkNu5/6y7PWAh13WsS8=">
+        <table:table data="${materialsegmentspecs}" id="l_es_uca_b2mml_domain_psegment_MaterialSegmentSpec" path="/materialsegmentspecs" sortHeaders="true" z="user-managed">
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_processSegment" property="processSegment" z="6G26MgxkpsimapZnr8eSWHcF17Q="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_materialClass" property="materialClass" z="l2v7L84h+pu4hh6+aFFdLbZNUMk="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_materialDefinition" property="materialDefinition" z="vVCCUb3QLRySf1i0vIpj6sy16cQ="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_MaterialSegmentSpec_materialUse" property="materialUse" z="user-managed"/>
+        </table:table>
+    </page:list>
+</div>

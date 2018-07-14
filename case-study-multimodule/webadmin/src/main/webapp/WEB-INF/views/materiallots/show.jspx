@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_material_MaterialLot" object="${materiallot}" path="/materiallots" z="/ICZSu3NHy6VeaU/hQgInczk2yI=">
+        <field:display field="lotId" id="s_es_uca_b2mml_domain_material_MaterialLot_lotId" object="${materiallot}" z="newiij7wAQ/b6zOQOkgdEKaGhJg="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_material_MaterialLot_description" object="${materiallot}" z="MSKbGwDdI6Pzf2y2SjfReXtzm2E="/>
+        <field:display field="definition" id="s_es_uca_b2mml_domain_material_MaterialLot_definition" object="${materiallot}" z="r4IV2/MDK/1Zn4qemNJfJkReYmc="/>
+        <field:display field="status" id="s_es_uca_b2mml_domain_material_MaterialLot_status" object="${materiallot}" z="85sLvULVKz4GuKwd/nU1pp2cJ54="/>
+    </page:show>
+</div>

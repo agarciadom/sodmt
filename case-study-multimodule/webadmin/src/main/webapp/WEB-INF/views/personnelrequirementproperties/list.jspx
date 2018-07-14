@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty" items="${personnelrequirementproperties}" z="VikYPQQmerjvRM2fB/TETnR8Ze8=">
+        <table:table data="${personnelrequirementproperties}" id="l_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty" path="/personnelrequirementproperties" z="uKaf8mDEwoCrZP+h2pLr1ezKCoY=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_name" property="name" z="42PzEMHqj0J8VYgeCVDATxNLAfc="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_description" property="description" z="Np6NBHrKIwZVmiX+j5pGS5ahw/g="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_value" property="value" z="FujRkn6cSmaepDAv1e/bQ36WEFQ="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_unit" property="unit" z="+A4LzeNf5ER8BFSRmD1HU4i7X5g="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_personnelRequirement" property="personnelRequirement" z="qtdgg6czH3KOkH0460eukNLPpaw="/>
+        </table:table>
+    </page:list>
+</div>

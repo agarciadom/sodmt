@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_people_QualificationTestSpec" items="${qualificationtestspecs}" z="11olJbndLGHxBLXx7YwFbOUzHSI=">
+        <table:table data="${qualificationtestspecs}" id="l_es_uca_b2mml_domain_people_QualificationTestSpec" path="/qualificationtestspecs" z="TyV+R0cOrhxZhtsyNaRPSqLQEzE=">
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestSpec_testIdentifier" property="testIdentifier" z="LDuKmiBZkpjXyrpQGIqJoYj+OVU="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestSpec_testVersion" property="testVersion" z="6+0aANqJKBVq3g8P8xwSzQzNXuQ="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestSpec_description" property="description" z="oci1/CkSlxfLvuABJ59o3F2lReo="/>
+            <table:column id="c_es_uca_b2mml_domain_people_QualificationTestSpec_personClassProperty" property="personClassProperty" z="Rvao3bobVpBi3BpJVy0Njg8jWKA="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_capability_ProductionCapability" object="${productioncapability}" path="/productioncapabilities" z="dO0gFyzvaaV4uR5y3w9VIA7feRQ=">
+        <field:display field="segment" id="s_es_uca_b2mml_domain_capability_ProductionCapability_segment" object="${productioncapability}" z="CSLJpgTsy58cc184zLkoflVQAs0="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_capability_ProductionCapability_description" object="${productioncapability}" z="wYmjHJMV4BUt7heISlHlLyHGjho="/>
+        <field:display field="type" id="s_es_uca_b2mml_domain_capability_ProductionCapability_type" object="${productioncapability}" z="kvuNGhg9wyb24oWT1C6pf4TyuwY="/>
+        <field:display field="reason" id="s_es_uca_b2mml_domain_capability_ProductionCapability_reason" object="${productioncapability}" z="SXCYd0xkru/qIkNb0GnQCOIdGaA="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_capability_ProductionCapability_location" object="${productioncapability}" z="F4IZhc4tQqZihJY/iDT5JtRffaw="/>
+        <field:display calendar="true" dateTimePattern="${productionCapability_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_capability_ProductionCapability_startTime" object="${productioncapability}" z="IuHp58Uj/bKti8rslaJ6EhxJnJ4="/>
+        <field:display calendar="true" dateTimePattern="${productionCapability_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_capability_ProductionCapability_endTime" object="${productioncapability}" z="dcQPy8Xy1ogwc30IQew/aMKfRl4="/>
+        <field:display field="capabilityId" id="s_es_uca_b2mml_domain_capability_ProductionCapability_capabilityId" object="${productioncapability}" z="qjFcL3Z2d179mIblyKgR1LrLlOE="/>
+        <field:display calendar="true" dateTimePattern="${productionCapability_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_capability_ProductionCapability_publishedDate" object="${productioncapability}" z="jGLzTFckwMX8gVFfaESm5vGQ1pE="/>
+    </page:show>
+</div>

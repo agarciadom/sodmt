@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_product_ProductProductionRule" modelAttribute="productProductionRule" path="/productionrules" render="${empty dependencies}" z="UQZ+Ptwtn0wFI6mRCralMywSeBg=">
+        <field:textarea field="ruleId" id="c_es_uca_b2mml_domain_product_ProductProductionRule_ruleId" required="true" z="obQb7d7s0Z8RpQJxy8+sYn0iFLU="/>
+        <field:textarea field="version" id="c_es_uca_b2mml_domain_product_ProductProductionRule_version" z="yo2lxCPo7exc6TMqkrHCrMijasw="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_ProductProductionRule_description" z="UivXCpH30w9isSVIWga+vV7Y6N0="/>
+        <field:datetime dateTimePattern="${productProductionRule_publisheddate_date_format}" field="publishedDate" id="c_es_uca_b2mml_domain_product_ProductProductionRule_publishedDate" required="true" z="QtrzqFCYspQo65Hi3eyAHgTB+mw="/>
+        <field:simple field="segments" id="c_es_uca_b2mml_domain_product_ProductProductionRule_segments" messageCode="entity_reference_not_managed" messageCodeAttribute="Product Segment" z="WsYydK9dzKT0Mzx9tDaGITRkF0k="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_product_ProductProductionRule" render="${not empty dependencies}" z="CM+nI9/XQT0LOO+mIKK7OlWrWp4="/>
+</div>

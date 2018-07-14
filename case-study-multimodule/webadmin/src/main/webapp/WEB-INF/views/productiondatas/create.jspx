@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_perform_ProductionData" modelAttribute="productionData" path="/productiondatas" render="${empty dependencies}" z="g8lHFUxadY36Y8IDqBAViO9DqH0=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_perform_ProductionData_name" required="true" z="rPjy1/UzGIIeToKPdrM8viMDwEY="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_perform_ProductionData_description" z="ry0V3jZ81eHVLRUDg93egjahceY="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_perform_ProductionData_value" required="true" z="170YgTteHapdoXz1keZaJggx9HY="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_perform_ProductionData_unit" itemValue="id" items="${units}" path="/units" required="true" z="AUYS+YCg9hjnXoQc+HRxSUcc6/Q="/>
+        <field:select field="segmentResponse" id="c_es_uca_b2mml_domain_perform_ProductionData_segmentResponse" itemValue="id" items="${segmentresponses}" path="/segmentresponses" required="true" z="VSzINCYFkj0+Z9y3BkFvNcGt/DA="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_perform_ProductionData" render="${not empty dependencies}" z="/BpdJB6Tnt0+vrcNtF0VMqNxjVI="/>
+</div>

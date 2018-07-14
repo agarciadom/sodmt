@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_perform_ProductionResponse" modelAttribute="productionResponse" path="/productionresponses" render="${empty dependencies}" z="z3trF7MFe1VX00OlaPif1F289H4=">
+        <field:select field="productionPerformance" id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionPerformance" itemValue="id" items="${productionperformances}" path="/productionperformances" required="true" z="+WQX+D8OsMcTV3ydJjMgXfAJNsQ="/>
+        <field:select field="productionRequest" id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionRequest" itemValue="id" items="${productionrequests}" path="/productionrequests" z="o7RedV8OlmFM5G84qljnw2WdH68="/>
+        <field:select field="productionRule" id="c_es_uca_b2mml_domain_perform_ProductionResponse_productionRule" itemValue="id" items="${productproductionrules}" path="/productionrules" z="C8aoOX4JQ6CuYQsrC4oeM8vbf4Q="/>
+        <field:textarea field="responseId" id="c_es_uca_b2mml_domain_perform_ProductionResponse_responseId" required="true" z="9tvvGh6eJGiNKBGUpaCnVDFt9N8="/>
+        <field:datetime dateTimePattern="${productionResponse_starttime_date_format}" field="startTime" id="c_es_uca_b2mml_domain_perform_ProductionResponse_startTime" z="1sMQTGu63yPnDVQf1TNV6OL0qxk="/>
+        <field:datetime dateTimePattern="${productionResponse_endtime_date_format}" field="endTime" id="c_es_uca_b2mml_domain_perform_ProductionResponse_endTime" z="DO6ss2FXP64cvEIvNK7EVtEPztU="/>
+        <field:simple field="segmentResponses" id="c_es_uca_b2mml_domain_perform_ProductionResponse_segmentResponses" messageCode="entity_reference_not_managed" messageCodeAttribute="Segment Response" z="xaMNVULg2wuZtZRac2c9roYgDlE="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_perform_ProductionResponse" render="${not empty dependencies}" z="uBdo5p+nVssfrrXd9i8Ti6KZmKM="/>
+</div>

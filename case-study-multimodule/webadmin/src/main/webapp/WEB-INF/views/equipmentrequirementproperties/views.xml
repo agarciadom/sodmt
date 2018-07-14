@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="equipmentrequirementproperties/list">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentrequirementproperties/list.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentrequirementproperties/show">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentrequirementproperties/show.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentrequirementproperties/create">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentrequirementproperties/create.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentrequirementproperties/update">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentrequirementproperties/update.jspx"/>
+    </definition>
+</tiles-definitions>

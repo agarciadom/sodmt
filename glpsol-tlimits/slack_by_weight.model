@@ -1,0 +1,45 @@
+# Activities
+set A;
+
+# Paths
+set P;
+
+# Global time limit
+param G;
+
+# Minimum times
+param m{a in A};
+
+# Weights
+param w{a in A};
+
+# Paths
+param paths{a in A, p in P};
+
+# Minimum time of each path
+param mp{p in P} := sum{a in A} paths[a, p] * m[a];
+
+# Total weight of each path
+param tw{p in P} := sum{a in A} paths[a, p] * w[a];
+
+# Minimum slack per unit of weight by task
+param msuw{a in A} := min{p in P} (G-mp[p])/tw[p];
+
+# Slack per unit of weight for each activity (must be positive)
+var suw{a in A};
+
+# Objective function: use as much time as possible
+maximize usage: sum{a in A, p in P} (paths[a, p] * (suw[a]*w[a] + m[a]));
+
+# Restrictions by path
+s.t. lpath 'global limit on path' {p in P}: sum{a in A} (paths[a, p] * (suw[a] * w[a] + m[a])) <= G;
+
+# Minimum slack restriction
+s.t. minslack 'min slack' {a in A}: suw[a] >= msuw[a];
+
+# Restrictions by set of paths
+s.t. lsetpaths 'same paths' {a in A, b in A: a < b && forall {p in P} paths[a, p] == paths[b, p]}: suw[a] == suw[b];
+
+
+
+end;

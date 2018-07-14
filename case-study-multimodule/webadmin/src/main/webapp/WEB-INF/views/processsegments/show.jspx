@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_psegment_ProcessSegment" object="${processsegment}" path="/processsegments" z="tBLS84fT0c4dwcemXFnmAly13e8=">
+        <field:display field="parent" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_parent" object="${processsegment}" z="b5Sj+IWm5DsS3TVr5TesucRVzl8="/>
+        <field:display field="segmentId" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_segmentId" object="${processsegment}" z="L2O7UxDV8Dmf7SXCjo5ZbG4d7Nc="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_description" object="${processsegment}" z="TMUuf3cXZHJ1Xp/REuZTfz0Lu2E="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_location" object="${processsegment}" z="B0RlE3QF9HSMnzwmx/QlEaryuo0="/>
+        <field:display field="duration" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_duration" object="${processsegment}" z="lrZQ9EGEgS3e1wO0VT9RLb8DwO0="/>
+        <field:display calendar="true" dateTimePattern="${processSegment_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_publishedDate" object="${processsegment}" z="zraL3ALk3xBspWHl55rK8cw0B44="/>
+        <field:display field="incomingDependencies" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_incomingdependencies" object="${processsegment}" z="user-managed"/>
+        <field:display field="outgoingDependencies" id="s_es_uca_b2mml_domain_psegment_ProcessSegment_outgoingdependencies" object="${processsegment}" z="user-managed"/>
+    </page:show>
+</div>

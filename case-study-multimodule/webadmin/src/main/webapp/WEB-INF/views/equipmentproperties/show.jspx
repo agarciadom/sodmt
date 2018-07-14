@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_EquipmentProperty" object="${equipmentproperty}" path="/equipmentproperties" z="RO4PNghLGQHDcSR/Ga8x+WMYyEI=">
+        <field:display field="equipment" id="s_es_uca_b2mml_domain_equip_EquipmentProperty_equipment" object="${equipmentproperty}" z="Ckuv8PZBT1OpktsVQ9jK3svuvyI="/>
+        <field:display field="name" id="s_es_uca_b2mml_domain_equip_EquipmentProperty_name" object="${equipmentproperty}" z="Bup9KSyIpcV6RU8CvV6FudzyBpE="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_equip_EquipmentProperty_description" object="${equipmentproperty}" z="aPBXSLotzB5F5L553EMesWKAmCU="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_equip_EquipmentProperty_value" object="${equipmentproperty}" z="H06vXSnNW4SxoqsqStU4rKnucHE="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_equip_EquipmentProperty_unit" object="${equipmentproperty}" z="WhEdFes4PJRZSDlL54Xs9sX8F78="/>
+    </page:show>
+</div>

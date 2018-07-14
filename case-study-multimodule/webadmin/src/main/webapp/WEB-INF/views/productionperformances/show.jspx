@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_perform_ProductionPerformance" object="${productionperformance}" path="/productionperformances" z="UiFACrsdpnOxD28Aqd9n+rWjd5U=">
+        <field:display field="performanceId" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_performanceId" object="${productionperformance}" z="uxfXMGAnDXx9KFAJnbsqgqF3iLw="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_description" object="${productionperformance}" z="PZf5d0E9SgA9Yf7VTPUdr/PIkps="/>
+        <field:display field="productionSchedule" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_productionSchedule" object="${productionperformance}" z="3I0OicMpB+XZ6RIoS8gWkUyQNQQ="/>
+        <field:display calendar="true" dateTimePattern="${productionPerformance_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_startTime" object="${productionperformance}" z="NaC/vdTrrYhXzv4tYiIh3uckWHA="/>
+        <field:display calendar="true" dateTimePattern="${productionPerformance_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_endTime" object="${productionperformance}" z="cOJedBzjlphKhmW2Y4ej3tJzSaE="/>
+        <field:display calendar="true" dateTimePattern="${productionPerformance_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_publishedDate" object="${productionperformance}" z="Tnxlg4b6BECnYXef998YF4jsHd0="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_perform_ProductionPerformance_location" object="${productionperformance}" z="yOKe9wTHBKsACBQzVx+B0AsmSag="/>
+    </page:show>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty" modelAttribute="personnelCapabilityProperty" path="/personnelcapabilityproperties" versionField="Version" z="HygK5nZJqtEjnh6noFiKH3DGnko=">
+        <field:select field="capability" id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_capability" itemValue="id" items="${personnelcapabilities}" path="/personnelcapabilities" required="true" z="kphjXIHb0t1B++a2Rl5dwcapDOM="/>
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_name" required="true" z="9AEMtN8cwNV8lXfzBrZpvJerti8="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_description" z="UfMrAZo6pbb67j0SjbJ4B1BC1GA="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_value" required="true" z="hf190xwubkWygeTSdpEgqGGGBTM="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_capability_PersonnelCapabilityProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="2u79PpmwqwYZv0qw7lxKO3V3ujc="/>
+    </form:update>
+</div>

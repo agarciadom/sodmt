@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_capability_MaterialCapability" object="${materialcapability}" path="/materialcapabilities" z="E0OVeMnt7ZewMOqKUOZ+FWunhRw=">
+        <field:display field="description" id="s_es_uca_b2mml_domain_capability_MaterialCapability_description" object="${materialcapability}" z="u+ci0z8V6rIG2CtPIrphtH2ziHk="/>
+        <field:display field="type" id="s_es_uca_b2mml_domain_capability_MaterialCapability_type" object="${materialcapability}" z="G+pM2EaBtBJfhyzRdEZsW4rm60Y="/>
+        <field:display field="reason" id="s_es_uca_b2mml_domain_capability_MaterialCapability_reason" object="${materialcapability}" z="HlP/XYpgofDG1VYjZZyVBHwOGcU="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_capability_MaterialCapability_location" object="${materialcapability}" z="jQdQsaXW97rkq5krIMSXKDUvds4="/>
+        <field:display calendar="true" dateTimePattern="${materialCapability_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_capability_MaterialCapability_startTime" object="${materialcapability}" z="Oq9bfdWs+MSeXj4Bn8Px0cEofcs="/>
+        <field:display calendar="true" dateTimePattern="${materialCapability_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_capability_MaterialCapability_endTime" object="${materialcapability}" z="hAs31+MVEHIH+edteQ90Hgx4Jps="/>
+        <field:display field="productionCapability" id="s_es_uca_b2mml_domain_capability_MaterialCapability_productionCapability" object="${materialcapability}" z="ptCePS+LwWTneGhBLt7Vh4Jx1m4="/>
+        <field:display field="materialClass" id="s_es_uca_b2mml_domain_capability_MaterialCapability_materialClass" object="${materialcapability}" z="RMf87Cvj6nDg8aCczueLUSaW8wI="/>
+        <field:display field="materialDefinition" id="s_es_uca_b2mml_domain_capability_MaterialCapability_materialDefinition" object="${materialcapability}" z="t4W+YPOI9SVQfe67yUMkwzX/hAA="/>
+        <field:display field="materialLot" id="s_es_uca_b2mml_domain_capability_MaterialCapability_materialLot" object="${materialcapability}" z="ib7tzfIw1shm3Qza753MRAcU16U="/>
+        <field:display field="materialSublot" id="s_es_uca_b2mml_domain_capability_MaterialCapability_materialSublot" object="${materialcapability}" z="mCkshT1AMFg/FUgn7wltbqhgwmY="/>
+        <field:display field="materialUse" id="s_es_uca_b2mml_domain_capability_MaterialCapability_materialUse" object="${materialcapability}" z="b0NflpGtWT9krDmSCpGqq+6tO9U="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_capability_MaterialCapability_quantity" object="${materialcapability}" z="user-managed"/>
+    </page:show>
+</div>

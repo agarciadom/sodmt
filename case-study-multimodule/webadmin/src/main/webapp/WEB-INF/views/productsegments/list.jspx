@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_product_ProductSegment" items="${productsegments}" z="FMvtB39UU0QCjGBBCiELQqNc60g=">
+        <table:table data="${productsegments}" id="l_es_uca_b2mml_domain_product_ProductSegment" path="/productsegments" z="CxPSHhRpfSsmA5Fw6adNyiL7VmQ=">
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_parent" property="parent" z="SR2AX7SDZVpHTf1/wcO2Ne0CQq8="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_rule" property="rule" z="TCDkAnL6YsgOc6CHvakZ32QWb5o="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_segmentId" property="segmentId" z="kaufnSlFKlqv+hxjprVb9Bv7UCc="/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_processSegment" property="processSegment" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_product_ProductSegment_duration" property="duration" render="false" z="user-managed"/>
+        </table:table>
+    </page:list>
+</div>

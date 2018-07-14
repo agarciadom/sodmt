@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_ProductionSchedule" items="${productionschedules}" z="kTdw9FkJGYQPP2HuKQvFF+nE0Qk=">
+        <table:table data="${productionschedules}" id="l_es_uca_b2mml_domain_schedule_ProductionSchedule" path="/productionschedules" z="9i3B7tzNfhN+1K94w2LZ866Fe+Y=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_scheduleId" property="scheduleId" z="Q8jmp5ChzYUHzFKh4lMEn/AL6nM="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_description" property="description" z="sl5ScY/8IRQh6Wo2q1YW+GYnVHc="/>
+            <table:column calendar="true" dateTimePattern="${productionSchedule_starttime_date_format}" id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_startTime" property="startTime" z="3/m/yUrqfdrgXdeNaJP4fTLB+eI="/>
+            <table:column calendar="true" dateTimePattern="${productionSchedule_endtime_date_format}" id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_endTime" property="endTime" z="xJ/NTUMqo9ef0HnKGHAA9U6LuAs="/>
+            <table:column calendar="true" dateTimePattern="${productionSchedule_publisheddate_date_format}" id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_publishedDate" property="publishedDate" z="U+6m3NfILpF8kl5kCGU0mfzMTK4="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionSchedule_location" property="location" z="1xR5qIoSoEoGFdoC0WcFEDHzgSk="/>
+        </table:table>
+    </page:list>
+</div>

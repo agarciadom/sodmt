@@ -1,0 +1,35 @@
+set A := t_a t_b t_c t_d t_e t_f t_g t_h;
+
+set P := p_1 p_2 p_3 p_4;
+
+param G := 40;
+
+param m := t_a 2
+           t_b 1
+           t_c 3
+           t_d 2
+           t_e 4
+           t_f 0
+           t_g 0
+           t_h 0;
+
+param w := t_a 1
+           t_b 1
+           t_c 2
+           t_d 2
+           t_e 1
+           t_f 1
+           t_g 1
+           t_h 1;
+
+param paths :  p_1 p_2 p_3 p_4 :=
+          t_a    1   1   1   1
+          t_b    1   0   1   0
+          t_c    1   0   1   0
+          t_d    0   1   0   1
+          t_e    1   1   1   1
+          t_f    1   1   0   0
+          t_g    1   1   0   0
+          t_h    0   0   1   1;
+
+end;

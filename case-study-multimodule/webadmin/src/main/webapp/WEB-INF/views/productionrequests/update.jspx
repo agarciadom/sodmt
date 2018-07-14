@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_schedule_ProductionRequest" modelAttribute="productionRequest" path="/productionrequests" versionField="Version" z="r4qFAiLSP7lMQmUl9Lg3Esh3XRU=">
+        <field:select field="schedule" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_schedule" itemValue="id" items="${productionschedules}" path="/productionschedules" required="true" z="R3DxWZSZqb3QtRkAEBjipuuYjl0="/>
+        <field:textarea field="requestId" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_requestId" required="true" z="AN2Iz8pJNsR65BH1I7QhMmtYlGI="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_description" z="gzQRBn84NJmA2h4eNMOnLXziX5c="/>
+        <field:select field="productionRule" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_productionRule" itemValue="id" items="${productproductionrules}" path="/productionrules" z="aM0f7LyKFJr93mjXTcd0gpiHD+s="/>
+        <field:datetime dateTimePattern="${productionRequest_starttime_date_format}" field="startTime" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_startTime" z="sYielIYoBjRvv2Il9I4sRMAZGYk="/>
+        <field:datetime dateTimePattern="${productionRequest_endtime_date_format}" field="endTime" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_endTime" z="RWMSXvKZwbR5IlgSBdYUpfoUSa0="/>
+        <field:select field="priority" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_priority" itemValue="id" items="${priorities}" path="/priorities" z="x7D7US8gV3sGZVRIWC3JZSFfoSA="/>
+        <field:simple field="segments" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_segments" messageCode="entity_reference_not_managed" messageCodeAttribute="Segment Requirement" z="7J7PVj8/2fvOiLPu2PxoVf3n6UY="/>
+    </form:update>
+</div>

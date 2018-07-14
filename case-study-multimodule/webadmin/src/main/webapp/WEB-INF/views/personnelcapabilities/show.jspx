@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_capability_PersonnelCapability" object="${personnelcapability}" path="/personnelcapabilities" z="8e7GiSCwSjkXRFbVyx73APEB+NM=">
+        <field:display field="productionCapability" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_productionCapability" object="${personnelcapability}" z="+S4rjFH9PIPPUgRjBGmptk71dK8="/>
+        <field:display field="type" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_type" object="${personnelcapability}" z="CZ4rVoVzqvh3+Rvk2bOBy4FrljI="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_location" object="${personnelcapability}" z="0uZgFGIEHItVYpVqmggmYOa9TtU="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_description" object="${personnelcapability}" z="TAO5gJj6E3eUmon09K+T76YQZsc="/>
+        <field:display field="reason" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_reason" object="${personnelcapability}" z="SvHSVttyBv/TGmWEgI4gpFG31FI="/>
+        <field:display calendar="true" dateTimePattern="${personnelCapability_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_startTime" object="${personnelcapability}" z="u6I83qFQARNiDtnOynlpN/UDjsA="/>
+        <field:display calendar="true" dateTimePattern="${personnelCapability_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_endTime" object="${personnelcapability}" z="7S2GDj3vS/xtPzP2Qwf1hIiJUsk="/>
+        <field:display field="person" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_person" object="${personnelcapability}" z="MNVtMKUX+dmsKf1YKranze0Fy1c="/>
+        <field:display field="personnelClass" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_personnelClass" object="${personnelcapability}" z="Ox26IoUlRJPYrTjd9v/WQ7AzmRY="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_capability_PersonnelCapability_quantity" object="${personnelcapability}" z="user-managed"/>
+    </page:show>
+</div>

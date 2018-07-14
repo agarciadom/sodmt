@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_QATestResult" items="${qatestresults}" z="SGXZOdyfRr1kkDMCpQ/iMVj8Kh0=">
+        <table:table data="${qatestresults}" id="l_es_uca_b2mml_domain_material_QATestResult" path="/qatestresults" z="Js09FiY81wuTxGAOrLy/FV9CeD0=">
+            <table:column id="c_es_uca_b2mml_domain_material_QATestResult_testSpec" property="testSpec" z="Eb4a6H5J+D7k5SxmwY2nBVmSF/A="/>
+            <table:column id="c_es_uca_b2mml_domain_material_QATestResult_lotProperty" property="lotProperty" z="6wYvloCw4sdY2aCtSy6TaZLtvrg="/>
+            <table:column id="c_es_uca_b2mml_domain_material_QATestResult_resultId" property="resultId" z="kQd6aft7FvfMTkRe5K8oGw21KCs="/>
+            <table:column id="c_es_uca_b2mml_domain_material_QATestResult_description" property="description" z="RD3NbmYhTB6MrODSoRoXFWxjbrI="/>
+            <table:column calendar="true" dateTimePattern="${QATestResult__resultdate_date_format}" id="c_es_uca_b2mml_domain_material_QATestResult_resultDate" property="resultDate" z="1DF7Ze4S31RMJgEQiBH3G8LzYSA="/>
+            <table:column id="c_es_uca_b2mml_domain_material_QATestResult_testResult" property="testResult" z="jRoRgieC2zdlBuDK2pgtq8NVwro="/>
+        </table:table>
+    </page:list>
+</div>

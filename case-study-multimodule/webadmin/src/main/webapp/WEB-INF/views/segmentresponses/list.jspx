@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_perform_SegmentResponse" items="${segmentresponses}" z="IsRvHJ+Kjsd7UwmzJJNwpTww1o4=">
+        <table:table data="${segmentresponses}" id="l_es_uca_b2mml_domain_perform_SegmentResponse" path="/segmentresponses" z="MMvf9XdSqZr7+Ui0FUTmhjQHiGs=">
+            <table:column id="c_es_uca_b2mml_domain_perform_SegmentResponse_productionResponse" property="productionResponse" z="pR9Rgb3zZebIGJZAwiHZshPihds="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_SegmentResponse_processSegment" property="processSegment" z="09NSFGDkZJBIl0u0TK5EzsSMd0U="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_SegmentResponse_responseId" property="responseId" z="wzOoI3a0Pm1RH29PKkhhdZbS8H4="/>
+            <table:column id="c_es_uca_b2mml_domain_perform_SegmentResponse_description" property="description" z="9I97/ge+oHDKRef0NXv+5nl4W4M="/>
+            <table:column calendar="true" dateTimePattern="${segmentResponse_actualstarttime_date_format}" id="c_es_uca_b2mml_domain_perform_SegmentResponse_actualStartTime" property="actualStartTime" z="cnaSLhyUoohrpvoTBqRBrhdXo64="/>
+            <table:column calendar="true" dateTimePattern="${segmentResponse_actualendtime_date_format}" id="c_es_uca_b2mml_domain_perform_SegmentResponse_actualEndTime" property="actualEndTime" z="r5jA+roRqVH1EJor3t7aLvv60H4="/>
+        </table:table>
+    </page:list>
+</div>

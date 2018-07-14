@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="processsegmentdependencytypes/list">
+        <put-attribute name="body" value="/WEB-INF/views/processsegmentdependencytypes/list.jspx"/>
+    </definition>
+<definition extends="default" name="processsegmentdependencytypes/show">
+        <put-attribute name="body" value="/WEB-INF/views/processsegmentdependencytypes/show.jspx"/>
+    </definition>
+<definition extends="default" name="processsegmentdependencytypes/create">
+        <put-attribute name="body" value="/WEB-INF/views/processsegmentdependencytypes/create.jspx"/>
+    </definition>
+<definition extends="default" name="processsegmentdependencytypes/update">
+        <put-attribute name="body" value="/WEB-INF/views/processsegmentdependencytypes/update.jspx"/>
+    </definition>
+</tiles-definitions>

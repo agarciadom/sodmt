@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_capability_MaterialCapability" items="${materialcapabilities}" z="kN4I6DeUIGb5oNxufkH8rpJ3mdg=">
+        <table:table data="${materialcapabilities}" id="l_es_uca_b2mml_domain_capability_MaterialCapability" path="/materialcapabilities" z="BdPG12hSxyC97vZJF7z54XhhS8E=">
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapability_description" property="description" z="sXyhNiTZ6r5TjPLQprA7W7kTta0="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapability_type" property="type" z="TjgkIDkNSN31jS3uc2EoXhT6zQo="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapability_reason" property="reason" z="SgMs5UaW7tZH5f5op4PZCezd1aQ="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_MaterialCapability_location" property="location" z="8hEgFUr2nVSvGw0Mex8YZQ5LhFQ="/>
+            <table:column calendar="true" dateTimePattern="${materialCapability_starttime_date_format}" id="c_es_uca_b2mml_domain_capability_MaterialCapability_startTime" property="startTime" z="DMaM4eIYZp98ZRT3UyK46rPRySk="/>
+            <table:column calendar="true" dateTimePattern="${materialCapability_endtime_date_format}" id="c_es_uca_b2mml_domain_capability_MaterialCapability_endTime" property="endTime" z="gqH5DzwVrrxJb0cFVymY5QqQSrw="/>
+        </table:table>
+    </page:list>
+</div>

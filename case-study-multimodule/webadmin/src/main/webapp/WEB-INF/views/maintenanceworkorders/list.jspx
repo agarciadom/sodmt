@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_MaintenanceWorkOrder" items="${maintenanceworkorders}" z="Cr7hfEBScBIJDbt7LGho9mikD9g=">
+        <table:table data="${maintenanceworkorders}" id="l_es_uca_b2mml_domain_equip_MaintenanceWorkOrder" path="/maintenanceworkorders" z="/d7rs+NYMYKzE/H5mA9Oe51JAME=">
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_orderID" property="orderID" z="ipMaT792PSD7ygr1vHXia0T3OaQ="/>
+            <table:column calendar="true" dateTimePattern="${maintenanceWorkOrder_plannedstart_date_format}" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedStart" property="plannedStart" z="BUxpz4Z7SZ67bvRjiMr0qBa0qao="/>
+            <table:column calendar="true" dateTimePattern="${maintenanceWorkOrder_plannedfinish_date_format}" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedFinish" property="plannedFinish" z="DVWg+w7Lb6+qGyQDAsu5GEpY3m8="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_responsible" property="responsible" z="66wxtGrWfSfFeC+MdQYlOm9+5Lo="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_status" property="status" z="iCtSeG/0QS5/de88h6FYKsE9T9I="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_resources" property="resources" z="WbO9CbG2bw8LUuKFa/nvzxM4UA8="/>
+        </table:table>
+    </page:list>
+</div>

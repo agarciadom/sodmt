@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_ProductionRequest" object="${productionrequest}" path="/productionrequests" z="zx8gnTMhB5osJG9ZSAg7ZkTSdgM=">
+        <field:display field="schedule" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_schedule" object="${productionrequest}" z="JuJv0UdzXQeo3zgYOHEPdy8bfs8="/>
+        <field:display field="requestId" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_requestId" object="${productionrequest}" z="+U9dfGJt3DOtxdJseqwz9Fd+YTA="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_description" object="${productionrequest}" z="Ynb8qI/LTH0O4GwOlg/ChaGH2lA="/>
+        <field:display field="productionRule" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_productionRule" object="${productionrequest}" z="uUfF3hcFpQ/uQoyTb5UdkExoY4A="/>
+        <field:display calendar="true" dateTimePattern="${productionRequest_starttime_date_format}" field="startTime" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_startTime" object="${productionrequest}" z="+psYZPeIGnQUMj5+jX5Yhq4Z+as="/>
+        <field:display calendar="true" dateTimePattern="${productionRequest_endtime_date_format}" field="endTime" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_endTime" object="${productionrequest}" z="8p1PW34cX1lXRPp0sNweGjactwE="/>
+        <field:display field="priority" id="s_es_uca_b2mml_domain_schedule_ProductionRequest_priority" object="${productionrequest}" z="z4t5eL05f33bUDuaQO9hD1wde70="/>
+    </page:show>
+</div>

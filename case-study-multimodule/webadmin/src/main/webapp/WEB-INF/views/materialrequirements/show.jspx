@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_MaterialRequirement" object="${materialrequirement}" path="/materialrequirements" z="4izkmQfy9W4WHEJ1/PW6INwBWZk=">
+        <field:display field="segmentRequirement" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_segmentRequirement" object="${materialrequirement}" z="4rjAueb2mgbzcUvzpNDZQkq0/GM="/>
+        <field:display field="materialClasses" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_materialClasses" object="${materialrequirement}" z="k5quUhtCOI2DBbQQYtO3J4ps+9U="/>
+        <field:display field="materialDefinitions" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_materialDefinitions" object="${materialrequirement}" z="x5H1kDH+as0/5UQqtHVf24WBFck="/>
+        <field:display field="materialLots" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_materialLots" object="${materialrequirement}" z="acxofQ4gyBBrPq/1nRFJ6Annr/8="/>
+        <field:display field="materialSublots" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_materialSublots" object="${materialrequirement}" z="QN0f4Oi3Oc2o5aSzdXBMsoWawQY="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_description" object="${materialrequirement}" z="J0MXaoGkjjFRc6qJtNwo/l75dqI="/>
+        <field:display field="location" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_location" object="${materialrequirement}" z="FsSSL3E1Pc3sqXKwSSCOIZ5QkhE="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_quantity" object="${materialrequirement}" z="user-managed"/>
+        <field:display field="consumed" id="s_es_uca_b2mml_domain_schedule_MaterialRequirement_consumed" object="${materialrequirement}" z="/GiabNH77v20UfULepVPWr6ZY5M="/>
+    </page:show>
+</div>

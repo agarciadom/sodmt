@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_product_PersonnelSpecProperty" modelAttribute="personnelSpecProperty" path="/personnelspecproperties" versionField="Version" z="k4+tXIpZSwwIiQbn6PRtLYDjH7I=">
+        <field:select field="specification" id="c_es_uca_b2mml_domain_product_PersonnelSpecProperty_specification" itemValue="id" items="${personnelspecs}" path="/personnelspecs" required="true" z="wmJGtz3DbZE6BXw9MZ4OX5iok/g="/>
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_product_PersonnelSpecProperty_name" required="true" z="Ali+isymG4kj2Cpbirnm7mNDv5Y="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_PersonnelSpecProperty_description" z="QEPDOFc1tPfJ5ktZ4aDUdxelAuU="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_product_PersonnelSpecProperty_value" required="true" z="OOWU/k4IJRZl+jZedZT7ENXLJP4="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_product_PersonnelSpecProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="CuHCu+KswYJh77XHdXyK2Lutoeg="/>
+    </form:update>
+</div>

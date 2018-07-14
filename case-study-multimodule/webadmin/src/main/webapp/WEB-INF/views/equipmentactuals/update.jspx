@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_perform_EquipmentActual" modelAttribute="equipmentActual" path="/equipmentactuals" versionField="Version" z="user-managed">
+        <field:select field="segmentResponse" id="c_es_uca_b2mml_domain_perform_EquipmentActual_segmentResponse" itemValue="id" items="${segmentresponses}" path="/segmentresponses" required="true" z="z9wIOuMoYutDS0AjGeBxnzp3Sw0="/>
+        <field:select field="equipment" id="c_es_uca_b2mml_domain_perform_EquipmentActual_equipment" itemValue="id" items="${equipments}" multiple="true" path="/equipments" z="cTwvvuaydN37Gb8qD7kfmiqzieY="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_perform_EquipmentActual_description" z="+aLSj/gm4t6sCFyqayjKNVg+14k="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_perform_EquipmentActual_quantity" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_perform_EquipmentActual_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_perform_EquipmentActual_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment Actual Property" z="/LuxgyjIMqrMHIWLzY+9+MwQPWE="/>
+        <field:select field="equipmentClasses" id="c_es_uca_b2mml_domain_perform_EquipmentActual_equipmentClasses" itemValue="id" items="${equipmentclasses}" multiple="true" path="/equipmentclasses" z="7ONrcFY+pDUVZLfFVkoEgjtSWZA="/>
+    </form:update>
+</div>

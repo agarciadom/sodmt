@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_material_MaterialSublot" object="${materialsublot}" path="/materialsublots" z="8KtkS+WCldHmqRsizjcxx6OgKfk=">
+        <field:display field="lot" id="s_es_uca_b2mml_domain_material_MaterialSublot_lot" object="${materialsublot}" z="GLocph4wDHTTODKVxdzvpjqZ1O0="/>
+        <field:display field="parent" id="s_es_uca_b2mml_domain_material_MaterialSublot_parent" object="${materialsublot}" z="xb2GKyKzUSWxghJLtALXA4XKTaU="/>
+        <field:display field="sublotId" id="s_es_uca_b2mml_domain_material_MaterialSublot_sublotId" object="${materialsublot}" z="uWGoXsONOzUrNMh2Mjs1Dk9mFDg="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_material_MaterialSublot_description" object="${materialsublot}" z="5W+oxk8RWwq1ol2LxNXA3G96T7Q="/>
+        <field:display field="status" id="s_es_uca_b2mml_domain_material_MaterialSublot_status" object="${materialsublot}" z="t4vtEl848DbBiKz1X7gCeUrm7J4="/>
+        <field:display field="storageLocation" id="s_es_uca_b2mml_domain_material_MaterialSublot_storageLocation" object="${materialsublot}" z="Kw0T7shyntOZnT0pn5ej4ua3OJo="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_material_MaterialSublot_quantity" object="${materialsublot}" z="90yVl1eGAqUAqj3qVwCD2MV3wlM="/>
+    </page:show>
+</div>

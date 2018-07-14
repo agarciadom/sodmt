@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_people_Person" object="${person}" path="/people" z="5L/uNGSl/jE6cXKHnGkQPU7lU3M=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_people_Person_name" object="${person}" z="3NxdOz06i9IhdA3YZeQPo7Soo4c="/>
+        <field:display field="surnames" id="s_es_uca_b2mml_domain_people_Person_surnames" object="${person}" z="Fgo4Wb3M+WX2XsbwIxTrWsJT3Ts="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_people_Person_description" object="${person}" z="5qFR4zRc97j4Y/cLMBnt8fypRwQ="/>
+        <field:display field="nationalID" id="s_es_uca_b2mml_domain_people_Person_nationalID" object="${person}" z="XVzKVVcQOMv8UOVQDZ9o7k9SYY8="/>
+        <field:display field="classes" id="s_es_uca_b2mml_domain_people_Person_classes" object="${person}" z="7WEcPzPxtjS8mfN+sO0iTewWfbo="/>
+    </page:show>
+</div>

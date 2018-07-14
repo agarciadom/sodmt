@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_material_MaterialClassProperty" modelAttribute="materialClassProperty" path="/materialclassproperties" versionField="Version" z="ZSgybbAtV/ccPxNqTpX8o7Q5HTc=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_name" required="true" z="CQsrEmEqAlME5rUAW5FkE6aKfJw="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_description" z="Lif6xBZwdT5L+Nk6P4ogJ3u6hIM="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_value" required="true" z="/JosBcrenrXcV6UN1RLGu6Yrm6I="/>
+        <field:select field="materialClass" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_materialClass" itemValue="id" items="${materialclasses}" path="/materialclasses" required="true" z="eI+VVBXWcS1XPiU3vwnP1V99p/w="/>
+        <field:select field="qualityTestSpecs" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_qualityTestSpecs" itemValue="id" items="${qatestspecs}" multiple="true" path="/qatestspecs" z="GI8nNKiObA4iwuqfW8ILhdA/m9c="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_material_MaterialClassProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="uggs7Ygcp7Yk3X9aEZoOl1QCaY8="/>
+    </form:update>
+</div>

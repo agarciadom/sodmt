@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_product_ProductSegmentDependency" object="${productsegmentdependency}" path="/productsegmentdependencies" z="CyyM9RkiDgVOhjTDK4IwSG3qrjY=">
+        <field:display field="description" id="s_es_uca_b2mml_domain_product_ProductSegmentDependency_description" object="${productsegmentdependency}" z="122V81TJw32UH+rRg+fvC4jWgRo="/>
+        <field:display field="dependencyType" id="s_es_uca_b2mml_domain_product_ProductSegmentDependency_dependencyType" object="${productsegmentdependency}" z="/MMtjibN9X2D2HgiHG9KmslTAPc="/>
+        <field:display field="timingFactor" id="s_es_uca_b2mml_domain_product_ProductSegmentDependency_timingFactor" object="${productsegmentdependency}" z="FWpw7xpKsylo2lTDxZx4O7G2Z+c="/>
+        <field:display field="segmentA" id="s_es_uca_b2mml_domain_product_ProductSegmentDependency_segmentA" object="${productsegmentdependency}" z="QwpTW9qLi5vA2joThJzEYnF8Wh8="/>
+        <field:display field="segmentB" id="s_es_uca_b2mml_domain_product_ProductSegmentDependency_segmentB" object="${productsegmentdependency}" z="v9wHASLUDlcERDWOvrKe7vWR7uQ="/>
+    </page:show>
+</div>

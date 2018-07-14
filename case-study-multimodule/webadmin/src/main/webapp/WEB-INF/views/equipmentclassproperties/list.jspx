@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_equip_EquipmentClassProperty" items="${equipmentclassproperties}" z="KEmlxZhP1REJaN5IFGC20Kw/1CE=">
+        <table:table data="${equipmentclassproperties}" id="l_es_uca_b2mml_domain_equip_EquipmentClassProperty" path="/equipmentclassproperties" z="yzDcDg3KVrl1zI/xK1K+3D7Oxgk=">
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_name" property="name" z="RhbI91CDGuhjl7/2j5/kbo4PJoQ="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_description" property="description" z="mQrP4vLsMHIpQT0RMPLFeKdJkkc="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_value" property="value" z="feR6JfyGcw9+s89NC/EGRER8EO0="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_unit" property="unit" z="2NyGtG/ea9O/W5a0BbwSuiPtNLM="/>
+            <table:column id="c_es_uca_b2mml_domain_equip_EquipmentClassProperty_equipmentClass" property="equipmentClass" z="IueRtwlyH7uCd1llZBsI1VHIrhQ="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec" items="${personnelsegmentspecs}" z="QiNiWdMWini3WdvhgK5o1RVIsj4=">
+        <table:table data="${personnelsegmentspecs}" id="l_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec" path="/personnelsegmentspecs" z="BH5H1dwrsdXRPIVDOim9QcF4ghU=">
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_processSegment" property="processSegment" z="eze1dp08g6K3E7iZEqLSEVENnSM="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_description" property="description" z="U4ib75lZd+vgggtNZ1Pw3zu5J7Y="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_person" property="person" z="k7Jd4Ik7qcSvRM+RxQME0Qd2NPg="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_PersonnelSegmentSpec_personClass" property="personClass" z="7WeZ/Xq1EF9ovoxJ0WacZPrcqcc="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_capability_EquipmentCapability" modelAttribute="equipmentCapability" path="/equipmentcapabilities" versionField="Version" z="user-managed">
+        <field:select field="productionCapability" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_productionCapability" itemValue="id" items="${productioncapabilities}" path="/productioncapabilities" required="true" z="ElnRuuesfE9WyjL0t4xFN2ZUiKk="/>
+        <field:select field="location" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_location" itemValue="id" items="${equipments}" path="/equipments" required="true" z="CnhWzu5h40epTP9ebd/ldNsLlsw="/>
+        <field:select field="type" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_type" items="${capabilitytypes}" path="capabilitytypes" required="true" z="o5qAfKiEZffpZcCmHI+l5WGK+4E="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_description" z="FkPIvtEv8n2UCl7gcMVUJdNVOIQ="/>
+        <field:textarea field="reason" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_reason" z="AxjiJF6W7QJXufXxeogq/1NoVcs="/>
+        <field:datetime dateTimePattern="${equipmentCapability_starttime_date_format}" field="startTime" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_startTime" z="5BEgTl3plixl+EGOp8J8zI7WVyM="/>
+        <field:datetime dateTimePattern="${equipmentCapability_endtime_date_format}" field="endTime" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_endTime" z="nV2tA7oycH/QYqhyQc6HGfdma8Q="/>
+        <field:select field="equipment" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_equipment" itemValue="id" items="${equipments}" path="/equipments" z="Ozt8nUadP9WikajjecPsSCcZfRk="/>
+        <field:select field="equipmentClass" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_equipmentClass" itemValue="id" items="${equipmentclasses}" path="/equipmentclasses" z="MmrVhbXQy8C7BqY1fq405rpvocw="/>
+        <field:textarea field="quantityValue" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_quantity" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_unit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Equipment Capability Property" render="false" z="user-managed"/>
+    </form:update>
+</div>

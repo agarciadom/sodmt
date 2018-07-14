@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty" object="${equipmentrequirementproperty}" path="/equipmentrequirementproperties" z="AVaQszO01Y2vNQlVdGkAyM+9wco=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_name" object="${equipmentrequirementproperty}" z="9m/XYT2/A65cmRHKgDOxCiQrTAs="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_description" object="${equipmentrequirementproperty}" z="2FKQWsEtqDAFl3kpjgfYGpcn3CA="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_value" object="${equipmentrequirementproperty}" z="q5NxermtXo8ttvecv9jRlqNRVuk="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_unit" object="${equipmentrequirementproperty}" z="pQRqySmmLPW8bbPBh5KtWNDVbzw="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_quantity" object="${equipmentrequirementproperty}" z="user-managed"/>
+        <field:display field="equipmentRequirement" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirementProperty_equipmentRequirement" object="${equipmentrequirementproperty}" z="vBCWJtqd/B805vKlAAmqqrsuv/M="/>
+    </page:show>
+</div>

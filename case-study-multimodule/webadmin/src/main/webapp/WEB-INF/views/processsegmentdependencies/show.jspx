@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_psegment_ProcessSegmentDependency" object="${processsegmentdependency}" path="/processsegmentdependencies" z="zMp2SGsdgFxacdnPDOH/GzMiSYg=">
+        <field:display field="segmentA" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_segmentA" object="${processsegmentdependency}" z="AI2iJhxDd4ZQfjSAKcNjnwpLmOo="/>
+        <field:display field="segmentB" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_segmentB" object="${processsegmentdependency}" z="S1CQK03/YxCQMMUovcoReVMJnNU="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_description" object="${processsegmentdependency}" z="u7+wuZBuCkcNPpfaQe2h16VdGtg="/>
+        <field:display field="timingFactor" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_timingFactor" object="${processsegmentdependency}" z="6kGyASCZzDmk7UKbtXVnQ2pviyo="/>
+        <field:display field="dependencyType" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentDependency_dependencyType" object="${processsegmentdependency}" z="QSrZ5SsosEGjQ6BWddg1nseekDQ="/>
+    </page:show>
+</div>

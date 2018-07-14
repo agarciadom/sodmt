@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_perform_SegmentResponse" object="${segmentresponse}" path="/segmentresponses" z="NohCjuZidrxMk7Y4KBjADQX2t5Y=">
+        <field:display field="productionResponse" id="s_es_uca_b2mml_domain_perform_SegmentResponse_productionResponse" object="${segmentresponse}" z="uH2D9joHIIbDwSdHUAOnU2HBfT0="/>
+        <field:display field="processSegment" id="s_es_uca_b2mml_domain_perform_SegmentResponse_processSegment" object="${segmentresponse}" z="siTwfvtdZyAalXG2KAMeKKbX/q4="/>
+        <field:display field="responseId" id="s_es_uca_b2mml_domain_perform_SegmentResponse_responseId" object="${segmentresponse}" z="g7BCZqhZDquRCHGP81p6RGXIt3w="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_perform_SegmentResponse_description" object="${segmentresponse}" z="OMLhir6bBYtcXsz6KmUI7pEhnCo="/>
+        <field:display calendar="true" dateTimePattern="${segmentResponse_actualstarttime_date_format}" field="actualStartTime" id="s_es_uca_b2mml_domain_perform_SegmentResponse_actualStartTime" object="${segmentresponse}" z="jYa9m8oBlfKuU/kywy9CYNR7qto="/>
+        <field:display calendar="true" dateTimePattern="${segmentResponse_actualendtime_date_format}" field="actualEndTime" id="s_es_uca_b2mml_domain_perform_SegmentResponse_actualEndTime" object="${segmentresponse}" z="Rsc6pXnXz879FAacjJRZk4XtUpw="/>
+    </page:show>
+</div>

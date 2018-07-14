@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_material_MaterialLotProperty" items="${materiallotproperties}" z="9mFu3I0qCiP0bSvOZHqcKpKP468=">
+        <table:table data="${materiallotproperties}" id="l_es_uca_b2mml_domain_material_MaterialLotProperty" path="/materiallotproperties" z="+wumh1CAG6JNGd4kSZwdwchBies=">
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLotProperty_name" property="name" z="7nhH7bLrmbe/NKzCXfF/iic1ztE="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLotProperty_description" property="description" z="tsmzYnDULHnUFKKAoxPYgjISku0="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLotProperty_value" property="value" z="7FyG60LwHOXypMvq2IinmBbwJzA="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLotProperty_lot" property="lot" z="G6Z0mckxrPKo2a3r9mtFy7yKBK4="/>
+            <table:column id="c_es_uca_b2mml_domain_material_MaterialLotProperty_unit" property="unit" z="LvKhKAhhYsH04pJDzUDbOEB+pmo="/>
+        </table:table>
+    </page:list>
+</div>

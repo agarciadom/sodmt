@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:rooform="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message
+		code="label_es_uca_b2mml_capability_genCapabilities_panel"
+		var="title_msg" htmlEscape="false" />
+	<spring:message
+		code="label_es_uca_b2mml_capability_genCapabilities_template"
+		var="label" htmlEscape="true" />
+
+	<c:if test="${generated > 0}">
+		<div class="confirm">Generated <c:out value="${generated}"/> entries.</div>
+	</c:if>
+
+	<util:panel title="${title_msg}" id="panel_genCapabilities">
+		<form:form modelAttribute="generateCapabilitiesForm" method="post">
+			<form:errors cssClss="errors"/>
+
+			<rooform:select
+				id="c_es_uca_b2mml_capability_generatecapabilities_template"
+				items="${productionCapabilities}" itemValue="id" itemLabel="capabilityId" field="template"
+				path="/productioncapabilities" required="true"/>
+			<rooform:datetime
+				id="c_es_uca_b2mml_capability_generatecapabilities_startdate"
+				field="startDate" dateTimePattern="${date_format}" future="true" required="true"/>
+			<rooform:datetime
+				id="c_es_uca_b2mml_capability_generatecapabilities_enddate"
+				field="endDate" dateTimePattern="${date_format}" future="true" required="true"/>
+			<form:errors path="startBeforeEnd" cssClass="errors"/>
+
+			<rooform:checkbox field="workMon" id="c_es_uca_b2mml_capability_generatecapabilities_workmon"/>
+			<rooform:checkbox field="workTue" id="c_es_uca_b2mml_capability_generatecapabilities_worktue"/>
+			<rooform:checkbox field="workWed" id="c_es_uca_b2mml_capability_generatecapabilities_workwed"/>
+			<rooform:checkbox field="workThu" id="c_es_uca_b2mml_capability_generatecapabilities_workthu"/>
+			<rooform:checkbox field="workFri" id="c_es_uca_b2mml_capability_generatecapabilities_workfri"/>
+			<rooform:checkbox field="workSat" id="c_es_uca_b2mml_capability_generatecapabilities_worksat"/>
+			<rooform:checkbox field="workSun" id="c_es_uca_b2mml_capability_generatecapabilities_worksun"/>
+
+			<div class="submit">
+				<spring:message code="button_proceed" var="proceed_button" htmlEscape="false" />
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ValidateAllDecoration({elementId : 'proceed', event : 'onclick' }));
+				</script>
+				<input id="proceed" value="${fn:escapeXml(proceed_button)}" type="submit" />
+			</div>
+		</form:form>
+	</util:panel>
+</div>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_capability_MaterialCapability" modelAttribute="materialCapability" path="/materialcapabilities" versionField="Version" z="155n/6PVWS4+kjWvz7zinkKgY9M=">
+        <field:select field="productionCapability" id="c_es_uca_b2mml_domain_capability_MaterialCapability_productionCapability" itemValue="id" items="${productioncapabilities}" path="/productioncapabilities" required="true" z="aytXBhxlIeRS3xmuQbCzFIYBMc4="/>
+        <field:select field="materialClass" id="c_es_uca_b2mml_domain_capability_MaterialCapability_materialClass" itemValue="id" items="${materialclasses}" path="/materialclasses" z="oV+vCpuY1FyYKnTwqq3gefA9Xgw="/>
+        <field:select field="materialDefinition" id="c_es_uca_b2mml_domain_capability_MaterialCapability_materialDefinition" itemValue="id" items="${materialdefinitions}" path="/materialdefinitions" z="ZBzktKqUms4+6UQLQWcua2f5acQ="/>
+        <field:select field="materialLot" id="c_es_uca_b2mml_domain_capability_MaterialCapability_materialLot" itemValue="id" items="${materiallots}" path="/materiallots" z="m/SOkPq9u5gZkGI4qjuI9B8kvS0="/>
+        <field:select field="materialSublot" id="c_es_uca_b2mml_domain_capability_MaterialCapability_materialSublot" itemValue="id" items="${materialsublots}" path="/materialsublots" z="vz4kA6qlfXxThqIhe1+jMVltRI4="/>
+        <field:select field="materialUse" id="c_es_uca_b2mml_domain_capability_MaterialCapability_materialUse" items="${materialusetypes}" path="materialusetypes" required="true" z="xrKgGtJpBdr3AYD4DM/Lob9jzLc="/>
+        <field:select field="type" id="c_es_uca_b2mml_domain_capability_MaterialCapability_type" items="${capabilitytypes}" path="capabilitytypes" required="true" z="MEMpHmRJuz5wQBkiwvs5ydShRN8="/>
+        <field:select field="location" id="c_es_uca_b2mml_domain_capability_MaterialCapability_location" itemValue="id" items="${equipments}" path="/equipments" required="true" z="6lyG0uPCYlNvNRnrTjc2Yo4zzUs="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_capability_MaterialCapability_description" z="PEKW/lxEwxHg3Uv4HmJYNDOMKJM="/>
+        <field:textarea field="reason" id="c_es_uca_b2mml_domain_capability_MaterialCapability_reason" z="JPMxqQjmUnbw/V+8NCy6+3fy5VI="/>
+        <field:datetime dateTimePattern="${materialCapability_starttime_date_format}" field="startTime" id="c_es_uca_b2mml_domain_capability_MaterialCapability_startTime" z="V/9Iod3rztHGldcbffXEOaSW0LI="/>
+        <field:datetime dateTimePattern="${materialCapability_endtime_date_format}" field="endTime" id="c_es_uca_b2mml_domain_capability_MaterialCapability_endTime" z="SeBd6tCaVwcbOxpvRBw1+7u/Jz8="/>
+        <field:textarea field="quantityValue" id="c_es_uca_b2mml_domain_capability_MaterialCapability_quantity" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_capability_MaterialCapability_unit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_capability_MaterialCapability_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Capability Property" render="false" z="user-managed"/>
+    </form:update>
+</div>

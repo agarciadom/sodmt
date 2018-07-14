@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_psegment_ProcessSegmentParameter" items="${processsegmentparameters}" z="Pki8aMgcQosQWy/OgSZn716MzdE=">
+        <table:table data="${processsegmentparameters}" id="l_es_uca_b2mml_domain_psegment_ProcessSegmentParameter" path="/processsegmentparameters" z="S7iDsk/ucYB2HZ0fT081EAaPymY=">
+            <table:column id="c_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_name" property="name" z="5ENievl1kVy+FnUV+3sxATXaqxE="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_segment" property="segment" z="7MCyGIGziyg1dKQPmdU0Argc4EI="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_description" property="description" z="cFB3K0Lj7YRi0h72MNUrF03m6PA="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_parameterValue" property="parameterValue" z="0nGVnbAU2jkK2UK7v+7NITJB9oY="/>
+            <table:column id="c_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_unit" property="unit" z="8jlVXaZsuyEzBBBF+QsU+Pbec4k="/>
+        </table:table>
+    </page:list>
+</div>

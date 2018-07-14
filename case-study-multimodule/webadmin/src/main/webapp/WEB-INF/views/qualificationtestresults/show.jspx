@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_people_QualificationTestResult" object="${qualificationtestresult}" path="/qualificationtestresults" z="DeRhmv6HR5w+s3UuNQPMggHHRMw=">
+        <field:display field="testSpecification" id="s_es_uca_b2mml_domain_people_QualificationTestResult_testSpecification" object="${qualificationtestresult}" z="yAuaK58SO+U5q6qigszM8vdU1lk="/>
+        <field:display field="personProperty" id="s_es_uca_b2mml_domain_people_QualificationTestResult_personProperty" object="${qualificationtestresult}" z="IQgVQBhxJZu3NZeSHdLHIEUGNVU="/>
+        <field:display date="true" dateTimePattern="${qualificationTestResult_testdate_date_format}" field="testDate" id="s_es_uca_b2mml_domain_people_QualificationTestResult_testDate" object="${qualificationtestresult}" z="oq0nReWyZzPvIYFDreqlY0wM80M="/>
+        <field:display date="true" dateTimePattern="${qualificationTestResult_expiration_date_format}" field="expiration" id="s_es_uca_b2mml_domain_people_QualificationTestResult_expiration" object="${qualificationtestresult}" z="IFbBpo1aSvVnoDs5psiSipD1cLk="/>
+        <field:display field="testResult" id="s_es_uca_b2mml_domain_people_QualificationTestResult_testResult" object="${qualificationtestresult}" z="Zg0Ipz52MYqxz30Xr5/QgF/75CY="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_people_QualificationTestResult_unit" object="${qualificationtestresult}" z="qnHrvlU273uTUHuzwwEp0d0k+XI="/>
+    </page:show>
+</div>

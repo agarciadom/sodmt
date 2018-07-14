@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_product_PersonnelSpec" modelAttribute="personnelSpec" path="/personnelspecs" render="${empty dependencies}" z="XPgw/BbOrtF8sx1UIy1GkLj+HNI=">
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_product_PersonnelSpec_description" z="user-managed"/>
+
+        <field:textarea field="quantityValue" id="c_es_uca_b2mml_domain_product_PersonnelSpec_quantity" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_product_PersonnelSpec_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+
+        <field:select field="segment" id="c_es_uca_b2mml_domain_product_PersonnelSpec_segment" itemValue="id" items="${productsegments}" path="/productsegments" required="true" z="XD8yV4/HaRvii4ah5CCd9gcyTJs="/>
+        <field:select field="people" id="c_es_uca_b2mml_domain_product_PersonnelSpec_people" itemValue="id" items="${people}" multiple="true" path="/people" z="FOdT94UZO0qeJLP5etDJxEpGW7Q="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_product_PersonnelSpec_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Personnel Spec Property" z="lm6t6y5uGtm/iCPjMzyd8XxN/fY="/>
+        <field:select field="personnelClass" id="c_es_uca_b2mml_domain_product_PersonnelSpec_personnelClass" itemValue="id" items="${personclasses}" multiple="true" path="/personclasses" z="JQxd5Q0jiu2ZWGbXauKm7QNV6eg="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_product_PersonnelSpec" render="${not empty dependencies}" z="Ww/U5PA9rz2+Dt4WJWi2MxyAIY4="/>
+</div>

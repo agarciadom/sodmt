@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<!-- Load .properties files in META-INF/spring -->
+	<context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
+
+	<!-- CXF-based web service creation and registration -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<jaxws:endpoint id="scheduler"
+		implementor="es.uca.sodmt.isa95study.scheduler.impl.SchedulerImpl"
+		address="/scheduler" />
+
+	<!-- Support for @Autowired inside the @Configurable classes -->
+	<context:spring-configured />
+	<context:component-scan base-package="es.uca.b2mml">
+		<context:exclude-filter expression=".*_Roo_.*" type="regex" />
+		<context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+	</context:component-scan>
+
+	<!-- The DatatypeFactory for the Web Services -->
+	<bean id="datatypeFactory" class="javax.xml.datatype.DatatypeFactory" factory-method="newInstance" />
+
+	<!-- Annotation-based transaction support -->
+	<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
+
+	<!-- Set up our database connection -->
+	<bean class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" id="dataSource">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="true" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis" value="1800000" />
+		<property name="numTestsPerEvictionRun" value="3" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="validationQuery" value="SELECT version();" />
+	</bean>
+
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		id="entityManagerFactory">
+		<property name="persistenceUnitName" value="b2mml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

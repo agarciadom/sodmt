@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_material_QATestResult" object="${qatestresult_}" path="/qatestresults" z="cvK1ysbwj/lvbJQBf4/sK8fX7sY=">
+        <field:display field="testSpec" id="s_es_uca_b2mml_domain_material_QATestResult_testSpec" object="${qatestresult_}" z="v5NO0UDdv0kTLWT+I22Rzy8PlB8="/>
+        <field:display field="lotProperty" id="s_es_uca_b2mml_domain_material_QATestResult_lotProperty" object="${qatestresult_}" z="ZpuCQbtR3btpJraRWXpblwcdO+o="/>
+        <field:display field="resultId" id="s_es_uca_b2mml_domain_material_QATestResult_resultId" object="${qatestresult_}" z="/Z0JFQ5mrpzau0U9IKzKZHCCEgc="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_material_QATestResult_description" object="${qatestresult_}" z="kLHD3jS4magTpVUbM3Cpc3b2ybI="/>
+        <field:display calendar="true" dateTimePattern="${QATestResult__resultdate_date_format}" field="resultDate" id="s_es_uca_b2mml_domain_material_QATestResult_resultDate" object="${qatestresult_}" z="S+u6kuB6iaZblCa4h+XAsqkXf80="/>
+        <field:display field="testResult" id="s_es_uca_b2mml_domain_material_QATestResult_testResult" object="${qatestresult_}" z="jzILF8jUTeB8QF1NAydLiZHfIa8="/>
+        <field:display calendar="true" dateTimePattern="${QATestResult__expirationdate_date_format}" field="expirationDate" id="s_es_uca_b2mml_domain_material_QATestResult_expirationDate" object="${qatestresult_}" z="DpCLkXlJ7s75x+4VhHdBGPktcFc="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_material_QATestResult_unit" object="${qatestresult_}" z="9rEN+ZPezVQy29dDdW5ga+m6SBo="/>
+    </page:show>
+</div>

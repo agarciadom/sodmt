@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult" object="${equipmentcapabilitytestresult}" path="/equipmentcapabilitytestresults" z="DU2b2J0x8WMgjqN/2elXajfGanw=">
+        <field:display field="testSpecification" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testSpecification" object="${equipmentcapabilitytestresult}" z="iDhxrjvltPdVEIC3MRc6ou2JdKg="/>
+        <field:display field="personProperty" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_personProperty" object="${equipmentcapabilitytestresult}" z="A163QhIAL9n9dTOmcS9q/HUFguQ="/>
+        <field:display date="true" dateTimePattern="${equipmentCapabilityTestResult_testdate_date_format}" field="testDate" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testDate" object="${equipmentcapabilitytestresult}" z="bN4igYc07KBFnkk3z04jpCXEU0Y="/>
+        <field:display date="true" dateTimePattern="${equipmentCapabilityTestResult_expiration_date_format}" field="expiration" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_expiration" object="${equipmentcapabilitytestresult}" z="dCXrECC/mBKmjmiAEO0PpZRrC2k="/>
+        <field:display field="testResult" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_testResult" object="${equipmentcapabilitytestresult}" z="DKyqhtfhVj6k7hGlkZeF7vpC+Ec="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_equip_EquipmentCapabilityTestResult_unit" object="${equipmentcapabilitytestresult}" z="EM6GgB6AU1nRmjmxp815NTrk0As="/>
+    </page:show>
+</div>

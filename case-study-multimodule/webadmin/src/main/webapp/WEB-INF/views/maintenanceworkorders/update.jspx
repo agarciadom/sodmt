@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_equip_MaintenanceWorkOrder" modelAttribute="maintenanceWorkOrder" path="/maintenanceworkorders" versionField="Version" z="o+oA32gYupV+C2GlJjzKXJO7OHM=">
+        <field:input field="orderID" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_orderID" required="true" z="uwPZsl0jT5LDPkhQCVR6nFxxRpA="/>
+        <field:datetime dateTimePattern="${maintenanceWorkOrder_plannedstart_date_format}" field="plannedStart" future="true" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedStart" required="true" z="GuCUspkfPfKSZjq65BAycQgtyiY="/>
+        <field:datetime dateTimePattern="${maintenanceWorkOrder_plannedfinish_date_format}" field="plannedFinish" future="true" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_plannedFinish" required="true" z="GYJx/4eMR70tkaNALS3J2frJs/g="/>
+        <field:select field="responsible" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_responsible" itemValue="id" items="${people}" path="/people" required="true" z="BYj5ZGTGcDi/SbyXEh6oFpcxmkI="/>
+        <field:select field="status" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_status" itemValue="id" items="${maintenanceorderstatuses}" path="/maintenanceorderstatuses" required="true" z="/F40EN05pHChM40oY0ZaDP4N4Ag="/>
+        <field:input field="resources" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_resources" z="n0+/ux4SaeZe4ZLWix5jZ9WQGzI="/>
+        <field:select field="requests" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_requests" itemValue="id" items="${maintenancerequests}" multiple="true" path="/maintenancerequests" required="true" z="vnsA0fV+DpbDtSvDqN1g9wyxW2k="/>
+        <field:simple field="responses" id="c_es_uca_b2mml_domain_equip_MaintenanceWorkOrder_responses" messageCode="entity_reference_not_managed" messageCodeAttribute="Maintenance Response" z="BTkJAQd42gqjMyWnrEPm1qipzbA="/>
+    </form:update>
+</div>

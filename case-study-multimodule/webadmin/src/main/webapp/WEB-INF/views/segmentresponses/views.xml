@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="segmentresponses/list">
+        <put-attribute name="body" value="/WEB-INF/views/segmentresponses/list.jspx"/>
+    </definition>
+<definition extends="default" name="segmentresponses/show">
+        <put-attribute name="body" value="/WEB-INF/views/segmentresponses/show.jspx"/>
+    </definition>
+<definition extends="default" name="segmentresponses/create">
+        <put-attribute name="body" value="/WEB-INF/views/segmentresponses/create.jspx"/>
+    </definition>
+<definition extends="default" name="segmentresponses/update">
+        <put-attribute name="body" value="/WEB-INF/views/segmentresponses/update.jspx"/>
+    </definition>
+</tiles-definitions>

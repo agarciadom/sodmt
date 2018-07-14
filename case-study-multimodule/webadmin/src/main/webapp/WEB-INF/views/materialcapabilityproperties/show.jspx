@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_capability_MaterialCapabilityProperty" object="${materialcapabilityproperty}" path="/materialcapabilityproperties" z="F6SRWadLfCsPXmKbhAU7Dj119q0=">
+        <field:display field="capability" id="s_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_capability" object="${materialcapabilityproperty}" z="1V2MqSiMooDp+NefJOaYN6IUlTE="/>
+        <field:display field="name" id="s_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_name" object="${materialcapabilityproperty}" z="9ZKyM4ZHyoc0qo+COvaS/Tc5QSY="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_description" object="${materialcapabilityproperty}" z="KQurA7tTmDslnr/RMlkvFGxb5hk="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_value" object="${materialcapabilityproperty}" z="TffQkDxeIL2zrEND0J2W49x0vms="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_capability_MaterialCapabilityProperty_unit" object="${materialcapabilityproperty}" z="bk4b+6lXgcpF/gJZWNJs5PnuCkU="/>
+    </page:show>
+</div>

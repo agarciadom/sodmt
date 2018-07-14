@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_kDmB0FNvEeODmJuBxZrMNw" name="model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="__mtGoFNxEeO5qozlS704uA">
+    <importedPackage xmi:type="uml:Model" href="persistence_uml.xmi#//persistence"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VHkJkFN-EeO5qozlS704uA" name="PersonClass">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.72"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.73"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.74"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.75"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.76"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.77"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.78"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.79"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.80"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.81"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.82"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.83"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VHkJkVN-EeO5qozlS704uA" name="name" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VHkJklN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VHkJk1N-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VHkJlFN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VHkJlVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VHkJllN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VHkJmlN-EeO5qozlS704uA" name="findByName" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VHkJm1N-EeO5qozlS704uA" visibility="public" type="_VHkJkFN-EeO5qozlS704uA" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VHkJnFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VHkJnVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VHkJnlN-EeO5qozlS704uA" name="name" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VHkJn1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VHkJoFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VHkJoVN-EeO5qozlS704uA" name="PersonClass" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKdv5lN-EeO5qozlS704uA" name="MaterialSublot">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.155"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.156"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.157"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.158"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.159"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.160"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.161"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.162"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.163"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.164"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.165"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.166"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.167"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.168"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.169"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.170"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.171"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.172"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv51N-EeO5qozlS704uA" name="lot" visibility="public" type="_VKdvkVN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv6FN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv6VN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.444"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv6lN-EeO5qozlS704uA" name="parent" visibility="public" type="_VKdv5lN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv61N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv7FN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.445"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv7VN-EeO5qozlS704uA" name="sublotId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv7lN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv71N-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv8FN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv8VN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv8lN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv81N-EeO5qozlS704uA" name="status" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/MaterialLotStatus"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv9FN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv9VN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.446"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv9lN-EeO5qozlS704uA" name="quantity" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/QuantityWithUnit"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv91N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv-FN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.447"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv-VN-EeO5qozlS704uA" name="storageLocation" visibility="public" type="_VKb6qFN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv-lN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv-1N-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.448"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdv_FN-EeO5qozlS704uA" name="getQuantityValue" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdv_VN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/math/BigDecimal"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv_lN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv_1N-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdwAFN-EeO5qozlS704uA" name="setQuantityValue" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwAVN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="persistence_uml.xmi#//persistence/Common%20Java%20datatypes/void"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwAlN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwA1N-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwBFN-EeO5qozlS704uA" name="value" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/math/BigDecimal"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwBVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwBlN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdwB1N-EeO5qozlS704uA" name="getQuantityUnit" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwCFN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Unit"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwCVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwClN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdwC1N-EeO5qozlS704uA" name="setQuantityUnit" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwDFN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="persistence_uml.xmi#//persistence/Common%20Java%20datatypes/void"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwDVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwDlN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwD1N-EeO5qozlS704uA" name="unit" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Unit"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwEFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwEVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdwElN-EeO5qozlS704uA" name="findByDefinition" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwE1N-EeO5qozlS704uA" visibility="public" type="_VKdv5lN-EeO5qozlS704uA" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwFFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwFVN-EeO5qozlS704uA" value="*"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdwFlN-EeO5qozlS704uA" name="definition" visibility="public" type="_VKdvq1N-EeO5qozlS704uA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdwF1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdwGFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdwGVN-EeO5qozlS704uA" name="MaterialSublot" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKdvkVN-EeO5qozlS704uA" name="MaterialLot">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.92"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.93"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.94"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.95"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.96"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.97"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.98"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.99"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.100"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.101"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvklN-EeO5qozlS704uA" name="lotId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvk1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvlFN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvlVN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvllN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvl1N-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvmFN-EeO5qozlS704uA" name="definition" visibility="public" type="_VKdvq1N-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvmVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvmlN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.432"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvm1N-EeO5qozlS704uA" name="status" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/MaterialLotStatus"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvnFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvnVN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.433"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdvoVN-EeO5qozlS704uA" name="MaterialLot" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKdvq1N-EeO5qozlS704uA" name="MaterialDefinition">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.108"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.109"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.110"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.111"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.112"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.113"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.114"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.115"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.116"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.117"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.118"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.119"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.120"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvrFN-EeO5qozlS704uA" name="definitionId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvrVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvrlN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdvr1N-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvsFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvsVN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdvu1N-EeO5qozlS704uA" name="findByDefinitionId" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdvvFN-EeO5qozlS704uA" visibility="public" type="_VKdvq1N-EeO5qozlS704uA" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvvVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvvlN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKdvv1N-EeO5qozlS704uA" name="definitionId" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdvwFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdvwVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdvwlN-EeO5qozlS704uA" name="MaterialDefinition" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKdv2FN-EeO5qozlS704uA" name="MaterialClass">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.145"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.146"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.147"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.148"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.149"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.150"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.151"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.152"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.153"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.154"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv2VN-EeO5qozlS704uA" name="classId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv2lN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv21N-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv3FN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv3VN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv3lN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKdv31N-EeO5qozlS704uA" name="definitions" visibility="public" type="_VKdvq1N-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKdv4FN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKdv4VN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/material/@packagedElement.442"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKdv5VN-EeO5qozlS704uA" name="MaterialClass" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKfjMVN-EeO5qozlS704uA" name="Person">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.48"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.49"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.50"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.51"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.52"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.53"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.54"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.55"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.56"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.57"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.58"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/people/@packagedElement.59"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKfjMlN-EeO5qozlS704uA" name="name" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjM1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjNFN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKfjNVN-EeO5qozlS704uA" name="surnames" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjNlN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjN1N-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKfjOFN-EeO5qozlS704uA" name="nationalID" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjOVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjOlN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKfjO1N-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjPFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjPVN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKfjPlN-EeO5qozlS704uA" name="classes" visibility="public" type="_VHkJkFN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjP1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjQFN-EeO5qozlS704uA" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKfjQVN-EeO5qozlS704uA" name="findByName" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKfjQlN-EeO5qozlS704uA" visibility="public" type="_VKfjMVN-EeO5qozlS704uA" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjQ1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjRFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKfjRVN-EeO5qozlS704uA" name="name" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKfjRlN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKfjR1N-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKfjSFN-EeO5qozlS704uA" name="Person" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKhbb1N-EeO5qozlS704uA" name="ProcessSegment">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.140"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.141"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.142"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.143"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.144"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.145"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.146"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.147"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.148"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.149"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.150"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.151"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.152"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.153"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.154"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.155"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.156"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.157"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.158"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.159"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.160"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.161"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.162"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.163"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbcFN-EeO5qozlS704uA" name="parent" visibility="public" type="_VKhbb1N-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbcVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbclN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.425"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbc1N-EeO5qozlS704uA" name="segmentId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbdFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbdVN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbdlN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbd1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbeFN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbeVN-EeO5qozlS704uA" name="location" visibility="public" type="_VKb6qFN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbelN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbe1N-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.426"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbfFN-EeO5qozlS704uA" name="publishedDate" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/util/Calendar"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbfVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbflN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.427"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbf1N-EeO5qozlS704uA" name="duration" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/QuantityWithUnit"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbgFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbgVN-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.428"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbglN-EeO5qozlS704uA" name="outgoingDependencies" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/ProcessSegmentDependency"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbg1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbhFN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.429"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbhVN-EeO5qozlS704uA" name="incomingDependencies" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/ProcessSegmentDependency"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbhlN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbh1N-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.430"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbiFN-EeO5qozlS704uA" name="personnelSpecs" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/PersonnelSegmentSpec"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbiVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbilN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.431"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbi1N-EeO5qozlS704uA" name="equipmentSpecs" visibility="public" aggregation="composite">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/EquipmentSegmentSpec"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbjFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbjVN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.432"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKhbjlN-EeO5qozlS704uA" name="materialSpecs" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/MaterialSegmentSpec"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbj1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbkFN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.433"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhbkVN-EeO5qozlS704uA" name="ProcessSegment" visibility="public"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhbklN-EeO5qozlS704uA" name="ProcessSegment" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbk1N-EeO5qozlS704uA" name="segmentId" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhblFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhblVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhbllN-EeO5qozlS704uA" name="getDurationValue" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbl1N-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/math/BigDecimal"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbmFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbmVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhbmlN-EeO5qozlS704uA" name="setDurationValue" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbm1N-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="persistence_uml.xmi#//persistence/Common%20Java%20datatypes/void"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbnFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbnVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbnlN-EeO5qozlS704uA" name="value" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/math/BigDecimal"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbn1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhboFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhboVN-EeO5qozlS704uA" name="getDurationUnit" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbolN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Unit"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbo1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbpFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKhbpVN-EeO5qozlS704uA" name="setDurationUnit" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbplN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="persistence_uml.xmi#//persistence/Common%20Java%20datatypes/void"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbp1N-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbqFN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKhbqVN-EeO5qozlS704uA" name="unit" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Unit"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKhbqlN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKhbq1N-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VKb6qFN-EeO5qozlS704uA" name="Equipment">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.133"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.134"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.135"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.136"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.137"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.138"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.139"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.140"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.141"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.142"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.143"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.144"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.145"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.146"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6qVN-EeO5qozlS704uA" name="parent" visibility="public" type="_VKb6qFN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6qlN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6q1N-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.531"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6rFN-EeO5qozlS704uA" name="children" visibility="public" type="_VKb6qFN-EeO5qozlS704uA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6rVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6rlN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.532"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6r1N-EeO5qozlS704uA" name="equipmentId" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6sFN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6sVN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6slN-EeO5qozlS704uA" name="description" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6s1N-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6tFN-EeO5qozlS704uA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6tVN-EeO5qozlS704uA" name="type" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/EquipmentType"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6tlN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6t1N-EeO5qozlS704uA" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.533"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VKb6uFN-EeO5qozlS704uA" name="classes" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/EquipmentClass"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6uVN-EeO5qozlS704uA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6ulN-EeO5qozlS704uA" value="*"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/equip/@packagedElement.534"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKb6u1N-EeO5qozlS704uA" name="toString" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKb6vFN-EeO5qozlS704uA" visibility="public" direction="return">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6vVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6vlN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKb6v1N-EeO5qozlS704uA" name="findByEquipmentId" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKb6wFN-EeO5qozlS704uA" visibility="public" type="_VKb6qFN-EeO5qozlS704uA" direction="return">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6wVN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6wlN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VKb6w1N-EeO5qozlS704uA" name="equipmentId" visibility="public">
+        <type xmi:type="uml:Class" href="persistence_uml.xmi#//externals/java/lang/String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VKb6xFN-EeO5qozlS704uA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VKb6xVN-EeO5qozlS704uA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VKb6xlN-EeO5qozlS704uA" name="Equipment" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ewUREFPBEeOd-rb1StjYrQ" name="EquipmentSegmentSpecProperty">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.131"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.132"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.133"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.134"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.135"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.136"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.137"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.138"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.139"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_ewUREVPBEeOd-rb1StjYrQ">
+      <general xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Property"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ewURElPBEeOd-rb1StjYrQ" name="specification" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/EquipmentSegmentSpec"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ewURE1PBEeOd-rb1StjYrQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ewURFFPBEeOd-rb1StjYrQ" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.424"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fZE6MFPBEeOd-rb1StjYrQ" name="PersonnelSegmentSpecProperty">
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.67"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.68"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.69"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.70"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.71"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.72"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.73"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.74"/>
+    <clientDependency xmi:type="uml:Dependency" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.75"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_fZE6MVPBEeOd-rb1StjYrQ">
+      <general xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/Property"/>
+    </generalization>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_fZE6MlPBEeOd-rb1StjYrQ" name="specification" visibility="public">
+      <type xmi:type="uml:Class" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/PersonnelSegmentSpec"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fZE6M1PBEeOd-rb1StjYrQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fZE6NFPBEeOd-rb1StjYrQ" value="1"/>
+      <association xmi:type="uml:Association" href="persistence_uml.xmi#//persistence/es/uca/b2mml/domain/psegment/@packagedElement.410"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>

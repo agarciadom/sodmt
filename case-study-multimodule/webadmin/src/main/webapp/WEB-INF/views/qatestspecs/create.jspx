@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_material_QATestSpec" modelAttribute="QATestSpec_" path="/qatestspecs" render="${empty dependencies}" z="LJg/E8RDzP+qcO1lGq4+EEWJtzw=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_material_QATestSpec_name" required="true" z="Lz0lgqq/ce5u/TVjClK8GCJd4O8="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_material_QATestSpec_description" z="zQZ2XwNS1Gd4UyrXfEPP0LTZOO4="/>
+        <field:textarea field="testVersion" id="c_es_uca_b2mml_domain_material_QATestSpec_testVersion" z="7nbQCLZIVeR4Afg5RqFES8932OQ="/>
+        <field:select field="classProperties" id="c_es_uca_b2mml_domain_material_QATestSpec_classProperties" itemValue="id" items="${materialclasspropertys}" multiple="true" path="/materialclassproperties" render="false" z="user-managed"/>
+        <field:select field="definitionProperties" id="c_es_uca_b2mml_domain_material_QATestSpec_definitionProperties" itemValue="id" items="${materialdefinitionpropertys}" multiple="true" path="/materialdefinitionproperties" render="false" z="user-managed"/>
+        <field:simple field="results" id="c_es_uca_b2mml_domain_material_QATestSpec_results" messageCode="entity_reference_not_managed" messageCodeAttribute="Q A Test Result" render="false" z="user-managed"/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_material_QATestSpec" render="${not empty dependencies}" z="NiIZ1MjnVVNSzqyR4wCgQQcAhgE="/>
+</div>

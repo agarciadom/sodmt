@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_ProductionParameter" object="${productionparameter}" path="/productionparameters" z="4Rt+C9wF5GrOh/ZS6EthIBFTNHU=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_schedule_ProductionParameter_name" object="${productionparameter}" z="+mU6vndRClGHpjOuRwbSgNOba7E="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_ProductionParameter_description" object="${productionparameter}" z="fj2AQBTsnVp9q2IeqoyeR2LxQiM="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_schedule_ProductionParameter_value" object="${productionparameter}" z="IVqZVnbGMA5EaPCjroj6gtSpw+w="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_schedule_ProductionParameter_unit" object="${productionparameter}" z="zyn52vtzbx7Z/FQBT4kWZlRHaKE="/>
+        <field:display field="segmentRequirement" id="s_es_uca_b2mml_domain_schedule_ProductionParameter_segmentRequirement" object="${productionparameter}" z="FS81mAm6iCsTie09FfaH2pT6dTU="/>
+    </page:show>
+</div>

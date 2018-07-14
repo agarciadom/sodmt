@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_schedule_ProductionRequest" items="${productionrequests}" z="LptC/ub8eu+rG26LALexIPhyZlg=">
+        <table:table data="${productionrequests}" id="l_es_uca_b2mml_domain_schedule_ProductionRequest" path="/productionrequests" z="MKF2F8KGz3Exn6q1MKbtvuPK1Cs=">
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionRequest_schedule" property="schedule" z="uEoLmhH6W5Q73fVjNXetOUWQEXs="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionRequest_requestId" property="requestId" z="Hb/nu3hlJLDwcTP6oUgEdqFIIj0="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionRequest_description" property="description" z="COone2r0A/QwQVtm6ty1BKJCr1M="/>
+            <table:column id="c_es_uca_b2mml_domain_schedule_ProductionRequest_productionRule" property="productionRule" z="g4sfa1EIhb7/TGpBxsPOmGi1yQc="/>
+            <table:column calendar="true" dateTimePattern="${productionRequest_starttime_date_format}" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_startTime" property="startTime" z="UylHN80qfubfZm4MaWvDC24g58k="/>
+            <table:column calendar="true" dateTimePattern="${productionRequest_endtime_date_format}" id="c_es_uca_b2mml_domain_schedule_ProductionRequest_endTime" property="endTime" z="3gvj1LVgF5XaLXFaSVGFxTpgS3M="/>
+        </table:table>
+    </page:list>
+</div>

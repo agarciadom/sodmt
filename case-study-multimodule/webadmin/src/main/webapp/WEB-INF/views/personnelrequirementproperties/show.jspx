@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty" object="${personnelrequirementproperty}" path="/personnelrequirementproperties" z="pfOz9p8SsOfRlitVaNymxRp4m2s=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_name" object="${personnelrequirementproperty}" z="aXPgu2tllk5P/4myq9+Cv3hUcIQ="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_description" object="${personnelrequirementproperty}" z="/5r/t3soBEogoyZZ6u137oCQxhI="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_value" object="${personnelrequirementproperty}" z="ZMgbHbWpUzzWNpj+WDmuqF0yaHw="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_unit" object="${personnelrequirementproperty}" z="hQSogkaDDbxLvBgl2081AqMVdf0="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_quantity" object="${personnelrequirementproperty}" z="user-managed"/>
+        <field:display field="personnelRequirement" id="s_es_uca_b2mml_domain_schedule_PersonnelRequirementProperty_personnelRequirement" object="${personnelrequirementproperty}" z="aCYd+De1J7OxTzYadYol3QqueWo="/>
+    </page:show>
+</div>

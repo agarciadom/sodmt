@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="materialrequirementproperties/list">
+        <put-attribute name="body" value="/WEB-INF/views/materialrequirementproperties/list.jspx"/>
+    </definition>
+<definition extends="default" name="materialrequirementproperties/show">
+        <put-attribute name="body" value="/WEB-INF/views/materialrequirementproperties/show.jspx"/>
+    </definition>
+<definition extends="default" name="materialrequirementproperties/create">
+        <put-attribute name="body" value="/WEB-INF/views/materialrequirementproperties/create.jspx"/>
+    </definition>
+<definition extends="default" name="materialrequirementproperties/update">
+        <put-attribute name="body" value="/WEB-INF/views/materialrequirementproperties/update.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_psegment_ProcessSegmentParameter" object="${processsegmentparameter}" path="/processsegmentparameters" z="iNUCf0NtD6qgNaIPJQOSu95i1tg=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_name" object="${processsegmentparameter}" z="AjZgUswK/8UWJpAORxOEJD96yoI="/>
+        <field:display field="segment" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_segment" object="${processsegmentparameter}" z="x3AZaEY6CpCWUvnzrNfFlPKsa3g="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_description" object="${processsegmentparameter}" z="VhU/kzFNR5sxQsfp3Jecj43blgM="/>
+        <field:display field="parameterValue" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_parameterValue" object="${processsegmentparameter}" z="YN9ptMCy1pXGO33e+MNV5N3ujwQ="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_psegment_ProcessSegmentParameter_unit" object="${processsegmentparameter}" z="dgutJmTLtyRM25CG45DQQ0V1W1I="/>
+    </page:show>
+</div>

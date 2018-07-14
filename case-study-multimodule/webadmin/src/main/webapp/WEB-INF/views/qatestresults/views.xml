@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="qatestresults/list">
+        <put-attribute name="body" value="/WEB-INF/views/qatestresults/list.jspx"/>
+    </definition>
+<definition extends="default" name="qatestresults/show">
+        <put-attribute name="body" value="/WEB-INF/views/qatestresults/show.jspx"/>
+    </definition>
+<definition extends="default" name="qatestresults/create">
+        <put-attribute name="body" value="/WEB-INF/views/qatestresults/create.jspx"/>
+    </definition>
+<definition extends="default" name="qatestresults/update">
+        <put-attribute name="body" value="/WEB-INF/views/qatestresults/update.jspx"/>
+    </definition>
+</tiles-definitions>

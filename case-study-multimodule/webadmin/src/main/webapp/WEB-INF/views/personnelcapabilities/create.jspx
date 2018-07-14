@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_b2mml_domain_capability_PersonnelCapability" modelAttribute="personnelCapability" path="/personnelcapabilities" render="${empty dependencies}" z="xpYy47fC+jMek32gU7IMVP68cTg=">
+        <field:select field="productionCapability" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_productionCapability" itemValue="id" items="${productioncapabilities}" path="/productioncapabilities" required="true" z="pXf06dim4nIoIzRwHCe+AAuT5Gc="/>
+        <field:select field="type" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_type" items="${capabilitytypes}" path="capabilitytypes" required="true" z="4AuEuHiYbXrRo8V3OqatRo7un3A="/>
+        <field:select field="location" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_location" itemValue="id" items="${equipments}" path="/equipments" required="true" z="x3MJ2ILHZyTrAM6XFUC6Fa6eXh0="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_description" z="t7pRoxN1xZSSPb6178KGoyBBTqc="/>
+        <field:textarea field="reason" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_reason" z="K7i01cZdp0efJt4+wnUZaX7efA0="/>
+        <field:datetime dateTimePattern="${personnelCapability_starttime_date_format}" field="startTime" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_startTime" z="lneqqC7ARBvYHpZfqeehyVGFKsY="/>
+        <field:datetime dateTimePattern="${personnelCapability_endtime_date_format}" field="endTime" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_endTime" z="Dh/hVRqxPFLXB5aKLzh0DdY3b7Q="/>
+        <field:select field="person" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_person" itemValue="id" items="${people}" path="/people" z="krIxQJGKx/sGnCEsmTFfjxPSZ/4="/>
+        <field:select field="personnelClass" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_personnelClass" itemValue="id" items="${personclasses}" path="/personclasses" z="ezfgKKpjju3xjRCqda01uPRh9Cs="/>
+        <field:textarea field="quantityValue" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_quantity" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_unit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_capability_PersonnelCapability_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Personnel Capability Property" render="false" z="user-managed"/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_b2mml_domain_capability_PersonnelCapability" render="${not empty dependencies}" z="qtQMAyRytLl6Aoba2inZH/8RYGA="/>
+</div>

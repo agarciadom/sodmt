@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_b2mml_domain_capability_EquipmentCapability" items="${equipmentcapabilities}" z="AgWMtCHEcOboqLYM5s7rSaeoZYc=">
+        <table:table data="${equipmentcapabilities}" id="l_es_uca_b2mml_domain_capability_EquipmentCapability" path="/equipmentcapabilities" z="gvnYmMg+HjB/9so8xXb3Vafs3nk=">
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_productionCapability" property="productionCapability" z="Qqry6CRJ85v7Qj9U6gmnn0b9tEY="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_type" property="type" z="Qqry6CRJ85v7Qj9U6gmnn0b9tEY="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_location" property="location" z="dWP8XRS1FysXAttyM4pHLsJpSDw="/>
+            <table:column calendar="true" dateTimePattern="${equipmentCapability_starttime_date_format}" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_startTime" property="startTime" z="rDAkWiAZPdOMSCfHBBJZgjjAAwQ="/>
+            <table:column calendar="true" dateTimePattern="${equipmentCapability_endtime_date_format}" id="c_es_uca_b2mml_domain_capability_EquipmentCapability_endTime" property="endTime" z="fk49Bi1WhvibpmQuOA01Wx+3zUY="/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_equipment" property="equipment" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_equipmentClass" property="equipmentClass" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_quantity" property="quantity" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_es_uca_b2mml_domain_capability_EquipmentCapability_reason" property="reason" render="false" z="user-managed"/>
+        </table:table>
+    </page:list>
+</div>

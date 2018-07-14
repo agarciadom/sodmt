@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_equip_MaintenanceRequest" object="${maintenancerequest}" path="/maintenancerequests" z="UZj/TtEgWeK9KJe3KF5gpkxm42Q=">
+        <field:display field="equipment" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_equipment" object="${maintenancerequest}" z="FJnB3oS9UwZFIHiZ+GQ/DsclLWk="/>
+        <field:display field="requestId" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_requestId" object="${maintenancerequest}" z="dEFStiZM1OKZdzXo6xVCDpkZ7RU="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_description" object="${maintenancerequest}" z="gWDYQfaGz6pwnjNbZY54zODhfnM="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceRequest_requestedcompletiondate_date_format}" field="requestedCompletionDate" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_requestedCompletionDate" object="${maintenancerequest}" z="MSx+6UsY1aMmfMRqqt6H3+s4Was="/>
+        <field:display field="priority" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_priority" object="${maintenancerequest}" z="hGrB2Fye2Exx6uuZ9FkSd/hiYVA="/>
+        <field:display field="requestor" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_requestor" object="${maintenancerequest}" z="1B2IsqdPuuOB/K2JXZMhOtceyV8="/>
+        <field:display field="status" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_status" object="${maintenancerequest}" z="1coPwy/oyOjhMYCSmdPTNNY/nSs="/>
+        <field:display field="reviewer" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_reviewer" object="${maintenancerequest}" z="d6mZXsRVjb8PfxZgFSQCl9PM2gg="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceRequest_submissiondate_date_format}" field="submissionDate" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_submissionDate" object="${maintenancerequest}" z="h1z4CA6P7E9yA078EUK38OvvEKs="/>
+        <field:display calendar="true" dateTimePattern="${maintenanceRequest_publisheddate_date_format}" field="publishedDate" id="s_es_uca_b2mml_domain_equip_MaintenanceRequest_publishedDate" object="${maintenancerequest}" z="mqgvOaSrZYRwAdwFGxpdnjMEgPA="/>
+    </page:show>
+</div>

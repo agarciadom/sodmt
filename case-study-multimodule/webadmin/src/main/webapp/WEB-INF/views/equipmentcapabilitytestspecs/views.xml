@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="equipmentcapabilitytestspecs/list">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentcapabilitytestspecs/list.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentcapabilitytestspecs/show">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentcapabilitytestspecs/show.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentcapabilitytestspecs/create">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentcapabilitytestspecs/create.jspx"/>
+    </definition>
+<definition extends="default" name="equipmentcapabilitytestspecs/update">
+        <put-attribute name="body" value="/WEB-INF/views/equipmentcapabilitytestspecs/update.jspx"/>
+    </definition>
+</tiles-definitions>

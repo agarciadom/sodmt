@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_perform_ProductionData" object="${productiondata}" path="/productiondatas" z="JbnEUG2EByaz/lH+3c8Xr4dSPuU=">
+        <field:display field="name" id="s_es_uca_b2mml_domain_perform_ProductionData_name" object="${productiondata}" z="LzW7RI147iO7vBLvDgalp7eG37M="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_perform_ProductionData_description" object="${productiondata}" z="LC4Vk+gzDx7NZ5qKLimtMITcbVY="/>
+        <field:display field="value" id="s_es_uca_b2mml_domain_perform_ProductionData_value" object="${productiondata}" z="nwCraB85rSB0eUffQZyfLGZ/OcI="/>
+        <field:display field="unit" id="s_es_uca_b2mml_domain_perform_ProductionData_unit" object="${productiondata}" z="RbKV6s6mxLyijgqh5+gSmhdn4EY="/>
+        <field:display field="segmentResponse" id="s_es_uca_b2mml_domain_perform_ProductionData_segmentResponse" object="${productiondata}" z="Q8hDuSBfeSR8ytho538Rck+Uk0A="/>
+    </page:show>
+</div>

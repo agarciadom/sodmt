@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_b2mml_domain_schedule_EquipmentRequirement" object="${equipmentrequirement}" path="/equipmentrequirements" z="AGXt5Zfb/g4xL2Dt7xX6BX5zfBI=">
+        <field:display field="segmentRequirement" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirement_segmentRequirement" object="${equipmentrequirement}" z="qOGDGLUspCnNmp9ysXRltEXTKmE="/>
+        <field:display field="equipment" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirement_equipment" object="${equipmentrequirement}" z="7HdwjbBwEFOTqydFKxA7fmUH9Xw="/>
+        <field:display field="description" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirement_description" object="${equipmentrequirement}" z="vzC9VxxVQxkr5lwmtSe4frZEsA8="/>
+        <field:display field="quantity" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirement_quantity" object="${equipmentrequirement}" z="user-managed"/>
+        <field:display field="equipmentClasses" id="s_es_uca_b2mml_domain_schedule_EquipmentRequirement_equipmentClasses" object="${equipmentrequirement}" z="zCsw02A69FqZuBKKfh+IDLxL2v4="/>
+    </page:show>
+</div>

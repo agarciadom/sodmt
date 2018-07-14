@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_schedule_MaterialRequirement" modelAttribute="materialRequirement" path="/materialrequirements" versionField="Version" z="user-managed">
+        <field:select field="segmentRequirement" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_segmentRequirement" itemValue="id" items="${segmentrequirements}" path="/segmentrequirements" required="true" z="o6RhkhEmvgEUewd/RtkGwY5Wkiw="/>
+        <field:select field="materialClasses" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_materialClasses" itemValue="id" items="${materialclasses}" multiple="true" path="/materialclasses" z="wMHBjWhunqzX8WYuhpywpeqQJfM="/>
+        <field:select field="materialDefinitions" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_materialDefinitions" itemValue="id" items="${materialdefinitions}" multiple="true" path="/materialdefinitions" z="meYsSwwiuhcQWkF1ol1S0TuLK1Q="/>
+        <field:select field="materialLots" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_materialLots" itemValue="id" items="${materiallots}" multiple="true" path="/materiallots" z="SISBB+WZtorKhlZqKEg2NM4ns1k="/>
+        <field:select field="materialSublots" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_materialSublots" itemValue="id" items="${materialsublots}" multiple="true" path="/materialsublots" z="a6qtrSlZNtv4dd1CotA9Wjle5rQ="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_description" z="uuCZ9DM/hhDB2bf6ZS/1veZ6SMU="/>
+        <field:select field="location" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_location" itemValue="id" items="${equipments}" path="/equipments" z="GPVFhfVD7OpBAuTc49eBYuUTMOo="/>
+        <field:input field="quantityValue" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_quantity" validationMessageCode="field_invalid_number" z="user-managed"/>
+        <field:select field="quantityUnit" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_quantityUnit" itemValue="id" items="${units}" path="/units" z="user-managed"/>
+        <field:checkbox field="consumed" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_consumed" z="/+7aajwX7lG54Q53S+G43YyVwsw="/>
+        <field:simple field="properties" id="c_es_uca_b2mml_domain_schedule_MaterialRequirement_properties" messageCode="entity_reference_not_managed" messageCodeAttribute="Material Requirement Property" z="XJUZq48r01FpiP0spgncapDJ6DY="/>
+    </form:update>
+</div>

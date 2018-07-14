@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_b2mml_domain_people_PersonClassProperty" modelAttribute="personClassProperty" path="/personclassproperties" versionField="Version" z="cotqkw+dkrMnM+lzD7ec0s6wovM=">
+        <field:textarea field="name" id="c_es_uca_b2mml_domain_people_PersonClassProperty_name" required="true" z="5ewWDYgs6gWQGTdySBx01H28zdk="/>
+        <field:textarea field="description" id="c_es_uca_b2mml_domain_people_PersonClassProperty_description" z="OTs1i2osls9ZZhqx/60vzEFy4p8="/>
+        <field:textarea field="value" id="c_es_uca_b2mml_domain_people_PersonClassProperty_value" required="true" z="BauTrlrgwbL0lW2M2VL6bjKjshM="/>
+        <field:select field="unit" id="c_es_uca_b2mml_domain_people_PersonClassProperty_unit" itemValue="id" items="${units}" path="/units" required="true" z="QXmuczisorlr1zLu55P+/AB1L18="/>
+        <field:select field="personClass" id="c_es_uca_b2mml_domain_people_PersonClassProperty_personClass" itemValue="id" items="${personclasses}" path="/personclasses" required="true" z="7bY4/6DVxGpqSGyihlRAzncHNrQ="/>
+        <field:simple field="testSpec" id="c_es_uca_b2mml_domain_people_PersonClassProperty_testSpec" messageCode="entity_reference_not_managed" messageCodeAttribute="Qualification Test Spec" z="99HN8R0EU4pzfRo4bY4DZ2M0BT0="/>
+    </form:update>
+</div>
