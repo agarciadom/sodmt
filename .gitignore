@@ -2,7 +2,10 @@ External Plug-in Libraries
 junit-workspace
 runtime-EclipseApplication
 FilterByClassRule.java
+
 *.iml
 .idea
 *.scomp.tests
 *.sprocess.tests
+
+log.roo
