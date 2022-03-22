@@ -5,18 +5,15 @@
         <artifactId>parent</artifactId>
         <version>0.1.0.BUILD-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>persistence</artifactId>
     <packaging>jar</packaging>
     <name>persistence</name>
-
     <properties>
         <ddl.postgres.file>${project.build.directory}/${project.artifactId}-${project.version}-ddl-postgres.sql</ddl.postgres.file>
         <ddl.hsqldb.file>${project.build.directory}/${project.artifactId}-${project.version}-ddl-hsqldb.sql</ddl.hsqldb.file>
         <querydsl.version>3.3.0.BETA1</querydsl.version>
     </properties>
-
     <dependencies>
         <!-- General dependencies for standard applications -->
         <dependency>
@@ -59,13 +56,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
         <!-- ROO dependencies -->
         <dependency>
             <groupId>org.springframework.roo</groupId>
             <artifactId>org.springframework.roo.annotations</artifactId>
         </dependency>
-
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -87,7 +82,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-
         <!-- Persistence-specific dependencies -->
         <dependency>
             <groupId>postgresql</groupId>
@@ -137,13 +131,11 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
         </dependency>
-
         <!-- For internal logic -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
-
         <!-- For testing -->
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -151,7 +143,6 @@
             <version>2.3.1</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Repository API -->
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
@@ -188,125 +179,121 @@
                 </configuration>
             </plugin>
             <plugin>
-               <groupId>de.juplo</groupId>
-               <artifactId>hibernate4-maven-plugin</artifactId>
-               <version>1.0.3</version>
-               <executions>
-                  <execution>
-                    <id>ddl-postgresql</id>
-                    <goals>
-                     <goal>export</goal>
-                 </goals>
-                 <configuration>
-                     <hibernateDialect>org.hibernate.dialect.PostgreSQLDialect</hibernateDialect>
-                     <hibernateNamingStrategy>org.hibernate.cfg.ImprovedNamingStrategy</hibernateNamingStrategy>
-
-                     <scanDependencies>none</scanDependencies>
-                     <target>SCRIPT</target>
-                     <type>CREATE</type>
-                     <outputFile>${ddl.postgres.file}</outputFile>
-                 </configuration>
-             </execution>
-             <execution>
-                <id>ddl-hsqldb</id>
-                <goals>
-                 <goal>export</goal>
-             </goals>
-             <configuration>
-                 <hibernateDialect>org.hibernate.dialect.HSQLDialect</hibernateDialect>
-                 <hibernateNamingStrategy>org.hibernate.cfg.ImprovedNamingStrategy</hibernateNamingStrategy>
-
-                 <scanDependencies>none</scanDependencies>
-                 <target>SCRIPT</target>
-                 <type>CREATE</type>
-                 <outputFile>${ddl.hsqldb.file}</outputFile>
-             </configuration>
-         </execution>
-     </executions>
- </plugin>
- <plugin>
-   <groupId>org.codehaus.mojo</groupId>
-   <artifactId>build-helper-maven-plugin</artifactId>
-   <version>1.8</version>
-   <executions>
-      <execution>
-         <phase>package</phase>
-         <goals>
-             <goal>attach-artifact</goal>
-         </goals>
-         <configuration>
-             <artifacts>
-                <artifact>
-                    <classifier>ddl-postgres</classifier>
-                    <file>${ddl.postgres.file}</file>
-                    <type>sql</type>
-                </artifact>
-                <artifact>
-                    <classifier>ddl-hsqldb</classifier>
-                    <file>${ddl.hsqldb.file}</file>
-                    <type>sql</type>
-                </artifact>
-            </artifacts>
-        </configuration>
-    </execution>
-</executions>
-</plugin>
-<plugin>
-    <groupId>com.mysema.maven</groupId>
-    <artifactId>apt-maven-plugin</artifactId>
-    <version>1.1.3</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>process</goal>
-            </goals>
-            <configuration>
-                <outputDirectory>target/generated-sources/java</outputDirectory>
-                <processor>com.mysema.query.apt.roo.RooAnnotationProcessor</processor>
-            </configuration>
-        </execution>
-    </executions>
-    <dependencies>
-        <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>javax.annotation-api</artifactId>
-          <version>1.3.2</version>
-      </dependency>
-  </dependencies>
-</plugin>
-</plugins>
-<pluginManagement>
-    <plugins>
-       <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-       <plugin>
-           <groupId>org.eclipse.m2e</groupId>
-           <artifactId>lifecycle-mapping</artifactId>
-           <version>1.0.0</version>
-           <configuration>
-              <lifecycleMappingMetadata>
-                  <pluginExecutions>
-                     <pluginExecution>
-                         <pluginExecutionFilter>
-                            <groupId>de.juplo</groupId>
-                            <artifactId>
-                                hibernate4-maven-plugin
+                <groupId>de.juplo</groupId>
+                <artifactId>hibernate4-maven-plugin</artifactId>
+                <version>1.0.3</version>
+                <executions>
+                    <execution>
+                        <id>ddl-postgresql</id>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                        <configuration>
+                            <hibernateDialect>org.hibernate.dialect.PostgreSQLDialect</hibernateDialect>
+                            <hibernateNamingStrategy>org.hibernate.cfg.ImprovedNamingStrategy</hibernateNamingStrategy>
+                            <scanDependencies>none</scanDependencies>
+                            <target>SCRIPT</target>
+                            <type>CREATE</type>
+                            <outputFile>${ddl.postgres.file}</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ddl-hsqldb</id>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                        <configuration>
+                            <hibernateDialect>org.hibernate.dialect.HSQLDialect</hibernateDialect>
+                            <hibernateNamingStrategy>org.hibernate.cfg.ImprovedNamingStrategy</hibernateNamingStrategy>
+                            <scanDependencies>none</scanDependencies>
+                            <target>SCRIPT</target>
+                            <type>CREATE</type>
+                            <outputFile>${ddl.hsqldb.file}</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <classifier>ddl-postgres</classifier>
+                                    <file>${ddl.postgres.file}</file>
+                                    <type>sql</type>
+                                </artifact>
+                                <artifact>
+                                    <classifier>ddl-hsqldb</classifier>
+                                    <file>${ddl.hsqldb.file}</file>
+                                    <type>sql</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.mysema.query.apt.roo.RooAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.annotation</groupId>
+                        <artifactId>javax.annotation-api</artifactId>
+                        <version>1.3.2</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>de.juplo</groupId>
+                                        <artifactId>hibernate4-maven-plugin
                             </artifactId>
-                            <versionRange>
-                                [1.0.3,)
+                                        <versionRange>[1.0.3,)
                             </versionRange>
-                            <goals>
-                                <goal>export</goal>
-                            </goals>
-                        </pluginExecutionFilter>
-                        <action>
-                            <ignore></ignore>
-                        </action>
-                    </pluginExecution>
-                </pluginExecutions>
-            </lifecycleMappingMetadata>
-        </configuration>
-    </plugin>
-</plugins>
-</pluginManagement>
-</build>
+                                        <goals>
+                                            <goal>export</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
