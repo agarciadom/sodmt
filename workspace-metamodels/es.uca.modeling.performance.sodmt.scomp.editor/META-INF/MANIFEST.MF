@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide;visibility:=reexport,
  es.uca.modeling.performance.sodmt.sprocess.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: es.uca.modeling.performance.sodmt.scomp.editor

@@ -27,3 +27,4 @@ Bundle-ClassPath: .,
  lib/jfreechart-1.0.13.jar,
  lib/swtgraphics2d.jar,
  lib/iText-5.0.5.jar
+Automatic-Module-Name: es.uca.modeling.performance.sodmt.eol.comparison

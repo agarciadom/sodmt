@@ -11,4 +11,5 @@ Require-Bundle: org.eclipse.epsilon.ewl.emf;bundle-version="0.9.1",
  org.eclipse.papyrus.marte.static.profile;bundle-version="0.9.0"
 Export-Package: es.uca.modeling.eol.marte.tools
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Automatic-Module-Name: es.uca.modeling.eol.marte
 

@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  es.uca.modeling.performance.sodmt.sprocess;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: es.uca.modeling.performance.sodmt.scomp

@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.core.runtime,
  es.uca.webservices.service-analyzer.emf.edit;visibility:=reexport,
  org.eclipse.uml2.uml.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: es.uca.modeling.eol.marte.weaving.wsdl.editor

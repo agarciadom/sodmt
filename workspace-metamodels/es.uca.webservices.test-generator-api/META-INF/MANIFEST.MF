@@ -21,3 +21,4 @@ Export-Package: es.uca.webservices.testgen.api.parsers;uses:="es.uca.web
 Ignore-Package: java.util,java.math,java.io,java.lang,javax.xml.datatype
 Main-Class: ${mainclass}
 Tool: Bnd-1.43.0
+Automatic-Module-Name: es.uca.webservices.test.generator.api
