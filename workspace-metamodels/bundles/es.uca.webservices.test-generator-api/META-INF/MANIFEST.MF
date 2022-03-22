@@ -1,0 +1,24 @@
+Manifest-Version: 1
+Bnd-LastModified: 1344709302413
+Build-Jdk: 1.6.0_22
+Built-By: antonio
+Bundle-Description: Abstract interfaces for the high-level components in
+  TestGenerator
+Bundle-DocURL: http://www.uca.es
+Bundle-ManifestVersion: 2
+Bundle-Name: TestGenerator API
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-SymbolicName: es.uca.webservices.test-generator-api
+Bundle-Vendor: Universidad de Cádiz
+Bundle-Version: 1.1.0.qualifier
+Created-By: Apache Maven Bundle Plugin
+Export-Package: es.uca.webservices.testgen.api.parsers;uses:="es.uca.web
+ services.testgen.api.types";version="1.1.0.SNAPSHOT",es.uca.webservices
+ .testgen.api.generators;uses:="es.uca.webservices.testgen.api.types";ve
+ rsion="1.1.0.SNAPSHOT",es.uca.webservices.testgen.api.formatters;versio
+ n="1.1.0.SNAPSHOT",es.uca.webservices.testgen.api.types;uses:="es.uca.w
+ ebservices.testgen.api.generators";version="1.1.0.SNAPSHOT"
+Ignore-Package: java.util,java.math,java.io,java.lang,javax.xml.datatype
+Main-Class: ${mainclass}
+Tool: Bnd-1.43.0
+Automatic-Module-Name: es.uca.webservices.test.generator.api

@@ -1,0 +1,70 @@
+Manifest-Version: 1
+Bnd-LastModified: 1344709565115
+Build-Jdk: 1.6.0_22
+Built-By: antonio
+Bundle-ClassPath: .,lib/slf4j-api-1.6.2.jar,lib/wsdl4j-1.6.2.jar,lib/jop
+ t-simple-3.2.jar,lib/commons-io-2.1.jar
+Bundle-Description: Outputs a tree of XML Schema descriptions from a sta
+ rting WSDL
+Bundle-DocURL: http://www.uca.es
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: WSDL2XSDTree
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-SymbolicName: es.uca.webservices.wsdl2xsdtree
+Bundle-Vendor: Universidad de Cádiz
+Bundle-Version: 1.0.3.qualifier
+Class-Path: xml-utils-1.3-SNAPSHOT.jar saxon-9.1.0.8.jar saxon-9.1.0.8-d
+ om.jar wsdl4j-1.6.2.jar commons-io-2.1.jar jopt-simple-3.2.jar slf4j-ap
+ i-1.6.2.jar slf4j-log4j12-1.6.2.jar log4j-1.2.16.jar
+Created-By: Apache Maven Bundle Plugin
+Embed-Dependency: *;scope=compile;groupId=!es.uca.webservices
+Embed-Directory: lib
+Export-Package: es.uca.webservices.wsdl.util;uses:="es.uca.webservices.b
+ pel.util,javax.xml.transform,joptsimple,javax.wsdl.factory,javax.wsdl.x
+ ml,javax.wsdl";version="1.0.3.SNAPSHOT",joptsimple;version="1.0.3.SNAPS
+ HOT",javax.wsdl.extensions.http;uses:="javax.wsdl.extensions";version="
+ 1.6.2",javax.wsdl.extensions.schema;uses:="javax.wsdl.extensions,org.w3
+ c.dom";version="1.6.2",javax.wsdl.extensions.mime;uses:="javax.wsdl.ext
+ ensions";version="1.6.2",javax.wsdl.xml;uses:="org.xml.sax,javax.wsdl.e
+ xtensions,org.w3c.dom,javax.wsdl";version="1.6.2",javax.wsdl.extensions
+ ;uses:="javax.xml.namespace,org.w3c.dom,javax.wsdl,com.ibm.wsdl.util.xm
+ l";version="1.6.2",javax.wsdl.factory;uses:="javax.wsdl.xml,javax.wsdl.
+ extensions,javax.wsdl";version="1.6.2",javax.wsdl.extensions.soap;uses:
+ ="javax.wsdl.extensions,javax.xml.namespace";version="1.6.2",javax.wsdl
+ ;uses:="javax.xml.namespace,javax.wsdl.extensions,org.w3c.dom";version=
+ "1.6.2",javax.wsdl.extensions.soap12;uses:="javax.wsdl.extensions,javax
+ .xml.namespace";version="1.6.2",com.ibm.wsdl.extensions.schema;uses:="j
+ avax.xml.namespace,javax.wsdl.xml,javax.wsdl.extensions,org.w3c.dom,com
+ .ibm.wsdl.util.xml,javax.wsdl,javax.wsdl.extensions.schema";version="1.
+ 6.2",com.ibm.wsdl.extensions.mime;uses:="javax.xml.namespace,javax.wsdl
+ .extensions.mime,com.ibm.wsdl,javax.wsdl.extensions,org.w3c.dom,com.ibm
+ .wsdl.util.xml,javax.wsdl";version="1.6.2",com.ibm.wsdl.xml;uses:="com.
+ ibm.wsdl.extensions.schema,javax.wsdl.factory,com.ibm.wsdl,javax.xml.pa
+ rsers,com.ibm.wsdl.util.xml,org.w3c.dom,javax.xml.namespace,org.xml.sax
+ ,javax.wsdl,javax.wsdl.extensions.schema,com.ibm.wsdl.util,javax.wsdl.x
+ ml,javax.wsdl.extensions";version="1.6.2",com.ibm.wsdl;uses:="javax.wsd
+ l.extensions,org.w3c.dom,javax.wsdl,javax.xml.namespace";version="1.6.2
+ ",com.ibm.wsdl.util;version="1.6.2",com.ibm.wsdl.extensions.soap12;uses
+ :="javax.wsdl.extensions.soap12,javax.xml.namespace,com.ibm.wsdl,javax.
+ wsdl.extensions,org.w3c.dom,com.ibm.wsdl.util.xml,javax.wsdl,javax.wsdl
+ .extensions.mime,com.ibm.wsdl.util";version="1.6.2",com.ibm.wsdl.extens
+ ions.soap;uses:="javax.wsdl.extensions.soap,javax.xml.namespace,com.ibm
+ .wsdl,javax.wsdl.extensions,org.w3c.dom,com.ibm.wsdl.util.xml,javax.wsd
+ l,javax.wsdl.extensions.mime,com.ibm.wsdl.util";version="1.6.2",com.ibm
+ .wsdl.util.xml;uses:="com.ibm.wsdl.util,org.w3c.dom,javax.xml.namespace
+ ,javax.wsdl";version="1.6.2",com.ibm.wsdl.extensions.http;uses:="javax.
+ wsdl.extensions.http,javax.xml.namespace,com.ibm.wsdl,javax.wsdl.extens
+ ions,org.w3c.dom,com.ibm.wsdl.util.xml,javax.wsdl";version="1.6.2",com.
+ ibm.wsdl.factory;uses:="javax.wsdl.factory,com.ibm.wsdl.xml,com.ibm.wsd
+ l.extensions,com.ibm.wsdl,javax.wsdl.xml,javax.wsdl.extensions,javax.ws
+ dl";version="1.6.2",com.ibm.wsdl.extensions;uses:="com.ibm.wsdl.extensi
+ ons.schema,com.ibm.wsdl.extensions.mime,com.ibm.wsdl.extensions.soap,ja
+ vax.wsdl.extensions.soap,javax.wsdl,javax.wsdl.extensions.mime,com.ibm.
+ wsdl.extensions.http,javax.xml.namespace,javax.wsdl.extensions,javax.ws
+ dl.extensions.soap12,com.ibm.wsdl.extensions.soap12";version="1.6.2"
+Ignore-Package: org.slf4j.impl
+Import-Package: es.uca.webservices.bpel.util
+Main-Class: es.uca.webservices.wsdl.util.Application
+Tool: Bnd-1.43.0
+Automatic-Module-Name: es.uca.webservices.wsdl2xsdtree
