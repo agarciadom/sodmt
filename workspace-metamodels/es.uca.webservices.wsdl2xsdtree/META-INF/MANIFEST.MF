@@ -10,7 +10,7 @@ Bundle-DocURL: http://www.uca.es
 Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: WSDL2XSDTree
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-SymbolicName: es.uca.webservices.wsdl2xsdtree
 Bundle-Vendor: Universidad de Cádiz
 Bundle-Version: 1.0.3.qualifier
@@ -64,7 +64,7 @@ Export-Package: es.uca.webservices.wsdl.util;uses:="es.uca.webservices.b
  wsdl.extensions.http,javax.xml.namespace,javax.wsdl.extensions,javax.ws
  dl.extensions.soap12,com.ibm.wsdl.extensions.soap12";version="1.6.2"
 Ignore-Package: org.slf4j.impl
-Import-Package: es.uca.webservices.bpel.util,javax.xml.namespace,javax.x
- ml.parsers,javax.xml.transform,org.w3c.dom,org.xml.sax
+Import-Package: es.uca.webservices.bpel.util
 Main-Class: es.uca.webservices.wsdl.util.Application
 Tool: Bnd-1.43.0
+Automatic-Module-Name: es.uca.webservices.wsdl2xsdtree

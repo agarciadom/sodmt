@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="links" nsURI="www.uca.es/modeling/weaving/modisco" nsPrefix="mw">
+  <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLinks">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesPerTest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="1000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="threads" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="src"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//PerformanceRequirementLink" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLink">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="#//TimeLimitMetric"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execNode" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ExecutableNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="klazz" eType="ecore:EClass http://www.eclipse.org/MoDisco/Java/0.2.incubation/java#//ClassDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testMethods" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/MoDisco/Java/0.2.incubation/java#//MethodDeclaration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeLimitMetric">
+    <eLiterals name="MAX"/>
+    <eLiterals name="AVERAGE" value="1"/>
+    <eLiterals name="PERCENTILE_90" value="2"/>
+    <eLiterals name="PERCENTILE_95" value="3"/>
+    <eLiterals name="PERCENTILE_99" value="4"/>
+    <eLiterals name="MEDIAN" value="5"/>
+  </eClassifiers>
+</ecore:EPackage>

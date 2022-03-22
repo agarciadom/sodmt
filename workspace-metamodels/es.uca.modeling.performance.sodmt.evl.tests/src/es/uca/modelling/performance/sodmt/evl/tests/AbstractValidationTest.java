@@ -27,7 +27,7 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 
 		public void validate() throws Exception {
 			if (evlModel != null) {
-				context.getModelRepository().removeModel(evlModel);
+				getContext().getModelRepository().removeModel(evlModel);
 			}
 
 			EvlModule evl = new EvlModule();
@@ -35,7 +35,7 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 				ServiceProcessValidationTest.class
 				.getResource(AbstractValidationTest.this.getPathToEVL())
 				.toURI());
-			evl.getContext().setModelRepository(context.getModelRepository());
+			evl.getContext().setModelRepository(getContext().getModelRepository());
 			evl.execute();
 
 			final IModel traceModel = new JavaModel(
@@ -43,7 +43,7 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 				Arrays.asList(UnsatisfiedConstraint.class));
 			traceModel.setName("EVL");
 
-			context.getModelRepository().addModel(traceModel);
+			getContext().getModelRepository().addModel(traceModel);
 		}
 	}
 

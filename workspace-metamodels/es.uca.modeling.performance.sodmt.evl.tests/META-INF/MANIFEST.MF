@@ -4,10 +4,11 @@ Bundle-Name: SODM+T Ad-hoc Performance Models (EVL Tests)
 Bundle-SymbolicName: es.uca.modeling.performance.sodmt.evl.tests
 Bundle-Version: 1.0.0.qualifier
 Fragment-Host: es.uca.modeling.performance.sodmt.evl;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: es.uca.modeling.performance.sodmt.sprocess,
  org.eclipse.epsilon.eunit.junit,
  org.eclipse.epsilon.emc.emf,
  org.junit,
  es.uca.modeling.performance.sodmt.scomp;bundle-version="1.0.0",
  org.eclipse.epsilon.eol.dt
+Automatic-Module-Name: es.uca.modeling.performance.sodmt.evl.tests

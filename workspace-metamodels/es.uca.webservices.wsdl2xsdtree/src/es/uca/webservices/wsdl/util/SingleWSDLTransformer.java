@@ -73,7 +73,6 @@ public class SingleWSDLTransformer extends XSLTStylesheet {
     /**
      * Extension function that maps an import path to the corresponding XML Schema document.
      */
-    @SuppressWarnings(value = "UnusedDeclaration")
     public String getPathToXSDFromImportLocation(String importLocation) throws IOException {
         // Make sure this is an absolute URI
         URI uri = URI.create(importLocation);

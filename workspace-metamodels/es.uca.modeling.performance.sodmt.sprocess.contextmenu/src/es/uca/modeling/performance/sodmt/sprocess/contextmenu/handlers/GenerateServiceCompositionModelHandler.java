@@ -13,7 +13,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.flock.FlockModule;
-import org.eclipse.epsilon.flock.IFlockContext;
+import org.eclipse.epsilon.flock.execute.context.IFlockContext;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;

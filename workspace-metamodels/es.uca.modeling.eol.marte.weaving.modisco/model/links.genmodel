@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/es.uca.modeling.eol.marte.weaving.modisco/src"
+    modelPluginID="es.uca.modeling.eol.marte.weaving.modisco" modelName="Links" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.modisco.java/model/java.genmodel#//java platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types">
+  <foreignModel>links.emf</foreignModel>
+  <genPackages prefix="Links" basePackage="es.uca.modeling.eol.marte.weaving" disposableProviderFactory="true"
+      fileExtensions="modisco_perfreq" ecorePackage="links.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="links.ecore#//TimeLimitMetric">
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/MAX"/>
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/AVERAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/PERCENTILE_90"/>
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/PERCENTILE_95"/>
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/PERCENTILE_99"/>
+      <genEnumLiterals ecoreEnumLiteral="links.ecore#//TimeLimitMetric/MEDIAN"/>
+    </genEnums>
+    <genClasses ecoreClass="links.ecore#//PerformanceRequirementLinks">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/samplesPerTest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/threads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLinks/baseDir"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLinks/links"/>
+    </genClasses>
+    <genClasses ecoreClass="links.ecore#//PerformanceRequirementLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//PerformanceRequirementLink/metric"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLink/execNode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLink/klazz"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference links.ecore#//PerformanceRequirementLink/testMethods"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

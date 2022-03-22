@@ -138,7 +138,7 @@ public class PerformanceTest {
 	private Activity prepareIteration(boolean fixedAnnotations) throws Exception {
 		if (mModule != null) {
 			mModule.getContext().getModelRepository().dispose();
-			mModule.reset();
+			mModule.getContext().dispose();
 			mModule = null;
 		}
 		System.gc();

@@ -55,10 +55,10 @@ Import-Package: es.uca.webservices.testgen.api.formatters,
  es.uca.webservices.testgen.api.parsers,
  es.uca.webservices.testgen.api.types,
  es.uca.webservices.wsdl.analyzer;resolution:=optional,
- javax.xml.datatype,
  joptsimple,
  org.apache.xmlbeans;resolution:=optional,
  org.slf4j;version="[1.6,2)";resolution:=optional,
  serviceAnalyzer.messageCatalog;resolution:=optional
 Main-Class: es.uca.webservices.testgen.TestGeneratorCommand
 Tool: Bnd-1.43.0
+Automatic-Module-Name: es.uca.webservices.test.generator

@@ -17,6 +17,7 @@ package es.uca.webservices.testgen.generators;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -31,7 +32,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import nl.flotsam.xeger.Xeger;
 import es.uca.webservices.testgen.api.generators.GenerationException;
 import es.uca.webservices.testgen.api.generators.IGenerator;
 import es.uca.webservices.testgen.api.types.IType;
@@ -44,6 +44,7 @@ import es.uca.webservices.testgen.api.types.TypeList;
 import es.uca.webservices.testgen.api.types.TypeString;
 import es.uca.webservices.testgen.api.types.TypeTime;
 import es.uca.webservices.testgen.api.types.TypeTuple;
+import nl.flotsam.xeger.Xeger;
 
 /**
  * Class that generates random test cases.
@@ -118,7 +119,7 @@ public class UniformRandomGenerator implements IGenerator {
             }
             bd = new BigDecimal(randFloat + "");
             if(typeFloat.getFractionDigits() >= 0){
-                bd = bd.setScale(fractionDigits, BigDecimal.ROUND_HALF_UP);
+                bd = bd.setScale(fractionDigits, RoundingMode.HALF_UP);
             }
             return bd;
         }

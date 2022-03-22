@@ -4,7 +4,7 @@
 	<property name="main.pkg" value="links" />
 
 	<target name="default">
-		<epsilon.emf.loadModel name="MoDiscoGenModel" modeluri="platform:/plugin/org.eclipse.gmt.modisco.java/model/java.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
+		<epsilon.emf.loadModel name="MoDiscoGenModel" modeluri="platform:/plugin/org.eclipse.modisco.java/model/java.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
 		<epsilon.emf.loadModel name="UMLGenModel" modeluri="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
 		<epsilon.emf.loadModel name="UMLTypesGenModel" modeluri="platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel" metamodeluri="http://www.eclipse.org/emf/2002/GenModel" read="true" store="false" />
 
