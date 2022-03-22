@@ -1,21 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>es.uca.sodmt.orders</groupId>
     <artifactId>parent</artifactId>
     <version>1-SNAPSHOT</version>
   </parent>
-
   <artifactId>data-model</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>Data Model</name>
   <description>Data model with Hibernate persistence for the Orders example</description>
-
   <dependencies>
     <!-- COMPILE DEPENDENCIES -->
     <dependency>
@@ -26,9 +20,7 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
     </dependency>
-
     <!-- RUNTIME DEPENDENCIES -->
-
     <!-- We use Jakarta (Apache) Commons Logging: we could switch to a
          different logging library by changing this dependency. -->
     <dependency>
@@ -37,7 +29,6 @@
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
-
     <!-- We use the in-memory H2 database for internal testing. We
          could switch to a different one by changing the Hibernate
          config appropriately. -->
@@ -46,19 +37,16 @@
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
     </dependency>
-
     <!-- Hibernate can use the cglib or Javassist bytecode
          libraries. Hibernate uses Javassist by default. -->
     <dependency>
       <groupId>javassist</groupId>
       <artifactId>javassist</artifactId>
     </dependency>
-
     <!-- TEST DEPENDENCIES -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
-
 </project>
