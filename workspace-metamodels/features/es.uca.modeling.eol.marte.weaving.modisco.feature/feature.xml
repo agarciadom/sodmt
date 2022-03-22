@@ -106,18 +106,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.modisco.infra.discovery.core"/>
       <import plugin="org.eclipse.papyrus.marte.static.profile"/>
       <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="org.eclipse.gmt.modisco.java"/>
       <import plugin="org.eclipse.uml2.types"/>
       <import plugin="org.eclipse.uml2.uml" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.edit"/>
-      <import plugin="org.eclipse.uml2.uml.edit" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmt.modisco.java.edit" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore.xmi"/>
-      <import plugin="org.eclipse.emf.edit.ui"/>
-      <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.eclipse.uml2.uml.editor" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmt.modisco.java.editor" version="1.0.0" match="greaterOrEqual"/>
       <import feature="es.uca.modeling.eol.marte.feature" version="1.0.0.qualifier"/>
+      <import plugin="es.uca.modeling.eol.marte"/>
+      <import plugin="org.eclipse.modisco.java" version="1.5.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

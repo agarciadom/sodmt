@@ -1,117 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.uca.modeling</groupId>
     <artifactId>parent</artifactId>
-    <version>1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>Parent</name>
     <description>Common parent for all modules in this project</description>
-
     <properties>
-        <tycho-version>0.24.0</tycho-version>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tycho-version>2.7.0</tycho-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
-
     <modules>
-        <!-- SODM use case models -->
-        <module>kybele.etsii.urjc.es.ucm.feature</module>
-        <module>EUCM</module>
-        <module>EUCM.edit</module>
-        <module>EUCM.editor</module>
-        <module>EUCM.diagram</module>
-        <module>UCM</module>
-        <module>UCM.edit</module>
-        <module>UCM.editor</module>
-        <module>UCM.diagram</module>
-
-        <!-- Ad-hoc models and algorithms -->
-        <module>es.uca.modeling.performance.sodmt.eol</module>
-        <module>es.uca.modeling.performance.sodmt.eol.comparison</module>
-        <module>es.uca.modeling.performance.sodmt.eol.tests</module>
-        <module>es.uca.modeling.performance.sodmt.evl</module>
-        <module>es.uca.modeling.performance.sodmt.evl.tests</module>
-        <module>es.uca.modeling.performance.sodmt.feature</module>
-        <module>es.uca.modeling.performance.sodmt.scomp</module>
-        <module>es.uca.modeling.performance.sodmt.scomp.diagram</module>
-        <module>es.uca.modeling.performance.sodmt.scomp.edit</module>
-        <module>es.uca.modeling.performance.sodmt.scomp.editor</module>
-        <module>es.uca.modeling.performance.sodmt.sprocess</module>
-        <module>es.uca.modeling.performance.sodmt.sprocess.contextmenu</module>
-        <module>es.uca.modeling.performance.sodmt.sprocess.diagram</module>
-        <module>es.uca.modeling.performance.sodmt.sprocess.edit</module>
-        <module>es.uca.modeling.performance.sodmt.sprocess.editor</module>
-
-        <!-- Linear programming support -->
-        <module>es.uca.modeling.performance.sodmt.egl.glpk</module>
-
-        <!-- MARTE-annotated models -->
-        <module>es.uca.modeling.eol.marte</module>
-        <module>es.uca.modeling.eol.marte.feature</module>
-        <module>es.uca.modeling.eol.marte.performance</module>
-        <module>es.uca.modeling.eol.marte.tests.eunit</module>
-        <module>es.uca.modeling.eol.marte.tests.junit</module>
-
-        <!-- Code generation from JUnit -->
-        <module>es.uca.modeling.eol.marte.weaving.modisco.feature</module>
-        <module>es.uca.modeling.eol.marte.codegen.modisco</module>
-        <module>es.uca.modeling.eol.marte.weaving.modisco</module>
-        <module>es.uca.modeling.eol.marte.weaving.modisco.edit</module>
-        <module>es.uca.modeling.eol.marte.weaving.modisco.editor</module>
-        <module>org.eclipse.gmt.modisco.java.edit</module>
-        <module>org.eclipse.gmt.modisco.java.editor</module>
-
-        <!-- Code generation from WSDL -->
-        <module>es.uca.modeling.eol.marte.weaving.wsdl.feature</module>
-        <module>es.uca.modeling.eol.marte.codegen.wsdl</module>
-        <module>es.uca.modeling.eol.marte.weaving.wsdl</module>
-        <module>es.uca.modeling.eol.marte.weaving.wsdl.edit</module>
-        <module>es.uca.modeling.eol.marte.weaving.wsdl.editor</module>
-        <module>es.uca.webservices.service-analyzer</module>
-        <module>es.uca.webservices.service-analyzer.emf</module>
-        <module>es.uca.webservices.service-analyzer.emf.edit</module>
-        <module>es.uca.webservices.service-analyzer.emf.editor</module>
-        <module>es.uca.webservices.service-analyzer.ui</module>
-        <module>es.uca.webservices.test-generator</module>
-        <module>es.uca.webservices.test-generator-api</module>
-        <module>es.uca.webservices.wsdl2xsdtree</module>
-        <module>es.uca.webservices.xml-utils</module>
-
-        <!-- Papyrus utilities -->
-        <module>es.uca.modeling.papyrus.utils</module>
-        <module>es.uca.modeling.papyrus.feature</module>
-
-        <!--
-            RCP product definition and distributions: composite update
-            site not included (it's only an Ant script that produces
-            two files).
-        -->
-        <module>es.uca.modeling.sodmt.product</module>
-        <module>es.uca.modeling.sodmt.distros</module>
+        <module>bundles</module>
+        <module>features</module>
+        <module>tests</module>
+        <module>releng</module>
     </modules>
-    
-    <repositories>
-        <repository>
-            <id>eclipse-mars</id>
-            <url>http://download.eclipse.org/releases/mars</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <id>epsilon-interim</id>
-            <url>http://download.eclipse.org/epsilon/interim/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <id>papyrus-nightlies</id>
-            <url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/mars</url>
-            <layout>p2</layout>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -121,38 +27,109 @@
                 <extensions>true</extensions>
             </plugin>
             <plugin>
-	        <groupId>org.eclipse.tycho</groupId>
-	        <artifactId>target-platform-configuration</artifactId>
-	        <version>${tycho-version}</version>
-	        <configuration>
-	            <environments>
-		        <environment>
-		            <os>linux</os>
-		            <ws>gtk</ws>
-		            <arch>x86</arch>
-		        </environment>
-		        <environment>
-		            <os>linux</os>
-		            <ws>gtk</ws>
-		            <arch>x86_64</arch>
-		        </environment>
-		        <environment>
-		            <os>win32</os>
-		            <ws>win32</ws>
-		            <arch>x86</arch>
-		        </environment>
-		        <environment>
-		            <os>win32</os>
-		            <ws>win32</ws>
-		            <arch>x86_64</arch>
-		        </environment>
-		        <environment>
-		            <os>macosx</os>
-		            <ws>cocoa</ws>
-		            <arch>x86_64</arch>
-		        </environment>
-	            </environments>
-	        </configuration>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-compiler-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-packaging-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.eclipse.tycho.extras</groupId>
+                        <artifactId>tycho-buildtimestamp-jgit</artifactId>
+                        <version>${tycho-version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <strictVersions>false</strictVersions>
+                    <timestampProvider>jgit</timestampProvider>
+                    <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+                    <jgit.ignore>
+                        pom.xml
+                        .META-INF_MANIFEST.MF
+                        .polyglot.build.properties
+                        .polyglot.feature.xml
+                        .polyglot..META-INF_MANIFEST.MF
+                    </jgit.ignore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <target>
+                        <artifact>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>es.uca.modeling.targetplatform</artifactId>
+                            <version>${project.parent.version}</version>
+                        </artifact>
+                    </target>
+                    <environments>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-source-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <goals>
+                            <goal>plugin-source</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho.extras</groupId>
+                <artifactId>tycho-source-feature-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>source-feature</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>source-feature</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-p2-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-p2-metadata</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>p2-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
