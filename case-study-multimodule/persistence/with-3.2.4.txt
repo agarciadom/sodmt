@@ -1,5 +1,0 @@
-./java/es/uca/b2mml/domain/QQuantityWithUnit.java
-./java/es/uca/b2mml/domain/capability/QCapability.java
-./java/es/uca/b2mml/domain/capability/QChildCapability.java
-./java/es/uca/b2mml/domain/QProperty.java
-./java/es/uca/b2mml/domain/QPropertyWithQuantity.java
