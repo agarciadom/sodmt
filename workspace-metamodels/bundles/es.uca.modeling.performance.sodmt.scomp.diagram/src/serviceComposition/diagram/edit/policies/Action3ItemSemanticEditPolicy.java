@@ -23,15 +23,13 @@ import org.eclipse.gmf.runtime.notation.View;
  * @generated
  */
 public class Action3ItemSemanticEditPolicy
-		extends
-		serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
+		extends serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public Action3ItemSemanticEditPolicy() {
-		super(
-				serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
+		super(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
 	}
 
 	/**
@@ -39,23 +37,20 @@ public class Action3ItemSemanticEditPolicy
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						incomingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
 			}
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						incomingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
@@ -65,24 +60,21 @@ public class Action3ItemSemanticEditPolicy
 			Edge outgoingLink = (Edge) it.next();
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						outgoingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
 			}
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						outgoingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
 			}
-			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						outgoingLink.getSource().getElement(), null,
+			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+					outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
@@ -107,29 +99,27 @@ public class Action3ItemSemanticEditPolicy
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
 		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -137,22 +127,21 @@ public class Action3ItemSemanticEditPolicy
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(
-					req, req.getTarget(), req.getSource()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(req,
+					req.getTarget(), req.getSource()));
 		}
 		return null;
 	}
@@ -163,15 +152,12 @@ public class Action3ItemSemanticEditPolicy
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientRelationshipCommand(
-			ReorientRelationshipRequest req) {
+	protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowReorientCommand(
-					req));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowReorientCommand(req));
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowReorientCommand(
-					req));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowReorientCommand(req));
 		}
 		return super.getReorientRelationshipCommand(req);
 	}
@@ -182,12 +168,11 @@ public class Action3ItemSemanticEditPolicy
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationReorientCommand(
-					req));
+			return getGEFWrapper(
+					new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

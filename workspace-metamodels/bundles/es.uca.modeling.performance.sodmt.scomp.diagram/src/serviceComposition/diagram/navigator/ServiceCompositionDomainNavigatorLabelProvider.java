@@ -13,15 +13,14 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 /**
  * @generated
  */
-public class ServiceCompositionDomainNavigatorLabelProvider implements
-		ICommonLabelProvider {
+public class ServiceCompositionDomainNavigatorLabelProvider implements ICommonLabelProvider {
 
 	/**
 	 * @generated
 	 */
 	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().getItemProvidersAdapterFactory());
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated

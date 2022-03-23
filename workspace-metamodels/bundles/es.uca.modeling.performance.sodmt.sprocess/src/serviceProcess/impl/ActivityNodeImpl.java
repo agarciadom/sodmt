@@ -22,198 +22,192 @@ import serviceProcess.ServiceProcessPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link serviceProcess.impl.ActivityNodeImpl#getIncoming <em>Incoming</em>}</li>
  *   <li>{@link serviceProcess.impl.ActivityNodeImpl#getOutgoing <em>Outgoing</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public abstract class ActivityNodeImpl extends EObjectImpl implements ActivityNode
 {
   /**
-   * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIncoming()
-   * @generated
-   * @ordered
-   */
+	 * @see #getIncoming()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<ActivityEdge> incoming;
   /**
-   * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOutgoing()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOutgoing()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<ActivityEdge> outgoing;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ActivityNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceProcessPackage.Literals.ACTIVITY_NODE;
-  }
+		return ServiceProcessPackage.Literals.ACTIVITY_NODE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<ActivityEdge> getIncoming()
+	 * @generated
+	 */
+  @Override
+		public EList<ActivityEdge> getIncoming()
   {
-    if (incoming == null)
-    {
-      incoming = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ServiceProcessPackage.ACTIVITY_NODE__INCOMING, ServiceProcessPackage.ACTIVITY_EDGE__TARGET);
-    }
-    return incoming;
-  }
+		if (incoming == null) {
+			incoming = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ServiceProcessPackage.ACTIVITY_NODE__INCOMING, ServiceProcessPackage.ACTIVITY_EDGE__TARGET);
+		}
+		return incoming;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<ActivityEdge> getOutgoing()
+	 * @generated
+	 */
+  @Override
+		public EList<ActivityEdge> getOutgoing()
   {
-    if (outgoing == null)
-    {
-      outgoing = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ServiceProcessPackage.ACTIVITY_NODE__OUTGOING, ServiceProcessPackage.ACTIVITY_EDGE__SOURCE);
-    }
-    return outgoing;
-  }
+		if (outgoing == null) {
+			outgoing = new EObjectWithInverseResolvingEList<ActivityEdge>(ActivityEdge.class, this, ServiceProcessPackage.ACTIVITY_NODE__OUTGOING, ServiceProcessPackage.ACTIVITY_EDGE__SOURCE);
+		}
+		return outgoing;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncoming()).basicAdd(otherEnd, msgs);
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoing()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncoming()).basicAdd(otherEnd, msgs);
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoing()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        return ((InternalEList<?>)getIncoming()).basicRemove(otherEnd, msgs);
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        return ((InternalEList<?>)getOutgoing()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				return ((InternalEList<?>)getIncoming()).basicRemove(otherEnd, msgs);
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				return ((InternalEList<?>)getOutgoing()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        return getIncoming();
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        return getOutgoing();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				return getIncoming();
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				return getOutgoing();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        getIncoming().clear();
-        getIncoming().addAll((Collection<? extends ActivityEdge>)newValue);
-        return;
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        getOutgoing().clear();
-        getOutgoing().addAll((Collection<? extends ActivityEdge>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				getIncoming().clear();
+				getIncoming().addAll((Collection<? extends ActivityEdge>)newValue);
+				return;
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				getOutgoing().clear();
+				getOutgoing().addAll((Collection<? extends ActivityEdge>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        getIncoming().clear();
-        return;
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        getOutgoing().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				getIncoming().clear();
+				return;
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				getOutgoing().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
-        return incoming != null && !incoming.isEmpty();
-      case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
-        return outgoing != null && !outgoing.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case ServiceProcessPackage.ACTIVITY_NODE__INCOMING:
+				return incoming != null && !incoming.isEmpty();
+			case ServiceProcessPackage.ACTIVITY_NODE__OUTGOING:
+				return outgoing != null && !outgoing.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //ActivityNodeImpl

@@ -15,6 +15,8 @@ import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 
 /**
  * @generated
@@ -74,10 +76,9 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.Action1CreationTool_title,
-				serviceComposition.diagram.part.Messages.Action1CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.Action1CreationTool_desc, types);
 		entry.setId("createAction1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001));
@@ -89,14 +90,13 @@ public class ServiceCompositionPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createActivityPartition2CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.ActivityPartition2CreationTool_title,
-				serviceComposition.diagram.part.Messages.ActivityPartition2CreationTool_desc,
-				Collections
-						.singletonList(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPartition_2005));
+				serviceComposition.diagram.part.Messages.ActivityPartition2CreationTool_desc, Collections.singletonList(
+						serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPartition_2005));
 		entry.setId("createActivityPartition2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPartition_2005));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ActivityPartition_2005));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -109,13 +109,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3016);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_2008);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.Decision3CreationTool_title,
-				serviceComposition.diagram.part.Messages.Decision3CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.Decision3CreationTool_desc, types);
 		entry.setId("createDecision3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -128,13 +127,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3015);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_2007);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.FinalNode4CreationTool_title,
-				serviceComposition.diagram.part.Messages.FinalNode4CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.FinalNode4CreationTool_desc, types);
 		entry.setId("createFinalNode4CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -147,10 +145,9 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3017);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_2009);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.Fork5CreationTool_title,
-				serviceComposition.diagram.part.Messages.Fork5CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.Fork5CreationTool_desc, types);
 		entry.setId("createFork5CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008));
@@ -162,14 +159,14 @@ public class ServiceCompositionPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createGlobalPerformanceConstraint6CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.GlobalPerformanceConstraint6CreationTool_title,
 				serviceComposition.diagram.part.Messages.GlobalPerformanceConstraint6CreationTool_desc,
-				Collections
-						.singletonList(serviceComposition.diagram.providers.ServiceCompositionElementTypes.PerformanceAnnotation_2011));
+				Collections.singletonList(
+						serviceComposition.diagram.providers.ServiceCompositionElementTypes.PerformanceAnnotation_2011));
 		entry.setId("createGlobalPerformanceConstraint6CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.PerformanceAnnotation_2011));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.PerformanceAnnotation_2011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -182,13 +179,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3014);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_2006);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.InitialNode7CreationTool_title,
-				serviceComposition.diagram.part.Messages.InitialNode7CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.InitialNode7CreationTool_desc, types);
 		entry.setId("createInitialNode7CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -201,10 +197,9 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3018);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_2010);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.Join8CreationTool_title,
-				serviceComposition.diagram.part.Messages.Join8CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.Join8CreationTool_desc, types);
 		entry.setId("createJoin8CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009));
@@ -220,13 +215,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_2003);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.LocalPerformanceConstraint9CreationTool_title,
-				serviceComposition.diagram.part.Messages.LocalPerformanceConstraint9CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.LocalPerformanceConstraint9CreationTool_desc, types);
 		entry.setId("createLocalPerformanceConstraint9CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -239,13 +233,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.Merge10CreationTool_title,
-				serviceComposition.diagram.part.Messages.Merge10CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.Merge10CreationTool_desc, types);
 		entry.setId("createMerge10CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -258,13 +251,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.ObjectNode11CreationTool_title,
-				serviceComposition.diagram.part.Messages.ObjectNode11CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.ObjectNode11CreationTool_desc, types);
 		entry.setId("createObjectNode11CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -277,13 +269,12 @@ public class ServiceCompositionPaletteFactory {
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
 		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-		NodeToolEntry entry = new NodeToolEntry(
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(
 				serviceComposition.diagram.part.Messages.StructuredActivityNode12CreationTool_title,
-				serviceComposition.diagram.part.Messages.StructuredActivityNode12CreationTool_desc,
-				types);
+				serviceComposition.diagram.part.Messages.StructuredActivityNode12CreationTool_desc, types);
 		entry.setId("createStructuredActivityNode12CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -292,14 +283,13 @@ public class ServiceCompositionPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createControlFlow1CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
 				serviceComposition.diagram.part.Messages.ControlFlow1CreationTool_title,
-				serviceComposition.diagram.part.Messages.ControlFlow1CreationTool_desc,
-				Collections
-						.singletonList(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001));
+				serviceComposition.diagram.part.Messages.ControlFlow1CreationTool_desc, Collections.singletonList(
+						serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001));
 		entry.setId("createControlFlow1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -308,14 +298,14 @@ public class ServiceCompositionPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createLinkPerformanceAnnotation2CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
 				serviceComposition.diagram.part.Messages.LinkPerformanceAnnotation2CreationTool_title,
 				serviceComposition.diagram.part.Messages.LinkPerformanceAnnotation2CreationTool_desc,
-				Collections
-						.singletonList(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003));
+				Collections.singletonList(
+						serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003));
 		entry.setId("createLinkPerformanceAnnotation2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -324,73 +314,14 @@ public class ServiceCompositionPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createObjectFlow3CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
 				serviceComposition.diagram.part.Messages.ObjectFlow3CreationTool_title,
-				serviceComposition.diagram.part.Messages.ObjectFlow3CreationTool_desc,
-				Collections
-						.singletonList(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002));
+				serviceComposition.diagram.part.Messages.ObjectFlow3CreationTool_desc, Collections.singletonList(
+						serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002));
 		entry.setId("createObjectFlow3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImageDescriptor(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002));
+		entry.setSmallIcon(serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImageDescriptor(
+				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static class NodeToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> elementTypes;
-
-		/**
-		 * @generated
-		 */
-		private NodeToolEntry(String title, String description,
-				List<IElementType> elementTypes) {
-			super(title, description, null, null);
-			this.elementTypes = elementTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
-
-	/**
-	 * @generated
-	 */
-	private static class LinkToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> relationshipTypes;
-
-		/**
-		 * @generated
-		 */
-		private LinkToolEntry(String title, String description,
-				List<IElementType> relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
 	}
 }

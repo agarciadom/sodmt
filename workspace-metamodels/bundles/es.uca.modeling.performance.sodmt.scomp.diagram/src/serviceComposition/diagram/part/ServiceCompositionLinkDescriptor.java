@@ -14,17 +14,16 @@ public class ServiceCompositionLinkDescriptor extends UpdaterLinkDescriptor {
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionLinkDescriptor(EObject source,
-			EObject destination, IElementType elementType, int linkVID) {
+	public ServiceCompositionLinkDescriptor(EObject source, EObject destination, IElementType elementType,
+			int linkVID) {
 		super(source, destination, elementType, linkVID);
 	}
 
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionLinkDescriptor(EObject source,
-			EObject destination, EObject linkElement, IElementType elementType,
-			int linkVID) {
+	public ServiceCompositionLinkDescriptor(EObject source, EObject destination, EObject linkElement,
+			IElementType elementType, int linkVID) {
 		super(source, destination, linkElement, elementType, linkVID);
 	}
 

@@ -29,15 +29,13 @@ public class ServiceCompositionVisualIDRegistry {
 	 */
 	public static int getVisualID(View view) {
 		if (view instanceof Diagram) {
-			if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-					.equals(view.getType())) {
+			if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(view.getType())) {
 				return serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID;
 			} else {
 				return -1;
 			}
 		}
-		return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view.getType());
+		return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view.getType());
 	}
 
 	/**
@@ -62,12 +60,9 @@ public class ServiceCompositionVisualIDRegistry {
 		try {
 			return Integer.parseInt(type);
 		} catch (NumberFormatException e) {
-			if (Boolean.TRUE.toString().equalsIgnoreCase(
-					Platform.getDebugOption(DEBUG_KEY))) {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().logError(
-								"Unable to parse view type as a visualID number: "
-										+ type);
+			if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Unable to parse view type as a visualID number: " + type);
 			}
 		}
 		return -1;
@@ -87,9 +82,8 @@ public class ServiceCompositionVisualIDRegistry {
 		if (domainElement == null) {
 			return -1;
 		}
-		if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-				.getServiceComposition().isSuperTypeOf(domainElement.eClass())
-				&& isDiagram((serviceComposition.ServiceComposition) domainElement)) {
+		if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getServiceComposition().isSuperTypeOf(
+				domainElement.eClass()) && isDiagram((serviceComposition.ServiceComposition) domainElement)) {
 			return serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID;
 		}
 		return -1;
@@ -104,13 +98,12 @@ public class ServiceCompositionVisualIDRegistry {
 		}
 		String containerModelID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getModelID(containerView);
-		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID) && !"sc".equals(containerModelID)) { //$NON-NLS-1$
+		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(containerModelID)
+				&& !"sc".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
-		if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID)) {
+		if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(containerModelID)) {
 			containerVisualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(containerView);
 		} else {
@@ -122,232 +115,220 @@ public class ServiceCompositionVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID:
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getAction().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getStructuredActivityNode().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getObjectNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getActivityPartition().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityPartition()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ActivityPartitionEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getInitialNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getFinalNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getDecisionNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getForkNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID;
 			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart.VISUAL_ID:
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getAction().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getStructuredActivityNode().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getObjectNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getInitialNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getFinalNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getDecisionNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getForkNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
 			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID:
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getAction().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getStructuredActivityNode().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getObjectNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getInitialNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getFinalNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getDecisionNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getForkNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
 			}
 			break;
 		case serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart.VISUAL_ID:
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getAction().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getStructuredActivityNode().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getObjectNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getInitialNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.InitialNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getFinalNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.FinalNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getDecisionNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getForkNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID;
 			}
 			break;
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment3EditPart.VISUAL_ID:
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getAction().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getStructuredActivityNode().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation().isSuperTypeOf(
-							domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getObjectNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getInitialNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getFinalNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getDecisionNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getForkNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getJoinNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID;
 			}
-			if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getMergeNode().isSuperTypeOf(domainElement.eClass())) {
+			if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode()
+					.isSuperTypeOf(domainElement.eClass())) {
 				return serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID;
 			}
 			break;
@@ -361,13 +342,12 @@ public class ServiceCompositionVisualIDRegistry {
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
 		String containerModelID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 				.getModelID(containerView);
-		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID) && !"sc".equals(containerModelID)) { //$NON-NLS-1$
+		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(containerModelID)
+				&& !"sc".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;
-		if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(containerModelID)) {
+		if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(containerModelID)) {
 			containerVisualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(containerView);
 		} else {
@@ -698,12 +678,12 @@ public class ServiceCompositionVisualIDRegistry {
 		if (domainElement == null) {
 			return -1;
 		}
-		if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-				.getControlFlow().isSuperTypeOf(domainElement.eClass())) {
+		if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getControlFlow()
+				.isSuperTypeOf(domainElement.eClass())) {
 			return serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID;
 		}
-		if (serviceComposition.ServiceCompositionPackage.eINSTANCE
-				.getObjectFlow().isSuperTypeOf(domainElement.eClass())) {
+		if (serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectFlow()
+				.isSuperTypeOf(domainElement.eClass())) {
 			return serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID;
 		}
 		return -1;
@@ -715,16 +695,14 @@ public class ServiceCompositionVisualIDRegistry {
 	 * 
 	 * @generated
 	 */
-	private static boolean isDiagram(
-			serviceComposition.ServiceComposition element) {
+	private static boolean isDiagram(serviceComposition.ServiceComposition element) {
 		return true;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static boolean checkNodeVisualID(View containerView,
-			EObject domainElement, int candidate) {
+	public static boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
 		if (candidate == -1) {
 			//unrecognized id is always bad
 			return false;
@@ -796,58 +774,59 @@ public class ServiceCompositionVisualIDRegistry {
 	 */
 	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getVisualID(View view) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(view);
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public String getModelID(View view) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getModelID(view);
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getModelID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getNodeVisualID(View containerView, EObject domainElement) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(containerView, domainElement);
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(containerView,
+					domainElement);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
-		public boolean checkNodeVisualID(View containerView,
-				EObject domainElement, int candidate) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.checkNodeVisualID(containerView, domainElement, candidate);
+
+		public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.checkNodeVisualID(containerView,
+					domainElement, candidate);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isCompartmentVisualID(int visualID) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.isCompartmentVisualID(visualID);
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.isCompartmentVisualID(visualID);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isSemanticLeafVisualID(int visualID) {
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.isSemanticLeafVisualID(visualID);
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.isSemanticLeafVisualID(visualID);
 		}
 	};
 

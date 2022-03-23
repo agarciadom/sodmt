@@ -66,14 +66,11 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.ActivityPartitionItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.OPEN_ROLE,
-				new serviceComposition.diagram.edit.policies.OpenDiagramEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new serviceComposition.diagram.edit.policies.OpenDiagramEditPolicy()); // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -84,8 +81,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					NonResizableEditPolicy nrPolicy = new NonResizableEditPolicy();
 					nrPolicy.setDragAllowed(false);
@@ -126,16 +122,15 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.ActivityPartitionNameEditPart) {
 			((serviceComposition.diagram.edit.parts.ActivityPartitionNameEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureActivityPartitionLabelFigure());
+					.setLabel(getPrimaryShape().getFigureActivityPartitionLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getActivityPartitionNodesCompartmentFigure();
+			IFigure pane = getPrimaryShape().getActivityPartitionNodesCompartmentFigure();
 			setupContentPane(pane); // FIXME each comparment should handle his content pane in his own way 
-			pane.add(((serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) childEditPart)
-					.getFigure());
+			pane.add(
+					((serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;
@@ -149,10 +144,10 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) {
-			IFigure pane = getPrimaryShape()
-					.getActivityPartitionNodesCompartmentFigure();
-			pane.remove(((serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) childEditPart)
-					.getFigure());
+			IFigure pane = getPrimaryShape().getActivityPartitionNodesCompartmentFigure();
+			pane.remove(
+					((serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;
@@ -183,8 +178,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		if (editPart instanceof serviceComposition.diagram.edit.parts.ActivityPartitionActivityPartitionNodesCompartmentEditPart) {
-			return getPrimaryShape()
-					.getActivityPartitionNodesCompartmentFigure();
+			return getPrimaryShape().getActivityPartitionNodesCompartmentFigure();
 		}
 		return getContentPane();
 	}
@@ -288,8 +282,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 	 */
 	protected void handleNotificationEvent(Notification event) {
 		if (event.getNotifier() == getModel()
-				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
-						.equals(event.getFeature())) {
+				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations().equals(event.getFeature())) {
 			handleMajorSemanticChange();
 		} else {
 			super.handleNotificationEvent(event);
@@ -320,10 +313,8 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 			layoutThis.makeColumnsEqualWidth = false;
 			this.setLayoutManager(layoutThis);
 
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
-					getMapMode().DPtoLP(8)));
-			this.setBorder(new MarginBorder(getMapMode().DPtoLP(-4),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(-4),
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(-4), getMapMode().DPtoLP(5), getMapMode().DPtoLP(-4),
 					getMapMode().DPtoLP(5)));
 			createContents();
 		}
@@ -336,8 +327,8 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 			fFigureActivityPartitionLabelFigure = new VerticalLabel();
 
 			fFigureActivityPartitionLabelFigure.setText("ActivityPartition");
-			fFigureActivityPartitionLabelFigure.setMaximumSize(new Dimension(
-					getMapMode().DPtoLP(10000), getMapMode().DPtoLP(50)));
+			fFigureActivityPartitionLabelFigure
+					.setMaximumSize(new Dimension(getMapMode().DPtoLP(10000), getMapMode().DPtoLP(50)));
 
 			GridData constraintFFigureActivityPartitionLabelFigure = new GridData();
 			constraintFFigureActivityPartitionLabelFigure.verticalAlignment = GridData.FILL;
@@ -347,8 +338,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 			constraintFFigureActivityPartitionLabelFigure.verticalSpan = 1;
 			constraintFFigureActivityPartitionLabelFigure.grabExcessHorizontalSpace = false;
 			constraintFFigureActivityPartitionLabelFigure.grabExcessVerticalSpace = true;
-			this.add(fFigureActivityPartitionLabelFigure,
-					constraintFFigureActivityPartitionLabelFigure);
+			this.add(fFigureActivityPartitionLabelFigure, constraintFFigureActivityPartitionLabelFigure);
 
 			fActivityPartitionNodesCompartmentFigure = new RectangleFigure();
 
@@ -365,8 +355,7 @@ public class ActivityPartitionEditPart extends ShapeNodeEditPart {
 			constraintFActivityPartitionNodesCompartmentFigure.verticalSpan = 1;
 			constraintFActivityPartitionNodesCompartmentFigure.grabExcessHorizontalSpace = true;
 			constraintFActivityPartitionNodesCompartmentFigure.grabExcessVerticalSpace = true;
-			this.add(fActivityPartitionNodesCompartmentFigure,
-					constraintFActivityPartitionNodesCompartmentFigure);
+			this.add(fActivityPartitionNodesCompartmentFigure, constraintFActivityPartitionNodesCompartmentFigure);
 
 		}
 

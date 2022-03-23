@@ -11,32 +11,30 @@ import serviceProcess.ServiceProcessPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Join Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class JoinNodeImpl extends ActivityNodeImpl implements JoinNode
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected JoinNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceProcessPackage.Literals.JOIN_NODE;
-  }
+		return ServiceProcessPackage.Literals.JOIN_NODE;
+	}
 
 } //JoinNodeImpl

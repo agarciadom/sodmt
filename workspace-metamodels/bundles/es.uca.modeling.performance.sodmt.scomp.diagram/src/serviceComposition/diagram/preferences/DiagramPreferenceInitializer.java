@@ -16,16 +16,11 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = getPreferenceStore();
-		serviceComposition.diagram.preferences.DiagramGeneralPreferencePage
-				.initDefaults(store);
-		serviceComposition.diagram.preferences.DiagramAppearancePreferencePage
-				.initDefaults(store);
-		serviceComposition.diagram.preferences.DiagramConnectionsPreferencePage
-				.initDefaults(store);
-		serviceComposition.diagram.preferences.DiagramPrintingPreferencePage
-				.initDefaults(store);
-		serviceComposition.diagram.preferences.DiagramRulersAndGridPreferencePage
-				.initDefaults(store);
+		serviceComposition.diagram.preferences.DiagramGeneralPreferencePage.initDefaults(store);
+		serviceComposition.diagram.preferences.DiagramAppearancePreferencePage.initDefaults(store);
+		serviceComposition.diagram.preferences.DiagramConnectionsPreferencePage.initDefaults(store);
+		serviceComposition.diagram.preferences.DiagramPrintingPreferencePage.initDefaults(store);
+		serviceComposition.diagram.preferences.DiagramRulersAndGridPreferencePage.initDefaults(store);
 
 	}
 
@@ -33,7 +28,6 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	 * @generated
 	 */
 	protected IPreferenceStore getPreferenceStore() {
-		return serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getPreferenceStore();
+		return serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance().getPreferenceStore();
 	}
 }

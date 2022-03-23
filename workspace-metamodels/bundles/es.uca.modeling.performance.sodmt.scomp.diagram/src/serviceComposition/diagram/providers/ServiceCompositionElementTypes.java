@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypeImages;
+import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -36,9 +38,11 @@ public class ServiceCompositionElementTypes {
 	private static Map<IElementType, ENamedElement> elements;
 
 	/**
-	 * @generated
-	 */
-	private static ImageRegistry imageRegistry;
+	* @generated
+	*/
+	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -48,250 +52,213 @@ public class ServiceCompositionElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType ServiceComposition_1000 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ServiceComposition_1000"); //$NON-NLS-1$
+	public static final IElementType ServiceComposition_1000 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ServiceComposition_1000"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType Action_2001 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.Action_2001"); //$NON-NLS-1$
+	public static final IElementType Action_2001 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.Action_2001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType StructuredActivityNode_2002 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_2002"); //$NON-NLS-1$
+	public static final IElementType StructuredActivityNode_2002 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_2002"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType LocalPerformanceAnnotation_2003 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_2003"); //$NON-NLS-1$
+	public static final IElementType LocalPerformanceAnnotation_2003 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_2003"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ObjectNode_2004 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_2004"); //$NON-NLS-1$
+	public static final IElementType ObjectNode_2004 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_2004"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ActivityPartition_2005 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ActivityPartition_2005"); //$NON-NLS-1$
+	public static final IElementType ActivityPartition_2005 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ActivityPartition_2005"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType InitialNode_2006 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_2006"); //$NON-NLS-1$
+	public static final IElementType InitialNode_2006 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_2006"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType FinalNode_2007 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_2007"); //$NON-NLS-1$
+	public static final IElementType FinalNode_2007 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_2007"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType DecisionNode_2008 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_2008"); //$NON-NLS-1$
+	public static final IElementType DecisionNode_2008 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_2008"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ForkNode_2009 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_2009"); //$NON-NLS-1$
+	public static final IElementType ForkNode_2009 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_2009"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType JoinNode_2010 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_2010"); //$NON-NLS-1$
+	public static final IElementType JoinNode_2010 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_2010"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType MergeNode_2012 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_2012"); //$NON-NLS-1$
+	public static final IElementType MergeNode_2012 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_2012"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType PerformanceAnnotation_2011 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.PerformanceAnnotation_2011"); //$NON-NLS-1$
+	public static final IElementType PerformanceAnnotation_2011 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.PerformanceAnnotation_2011"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType Action_3001 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.Action_3001"); //$NON-NLS-1$
+	public static final IElementType Action_3001 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.Action_3001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType StructuredActivityNode_3002 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3002"); //$NON-NLS-1$
+	public static final IElementType StructuredActivityNode_3002 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3002"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType LocalPerformanceAnnotation_3003 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_3003"); //$NON-NLS-1$
+	public static final IElementType LocalPerformanceAnnotation_3003 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_3003"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ObjectNode_3004 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_3004"); //$NON-NLS-1$
+	public static final IElementType ObjectNode_3004 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_3004"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType InitialNode_3005 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_3005"); //$NON-NLS-1$
+	public static final IElementType InitialNode_3005 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_3005"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType FinalNode_3006 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_3006"); //$NON-NLS-1$
+	public static final IElementType FinalNode_3006 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_3006"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType DecisionNode_3007 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3007"); //$NON-NLS-1$
+	public static final IElementType DecisionNode_3007 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3007"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ForkNode_3008 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3008"); //$NON-NLS-1$
+	public static final IElementType ForkNode_3008 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3008"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType JoinNode_3009 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3009"); //$NON-NLS-1$
+	public static final IElementType JoinNode_3009 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3009"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType MergeNode_3019 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"); //$NON-NLS-1$
+	public static final IElementType MergeNode_3019 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3019"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Action_3010 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.Action_3010"); //$NON-NLS-1$
+	public static final IElementType Action_3010 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.Action_3010"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType StructuredActivityNode_3011 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3011"); //$NON-NLS-1$
+	public static final IElementType StructuredActivityNode_3011 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.StructuredActivityNode_3011"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType LocalPerformanceAnnotation_3012 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_3012"); //$NON-NLS-1$
+	public static final IElementType LocalPerformanceAnnotation_3012 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.LocalPerformanceAnnotation_3012"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ObjectNode_3013 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_3013"); //$NON-NLS-1$
+	public static final IElementType ObjectNode_3013 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ObjectNode_3013"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType InitialNode_3014 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_3014"); //$NON-NLS-1$
+	public static final IElementType InitialNode_3014 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.InitialNode_3014"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType FinalNode_3015 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_3015"); //$NON-NLS-1$
+	public static final IElementType FinalNode_3015 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.FinalNode_3015"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType DecisionNode_3016 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3016"); //$NON-NLS-1$
+	public static final IElementType DecisionNode_3016 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.DecisionNode_3016"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ForkNode_3017 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3017"); //$NON-NLS-1$
+	public static final IElementType ForkNode_3017 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ForkNode_3017"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType JoinNode_3018 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3018"); //$NON-NLS-1$
+	public static final IElementType JoinNode_3018 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.JoinNode_3018"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType MergeNode_3020 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3020"); //$NON-NLS-1$
+	public static final IElementType MergeNode_3020 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.MergeNode_3020"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType ControlFlow_4001 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ControlFlow_4001"); //$NON-NLS-1$
+	public static final IElementType ControlFlow_4001 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ControlFlow_4001"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ObjectFlow_4002 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ObjectFlow_4002"); //$NON-NLS-1$
+	public static final IElementType ObjectFlow_4002 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ObjectFlow_4002"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType ExecutableNodeAnnotation_4003 = getElementType("es.uca.modeling.performance.sodmt.scomp.diagram.ExecutableNodeAnnotation_4003"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	private static ImageRegistry getImageRegistry() {
-		if (imageRegistry == null) {
-			imageRegistry = new ImageRegistry();
-		}
-		return imageRegistry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static String getImageRegistryKey(ENamedElement element) {
-		return element.getName();
-	}
-
-	/**
-	 * @generated
-	 */
-	private static ImageDescriptor getProvidedImageDescriptor(
-			ENamedElement element) {
-		if (element instanceof EStructuralFeature) {
-			EStructuralFeature feature = ((EStructuralFeature) element);
-			EClass eContainingClass = feature.getEContainingClass();
-			EClassifier eType = feature.getEType();
-			if (eContainingClass != null && !eContainingClass.isAbstract()) {
-				element = eContainingClass;
-			} else if (eType instanceof EClass
-					&& !((EClass) eType).isAbstract()) {
-				element = eType;
-			}
-		}
-		if (element instanceof EClass) {
-			EClass eClass = (EClass) element;
-			if (!eClass.isAbstract()) {
-				return serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().getItemImageDescriptor(
-								eClass.getEPackage().getEFactoryInstance()
-										.create(eClass));
-			}
-		}
-		// TODO : support structural features
-		return null;
-	}
+	public static final IElementType ExecutableNodeAnnotation_4003 = getElementType(
+			"es.uca.modeling.performance.sodmt.scomp.diagram.ExecutableNodeAnnotation_4003"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		ImageDescriptor imageDescriptor = getImageRegistry().getDescriptor(key);
-		if (imageDescriptor == null) {
-			imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-		}
-		return imageDescriptor;
+		return elementTypeImages.getImageDescriptor(element);
 	}
 
 	/**
 	 * @generated
 	 */
 	public static Image getImage(ENamedElement element) {
-		String key = getImageRegistryKey(element);
-		Image image = getImageRegistry().get(key);
-		if (image == null) {
-			ImageDescriptor imageDescriptor = getProvidedImageDescriptor(element);
-			if (imageDescriptor == null) {
-				imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
-			}
-			getImageRegistry().put(key, imageDescriptor);
-			image = getImageRegistry().get(key);
-		}
-		return image;
+		return elementTypeImages.getImage(element);
 	}
 
 	/**
 	 * @generated
 	 */
 	public static ImageDescriptor getImageDescriptor(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImageDescriptor(element);
+		return getImageDescriptor(getElement(hint));
 	}
 
 	/**
 	 * @generated
 	 */
 	public static Image getImage(IAdaptable hint) {
-		ENamedElement element = getElement(hint);
-		if (element == null) {
-			return null;
-		}
-		return getImage(element);
+		return getImage(getElement(hint));
 	}
 
 	/**
@@ -305,148 +272,86 @@ public class ServiceCompositionElementTypes {
 			elements = new IdentityHashMap<IElementType, ENamedElement>();
 
 			elements.put(ServiceComposition_1000,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getServiceComposition());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getServiceComposition());
 
-			elements.put(Action_2001,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getAction());
+			elements.put(Action_2001, serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction());
 
 			elements.put(StructuredActivityNode_2002,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getStructuredActivityNode());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode());
 
 			elements.put(LocalPerformanceAnnotation_2003,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getLocalPerformanceAnnotation());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation());
 
-			elements.put(ObjectNode_2004,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getObjectNode());
+			elements.put(ObjectNode_2004, serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode());
 
 			elements.put(ActivityPartition_2005,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getActivityPartition());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityPartition());
 
-			elements.put(InitialNode_2006,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getInitialNode());
+			elements.put(InitialNode_2006, serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode());
 
-			elements.put(FinalNode_2007,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getFinalNode());
+			elements.put(FinalNode_2007, serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode());
 
-			elements.put(DecisionNode_2008,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getDecisionNode());
+			elements.put(DecisionNode_2008, serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode());
 
-			elements.put(ForkNode_2009,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getForkNode());
+			elements.put(ForkNode_2009, serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode());
 
-			elements.put(JoinNode_2010,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getJoinNode());
+			elements.put(JoinNode_2010, serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode());
 
-			elements.put(MergeNode_2012,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getMergeNode());
+			elements.put(MergeNode_2012, serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode());
 
 			elements.put(PerformanceAnnotation_2011,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getPerformanceAnnotation());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation());
 
-			elements.put(Action_3001,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getAction());
+			elements.put(Action_3001, serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction());
 
 			elements.put(StructuredActivityNode_3002,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getStructuredActivityNode());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode());
 
 			elements.put(LocalPerformanceAnnotation_3003,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getLocalPerformanceAnnotation());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation());
 
-			elements.put(ObjectNode_3004,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getObjectNode());
+			elements.put(ObjectNode_3004, serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode());
 
-			elements.put(InitialNode_3005,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getInitialNode());
+			elements.put(InitialNode_3005, serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode());
 
-			elements.put(FinalNode_3006,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getFinalNode());
+			elements.put(FinalNode_3006, serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode());
 
-			elements.put(DecisionNode_3007,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getDecisionNode());
+			elements.put(DecisionNode_3007, serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode());
 
-			elements.put(ForkNode_3008,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getForkNode());
+			elements.put(ForkNode_3008, serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode());
 
-			elements.put(JoinNode_3009,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getJoinNode());
+			elements.put(JoinNode_3009, serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode());
 
-			elements.put(MergeNode_3019,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getMergeNode());
+			elements.put(MergeNode_3019, serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode());
 
-			elements.put(Action_3010,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getAction());
+			elements.put(Action_3010, serviceComposition.ServiceCompositionPackage.eINSTANCE.getAction());
 
 			elements.put(StructuredActivityNode_3011,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getStructuredActivityNode());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode());
 
 			elements.put(LocalPerformanceAnnotation_3012,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getLocalPerformanceAnnotation());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation());
 
-			elements.put(ObjectNode_3013,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getObjectNode());
+			elements.put(ObjectNode_3013, serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectNode());
 
-			elements.put(InitialNode_3014,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getInitialNode());
+			elements.put(InitialNode_3014, serviceComposition.ServiceCompositionPackage.eINSTANCE.getInitialNode());
 
-			elements.put(FinalNode_3015,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getFinalNode());
+			elements.put(FinalNode_3015, serviceComposition.ServiceCompositionPackage.eINSTANCE.getFinalNode());
 
-			elements.put(DecisionNode_3016,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getDecisionNode());
+			elements.put(DecisionNode_3016, serviceComposition.ServiceCompositionPackage.eINSTANCE.getDecisionNode());
 
-			elements.put(ForkNode_3017,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getForkNode());
+			elements.put(ForkNode_3017, serviceComposition.ServiceCompositionPackage.eINSTANCE.getForkNode());
 
-			elements.put(JoinNode_3018,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getJoinNode());
+			elements.put(JoinNode_3018, serviceComposition.ServiceCompositionPackage.eINSTANCE.getJoinNode());
 
-			elements.put(MergeNode_3020,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getMergeNode());
+			elements.put(MergeNode_3020, serviceComposition.ServiceCompositionPackage.eINSTANCE.getMergeNode());
 
-			elements.put(ControlFlow_4001,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getControlFlow());
+			elements.put(ControlFlow_4001, serviceComposition.ServiceCompositionPackage.eINSTANCE.getControlFlow());
 
-			elements.put(ObjectFlow_4002,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getObjectFlow());
+			elements.put(ObjectFlow_4002, serviceComposition.ServiceCompositionPackage.eINSTANCE.getObjectFlow());
 
 			elements.put(ExecutableNodeAnnotation_4003,
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getExecutableNode_Annotation());
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getExecutableNode_Annotation());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -584,5 +489,38 @@ public class ServiceCompositionElementTypes {
 		}
 		return null;
 	}
+
+	/**
+	* @generated
+	*/
+	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public boolean isKnownElementType(IElementType elementType) {
+			return serviceComposition.diagram.providers.ServiceCompositionElementTypes.isKnownElementType(elementType);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public IElementType getElementTypeForVisualId(int visualID) {
+			return serviceComposition.diagram.providers.ServiceCompositionElementTypes.getElementType(visualID);
+		}
+
+		/**
+		* @generated
+		*/
+		@Override
+
+		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
+			return serviceComposition.diagram.providers.ServiceCompositionElementTypes.getElement(elementTypeAdapter);
+		}
+	};
 
 }

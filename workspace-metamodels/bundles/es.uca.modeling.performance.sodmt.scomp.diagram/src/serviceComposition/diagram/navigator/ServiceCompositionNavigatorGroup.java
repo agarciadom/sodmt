@@ -10,8 +10,7 @@ import java.util.LinkedList;
  * @generated
  */
 public class ServiceCompositionNavigatorGroup
-		extends
-		serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem {
+		extends serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem {
 
 	/**
 	 * @generated
@@ -31,8 +30,7 @@ public class ServiceCompositionNavigatorGroup
 	/**
 	 * @generated
 	 */
-	ServiceCompositionNavigatorGroup(String groupName, String icon,
-			Object parent) {
+	ServiceCompositionNavigatorGroup(String groupName, String icon, Object parent) {
 		super(parent);
 		myGroupName = groupName;
 		myIcon = icon;

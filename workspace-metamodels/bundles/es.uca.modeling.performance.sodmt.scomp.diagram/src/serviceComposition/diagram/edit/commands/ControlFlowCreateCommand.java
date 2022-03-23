@@ -38,8 +38,7 @@ public class ControlFlowCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	public ControlFlowCreateCommand(CreateRelationshipRequest request,
-			EObject source, EObject target) {
+	public ControlFlowCreateCommand(CreateRelationshipRequest request, EObject source, EObject target) {
 		super(request.getLabel(), null, request);
 		this.source = source;
 		this.target = target;
@@ -53,12 +52,10 @@ public class ControlFlowCreateCommand extends EditElementCommand {
 		if (source == null && target == null) {
 			return false;
 		}
-		if (source != null
-				&& false == source instanceof serviceComposition.ActivityNode) {
+		if (source != null && false == source instanceof serviceComposition.ActivityNode) {
 			return false;
 		}
-		if (target != null
-				&& false == target instanceof serviceComposition.ActivityNode) {
+		if (target != null && false == target instanceof serviceComposition.ActivityNode) {
 			return false;
 		}
 		if (getSource() == null) {
@@ -69,18 +66,15 @@ public class ControlFlowCreateCommand extends EditElementCommand {
 			return false;
 		}
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canCreateControlFlow_4001(getContainer(),
-						getSource(), getTarget());
+				.getLinkConstraints().canCreateControlFlow_4001(getContainer(), getSource(), getTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in create link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
 		}
 
 		serviceComposition.ControlFlow newElement = serviceComposition.ServiceCompositionFactory.eINSTANCE
@@ -97,22 +91,15 @@ public class ControlFlowCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(serviceComposition.ControlFlow newElement,
-			IProgressMonitor monitor, IAdaptable info)
+	protected void doConfigure(serviceComposition.ControlFlow newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		configureRequest.setParameter(CreateRelationshipRequest.SOURCE,
-				getSource());
-		configureRequest.setParameter(CreateRelationshipRequest.TARGET,
-				getTarget());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		configureRequest.setParameter(CreateRelationshipRequest.SOURCE, getSource());
+		configureRequest.setParameter(CreateRelationshipRequest.TARGET, getTarget());
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}
@@ -151,13 +138,11 @@ public class ControlFlowCreateCommand extends EditElementCommand {
 	 * Modify with appropriate logic.
 	 * @generated
 	 */
-	private static serviceComposition.ServiceComposition deduceContainer(
-			EObject source, EObject target) {
+	private static serviceComposition.ServiceComposition deduceContainer(EObject source, EObject target) {
 		// Find container element for the new link.
 		// Climb up by containment hierarchy starting from the source
 		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null; element = element
-				.eContainer()) {
+		for (EObject element = source; element != null; element = element.eContainer()) {
 			if (element instanceof serviceComposition.ServiceComposition) {
 				return (serviceComposition.ServiceComposition) element;
 			}

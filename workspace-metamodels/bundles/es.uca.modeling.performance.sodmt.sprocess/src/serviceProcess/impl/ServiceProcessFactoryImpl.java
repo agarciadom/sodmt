@@ -22,324 +22,333 @@ import serviceProcess.*;
 public class ServiceProcessFactoryImpl extends EFactoryImpl implements ServiceProcessFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static ServiceProcessFactory init()
   {
-    try
-    {
-      ServiceProcessFactory theServiceProcessFactory = (ServiceProcessFactory)EPackage.Registry.INSTANCE.getEFactory("www.uca.es/modeling/performance/sodmt"); 
-      if (theServiceProcessFactory != null)
-      {
-        return theServiceProcessFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new ServiceProcessFactoryImpl();
-  }
+		try {
+			ServiceProcessFactory theServiceProcessFactory = (ServiceProcessFactory)EPackage.Registry.INSTANCE.getEFactory(ServiceProcessPackage.eNS_URI);
+			if (theServiceProcessFactory != null) {
+				return theServiceProcessFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ServiceProcessFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ServiceProcessFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case ServiceProcessPackage.SERVICE_PROCESS: return createServiceProcess();
-      case ServiceProcessPackage.PERFORMANCE_ANNOTATION: return createPerformanceAnnotation();
-      case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION: return createLocalPerformanceAnnotation();
-      case ServiceProcessPackage.CONTROL_FLOW: return createControlFlow();
-      case ServiceProcessPackage.OBJECT_FLOW: return createObjectFlow();
-      case ServiceProcessPackage.ACTION: return createAction();
-      case ServiceProcessPackage.STRUCTURED_ACTIVITY_NODE: return createStructuredActivityNode();
-      case ServiceProcessPackage.OBJECT_NODE: return createObjectNode();
-      case ServiceProcessPackage.INITIAL_NODE: return createInitialNode();
-      case ServiceProcessPackage.FINAL_NODE: return createFinalNode();
-      case ServiceProcessPackage.DECISION_NODE: return createDecisionNode();
-      case ServiceProcessPackage.FORK_NODE: return createForkNode();
-      case ServiceProcessPackage.JOIN_NODE: return createJoinNode();
-      case ServiceProcessPackage.MERGE_NODE: return createMergeNode();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case ServiceProcessPackage.SERVICE_PROCESS: return createServiceProcess();
+			case ServiceProcessPackage.PERFORMANCE_ANNOTATION: return createPerformanceAnnotation();
+			case ServiceProcessPackage.LOCAL_PERFORMANCE_ANNOTATION: return createLocalPerformanceAnnotation();
+			case ServiceProcessPackage.CONTROL_FLOW: return createControlFlow();
+			case ServiceProcessPackage.OBJECT_FLOW: return createObjectFlow();
+			case ServiceProcessPackage.ACTION: return createAction();
+			case ServiceProcessPackage.STRUCTURED_ACTIVITY_NODE: return createStructuredActivityNode();
+			case ServiceProcessPackage.OBJECT_NODE: return createObjectNode();
+			case ServiceProcessPackage.INITIAL_NODE: return createInitialNode();
+			case ServiceProcessPackage.FINAL_NODE: return createFinalNode();
+			case ServiceProcessPackage.DECISION_NODE: return createDecisionNode();
+			case ServiceProcessPackage.FORK_NODE: return createForkNode();
+			case ServiceProcessPackage.JOIN_NODE: return createJoinNode();
+			case ServiceProcessPackage.MERGE_NODE: return createMergeNode();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case ServiceProcessPackage.VISIT_STATUS:
-        return createVisitStatusFromString(eDataType, initialValue);
-      case ServiceProcessPackage.NODE_SIDE:
-        return createNodeSideFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case ServiceProcessPackage.VISIT_STATUS:
+				return createVisitStatusFromString(eDataType, initialValue);
+			case ServiceProcessPackage.NODE_SIDE:
+				return createNodeSideFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String convertToString(EDataType eDataType, Object instanceValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case ServiceProcessPackage.VISIT_STATUS:
-        return convertVisitStatusToString(eDataType, instanceValue);
-      case ServiceProcessPackage.NODE_SIDE:
-        return convertNodeSideToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case ServiceProcessPackage.VISIT_STATUS:
+				return convertVisitStatusToString(eDataType, instanceValue);
+			case ServiceProcessPackage.NODE_SIDE:
+				return convertNodeSideToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ServiceProcess createServiceProcess()
+	 * @generated
+	 */
+  @Override
+		public ServiceProcess createServiceProcess()
   {
-    ServiceProcessImpl serviceProcess = new ServiceProcessImpl();
-    return serviceProcess;
-  }
+		ServiceProcessImpl serviceProcess = new ServiceProcessImpl();
+		return serviceProcess;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public PerformanceAnnotation createPerformanceAnnotation()
+	 * @generated
+	 */
+  @Override
+		public PerformanceAnnotation createPerformanceAnnotation()
   {
-    PerformanceAnnotationImpl performanceAnnotation = new PerformanceAnnotationImpl();
-    return performanceAnnotation;
-  }
+		PerformanceAnnotationImpl performanceAnnotation = new PerformanceAnnotationImpl();
+		return performanceAnnotation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public LocalPerformanceAnnotation createLocalPerformanceAnnotation()
+	 * @generated
+	 */
+  @Override
+		public LocalPerformanceAnnotation createLocalPerformanceAnnotation()
   {
-    LocalPerformanceAnnotationImpl localPerformanceAnnotation = new LocalPerformanceAnnotationImpl();
-    return localPerformanceAnnotation;
-  }
+		LocalPerformanceAnnotationImpl localPerformanceAnnotation = new LocalPerformanceAnnotationImpl();
+		return localPerformanceAnnotation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ControlFlow createControlFlow()
+	 * @generated
+	 */
+  @Override
+		public ControlFlow createControlFlow()
   {
-    ControlFlowImpl controlFlow = new ControlFlowImpl();
-    return controlFlow;
-  }
+		ControlFlowImpl controlFlow = new ControlFlowImpl();
+		return controlFlow;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ObjectFlow createObjectFlow()
+	 * @generated
+	 */
+  @Override
+		public ObjectFlow createObjectFlow()
   {
-    ObjectFlowImpl objectFlow = new ObjectFlowImpl();
-    return objectFlow;
-  }
+		ObjectFlowImpl objectFlow = new ObjectFlowImpl();
+		return objectFlow;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public Action createAction()
+	 * @generated
+	 */
+  @Override
+		public Action createAction()
   {
-    ActionImpl action = new ActionImpl();
-    return action;
-  }
+		ActionImpl action = new ActionImpl();
+		return action;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public StructuredActivityNode createStructuredActivityNode()
+	 * @generated
+	 */
+  @Override
+		public StructuredActivityNode createStructuredActivityNode()
   {
-    StructuredActivityNodeImpl structuredActivityNode = new StructuredActivityNodeImpl();
-    return structuredActivityNode;
-  }
+		StructuredActivityNodeImpl structuredActivityNode = new StructuredActivityNodeImpl();
+		return structuredActivityNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ObjectNode createObjectNode()
+	 * @generated
+	 */
+  @Override
+		public ObjectNode createObjectNode()
   {
-    ObjectNodeImpl objectNode = new ObjectNodeImpl();
-    return objectNode;
-  }
+		ObjectNodeImpl objectNode = new ObjectNodeImpl();
+		return objectNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public InitialNode createInitialNode()
+	 * @generated
+	 */
+  @Override
+		public InitialNode createInitialNode()
   {
-    InitialNodeImpl initialNode = new InitialNodeImpl();
-    return initialNode;
-  }
+		InitialNodeImpl initialNode = new InitialNodeImpl();
+		return initialNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public FinalNode createFinalNode()
+	 * @generated
+	 */
+  @Override
+		public FinalNode createFinalNode()
   {
-    FinalNodeImpl finalNode = new FinalNodeImpl();
-    return finalNode;
-  }
+		FinalNodeImpl finalNode = new FinalNodeImpl();
+		return finalNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public DecisionNode createDecisionNode()
+	 * @generated
+	 */
+  @Override
+		public DecisionNode createDecisionNode()
   {
-    DecisionNodeImpl decisionNode = new DecisionNodeImpl();
-    return decisionNode;
-  }
+		DecisionNodeImpl decisionNode = new DecisionNodeImpl();
+		return decisionNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ForkNode createForkNode()
+	 * @generated
+	 */
+  @Override
+		public ForkNode createForkNode()
   {
-    ForkNodeImpl forkNode = new ForkNodeImpl();
-    return forkNode;
-  }
+		ForkNodeImpl forkNode = new ForkNodeImpl();
+		return forkNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public JoinNode createJoinNode()
+	 * @generated
+	 */
+  @Override
+		public JoinNode createJoinNode()
   {
-    JoinNodeImpl joinNode = new JoinNodeImpl();
-    return joinNode;
-  }
+		JoinNodeImpl joinNode = new JoinNodeImpl();
+		return joinNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public MergeNode createMergeNode()
+	 * @generated
+	 */
+  @Override
+		public MergeNode createMergeNode()
   {
-    MergeNodeImpl mergeNode = new MergeNodeImpl();
-    return mergeNode;
-  }
+		MergeNodeImpl mergeNode = new MergeNodeImpl();
+		return mergeNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VisitStatus createVisitStatusFromString(EDataType eDataType, String initialValue)
   {
-    VisitStatus result = VisitStatus.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
+		VisitStatus result = VisitStatus.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String convertVisitStatusToString(EDataType eDataType, Object instanceValue)
   {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NodeSide createNodeSideFromString(EDataType eDataType, String initialValue)
   {
-    NodeSide result = NodeSide.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
+		NodeSide result = NodeSide.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String convertNodeSideToString(EDataType eDataType, Object instanceValue)
   {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public ServiceProcessPackage getServiceProcessPackage()
+	 * @generated
+	 */
+  @Override
+		public ServiceProcessPackage getServiceProcessPackage()
   {
-    return (ServiceProcessPackage)getEPackage();
-  }
+		return (ServiceProcessPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static ServiceProcessPackage getPackage()
   {
-    return ServiceProcessPackage.eINSTANCE;
-  }
+		return ServiceProcessPackage.eINSTANCE;
+	}
 
 } //ServiceProcessFactoryImpl

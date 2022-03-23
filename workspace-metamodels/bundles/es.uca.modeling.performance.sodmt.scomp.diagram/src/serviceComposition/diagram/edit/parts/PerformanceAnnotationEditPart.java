@@ -59,8 +59,7 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.PerformanceAnnotationItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -74,8 +73,7 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -113,20 +111,17 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.PerformanceAnnotationConcurrentUsersEditPart) {
 			((serviceComposition.diagram.edit.parts.PerformanceAnnotationConcurrentUsersEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigurePerformanceAnnotationLabelFigure());
+					.setLabel(getPrimaryShape().getFigurePerformanceAnnotationLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.PerformanceAnnotationConcurrentUsers2EditPart) {
 			((serviceComposition.diagram.edit.parts.PerformanceAnnotationConcurrentUsers2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigurePerformanceAnnotationConcurrentUsersLabelFigure());
+					.setLabel(getPrimaryShape().getFigurePerformanceAnnotationConcurrentUsersLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.PerformanceAnnotationSecsTimeLimitEditPart) {
 			((serviceComposition.diagram.edit.parts.PerformanceAnnotationSecsTimeLimitEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigurePerformanceAnnotationSecsTimeLimitLabelFigure());
+					.setLabel(getPrimaryShape().getFigurePerformanceAnnotationSecsTimeLimitLabelFigure());
 			return true;
 		}
 		return false;
@@ -274,8 +269,7 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 	 */
 	protected void handleNotificationEvent(Notification event) {
 		if (event.getNotifier() == getModel()
-				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
-						.equals(event.getFeature())) {
+				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations().equals(event.getFeature())) {
 			handleMajorSemanticChange();
 		} else {
 			super.handleNotificationEvent(event);
@@ -304,8 +298,7 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public PerformanceAnnotationFigure() {
-			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 			createContents();
 		}
@@ -317,8 +310,7 @@ public class PerformanceAnnotationEditPart extends ShapeNodeEditPart {
 
 			fFigurePerformanceAnnotationLabelFigure = new WrappingLabel();
 
-			fFigurePerformanceAnnotationLabelFigure
-					.setText("PerformanceAnnotation");
+			fFigurePerformanceAnnotationLabelFigure.setText("PerformanceAnnotation");
 
 			this.add(fFigurePerformanceAnnotationLabelFigure);
 

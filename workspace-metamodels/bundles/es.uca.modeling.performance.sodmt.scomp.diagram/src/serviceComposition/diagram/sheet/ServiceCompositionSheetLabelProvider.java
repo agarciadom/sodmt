@@ -14,8 +14,7 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class ServiceCompositionSheetLabelProvider extends BaseLabelProvider
-		implements ILabelProvider {
+public class ServiceCompositionSheetLabelProvider extends BaseLabelProvider implements ILabelProvider {
 
 	/**
 	 * @generated
@@ -23,8 +22,7 @@ public class ServiceCompositionSheetLabelProvider extends BaseLabelProvider
 	public String getText(Object element) {
 		element = unwrap(element);
 		if (element instanceof serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup) {
-			return ((serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup) element)
-					.getGroupName();
+			return ((serviceComposition.diagram.navigator.ServiceCompositionNavigatorGroup) element).getGroupName();
 		}
 		IElementType etype = getElementType(getView(element));
 		return etype == null ? "" : etype.getDisplayName();
@@ -36,8 +34,7 @@ public class ServiceCompositionSheetLabelProvider extends BaseLabelProvider
 	public Image getImage(Object element) {
 		IElementType etype = getElementType(getView(unwrap(element)));
 		return etype == null ? null
-				: serviceComposition.diagram.providers.ServiceCompositionElementTypes
-						.getImage(etype);
+				: serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImage(etype);
 	}
 
 	/**
@@ -69,15 +66,13 @@ public class ServiceCompositionSheetLabelProvider extends BaseLabelProvider
 	private IElementType getElementType(View view) {
 		// For intermediate views climb up the containment hierarchy to find the one associated with an element type.
 		while (view != null) {
-			int vid = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(view);
+			int vid = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view);
 			IElementType etype = serviceComposition.diagram.providers.ServiceCompositionElementTypes
 					.getElementType(vid);
 			if (etype != null) {
 				return etype;
 			}
-			view = view.eContainer() instanceof View ? (View) view.eContainer()
-					: null;
+			view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
 		}
 		return null;
 	}

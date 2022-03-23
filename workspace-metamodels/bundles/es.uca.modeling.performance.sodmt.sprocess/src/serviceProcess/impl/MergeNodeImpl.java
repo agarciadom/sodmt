@@ -11,32 +11,30 @@ import serviceProcess.ServiceProcessPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Merge Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class MergeNodeImpl extends ActivityNodeImpl implements MergeNode
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected MergeNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceProcessPackage.Literals.MERGE_NODE;
-  }
+		return ServiceProcessPackage.Literals.MERGE_NODE;
+	}
 
 } //MergeNodeImpl

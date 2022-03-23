@@ -14,7 +14,7 @@ public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage 
 	 * @generated
 	 */
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

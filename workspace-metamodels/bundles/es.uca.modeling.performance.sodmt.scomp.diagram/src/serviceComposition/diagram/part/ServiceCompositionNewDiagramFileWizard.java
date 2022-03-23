@@ -54,8 +54,8 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionNewDiagramFileWizard(URI domainModelURI,
-			EObject diagramRoot, TransactionalEditingDomain editingDomain) {
+	public ServiceCompositionNewDiagramFileWizard(URI domainModelURI, EObject diagramRoot,
+			TransactionalEditingDomain editingDomain) {
 		assert domainModelURI != null : "Domain model uri must be specified"; //$NON-NLS-1$
 		assert diagramRoot != null : "Doagram root element must be specified"; //$NON-NLS-1$
 		assert editingDomain != null : "Editing domain must be specified"; //$NON-NLS-1$
@@ -63,36 +63,31 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 		myFileCreationPage = new WizardNewFileCreationPage(
 				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_CreationPageName,
 				StructuredSelection.EMPTY);
-		myFileCreationPage
-				.setTitle(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_CreationPageTitle);
-		myFileCreationPage
-				.setDescription(NLS
-						.bind(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_CreationPageDescription,
-								serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID));
+		myFileCreationPage.setTitle(
+				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_CreationPageTitle);
+		myFileCreationPage.setDescription(NLS.bind(
+				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_CreationPageDescription,
+				serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID));
 		IPath filePath;
-		String fileName = URI.decode(domainModelURI.trimFileExtension()
-				.lastSegment());
+		String fileName = URI.decode(domainModelURI.trimFileExtension().lastSegment());
 		if (domainModelURI.isPlatformResource()) {
-			filePath = new Path(domainModelURI.trimSegments(1)
-					.toPlatformString(true));
+			filePath = new Path(domainModelURI.trimSegments(1).toPlatformString(true));
 		} else if (domainModelURI.isFile()) {
 			filePath = new Path(domainModelURI.trimSegments(1).toFileString());
 		} else {
 			// TODO : use some default path
-			throw new IllegalArgumentException(
-					"Unsupported URI: " + domainModelURI); //$NON-NLS-1$
+			throw new IllegalArgumentException("Unsupported URI: " + domainModelURI); //$NON-NLS-1$
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
-		myFileCreationPage
-				.setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-						.getUniqueFileName(filePath, fileName, "scdiag")); //$NON-NLS-1$
+		myFileCreationPage.setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
+				.getUniqueFileName(filePath, fileName, "scdiag")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageName);
-		diagramRootElementSelectionPage
-				.setTitle(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageTitle);
-		diagramRootElementSelectionPage
-				.setDescription(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageDescription);
+		diagramRootElementSelectionPage.setTitle(
+				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageTitle);
+		diagramRootElementSelectionPage.setDescription(
+				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageDescription);
 		diagramRootElementSelectionPage.setModelElement(diagramRoot);
 
 		myEditingDomain = editingDomain;
@@ -112,59 +107,43 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 	public boolean performFinish() {
 		LinkedList<IFile> affectedFiles = new LinkedList<IFile>();
 		IFile diagramFile = myFileCreationPage.createNewFile();
-		serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-				.setCharset(diagramFile);
+		serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil.setCharset(diagramFile);
 		affectedFiles.add(diagramFile);
-		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile
-				.getFullPath().toString(), true);
+		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile.getFullPath().toString(), true);
 		ResourceSet resourceSet = myEditingDomain.getResourceSet();
-		final Resource diagramResource = resourceSet
-				.createResource(diagramModelURI);
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				myEditingDomain,
+		final Resource diagramResource = resourceSet.createResource(diagramModelURI);
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(myEditingDomain,
 				serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_InitDiagramCommand,
 				affectedFiles) {
 
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				int diagramVID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-						.getDiagramVisualID(diagramRootElementSelectionPage
-								.getModelElement());
+						.getDiagramVisualID(diagramRootElementSelectionPage.getModelElement());
 				if (diagramVID != serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID) {
-					return CommandResult
-							.newErrorCommandResult(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_IncorrectRootError);
+					return CommandResult.newErrorCommandResult(
+							serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_IncorrectRootError);
 				}
-				Diagram diagram = ViewService
-						.createDiagram(
-								diagramRootElementSelectionPage
-										.getModelElement(),
-								serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID,
-								serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+				Diagram diagram = ViewService.createDiagram(diagramRootElementSelectionPage.getModelElement(),
+						serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID,
+						serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				diagramResource.getContents().add(diagram);
 				return CommandResult.newOKCommandResult();
 			}
 		};
 		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					new NullProgressMonitor(), null);
-			diagramResource
-					.save(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-							.getSaveOptions());
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-					.openDiagram(diagramResource);
+			OperationHistoryFactory.getOperationHistory().execute(command, new NullProgressMonitor(), null);
+			diagramResource.save(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil.getSaveOptions());
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil.openDiagram(diagramResource);
 		} catch (ExecutionException e) {
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().logError(
-							"Unable to create model and diagram", e); //$NON-NLS-1$
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.logError("Unable to create model and diagram", e); //$NON-NLS-1$
 		} catch (IOException ex) {
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance()
-					.logError(
-							"Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.logError("Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
 		} catch (PartInitException ex) {
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().logError("Unable to open editor", ex); //$NON-NLS-1$
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.logError("Unable to open editor", ex); //$NON-NLS-1$
 		}
 		return true;
 	}
@@ -172,8 +151,8 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 	/**
 	 * @generated
 	 */
-	private static class DiagramRootElementSelectionPage extends
-			serviceComposition.diagram.part.ModelElementSelectionPage {
+	private static class DiagramRootElementSelectionPage
+			extends serviceComposition.diagram.part.ModelElementSelectionPage {
 
 		/**
 		 * @generated
@@ -193,17 +172,15 @@ public class ServiceCompositionNewDiagramFileWizard extends Wizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			if (selectedModelElement == null) {
-				setErrorMessage(serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
+			if (getModelElement() == null) {
+				setErrorMessage(
+						serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
-			boolean result = ViewService
-					.getInstance()
-					.provides(
-							new CreateDiagramViewOperation(
-									new EObjectAdapter(selectedModelElement),
-									serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID,
-									serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
+			boolean result = ViewService.getInstance().provides(new CreateDiagramViewOperation(
+					new EObjectAdapter(getModelElement()),
+					serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID,
+					serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
 			setErrorMessage(result ? null
 					: serviceComposition.diagram.part.Messages.ServiceCompositionNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
 			return result;

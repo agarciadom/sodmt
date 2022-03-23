@@ -11,8 +11,7 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 /**
  * @generated
  */
-public abstract class ServiceCompositionAbstractNavigatorItem extends
-		PlatformObject {
+public abstract class ServiceCompositionAbstractNavigatorItem extends PlatformObject {
 
 	/**
 	 * @generated
@@ -24,23 +23,20 @@ public abstract class ServiceCompositionAbstractNavigatorItem extends
 				return "es.uca.modeling.performance.sodmt.scomp.diagram"; //$NON-NLS-1$
 			}
 		};
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem
-								&& adapterType == ITabbedPropertySheetPageContributor.class) {
-							return propertySheetPageContributor;
-						}
-						return null;
-					}
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem
+						&& adapterType == ITabbedPropertySheetPageContributor.class) {
+					return propertySheetPageContributor;
+				}
+				return null;
+			}
 
-					public Class[] getAdapterList() {
-						return supportedTypes;
-					}
-				},
-				serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem.class);
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem.class);
 	}
 
 	/**

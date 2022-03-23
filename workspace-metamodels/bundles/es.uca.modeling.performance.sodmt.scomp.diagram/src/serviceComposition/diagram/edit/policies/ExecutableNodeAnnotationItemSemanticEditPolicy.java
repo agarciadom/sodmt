@@ -11,15 +11,13 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyReferenceRequest;
  * @generated
  */
 public class ExecutableNodeAnnotationItemSemanticEditPolicy
-		extends
-		serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
+		extends serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public ExecutableNodeAnnotationItemSemanticEditPolicy() {
-		super(
-				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003);
+		super(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003);
 	}
 
 	/**

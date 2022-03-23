@@ -40,8 +40,7 @@ public class ExecutableNodeAnnotationReorientCommand extends EditElementCommand 
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeAnnotationReorientCommand(
-			ReorientReferenceRelationshipRequest request) {
+	public ExecutableNodeAnnotationReorientCommand(ReorientReferenceRelationshipRequest request) {
 		super(request.getLabel(), null, request);
 		reorientDirection = request.getDirection();
 		referenceOwner = request.getReferenceOwner();
@@ -69,34 +68,32 @@ public class ExecutableNodeAnnotationReorientCommand extends EditElementCommand 
 	 * @generated
 	 */
 	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof serviceComposition.LocalPerformanceAnnotation && newEnd instanceof serviceComposition.ExecutableNode)) {
+		if (!(oldEnd instanceof serviceComposition.LocalPerformanceAnnotation
+				&& newEnd instanceof serviceComposition.ExecutableNode)) {
 			return false;
 		}
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistExecutableNodeAnnotation_4003(
-						getNewSource(), getOldTarget());
+				.getLinkConstraints().canExistExecutableNodeAnnotation_4003(getNewSource(), getOldTarget());
 	}
 
 	/**
 	 * @generated
 	 */
 	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof serviceComposition.LocalPerformanceAnnotation && newEnd instanceof serviceComposition.LocalPerformanceAnnotation)) {
+		if (!(oldEnd instanceof serviceComposition.LocalPerformanceAnnotation
+				&& newEnd instanceof serviceComposition.LocalPerformanceAnnotation)) {
 			return false;
 		}
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistExecutableNodeAnnotation_4003(
-						getOldSource(), getNewTarget());
+				.getLinkConstraints().canExistExecutableNodeAnnotation_4003(getOldSource(), getNewTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();

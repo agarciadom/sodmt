@@ -29,8 +29,7 @@ public class ServiceCompositionNavigatorSorter extends ViewerSorter {
 			if (item.getView().getEAnnotation("Shortcut") != null) { //$NON-NLS-1$
 				return SHORTCUTS_CATEGORY;
 			}
-			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(item.getView());
+			return serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(item.getView());
 		}
 		return GROUP_CATEGORY;
 	}

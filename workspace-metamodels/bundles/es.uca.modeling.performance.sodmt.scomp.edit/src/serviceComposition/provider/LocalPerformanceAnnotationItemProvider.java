@@ -30,244 +30,236 @@ import serviceComposition.ServiceCompositionPackage;
  */
 public class LocalPerformanceAnnotationItemProvider
   extends PerformanceAnnotationItemProvider
-  implements
-    IEditingDomainItemProvider,
-    IStructuredItemContentProvider,
-    ITreeItemContentProvider,
-    IItemLabelProvider,
-    IItemPropertySource
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public LocalPerformanceAnnotationItemProvider(AdapterFactory adapterFactory)
   {
-    super(adapterFactory);
-  }
+		super(adapterFactory);
+	}
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
   {
-    if (itemPropertyDescriptors == null)
-    {
-      super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-      addIncomingPropertyDescriptor(object);
-      addOutgoingPropertyDescriptor(object);
-      addMinimumTimePropertyDescriptor(object);
-      addWeightPropertyDescriptor(object);
-      addRepsPropertyDescriptor(object);
-      addExecNodePropertyDescriptor(object);
-    }
-    return itemPropertyDescriptors;
-  }
+			addIncomingPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
+			addMinimumTimePropertyDescriptor(object);
+			addWeightPropertyDescriptor(object);
+			addRepsPropertyDescriptor(object);
+			addExecNodePropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
+	}
 
   /**
-   * This adds a property descriptor for the Incoming feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Incoming feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addIncomingPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_ActivityNode_incoming_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"),
-         ServiceCompositionPackage.Literals.ACTIVITY_NODE__INCOMING,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ActivityNode_incoming_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"),
+				 ServiceCompositionPackage.Literals.ACTIVITY_NODE__INCOMING,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Outgoing feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Outgoing feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addOutgoingPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_ActivityNode_outgoing_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"),
-         ServiceCompositionPackage.Literals.ACTIVITY_NODE__OUTGOING,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ActivityNode_outgoing_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"),
+				 ServiceCompositionPackage.Literals.ACTIVITY_NODE__OUTGOING,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Minimum Time feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Minimum Time feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addMinimumTimePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LocalPerformanceAnnotation_minimumTime_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_minimumTime_feature", "_UI_LocalPerformanceAnnotation_type"),
-         ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LocalPerformanceAnnotation_minimumTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_minimumTime_feature", "_UI_LocalPerformanceAnnotation_type"),
+				 ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Weight feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Weight feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addWeightPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LocalPerformanceAnnotation_weight_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_weight_feature", "_UI_LocalPerformanceAnnotation_type"),
-         ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LocalPerformanceAnnotation_weight_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_weight_feature", "_UI_LocalPerformanceAnnotation_type"),
+				 ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Reps feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Reps feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addRepsPropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LocalPerformanceAnnotation_reps_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_reps_feature", "_UI_LocalPerformanceAnnotation_type"),
-         ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__REPS,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LocalPerformanceAnnotation_reps_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_reps_feature", "_UI_LocalPerformanceAnnotation_type"),
+				 ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__REPS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
   /**
-   * This adds a property descriptor for the Exec Node feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Exec Node feature.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void addExecNodePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LocalPerformanceAnnotation_execNode_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_execNode_feature", "_UI_LocalPerformanceAnnotation_type"),
-         ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LocalPerformanceAnnotation_execNode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LocalPerformanceAnnotation_execNode_feature", "_UI_LocalPerformanceAnnotation_type"),
+				 ServiceCompositionPackage.Literals.LOCAL_PERFORMANCE_ANNOTATION__EXEC_NODE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
 
   /**
-   * This returns LocalPerformanceAnnotation.gif.
-   * <!-- begin-user-doc -->
+	 * This returns LocalPerformanceAnnotation.gif.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object getImage(Object object)
   {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/LocalPerformanceAnnotation"));
-  }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LocalPerformanceAnnotation"));
+	}
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String getText(Object object)
   {
-    LocalPerformanceAnnotation localPerformanceAnnotation = (LocalPerformanceAnnotation)object;
-    return getString("_UI_LocalPerformanceAnnotation_type") + " " + localPerformanceAnnotation.getConcurrentUsers();
-  }
+		LocalPerformanceAnnotation localPerformanceAnnotation = (LocalPerformanceAnnotation)object;
+		return getString("_UI_LocalPerformanceAnnotation_type") + " " + localPerformanceAnnotation.getConcurrentUsers();
+	}
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void notifyChanged(Notification notification)
   {
-    updateChildren(notification);
+		updateChildren(notification);
 
-    switch (notification.getFeatureID(LocalPerformanceAnnotation.class))
-    {
-      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME:
-      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
-      case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-        return;
-    }
-    super.notifyChanged(notification);
-  }
+		switch (notification.getFeatureID(LocalPerformanceAnnotation.class)) {
+			case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__MINIMUM_TIME:
+			case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__WEIGHT:
+			case ServiceCompositionPackage.LOCAL_PERFORMANCE_ANNOTATION__REPS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
-    super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
 }

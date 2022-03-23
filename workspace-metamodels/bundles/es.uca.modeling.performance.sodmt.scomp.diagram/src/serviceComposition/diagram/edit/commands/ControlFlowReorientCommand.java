@@ -71,8 +71,7 @@ public class ControlFlowReorientCommand extends EditElementCommand {
 		serviceComposition.ServiceComposition container = (serviceComposition.ServiceComposition) getLink()
 				.eContainer();
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistControlFlow_4001(container,
-						getLink(), getNewSource(), target);
+				.getLinkConstraints().canExistControlFlow_4001(container, getLink(), getNewSource(), target);
 	}
 
 	/**
@@ -89,18 +88,15 @@ public class ControlFlowReorientCommand extends EditElementCommand {
 		serviceComposition.ServiceComposition container = (serviceComposition.ServiceComposition) getLink()
 				.eContainer();
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistControlFlow_4001(container,
-						getLink(), source, getNewTarget());
+				.getLinkConstraints().canExistControlFlow_4001(container, getLink(), source, getNewTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();

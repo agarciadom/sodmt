@@ -28,8 +28,7 @@ import org.eclipse.ui.part.FileEditorInput;
 /**
  * @generated
  */
-public class ServiceCompositionNavigatorActionProvider extends
-		CommonActionProvider {
+public class ServiceCompositionNavigatorActionProvider extends CommonActionProvider {
 
 	/**
 	 * @generated
@@ -68,12 +67,10 @@ public class ServiceCompositionNavigatorActionProvider extends
 		if (!myContribute) {
 			return;
 		}
-		IStructuredSelection selection = (IStructuredSelection) getContext()
-				.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		myOpenDiagramAction.selectionChanged(selection);
 		if (myOpenDiagramAction.isEnabled()) {
-			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-					myOpenDiagramAction);
+			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
 		}
 	}
 
@@ -102,8 +99,7 @@ public class ServiceCompositionNavigatorActionProvider extends
 		 * @generated
 		 */
 		public OpenDiagramAction(ICommonViewerWorkbenchSite viewerSite) {
-			super(
-					serviceComposition.diagram.part.Messages.NavigatorActionProvider_OpenDiagramActionName);
+			super(serviceComposition.diagram.part.Messages.NavigatorActionProvider_OpenDiagramActionName);
 			myViewerSite = viewerSite;
 		}
 
@@ -118,14 +114,12 @@ public class ServiceCompositionNavigatorActionProvider extends
 					selectedElement = ((serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) selectedElement)
 							.getView();
 				} else if (selectedElement instanceof IAdaptable) {
-					selectedElement = ((IAdaptable) selectedElement)
-							.getAdapter(View.class);
+					selectedElement = ((IAdaptable) selectedElement).getAdapter(View.class);
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-							.equals(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getModelID(diagram))) {
+					if (serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID.equals(
+							serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -144,13 +138,10 @@ public class ServiceCompositionNavigatorActionProvider extends
 			IEditorInput editorInput = getEditorInput(myDiagram);
 			IWorkbenchPage page = myViewerSite.getPage();
 			try {
-				page.openEditor(
-						editorInput,
-						serviceComposition.diagram.part.ServiceCompositionDiagramEditor.ID);
+				page.openEditor(editorInput, serviceComposition.diagram.part.ServiceCompositionDiagramEditor.ID);
 			} catch (PartInitException e) {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().logError(
-								"Exception while openning diagram", e); //$NON-NLS-1$
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Exception while openning diagram", e); //$NON-NLS-1$
 			}
 		}
 
@@ -161,16 +152,14 @@ public class ServiceCompositionNavigatorActionProvider extends
 			Resource diagramResource = diagram.eResource();
 			for (EObject nextEObject : diagramResource.getContents()) {
 				if (nextEObject == diagram) {
-					return new FileEditorInput(
-							WorkspaceSynchronizer.getFile(diagramResource));
+					return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 				}
 				if (nextEObject instanceof Diagram) {
 					break;
 				}
 			}
 			URI uri = EcoreUtil.getURI(diagram);
-			String editorName = uri.lastSegment() + '#'
-					+ diagram.eResource().getContents().indexOf(diagram);
+			String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}

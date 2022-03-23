@@ -62,8 +62,7 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.LocalPerformanceAnnotation2ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -77,8 +76,7 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -116,38 +114,32 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureLocalPerformanceAnnotationLabelFigure());
+					.setLabel(getPrimaryShape().getFigureLocalPerformanceAnnotationLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers4EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers4EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigurePerformanceAnnotationConcurrentUsersLabelFigure());
+					.setLabel(getPrimaryShape().getFigurePerformanceAnnotationConcurrentUsersLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationSecsTimeLimit2EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationSecsTimeLimit2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigurePerformanceAnnotationSecsTimeLimitLabelFigure());
+					.setLabel(getPrimaryShape().getFigurePerformanceAnnotationSecsTimeLimitLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationMinimumTime2EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationMinimumTime2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureLocalPerformanceAnnotationMinimumTimeLabelFigure());
+					.setLabel(getPrimaryShape().getFigureLocalPerformanceAnnotationMinimumTimeLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationWeight2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureLocalPerformanceAnnotationWeightLabelFigure());
+					.setLabel(getPrimaryShape().getFigureLocalPerformanceAnnotationWeightLabelFigure());
 			return true;
 		}
 		if (childEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart) {
 			((serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationReps2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureLocalPerformanceAnnotationRepsLabelFigure());
+					.setLabel(getPrimaryShape().getFigureLocalPerformanceAnnotationRepsLabelFigure());
 			return true;
 		}
 		return false;
@@ -295,367 +287,8 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID));
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ActionEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.Action2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.Action3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ActionEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNodeEditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.Action2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNode2EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.Action3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ObjectNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.InitialNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.FinalNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.DecisionNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.ForkNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.JoinNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		if (targetEditPart instanceof serviceComposition.diagram.edit.parts.MergeNode3EditPart) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_2003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_2006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_2007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_2008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_2009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_2010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3014);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3015);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3016);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3017);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3018);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
-		} else if (relationshipType == serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_2003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_2006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_2007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_2008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_2009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_2010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3014);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3015);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3016);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3017);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3018);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001);
-		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
-		types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_2003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_2006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_2007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_2008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_2009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_2010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3014);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3015);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3016);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3017);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3018);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
-		} else if (relationshipType == serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_2003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_2004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_2006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_2007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_2008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_2009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_2010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_2012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3003);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3004);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3005);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3006);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3007);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3008);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3009);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3019);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectNode_3013);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.InitialNode_3014);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.FinalNode_3015);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.DecisionNode_3016);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ForkNode_3017);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.JoinNode_3018);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.MergeNode_3020);
-		} else if (relationshipType == serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003) {
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_2001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_2002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3001);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.Action_3010);
-			types.add(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3011);
-		}
-		return types;
+		return getChildBySemanticHint(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getType(
+				serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers3EditPart.VISUAL_ID));
 	}
 
 	/**
@@ -693,8 +326,7 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		public LocalPerformanceAnnotationFigure() {
-			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
+			this.setBorder(new MarginBorder(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), getMapMode().DPtoLP(5),
 					getMapMode().DPtoLP(5)));
 			createContents();
 		}
@@ -706,8 +338,7 @@ public class LocalPerformanceAnnotation2EditPart extends ShapeNodeEditPart {
 
 			fFigureLocalPerformanceAnnotationLabelFigure = new WrappingLabel();
 
-			fFigureLocalPerformanceAnnotationLabelFigure
-					.setText("LocalPerformanceAnnotation");
+			fFigureLocalPerformanceAnnotationLabelFigure.setText("LocalPerformanceAnnotation");
 
 			this.add(fFigureLocalPerformanceAnnotationLabelFigure);
 

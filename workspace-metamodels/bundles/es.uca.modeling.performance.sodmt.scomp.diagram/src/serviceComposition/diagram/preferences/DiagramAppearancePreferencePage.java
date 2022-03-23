@@ -14,7 +14,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 	 * @generated
 	 */
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

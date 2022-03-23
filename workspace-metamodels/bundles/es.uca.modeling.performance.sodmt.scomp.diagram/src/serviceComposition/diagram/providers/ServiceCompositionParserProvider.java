@@ -19,8 +19,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ServiceCompositionParserProvider extends AbstractProvider
-		implements IParserProvider {
+public class ServiceCompositionParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
 	 * @generated
@@ -32,8 +31,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getActionName_5001Parser() {
 		if (actionName_5001Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			actionName_5001Parser = parser;
@@ -51,8 +50,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getStructuredActivityNodeName_5010Parser() {
 		if (structuredActivityNodeName_5010Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«structured» {0}"); //$NON-NLS-1$
@@ -73,8 +72,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5011Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5011Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«lpc»"); //$NON-NLS-1$
@@ -95,8 +94,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5012Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5012Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
@@ -117,8 +116,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationSecsTimeLimit_5013Parser() {
 		if (localPerformanceAnnotationSecsTimeLimit_5013Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_SecsTimeLimit() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_SecsTimeLimit() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
@@ -161,8 +160,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationWeight_5015Parser() {
 		if (localPerformanceAnnotationWeight_5015Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Weight() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Weight() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
@@ -183,8 +182,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationReps_5030Parser() {
 		if (localPerformanceAnnotationReps_5030Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Reps() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Reps() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
@@ -205,8 +204,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getObjectNodeName_5016Parser() {
 		if (objectNodeName_5016Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			objectNodeName_5016Parser = parser;
@@ -224,8 +223,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getActivityPartitionName_5025Parser() {
 		if (activityPartitionName_5025Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			activityPartitionName_5025Parser = parser;
@@ -243,8 +242,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getPerformanceAnnotationConcurrentUsers_5026Parser() {
 		if (performanceAnnotationConcurrentUsers_5026Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«gpc»"); //$NON-NLS-1$
@@ -265,8 +264,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getPerformanceAnnotationConcurrentUsers_5027Parser() {
 		if (performanceAnnotationConcurrentUsers_5027Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
@@ -287,8 +286,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getPerformanceAnnotationSecsTimeLimit_5028Parser() {
 		if (performanceAnnotationSecsTimeLimit_5028Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_SecsTimeLimit() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_SecsTimeLimit() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
@@ -309,8 +308,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getActionName_5002Parser() {
 		if (actionName_5002Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			actionName_5002Parser = parser;
@@ -328,8 +327,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getStructuredActivityNodeName_5009Parser() {
 		if (structuredActivityNodeName_5009Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«structured» {0}"); //$NON-NLS-1$
@@ -350,8 +349,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5003Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5003Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«lpc»"); //$NON-NLS-1$
@@ -372,8 +371,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5004Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5004Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
@@ -394,8 +393,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationSecsTimeLimit_5005Parser() {
 		if (localPerformanceAnnotationSecsTimeLimit_5005Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_SecsTimeLimit() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_SecsTimeLimit() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
@@ -438,8 +437,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationWeight_5007Parser() {
 		if (localPerformanceAnnotationWeight_5007Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Weight() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Weight() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
@@ -460,8 +459,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationReps_5029Parser() {
 		if (localPerformanceAnnotationReps_5029Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Reps() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Reps() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
@@ -482,8 +481,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getObjectNodeName_5008Parser() {
 		if (objectNodeName_5008Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			objectNodeName_5008Parser = parser;
@@ -501,8 +500,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getActionName_5017Parser() {
 		if (actionName_5017Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			actionName_5017Parser = parser;
@@ -520,8 +519,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getStructuredActivityNodeName_5018Parser() {
 		if (structuredActivityNodeName_5018Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«structured» {0}"); //$NON-NLS-1$
@@ -542,8 +541,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5019Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5019Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("«lpc»"); //$NON-NLS-1$
@@ -564,8 +563,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationConcurrentUsers_5020Parser() {
 		if (localPerformanceAnnotationConcurrentUsers_5020Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_ConcurrentUsers() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_ConcurrentUsers() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("users = {0}"); //$NON-NLS-1$
@@ -586,8 +585,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationSecsTimeLimit_5021Parser() {
 		if (localPerformanceAnnotationSecsTimeLimit_5021Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getPerformanceAnnotation_SecsTimeLimit() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getPerformanceAnnotation_SecsTimeLimit() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("timeLimit = {0}"); //$NON-NLS-1$
@@ -630,8 +629,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationWeight_5023Parser() {
 		if (localPerformanceAnnotationWeight_5023Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Weight() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Weight() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("weight = {0}"); //$NON-NLS-1$
@@ -652,8 +651,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getLocalPerformanceAnnotationReps_5031Parser() {
 		if (localPerformanceAnnotationReps_5031Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getLocalPerformanceAnnotation_Reps() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getLocalPerformanceAnnotation_Reps() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			parser.setViewPattern("reps = {0}"); //$NON-NLS-1$
@@ -674,8 +673,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 */
 	private IParser getObjectNodeName_5024Parser() {
 		if (objectNodeName_5024Parser == null) {
-			EAttribute[] features = new EAttribute[] { serviceComposition.ServiceCompositionPackage.eINSTANCE
-					.getNamedElement_Name() };
+			EAttribute[] features = new EAttribute[] {
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getNamedElement_Name() };
 			serviceComposition.diagram.parsers.MessageFormatParser parser = new serviceComposition.diagram.parsers.MessageFormatParser(
 					features);
 			objectNodeName_5024Parser = parser;
@@ -694,10 +693,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	private IParser getControlFlowConditionProbability_6001Parser() {
 		if (controlFlowConditionProbability_6001Parser == null) {
 			EAttribute[] features = new EAttribute[] {
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getControlFlow_Condition(),
-					serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getControlFlow_Probability() };
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getControlFlow_Condition(),
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getControlFlow_Probability() };
 			serviceComposition.diagram.parsers.ControlFlowLabelParser parser = new serviceComposition.diagram.parsers.ControlFlowLabelParser(
 					features);
 			parser.setViewPattern("[{0}] (p = {1})"); //$NON-NLS-1$
@@ -785,10 +782,8 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	 * Utility method that consults ParserService
 	 * @generated
 	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**
@@ -797,13 +792,11 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	public IParser getParser(IAdaptable hint) {
 		String vid = (String) hint.getAdapter(String.class);
 		if (vid != null) {
-			return getParser(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(vid));
+			return getParser(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(vid));
 		}
 		View view = (View) hint.getAdapter(View.class);
 		if (view != null) {
-			return getParser(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(view));
+			return getParser(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view));
 		}
 		return null;
 	}
@@ -814,8 +807,7 @@ public class ServiceCompositionParserProvider extends AbstractProvider
 	public boolean provides(IOperation operation) {
 		if (operation instanceof GetParserOperation) {
 			IAdaptable hint = ((GetParserOperation) operation).getHint();
-			if (serviceComposition.diagram.providers.ServiceCompositionElementTypes
-					.getElement(hint) == null) {
+			if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.getElement(hint) == null) {
 				return false;
 			}
 			return getParser(hint) != null;

@@ -16,8 +16,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ObjectFlowEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class ObjectFlowEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	 * @generated
@@ -36,8 +35,7 @@ public class ObjectFlowEditPart extends ConnectionNodeEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.ObjectFlowItemSemanticEditPolicy());
 	}
 

@@ -11,32 +11,30 @@ import serviceProcess.ServiceProcessPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Decision Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class DecisionNodeImpl extends ActivityNodeImpl implements DecisionNode
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected DecisionNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceProcessPackage.Literals.DECISION_NODE;
-  }
+		return ServiceProcessPackage.Literals.DECISION_NODE;
+	}
 
 } //DecisionNodeImpl

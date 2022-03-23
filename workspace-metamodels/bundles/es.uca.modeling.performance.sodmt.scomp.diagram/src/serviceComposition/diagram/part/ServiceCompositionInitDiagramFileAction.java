@@ -24,8 +24,7 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * @generated
  */
-public class ServiceCompositionInitDiagramFileAction implements
-		IObjectActionDelegate {
+public class ServiceCompositionInitDiagramFileAction implements IObjectActionDelegate {
 
 	/**
 	 * @generated
@@ -50,14 +49,11 @@ public class ServiceCompositionInitDiagramFileAction implements
 	public void selectionChanged(IAction action, ISelection selection) {
 		domainModelURI = null;
 		action.setEnabled(false);
-		if (selection instanceof IStructuredSelection == false
-				|| selection.isEmpty()) {
+		if (selection instanceof IStructuredSelection == false || selection.isEmpty()) {
 			return;
 		}
-		IFile file = (IFile) ((IStructuredSelection) selection)
-				.getFirstElement();
-		domainModelURI = URI.createPlatformResourceURI(file.getFullPath()
-				.toString(), true);
+		IFile file = (IFile) ((IStructuredSelection) selection).getFirstElement();
+		domainModelURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
 		action.setEnabled(true);
 	}
 
@@ -72,32 +68,27 @@ public class ServiceCompositionInitDiagramFileAction implements
 	 * @generated
 	 */
 	public void run(IAction action) {
-		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
-				.createEditingDomain();
+		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE.createEditingDomain();
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 		EObject diagramRoot = null;
 		try {
 			Resource resource = resourceSet.getResource(domainModelURI, true);
 			diagramRoot = (EObject) resource.getContents().get(0);
 		} catch (WrappedException ex) {
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().logError(
-							"Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
 		}
 		if (diagramRoot == null) {
-			MessageDialog
-					.openError(
-							getShell(),
-							serviceComposition.diagram.part.Messages.InitDiagramFile_ResourceErrorDialogTitle,
-							serviceComposition.diagram.part.Messages.InitDiagramFile_ResourceErrorDialogMessage);
+			MessageDialog.openError(getShell(),
+					serviceComposition.diagram.part.Messages.InitDiagramFile_ResourceErrorDialogTitle,
+					serviceComposition.diagram.part.Messages.InitDiagramFile_ResourceErrorDialogMessage);
 			return;
 		}
-		Wizard wizard = new serviceComposition.diagram.part.ServiceCompositionNewDiagramFileWizard(
-				domainModelURI, diagramRoot, editingDomain);
-		wizard.setWindowTitle(NLS
-				.bind(serviceComposition.diagram.part.Messages.InitDiagramFile_WizardTitle,
-						serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID));
-		serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-				.runWizard(getShell(), wizard, "InitDiagramFile"); //$NON-NLS-1$
+		Wizard wizard = new serviceComposition.diagram.part.ServiceCompositionNewDiagramFileWizard(domainModelURI,
+				diagramRoot, editingDomain);
+		wizard.setWindowTitle(NLS.bind(serviceComposition.diagram.part.Messages.InitDiagramFile_WizardTitle,
+				serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID));
+		serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil.runWizard(getShell(), wizard,
+				"InitDiagramFile"); //$NON-NLS-1$
 	}
 }

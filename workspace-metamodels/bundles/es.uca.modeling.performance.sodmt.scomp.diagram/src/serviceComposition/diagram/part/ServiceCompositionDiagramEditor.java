@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentPro
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.part.LastClickPositionProvider;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -64,8 +65,7 @@ import org.eclipse.ui.part.ShowInContext;
 /**
  * @generated
  */
-public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
-		implements IGotoMarker {
+public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
 	/**
 	 * @generated
@@ -76,6 +76,11 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	public static final String CONTEXT_ID = "serviceComposition.diagram.ui.diagramContext"; //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	private LastClickPositionProvider myLastClickPositionProvider;
 
 	/**
 	 * @generated
@@ -96,8 +101,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	 */
 	protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
 		PaletteRoot root = super.createPaletteRoot(existingPaletteRoot);
-		new serviceComposition.diagram.part.ServiceCompositionPaletteFactory()
-				.fillPalette(root);
+		new serviceComposition.diagram.part.ServiceCompositionPaletteFactory().fillPalette(root);
 		return root;
 	}
 
@@ -134,10 +138,9 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			return serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().getDocumentProvider();
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			return serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.getDocumentProvider();
 		}
 		return super.getDocumentProvider(input);
 	}
@@ -146,8 +149,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	public TransactionalEditingDomain getEditingDomain() {
-		IDocument document = getEditorInput() != null ? getDocumentProvider()
-				.getDocument(getEditorInput()) : null;
+		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
 		if (document instanceof IDiagramDocument) {
 			return ((IDiagramDocument) document).getEditingDomain();
 		}
@@ -158,10 +160,9 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			setDocumentProvider(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().getDocumentProvider());
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			setDocumentProvider(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.getDocumentProvider());
 		} else {
 			super.setDocumentProvider(input);
 		}
@@ -195,8 +196,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input)
-				.getFile() : null;
+		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile() : null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
 		}
@@ -207,9 +207,9 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 			return;
 		}
 		if (provider.isDeleted(input) && original != null) {
-			String message = NLS
-					.bind(serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SavingDeletedFile,
-							original.getName());
+			String message = NLS.bind(
+					serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SavingDeletedFile,
+					original.getName());
 			dialog.setErrorMessage(null);
 			dialog.setMessage(message, IMessageProvider.WARNING);
 		}
@@ -230,37 +230,30 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 		IFile file = workspaceRoot.getFile(filePath);
 		final IEditorInput newInput = new FileEditorInput(file);
 		// Check if the editor is already open
-		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor()
-				.getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
+		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
+		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getEditorReferences();
 		for (int i = 0; i < editorRefs.length; i++) {
 			if (matchingStrategy.matches(editorRefs[i], newInput)) {
-				MessageDialog
-						.openWarning(
-								shell,
-								serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveAsErrorTitle,
-								serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveAsErrorMessage);
+				MessageDialog.openWarning(shell,
+						serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveAsErrorTitle,
+						serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveAsErrorMessage);
 				return;
 			}
 		}
 		boolean success = false;
 		try {
 			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor,
-					newInput,
+			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
 					getDocumentProvider().getDocument(getEditorInput()), true);
 			success = true;
 		} catch (CoreException x) {
 			IStatus status = x.getStatus();
 			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog
-						.openError(
-								shell,
-								serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveErrorTitle,
-								serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveErrorMessage,
-								x.getStatus());
+				ErrorDialog.openError(shell,
+						serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveErrorTitle,
+						serviceComposition.diagram.part.Messages.ServiceCompositionDiagramEditor_SaveErrorMessage,
+						x.getStatus());
 			}
 		} finally {
 			provider.changed(newInput);
@@ -309,8 +302,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 		serviceComposition.diagram.part.DiagramEditorContextMenuProvider provider = new serviceComposition.diagram.part.DiagramEditorContextMenuProvider(
 				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU,
-				provider, getDiagramGraphicalViewer());
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 	}
 
 	/**
@@ -319,24 +311,52 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 	protected void initializeGraphicalViewer() {
 		super.initializeGraphicalViewer();
 		getDiagramGraphicalViewer().addDropTargetListener(
-				new DropTargetListener(getDiagramGraphicalViewer(),
-						LocalSelectionTransfer.getTransfer()) {
+				new DropTargetListener(getDiagramGraphicalViewer(), LocalSelectionTransfer.getTransfer()) {
 
 					protected Object getJavaObject(TransferData data) {
-						return LocalSelectionTransfer.getTransfer()
-								.nativeToJava(data);
+						return LocalSelectionTransfer.getTransfer().nativeToJava(data);
 					}
 
 				});
 		getDiagramGraphicalViewer().addDropTargetListener(
-				new DropTargetListener(getDiagramGraphicalViewer(),
-						LocalTransfer.getInstance()) {
+				new DropTargetListener(getDiagramGraphicalViewer(), LocalTransfer.getInstance()) {
 
 					protected Object getJavaObject(TransferData data) {
 						return LocalTransfer.getInstance().nativeToJava(data);
 					}
 
 				});
+		startupLastClickPositionProvider();
+	}
+
+	/**
+	* @generated
+	*/
+	protected void startupLastClickPositionProvider() {
+		if (myLastClickPositionProvider == null) {
+			myLastClickPositionProvider = new LastClickPositionProvider(this);
+			myLastClickPositionProvider.attachToService();
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	protected void shutDownLastClickPositionProvider() {
+		if (myLastClickPositionProvider != null) {
+			myLastClickPositionProvider.detachFromService();
+			myLastClickPositionProvider.dispose();
+			myLastClickPositionProvider = null;
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	@Override
+	public void dispose() {
+		shutDownLastClickPositionProvider();
+		super.dispose();
 	}
 
 	/**
@@ -369,8 +389,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 						nextSelectedObject = view.getElement();
 					} else if (nextSelectedObject instanceof IAdaptable) {
 						IAdaptable adaptable = (IAdaptable) nextSelectedObject;
-						nextSelectedObject = adaptable
-								.getAdapter(EObject.class);
+						nextSelectedObject = adaptable.getAdapter(EObject.class);
 					}
 
 					if (nextSelectedObject instanceof EObject) {
@@ -382,8 +401,7 @@ public class ServiceCompositionDiagramEditor extends DiagramDocumentEditor
 
 			ArrayList<EObject> result = new ArrayList<EObject>(uris.size());
 			for (URI nextURI : uris) {
-				EObject modelObject = getEditingDomain().getResourceSet()
-						.getEObject(nextURI, true);
+				EObject modelObject = getEditingDomain().getResourceSet().getEObject(nextURI, true);
 				result.add(modelObject);
 			}
 			return result;

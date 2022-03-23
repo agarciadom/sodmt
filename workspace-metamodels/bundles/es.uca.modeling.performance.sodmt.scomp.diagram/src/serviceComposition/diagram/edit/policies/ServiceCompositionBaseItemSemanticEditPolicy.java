@@ -41,8 +41,7 @@ import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 /**
  * @generated
  */
-public class ServiceCompositionBaseItemSemanticEditPolicy extends
-		SemanticEditPolicy {
+public class ServiceCompositionBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Extended request data key to hold editpart visual id.
@@ -58,8 +57,7 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected ServiceCompositionBaseItemSemanticEditPolicy(
-			IElementType elementType) {
+	protected ServiceCompositionBaseItemSemanticEditPolicy(IElementType elementType) {
 		myElementType = elementType;
 	}
 
@@ -74,12 +72,10 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	 */
 	public Command getCommand(Request request) {
 		if (request instanceof ReconnectRequest) {
-			Object view = ((ReconnectRequest) request).getConnectionEditPart()
-					.getModel();
+			Object view = ((ReconnectRequest) request).getConnectionEditPart().getModel();
 			if (view instanceof View) {
 				Integer id = new Integer(
-						serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-								.getVisualID((View) view));
+						serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID((View) view));
 				request.getExtendedData().put(VISUAL_ID_KEY, id);
 			}
 		}
@@ -101,12 +97,10 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	protected Command getSemanticCommand(IEditCommandRequest request) {
 		IEditCommandRequest completedRequest = completeRequest(request);
 		Command semanticCommand = getSemanticCommandSwitch(completedRequest);
-		semanticCommand = getEditHelperCommand(completedRequest,
-				semanticCommand);
+		semanticCommand = getEditHelperCommand(completedRequest, semanticCommand);
 		if (completedRequest instanceof DestroyRequest) {
 			DestroyRequest destroyRequest = (DestroyRequest) completedRequest;
-			return shouldProceed(destroyRequest) ? addDeleteViewCommand(
-					semanticCommand, destroyRequest) : null;
+			return shouldProceed(destroyRequest) ? addDeleteViewCommand(semanticCommand, destroyRequest) : null;
 		}
 		return semanticCommand;
 	}
@@ -114,35 +108,29 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected Command addDeleteViewCommand(Command mainCommand,
-			DestroyRequest completedRequest) {
-		Command deleteViewCommand = getGEFWrapper(new DeleteCommand(
-				getEditingDomain(), (View) getHost().getModel()));
-		return mainCommand == null ? deleteViewCommand : mainCommand
-				.chain(deleteViewCommand);
+	protected Command addDeleteViewCommand(Command mainCommand, DestroyRequest completedRequest) {
+		Command deleteViewCommand = getGEFWrapper(new DeleteCommand(getEditingDomain(), (View) getHost().getModel()));
+		return mainCommand == null ? deleteViewCommand : mainCommand.chain(deleteViewCommand);
 	}
 
 	/**
 	 * @generated
 	 */
-	private Command getEditHelperCommand(IEditCommandRequest request,
-			Command editPolicyCommand) {
+	private Command getEditHelperCommand(IEditCommandRequest request, Command editPolicyCommand) {
 		if (editPolicyCommand != null) {
-			ICommand command = editPolicyCommand instanceof ICommandProxy ? ((ICommandProxy) editPolicyCommand)
-					.getICommand() : new CommandProxy(editPolicyCommand);
-			request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND,
-					command);
+			ICommand command = editPolicyCommand instanceof ICommandProxy
+					? ((ICommandProxy) editPolicyCommand).getICommand()
+					: new CommandProxy(editPolicyCommand);
+			request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND, command);
 		}
 		IElementType requestContextElementType = getContextElementType(request);
-		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE,
-				requestContextElementType);
+		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE, requestContextElementType);
 		ICommand command = requestContextElementType.getEditCommand(request);
 		request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND, null);
 		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE, null);
 		if (command != null) {
 			if (!(command instanceof CompositeTransactionalCommand)) {
-				command = new CompositeTransactionalCommand(getEditingDomain(),
-						command.getLabel()).compose(command);
+				command = new CompositeTransactionalCommand(getEditingDomain(), command.getLabel()).compose(command);
 			}
 			return new ICommandProxy(command);
 		}
@@ -155,8 +143,7 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	private IElementType getContextElementType(IEditCommandRequest request) {
 		IElementType requestContextElementType = serviceComposition.diagram.providers.ServiceCompositionElementTypes
 				.getElementType(getVisualID(request));
-		return requestContextElementType != null ? requestContextElementType
-				: myElementType;
+		return requestContextElementType != null ? requestContextElementType : myElementType;
 	}
 
 	/**
@@ -255,16 +242,14 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		return UnexecutableCommand.INSTANCE;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getReorientRelationshipCommand(
-			ReorientRelationshipRequest req) {
+	protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
 		return UnexecutableCommand.INSTANCE;
 	}
 
@@ -289,10 +274,10 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	 */
 	protected void addDestroyShortcutsCommand(ICompositeCommand cmd, View view) {
 		assert view.getEAnnotation("Shortcut") == null; //$NON-NLS-1$
-		for (Iterator it = view.getDiagram().getChildren().iterator(); it
-				.hasNext();) {
+		for (Iterator it = view.getDiagram().getChildren().iterator(); it.hasNext();) {
 			View nextView = (View) it.next();
-			if (nextView.getEAnnotation("Shortcut") == null || !nextView.isSetElement() || nextView.getElement() != view.getElement()) { //$NON-NLS-1$
+			if (nextView.getEAnnotation("Shortcut") == null || !nextView.isSetElement() //$NON-NLS-1$
+					|| nextView.getElement() != view.getElement()) {
 				continue;
 			}
 			cmd.add(new DeleteCommand(getEditingDomain(), nextView));
@@ -303,12 +288,11 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	public static LinkConstraints getLinkConstraints() {
-		LinkConstraints cached = serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getLinkConstraints();
+		LinkConstraints cached = serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+				.getLinkConstraints();
 		if (cached == null) {
-			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-					.getInstance().setLinkConstraints(
-							cached = new LinkConstraints());
+			serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+					.setLinkConstraints(cached = new LinkConstraints());
 		}
 		return cached;
 	}
@@ -328,28 +312,23 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 		/**
 		 * @generated
 		 */
-		public boolean canCreateControlFlow_4001(
-				serviceComposition.ServiceComposition container,
-				serviceComposition.ActivityNode source,
-				serviceComposition.ActivityNode target) {
+		public boolean canCreateControlFlow_4001(serviceComposition.ServiceComposition container,
+				serviceComposition.ActivityNode source, serviceComposition.ActivityNode target) {
 			return canExistControlFlow_4001(container, null, source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public boolean canCreateObjectFlow_4002(
-				serviceComposition.ServiceComposition container,
-				serviceComposition.ActivityNode source,
-				serviceComposition.ActivityNode target) {
+		public boolean canCreateObjectFlow_4002(serviceComposition.ServiceComposition container,
+				serviceComposition.ActivityNode source, serviceComposition.ActivityNode target) {
 			return canExistObjectFlow_4002(container, null, source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public boolean canCreateExecutableNodeAnnotation_4003(
-				serviceComposition.ExecutableNode source,
+		public boolean canCreateExecutableNodeAnnotation_4003(serviceComposition.ExecutableNode source,
 				serviceComposition.LocalPerformanceAnnotation target) {
 			if (source != null) {
 				if (source.getAnnotation() != null) {
@@ -366,55 +345,40 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 		/**
 		 * @generated
 		 */
-		public boolean canExistControlFlow_4001(
-				serviceComposition.ServiceComposition container,
-				serviceComposition.ControlFlow linkInstance,
-				serviceComposition.ActivityNode source,
+		public boolean canExistControlFlow_4001(serviceComposition.ServiceComposition container,
+				serviceComposition.ControlFlow linkInstance, serviceComposition.ActivityNode source,
 				serviceComposition.ActivityNode target) {
 			try {
 				if (source == null) {
 					return true;
 				} else {
-					Map<String, EClassifier> env = Collections
-							.<String, EClassifier> singletonMap(
-									"oppositeEnd", serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
+					Map<String, EClassifier> env = Collections.<String, EClassifier>singletonMap("oppositeEnd", //$NON-NLS-1$
+							serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode());
 					Object sourceVal = serviceComposition.diagram.expressions.ServiceCompositionOCLFactory
-							.getExpression(
-									0,
-									serviceComposition.ServiceCompositionPackage.eINSTANCE
-											.getActivityNode(), env).evaluate(
-									source,
-									Collections.singletonMap(
-											"oppositeEnd", target)); //$NON-NLS-1$
-					if (false == sourceVal instanceof Boolean
-							|| !((Boolean) sourceVal).booleanValue()) {
+							.getExpression(0, serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode(),
+									env)
+							.evaluate(source, Collections.singletonMap("oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean || !((Boolean) sourceVal).booleanValue()) {
 						return false;
 					} // else fall-through
 				}
 				if (target == null) {
 					return true;
 				} else {
-					Map<String, EClassifier> env = Collections
-							.<String, EClassifier> singletonMap(
-									"oppositeEnd", serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
+					Map<String, EClassifier> env = Collections.<String, EClassifier>singletonMap("oppositeEnd", //$NON-NLS-1$
+							serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode());
 					Object targetVal = serviceComposition.diagram.expressions.ServiceCompositionOCLFactory
-							.getExpression(
-									1,
-									serviceComposition.ServiceCompositionPackage.eINSTANCE
-											.getActivityNode(), env).evaluate(
-									target,
-									Collections.singletonMap(
-											"oppositeEnd", source)); //$NON-NLS-1$
-					if (false == targetVal instanceof Boolean
-							|| !((Boolean) targetVal).booleanValue()) {
+							.getExpression(1, serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode(),
+									env)
+							.evaluate(target, Collections.singletonMap("oppositeEnd", source)); //$NON-NLS-1$
+					if (false == targetVal instanceof Boolean || !((Boolean) targetVal).booleanValue()) {
 						return false;
 					} // else fall-through
 				}
 				return true;
 			} catch (Exception e) {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().logError(
-								"Link constraint evaluation error", e); //$NON-NLS-1$
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Link constraint evaluation error", e); //$NON-NLS-1$
 				return false;
 			}
 		}
@@ -422,55 +386,40 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 		/**
 		 * @generated
 		 */
-		public boolean canExistObjectFlow_4002(
-				serviceComposition.ServiceComposition container,
-				serviceComposition.ObjectFlow linkInstance,
-				serviceComposition.ActivityNode source,
+		public boolean canExistObjectFlow_4002(serviceComposition.ServiceComposition container,
+				serviceComposition.ObjectFlow linkInstance, serviceComposition.ActivityNode source,
 				serviceComposition.ActivityNode target) {
 			try {
 				if (source == null) {
 					return true;
 				} else {
-					Map<String, EClassifier> env = Collections
-							.<String, EClassifier> singletonMap(
-									"oppositeEnd", serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
+					Map<String, EClassifier> env = Collections.<String, EClassifier>singletonMap("oppositeEnd", //$NON-NLS-1$
+							serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode());
 					Object sourceVal = serviceComposition.diagram.expressions.ServiceCompositionOCLFactory
-							.getExpression(
-									2,
-									serviceComposition.ServiceCompositionPackage.eINSTANCE
-											.getActivityNode(), env).evaluate(
-									source,
-									Collections.singletonMap(
-											"oppositeEnd", target)); //$NON-NLS-1$
-					if (false == sourceVal instanceof Boolean
-							|| !((Boolean) sourceVal).booleanValue()) {
+							.getExpression(2, serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode(),
+									env)
+							.evaluate(source, Collections.singletonMap("oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean || !((Boolean) sourceVal).booleanValue()) {
 						return false;
 					} // else fall-through
 				}
 				if (target == null) {
 					return true;
 				} else {
-					Map<String, EClassifier> env = Collections
-							.<String, EClassifier> singletonMap(
-									"oppositeEnd", serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode()); //$NON-NLS-1$
+					Map<String, EClassifier> env = Collections.<String, EClassifier>singletonMap("oppositeEnd", //$NON-NLS-1$
+							serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode());
 					Object targetVal = serviceComposition.diagram.expressions.ServiceCompositionOCLFactory
-							.getExpression(
-									3,
-									serviceComposition.ServiceCompositionPackage.eINSTANCE
-											.getActivityNode(), env).evaluate(
-									target,
-									Collections.singletonMap(
-											"oppositeEnd", source)); //$NON-NLS-1$
-					if (false == targetVal instanceof Boolean
-							|| !((Boolean) targetVal).booleanValue()) {
+							.getExpression(3, serviceComposition.ServiceCompositionPackage.eINSTANCE.getActivityNode(),
+									env)
+							.evaluate(target, Collections.singletonMap("oppositeEnd", source)); //$NON-NLS-1$
+					if (false == targetVal instanceof Boolean || !((Boolean) targetVal).booleanValue()) {
 						return false;
 					} // else fall-through
 				}
 				return true;
 			} catch (Exception e) {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().logError(
-								"Link constraint evaluation error", e); //$NON-NLS-1$
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Link constraint evaluation error", e); //$NON-NLS-1$
 				return false;
 			}
 		}
@@ -478,8 +427,7 @@ public class ServiceCompositionBaseItemSemanticEditPolicy extends
 		/**
 		 * @generated
 		 */
-		public boolean canExistExecutableNodeAnnotation_4003(
-				serviceComposition.ExecutableNode source,
+		public boolean canExistExecutableNodeAnnotation_4003(serviceComposition.ExecutableNode source,
 				serviceComposition.LocalPerformanceAnnotation target) {
 			return true;
 		}

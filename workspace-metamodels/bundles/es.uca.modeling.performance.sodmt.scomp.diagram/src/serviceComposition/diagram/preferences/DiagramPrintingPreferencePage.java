@@ -14,7 +14,7 @@ public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
 	 * @generated
 	 */
 	public DiagramPrintingPreferencePage() {
-		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

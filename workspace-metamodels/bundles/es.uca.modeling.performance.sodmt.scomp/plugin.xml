@@ -13,11 +13,5 @@
             genModel="model/scomp.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="www.uca.es/modeling/performance/sodmt"
-            class="serviceProcess.ServiceProcessPackage"
-            genModel="model/scomp.genmodel"/>
-   </extension>
 
 </plugin>

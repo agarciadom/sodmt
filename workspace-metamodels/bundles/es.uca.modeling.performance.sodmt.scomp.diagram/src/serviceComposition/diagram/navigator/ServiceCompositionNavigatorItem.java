@@ -13,32 +13,28 @@ import org.eclipse.gmf.runtime.notation.View;
  * @generated
  */
 public class ServiceCompositionNavigatorItem
-		extends
-		serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem {
+		extends serviceComposition.diagram.navigator.ServiceCompositionAbstractNavigatorItem {
 
 	/**
 	 * @generated
 	 */
 	static {
 		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem
-								&& (adapterType == View.class || adapterType == EObject.class)) {
-							return ((serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) adaptableObject)
-									.getView();
-						}
-						return null;
-					}
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem
+						&& (adapterType == View.class || adapterType == EObject.class)) {
+					return ((serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) adaptableObject)
+							.getView();
+				}
+				return null;
+			}
 
-					public Class[] getAdapterList() {
-						return supportedTypes;
-					}
-				},
-				serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem.class);
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem.class);
 	}
 
 	/**
@@ -54,8 +50,7 @@ public class ServiceCompositionNavigatorItem
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionNavigatorItem(View view, Object parent,
-			boolean isLeaf) {
+	public ServiceCompositionNavigatorItem(View view, Object parent, boolean isLeaf) {
 		super(parent);
 		myView = view;
 		myLeaf = isLeaf;
@@ -80,11 +75,8 @@ public class ServiceCompositionNavigatorItem
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) {
-			return EcoreUtil
-					.getURI(getView())
-					.equals(EcoreUtil
-							.getURI(((serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) obj)
-									.getView()));
+			return EcoreUtil.getURI(getView()).equals(EcoreUtil
+					.getURI(((serviceComposition.diagram.navigator.ServiceCompositionNavigatorItem) obj).getView()));
 		}
 		return super.equals(obj);
 	}

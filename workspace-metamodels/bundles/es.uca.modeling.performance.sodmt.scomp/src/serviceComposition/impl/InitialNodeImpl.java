@@ -11,32 +11,30 @@ import serviceComposition.ServiceCompositionPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Initial Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class InitialNodeImpl extends ActivityNodeImpl implements InitialNode
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected InitialNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceCompositionPackage.Literals.INITIAL_NODE;
-  }
+		return ServiceCompositionPackage.Literals.INITIAL_NODE;
+	}
 
 } //InitialNodeImpl

@@ -20,8 +20,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 /**
  * @generated
  */
-public class ServiceCompositionCreationWizard extends Wizard implements
-		INewWizard {
+public class ServiceCompositionCreationWizard extends Wizard implements INewWizard {
 
 	/**
 	 * @generated
@@ -84,8 +83,7 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 	/**
 	 * @generated
 	 */
-	public void setOpenNewlyCreatedDiagramEditor(
-			boolean openNewlyCreatedDiagramEditor) {
+	public void setOpenNewlyCreatedDiagramEditor(boolean openNewlyCreatedDiagramEditor) {
 		this.openNewlyCreatedDiagramEditor = openNewlyCreatedDiagramEditor;
 	}
 
@@ -107,10 +105,10 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 	public void addPages() {
 		diagramModelFilePage = new serviceComposition.diagram.part.ServiceCompositionCreationWizardPage(
 				"DiagramModelFile", getSelection(), "scdiag"); //$NON-NLS-1$ //$NON-NLS-2$
-		diagramModelFilePage
-				.setTitle(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage
-				.setDescription(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage.setTitle(
+				serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage.setDescription(
+				serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
 		domainModelFilePage = new serviceComposition.diagram.part.ServiceCompositionCreationWizardPage(
@@ -119,19 +117,17 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".scdiag".length()); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".scdiag".length()); //$NON-NLS-1$
 					setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-							.getUniqueFileName(getContainerFullPath(),
-									fileName, "sc")); //$NON-NLS-1$
+							.getUniqueFileName(getContainerFullPath(), fileName, "sc")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
-		domainModelFilePage
-				.setTitle(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage
-				.setDescription(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage.setTitle(
+				serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage.setDescription(
+				serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
@@ -141,21 +137,16 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException, InterruptedException {
+			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
 				diagram = serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-						.createDiagram(diagramModelFilePage.getURI(),
-								domainModelFilePage.getURI(), monitor);
+						.createDiagram(diagramModelFilePage.getURI(), domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
-						serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-								.openDiagram(diagram);
+						serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
-						ErrorDialog
-								.openError(
-										getContainer().getShell(),
-										serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardOpenEditorError,
-										null, e.getStatus());
+						ErrorDialog.openError(getContainer().getShell(),
+								serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardOpenEditorError,
+								null, e.getStatus());
 					}
 				}
 			}
@@ -166,17 +157,12 @@ public class ServiceCompositionCreationWizard extends Wizard implements
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog
-						.openError(
-								getContainer().getShell(),
-								serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardCreationError,
-								null, ((CoreException) e.getTargetException())
-										.getStatus());
+				ErrorDialog.openError(getContainer().getShell(),
+						serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardCreationError, null,
+						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance()
-						.logError(
-								"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

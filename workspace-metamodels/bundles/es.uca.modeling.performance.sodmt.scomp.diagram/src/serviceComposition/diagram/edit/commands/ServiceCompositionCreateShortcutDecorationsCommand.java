@@ -21,8 +21,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ServiceCompositionCreateShortcutDecorationsCommand extends
-		AbstractTransactionalCommand {
+public class ServiceCompositionCreateShortcutDecorationsCommand extends AbstractTransactionalCommand {
 
 	/**
 	 * @generated
@@ -32,8 +31,7 @@ public class ServiceCompositionCreateShortcutDecorationsCommand extends
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionCreateShortcutDecorationsCommand(
-			TransactionalEditingDomain editingDomain, View parentView,
+	public ServiceCompositionCreateShortcutDecorationsCommand(TransactionalEditingDomain editingDomain, View parentView,
 			List viewDescriptors) {
 		super(editingDomain, "Create Shortcuts", getWorkspaceFiles(parentView)); //$NON-NLS-1$
 		myDescriptors = viewDescriptors;
@@ -42,29 +40,23 @@ public class ServiceCompositionCreateShortcutDecorationsCommand extends
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionCreateShortcutDecorationsCommand(
-			TransactionalEditingDomain editingDomain, View parentView,
+	public ServiceCompositionCreateShortcutDecorationsCommand(TransactionalEditingDomain editingDomain, View parentView,
 			CreateViewRequest.ViewDescriptor viewDescriptor) {
-		this(editingDomain, parentView, Collections
-				.singletonList(viewDescriptor));
+		this(editingDomain, parentView, Collections.singletonList(viewDescriptor));
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		for (Iterator it = myDescriptors.iterator(); it.hasNext();) {
-			CreateViewRequest.ViewDescriptor nextDescriptor = (CreateViewRequest.ViewDescriptor) it
-					.next();
+			CreateViewRequest.ViewDescriptor nextDescriptor = (CreateViewRequest.ViewDescriptor) it.next();
 			View view = (View) nextDescriptor.getAdapter(View.class);
 			if (view != null && view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				EAnnotation shortcutAnnotation = EcoreFactory.eINSTANCE
-						.createEAnnotation();
+				EAnnotation shortcutAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 				shortcutAnnotation.setSource("Shortcut"); //$NON-NLS-1$
-				shortcutAnnotation
-						.getDetails()
-						.put("modelID", serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID); //$NON-NLS-1$
+				shortcutAnnotation.getDetails().put("modelID", //$NON-NLS-1$
+						serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID);
 				view.getEAnnotations().add(shortcutAnnotation);
 			}
 		}

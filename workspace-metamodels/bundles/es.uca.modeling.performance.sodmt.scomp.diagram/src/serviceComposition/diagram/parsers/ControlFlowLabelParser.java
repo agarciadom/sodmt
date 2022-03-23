@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
+import org.eclipse.gmf.tooling.runtime.parsers.AbstractAttributeParser;
 import org.eclipse.osgi.util.NLS;
 
 /**
  * @generated
  */
-public class ControlFlowLabelParser extends
-		serviceComposition.diagram.parsers.AbstractParser {
+public class ControlFlowLabelParser extends AbstractAttributeParser {
 
 	/**
 	 * @generated
@@ -56,8 +56,7 @@ public class ControlFlowLabelParser extends
 	/**
 	 * @generated
 	 */
-	public ControlFlowLabelParser(EAttribute[] features,
-			EAttribute[] editableFeatures) {
+	public ControlFlowLabelParser(EAttribute[] features, EAttribute[] editableFeatures) {
 		super(features, editableFeatures);
 	}
 
@@ -101,9 +100,7 @@ public class ControlFlowLabelParser extends
 	 */
 	protected MessageFormat getViewProcessor() {
 		if (viewProcessor == null) {
-			viewProcessor = new MessageFormat(
-					getViewPattern() == null ? getDefaultPattern()
-							: getViewPattern());
+			viewProcessor = new MessageFormat(getViewPattern() == null ? getDefaultPattern() : getViewPattern());
 		}
 		return viewProcessor;
 	}
@@ -114,8 +111,7 @@ public class ControlFlowLabelParser extends
 	protected MessageFormat getEditorProcessor() {
 		if (editorProcessor == null) {
 			editorProcessor = new MessageFormat(
-					getEditorPattern() == null ? getDefaultEditablePattern()
-							: getEditorPattern());
+					getEditorPattern() == null ? getDefaultEditablePattern() : getEditorPattern());
 		}
 		return editorProcessor;
 	}
@@ -153,8 +149,7 @@ public class ControlFlowLabelParser extends
 	protected MessageFormat getEditProcessor() {
 		if (editProcessor == null) {
 			editProcessor = new MessageFormat(
-					getEditPattern() == null ? getDefaultEditablePattern()
-							: getEditPattern());
+					getEditPattern() == null ? getDefaultEditablePattern() : getEditPattern());
 		}
 		return editProcessor;
 	}
@@ -164,23 +159,20 @@ public class ControlFlowLabelParser extends
 	 */
 	public String getEditString(IAdaptable adapter, int flags) {
 		EObject element = (EObject) adapter.getAdapter(EObject.class);
-		return getEditorProcessor().format(getEditableValues(element),
-				new StringBuffer(), new FieldPosition(0)).toString();
+		return getEditorProcessor().format(getEditableValues(element), new StringBuffer(), new FieldPosition(0))
+				.toString();
 	}
 
 	/**
 	 * @generated
 	 */
-	public IParserEditStatus isValidEditString(IAdaptable adapter,
-			String editString) {
+	public IParserEditStatus isValidEditString(IAdaptable adapter, String editString) {
 		ParsePosition pos = new ParsePosition(0);
 		Object[] values = getEditProcessor().parse(editString, pos);
 		if (values == null) {
-			return new ParserEditStatus(
-					serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.ID,
+			return new ParserEditStatus(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.ID,
 					IParserEditStatus.UNEDITABLE,
-					NLS.bind(
-							serviceComposition.diagram.part.Messages.MessageFormatParser_InvalidInputError,
+					NLS.bind(serviceComposition.diagram.part.Messages.MessageFormatParser_InvalidInputError,
 							new Integer(pos.getErrorIndex())));
 		}
 		return validateNewValues(values);
@@ -189,10 +181,8 @@ public class ControlFlowLabelParser extends
 	/**
 	 * @generated NOT
 	 */
-	public ICommand getParseCommand(IAdaptable adapter, String newString,
-			int flags) {
-		Object[] values = getEditorProcessor().parse(newString,
-				new java.text.ParsePosition(0));
+	public ICommand getParseCommand(IAdaptable adapter, String newString, int flags) {
+		Object[] values = getEditorProcessor().parse(newString, new java.text.ParsePosition(0));
 		for (int i = 0; i < values.length; ++i) {
 			if (values[i] instanceof Number) {
 				values[i] = new Double(((Number) values[i]).doubleValue());
@@ -208,10 +198,8 @@ public class ControlFlowLabelParser extends
 		org.eclipse.emf.ecore.EObject element = (org.eclipse.emf.ecore.EObject) adapter
 				.getAdapter(org.eclipse.emf.ecore.EObject.class);
 		Object[] values = getValues(element);
-		if (values.length > 0 && values[0] instanceof String
-				&& ((String) values[0]).trim().length() > 0) {
-			return getViewProcessor().format(getValues(element),
-					new StringBuffer(), new java.text.FieldPosition(0))
+		if (values.length > 0 && values[0] instanceof String && ((String) values[0]).trim().length() > 0) {
+			return getViewProcessor().format(getValues(element), new StringBuffer(), new java.text.FieldPosition(0))
 					.toString();
 		} else
 			return "";

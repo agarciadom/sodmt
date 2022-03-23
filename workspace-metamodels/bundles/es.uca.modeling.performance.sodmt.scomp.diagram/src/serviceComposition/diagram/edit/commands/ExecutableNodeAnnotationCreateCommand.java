@@ -29,8 +29,7 @@ public class ExecutableNodeAnnotationCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	public ExecutableNodeAnnotationCreateCommand(
-			CreateRelationshipRequest request, EObject source, EObject target) {
+	public ExecutableNodeAnnotationCreateCommand(CreateRelationshipRequest request, EObject source, EObject target) {
 		super(request.getLabel(), null, request);
 		this.source = source;
 		this.target = target;
@@ -43,12 +42,10 @@ public class ExecutableNodeAnnotationCreateCommand extends EditElementCommand {
 		if (source == null && target == null) {
 			return false;
 		}
-		if (source != null
-				&& false == source instanceof serviceComposition.ExecutableNode) {
+		if (source != null && false == source instanceof serviceComposition.ExecutableNode) {
 			return false;
 		}
-		if (target != null
-				&& false == target instanceof serviceComposition.LocalPerformanceAnnotation) {
+		if (target != null && false == target instanceof serviceComposition.LocalPerformanceAnnotation) {
 			return false;
 		}
 		if (getSource() == null) {
@@ -56,18 +53,15 @@ public class ExecutableNodeAnnotationCreateCommand extends EditElementCommand {
 		}
 		// target may be null here but it's possible to check constraint
 		return serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy
-				.getLinkConstraints().canCreateExecutableNodeAnnotation_4003(
-						getSource(), getTarget());
+				.getLinkConstraints().canCreateExecutableNodeAnnotation_4003(getSource(), getTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in create link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
 		}
 
 		if (getSource() != null && getTarget() != null) {

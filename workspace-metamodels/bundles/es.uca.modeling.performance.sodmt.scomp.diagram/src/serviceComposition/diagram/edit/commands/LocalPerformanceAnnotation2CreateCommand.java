@@ -18,8 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class LocalPerformanceAnnotation2CreateCommand extends
-		EditElementCommand {
+public class LocalPerformanceAnnotation2CreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
@@ -33,8 +32,7 @@ public class LocalPerformanceAnnotation2CreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -52,8 +50,7 @@ public class LocalPerformanceAnnotation2CreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		serviceComposition.LocalPerformanceAnnotation newElement = serviceComposition.ServiceCompositionFactory.eINSTANCE
 				.createLocalPerformanceAnnotation();
 
@@ -69,19 +66,13 @@ public class LocalPerformanceAnnotation2CreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(
-			serviceComposition.LocalPerformanceAnnotation newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+	protected void doConfigure(serviceComposition.LocalPerformanceAnnotation newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

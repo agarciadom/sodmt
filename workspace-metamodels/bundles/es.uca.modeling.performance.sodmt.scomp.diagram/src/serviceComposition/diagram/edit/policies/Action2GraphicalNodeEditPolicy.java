@@ -22,8 +22,7 @@ public class Action2GraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected Command getConnectionCompleteCommand(
-			CreateConnectionRequest request) {
+	protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
 		IElementType elementType = getElementType(request);
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003 == elementType) {
 			if (request.getSourceEditPart() != getHost()) {
@@ -39,8 +38,7 @@ public class Action2GraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	protected IElementType getElementType(CreateConnectionRequest request) {
 		if (request instanceof CreateConnectionViewAndElementRequest) {
 			CreateElementRequestAdapter requestAdapter = ((CreateConnectionViewAndElementRequest) request)
-					.getConnectionViewAndElementDescriptor()
-					.getCreateElementRequestAdapter();
+					.getConnectionViewAndElementDescriptor().getCreateElementRequestAdapter();
 			return (IElementType) requestAdapter.getAdapter(IElementType.class);
 		}
 		return null;
@@ -49,13 +47,10 @@ public class Action2GraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected Command getConnectionWithReorientedViewCompleteCommand(
-			CreateConnectionRequest request) {
-		ICommandProxy c = (ICommandProxy) super
-				.getConnectionCompleteCommand(request);
+	protected Command getConnectionWithReorientedViewCompleteCommand(CreateConnectionRequest request) {
+		ICommandProxy c = (ICommandProxy) super.getConnectionCompleteCommand(request);
 		CompositeCommand cc = (CompositeCommand) c.getICommand();
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-				.getEditingDomain();
+		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 		serviceComposition.diagram.edit.commands.ServiceCompositionReorientConnectionViewCommand rcvCommand = new serviceComposition.diagram.edit.commands.ServiceCompositionReorientConnectionViewCommand(
 				editingDomain, null);
 		rcvCommand.setEdgeAdaptor(getViewAdapter());

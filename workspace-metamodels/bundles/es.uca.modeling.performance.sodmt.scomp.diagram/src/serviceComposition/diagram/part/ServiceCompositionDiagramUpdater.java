@@ -25,8 +25,7 @@ public class ServiceCompositionDiagramUpdater {
 	 * @generated
 	 */
 	public static boolean isShortcutOrphaned(View view) {
-		return !view.isSetElement() || view.getElement() == null
-				|| view.getElement().eIsProxy();
+		return !view.isSetElement() || view.getElement() == null || view.getElement().eIsProxy();
 	}
 
 	/**
@@ -34,8 +33,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> getSemanticChildren(
 			View view) {
-		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view)) {
+		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view)) {
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID:
 			return getServiceComposition_1000SemanticChildren(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartmentEditPart.VISUAL_ID:
@@ -58,85 +56,80 @@ public class ServiceCompositionDiagramUpdater {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
-		serviceComposition.ServiceComposition modelElement = (serviceComposition.ServiceComposition) view
-				.getElement();
+		serviceComposition.ServiceComposition modelElement = (serviceComposition.ServiceComposition) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getNodes().iterator(); it.hasNext();) {
-			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ObjectNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.InitialNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.FinalNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.DecisionNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ForkNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.MergeNodeEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
-		for (Iterator<?> it = modelElement.getPartitions().iterator(); it
-				.hasNext();) {
-			serviceComposition.ActivityPartition childElement = (serviceComposition.ActivityPartition) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+		for (Iterator<?> it = modelElement.getPartitions().iterator(); it.hasNext();) {
+			serviceComposition.ActivityPartition childElement = (serviceComposition.ActivityPartition) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.ActivityPartitionEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
 		{
-			serviceComposition.PerformanceAnnotation childElement = modelElement
-					.getProcessPerformance();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.PerformanceAnnotation childElement = modelElement.getProcessPerformance();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 			}
 		}
 		return result;
@@ -158,58 +151,57 @@ public class ServiceCompositionDiagramUpdater {
 				.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getNodes().iterator(); it.hasNext();) {
-			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
@@ -232,58 +224,57 @@ public class ServiceCompositionDiagramUpdater {
 				.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getNodes().iterator(); it.hasNext();) {
-			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
@@ -306,58 +297,57 @@ public class ServiceCompositionDiagramUpdater {
 				.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getNodes().iterator(); it.hasNext();) {
-			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.Action3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ObjectNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.InitialNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.FinalNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.DecisionNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ForkNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.MergeNode3EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
@@ -380,58 +370,57 @@ public class ServiceCompositionDiagramUpdater {
 				.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getNodes().iterator(); it.hasNext();) {
-			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it
-					.next();
-			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getNodeVisualID(view, childElement);
+			serviceComposition.ActivityNode childElement = (serviceComposition.ActivityNode) it.next();
+			int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getNodeVisualID(view,
+					childElement);
 			if (visualID == serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(
-						childElement, visualID));
+				result.add(
+						new serviceComposition.diagram.part.ServiceCompositionNodeDescriptor(childElement, visualID));
 				continue;
 			}
 		}
@@ -441,10 +430,8 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedLinks(
-			View view) {
-		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view)) {
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedLinks(View view) {
+		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view)) {
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID:
 			return getServiceComposition_1000ContainedLinks(view);
 		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID:
@@ -522,10 +509,8 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getIncomingLinks(
-			View view) {
-		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view)) {
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getIncomingLinks(View view) {
+		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view)) {
 		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID:
 			return getAction_2001IncomingLinks(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
@@ -601,10 +586,8 @@ public class ServiceCompositionDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getOutgoingLinks(
-			View view) {
-		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view)) {
+	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getOutgoingLinks(View view) {
+		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view)) {
 		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID:
 			return getAction_2001OutgoingLinks(view);
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
@@ -682,8 +665,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getServiceComposition_1000ContainedLinks(
 			View view) {
-		serviceComposition.ServiceComposition modelElement = (serviceComposition.ServiceComposition) view
-				.getElement();
+		serviceComposition.ServiceComposition modelElement = (serviceComposition.ServiceComposition) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getContainedTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getContainedTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -695,8 +677,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_2001ContainedLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
 		return result;
@@ -799,8 +780,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3001ContainedLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
 		return result;
@@ -887,8 +867,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3010ContainedLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement));
 		return result;
@@ -991,15 +970,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_2001IncomingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1013,10 +989,8 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1030,12 +1004,9 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1044,15 +1015,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_2004IncomingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1069,15 +1037,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_2006IncomingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1086,15 +1051,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_2007IncomingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1103,15 +1065,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_2008IncomingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1120,15 +1079,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_2009IncomingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1137,15 +1093,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_2010IncomingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1154,15 +1107,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_2012IncomingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1179,15 +1129,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3001IncomingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1201,10 +1148,8 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1218,12 +1163,9 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1232,15 +1174,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_3004IncomingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1249,15 +1188,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_3005IncomingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1266,15 +1202,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_3006IncomingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1283,15 +1216,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_3007IncomingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1300,15 +1230,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_3008IncomingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1317,15 +1244,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3009IncomingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1334,15 +1258,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3019IncomingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1351,15 +1272,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3010IncomingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1373,10 +1291,8 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1390,12 +1306,9 @@ public class ServiceCompositionDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
+		result.addAll(getIncomingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1404,15 +1317,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_3013IncomingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1421,15 +1331,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_3014IncomingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1438,15 +1345,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_3015IncomingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1455,15 +1359,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_3016IncomingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1472,15 +1373,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_3017IncomingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1489,15 +1387,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3018IncomingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1506,15 +1401,12 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3020IncomingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(
-				modelElement, crossReferences));
-		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(
-				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ControlFlow_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ObjectFlow_4002(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1539,8 +1431,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_2001OutgoingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1580,8 +1471,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_2004OutgoingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1601,8 +1491,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_2006OutgoingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1614,8 +1503,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_2007OutgoingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1627,8 +1515,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_2008OutgoingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1640,8 +1527,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_2009OutgoingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1653,8 +1539,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_2010OutgoingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1666,8 +1551,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_2012OutgoingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1687,8 +1571,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3001OutgoingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1728,8 +1611,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_3004OutgoingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1741,8 +1623,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_3005OutgoingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1754,8 +1635,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_3006OutgoingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1767,8 +1647,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_3007OutgoingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1780,8 +1659,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_3008OutgoingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1793,8 +1671,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3009OutgoingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1806,8 +1683,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3019OutgoingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1819,8 +1695,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getAction_3010OutgoingLinks(
 			View view) {
-		serviceComposition.Action modelElement = (serviceComposition.Action) view
-				.getElement();
+		serviceComposition.Action modelElement = (serviceComposition.Action) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1860,8 +1735,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getObjectNode_3013OutgoingLinks(
 			View view) {
-		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view
-				.getElement();
+		serviceComposition.ObjectNode modelElement = (serviceComposition.ObjectNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1873,8 +1747,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getInitialNode_3014OutgoingLinks(
 			View view) {
-		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view
-				.getElement();
+		serviceComposition.InitialNode modelElement = (serviceComposition.InitialNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1886,8 +1759,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getFinalNode_3015OutgoingLinks(
 			View view) {
-		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view
-				.getElement();
+		serviceComposition.FinalNode modelElement = (serviceComposition.FinalNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1899,8 +1771,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getDecisionNode_3016OutgoingLinks(
 			View view) {
-		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view
-				.getElement();
+		serviceComposition.DecisionNode modelElement = (serviceComposition.DecisionNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1912,8 +1783,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getForkNode_3017OutgoingLinks(
 			View view) {
-		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view
-				.getElement();
+		serviceComposition.ForkNode modelElement = (serviceComposition.ForkNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1925,8 +1795,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getJoinNode_3018OutgoingLinks(
 			View view) {
-		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view
-				.getElement();
+		serviceComposition.JoinNode modelElement = (serviceComposition.JoinNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1938,8 +1807,7 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getMergeNode_3020OutgoingLinks(
 			View view) {
-		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view
-				.getElement();
+		serviceComposition.MergeNode modelElement = (serviceComposition.MergeNode) view.getElement();
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
 		result.addAll(getOutgoingTypeModelFacetLinks_ControlFlow_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_ObjectFlow_4002(modelElement));
@@ -1968,8 +1836,7 @@ public class ServiceCompositionDiagramUpdater {
 	private static Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedTypeModelFacetLinks_ControlFlow_4001(
 			serviceComposition.ServiceComposition container) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		for (Iterator<?> links = container.getEdges().iterator(); links
-				.hasNext();) {
+		for (Iterator<?> links = container.getEdges().iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof serviceComposition.ControlFlow) {
 				continue;
@@ -1981,10 +1848,7 @@ public class ServiceCompositionDiagramUpdater {
 			}
 			serviceComposition.ActivityNode dst = link.getTarget();
 			serviceComposition.ActivityNode src = link.getSource();
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					dst,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, dst, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001,
 					serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
 		}
@@ -1997,8 +1861,7 @@ public class ServiceCompositionDiagramUpdater {
 	private static Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedTypeModelFacetLinks_ObjectFlow_4002(
 			serviceComposition.ServiceComposition container) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		for (Iterator<?> links = container.getEdges().iterator(); links
-				.hasNext();) {
+		for (Iterator<?> links = container.getEdges().iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof serviceComposition.ObjectFlow) {
 				continue;
@@ -2010,10 +1873,7 @@ public class ServiceCompositionDiagramUpdater {
 			}
 			serviceComposition.ActivityNode dst = link.getTarget();
 			serviceComposition.ActivityNode src = link.getSource();
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					dst,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, dst, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002,
 					serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 		}
@@ -2027,25 +1887,20 @@ public class ServiceCompositionDiagramUpdater {
 			serviceComposition.ActivityNode target,
 			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences
-				.get(target);
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getActivityEdge_Target()
 					|| false == setting.getEObject() instanceof serviceComposition.ControlFlow) {
 				continue;
 			}
-			serviceComposition.ControlFlow link = (serviceComposition.ControlFlow) setting
-					.getEObject();
+			serviceComposition.ControlFlow link = (serviceComposition.ControlFlow) setting.getEObject();
 			if (serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID != serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			serviceComposition.ActivityNode src = link.getSource();
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					target,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, target, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001,
 					serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
 		}
@@ -2059,25 +1914,20 @@ public class ServiceCompositionDiagramUpdater {
 			serviceComposition.ActivityNode target,
 			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences
-				.get(target);
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getActivityEdge_Target()
 					|| false == setting.getEObject() instanceof serviceComposition.ObjectFlow) {
 				continue;
 			}
-			serviceComposition.ObjectFlow link = (serviceComposition.ObjectFlow) setting
-					.getEObject();
+			serviceComposition.ObjectFlow link = (serviceComposition.ObjectFlow) setting.getEObject();
 			if (serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID != serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			serviceComposition.ActivityNode src = link.getSource();
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					target,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, target, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002,
 					serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 		}
@@ -2091,13 +1941,11 @@ public class ServiceCompositionDiagramUpdater {
 			serviceComposition.LocalPerformanceAnnotation target,
 			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences
-				.get(target);
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() == serviceComposition.ServiceCompositionPackage.eINSTANCE
 					.getExecutableNode_Annotation()) {
-				result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-						setting.getEObject(),
+				result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(setting.getEObject(),
 						target,
 						serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003,
 						serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
@@ -2115,8 +1963,7 @@ public class ServiceCompositionDiagramUpdater {
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
 		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element
-				.eContainer()) {
+		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
 			if (element instanceof serviceComposition.ServiceComposition) {
 				container = (serviceComposition.ServiceComposition) element;
 			}
@@ -2125,8 +1972,7 @@ public class ServiceCompositionDiagramUpdater {
 			return Collections.emptyList();
 		}
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		for (Iterator<?> links = container.getEdges().iterator(); links
-				.hasNext();) {
+		for (Iterator<?> links = container.getEdges().iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof serviceComposition.ControlFlow) {
 				continue;
@@ -2141,10 +1987,7 @@ public class ServiceCompositionDiagramUpdater {
 			if (src != source) {
 				continue;
 			}
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					dst,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, dst, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001,
 					serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID));
 		}
@@ -2160,8 +2003,7 @@ public class ServiceCompositionDiagramUpdater {
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
 		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element
-				.eContainer()) {
+		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
 			if (element instanceof serviceComposition.ServiceComposition) {
 				container = (serviceComposition.ServiceComposition) element;
 			}
@@ -2170,8 +2012,7 @@ public class ServiceCompositionDiagramUpdater {
 			return Collections.emptyList();
 		}
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		for (Iterator<?> links = container.getEdges().iterator(); links
-				.hasNext();) {
+		for (Iterator<?> links = container.getEdges().iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof serviceComposition.ObjectFlow) {
 				continue;
@@ -2186,10 +2027,7 @@ public class ServiceCompositionDiagramUpdater {
 			if (src != source) {
 				continue;
 			}
-			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-					src,
-					dst,
-					link,
+			result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(src, dst, link,
 					serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002,
 					serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID));
 		}
@@ -2202,14 +2040,11 @@ public class ServiceCompositionDiagramUpdater {
 	private static Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getOutgoingFeatureModelFacetLinks_ExecutableNode_Annotation_4003(
 			serviceComposition.ExecutableNode source) {
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		serviceComposition.LocalPerformanceAnnotation destination = source
-				.getAnnotation();
+		serviceComposition.LocalPerformanceAnnotation destination = source.getAnnotation();
 		if (destination == null) {
 			return result;
 		}
-		result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(
-				source,
-				destination,
+		result.add(new serviceComposition.diagram.part.ServiceCompositionLinkDescriptor(source, destination,
 				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003,
 				serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID));
 		return result;
@@ -2220,38 +2055,38 @@ public class ServiceCompositionDiagramUpdater {
 	 */
 	public static final DiagramUpdater TYPED_INSTANCE = new DiagramUpdater() {
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
-		public List<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> getSemanticChildren(
-				View view) {
+
+		public List<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> getSemanticChildren(View view) {
 			return ServiceCompositionDiagramUpdater.getSemanticChildren(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
-		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedLinks(
-				View view) {
+
+		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getContainedLinks(View view) {
 			return ServiceCompositionDiagramUpdater.getContainedLinks(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
-		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getIncomingLinks(
-				View view) {
+
+		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getIncomingLinks(View view) {
 			return ServiceCompositionDiagramUpdater.getIncomingLinks(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
-		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getOutgoingLinks(
-				View view) {
+
+		public List<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> getOutgoingLinks(View view) {
 			return ServiceCompositionDiagramUpdater.getOutgoingLinks(view);
 		}
 	};

@@ -14,8 +14,7 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 /**
  * @generated
  */
-public class ServiceCompositionCreationWizardPage extends
-		WizardNewFileCreationPage {
+public class ServiceCompositionCreationWizardPage extends WizardNewFileCreationPage {
 
 	/**
 	 * @generated
@@ -25,8 +24,7 @@ public class ServiceCompositionCreationWizardPage extends
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionCreationWizardPage(String pageName,
-			IStructuredSelection selection, String fileExtension) {
+	public ServiceCompositionCreationWizardPage(String pageName, IStructuredSelection selection, String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -68,8 +66,7 @@ public class ServiceCompositionCreationWizardPage extends
 	public void createControl(Composite parent) {
 		super.createControl(parent);
 		setFileName(serviceComposition.diagram.part.ServiceCompositionDiagramEditorUtil
-				.getUniqueFileName(getContainerFullPath(), getFileName(),
-						getExtension()));
+				.getUniqueFileName(getContainerFullPath(), getFileName(), getExtension()));
 		setPageComplete(validatePage());
 	}
 
@@ -81,11 +78,10 @@ public class ServiceCompositionCreationWizardPage extends
 			return false;
 		}
 		String extension = getExtension();
-		if (extension != null
-				&& !getFilePath().toString().endsWith("." + extension)) {
-			setErrorMessage(NLS
-					.bind(serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardPageExtensionError,
-							extension));
+		if (extension != null && !getFilePath().toString().endsWith("." + extension)) {
+			setErrorMessage(NLS.bind(
+					serviceComposition.diagram.part.Messages.ServiceCompositionCreationWizardPageExtensionError,
+					extension));
 			return false;
 		}
 		return true;

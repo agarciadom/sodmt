@@ -20,34 +20,28 @@ public class ServiceCompositionDomainNavigatorItem extends PlatformObject {
 	 * @generated
 	 */
 	static {
-		final Class[] supportedTypes = new Class[] { EObject.class,
-				IPropertySource.class };
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		final Class[] supportedTypes = new Class[] { EObject.class, IPropertySource.class };
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) {
-							serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem domainNavigatorItem = (serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) adaptableObject;
-							EObject eObject = domainNavigatorItem.getEObject();
-							if (adapterType == EObject.class) {
-								return eObject;
-							}
-							if (adapterType == IPropertySource.class) {
-								return domainNavigatorItem
-										.getPropertySourceProvider()
-										.getPropertySource(eObject);
-							}
-						}
-
-						return null;
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) {
+					serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem domainNavigatorItem = (serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) adaptableObject;
+					EObject eObject = domainNavigatorItem.getEObject();
+					if (adapterType == EObject.class) {
+						return eObject;
 					}
-
-					public Class[] getAdapterList() {
-						return supportedTypes;
+					if (adapterType == IPropertySource.class) {
+						return domainNavigatorItem.getPropertySourceProvider().getPropertySource(eObject);
 					}
-				},
-				serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem.class);
+				}
+
+				return null;
+			}
+
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem.class);
 	}
 
 	/**
@@ -68,8 +62,8 @@ public class ServiceCompositionDomainNavigatorItem extends PlatformObject {
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionDomainNavigatorItem(EObject eObject,
-			Object parent, IPropertySourceProvider propertySourceProvider) {
+	public ServiceCompositionDomainNavigatorItem(EObject eObject, Object parent,
+			IPropertySourceProvider propertySourceProvider) {
 		myParent = parent;
 		myEObject = eObject;
 		myPropertySourceProvider = propertySourceProvider;
@@ -101,11 +95,8 @@ public class ServiceCompositionDomainNavigatorItem extends PlatformObject {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) {
-			return EcoreUtil
-					.getURI(getEObject())
-					.equals(EcoreUtil
-							.getURI(((serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) obj)
-									.getEObject()));
+			return EcoreUtil.getURI(getEObject()).equals(EcoreUtil.getURI(
+					((serviceComposition.diagram.navigator.ServiceCompositionDomainNavigatorItem) obj).getEObject()));
 		}
 		return super.equals(obj);
 	}

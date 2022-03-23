@@ -11,32 +11,30 @@ import serviceComposition.ServiceCompositionPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Final Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class FinalNodeImpl extends ActivityNodeImpl implements FinalNode
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected FinalNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return ServiceCompositionPackage.Literals.FINAL_NODE;
-  }
+		return ServiceCompositionPackage.Literals.FINAL_NODE;
+	}
 
 } //FinalNodeImpl

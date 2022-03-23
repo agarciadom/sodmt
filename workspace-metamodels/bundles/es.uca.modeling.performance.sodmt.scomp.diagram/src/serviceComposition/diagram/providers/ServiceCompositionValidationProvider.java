@@ -26,8 +26,7 @@ public class ServiceCompositionValidationProvider {
 	/**
 	 * @generated
 	 */
-	public static void runWithConstraints(
-			TransactionalEditingDomain editingDomain, Runnable operation) {
+	public static void runWithConstraints(TransactionalEditingDomain editingDomain, Runnable operation) {
 		final Runnable op = operation;
 		Runnable task = new Runnable() {
 			public void run() {
@@ -43,8 +42,8 @@ public class ServiceCompositionValidationProvider {
 			try {
 				editingDomain.runExclusive(task);
 			} catch (Exception e) {
-				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-						.getInstance().logError("Validation failed", e); //$NON-NLS-1$
+				serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+						.logError("Validation failed", e); //$NON-NLS-1$
 			}
 		} else {
 			task.run();
@@ -59,10 +58,9 @@ public class ServiceCompositionValidationProvider {
 			return false;
 		}
 		if (object instanceof View) {
-			return constraintsActive
-					&& serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-							.equals(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getModelID((View) object));
+			return constraintsActive && serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
+					.equals(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
+							.getModelID((View) object));
 		}
 		return true;
 	}

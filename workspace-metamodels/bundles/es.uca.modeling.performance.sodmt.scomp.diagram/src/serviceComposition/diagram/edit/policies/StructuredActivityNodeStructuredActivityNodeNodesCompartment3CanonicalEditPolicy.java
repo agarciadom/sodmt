@@ -46,8 +46,7 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 	 * @generated
 	 */
 	protected EStructuralFeature getFeatureToSynchronize() {
-		return serviceComposition.ServiceCompositionPackage.eINSTANCE
-				.getStructuredActivityNode_Nodes();
+		return serviceComposition.ServiceCompositionPackage.eINSTANCE.getStructuredActivityNode_Nodes();
 	}
 
 	/**
@@ -68,18 +67,15 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view);
+		int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view);
 		switch (visualID) {
 		case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
@@ -105,8 +101,8 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> childDescriptors = serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
-				.getStructuredActivityNodeStructuredActivityNodeNodesCompartment_7004SemanticChildren((View) getHost()
-						.getModel());
+				.getStructuredActivityNodeStructuredActivityNodeNodesCompartment_7004SemanticChildren(
+						(View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -122,8 +118,7 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
 		for (Iterator<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
-			serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next = descriptorsIterator
-					.next();
+			serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next = descriptorsIterator.next();
 			String hint = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
@@ -153,11 +148,9 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		for (serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next : childDescriptors) {
 			String hint = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -166,10 +159,10 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
+
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
 			createdViews.addAll(nl);
 		}
@@ -178,8 +171,8 @@ public class StructuredActivityNodeStructuredActivityNodeNodesCompartment3Canoni
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews,
+					host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

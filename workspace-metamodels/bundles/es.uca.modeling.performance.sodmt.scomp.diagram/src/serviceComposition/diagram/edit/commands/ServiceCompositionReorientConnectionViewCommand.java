@@ -16,8 +16,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ServiceCompositionReorientConnectionViewCommand extends
-		AbstractTransactionalCommand {
+public class ServiceCompositionReorientConnectionViewCommand extends AbstractTransactionalCommand {
 
 	/**
 	 * @generated
@@ -27,8 +26,7 @@ public class ServiceCompositionReorientConnectionViewCommand extends
 	/**
 	 * @generated
 	 */
-	public ServiceCompositionReorientConnectionViewCommand(
-			TransactionalEditingDomain editingDomain, String label) {
+	public ServiceCompositionReorientConnectionViewCommand(TransactionalEditingDomain editingDomain, String label) {
 		super(editingDomain, label, null);
 	}
 
@@ -60,8 +58,7 @@ public class ServiceCompositionReorientConnectionViewCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(
-			IProgressMonitor progressMonitor, IAdaptable info) {
+	protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) {
 		assert null != edgeAdaptor : "Null child in ServiceCompositionReorientConnectionViewCommand"; //$NON-NLS-1$
 		Edge edge = (Edge) getEdgeAdaptor().getAdapter(Edge.class);
 		assert null != edge : "Null edge in ServiceCompositionReorientConnectionViewCommand"; //$NON-NLS-1$

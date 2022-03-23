@@ -11,15 +11,13 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
  * @generated
  */
 public class ObjectFlowItemSemanticEditPolicy
-		extends
-		serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
+		extends serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public ObjectFlowItemSemanticEditPolicy() {
-		super(
-				serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
+		super(serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002);
 	}
 
 	/**

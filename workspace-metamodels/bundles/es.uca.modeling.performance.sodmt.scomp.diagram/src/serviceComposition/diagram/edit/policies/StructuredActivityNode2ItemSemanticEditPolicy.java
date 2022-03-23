@@ -25,15 +25,13 @@ import org.eclipse.gmf.runtime.notation.View;
  * @generated
  */
 public class StructuredActivityNode2ItemSemanticEditPolicy
-		extends
-		serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
+		extends serviceComposition.diagram.edit.policies.ServiceCompositionBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public StructuredActivityNode2ItemSemanticEditPolicy() {
-		super(
-				serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
+		super(serviceComposition.diagram.providers.ServiceCompositionElementTypes.StructuredActivityNode_3002);
 	}
 
 	/**
@@ -41,23 +39,20 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						incomingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
 			}
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						incomingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
@@ -67,24 +62,21 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 			Edge outgoingLink = (Edge) it.next();
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						outgoingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
 			}
 			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						outgoingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
 			}
-			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
-				DestroyReferenceRequest r = new DestroyReferenceRequest(
-						outgoingLink.getSource().getElement(), null,
+			if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+					outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(outgoingLink.getSource().getElement(), null,
 						outgoingLink.getTarget().getElement(), false);
 				cmd.add(new DestroyReferenceCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
@@ -111,554 +103,435 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 		View view = (View) getHost().getModel();
 		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
 			Node node = (Node) nit.next();
-			switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-					.getVisualID(node)) {
+			switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(node)) {
 			case serviceComposition.diagram.edit.parts.StructuredActivityNodeStructuredActivityNodeNodesCompartment2EditPart.VISUAL_ID:
-				for (Iterator<?> cit = node.getChildren().iterator(); cit
-						.hasNext();) {
+				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
 					Node cnode = (Node) cit.next();
-					switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-							.getVisualID(cnode)) {
+					switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(cnode)) {
 					case serviceComposition.diagram.edit.parts.Action2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
 								DestroyReferenceRequest r = new DestroyReferenceRequest(
-										outgoingLink.getSource().getElement(),
-										null, outgoingLink.getTarget()
-												.getElement(), false);
+										outgoingLink.getSource().getElement(), null,
+										outgoingLink.getTarget().getElement(), false);
 								cmd.add(new DestroyReferenceCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
 								DestroyReferenceRequest r = new DestroyReferenceRequest(
-										outgoingLink.getSource().getElement(),
-										null, outgoingLink.getTarget()
-												.getElement(), false);
+										outgoingLink.getSource().getElement(), null,
+										outgoingLink.getTarget().getElement(), false);
 								cmd.add(new DestroyReferenceCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID) {
 								DestroyReferenceRequest r = new DestroyReferenceRequest(
-										incomingLink.getSource().getElement(),
-										null, incomingLink.getTarget()
-												.getElement(), false);
+										incomingLink.getSource().getElement(), null,
+										incomingLink.getTarget().getElement(), false);
 								cmd.add(new DestroyReferenceCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.ObjectNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.InitialNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.FinalNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.DecisionNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.ForkNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.JoinNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case serviceComposition.diagram.edit.parts.MergeNode2EditPart.VISUAL_ID:
-						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										incomingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									incomingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										incomingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 								continue;
 							}
 						}
-						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
-								.hasNext();) {
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
-							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getVisualID(outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
-								DestroyElementRequest r = new DestroyElementRequest(
-										outgoingLink.getElement(), false);
+							if (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(
+									outgoingLink) == serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 								cmd.add(new DestroyElementCommand(r));
-								cmd.add(new DeleteCommand(getEditingDomain(),
-										outgoingLink));
+								cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 								continue;
 							}
 						}
 						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(),
-										cnode.getElement(), false))); // directlyOwned: true
+								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
@@ -675,29 +548,27 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
 		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		return null;
 	}
@@ -705,22 +576,21 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ControlFlow_4001 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ObjectFlow_4002 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(
-					req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (serviceComposition.diagram.providers.ServiceCompositionElementTypes.ExecutableNodeAnnotation_4003 == req
 				.getElementType()) {
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(
-					req, req.getTarget(), req.getSource()));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationCreateCommand(req,
+					req.getTarget(), req.getSource()));
 		}
 		return null;
 	}
@@ -731,15 +601,12 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientRelationshipCommand(
-			ReorientRelationshipRequest req) {
+	protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case serviceComposition.diagram.edit.parts.ControlFlowEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowReorientCommand(
-					req));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ControlFlowReorientCommand(req));
 		case serviceComposition.diagram.edit.parts.ObjectFlowEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowReorientCommand(
-					req));
+			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ObjectFlowReorientCommand(req));
 		}
 		return super.getReorientRelationshipCommand(req);
 	}
@@ -750,12 +617,11 @@ public class StructuredActivityNode2ItemSemanticEditPolicy
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		switch (getVisualID(req)) {
 		case serviceComposition.diagram.edit.parts.ExecutableNodeAnnotationEditPart.VISUAL_ID:
-			return getGEFWrapper(new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationReorientCommand(
-					req));
+			return getGEFWrapper(
+					new serviceComposition.diagram.edit.commands.ExecutableNodeAnnotationReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

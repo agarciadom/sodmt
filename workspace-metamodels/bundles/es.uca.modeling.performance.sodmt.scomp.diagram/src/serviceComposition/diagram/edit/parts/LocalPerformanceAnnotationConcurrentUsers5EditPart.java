@@ -38,6 +38,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.directedit.TextDirectEditManager2;
 import org.eclipse.gmf.tooling.runtime.draw2d.labels.SimpleLabelDelegate;
+import org.eclipse.gmf.tooling.runtime.edit.policies.DefaultNodeLabelDragPolicy;
 import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedbackEditPolicy;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
@@ -50,8 +51,8 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
-		CompartmentEditPart implements ITextAwareEditPart {
+public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends CompartmentEditPart
+		implements ITextAwareEditPart {
 
 	/**
 	 * @generated
@@ -95,14 +96,10 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicy.SELECTION_FEEDBACK_ROLE,
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
 				new serviceComposition.diagram.edit.policies.ServiceCompositionTextSelectionEditPolicy());
-		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
-				new LabelDirectEditPolicy());
-		installEditPolicy(
-				EditPolicy.PRIMARY_DRAG_ROLE,
-				new serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.NodeLabelDragPolicy());
+		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new DefaultNodeLabelDragPolicy());
 	}
 
 	/**
@@ -200,8 +197,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 		if (parserElement == null) {
 			return null;
 		}
-		return serviceComposition.diagram.providers.ServiceCompositionElementTypes
-				.getImage(parserElement.eClass());
+		return serviceComposition.diagram.providers.ServiceCompositionElementTypes.getImage(parserElement.eClass());
 	}
 
 	/**
@@ -211,9 +207,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 		String text = null;
 		EObject parserElement = getParserElement();
 		if (parserElement != null && getParser() != null) {
-			text = getParser().getPrintString(
-					new EObjectAdapter(parserElement),
-					getParserOptions().intValue());
+			text = getParser().getPrintString(new EObjectAdapter(parserElement), getParserOptions().intValue());
 		}
 		if (text == null || text.length() == 0) {
 			text = defaultText;
@@ -236,9 +230,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 		if (getParserElement() == null || getParser() == null) {
 			return ""; //$NON-NLS-1$
 		}
-		return getParser().getEditString(
-				new EObjectAdapter(getParserElement()),
-				getParserOptions().intValue());
+		return getParser().getEditString(new EObjectAdapter(getParserElement()), getParserOptions().intValue());
 	}
 
 	/**
@@ -260,19 +252,14 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 					final IParser parser = getParser();
 					try {
 						IParserEditStatus valid = (IParserEditStatus) getEditingDomain()
-								.runExclusive(
-										new RunnableWithResult.Impl<IParserEditStatus>() {
+								.runExclusive(new RunnableWithResult.Impl<IParserEditStatus>() {
 
-											public void run() {
-												setResult(parser
-														.isValidEditString(
-																new EObjectAdapter(
-																		element),
-																(String) value));
-											}
-										});
-						return valid.getCode() == ParserEditStatus.EDITABLE ? null
-								: valid.getMessage();
+									public void run() {
+										setResult(
+												parser.isValidEditString(new EObjectAdapter(element), (String) value));
+									}
+								});
+						return valid.getCode() == ParserEditStatus.EDITABLE ? null : valid.getMessage();
 					} catch (InterruptedException ie) {
 						ie.printStackTrace();
 					}
@@ -291,8 +278,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 		if (getParserElement() == null || getParser() == null) {
 			return null;
 		}
-		return getParser().getCompletionProcessor(
-				new EObjectAdapter(getParserElement()));
+		return getParser().getCompletionProcessor(new EObjectAdapter(getParserElement()));
 	}
 
 	/**
@@ -307,12 +293,10 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			parser = serviceComposition.diagram.providers.ServiceCompositionParserProvider
-					.getParser(
-							serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012,
-							getParserElement(),
-							serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-									.getType(serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers5EditPart.VISUAL_ID));
+			parser = serviceComposition.diagram.providers.ServiceCompositionParserProvider.getParser(
+					serviceComposition.diagram.providers.ServiceCompositionElementTypes.LocalPerformanceAnnotation_3012,
+					getParserElement(), serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getType(
+							serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationConcurrentUsers5EditPart.VISUAL_ID));
 		}
 		return parser;
 	}
@@ -322,9 +306,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 */
 	protected DirectEditManager getManager() {
 		if (manager == null) {
-			setManager(new TextDirectEditManager2(
-					this,
-					null,
+			setManager(new TextDirectEditManager(this, null,
 					serviceComposition.diagram.edit.parts.ServiceCompositionEditPartFactory
 							.getTextCellEditorLocator(this)));
 		}
@@ -349,9 +331,8 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 * @generated
 	 */
 	protected void performDirectEdit(Point eventLocation) {
-		if (getManager().getClass() == TextDirectEditManager2.class) {
-			((TextDirectEditManager2) getManager()).show(eventLocation
-					.getSWTPoint());
+		if (getManager().getClass() == TextDirectEditManager.class) {
+			((TextDirectEditManager) getManager()).show(eventLocation.getSWTPoint());
 		}
 	}
 
@@ -361,9 +342,6 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	private void performDirectEdit(char initialCharacter) {
 		if (getManager() instanceof TextDirectEditManager) {
 			((TextDirectEditManager) getManager()).show(initialCharacter);
-		} else // 
-		if (getManager() instanceof TextDirectEditManager2) {
-			((TextDirectEditManager2) getManager()).show(initialCharacter);
 		} else //
 		{
 			performDirectEdit();
@@ -380,11 +358,9 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 
 				public void run() {
 					if (isActive() && isEditable()) {
-						if (theRequest
-								.getExtendedData()
+						if (theRequest.getExtendedData()
 								.get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
-							Character initialChar = (Character) theRequest
-									.getExtendedData()
+							Character initialChar = (Character) theRequest.getExtendedData()
 									.get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR);
 							performDirectEdit(initialChar.charValue());
 						} else if ((theRequest instanceof DirectEditRequest)
@@ -427,8 +403,7 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 * @generated
 	 */
 	protected void refreshUnderline() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null && getFigure() instanceof WrappingLabel) {
 			((WrappingLabel) getFigure()).setTextUnderline(style.isUnderline());
 		}
@@ -438,11 +413,9 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 * @generated
 	 */
 	protected void refreshStrikeThrough() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null && getFigure() instanceof WrappingLabel) {
-			((WrappingLabel) getFigure()).setTextStrikeThrough(style
-					.isStrikeThrough());
+			((WrappingLabel) getFigure()).setTextStrikeThrough(style.isStrikeThrough());
 		}
 	}
 
@@ -450,13 +423,10 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	 * @generated
 	 */
 	protected void refreshFont() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null) {
-			FontData fontData = new FontData(style.getFontName(),
-					style.getFontHeight(), (style.isBold() ? SWT.BOLD
-							: SWT.NORMAL)
-							| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
+			FontData fontData = new FontData(style.getFontName(), style.getFontHeight(),
+					(style.isBold() ? SWT.BOLD : SWT.NORMAL) | (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
 			setFont(fontData);
 		}
 	}
@@ -492,11 +462,9 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 	protected void addSemanticListeners() {
 		if (getParser() instanceof ISemanticParser) {
 			EObject element = resolveSemanticElement();
-			parserElements = ((ISemanticParser) getParser())
-					.getSemanticElementsBeingParsed(element);
+			parserElements = ((ISemanticParser) getParser()).getSemanticElementsBeingParsed(element);
 			for (int i = 0; i < parserElements.size(); i++) {
-				addListenerFilter(
-						"SemanticModel" + i, this, (EObject) parserElements.get(i)); //$NON-NLS-1$
+				addListenerFilter("SemanticModel" + i, this, (EObject) parserElements.get(i)); //$NON-NLS-1$
 			}
 		} else {
 			super.addSemanticListeners();
@@ -588,25 +556,17 @@ public class LocalPerformanceAnnotationConcurrentUsers5EditPart extends
 		if (NotationPackage.eINSTANCE.getFontStyle_FontColor().equals(feature)) {
 			Integer c = (Integer) event.getNewValue();
 			setFontColor(DiagramColorRegistry.getInstance().getColor(c));
-		} else if (NotationPackage.eINSTANCE.getFontStyle_Underline().equals(
-				feature)) {
+		} else if (NotationPackage.eINSTANCE.getFontStyle_Underline().equals(feature)) {
 			refreshUnderline();
-		} else if (NotationPackage.eINSTANCE.getFontStyle_StrikeThrough()
-				.equals(feature)) {
+		} else if (NotationPackage.eINSTANCE.getFontStyle_StrikeThrough().equals(feature)) {
 			refreshStrikeThrough();
-		} else if (NotationPackage.eINSTANCE.getFontStyle_FontHeight().equals(
-				feature)
-				|| NotationPackage.eINSTANCE.getFontStyle_FontName().equals(
-						feature)
-				|| NotationPackage.eINSTANCE.getFontStyle_Bold()
-						.equals(feature)
-				|| NotationPackage.eINSTANCE.getFontStyle_Italic().equals(
-						feature)) {
+		} else if (NotationPackage.eINSTANCE.getFontStyle_FontHeight().equals(feature)
+				|| NotationPackage.eINSTANCE.getFontStyle_FontName().equals(feature)
+				|| NotationPackage.eINSTANCE.getFontStyle_Bold().equals(feature)
+				|| NotationPackage.eINSTANCE.getFontStyle_Italic().equals(feature)) {
 			refreshFont();
 		} else {
-			if (getParser() != null
-					&& getParser().isAffectingEvent(event,
-							getParserOptions().intValue())) {
+			if (getParser() != null && getParser().isAffectingEvent(event, getParserOptions().intValue())) {
 				refreshLabel();
 			}
 			if (getParser() instanceof ISemanticParser) {

@@ -288,43 +288,172 @@
 
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="serviceComposition.diagram.providers.ServiceCompositionModelingAssistantProvider">
+      <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfServiceCompositionEditPart">
          <Priority name="Lowest"/>
          <object class="serviceComposition.diagram.edit.parts.ServiceCompositionEditPart" id="ServiceComposition_1000"/>
-         <object class="serviceComposition.diagram.edit.parts.ActionEditPart" id="Action_2001"/>
-         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart" id="StructuredActivityNode_2002"/>
-         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart" id="LocalPerformanceAnnotation_2003"/>
-         <object class="serviceComposition.diagram.edit.parts.ObjectNodeEditPart" id="ObjectNode_2004"/>
-         <object class="serviceComposition.diagram.edit.parts.ActivityPartitionEditPart" id="ActivityPartition_2005"/>
-         <object class="serviceComposition.diagram.edit.parts.InitialNodeEditPart" id="InitialNode_2006"/>
-         <object class="serviceComposition.diagram.edit.parts.FinalNodeEditPart" id="FinalNode_2007"/>
-         <object class="serviceComposition.diagram.edit.parts.DecisionNodeEditPart" id="DecisionNode_2008"/>
-         <object class="serviceComposition.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2009"/>
-         <object class="serviceComposition.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2010"/>
-         <object class="serviceComposition.diagram.edit.parts.MergeNodeEditPart" id="MergeNode_2012"/>
-         <object class="serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2011"/>
-         <object class="serviceComposition.diagram.edit.parts.Action2EditPart" id="Action_3001"/>
-         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3002"/>
-         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart" id="LocalPerformanceAnnotation_3003"/>
-         <object class="serviceComposition.diagram.edit.parts.ObjectNode2EditPart" id="ObjectNode_3004"/>
-         <object class="serviceComposition.diagram.edit.parts.InitialNode2EditPart" id="InitialNode_3005"/>
-         <object class="serviceComposition.diagram.edit.parts.FinalNode2EditPart" id="FinalNode_3006"/>
-         <object class="serviceComposition.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3007"/>
-         <object class="serviceComposition.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3008"/>
-         <object class="serviceComposition.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3009"/>
-         <object class="serviceComposition.diagram.edit.parts.MergeNode2EditPart" id="MergeNode_3019"/>
-         <object class="serviceComposition.diagram.edit.parts.Action3EditPart" id="Action_3010"/>
-         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart" id="StructuredActivityNode_3011"/>
-         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart" id="LocalPerformanceAnnotation_3012"/>
-         <object class="serviceComposition.diagram.edit.parts.ObjectNode3EditPart" id="ObjectNode_3013"/>
-         <object class="serviceComposition.diagram.edit.parts.InitialNode3EditPart" id="InitialNode_3014"/>
-         <object class="serviceComposition.diagram.edit.parts.FinalNode3EditPart" id="FinalNode_3015"/>
-         <object class="serviceComposition.diagram.edit.parts.DecisionNode3EditPart" id="DecisionNode_3016"/>
-         <object class="serviceComposition.diagram.edit.parts.ForkNode3EditPart" id="ForkNode_3017"/>
-         <object class="serviceComposition.diagram.edit.parts.JoinNode3EditPart" id="JoinNode_3018"/>
-         <object class="serviceComposition.diagram.edit.parts.MergeNode3EditPart" id="MergeNode_3020"/>
-         <context elements="ServiceComposition_1000,Action_2001,StructuredActivityNode_2002,LocalPerformanceAnnotation_2003,ObjectNode_2004,ActivityPartition_2005,InitialNode_2006,FinalNode_2007,DecisionNode_2008,ForkNode_2009,JoinNode_2010,MergeNode_2012,PerformanceAnnotation_2011,Action_3001,StructuredActivityNode_3002,LocalPerformanceAnnotation_3003,ObjectNode_3004,InitialNode_3005,FinalNode_3006,DecisionNode_3007,ForkNode_3008,JoinNode_3009,MergeNode_3019,Action_3010,StructuredActivityNode_3011,LocalPerformanceAnnotation_3012,ObjectNode_3013,InitialNode_3014,FinalNode_3015,DecisionNode_3016,ForkNode_3017,JoinNode_3018,MergeNode_3020"/>
+         <context elements="ServiceComposition_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfActionEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ActionEditPart" id="Action_2001"/>
+         <context elements="Action_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfStructuredActivityNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart" id="StructuredActivityNode_2002"/>
+         <context elements="StructuredActivityNode_2002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfLocalPerformanceAnnotationEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotationEditPart" id="LocalPerformanceAnnotation_2003"/>
+         <context elements="LocalPerformanceAnnotation_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfObjectNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ObjectNodeEditPart" id="ObjectNode_2004"/>
+         <context elements="ObjectNode_2004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfActivityPartitionEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ActivityPartitionEditPart" id="ActivityPartition_2005"/>
+         <context elements="ActivityPartition_2005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfInitialNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.InitialNodeEditPart" id="InitialNode_2006"/>
+         <context elements="InitialNode_2006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfFinalNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.FinalNodeEditPart" id="FinalNode_2007"/>
+         <context elements="FinalNode_2007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfDecisionNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.DecisionNodeEditPart" id="DecisionNode_2008"/>
+         <context elements="DecisionNode_2008"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfForkNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ForkNodeEditPart" id="ForkNode_2009"/>
+         <context elements="ForkNode_2009"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfJoinNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.JoinNodeEditPart" id="JoinNode_2010"/>
+         <context elements="JoinNode_2010"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfMergeNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNodeEditPart" id="MergeNode_2012"/>
+         <context elements="MergeNode_2012"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfPerformanceAnnotationEditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.PerformanceAnnotationEditPart" id="PerformanceAnnotation_2011"/>
+         <context elements="PerformanceAnnotation_2011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfAction2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.Action2EditPart" id="Action_3001"/>
+         <context elements="Action_3001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfStructuredActivityNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode2EditPart" id="StructuredActivityNode_3002"/>
+         <context elements="StructuredActivityNode_3002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfLocalPerformanceAnnotation2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation2EditPart" id="LocalPerformanceAnnotation_3003"/>
+         <context elements="LocalPerformanceAnnotation_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfObjectNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ObjectNode2EditPart" id="ObjectNode_3004"/>
+         <context elements="ObjectNode_3004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfInitialNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.InitialNode2EditPart" id="InitialNode_3005"/>
+         <context elements="InitialNode_3005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfFinalNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.FinalNode2EditPart" id="FinalNode_3006"/>
+         <context elements="FinalNode_3006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfDecisionNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.DecisionNode2EditPart" id="DecisionNode_3007"/>
+         <context elements="DecisionNode_3007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfForkNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ForkNode2EditPart" id="ForkNode_3008"/>
+         <context elements="ForkNode_3008"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfJoinNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.JoinNode2EditPart" id="JoinNode_3009"/>
+         <context elements="JoinNode_3009"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfMergeNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNode2EditPart" id="MergeNode_3019"/>
+         <context elements="MergeNode_3019"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfAction3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.Action3EditPart" id="Action_3010"/>
+         <context elements="Action_3010"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfStructuredActivityNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.StructuredActivityNode3EditPart" id="StructuredActivityNode_3011"/>
+         <context elements="StructuredActivityNode_3011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfLocalPerformanceAnnotation3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.LocalPerformanceAnnotation3EditPart" id="LocalPerformanceAnnotation_3012"/>
+         <context elements="LocalPerformanceAnnotation_3012"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfObjectNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ObjectNode3EditPart" id="ObjectNode_3013"/>
+         <context elements="ObjectNode_3013"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfInitialNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.InitialNode3EditPart" id="InitialNode_3014"/>
+         <context elements="InitialNode_3014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfFinalNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.FinalNode3EditPart" id="FinalNode_3015"/>
+         <context elements="FinalNode_3015"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfDecisionNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.DecisionNode3EditPart" id="DecisionNode_3016"/>
+         <context elements="DecisionNode_3016"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfForkNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.ForkNode3EditPart" id="ForkNode_3017"/>
+         <context elements="ForkNode_3017"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfJoinNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.JoinNode3EditPart" id="JoinNode_3018"/>
+         <context elements="JoinNode_3018"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="serviceComposition.diagram.providers.assistants.ServiceCompositionModelingAssistantProviderOfMergeNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="serviceComposition.diagram.edit.parts.MergeNode3EditPart" id="MergeNode_3020"/>
+         <context elements="MergeNode_3020"/>
+      </modelingAssistantProvider>
+      
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">

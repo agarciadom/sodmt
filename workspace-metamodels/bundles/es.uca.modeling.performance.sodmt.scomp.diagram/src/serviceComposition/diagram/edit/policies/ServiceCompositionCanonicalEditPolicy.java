@@ -63,14 +63,11 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
 			myFeaturesToSynchronize
-					.add(serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getServiceComposition_Nodes());
+					.add(serviceComposition.ServiceCompositionPackage.eINSTANCE.getServiceComposition_Nodes());
 			myFeaturesToSynchronize
-					.add(serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getServiceComposition_Partitions());
-			myFeaturesToSynchronize
-					.add(serviceComposition.ServiceCompositionPackage.eINSTANCE
-							.getServiceComposition_ProcessPerformance());
+					.add(serviceComposition.ServiceCompositionPackage.eINSTANCE.getServiceComposition_Partitions());
+			myFeaturesToSynchronize.add(
+					serviceComposition.ServiceCompositionPackage.eINSTANCE.getServiceComposition_ProcessPerformance());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -93,22 +90,18 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
 		if (isShortcut(view)) {
-			return serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
-					.isShortcutOrphaned(view);
+			return serviceComposition.diagram.part.ServiceCompositionDiagramUpdater.isShortcutOrphaned(view);
 		}
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view);
+		int visualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view);
 		switch (visualID) {
 		case serviceComposition.diagram.edit.parts.ActionEditPart.VISUAL_ID:
 		case serviceComposition.diagram.edit.parts.StructuredActivityNodeEditPart.VISUAL_ID:
@@ -143,15 +136,13 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> childDescriptors = serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
-				.getServiceComposition_1000SemanticChildren((View) getHost()
-						.getModel());
+				.getServiceComposition_1000SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours and not shortcuts
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
 		for (View v : getViewChildren()) {
 			if (isShortcut(v)) {
-				if (serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
-						.isShortcutOrphaned(v)) {
+				if (serviceComposition.diagram.part.ServiceCompositionDiagramUpdater.isShortcutOrphaned(v)) {
 					orphaned.add(v);
 				}
 				continue;
@@ -167,8 +158,7 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
 		for (Iterator<serviceComposition.diagram.part.ServiceCompositionNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
-			serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next = descriptorsIterator
-					.next();
+			serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next = descriptorsIterator.next();
 			String hint = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
@@ -198,11 +188,9 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		for (serviceComposition.diagram.part.ServiceCompositionNodeDescriptor next : childDescriptors) {
 			String hint = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -211,10 +199,10 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
+
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
 			createdViews.addAll(nl);
 		}
@@ -226,8 +214,8 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews,
+					host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 
@@ -244,14 +232,12 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 		Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> linkDescriptors = collectAllLinks(
 				getDiagram(), domain2NotationMap);
 		Collection existingLinks = new LinkedList(getDiagram().getEdges());
-		for (Iterator linksIterator = existingLinks.iterator(); linksIterator
-				.hasNext();) {
+		for (Iterator linksIterator = existingLinks.iterator(); linksIterator.hasNext();) {
 			Edge nextDiagramLink = (Edge) linksIterator.next();
 			int diagramLinkVisualID = serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 					.getVisualID(nextDiagramLink);
 			if (diagramLinkVisualID == -1) {
-				if (nextDiagramLink.getSource() != null
-						&& nextDiagramLink.getTarget() != null) {
+				if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null) {
 					linksIterator.remove();
 				}
 				continue;
@@ -265,10 +251,8 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 						.next();
 				if (diagramLinkObject == nextLinkDescriptor.getModelElement()
 						&& diagramLinkSrc == nextLinkDescriptor.getSource()
-						&& diagramLinkDst == nextLinkDescriptor
-								.getDestination()
-						&& diagramLinkVisualID == nextLinkDescriptor
-								.getVisualID()) {
+						&& diagramLinkDst == nextLinkDescriptor.getDestination()
+						&& diagramLinkVisualID == nextLinkDescriptor.getVisualID()) {
 					linksIterator.remove();
 					linkDescriptorsIterator.remove();
 					break;
@@ -282,16 +266,14 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> collectAllLinks(
-			View view, Domain2Notation domain2NotationMap) {
+	private Collection<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> collectAllLinks(View view,
+			Domain2Notation domain2NotationMap) {
 		if (!serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.MODEL_ID
-				.equals(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-						.getModelID(view))) {
+				.equals(serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getModelID(view))) {
 			return Collections.emptyList();
 		}
 		LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor> result = new LinkedList<serviceComposition.diagram.part.ServiceCompositionLinkDescriptor>();
-		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-				.getVisualID(view)) {
+		switch (serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getVisualID(view)) {
 		case serviceComposition.diagram.edit.parts.ServiceCompositionEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(serviceComposition.diagram.part.ServiceCompositionDiagramUpdater
@@ -573,14 +555,11 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 			break;
 		}
 		}
-		for (Iterator children = view.getChildren().iterator(); children
-				.hasNext();) {
-			result.addAll(collectAllLinks((View) children.next(),
-					domain2NotationMap));
+		for (Iterator children = view.getChildren().iterator(); children.hasNext();) {
+			result.addAll(collectAllLinks((View) children.next(), domain2NotationMap));
 		}
 		for (Iterator edges = view.getSourceEdges().iterator(); edges.hasNext();) {
-			result.addAll(collectAllLinks((View) edges.next(),
-					domain2NotationMap));
+			result.addAll(collectAllLinks((View) edges.next(), domain2NotationMap));
 		}
 		return result;
 	}
@@ -593,10 +572,8 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 			Domain2Notation domain2NotationMap) {
 		LinkedList<IAdaptable> adapters = new LinkedList<IAdaptable>();
 		for (serviceComposition.diagram.part.ServiceCompositionLinkDescriptor nextLinkDescriptor : linkDescriptors) {
-			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor,
-					domain2NotationMap);
-			EditPart targetEditPart = getTargetEditPart(nextLinkDescriptor,
-					domain2NotationMap);
+			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor, domain2NotationMap);
+			EditPart targetEditPart = getTargetEditPart(nextLinkDescriptor, domain2NotationMap);
 			if (sourceEditPart == null || targetEditPart == null) {
 				continue;
 			}
@@ -604,10 +581,8 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 					nextLinkDescriptor.getSemanticAdapter(),
 					serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
 							.getType(nextLinkDescriptor.getVisualID()),
-					ViewUtil.APPEND, false, ((IGraphicalEditPart) getHost())
-							.getDiagramPreferencesHint());
-			CreateConnectionViewRequest ccr = new CreateConnectionViewRequest(
-					descriptor);
+					ViewUtil.APPEND, false, ((IGraphicalEditPart) getHost()).getDiagramPreferencesHint());
+			CreateConnectionViewRequest ccr = new CreateConnectionViewRequest(descriptor);
 			ccr.setType(RequestConstants.REQ_CONNECTION_START);
 			ccr.setSourceEditPart(sourceEditPart);
 			sourceEditPart.getCommand(ccr);
@@ -628,12 +603,10 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private EditPart getEditPart(EObject domainModelElement,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getEditPart(EObject domainModelElement, Domain2Notation domain2NotationMap) {
 		View view = (View) domain2NotationMap.get(domainModelElement);
 		if (view != null) {
-			return (EditPart) getHost().getViewer().getEditPartRegistry()
-					.get(view);
+			return (EditPart) getHost().getViewer().getEditPartRegistry().get(view);
 		}
 		return null;
 	}
@@ -648,32 +621,26 @@ public class ServiceCompositionCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor, Domain2Notation domain2NotationMap) {
 		return getEditPart(descriptor.getSource(), domain2NotationMap);
 	}
 
 	/**
 	 * @generated
 	 */
-	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor, Domain2Notation domain2NotationMap) {
 		return getEditPart(descriptor.getDestination(), domain2NotationMap);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected final EditPart getHintedEditPart(EObject domainModelElement,
-			Domain2Notation domain2NotationMap, int hintVisualId) {
-		View view = (View) domain2NotationMap
-				.getHinted(
-						domainModelElement,
-						serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry
-								.getType(hintVisualId));
+	protected final EditPart getHintedEditPart(EObject domainModelElement, Domain2Notation domain2NotationMap,
+			int hintVisualId) {
+		View view = (View) domain2NotationMap.getHinted(domainModelElement,
+				serviceComposition.diagram.part.ServiceCompositionVisualIDRegistry.getType(hintVisualId));
 		if (view != null) {
-			return (EditPart) getHost().getViewer().getEditPartRegistry()
-					.get(view);
+			return (EditPart) getHost().getViewer().getEditPartRegistry().get(view);
 		}
 		return null;
 	}

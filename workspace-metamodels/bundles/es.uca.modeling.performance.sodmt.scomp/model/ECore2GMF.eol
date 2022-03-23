@@ -1,4 +1,4 @@
-// --- ACTIVITY PARTITIONS ---
+// ACTIVITY PARTITIONS
 var partFD = findFigureDescriptor('ActivityPartitionFigure');
 var partF = partFD.actualFigure;
 var oldLabel = partF.children.selectOne(f|f.name='ActivityPartitionLabelFigure');
@@ -43,7 +43,7 @@ compartment.layoutData.verticalAlignment = GmfGraph!Alignment#FILL;
 compartment.border = new GmfGraph!CustomBorder;
 compartment.border.qualifiedClassName = 'serviceComposition.diagram.borders.LeftBorder';
 
-// --- ACTION NODES ---
+// ACTION NODES
 findFigure('ActionFigure').centerContents();
 findFigure('ObjectNodeFigure').centerContents();
 

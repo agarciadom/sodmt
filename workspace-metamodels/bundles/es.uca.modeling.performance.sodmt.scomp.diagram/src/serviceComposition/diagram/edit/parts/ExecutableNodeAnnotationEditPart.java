@@ -14,8 +14,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ExecutableNodeAnnotationEditPart extends ConnectionNodeEditPart
-		implements ITreeBranchEditPart {
+public class ExecutableNodeAnnotationEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	 * @generated
@@ -34,8 +33,7 @@ public class ExecutableNodeAnnotationEditPart extends ConnectionNodeEditPart
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new serviceComposition.diagram.edit.policies.ExecutableNodeAnnotationItemSemanticEditPolicy());
 	}
 

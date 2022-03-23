@@ -14,7 +14,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 	 * @generated
 	 */
 	public DiagramGeneralPreferencePage() {
-		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(serviceComposition.diagram.part.ServiceCompositionDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

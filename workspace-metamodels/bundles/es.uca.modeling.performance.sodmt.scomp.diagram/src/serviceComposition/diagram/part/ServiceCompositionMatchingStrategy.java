@@ -12,8 +12,7 @@ import org.eclipse.ui.PartInitException;
 /**
  * @generated
  */
-public class ServiceCompositionMatchingStrategy implements
-		IEditorMatchingStrategy {
+public class ServiceCompositionMatchingStrategy implements IEditorMatchingStrategy {
 
 	/**
 	 * @generated
@@ -29,10 +28,8 @@ public class ServiceCompositionMatchingStrategy implements
 		if (editorInput.equals(input)) {
 			return true;
 		}
-		if (editorInput instanceof URIEditorInput
-				&& input instanceof URIEditorInput) {
-			return ((URIEditorInput) editorInput).getURI().equals(
-					((URIEditorInput) input).getURI());
+		if (editorInput instanceof URIEditorInput && input instanceof URIEditorInput) {
+			return ((URIEditorInput) editorInput).getURI().equals(((URIEditorInput) input).getURI());
 		}
 		return false;
 	}
