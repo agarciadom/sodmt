@@ -29,7 +29,7 @@ public class ServiceProcessValidationTest extends AbstractValidationTest {
 		EmfModel dummySPModel = new EmfModel();
 		dummySPModel.setName("SP");
 		dummySPModel.setMetamodelUri(ServiceProcessPackage.eNS_URI);
-		dummySPModel.setModelFile("dummy-model.uml");
+		dummySPModel.setModelFile("dummy-model-sp.uml");
 		dummySPModel.setReadOnLoad(false);
 		dummySPModel.setStoredOnDisposal(false);
 		dummySPModel.load();

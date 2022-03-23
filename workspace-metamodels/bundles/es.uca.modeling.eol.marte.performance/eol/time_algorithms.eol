@@ -1,4 +1,4 @@
--*
+/*
   Script for measuring the performance of the inference algorithms
   in various situations.
 
@@ -9,11 +9,11 @@
 
   Contributors:
      Antonio García Domínguez - initial API and implementation
-*-
+*/
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/time_limits.eol';
 import 'platform:/plugin/es.uca.modeling.eol.marte/eol/throughput.eol';
 
--- UTILITY OPERATIONS FOR THE JAVA CODE --
+// UTILITY OPERATIONS FOR THE JAVA CODE
 
 $pre levels >= 0
 operation createForkJoinActivity(levels : Integer) : Activity {
@@ -69,9 +69,9 @@ operation annotateRandom(activity, respT, throughput, max_weight, random) {
   }
 }
 
--*
+/*
   OPERATIONS FOR Action
-*-
+*/
 operation Action createStep(mtime, weight, variable) {
   var step := Model.createInstance("GaStep");
   step.base_NamedElement := self;
@@ -82,9 +82,9 @@ operation Action createStep(mtime, weight, variable) {
     ", unit=s, source=req)");  
 }
 
--*
+/*
   OPERATIONS FOR Activity
-*-
+*/
 operation Activity addNode(type) : ActivityNode {
   var node := Model.createInstance(type);
   self.node.add(node);

@@ -9,7 +9,7 @@ operation distributeTimeGlpsol(node) {
     var m = task.getMinimumTime();
     var w = task.getWeight();
 
-    -- Try to use arbitrary precision arithmetic until the last moment      
+    // Try to use arbitrary precision arithmetic until the last moment      
     var bdm = new Native('java.math.BigDecimal')(m);
     var bdw = new Native('java.math.BigDecimal')(w);
     var bdtl = bdm.add(suw.multiply(bdw));

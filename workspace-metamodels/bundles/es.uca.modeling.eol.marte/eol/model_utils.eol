@@ -1,4 +1,4 @@
--*
+/*
   Accessors and mutators for MDT UML2 models annotated with the MARTE profile.
 
   Copyright (c) 2011-2012 Antonio García Domínguez.  All rights
@@ -9,12 +9,12 @@
 
   Contributors:
      Antonio García Domínguez - initial API and implementation
-*-
+*/
 import 'utils.eol';
 
--*
+/*
   OPERATIONS FOR Activity
-*-
+*/
 @cached
 operation uml::Activity getVSLTool() {
   return new Native("es.uca.modeling.eol.marte.tools.VSLTupleTool");
@@ -72,18 +72,18 @@ operation uml::Activity getAnalysisContext() : GaAnalysisContext {
   }
 }
 
--- Sets the value of a slack per unit of weight variable.
+// Sets the value of a slack per unit of weight variable.
 operation uml::Activity setSWVariable(name : String, value : Real) {
   var tool     := self.getVSLTool();
   var ctx      := self.getAnalysisContext().context;
   var fullExpr := "$" + name + " : Real = " + value;
 
-  -- Search if the variable is already declared in the context.
+  // Search if the variable is already declared in the context.
   var iParam := 0;
   while (iParam < ctx.size()) {
     var paramName := tool.getParameterName(ctx.at(iParam));
     if (name == paramName) {
-      -- The variable is already declared: replace its value and we're done.
+      // The variable is already declared: replace its value and we're done.
       ctx.removeAt(iParam);
       ctx.add(iParam, fullExpr);
       return;
@@ -92,7 +92,7 @@ operation uml::Activity setSWVariable(name : String, value : Real) {
     iParam := iParam + 1;
   }
 
-  -- The variable was not part of the context yet: add it.
+  // The variable was not part of the context yet: add it.
   ctx.add(fullExpr);
 }
 
@@ -105,9 +105,9 @@ operation uml::Activity getStepMap() : Map {
   return map;
 }
 
--*
+/*
   OPERATIONS FOR ExecutableNode
-*-
+*/
 
 operation uml::ExecutableNode setThroughput(newThroughput : Real) {
   var step := self.getStep(true);
@@ -132,10 +132,10 @@ operation uml::ExecutableNode setTimeLimit(newTimeMillis : Real) {
   var tool := self.getActivity().getVSLTool();
   var step := self.getStep(true);
 
-  -- Remove all constraints not set by the user
+  // Remove all constraints not set by the user
   step.hostDemand := step.hostDemand.select(e | tool.getKeyvalMap(e).get("source") == "req");
 
-  -- Add a calculated constraint with the time
+  // Add a calculated constraint with the time
   step.hostDemand.add('(value=' + newTimeMillis + ',unit=s,source=calc)');
 }
 
@@ -186,19 +186,19 @@ operation uml::ExecutableNode getRepetitions() : Real {
 
   var loopPart = self.getLoopPart();
   if (loopPart == 0) {
-    -- the setup part is always run once: since the algorithm assumes that *everything* is run once per iteration,
-    -- we simply scale down its repetitions
+    // the setup part is always run once: since the algorithm assumes that *everything* is run once per iteration,
+    // we simply scale down its repetitions
     return 1.0d / self.inStructuredNode.getRepetitions();
   }
   else if (loopPart > 0) {
-    -- test, body and the rest are run once per iteration
+    // test, body and the rest are run once per iteration
     return 1.0d;
   }
   else {
     var tool := self.getActivity().getVSLTool();
     var value := tool.getKeyvalMap(step.rep).get("value");
     if (not value.isDefined()) {
-      -- The default value is still a literal number, instead of a proper NFP
+      // The default value is still a literal number, instead of a proper NFP
       value := step.rep;
     } 
     return value.asReal();
@@ -225,7 +225,7 @@ operation uml::ExecutableNode getRequiredHostDemand() : Map {
 operation uml::ExecutableNode updateNameWithPartitions() {
   var finalName = self.name;
   if (finalName.startsWith('(')) {
-    -- Remove partition from final name - we'll add back the updated partitions later
+    // Remove partition from final name - we'll add back the updated partitions later
     var parenClose = finalName.indexOf(')');
     if (parenClose >= 0) {
       finalName = finalName.substring(parenClose + 1).trim();
@@ -239,9 +239,9 @@ operation uml::ExecutableNode updateNameWithPartitions() {
   self.name = finalName;
 }
 
--*
+/*
   OPERATIONS FOR ActivityEdge
-*-
+*/
 $pre not self.getStep().isDefined() or self.getStep().prob.isDefined()
 $post _result.isDefined() and _result >= 0 and _result <= 1
 operation uml::ActivityEdge getProbability() : Real {
@@ -251,7 +251,7 @@ operation uml::ActivityEdge getProbability() : Real {
     var tool := self.getActivity().getVSLTool();
     var value := tool.getKeyvalMap(step.prob).get("value");
     if (not value.isDefined()) {
-      -- The default value is still a literal number
+      // The default value is still a literal number
       value = step.prob;
     }
     return value.asReal();
@@ -264,22 +264,22 @@ operation uml::ActivityEdge setProbability(newProb : Real) {
   self.getStep(true).prob := '(value=' + newProb + ', source=req)';
 }
 
--*
+/*
   OPERATIOSN FOR ControlFlow
-*-
+*/
 operation uml::ControlFlow getGuard() : String {
   return self.guard.body.first;
 }
 
--*
+/*
   OPERATIONS FOR NamedElement
-*-
+*/
 operation uml::NamedElement setThroughput(newThroughput : Real) {
-  -- do nothing
+  // do nothing
 }
 
 operation uml::NamedElement setTimeLimit(newTimeMillis : Real) {
-  -- do nothing
+  // do nothing
 }
 
 operation uml::NamedElement getContextParameterName() {
@@ -328,8 +328,8 @@ operation uml::NamedElement getStep() : GaStep {
 }
 
 operation uml::NamedElement getStep(createIfMissing : Boolean) : GaStep {
-  -- Cache node->GaStep mapping in the activity, to avoid having to perform
-  -- several linear scans when searching for the GaStep of several nodes
+  // Cache node->GaStep mapping in the activity, to avoid having to perform
+  // several linear scans when searching for the GaStep of several nodes
   var stepMap := self.getStepMap();
   if (createIfMissing and not stepMap.containsKey(self)) {
     var step := new GaStep;
@@ -343,7 +343,7 @@ operation uml::NamedElement getAnalysisContext() : GaAnalysisContext {
   return GaAnalysisContext.allInstances.selectOne(s|s.base_NamedElement == self);
 }
 
--* Operations for ActivityNode *-
+/* Operations for ActivityNode */
 
 operation uml::ActivityNode getStepMap() : Map {
   return self.getActivity().getStepMap();
@@ -362,7 +362,7 @@ operation uml::ActivityNode getActivity() {
   }
 }
 
--* Operations for ActivityEdge *-
+/* Operations for ActivityEdge */
 
 operation uml::ActivityEdge getStepMap() : Map {
   return self.source.getStepMap();

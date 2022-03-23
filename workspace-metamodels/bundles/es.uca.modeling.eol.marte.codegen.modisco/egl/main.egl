@@ -25,30 +25,30 @@ for (link in root.links) {
     needsFilterByClassRule := true;
   }
 
-  -- Weaving information
+  // Weaving information
   template.populate("testSuite", klazz);
   template.populate("testCases", link.testMethods);
   template.populate("execNode", execNode);
 
-  -- Performance test parameters
+  // Performance test parameters
   template.populate("invocations", root.samplesPerTest);
   template.populate("threads", root.threads);
   template.populate("timeLimit", timeLimit);
   template.populate("throughput", throughput);
   template.populate("metric", link.metric);
 
-  -- Code parameters
+  // Code parameters
   template.populate("packageName", packageName);
   template.populate("className", className);
   template.populate("fbc_packageName", FBC_PACKAGE);
   template.populate("fbc_className", FBC_CLASS);
 
-  -- Generate the actual Java code
+  // Generate the actual Java code
   template.generate(sourcePath(root.baseDir, packageName, className));
 }
 
 if (needsFilterByClassRule) {
-  -- Do we need this helper class?
+  // Do we need this helper class?
   var template := TemplateFactory.load("filterByClassRule.egl");
   var className := FBC_CLASS;
   var packageName := FBC_PACKAGE;

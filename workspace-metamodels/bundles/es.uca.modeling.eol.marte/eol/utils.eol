@@ -1,4 +1,4 @@
--*
+/*
   Miscellaneous utilities for both inference algorithms.
 
   Copyright (c) 2009-2012 Antonio García Domínguez.  All rights
@@ -9,14 +9,14 @@
 
   Contributors:
      Antonio García Domínguez - initial API and implementation
-*-
+*/
 
--- CONSTRAINTS ----------------------------------------------------------------
+// CONSTRAINTS
 
--*
+/*
   Computes the slack per unit of weight of a path using its constraint, when
   the path receives T seconds.
-*-
+*/
 operation Sequence slackPerWU(T : Real) : Real {
   if (self.last() > 0) {
     return (T-self.first())/self.last();
@@ -25,7 +25,7 @@ operation Sequence slackPerWU(T : Real) : Real {
   }
 }
 
--- GRAPH PREPROCESSING --------------------------------------------------------
+// GRAPH PREPROCESSING
 
 @cached
 $post _result >= 0
@@ -38,7 +38,7 @@ operation uml::ActivityNode getDepth() : Integer {
   }
 }
 
--- LOWEST COMMON ANCESTOR -----------------------------------------------------
+// LOWEST COMMON ANCESTOR
 
 @cached
 $pre nodeA.getDepth().isDefined() and nodeB.getDepth().isDefined()
@@ -86,7 +86,7 @@ operation Set intersect(otherSet : Set) : Set {
   return results;
 }
 
------ NODE TRAVERSAL ----------------------------------------------------------
+// NODE TRAVERSAL
 
 @cached
 operation uml::ActivityNode getLoopPart() : Integer {
@@ -114,18 +114,20 @@ operation uml::ActivityNode getLoopPart(ln : LoopNode) : Integer {
   }
 }
 
--- Returns all the nodes that are directly after this one: normally it will use
--- the outgoing edges, but it may need to work differently in some cases.
+// Returns all the nodes that are directly after this one: normally it will use
+// the outgoing edges, but it may need to work differently in some cases.
 @cached
 operation uml::ActivityNode getNext() : Set {
   if (self.outgoing.isEmpty()) {
-    for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
-      var part := self.getLoopPart(loopNode);
-      if (part == 0 and not loopNode.test.isEmpty()) {
-        return loopNode.test.getSources();
-      }
-      else if ((part == 0 or part == 1) and not loopNode.bodyPart.isEmpty()) {
-        return loopNode.bodyPart.getSources();
+    if (self.inStructuredNode.isDefined()) {
+      for (loopNode in self.inStructuredNode.select(s : LoopNode | true)) {
+        var part := self.getLoopPart(loopNode);
+        if (part == 0 and not loopNode.test.isEmpty()) {
+          return loopNode.test.getSources();
+        }
+        else if ((part == 0 or part == 1) and not loopNode.bodyPart.isEmpty()) {
+          return loopNode.bodyPart.getSources();
+        }
       }
     }
   } else {
@@ -134,18 +136,20 @@ operation uml::ActivityNode getNext() : Set {
   return Set {};
 }
 
--- Returns all the nodes that are directly after this one: normally it will use
--- the outgoing edges, but it may need to work differently in some cases.
+// Returns all the nodes that are directly after this one: normally it will use
+// the outgoing edges, but it may need to work differently in some cases.
 @cached
 operation uml::ActivityNode getPrev() : Set {
   if (self.incoming.isEmpty()) {
-    for (loopNode in self.inStructuredNode.select(s : uml::LoopNode | true)) {
-      var part := self.getLoopPart(loopNode);
-      if (part == 2 and not loopNode.test.isEmpty()) {
-        return loopNode.test.getSinks();
-      }
-      else if ((part == 1 or part == 2) and not loopNode.setupPart.isEmpty()) {
-        return loopNode.setupPart.getSinks();
+    if (self.inStructuredNode.isDefined()) {
+      for (loopNode in self.inStructuredNode.select(s : uml::LoopNode | true)) {
+        var part := self.getLoopPart(loopNode);
+        if (part == 2 and not loopNode.test.isEmpty()) {
+          return loopNode.test.getSinks();
+        }
+        else if ((part == 1 or part == 2) and not loopNode.setupPart.isEmpty()) {
+          return loopNode.setupPart.getSinks();
+        }
       }
     }
   } else {
@@ -209,12 +213,12 @@ operation uml::ActivityNode getContainers() : Set {
   }
 }
 
------ REACHABLE NODES ---------------------------------------------------------
+// REACHABLE NODES
 
--- Obtains all the nodes reachable from a node in the graph, in no
--- particular order. Returns a Set: to convert it to a sequence, use asSequence().
--- Note that if you only want the activities, you will need to filter them later
--- on, using select(), for instance.
+// Obtains all the nodes reachable from a node in the graph, in no
+// particular order. Returns a Set: to convert it to a sequence, use asSequence().
+// Note that if you only want the activities, you will need to filter them later
+// on, using select(), for instance.
 operation uml::ActivityNode getAllReachableNodes() : Set {
   var nodeSet := new Set;
   nodeSet.add(self);
@@ -222,8 +226,8 @@ operation uml::ActivityNode getAllReachableNodes() : Set {
   return nodeSet;
 }
 
--- Adds all the nodes which are reachable from a node in the graph to a set of
--- nodes. Avoids nodes which have been already visited.
+// Adds all the nodes which are reachable from a node in the graph to a set of
+// nodes. Avoids nodes which have been already visited.
 operation uml::ActivityNode addAllReachableNodes(nodeSet : Set) {
   addAllReachableNodeSet(self.getSources(), nodeSet);
   addAllReachableNodeSet(self.getNext(), nodeSet);
@@ -237,14 +241,14 @@ operation addAllReachableNodeSet(source : Collection, target : Collection) {
   }
 }
 
--- COMPARISON OF REAL NUMBERS -----------------------------
+// COMPARISON OF REAL NUMBERS
 
 $pre epsilon > 0
 operation isApproximatelyEqual(a, b, epsilon) : Boolean {
   return (a - b).abs() <= epsilon;
 }
 
--- COLLECTION UTILITIES -----------------------------------
+// COLLECTION UTILITIES
 
 $pre not self.isEmpty()
 operation Sequence popFirst() : Any {

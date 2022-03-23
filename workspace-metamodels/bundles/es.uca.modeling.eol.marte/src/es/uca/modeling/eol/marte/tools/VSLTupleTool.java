@@ -19,14 +19,12 @@ public class VSLTupleTool {
 	private final static Pattern REGEX_PARAMETER_SPLIT = Pattern.compile(" *[$:] *");
 	private final static Pattern REGEX_CONTEXT_SPLIT = Pattern.compile(" *[$:=] *");
 
-
 	public Map<String, String> getKeyvalMap(String tuple) {
 		if (tuple == null) {
 			throw new IllegalArgumentException("tuple cannot be null");
 		}
 
-		@SuppressWarnings("unchecked")
-		final Map<String, String> map = new EolMap();
+		final Map<String, String> map = new EolMap<>();
 		if (!tuple.startsWith("(")) return map;
 
 		final String[] keyvals = REGEX_TUPLE_SPLIT.split(tuple.substring(1, tuple.length() - 1));

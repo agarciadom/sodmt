@@ -48,7 +48,7 @@ printf "END_SUW\n\n";
 data;
 
 [%
-  -- this template receives one argument (selected: the InitialNode from which we want to launch the computation)
+  // this template receives one argument (selected: the InitialNode from which we want to launch the computation)
   var allTasks : Set;
   var allPaths : Set;
 

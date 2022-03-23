@@ -6,9 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Fragment-Host: es.uca.modeling.performance.sodmt.evl;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: es.uca.modeling.performance.sodmt.sprocess,
+ es.uca.modeling.performance.sodmt.scomp,
  org.eclipse.epsilon.eunit.junit,
  org.eclipse.epsilon.emc.emf,
  org.junit,
- es.uca.modeling.performance.sodmt.scomp;bundle-version="1.0.0",
  org.eclipse.epsilon.eol.dt
 Automatic-Module-Name: es.uca.modeling.performance.sodmt.evl.tests

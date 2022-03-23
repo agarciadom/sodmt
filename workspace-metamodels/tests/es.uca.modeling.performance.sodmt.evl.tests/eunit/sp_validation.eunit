@@ -2,7 +2,7 @@ import 'evl_utils.eol';
 
 @setup
 operation setUp() {
-  -- available directly within the @test
+  // available directly within the @test
   var sp = new SP!ServiceProcess;
 }
 
@@ -783,7 +783,7 @@ operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_twoForkedPaths() {
   assertNoProblem('JoinedBranchesMustPairwiseHaveSameLCA');
 }
 
--- add test for checking that branches from a decisionnode cannot be joined on a joinnode and same with the fork/merge pairs
+// add test for checking that branches from a decisionnode cannot be joined on a joinnode and same with the fork/merge pairs
 
 @test
 operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_joinCannotBeLCAOfDecision() {
@@ -830,7 +830,7 @@ operation JoinNode_JoinedBranchesMustPairwiseHaveSameLCA_samePairwiseLCA() {
   assertNoProblems(Sequence {'JoinedBranchesMustPairwiseHaveSameLCA', 'JoinLCAMustBeFork', 'MergeLCAMustBeDecision'});
 }
 
--- MergeNode
+// MergeNode
 
 @test
 operation MergeNode_MoreThanOneIncomingFlow_oneIncoming() {
@@ -881,7 +881,7 @@ operation MergeNode_JoinedBranchesMustPairwiseHaveSameLCA_noCommonLCA() {
   assertHasProblem('JoinedBranchesMustPairwiseHaveSameLCA');
 }
 
--- DecisionNode
+// DecisionNode
 
 @test
 operation DecisionNode_TotalProbabilityIsOne_noOutgoing() {
@@ -1046,7 +1046,7 @@ operation ServiceProcess_namesShouldBeUnique_twoNotUnique() {
   assertHasProblem('NamesShouldBeUnique');
 }
 
--- TEST TEMPLATES --
+// TEST TEMPLATES //
 
 operation weightTest(w : Real) {
   var sp = new SP!ServiceProcess;
@@ -1085,7 +1085,7 @@ operation conditionProbabilityTest(prob : Real) {
   validate();
 }
 
--- SERVICE PROCESS OPERATIONS --
+// SERVICE PROCESS OPERATIONS //
 
 operation SP!ServiceProcess newAction() : SP!Action {
   var n = new SP!Action;
@@ -1147,7 +1147,7 @@ operation SP!ServiceProcess newSActivity() : SP!StructuredActivityNode {
   return n;
 }
 
--- STRUCTURED NODE OPERATIONS --
+// STRUCTURED NODE OPERATIONS //
 
 operation SP!StructuredActivityNode newAction() : SP!Action {
   var a = new SP!Action;
@@ -1161,7 +1161,7 @@ operation SP!StructuredActivityNode newInitial() : SP!InitialNode {
   return a;
 }
 
--- ACTIVITY NODE OPERATIONS --
+// ACTIVITY NODE OPERATIONS //
 
 operation SP!ActivityNode newAction() : SP!Action {
   return self.linkTo(self.eContainer.newAction()).target;

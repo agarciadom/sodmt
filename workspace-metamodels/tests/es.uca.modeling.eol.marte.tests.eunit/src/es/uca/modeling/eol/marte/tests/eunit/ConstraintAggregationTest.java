@@ -4,10 +4,10 @@ import java.io.File;
 import java.net.URI;
 
 import org.eclipse.epsilon.eol.execute.operations.contributors.OperationContributor;
-import org.eclipse.epsilon.eunit.junit.EUnitTestRunner;
+import org.eclipse.epsilon.eunit.junit.dt.EclipseEUnitTestRunner;
 import org.junit.runner.RunWith;
 
-@RunWith(EUnitTestRunner.class)
+@RunWith(EclipseEUnitTestRunner.class)
 public class ConstraintAggregationTest extends AbstractMARTEInferenceTest {
 
 	@Override

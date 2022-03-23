@@ -19,7 +19,7 @@ public class ServiceCompositionValidationTest extends AbstractValidationTest {
 		EmfModel dummySCModel = new EmfModel();
 		dummySCModel.setName("SC");
 		dummySCModel.setMetamodelUri(ServiceCompositionPackage.eNS_URI);
-		dummySCModel.setModelFile("dummy-model.uml");
+		dummySCModel.setModelFile("dummy-model-sc.uml");
 		dummySCModel.setReadOnLoad(false);
 		dummySCModel.setStoredOnDisposal(false);
 		dummySCModel.load();

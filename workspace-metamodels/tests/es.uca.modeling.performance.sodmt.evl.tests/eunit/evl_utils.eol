@@ -7,7 +7,7 @@ operation assertNoProblem(ruleName : String) {
 }
 
 operation assertHasProblems(ruleNames : Sequence) {
-  var problems = EVL!EvlUnsatisfiedConstraint.allInstances;
+  var problems = EVL!UnsatisfiedConstraint.allInstances;
 
   for (ruleName in ruleNames) {
     if (not problems.exists(p|p.constraint.name = ruleName)) {
@@ -22,7 +22,7 @@ operation assertHasProblems(ruleNames : Sequence) {
 }
 
 operation assertNoProblems(ruleNames : Sequence) {
-  var problems = EVL!EvlUnsatisfiedConstraint.allInstances;
+  var problems = EVL!UnsatisfiedConstraint.allInstances;
 
   for (ruleName in ruleNames) {
     assertFalse("The model should not violate rule '" + ruleName + "'", problems.exists(p|p.constraint.name = ruleName));

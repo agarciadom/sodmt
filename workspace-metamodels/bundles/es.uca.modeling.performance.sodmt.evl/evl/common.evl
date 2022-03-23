@@ -1,6 +1,6 @@
 import 'platform:/plugin/es.uca.modeling.performance.sodmt.eol/eol/utils.eol';
 
--- Common constraints
+// Common constraints
 
 context ActivityNode {
 
@@ -25,8 +25,8 @@ context ActivityNode {
     }
   }
 
-  -- See above comment for an explanation of why we use both min and max
-  -- constraints instead of just one
+  /* See above comment for an explanation of why we use both min and max
+     constraints instead of just one */
   constraint MinimumOneOutgoing {
     guard : not self.isKindOf(FinalNode) and not self.isKindOf(PerformanceAnnotation) and not self.isKindOf(ObjectNode)
     check : self.outgoing.select(i | i.isKindOf(ControlFlow)).size() >= 1
@@ -129,7 +129,7 @@ context ActivityNode {
   }
 }
 
--- Flow constraints -------------------------------
+// Flow constraints
 
 context ActivityEdge {
   constraint BothEndsDefined {
@@ -229,7 +229,7 @@ context ObjectFlow {
   }
 }
 
--- Annotation constraints -------------------------
+// Annotation constraints
 
 context PerformanceAnnotation {
   constraint ValidConcurrentUsers {
@@ -292,7 +292,7 @@ context LocalPerformanceAnnotation {
   }
 }
 
--- Node constraints -----------------------------
+// Node constraints
 
 context InitialNode {
 
@@ -422,7 +422,7 @@ context StructuredActivityNode {
   }
 }
 
--- OPERATIONS --------------------
+// OPERATIONS
 
 operation ActivityNode newExecutableNode() {
   var newElement := new ExecutableNode;

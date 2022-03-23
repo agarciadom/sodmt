@@ -1,8 +1,4 @@
-import "common.eol";
-
--*
-  Example of how @data and $with can be combined.
-*-
+import "platform:/plugin/es.uca.modeling.performance.sodmt.eol.tests/common.eol";
 
 @data elems
 operation mydata() {

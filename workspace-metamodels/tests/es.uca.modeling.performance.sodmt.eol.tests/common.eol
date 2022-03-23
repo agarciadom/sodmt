@@ -33,9 +33,9 @@ operation assertConstraintsEquals(expected : Sequence, actual : Sequence) {
   }
 }
 
--*
+/*
   Checks if the results produced by the old and the new algorithm are equal or not.
-*-
+*/
 operation assertOldAndNewResultsAreEqual(globalLimit : Real, shouldSucceed : Boolean) {
     var successOld := annotateTimeLimits(globalLimit, getStartNode());
     var tlimitOld  := getTimeLimitMap();

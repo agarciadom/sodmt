@@ -2,7 +2,7 @@ import 'evl_utils.eol';
 
 @setup
 operation setUp() {
-  -- available directly within the @test
+  // available directly within the @test
   var sc = new SC!ServiceComposition;
 }
 
@@ -103,7 +103,7 @@ operation ServiceComposition_namesShouldBeUnique_twoNotUnique() {
   assertHasProblem('NamesShouldBeUnique');
 }
 
--- UTILITY OPERATIONS
+// UTILITY OPERATIONS
 
 operation ServiceComposition newPartition(name: String) {
   var p = new SC!ActivityPartition;

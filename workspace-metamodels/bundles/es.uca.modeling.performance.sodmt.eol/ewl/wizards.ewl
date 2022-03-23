@@ -16,8 +16,8 @@ wizard InferTimeLimitsNew {
           return;
         }
       }
-    } -- transaction
-  } -- do
+    }
+  }
 }
 
 wizard InferPerformanceAnnotations {
@@ -30,8 +30,8 @@ wizard InferPerformanceAnnotations {
           return;
         }
       }
-    } -- transaction
-  } -- do
+    }
+  }
 }
 
 wizard GenGLPK {
@@ -52,7 +52,7 @@ wizard RunGLPK {
   }
 }
 
--* Examples for the new ability to access the notation model *-
+/* Examples for the new ability to access the notation model */
 
 wizard MakeBold {
   guard : self.isKindOf(ActivityNode)

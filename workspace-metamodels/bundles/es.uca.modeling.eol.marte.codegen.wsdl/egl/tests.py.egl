@@ -4,15 +4,15 @@
 
   var links := Weaving!PerformanceRequirementLinks.all.first();
 
-  -- We can't really get more than a millisecond of accuracy on most
-  -- systems, so anything more than 2 fractional digits is overkill.
+  // We can't really get more than a millisecond of accuracy on most
+  // systems, so anything more than 2 fractional digits is overkill.
   var df := new Native('java.text.DecimalFormat')("0.#");
   df.setMaximumFractionDigits(2);
   var symbols := df.getDecimalFormatSymbols();
   symbols.setDecimalSeparator('.'.charAt(0));
   df.setDecimalFormatSymbols(symbols);
 
-  -- Group tests by port
+  // Group tests by port
   var testsByPort : Map;
   for (link in  links.links) {
     var port := link.`operation`.eContainer();

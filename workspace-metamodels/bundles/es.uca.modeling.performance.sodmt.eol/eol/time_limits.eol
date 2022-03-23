@@ -1,9 +1,9 @@
--*
+/*
   Heuristic algorithm for computing the time limits in seconds for
   each ExecutableNode node in the ServiceComposition and ServiceProcess
   models.
 
-  Copyright (c) 2009-2013 Antonio García Domínguez.  All rights
+  Copyright (c) 2009-2022 Antonio García Domínguez.  All rights
   reserved. This program and the accompanying materials are made
   available under the terms of the Eclipse Public License v1.0 which
   accompanies this distribution, and is available at
@@ -62,19 +62,19 @@
       at least as restrictive as this one, we can subtract their annotated time
       limits from the slack and split the remaining slack among the nodes which
       have not been annotated yet.
-*-
+*/
 import 'utils.eol';
 
--*
+/*
    Current assumptions: acyclic graph with only one initial node
    Output: returns true when all nodes reachable from the starting node
            are successfully annotated, false otherwise.
-*-
+*/
 $pre start.isDefined()
 operation annotateTimeLimits(global_limit : Real, start : ActivityNode) : Boolean {
   var paths        := getAllExecutionPathsFrom(start);
 
-  -- Cache all manual time limits and relax all automatic constraints
+  // Cache all manual time limits and relax all automatic constraints
   for (path in paths) {
     for (node in path) {
       node.setTimeLimit(0.0d);
@@ -84,9 +84,9 @@ operation annotateTimeLimits(global_limit : Real, start : ActivityNode) : Boolea
     path.~totalWeight   := getWeightSum(path);
   }
 
-  -- Use the paths to establish the constraints, using the most restrictive
-  -- paths first. Otherwise, results would vary depending on what path got
-  -- evaluated first, and would be inconsistent.
+  // Use the paths to establish the constraints, using the most restrictive
+  // paths first. Otherwise, results would vary depending on what path got
+  // evaluated first, and would be inconsistent.
   for (path in paths.sortBy(p | p.getLimitEstimateForFreeNodes())) {
     var slack := path.~startingSlack;
     var totalWeight := path.~totalWeight;
@@ -113,10 +113,10 @@ operation annotateTimeLimits(global_limit : Real, start : ActivityNode) : Boolea
   return true;
 }
 
--- Returns an estimate of the time available for each free node in the path.
--- If there are no free nodes, it will use an arbitrarily large value to ensure
--- that it is one of the last ones. We only want paths with no free nodes for
--- consistency checking, anyway.
+// Returns an estimate of the time available for each free node in the path.
+// If there are no free nodes, it will use an arbitrarily large value to ensure
+// that it is one of the last ones. We only want paths with no free nodes for
+// consistency checking, anyway.
 operation Sequence getLimitEstimateForFreeNodes() : Real {
   if (self.~totalWeight = 0) {
     return 1000000;
@@ -127,14 +127,14 @@ operation Sequence getLimitEstimateForFreeNodes() : Real {
 
 $pre path.isDefined() and path.notEmpty() and global_limit > 0
 operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
-  -*
+  /*
     There are two possibilities:
      * this is the first path in the graph, so all free nodes can be updated
        to the new time limit.
      * some free nodes were already annotated by paths which were at least as
        restrictive as this one, so we can safely ignore them. Use the remaining
        slack for the nodes which have not been annotated yet.
-  *-
+  */
   var unrestricted := getUnrestrictedNodes(path, global_limit);
   if (unrestricted.notEmpty()) {
     var prevLimitsSum := path.collect(node | node.getTimeLimit()).sum();
@@ -153,7 +153,7 @@ operation splitSlackOverFreeNodes(path : Sequence, global_limit : Real) {
   }
 }
 
--- TIME LIMITS: QUERIES AND UPDATES -------------
+// TIME LIMITS: QUERIES AND UPDATES
 
 operation getMinTimeSum(path : Sequence) : Real {
   return path.select(node | node.hasProperty("annotation")).collect(r | r.getMinimumTime() * r.getRepetitions()).sum();
@@ -163,21 +163,21 @@ operation getWeightSum(path : Sequence) : Real {
   return path.select(node | node.hasProperty("annotation")).collect(r|r.getWeight() * r.getRepetitions()).sum();
 }
 
--- RESTRICTED/UNRESTRICTED NODES ----------------
+// RESTRICTED/UNRESTRICTED NODES
 
--- Returns all nodes in the path which do not have a performance restriction yet.
+// Returns all nodes in the path which do not have a performance restriction yet.
 operation getUnrestrictedNodes(path : Sequence, global_limit) : Sequence {
   return path.select(node | node.hasProperty("annotation") and not isRestricted(node));
 }
 
--- Returns all nodes in the path which already have a performance restriction.
+// Returns all nodes in the path which already have a performance restriction.
 operation getRestrictedNodes(path : Sequence, global_limit) : Sequence {
   return path.select(node | node.hasProperty("annotation") and isRestricted(node));
 }
 
--- Returns true if the node has a performance restriction, either manual or
--- automatic. Automatic restrictions which are equal to the specified dummy
--- value are considered not to exist.
+// Returns true if the node has a performance restriction, either manual or
+// automatic. Automatic restrictions which are equal to the specified dummy
+// value are considered not to exist.
 operation isRestricted(node) : Boolean {
   return node.annotation.isDefined() and node.annotation.secsTimeLimit > 0;
 }

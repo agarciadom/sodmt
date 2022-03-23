@@ -8,7 +8,7 @@ var oldCompartment = partF.children.selectOne(f|f.name='ActivityPartitionNodesCo
 partF.border.insets.top    = -4;
 partF.border.insets.bottom = -4;
 
--- Replace the old label with a VerticalLabel
+// Replace the old label with a VerticalLabel
 var newLabel = new GmfGraph!VerticalLabel;
 newLabel.name = oldLabel.name;
 newLabel.text = oldLabel.text;
@@ -18,7 +18,7 @@ delete oldLabel;
 var labelAccessor = partFD.accessors.selectOne(a|a.accessor = 'getFigureActivityPartitionLabelFigure');
 labelAccessor.figure = newLabel;
 
--- Replace the old compartment with an InvisibleRectangle
+// Replace the old compartment with an InvisibleRectangle
 var compartment = new GmfGraph!InvisibleRectangle;
 compartment.name = oldCompartment.name;
 delete oldCompartment;
@@ -26,7 +26,7 @@ partF.children.add(compartment);
 var compartmentAccessor = partFD.accessors.selectOne(a|a.accessor = 'getActivityPartitionNodesCompartmentFigure');
 compartmentAccessor.figure = compartment;
 
--- Use a grid-based layout
+// Use a grid-based layout
 partF.layout = new GmfGraph!GridLayout;
 partF.layout.numColumns = 2;
 partF.layout.equalWidth = false;
