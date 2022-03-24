@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:SampleServiceProfile="http:///schemas/SampleServiceProfile/_JbgM0D1cEeGMJN3s2E6QQQ/7" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//GQAM http:///schemas/SampleServiceProfile/_JbgM0D1cEeGMJN3s2E6QQQ/7 service.profile.uml#_JbgM0T1cEeGMJN3s2E6QQQ">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GQAM="http://www.eclipse.org/papyrus/GQAM/1" xmlns:SampleServiceProfile="http:///schemas/SampleServiceProfile/_JbgM0D1cEeGMJN3s2E6QQQ/7" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/GQAM/1 http://www.eclipse.org/papyrus/MARTE/1#//MARTE_AnalysisModel/GQAM http:///schemas/SampleServiceProfile/_JbgM0D1cEeGMJN3s2E6QQQ/7 service.profile.uml#_JbgM0T1cEeGMJN3s2E6QQQ">
   <uml:Model xmi:id="_vlvVQT1GEeGLMauHIEjlIw" name="model">
     <packagedElement xmi:type="uml:Class" xmi:id="_x0K7sD1GEeGLMauHIEjlIw" name="Article">
       <ownedAttribute xmi:id="_MoPFAD1QEeGr0d7Yz8C99Q" name="id" type="_3l73QD1MEeGr0d7Yz8C99Q" isOrdered="true"/>
@@ -126,7 +126,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_q8mGQD1OEeGr0d7Yz8C99Q" name="decimal"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2-5agD1OEeGr0d7Yz8C99Q" name="boolean"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_5yILkD1YEeGCENGiitFRVw" clientDependency="_CqALMD1ZEeGCENGiitFRVw" name="OrderService">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_5yILkD1YEeGCENGiitFRVw" name="OrderService">
       <ownedOperation xmi:id="_8MVkMD1YEeGCENGiitFRVw" name="close">
         <ownedParameter xmi:id="_H6ks8D1ZEeGCENGiitFRVw" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false"/>
       </ownedOperation>
@@ -146,7 +146,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_CqALMD1ZEeGCENGiitFRVw" name="Dependency0" client="_5yILkD1YEeGCENGiitFRVw" supplier="_1cgUUD1GEeGLMauHIEjlIw"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_mFfFAD1cEeGdF8-ZrGdK1A" clientDependency="_3NbdYD1cEeGdF8-ZrGdK1A _4JA74D1cEeGdF8-ZrGdK1A" name="ShipmentService">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_mFfFAD1cEeGdF8-ZrGdK1A" name="ShipmentService">
       <ownedOperation xmi:id="_pNFIED1cEeGdF8-ZrGdK1A" name="shipOrder">
         <ownedParameter xmi:id="_wF6oID1cEeGdF8-ZrGdK1A" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q" isUnique="false" effect="read"/>
         <ownedParameter xmi:id="_0JFioD1cEeGdF8-ZrGdK1A" name="shipment" type="_2_mewD1GEeGLMauHIEjlIw" direction="return"/>
@@ -154,7 +154,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_3NbdYD1cEeGdF8-ZrGdK1A" name="Dependency1" client="_mFfFAD1cEeGdF8-ZrGdK1A" supplier="_2_mewD1GEeGLMauHIEjlIw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_4JA74D1cEeGdF8-ZrGdK1A" name="Dependency2" client="_mFfFAD1cEeGdF8-ZrGdK1A" supplier="_1cgUUD1GEeGLMauHIEjlIw"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_E16sUD1dEeGdF8-ZrGdK1A" clientDependency="_iFXpED1dEeGdF8-ZrGdK1A _kmJjwD1dEeGdF8-ZrGdK1A" name="InvoiceService">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_E16sUD1dEeGdF8-ZrGdK1A" name="InvoiceService">
       <ownedOperation xmi:id="_GGFTsD1dEeGdF8-ZrGdK1A" name="generate">
         <ownedParameter xmi:id="_oKrfMD3FEeG-xdrTjZ82Xg" name="orderID" type="_3l73QD1MEeGr0d7Yz8C99Q"/>
         <ownedParameter xmi:id="_vga9sD3FEeG-xdrTjZ82Xg" name="result" type="_2S5w0D1GEeGLMauHIEjlIw" direction="return"/>
@@ -173,7 +173,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_iFXpED1dEeGdF8-ZrGdK1A" name="Dependency3" client="_E16sUD1dEeGdF8-ZrGdK1A" supplier="_2S5w0D1GEeGLMauHIEjlIw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_kmJjwD1dEeGdF8-ZrGdK1A" name="Dependency4" client="_E16sUD1dEeGdF8-ZrGdK1A" supplier="_1cgUUD1GEeGLMauHIEjlIw"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_IHANID1eEeGdF8-ZrGdK1A" clientDependency="_psumkD1eEeGdF8-ZrGdK1A _qbIksD1eEeGdF8-ZrGdK1A" name="WarehouseService">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_IHANID1eEeGdF8-ZrGdK1A" name="WarehouseService">
       <ownedOperation xmi:id="_JP4gwD1eEeGdF8-ZrGdK1A" name="add">
         <ownedParameter xmi:id="_VOnjoD1eEeGdF8-ZrGdK1A" name="warehouse" type="_4qD1cD1GEeGLMauHIEjlIw" isUnique="false"/>
       </ownedOperation>
@@ -201,7 +201,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_psumkD1eEeGdF8-ZrGdK1A" name="Dependency5" client="_IHANID1eEeGdF8-ZrGdK1A" supplier="_4qD1cD1GEeGLMauHIEjlIw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_qbIksD1eEeGdF8-ZrGdK1A" name="Dependency6" client="_IHANID1eEeGdF8-ZrGdK1A" supplier="_x0K7sD1GEeGLMauHIEjlIw"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_0oP48D1eEeGdF8-ZrGdK1A" clientDependency="_ulOxID1fEeGdF8-ZrGdK1A" name="ArticleService">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_0oP48D1eEeGdF8-ZrGdK1A" name="ArticleService">
       <ownedOperation xmi:id="_4AOhYD1eEeGdF8-ZrGdK1A" name="add">
         <ownedParameter xmi:id="_Em2DoD1fEeGdF8-ZrGdK1A" name="article" type="_x0K7sD1GEeGLMauHIEjlIw" isUnique="false"/>
       </ownedOperation>
@@ -226,73 +226,73 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_ulOxID1fEeGdF8-ZrGdK1A" name="Dependency7" client="_0oP48D1eEeGdF8-ZrGdK1A" supplier="_x0K7sD1GEeGLMauHIEjlIw"/>
     <packagedElement xmi:type="uml:Activity" xmi:id="_Kqo8oLnjEeGVf6XmCE_11Q" name="Handle Order" node="_UwDRULouEeG_n-mswuuavA _XGNQYLouEeG_n-mswuuavA _bZSPILouEeG_n-mswuuavA _c__HMLouEeG_n-mswuuavA _h1mLQLouEeG_n-mswuuavA _kHDQgLouEeG_n-mswuuavA _nBMtcLouEeG_n-mswuuavA _tGt6MLouEeG_n-mswuuavA _uK-MgLouEeG_n-mswuuavA _RS_jELrHEeGFLpeyUCn0Xw _jXJsELrHEeGFLpeyUCn0Xw">
-      <edge xmi:type="uml:ControlFlow" xmi:id="_XGTXALouEeG_n-mswuuavA" name="ControlFlow11" source="_UwDRULouEeG_n-mswuuavA" target="_XGNQYLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_XGTXALouEeG_n-mswuuavA" name="ControlFlow11" target="_XGNQYLouEeG_n-mswuuavA" source="_UwDRULouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_XGT-ELouEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_XGT-EbouEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_bZcAILouEeG_n-mswuuavA" name="ControlFlow12" source="_XGNQYLouEeG_n-mswuuavA" target="_bZSPILouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_bZcAILouEeG_n-mswuuavA" name="ControlFlow12" target="_bZSPILouEeG_n-mswuuavA" source="_XGNQYLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_bZcnMLouEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_bZcnMbouEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_dhkxULouEeG_n-mswuuavA" name="ControlFlow13" source="_bZSPILouEeG_n-mswuuavA" target="_c__HMLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dhkxULouEeG_n-mswuuavA" name="ControlFlow13" target="_c__HMLouEeG_n-mswuuavA" source="_bZSPILouEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_P49xILovEeG_n-mswuuavA">
           <language>Natural language</language>
           <body>order is accepted</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_dhl_cLouEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_xGRgALouEeG_n-mswuuavA" name="ControlFlow17" source="_c__HMLouEeG_n-mswuuavA" target="_nBMtcLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xGRgALouEeG_n-mswuuavA" name="ControlFlow17" target="_nBMtcLouEeG_n-mswuuavA" source="_c__HMLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_L0a9oLovEeG_n-mswuuavA" name="" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_xGSuILouEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_y-JnoLouEeG_n-mswuuavA" name="ControlFlow21" source="_tGt6MLouEeG_n-mswuuavA" target="_uK-MgLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_y-JnoLouEeG_n-mswuuavA" name="ControlFlow21" target="_uK-MgLouEeG_n-mswuuavA" source="_tGt6MLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_y-KOsLouEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_y-KOsbouEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_TDmlELrHEeGFLpeyUCn0Xw" name="ControlFlow23" source="_bZSPILouEeG_n-mswuuavA" target="_RS_jELrHEeGFLpeyUCn0Xw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_TDmlELrHEeGFLpeyUCn0Xw" name="ControlFlow23" target="_RS_jELrHEeGFLpeyUCn0Xw" source="_bZSPILouEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_a75-ELrHEeGFLpeyUCn0Xw">
           <language>Natural language</language>
           <body>order is rejected</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_TDnzMLrHEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_f01b4LrHEeGFLpeyUCn0Xw" name="ControlFlow24" source="_RS_jELrHEeGFLpeyUCn0Xw" target="_tGt6MLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_f01b4LrHEeGFLpeyUCn0Xw" name="ControlFlow24" target="_tGt6MLouEeG_n-mswuuavA" source="_RS_jELrHEeGFLpeyUCn0Xw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_f02qALrHEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_f03RELrHEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_jYQfULrHEeGFLpeyUCn0Xw" name="ControlFlow25" source="_h1mLQLouEeG_n-mswuuavA" target="_jXJsELrHEeGFLpeyUCn0Xw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jYQfULrHEeGFLpeyUCn0Xw" name="ControlFlow25" target="_jXJsELrHEeGFLpeyUCn0Xw" source="_h1mLQLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_jYRGYLrHEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_jYRtcLrHEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_kNyZILrHEeGFLpeyUCn0Xw" name="ControlFlow26" source="_nBMtcLouEeG_n-mswuuavA" target="_jXJsELrHEeGFLpeyUCn0Xw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_kNyZILrHEeGFLpeyUCn0Xw" name="ControlFlow26" target="_jXJsELrHEeGFLpeyUCn0Xw" source="_nBMtcLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_kNznQLrHEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_kNznQbrHEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_kyEK4LrHEeGFLpeyUCn0Xw" name="ControlFlow27" source="_jXJsELrHEeGFLpeyUCn0Xw" target="_RS_jELrHEeGFLpeyUCn0Xw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_kyEK4LrHEeGFLpeyUCn0Xw" name="ControlFlow27" target="_RS_jELrHEeGFLpeyUCn0Xw" source="_jXJsELrHEeGFLpeyUCn0Xw">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_kyFZALrHEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_kyGAELrHEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_ek4jALrfEeGFLpeyUCn0Xw" name="ControlFlow28" source="_c__HMLouEeG_n-mswuuavA" target="_kHDQgLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ek4jALrfEeGFLpeyUCn0Xw" name="ControlFlow28" target="_kHDQgLouEeG_n-mswuuavA" source="_c__HMLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_ek5KELrfEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_ek5xILrfEeGFLpeyUCn0Xw"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_e9PYoLrfEeGFLpeyUCn0Xw" name="ControlFlow29" source="_kHDQgLouEeG_n-mswuuavA" target="_h1mLQLouEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_e9PYoLrfEeGFLpeyUCn0Xw" name="ControlFlow29" target="_h1mLQLouEeG_n-mswuuavA" source="_kHDQgLouEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_e9P_sLrfEeGFLpeyUCn0Xw" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_e9P_sbrfEeGFLpeyUCn0Xw"/>
       </edge>
       <node xmi:type="uml:InitialNode" xmi:id="_UwDRULouEeG_n-mswuuavA" name="InitialNode2" outgoing="_XGTXALouEeG_n-mswuuavA"/>
-      <node xmi:type="uml:CallBehaviorAction" xmi:id="_XGNQYLouEeG_n-mswuuavA" name="Evaluate Order" outgoing="_bZcAILouEeG_n-mswuuavA" incoming="_XGTXALouEeG_n-mswuuavA"/>
-      <node xmi:type="uml:DecisionNode" xmi:id="_bZSPILouEeG_n-mswuuavA" name="DecisionNode2" outgoing="_dhkxULouEeG_n-mswuuavA _TDmlELrHEeGFLpeyUCn0Xw" incoming="_bZcAILouEeG_n-mswuuavA"/>
-      <node xmi:type="uml:ForkNode" xmi:id="_c__HMLouEeG_n-mswuuavA" name="ForkNode2" outgoing="_xGRgALouEeG_n-mswuuavA _ek4jALrfEeGFLpeyUCn0Xw" incoming="_dhkxULouEeG_n-mswuuavA"/>
-      <node xmi:type="uml:CallOperationAction" xmi:id="_h1mLQLouEeG_n-mswuuavA" name="Perform Payment" outgoing="_jYQfULrHEeGFLpeyUCn0Xw" incoming="_e9PYoLrfEeGFLpeyUCn0Xw" operation="_bFvkgD1dEeGdF8-ZrGdK1A"/>
-      <node xmi:type="uml:CallOperationAction" xmi:id="_kHDQgLouEeG_n-mswuuavA" name="Create Invoice" outgoing="_e9PYoLrfEeGFLpeyUCn0Xw" incoming="_ek4jALrfEeGFLpeyUCn0Xw" operation="_GGFTsD1dEeGdF8-ZrGdK1A"/>
-      <node xmi:type="uml:CallOperationAction" xmi:id="_nBMtcLouEeG_n-mswuuavA" name="Ship Order" outgoing="_kNyZILrHEeGFLpeyUCn0Xw" incoming="_xGRgALouEeG_n-mswuuavA" operation="_pNFIED1cEeGdF8-ZrGdK1A"/>
-      <node xmi:type="uml:CallOperationAction" xmi:id="_tGt6MLouEeG_n-mswuuavA" name="Close Order" outgoing="_y-JnoLouEeG_n-mswuuavA" incoming="_f01b4LrHEeGFLpeyUCn0Xw" operation="_8MVkMD1YEeGCENGiitFRVw"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_XGNQYLouEeG_n-mswuuavA" name="Evaluate Order" incoming="_XGTXALouEeG_n-mswuuavA" outgoing="_bZcAILouEeG_n-mswuuavA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_bZSPILouEeG_n-mswuuavA" name="DecisionNode2" incoming="_bZcAILouEeG_n-mswuuavA" outgoing="_dhkxULouEeG_n-mswuuavA _TDmlELrHEeGFLpeyUCn0Xw"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_c__HMLouEeG_n-mswuuavA" name="ForkNode2" incoming="_dhkxULouEeG_n-mswuuavA" outgoing="_xGRgALouEeG_n-mswuuavA _ek4jALrfEeGFLpeyUCn0Xw"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_h1mLQLouEeG_n-mswuuavA" name="Perform Payment" incoming="_e9PYoLrfEeGFLpeyUCn0Xw" outgoing="_jYQfULrHEeGFLpeyUCn0Xw" operation="_bFvkgD1dEeGdF8-ZrGdK1A"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_kHDQgLouEeG_n-mswuuavA" name="Create Invoice" incoming="_ek4jALrfEeGFLpeyUCn0Xw" outgoing="_e9PYoLrfEeGFLpeyUCn0Xw" operation="_GGFTsD1dEeGdF8-ZrGdK1A"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_nBMtcLouEeG_n-mswuuavA" name="Ship Order" incoming="_xGRgALouEeG_n-mswuuavA" outgoing="_kNyZILrHEeGFLpeyUCn0Xw" operation="_pNFIED1cEeGdF8-ZrGdK1A"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_tGt6MLouEeG_n-mswuuavA" name="Close Order" incoming="_f01b4LrHEeGFLpeyUCn0Xw" outgoing="_y-JnoLouEeG_n-mswuuavA" operation="_8MVkMD1YEeGCENGiitFRVw"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_uK-MgLouEeG_n-mswuuavA" name="ActivityFinalNode2" incoming="_y-JnoLouEeG_n-mswuuavA"/>
-      <node xmi:type="uml:MergeNode" xmi:id="_RS_jELrHEeGFLpeyUCn0Xw" name="MergeNode1" outgoing="_f01b4LrHEeGFLpeyUCn0Xw" incoming="_TDmlELrHEeGFLpeyUCn0Xw _kyEK4LrHEeGFLpeyUCn0Xw"/>
-      <node xmi:type="uml:JoinNode" xmi:id="_jXJsELrHEeGFLpeyUCn0Xw" name="JoinNode3" outgoing="_kyEK4LrHEeGFLpeyUCn0Xw" incoming="_jYQfULrHEeGFLpeyUCn0Xw _kNyZILrHEeGFLpeyUCn0Xw"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_RS_jELrHEeGFLpeyUCn0Xw" name="MergeNode1" incoming="_TDmlELrHEeGFLpeyUCn0Xw _kyEK4LrHEeGFLpeyUCn0Xw" outgoing="_f01b4LrHEeGFLpeyUCn0Xw"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_jXJsELrHEeGFLpeyUCn0Xw" name="JoinNode3" incoming="_jYQfULrHEeGFLpeyUCn0Xw _kNyZILrHEeGFLpeyUCn0Xw" outgoing="_kyEK4LrHEeGFLpeyUCn0Xw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Activity" xmi:id="_o8SPMLowEeG_n-mswuuavA" name="Evaluate Order" group="_2CEkQLoxEeG_n-mswuuavA" node="_ABKgELoxEeG_n-mswuuavA _End80LoxEeG_n-mswuuavA _GVou0LoxEeG_n-mswuuavA _HskskLoxEeG_n-mswuuavA _dvXOULoxEeG_n-mswuuavA _hwLtgLozEeG_n-mswuuavA _pBHvELo0EeG_n-mswuuavA _qkC6YLo0EeG_n-mswuuavA _7qO_QLo0EeG_n-mswuuavA _Eo3HILo1EeG_n-mswuuavA _K1gPkLo1EeG_n-mswuuavA _e1zqQLo3EeGzmcMwgoMnpg">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_o8SPMLowEeG_n-mswuuavA" name="Evaluate Order" node="_ABKgELoxEeG_n-mswuuavA _End80LoxEeG_n-mswuuavA _GVou0LoxEeG_n-mswuuavA _HskskLoxEeG_n-mswuuavA _dvXOULoxEeG_n-mswuuavA _hwLtgLozEeG_n-mswuuavA _pBHvELo0EeG_n-mswuuavA _qkC6YLo0EeG_n-mswuuavA _7qO_QLo0EeG_n-mswuuavA _Eo3HILo1EeG_n-mswuuavA _K1gPkLo1EeG_n-mswuuavA _e1zqQLo3EeGzmcMwgoMnpg" group="_2CEkQLoxEeG_n-mswuuavA">
       <ownedParameter xmi:id="_AARIMLoxEeG_n-mswuuavA" name="order" type="_1cgUUD1GEeGLMauHIEjlIw"/>
       <ownedParameter xmi:id="_EmK8ULoxEeG_n-mswuuavA" name="orderID" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -300,102 +300,102 @@
       <ownedParameter xmi:id="_e08HkLo3EeGzmcMwgoMnpg" name="accepted" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
       </ownedParameter>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_Lb5eALoxEeG_n-mswuuavA" name="ObjectFlow1" source="_ABKgELoxEeG_n-mswuuavA" target="_La1uELoxEeG_n-mswuuavA"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_UNWskLoxEeG_n-mswuuavA" name="ControlFlow1" source="_GVou0LoxEeG_n-mswuuavA" target="_HskskLoxEeG_n-mswuuavA">
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Lb5eALoxEeG_n-mswuuavA" name="ObjectFlow1" target="_La1uELoxEeG_n-mswuuavA" source="_ABKgELoxEeG_n-mswuuavA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UNWskLoxEeG_n-mswuuavA" name="ControlFlow1" target="_HskskLoxEeG_n-mswuuavA" source="_GVou0LoxEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_UNXToLoxEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_UNXToboxEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_dvnF8LoxEeG_n-mswuuavA" name="ControlFlow2" source="_HskskLoxEeG_n-mswuuavA" target="_dvXOULoxEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dvnF8LoxEeG_n-mswuuavA" name="ControlFlow2" target="_dvXOULoxEeG_n-mswuuavA" source="_HskskLoxEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_dvntALoxEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_dvntAboxEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_ieOxMLoxEeG_n-mswuuavA" name="ObjectFlow2" source="_idbf8LoxEeG_n-mswuuavA" target="_End80LoxEeG_n-mswuuavA"/>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_oUKCwLoxEeG_n-mswuuavA" name="ObjectFlow3" source="_idbf8LoxEeG_n-mswuuavA" target="_End80LoxEeG_n-mswuuavA"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_2GCeQLoxEeG_n-mswuuavA" name="ControlFlow3" source="_dvXOULoxEeG_n-mswuuavA" target="_2CEkQLoxEeG_n-mswuuavA">
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_ieOxMLoxEeG_n-mswuuavA" name="ObjectFlow2" target="_End80LoxEeG_n-mswuuavA" source="_idbf8LoxEeG_n-mswuuavA"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_oUKCwLoxEeG_n-mswuuavA" name="ObjectFlow3" target="_End80LoxEeG_n-mswuuavA" source="_idbf8LoxEeG_n-mswuuavA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_2GCeQLoxEeG_n-mswuuavA" name="ControlFlow3" target="_2CEkQLoxEeG_n-mswuuavA" source="_dvXOULoxEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_2GDFULoxEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_2GDsYLoxEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_Ahn24LozEeG_n-mswuuavA" name="ControlFlow4" source="_z8I9ELoyEeG_n-mswuuavA" target="_4MyS4LoyEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ahn24LozEeG_n-mswuuavA" name="ControlFlow4" target="_4MyS4LoyEeG_n-mswuuavA" source="_z8I9ELoyEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_Ahod8LozEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_Ahod8bozEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_BQQegLozEeG_n-mswuuavA" name="ControlFlow5" source="_4MyS4LoyEeG_n-mswuuavA" target="_5yiIsLoyEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_BQQegLozEeG_n-mswuuavA" name="ControlFlow5" target="_5yiIsLoyEeG_n-mswuuavA" source="_4MyS4LoyEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_KU_-0LyLEeGgiLFmvEYgwg">
           <language>Natural language</language>
           <body>no stock</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_BQRFkbozEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_EmQxALozEeG_n-mswuuavA" name="ControlFlow6" source="_5yiIsLoyEeG_n-mswuuavA" target="_CmTrcLozEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EmQxALozEeG_n-mswuuavA" name="ControlFlow6" target="_CmTrcLozEeG_n-mswuuavA" source="_5yiIsLoyEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_EmR_ILozEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_EmSmMLozEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_FwNboLozEeG_n-mswuuavA" name="ControlFlow7" source="_4MyS4LoyEeG_n-mswuuavA" target="_CmTrcLozEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_FwNboLozEeG_n-mswuuavA" name="ControlFlow7" target="_CmTrcLozEeG_n-mswuuavA" source="_4MyS4LoyEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_MozNcLyLEeGgiLFmvEYgwg">
           <language>Natural language</language>
           <body>else</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_FwNborozEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_jL-9ILozEeG_n-mswuuavA" name="ControlFlow8" source="_2CEkQLoxEeG_n-mswuuavA" target="_hwLtgLozEeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jL-9ILozEeG_n-mswuuavA" name="ControlFlow8" target="_hwLtgLozEeG_n-mswuuavA" source="_2CEkQLoxEeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_jL_kMLozEeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_jL_kMbozEeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_s___cLo0EeG_n-mswuuavA" name="ControlFlow9" source="_hwLtgLozEeG_n-mswuuavA" target="_7qO_QLo0EeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_s___cLo0EeG_n-mswuuavA" name="ControlFlow9" target="_7qO_QLo0EeG_n-mswuuavA" source="_hwLtgLozEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_0adl4Lo0EeG_n-mswuuavA" name="">
           <language>Natural language</language>
           <body>warehouses remain</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_tAAmgbo0EeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_tjwz0Lo0EeG_n-mswuuavA" name="ControlFlow10" source="_hwLtgLozEeG_n-mswuuavA" target="_qkC6YLo0EeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_tjwz0Lo0EeG_n-mswuuavA" name="ControlFlow10" target="_qkC6YLo0EeG_n-mswuuavA" source="_hwLtgLozEeG_n-mswuuavA">
         <guard xmi:type="uml:OpaqueExpression" xmi:id="_3u2u0Lo0EeG_n-mswuuavA">
           <language>Natural language</language>
           <body>else</body>
         </guard>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_tjxa4Lo0EeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_B3RJQLo1EeG_n-mswuuavA" name="ControlFlow11" source="_7qO_QLo0EeG_n-mswuuavA" target="_pBHvELo0EeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_B3RJQLo1EeG_n-mswuuavA" name="ControlFlow11" target="_pBHvELo0EeG_n-mswuuavA" source="_7qO_QLo0EeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_B3RwULo1EeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_B3RwUbo1EeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_EpJbALo1EeG_n-mswuuavA" name="ControlFlow12" source="_pBHvELo0EeG_n-mswuuavA" target="_Eo3HILo1EeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EpJbALo1EeG_n-mswuuavA" name="ControlFlow12" target="_Eo3HILo1EeG_n-mswuuavA" source="_pBHvELo0EeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_EpKCELo1EeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_EpKCEbo1EeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_K1zKgLo1EeG_n-mswuuavA" name="ControlFlow13" source="_qkC6YLo0EeG_n-mswuuavA" target="_K1gPkLo1EeG_n-mswuuavA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_K1zKgLo1EeG_n-mswuuavA" name="ControlFlow13" target="_K1gPkLo1EeG_n-mswuuavA" source="_qkC6YLo0EeG_n-mswuuavA">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_K1zxkLo1EeG_n-mswuuavA" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_K1zxkbo1EeG_n-mswuuavA"/>
       </edge>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_79qKMLo3EeGzmcMwgoMnpg" name="ObjectFlow4" source="_sSHeYLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
-      <edge xmi:type="uml:ObjectFlow" xmi:id="_Cvax4Lo4EeGzmcMwgoMnpg" name="ObjectFlow5" source="_8nX1kLo3EeGzmcMwgoMnpg" target="_e1zqQLo3EeGzmcMwgoMnpg"/>
-      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" outgoing="_jL-9ILozEeG_n-mswuuavA" incoming="_2GCeQLoxEeG_n-mswuuavA" bodyPart="_OuGr4OPaEeKeB8xbWTaooQ" test="_KSE5wLoyEeG_n-mswuuavA">
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_79qKMLo3EeGzmcMwgoMnpg" name="ObjectFlow4" target="_e1zqQLo3EeGzmcMwgoMnpg" source="_sSHeYLo3EeGzmcMwgoMnpg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Cvax4Lo4EeGzmcMwgoMnpg" name="ObjectFlow5" target="_e1zqQLo3EeGzmcMwgoMnpg" source="_8nX1kLo3EeGzmcMwgoMnpg"/>
+      <group xmi:type="uml:LoopNode" xmi:id="_2CEkQLoxEeG_n-mswuuavA" name="LoopThroughOrderItems" incoming="_2GCeQLoxEeG_n-mswuuavA" outgoing="_jL-9ILozEeG_n-mswuuavA" bodyPart="_OuGr4OPaEeKeB8xbWTaooQ" test="_KSE5wLoyEeG_n-mswuuavA">
         <node xmi:type="uml:OpaqueAction" xmi:id="_KSE5wLoyEeG_n-mswuuavA" name="Select Next Order Item"/>
         <node xmi:type="uml:StructuredActivityNode" xmi:id="_OuGr4OPaEeKeB8xbWTaooQ" name="CheckIfWarehouseHasStock">
           <node xmi:type="uml:CallOperationAction" xmi:id="_z8I9ELoyEeG_n-mswuuavA" name="Check Stock" outgoing="_Ahn24LozEeG_n-mswuuavA" operation="_6VmxMD4KEeGJV8Q8QNdEnw"/>
-          <node xmi:type="uml:DecisionNode" xmi:id="_4MyS4LoyEeG_n-mswuuavA" name="DecisionNode1" outgoing="_BQQegLozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA" incoming="_Ahn24LozEeG_n-mswuuavA"/>
-          <node xmi:type="uml:OpaqueAction" xmi:id="_5yiIsLoyEeG_n-mswuuavA" name="Remove Warehouse" outgoing="_EmQxALozEeG_n-mswuuavA" incoming="_BQQegLozEeG_n-mswuuavA"/>
+          <node xmi:type="uml:DecisionNode" xmi:id="_4MyS4LoyEeG_n-mswuuavA" name="DecisionNode1" incoming="_Ahn24LozEeG_n-mswuuavA" outgoing="_BQQegLozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA"/>
+          <node xmi:type="uml:OpaqueAction" xmi:id="_5yiIsLoyEeG_n-mswuuavA" name="Remove Warehouse" incoming="_BQQegLozEeG_n-mswuuavA" outgoing="_EmQxALozEeG_n-mswuuavA"/>
           <node xmi:type="uml:DecisionNode" xmi:id="_CmTrcLozEeG_n-mswuuavA" name="DecisionNode2" incoming="_EmQxALozEeG_n-mswuuavA _FwNboLozEeG_n-mswuuavA"/>
         </node>
       </group>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_ABKgELoxEeG_n-mswuuavA" name="order" outgoing="_Lb5eALoxEeG_n-mswuuavA" isControlType="true" parameter="_AARIMLoxEeG_n-mswuuavA"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_End80LoxEeG_n-mswuuavA" name="orderID" incoming="_ieOxMLoxEeG_n-mswuuavA _oUKCwLoxEeG_n-mswuuavA" isControlType="true" parameter="_EmK8ULoxEeG_n-mswuuavA"/>
       <node xmi:type="uml:InitialNode" xmi:id="_GVou0LoxEeG_n-mswuuavA" name="InitialNode1" outgoing="_UNWskLoxEeG_n-mswuuavA"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_HskskLoxEeG_n-mswuuavA" name="Create Order" outgoing="_dvnF8LoxEeG_n-mswuuavA" incoming="_UNWskLoxEeG_n-mswuuavA">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_HskskLoxEeG_n-mswuuavA" name="Create Order" incoming="_UNWskLoxEeG_n-mswuuavA" outgoing="_dvnF8LoxEeG_n-mswuuavA">
         <inputValue xmi:id="_La1uELoxEeG_n-mswuuavA" name="order" incoming="_Lb5eALoxEeG_n-mswuuavA"/>
         <outputValue xmi:id="_idbf8LoxEeG_n-mswuuavA" name="orderID" outgoing="_ieOxMLoxEeG_n-mswuuavA _oUKCwLoxEeG_n-mswuuavA">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </outputValue>
       </node>
-      <node xmi:type="uml:CallOperationAction" xmi:id="_dvXOULoxEeG_n-mswuuavA" name="List Warehouses" outgoing="_2GCeQLoxEeG_n-mswuuavA" incoming="_dvnF8LoxEeG_n-mswuuavA" operation="_J5KuUD1eEeGdF8-ZrGdK1A"/>
-      <node xmi:type="uml:DecisionNode" xmi:id="_hwLtgLozEeG_n-mswuuavA" name="DecisionNode1" outgoing="_s___cLo0EeG_n-mswuuavA _tjwz0Lo0EeG_n-mswuuavA" incoming="_jL-9ILozEeG_n-mswuuavA"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_pBHvELo0EeG_n-mswuuavA" name="Accept Order" outgoing="_EpJbALo1EeG_n-mswuuavA" incoming="_B3RJQLo1EeG_n-mswuuavA">
+      <node xmi:type="uml:CallOperationAction" xmi:id="_dvXOULoxEeG_n-mswuuavA" name="List Warehouses" incoming="_dvnF8LoxEeG_n-mswuuavA" outgoing="_2GCeQLoxEeG_n-mswuuavA" operation="_J5KuUD1eEeGdF8-ZrGdK1A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_hwLtgLozEeG_n-mswuuavA" name="DecisionNode1" incoming="_jL-9ILozEeG_n-mswuuavA" outgoing="_s___cLo0EeG_n-mswuuavA _tjwz0Lo0EeG_n-mswuuavA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_pBHvELo0EeG_n-mswuuavA" name="Accept Order" incoming="_B3RJQLo1EeG_n-mswuuavA" outgoing="_EpJbALo1EeG_n-mswuuavA">
         <outputValue xmi:id="_sSHeYLo3EeGzmcMwgoMnpg" name="accepted" outgoing="_79qKMLo3EeGzmcMwgoMnpg" type="_2-5agD1OEeGr0d7Yz8C99Q"/>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_qkC6YLo0EeG_n-mswuuavA" name="Reject Order" outgoing="_K1zKgLo1EeG_n-mswuuavA" incoming="_tjwz0Lo0EeG_n-mswuuavA">
+      <node xmi:type="uml:OpaqueAction" xmi:id="_qkC6YLo0EeG_n-mswuuavA" name="Reject Order" incoming="_tjwz0Lo0EeG_n-mswuuavA" outgoing="_K1zKgLo1EeG_n-mswuuavA">
         <outputValue xmi:id="_8nX1kLo3EeGzmcMwgoMnpg" name="rejected" outgoing="_Cvax4Lo4EeGzmcMwgoMnpg" type="_2-5agD1OEeGr0d7Yz8C99Q"/>
       </node>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_7qO_QLo0EeG_n-mswuuavA" name="Select Closest Warehouse" outgoing="_B3RJQLo1EeG_n-mswuuavA" incoming="_s___cLo0EeG_n-mswuuavA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_7qO_QLo0EeG_n-mswuuavA" name="Select Closest Warehouse" incoming="_s___cLo0EeG_n-mswuuavA" outgoing="_B3RJQLo1EeG_n-mswuuavA"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_Eo3HILo1EeG_n-mswuuavA" name="ActivityFinalNode1" incoming="_EpJbALo1EeG_n-mswuuavA"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_K1gPkLo1EeG_n-mswuuavA" name="ActivityFinalNode2" incoming="_K1zKgLo1EeG_n-mswuuavA"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_e1zqQLo3EeGzmcMwgoMnpg" name="accepted" incoming="_79qKMLo3EeGzmcMwgoMnpg _Cvax4Lo4EeGzmcMwgoMnpg" isControlType="true" parameter="_e08HkLo3EeGzmcMwgoMnpg"/>
@@ -408,7 +408,7 @@
     </profileApplication>
     <profileApplication xmi:id="_V8kQELhzEeGotZkum-UXOg">
       <eAnnotations xmi:id="_V9-lULhzEeGotZkum-UXOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//GQAM"/>
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/MARTE/1#//MARTE_AnalysisModel/GQAM"/>
       </eAnnotations>
       <appliedProfile href="pathmap://Papyrus_PROFILES/MARTE.profile.uml#_4bV20APMEdyuUt-4qHuVvQ"/>
     </profileApplication>
@@ -437,39 +437,39 @@
     <hostDemand>(value=0.4,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SFlmQLyLEeGgiLFmvEYgwg" base_NamedElement="_pBHvELo0EeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SFlmQLyLEeGgiLFmvEYgwg" base_NamedElement="_pBHvELo0EeG_n-mswuuavA" base_Action="_pBHvELo0EeG_n-mswuuavA">
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=4.000000059604645,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SFvXQLyLEeGgiLFmvEYgwg" base_NamedElement="_7qO_QLo0EeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SFvXQLyLEeGgiLFmvEYgwg" base_NamedElement="_7qO_QLo0EeG_n-mswuuavA" base_Action="_7qO_QLo0EeG_n-mswuuavA">
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=4.000000059604645,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SF5vULyLEeGgiLFmvEYgwg" base_NamedElement="_qkC6YLo0EeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SF5vULyLEeGgiLFmvEYgwg" base_NamedElement="_qkC6YLo0EeG_n-mswuuavA" base_Action="_qkC6YLo0EeG_n-mswuuavA">
     <hostDemand>(value=4.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.0000000149011612,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGIY0LyLEeGgiLFmvEYgwg" base_NamedElement="_2CEkQLoxEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SGIY0LyLEeGgiLFmvEYgwg" base_NamedElement="_2CEkQLoxEeG_n-mswuuavA" base_Action="_2CEkQLoxEeG_n-mswuuavA">
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGMqQLyLEeGgiLFmvEYgwg" base_NamedElement="_dvXOULoxEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SGMqQLyLEeGgiLFmvEYgwg" base_NamedElement="_dvXOULoxEeG_n-mswuuavA" base_Action="_dvXOULoxEeG_n-mswuuavA">
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGQUoLyLEeGgiLFmvEYgwg" base_NamedElement="_HskskLoxEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SGQUoLyLEeGgiLFmvEYgwg" base_NamedElement="_HskskLoxEeG_n-mswuuavA" base_Action="_HskskLoxEeG_n-mswuuavA">
     <hostDemand>(value=2.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGjPkLyLEeGgiLFmvEYgwg" base_NamedElement="_KSE5wLoyEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SGjPkLyLEeGgiLFmvEYgwg" base_NamedElement="_KSE5wLoyEeG_n-mswuuavA" base_Action="_KSE5wLoyEeG_n-mswuuavA">
     <hostDemand>(value=1.0,unit=s,source=calc)</hostDemand>
     <throughput>(value=5.0,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_SGuOsLyLEeGgiLFmvEYgwg" base_NamedElement="_5yiIsLoyEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_SGuOsLyLEeGgiLFmvEYgwg" base_NamedElement="_5yiIsLoyEeG_n-mswuuavA" base_Action="_5yiIsLoyEeG_n-mswuuavA">
     <hostDemand>(value=0.5,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.0000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaAnalysisContext xmi:id="_SHC-0LyLEeGgiLFmvEYgwg" base_NamedElement="_o8SPMLowEeG_n-mswuuavA">
+  <GQAM:GaAnalysisContext xmi:id="_SHC-0LyLEeGgiLFmvEYgwg" base_StructuredClassifier="_o8SPMLowEeG_n-mswuuavA" base_NamedElement="_o8SPMLowEeG_n-mswuuavA">
     <context>$swRemoveWarehouse : Real = 0.5</context>
     <context>$swCheckStock : Real = 0.5</context>
     <context>$swCheckIfWarehouseHasStock : Real = 1.0</context>
@@ -481,33 +481,33 @@
     <context>$swListWarehouses : Real = 2.0</context>
     <context>$swCreateOrder : Real = 2.0</context>
   </GQAM:GaAnalysisContext>
-  <GQAM:GaStep xmi:id="_LVgkILyMEeGgiLFmvEYgwg" base_NamedElement="_tGt6MLouEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_LVgkILyMEeGgiLFmvEYgwg" base_NamedElement="_tGt6MLouEeG_n-mswuuavA" base_Action="_tGt6MLouEeG_n-mswuuavA">
     <hostDemand>(value=3.2,unit=s,source=calc)</hostDemand>
     <throughput>(value=2.0000000298023224,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_LVmDsLyMEeGgiLFmvEYgwg" base_NamedElement="_h1mLQLouEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_LVmDsLyMEeGgiLFmvEYgwg" base_NamedElement="_h1mLQLouEeG_n-mswuuavA" base_Action="_h1mLQLouEeG_n-mswuuavA">
     <hostDemand>(value=3.2,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.600000023841858,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_LVof8LyMEeGgiLFmvEYgwg" base_NamedElement="_kHDQgLouEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_LVof8LyMEeGgiLFmvEYgwg" base_NamedElement="_kHDQgLouEeG_n-mswuuavA" base_Action="_kHDQgLouEeG_n-mswuuavA">
     <hostDemand>(value=3.1999999999999997,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.600000023841858,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_LVsKULyMEeGgiLFmvEYgwg" base_NamedElement="_nBMtcLouEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_LVsKULyMEeGgiLFmvEYgwg" base_NamedElement="_nBMtcLouEeG_n-mswuuavA" base_Action="_nBMtcLouEeG_n-mswuuavA">
     <hostDemand>(value=6.400000190734863,unit=s,source=calc)</hostDemand>
     <throughput>(value=1.600000023841858,unit=Hz,source=calc)</throughput>
   </GQAM:GaStep>
-  <GQAM:GaAnalysisContext xmi:id="_LWGaALyMEeGgiLFmvEYgwg" base_NamedElement="_Kqo8oLnjEeGVf6XmCE_11Q">
+  <GQAM:GaAnalysisContext xmi:id="_LWGaALyMEeGgiLFmvEYgwg" base_StructuredClassifier="_Kqo8oLnjEeGVf6XmCE_11Q" base_NamedElement="_Kqo8oLnjEeGVf6XmCE_11Q">
     <context>$swCloseOrder : Real = 3.200000047683716</context>
     <context>$swPerformPayment : Real = 3.200000047683716</context>
     <context>$swCreateInvoice : Real = 3.200000047683716</context>
     <context>$swShipOrder : Real = 6.400000095367432</context>
     <context>$swEO : Real = 0</context>
   </GQAM:GaAnalysisContext>
-  <GQAM:GaStep xmi:id="_r4q2sOPcEeKeB8xbWTaooQ" base_NamedElement="_OuGr4OPaEeKeB8xbWTaooQ">
+  <GQAM:GaStep xmi:id="_r4q2sOPcEeKeB8xbWTaooQ" base_NamedElement="_OuGr4OPaEeKeB8xbWTaooQ" base_Action="_OuGr4OPaEeKeB8xbWTaooQ">
     <hostDemand>(value=1.0,unit=s,source=calc)</hostDemand>
   </GQAM:GaStep>
-  <GQAM:GaStep xmi:id="_wekq0OPcEeKeB8xbWTaooQ" base_NamedElement="_z8I9ELoyEeG_n-mswuuavA">
+  <GQAM:GaStep xmi:id="_wekq0OPcEeKeB8xbWTaooQ" base_NamedElement="_z8I9ELoyEeG_n-mswuuavA" base_Action="_z8I9ELoyEeG_n-mswuuavA">
     <hostDemand>(value=0.5,unit=s,source=calc)</hostDemand>
   </GQAM:GaStep>
 </xmi:XMI>

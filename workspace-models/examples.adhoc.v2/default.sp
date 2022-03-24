@@ -14,13 +14,13 @@
     <nodes xsi:type="perf:Action" incoming="//@edges.11" outgoing="//@edges.12" name="Perform Payment" annotation="//@nodes.6/@nodes.8"/>
     <nodes xsi:type="perf:ForkNode" incoming="//@edges.8" outgoing="//@edges.9 //@edges.10"/>
     <nodes xsi:type="perf:JoinNode" incoming="//@edges.12 //@edges.14" outgoing="//@edges.13"/>
-    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.0857142857142857" execNode="//@nodes.6/@nodes.2"/>
-    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.04285714285714285" execNode="//@nodes.6/@nodes.4"/>
-    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.04285714285714285" execNode="//@nodes.6/@nodes.3"/>
+    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.22857142857142856" execNode="//@nodes.6/@nodes.2"/>
+    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.11428571428571428" execNode="//@nodes.6/@nodes.4"/>
+    <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.11428571428571428" execNode="//@nodes.6/@nodes.3"/>
   </nodes>
-  <nodes xsi:type="perf:LocalPerformanceAnnotation" secsTimeLimit="0.08571428571428574" execNode="//@nodes.2"/>
-  <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.0857142857142857" reps="5.0" execNode="//@nodes.6"/>
-  <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.08571428571428572" execNode="//@nodes.5"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" secsTimeLimit="0.22857142857142865" execNode="//@nodes.2"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.22857142857142856" reps="5.0" execNode="//@nodes.6"/>
+  <nodes xsi:type="perf:LocalPerformanceAnnotation" concurrentUsers="0.5" secsTimeLimit="0.2285714285714286" execNode="//@nodes.5"/>
   <nodes xsi:type="perf:LocalPerformanceAnnotation" secsTimeLimit="0.4" minimumTime="0.4" weight="0.0" execNode="//@nodes.1"/>
   <nodes xsi:type="perf:MergeNode" incoming="//@edges.4 //@edges.7" outgoing="//@edges.5"/>
   <edges xsi:type="perf:ControlFlow" source="//@nodes.0" target="//@nodes.1"/>
@@ -38,5 +38,5 @@
   <edges xsi:type="perf:ControlFlow" source="//@nodes.6/@nodes.4" target="//@nodes.6/@nodes.6"/>
   <edges xsi:type="perf:ControlFlow" source="//@nodes.6/@nodes.6" target="//@nodes.6/@nodes.1"/>
   <edges xsi:type="perf:ControlFlow" source="//@nodes.6/@nodes.2" target="//@nodes.6/@nodes.6"/>
-  <processPerformance secsTimeLimit="1.0"/>
+  <processPerformance secsTimeLimit="2.0"/>
 </perf:ServiceProcess>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mw:PerformanceRequirementLinks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mw="www.uca.es/modeling/weaving/wsdl" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" threadsPerProcess="6">
+<mw:PerformanceRequirementLinks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mw="www.uca.es/modeling/weaving/wsdl" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" threadsPerProcess="6">
   <links>
     <execNode xsi:type="uml:CallBehaviorAction" href="../papyrus/multimodel.uml#_XGNQYLouEeG_n-mswuuavA"/>
     <operation href="../serviceAnalyzer/orders.msgcat#//@services/@service.0/@port.0/@operation.3"/>

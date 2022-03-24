@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sp="www.uca.es/modeling/serviceProcess" xmi:id="_xDlFEOhUEeGdtqDhzIXQ-Q" type="ServiceProcess" measurementUnit="Pixel">
-  <styles xmi:type="notation:DiagramStyle" xmi:id="_xDlFEehUEeGdtqDhzIXQ-Q"/>
-  <element xmi:type="sp:ServiceProcess" href="CompraTabacoEmpaquetado.serviceprocess#/"/>
-</notation:Diagram>

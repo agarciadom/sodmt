@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:perf="www.uca.es/modeling/performance/sodmt" xmi:id="_WxuV0M8aEeKGLMGnIkdy2A" type="ServiceProcess" name="order_processing.spdiag" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:perf="www.uca.es/modeling/performance/sodmt" xmi:id="_WxuV0M8aEeKGLMGnIkdy2A" type="ServiceProcess" name="order_processing.spdiag" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_cQg5wM8aEeKGLMGnIkdy2A" type="2004" fontName="Sans">
     <element xmi:type="perf:InitialNode" href="default.sp#//@nodes.0"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cQg5wc8aEeKGLMGnIkdy2A" x="1069" y="60" width="30" height="30"/>
@@ -78,7 +78,7 @@
         <children xmi:type="notation:DecorationNode" xmi:id="_YbkzEc8bEeKGLMGnIkdy2A" type="5033"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_YbkzEs8bEeKGLMGnIkdy2A" type="5036"/>
         <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.6/@nodes.7"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ybjk8c8bEeKGLMGnIkdy2A" x="312" y="12" width="119" height="121"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ybjk8c8bEeKGLMGnIkdy2A" x="312" y="12" width="169" height="121"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_YbkzE88bEeKGLMGnIkdy2A" type="3020" fontName="Sans">
         <children xmi:type="notation:DecorationNode" xmi:id="_YblaIc8bEeKGLMGnIkdy2A" type="5029"/>
@@ -88,7 +88,7 @@
         <children xmi:type="notation:DecorationNode" xmi:id="_YbmBMc8bEeKGLMGnIkdy2A" type="5033"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_YbmBMs8bEeKGLMGnIkdy2A" type="5036"/>
         <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.6/@nodes.8"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YblaIM8bEeKGLMGnIkdy2A" x="613" y="260" width="119" height="121"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YblaIM8bEeKGLMGnIkdy2A" x="613" y="260" width="143" height="121"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_YbmoQM8bEeKGLMGnIkdy2A" type="3020" fontName="Sans">
         <children xmi:type="notation:DecorationNode" xmi:id="_YbmoQs8bEeKGLMGnIkdy2A" type="5029"/>
@@ -98,7 +98,7 @@
         <children xmi:type="notation:DecorationNode" xmi:id="_YbnPUs8bEeKGLMGnIkdy2A" type="5033"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_YbnPU88bEeKGLMGnIkdy2A" type="5036"/>
         <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.6/@nodes.9"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YbmoQc8bEeKGLMGnIkdy2A" x="312" y="173" width="119" height="121"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YbmoQc8bEeKGLMGnIkdy2A" x="312" y="173" width="149" height="121"/>
       </children>
     </children>
     <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_jlwB8c8aEeKGLMGnIkdy2A"/>
@@ -110,7 +110,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_WJjtIM8bEeKGLMGnIkdy2A" type="5016"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_WJjtIc8bEeKGLMGnIkdy2A" type="5017"/>
     <element xmi:type="perf:PerformanceAnnotation" href="default.sp#//@processPerformance"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WJifAc8bEeKGLMGnIkdy2A" x="15" y="847" width="91" height="64"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WJifAc8bEeKGLMGnIkdy2A" x="40" y="725" width="136" height="79"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_YYMu8M8bEeKGLMGnIkdy2A" type="2001" fontName="Sans">
     <children xmi:type="notation:DecorationNode" xmi:id="_YYNWAM8bEeKGLMGnIkdy2A" type="5001"/>
@@ -120,7 +120,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_YYNWBM8bEeKGLMGnIkdy2A" type="5005"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_YYNWBc8bEeKGLMGnIkdy2A" type="5037"/>
     <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.7"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYMu8c8bEeKGLMGnIkdy2A" x="269" y="41" width="119" height="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYMu8c8bEeKGLMGnIkdy2A" x="245" y="41" width="143" height="121"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_YYN9EM8bEeKGLMGnIkdy2A" type="2001" fontName="Sans">
     <children xmi:type="notation:DecorationNode" xmi:id="_YYOkIM8bEeKGLMGnIkdy2A" type="5001"/>
@@ -130,7 +130,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_YYOkJM8bEeKGLMGnIkdy2A" type="5005"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_YYPLMM8bEeKGLMGnIkdy2A" type="5037"/>
     <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.8"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYN9Ec8bEeKGLMGnIkdy2A" x="395" y="646" width="119" height="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYN9Ec8bEeKGLMGnIkdy2A" x="395" y="646" width="216" height="121"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_YYPLMc8bEeKGLMGnIkdy2A" type="2001" fontName="Sans">
     <children xmi:type="notation:DecorationNode" xmi:id="_YYPyQM8bEeKGLMGnIkdy2A" type="5001"/>
@@ -140,7 +140,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_YYQZUc8bEeKGLMGnIkdy2A" type="5005"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_YYQZUs8bEeKGLMGnIkdy2A" type="5037"/>
     <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.9"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYPLMs8bEeKGLMGnIkdy2A" x="933" y="448" width="119" height="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYPLMs8bEeKGLMGnIkdy2A" x="933" y="448" width="198" height="121"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_YYRncM8bEeKGLMGnIkdy2A" type="2001" fontName="Sans">
     <children xmi:type="notation:DecorationNode" xmi:id="_YYSOgM8bEeKGLMGnIkdy2A" type="5001"/>
@@ -150,7 +150,7 @@
     <children xmi:type="notation:DecorationNode" xmi:id="_YYSOhM8bEeKGLMGnIkdy2A" type="5005"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_YYS1kM8bEeKGLMGnIkdy2A" type="5037"/>
     <element xmi:type="perf:LocalPerformanceAnnotation" href="default.sp#//@nodes.10"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYRncc8bEeKGLMGnIkdy2A" x="811" y="15" width="103" height="121"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YYRncc8bEeKGLMGnIkdy2A" x="715" y="15" width="199" height="121"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_iu95YNa5EeK_45w-wyXEIg" type="2012">
     <styles xmi:type="notation:DescriptionStyle" xmi:id="_iu95Yda5EeK_45w-wyXEIg"/>

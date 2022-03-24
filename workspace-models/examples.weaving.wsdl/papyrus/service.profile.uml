@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_GYARgD1aEeGCENGiitFRVw" name="SampleServiceProfile" metaclassReference="_IAomwD1bEeGMJN3s2E6QQQ">
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GYARgD1aEeGCENGiitFRVw" name="SampleServiceProfile" metaclassReference="_IAomwD1bEeGMJN3s2E6QQQ">
   <eAnnotations xmi:id="_KQPHUD1aEeGCENGiitFRVw" source="http://www.eclipse.org/uml2/2.0.0/UML">
     <contents xmi:type="ecore:EPackage" xmi:id="_JbgM0T1cEeGMJN3s2E6QQQ" name="SampleServiceProfile" nsURI="http:///schemas/SampleServiceProfile/_JbgM0D1cEeGMJN3s2E6QQQ/7" nsPrefix="SampleServiceProfile">
       <eAnnotations xmi:id="_Jbgz4T1cEeGMJN3s2E6QQQ" source="PapyrusVersion">
@@ -12,10 +12,10 @@
       <eClassifiers xmi:type="ecore:EClass" xmi:id="_JbgM0j1cEeGMJN3s2E6QQQ" name="service">
         <eAnnotations xmi:id="_JbgM0z1cEeGMJN3s2E6QQQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_G-RAQD1aEeGCENGiitFRVw"/>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_JbgM1D1cEeGMJN3s2E6QQQ" name="interface" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Interface"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
         </eStructuralFeatures>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_JbgM1j1cEeGMJN3s2E6QQQ" name="base_Interface" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Interface"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
@@ -30,10 +30,10 @@
       <eClassifiers xmi:type="ecore:EClass" xmi:id="_h2YcwT1bEeGMJN3s2E6QQQ" name="service">
         <eAnnotations xmi:id="_h2Ycwj1bEeGMJN3s2E6QQQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_G-RAQD1aEeGCENGiitFRVw"/>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_h2Ycwz1bEeGMJN3s2E6QQQ" name="interface" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Interface"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
         </eStructuralFeatures>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_h2YcxT1bEeGMJN3s2E6QQQ" name="base_Interface" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Interface"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
@@ -48,7 +48,7 @@
       <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ux7H8T1bEeGMJN3s2E6QQQ" name="service">
         <eAnnotations xmi:id="_Ux7H8j1bEeGMJN3s2E6QQQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_G-RAQD1aEeGCENGiitFRVw"/>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ux7H8z1bEeGMJN3s2E6QQQ" name="interface" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Interface"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
