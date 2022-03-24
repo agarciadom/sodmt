@@ -5,12 +5,15 @@
       version="1.0.0.qualifier"
       provider-name="Universidad de Cádiz">
 
-   <description url="https://neptuno.uca.es/redmine/projects/sodmt/wiki">
-      This feature allows users to weave actions inside UML2 activity models with JUnit test suites, and generate ContiPerf-based test artefacts from the performance requirements inferred by the MARTE-based algorithms.
+   <description url="https://github.com/agarciadom/sodmt">
+      This feature allows users to weave actions inside UML2 activity
+models with JUnit test suites, and generate ContiPerf-based test
+artefacts from the performance requirements inferred by the MARTE-based
+algorithms.
    </description>
 
    <copyright>
-      Copyright (C) 2010-2012 Antonio García-Domínguez
+      Copyright (C) 2010-2022 Antonio García-Domínguez
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -85,11 +88,6 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
-
-   <url>
-      <discovery label="Eclipse Epsilon (Interim)" url="http://download.eclipse.org/epsilon/interim/"/>
-      <discovery label="Papyrus Nightlies (Juno)" url="http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/extra/"/>
-   </url>
 
    <requires>
       <import plugin="org.eclipse.ui"/>

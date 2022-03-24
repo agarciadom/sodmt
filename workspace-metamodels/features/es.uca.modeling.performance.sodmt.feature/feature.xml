@@ -4,7 +4,7 @@
       label="Ad-hoc Performance Models Feature"
       version="1.0.0.qualifier">
 
-   <description url="http://neptuno.uca.es/~sodmt">
+   <description url="https://github.com/agarciadom/sodmt">
       Feature for the performance inference algorithms developed by
 Antonio García-Domínguez. Contains plugins for creating, validating
 and transforming extended versions of the service process and
@@ -12,7 +12,7 @@ service composition models of the SODM+T methodology.
    </description>
 
    <copyright>
-      Copyright (C) 2010-2013 Antonio García-Domínguez
+      Copyright (C) 2010-2022 Antonio García-Domínguez
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -87,10 +87,6 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
-
-   <url>
-      <discovery label="Eclipse Epsilon (Interim)" url="http://download.eclipse.org/epsilon/interim/"/>
-   </url>
 
    <requires>
       <import plugin="org.eclipse.epsilon.eol.engine"/>
