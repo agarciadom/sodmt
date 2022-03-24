@@ -11,7 +11,7 @@ Bundle-DocURL: http://www.uca.es
 Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: TestGenerator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-SymbolicName: es.uca.webservices.test-generator
 Bundle-Vendor: Universidad de Cádiz
 Bundle-Version: 1.1.0.qualifier

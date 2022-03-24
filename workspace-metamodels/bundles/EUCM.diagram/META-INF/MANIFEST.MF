@@ -36,7 +36,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  org.eclipse.draw2d;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Created-By: 1.5.0-b64 (Sun Microsystems Inc.)
 Ant-Version: Apache Ant 1.7.0
 Automatic-Module-Name: EUCM.diagram
+Bundle-RequiredExecutionEnvironment: JavaSE-11

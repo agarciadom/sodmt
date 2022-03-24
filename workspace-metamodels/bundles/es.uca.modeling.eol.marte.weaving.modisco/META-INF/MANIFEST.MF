@@ -7,7 +7,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: es.uca.modeling.eol.marte.weaving.links,
  es.uca.modeling.eol.marte.weaving.links.impl,
  es.uca.modeling.eol.marte.weaving.links.util

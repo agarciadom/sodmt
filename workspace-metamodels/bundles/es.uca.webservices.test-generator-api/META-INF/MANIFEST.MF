@@ -7,7 +7,7 @@ Bundle-Description: Abstract interfaces for the high-level components in
 Bundle-DocURL: http://www.uca.es
 Bundle-ManifestVersion: 2
 Bundle-Name: TestGenerator API
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-SymbolicName: es.uca.webservices.test-generator-api
 Bundle-Vendor: Universidad de Cádiz
 Bundle-Version: 1.1.0.qualifier

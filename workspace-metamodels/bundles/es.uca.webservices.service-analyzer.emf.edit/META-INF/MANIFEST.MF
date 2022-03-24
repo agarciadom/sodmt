@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: es.uca.webservices.wsdl.analyzer.emf.catalog.provider.CatalogEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: es.uca.webservices.wsdl.analyzer.emf.catalog.provider
 Require-Bundle: org.eclipse.core.runtime,
  es.uca.webservices.service-analyzer.emf;visibility:=reexport,

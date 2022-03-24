@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.ui,
  es.uca.webservices.test-generator-api,
  es.uca.webservices.wsdl2xsdtree,
  es.uca.webservices.xml-utils
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: es.uca.webservices.service.analyzer.ui

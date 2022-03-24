@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import serviceProcess.Action;
@@ -16,7 +15,6 @@ import serviceProcess.ActivityNode;
 import serviceProcess.ControlFlow;
 import serviceProcess.DecisionNode;
 import serviceProcess.ExecutableNode;
-import serviceProcess.ExpressionLanguage;
 import serviceProcess.FinalNode;
 import serviceProcess.ForkNode;
 import serviceProcess.InitialNode;
