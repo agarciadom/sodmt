@@ -19,7 +19,6 @@ import org.eclipse.epsilon.eol.dt.launching.EclipseContextManager;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.execute.context.Variable;
 import org.eclipse.epsilon.eol.models.Model;
-import org.eclipse.epsilon.eol.types.EolModelElementType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -166,8 +165,7 @@ public class GLPKInputGen {
 		// Run it
 		EclipseContextManager.setup(eglModule.getContext());
 		eglModule.getContext().getModelRepository().addModel(model);
-		final EolModelElementType eolType = new EolModelElementType(node.eClass().getName(), eglModule.getContext());
-		eglModule.getContext().getFrameStack().putGlobal(new Variable("selected", node, eolType));
+		eglModule.getContext().getFrameStack().putGlobal(Variable.createReadOnlyVariable("selected", node));
 
 		// Save the result to a file
 		final String result = StringUtil.toString(eglModule.execute());
