@@ -20,4 +20,8 @@
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodm" label="SODM"/>
+   <repository-reference location="https://download.eclipse.org/epsilon/interim/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/modeling/mdt/papyrus/components/marte/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases-3.2.1/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/emfatic/update" enabled="true" />
 </site>
