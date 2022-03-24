@@ -16,14 +16,26 @@ operation handleOrderAnnotations() {
 $onlyWith Map { "Model" = "MultiDiagram" }
 @test
 operation evaluateOrderAnnotations() {
-  var inferredTL := inferTimeLimits("Evaluate Order", 1, true);
+  var inferredTL := inferTimeLimits("Evaluate Order", 1.0d, true);
   assertTimeLimit("Create Order", 0.2, inferredTL);
   assertTimeLimit("List Warehouses", 0.2, inferredTL);
   assertTimeLimit("LoopThroughOrderItems", 0.2, inferredTL);
-  assertTimeLimit("CheckIfWarehouseHasStock", 0.1, inferredTL);
-  assertTimeLimit("Select Next Order Item", 0.1, inferredTL);
-  assertTimeLimit("Check Stock", 0.05, inferredTL);
-  assertTimeLimit("Remove Warehouse", 0.05, inferredTL);
+
+  // Note: we have not set any reps, so reps=1 by default.
+  //
+  // The test is assumed to run once more than the body of the loop,
+  // so we actually split the 0.2s of LoopThroughOrderItems into:
+  //
+  // 0.2/3 for rep 1 of Select Next Order Item
+  // 0.2/3 for rep 1 of CheckIfWarehouseHasStock
+  // 0.2/3 for rep 2 of Select Next Order Item
+  assertTimeLimit("CheckIfWarehouseHasStock", 0.2/3, inferredTL);
+  assertTimeLimit("Select Next Order Item", 0.2/3, inferredTL);
+
+  // Then each of the activities inside CheckIfWarehouseHasStock gets half of that
+  assertTimeLimit("Check Stock", 0.2/6, inferredTL);
+  assertTimeLimit("Remove Warehouse", 0.2/6, inferredTL);
+  
   assertTimeLimit("Accept Order", 0.2, inferredTL);
   assertTimeLimit("Select Closest Warehouse", 0.2, inferredTL);
   assertTimeLimit("Reject Order", 0.4, inferredTL);
@@ -48,8 +60,10 @@ operation handleOrderSW() {
   assertContextParamsEqual(expectedParamMap, ctxParamMap);
 }
 
-operation assertTimeLimit(name : String, timeLimit : Real, tlMap : Map) {
-  assertEquals(name + " should have " + timeLimit + "s", timeLimit, tlMap.get(name), 5);
+operation assertTimeLimit(name : String, expected : Real, tlMap : Map) {
+  var actual = tlMap.get(name);
+  //assertEquals(name + " should have " + expected + "s but has " + actual, expected, actual, 5);
+  assertEquals(expected, actual, 10);
 }
 
 operation assertContextParamsEqual(expectedParamMap : Map, ctxParamMap : Map) {
