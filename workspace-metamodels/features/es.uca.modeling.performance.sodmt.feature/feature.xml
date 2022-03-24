@@ -89,6 +89,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <requires>
+      <import feature="org.eclipse.emf.ecore" version="2.26.0.v20210924-1718"/>
+      <import feature="org.eclipse.gmf.tooling.runtime" version="3.2.1.201409171321"/>
       <import plugin="org.eclipse.epsilon.eol.engine"/>
       <import plugin="org.eclipse.epsilon.ewl.gmf"/>
       <import plugin="org.eclipse.epsilon.ewl.engine"/>
@@ -104,9 +106,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.epsilon.emc.emf" version="0.8.9" match="greaterOrEqual"/>
       <import plugin="es.uca.modeling.performance.sodmt.eol" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="es.uca.modeling.performance.sodmt.sprocess" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.epsilon.eol.dt" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.evl.emf.validation"/>
       <import plugin="org.eclipse.epsilon.evl.engine"/>
-      <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.expressions"/>
       <import plugin="org.eclipse.jface"/>
@@ -128,7 +130,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.render"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
-      <import plugin="org.eclipse.gmf.tooling.runtime"/>
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
       <import plugin="org.eclipse.gmf.runtime.lite.svg"/>
@@ -139,7 +140,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.epsilon.flock.engine" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.emc.emf" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="es.uca.modeling.performance.sodmt.scomp" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.epsilon.eol.dt" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.erl.engine" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.common.dt"/>
       <import plugin="org.eclipse.epsilon.egl.engine"/>
