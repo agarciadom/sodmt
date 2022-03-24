@@ -190,8 +190,12 @@ operation uml::ExecutableNode getRepetitions() : Real {
     // we simply scale down its repetitions
     return 1.0d / self.inStructuredNode.getRepetitions();
   }
-  else if (loopPart > 0) {
-    // test, body and the rest are run once per iteration
+  else if (loopPart == 1) {
+    /* test is run once more than the number of repetitions: here we scale down repetitions just like above. */
+    return 1.0d + (1.0d / self.inStructuredNode.getRepetitions());
+  }
+  else if (loopPart > 1) {
+    // body and the rest are run once per iteration
     return 1.0d;
   }
   else {
