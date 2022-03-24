@@ -50,7 +50,8 @@
       xsi:type="setup:VariableTask"
       name="git.clone.via"
       defaultValue="https://github.com/agarciadom/sodmt.git"
-      storageURI="scope://Installation">
+      storageURI="scope://Installation"
+      label="Clone from">
     <choice
         value="git@github.com:agarciadom/sodmt.git"
         label="SSH"/>
