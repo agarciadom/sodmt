@@ -48,9 +48,16 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="eclipse.target.platform"
-      defaultValue="2022-03"
-      storageURI="scope://Workspace"/>
+      name="git.clone.via"
+      defaultValue="https://github.com/agarciadom/sodmt.git"
+      storageURI="scope://Installation">
+    <choice
+        value="git@github.com:agarciadom/sodmt.git"
+        label="SSH"/>
+    <choice
+        value="https://github.com/agarciadom/sodmt.git"
+        label="HTTPS"/>
+  </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
@@ -98,7 +105,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.sodmt"
-      remoteURI="https://github.com/agarciadom/sodmt.git">
+      remoteURI="${git.clone.via}">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
