@@ -34,7 +34,7 @@ public class ServiceProcessValidationTest extends AbstractValidationTest {
 		dummySPModel.setStoredOnDisposal(false);
 		dummySPModel.load();
 		models.add(dummySPModel);
-	
+
 		return models;
 	}
 }

@@ -1,10 +1,13 @@
 package es.uca.modelling.performance.sodmt.evl.tests;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.execute.operations.contributors.OperationContributor;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.java.JavaModel;
@@ -31,10 +34,21 @@ public abstract class AbstractValidationTest implements IEUnitSuite {
 			}
 
 			EvlModule evl = new EvlModule();
-			evl.parse(
-				ServiceProcessValidationTest.class
+			URI evlURI = ServiceProcessValidationTest.class
 				.getResource(AbstractValidationTest.this.getPathToEVL())
-				.toURI());
+				.toURI();
+			evl.parse(evlURI);
+
+			if (!evl.getParseProblems().isEmpty()) {
+				StringBuilder sb = new StringBuilder("EVL at " + evlURI + " reported parsing problems:");
+				sb.append(System.lineSeparator());
+				for (ParseProblem problem : evl.getParseProblems()) {
+					sb.append(problem.toString());
+					sb.append(System.lineSeparator());
+				}
+				fail(sb.toString());
+			}
+
 			evl.getContext().setModelRepository(getContext().getModelRepository());
 			evl.execute();
 
