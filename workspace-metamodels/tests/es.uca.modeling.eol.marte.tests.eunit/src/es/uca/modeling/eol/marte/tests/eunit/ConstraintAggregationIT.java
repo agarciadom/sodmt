@@ -8,7 +8,7 @@ import org.eclipse.epsilon.eunit.junit.dt.EclipseEUnitTestRunner;
 import org.junit.runner.RunWith;
 
 @RunWith(EclipseEUnitTestRunner.class)
-public class ConstraintAggregationTest extends AbstractMARTEInferenceTest {
+public class ConstraintAggregationIT extends AbstractMARTEInferenceTest {
 
 	@Override
 	public URI getModuleURI() throws Exception {
@@ -19,4 +19,5 @@ public class ConstraintAggregationTest extends AbstractMARTEInferenceTest {
 	public OperationContributor getOperationContributor() {
 		return null;
 	}
+
 }
