@@ -72,8 +72,6 @@
     <requirement
         name="org.eclipse.papyrus.sdk.feature.feature.group"/>
     <requirement
-        name="javax.xml.stream"/>
-    <requirement
         name="org.eclipse.m2e.feature.feature.group"/>
     <requirement
         name="org.eclipse.modisco.sdk.feature.feature.group"/>
@@ -110,6 +108,85 @@
     </annotation>
     <description>${scope.project.label}</description>
   </setupTask>
+  <setupTask
+      xsi:type="setup.workingsets:WorkingSetTask">
+    <workingSet
+        name="${scope.project.name} Ad Hoc">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="es.uca.modeling.sodmt.oomph"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="es.uca.modeling.performance.*"/>
+      </predicate>
+    </workingSet>
+    <workingSet
+        name="${scope.project.name} Kybele Use Cases">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="es.uca.modeling.sodmt.oomph"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern=".*UCM.*|kybele.*"/>
+      </predicate>
+    </workingSet>
+    <workingSet
+        name="${scope.project.name} MARTE">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="es.uca.modeling.sodmt.oomph"/>
+        <operand
+            xsi:type="predicates:OrPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="es.uca.modeling.eol.marte.*"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="es.uca.modeling.papyrus.*"/>
+        </operand>
+      </predicate>
+    </workingSet>
+    <workingSet
+        name="${scope.project.name} Releng">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="es.uca.modeling.sodmt.oomph"/>
+        <operand
+            xsi:type="workingsets:ExclusionPredicate"
+            excludedWorkingSet="//@setupTasks.6/@workingSets[name='${scope.project.name}%20Ad%20Hoc'] //@setupTasks.6/@workingSets[name='${scope.project.name}%20Kybele%20Use%20Cases'] //@setupTasks.6/@workingSets[name='${scope.project.name}%20MARTE'] //@setupTasks.6/@workingSets[name='${scope.project.name}%20WS%20Infra']"/>
+      </predicate>
+    </workingSet>
+    <workingSet
+        name="${scope.project.name} WS Infra">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:RepositoryPredicate"
+            project="es.uca.modeling.sodmt.oomph"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="es.uca.webservices.*"/>
+      </predicate>
+    </workingSet>
+    <description>The dynamic working sets for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask">
+    <sourceLocator
+        rootFolder="${git.clone.sodmt.location}/workspace-metamodels"
+        locateNestedProjects="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="pde:TargetPlatformTask"
+      name="es.uca.modeling.sodmt.targetplatform"/>
   <stream name="master"
       label="Master">
     <setupTask
@@ -119,85 +196,6 @@
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
-    <setupTask
-        xsi:type="setup.workingsets:WorkingSetTask">
-      <workingSet
-          name="${scope.project.name} Ad Hoc">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:RepositoryPredicate"
-              project="es.uca.modeling.sodmt.oomph"/>
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern="es.uca.modeling.performance.*"/>
-        </predicate>
-      </workingSet>
-      <workingSet
-          name="${scope.project.name} Kybele Use Cases">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:RepositoryPredicate"
-              project="es.uca.modeling.sodmt.oomph"/>
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern=".*UCM.*|kybele.*"/>
-        </predicate>
-      </workingSet>
-      <workingSet
-          name="${scope.project.name} MARTE">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:RepositoryPredicate"
-              project="es.uca.modeling.sodmt.oomph"/>
-          <operand
-              xsi:type="predicates:OrPredicate">
-            <operand
-                xsi:type="predicates:NamePredicate"
-                pattern="es.uca.modeling.eol.marte.*"/>
-            <operand
-                xsi:type="predicates:NamePredicate"
-                pattern="es.uca.modeling.papyrus.*"/>
-          </operand>
-        </predicate>
-      </workingSet>
-      <workingSet
-          name="${scope.project.name} Releng">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:RepositoryPredicate"
-              project="es.uca.modeling.sodmt.oomph"/>
-          <operand
-              xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@streams[name='master']/@setupTasks.1/@workingSets[name='${scope.project.name}%20Ad%20Hoc'] //@streams[name='master']/@setupTasks.1/@workingSets[name='${scope.project.name}%20Kybele%20Use%20Cases'] //@streams[name='master']/@setupTasks.1/@workingSets[name='${scope.project.name}%20MARTE'] //@streams[name='master']/@setupTasks.1/@workingSets[name='${scope.project.name}%20WS%20Infra']"/>
-        </predicate>
-      </workingSet>
-      <workingSet
-          name="${scope.project.name} WS Infra">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:RepositoryPredicate"
-              project="es.uca.modeling.sodmt.oomph"/>
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern="es.uca.webservices.*"/>
-        </predicate>
-      </workingSet>
-      <description>The dynamic working sets for ${scope.project.label}</description>
-    </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsImportTask">
-      <sourceLocator
-          rootFolder="${git.clone.sodmt.location}/workspace-metamodels"
-          locateNestedProjects="true"/>
-    </setupTask>
-    <setupTask
-        xsi:type="pde:TargetPlatformTask"
-        name="/es.uca.modeling.targetplatform/es.uca.modeling.targetplatform.target"/>
   </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
