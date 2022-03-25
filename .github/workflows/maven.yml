@@ -18,7 +18,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Build tooling with Maven
       run: |
         cd workspace-metamodels
+        mvn -B verify
+    - name: Build sample webapp with Maven
+      run: |
+        cd case-study-multimodule
         mvn -B verify
