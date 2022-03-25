@@ -17,7 +17,7 @@ SODM+T provides tool support through [Eclipse GMF editors](https://www.eclipse.o
 * Graphical editors for SODM+T service processes (simplified UML activity diagrams) and service compositions (which extend service processes with activity partitions).
 * Automated in-place model transformations to compute local performance requirements for SODM+T service process models, SODM+T service composition models, and Papyrus UML models using the [MARTE](https://www.eclipse.org/papyrus/components/marte/) profile, from a combination of a global performance requirement and a set of optional local performance annotations.
 * Automated generation of [ContiPerf]() performance tests from a weaving model relating the computed performance requirements to a [MoDisco](https://www.eclipse.org/MoDisco/) Java model.
-* Automated generation of [The Grinder](http://grinder.sourceforge.net/) performance tests from a weaving model relating the computed performance requirements to a message catalog model extracted from a WSDL document.
+* Automated generation of [The Grinder](http://grinder.sourceforge.net/) performance tests from a weaving model relating the computed performance requirements to a message catalog model extracted from a WSDL description of a service.
 
 ## License
 
