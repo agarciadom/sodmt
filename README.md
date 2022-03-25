@@ -4,6 +4,8 @@ This is the source code for the programs used to develop SODM+T, an extended ver
 
 Unless otherwise specified, the code is under the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/) with secondary GPLv3 license and is copyright (C) 2008-2022 Antonio García Domínguez.
 
+For additional information beyond this document, check [the project website](https://agarciadom.github.io/sodmt/).
+
 ## Installation
 
 To use the SODM+T toolset, first download and run the [Eclipse Installer](https://www.eclipse.org/downloads/).
