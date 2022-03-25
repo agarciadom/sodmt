@@ -19,6 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: SODM+T
+author: Antonio García-Domínguez
 email: a.garcia-dominguez@aston.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
   Eclipse-based toolset for automated generation of performance
