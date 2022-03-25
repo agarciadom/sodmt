@@ -91,8 +91,8 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
                 final EquipmentClass eqClass = EquipmentClass.findByName("EQC-RectifyingLines");
                 final DateTime dateTimeStart = new DateTime(2013, 11, 1, 0, 0, 0, 0);
                 final DateTime dateTimeEnd   = dateTimeStart.plusDays(1).toDateMidnight().toDateTime();
-                final Calendar rangeStart    = dateTimeStart.toCalendar(Locale.getDefault());
-                final Calendar rangeEnd      = dateTimeEnd.toCalendar(Locale.getDefault());
+                final Calendar rangeStart    = dateTimeStart.toCalendar(Locale.ENGLISH);
+                final Calendar rangeEnd      = dateTimeEnd.toCalendar(Locale.ENGLISH);
 
                 final List<EquipmentCapability> results
                         = EquipmentCapability.findByDateRangeAndEquipmentClass(rangeStart, rangeEnd, null, eqClass);
