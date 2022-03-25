@@ -1,4 +1,4 @@
-# Source code for SODM+T thesis
+# Service-Oriented Design Methodology + Tests (SODM+T)
 
 This is the source code for the programs used to develop SODM+T, an extended version of the SODM model-driven methodology for service-oriented systems.
 
