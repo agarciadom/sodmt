@@ -1,0 +1,13 @@
+FROM maven:3-openjdk-11 AS build
+
+RUN mkdir /build
+WORKDIR /build
+COPY pom.xml .
+COPY persistence persistence
+RUN mvn install -N && cd persistence && mvn package
+
+FROM postgres:12
+
+COPY --from=build /build/persistence/target/persistence*-ddl-postgres.sql /docker-entrypoint-initdb.d/01-ddl.sql
+COPY --from=build /build/persistence/src/main/sql/data.sql /docker-entrypoint-initdb.d/02-data.sql
+COPY --from=build /build/persistence/src/main/sql/triggers.sql /docker-entrypoint-initdb.d/03-triggers.sql

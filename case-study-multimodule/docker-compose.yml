@@ -1,0 +1,26 @@
+version: '2.1'
+
+x-env:
+  - &pguser POSTGRES_USER=b2mml
+  - &pgpass POSTGRES_PASSWORD=business
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.tomcat
+      args:
+        - *pguser
+        - *pgpass
+        - POSTGRES_HOST=postgres
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    environment:
+      - *pguser
+      - *pgpass

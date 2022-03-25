@@ -1,0 +1,22 @@
+FROM maven:3-openjdk-11 AS build
+
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+ARG POSTGRES_HOST
+
+RUN mkdir /build
+WORKDIR /build
+COPY pom.xml .
+COPY set-database-props.sh .
+COPY persistence persistence
+COPY webadmin webadmin
+COPY ws-mes-api ws-mes-api
+COPY ws-mes-impl ws-mes-impl
+
+RUN ./set-database-props.sh
+RUN mvn -B -T2 clean install
+
+FROM tomcat:9-jre11-openjdk
+
+COPY --from=build /build/ws-mes-impl/target/ws-mes-impl-*.war /usr/local/tomcat/webapps/ws-mes-impl.war
+COPY --from=build /build/webadmin/target/webadmin-*.war /usr/local/tomcat/webapps/webadmin.war
