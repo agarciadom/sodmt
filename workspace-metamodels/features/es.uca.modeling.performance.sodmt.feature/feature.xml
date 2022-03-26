@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.performance.sodmt.feature"
       label="Ad-hoc Performance Models Feature"
-      version="1.0.0.qualifier">
+      version="1.0.1.qualifier">
 
    <description url="https://github.com/agarciadom/sodmt">
       Feature for the performance inference algorithms developed by

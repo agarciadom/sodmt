@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SODM+T Ad-hoc Performance Models (Validation)
 Bundle-SymbolicName: es.uca.modeling.performance.sodmt.evl;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Vendor: University of Cádiz
 Require-Bundle: org.eclipse.epsilon.evl.emf.validation,
  org.eclipse.epsilon.evl.engine,

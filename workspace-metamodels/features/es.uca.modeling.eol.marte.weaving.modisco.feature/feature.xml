@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.eol.marte.weaving.modisco.feature"
       label="SODM+T MoDisco Weaving"
-      version="1.0.0.qualifier"
+      version="1.0.1.qualifier"
       provider-name="Universidad de Cádiz">
 
    <description url="https://github.com/agarciadom/sodmt">
