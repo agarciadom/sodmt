@@ -42,7 +42,7 @@
 		<property name="password" value="" />
 	</bean>
 
-	<bean
+	<bean id="hibernateProps"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="properties">
 			<util:properties>
