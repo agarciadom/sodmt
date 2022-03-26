@@ -1,6 +1,6 @@
 # Sample web services for testing
 
-These web services were developed to test the weaving and test generation capabilities of SODM+T.
+These web services were developed as a base to create the test generators in SODM+T.
 
 ## Run the web services
 
