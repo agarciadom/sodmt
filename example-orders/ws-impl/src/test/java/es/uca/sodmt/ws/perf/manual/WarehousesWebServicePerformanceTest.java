@@ -14,7 +14,7 @@ import es.uca.sodmt.ws.WarehousesWebServiceTest;
 @RunWith(ContiPerfSuiteRunner.class)
 @SuiteClasses(WarehousesWebServiceTest.class)
 @PerfTest(invocations = 1000, threads = 5)
-@Required(throughput = 20, average = 10)
+@Required(throughput = 20, average = 20)
 public class WarehousesWebServicePerformanceTest {
 
 	// nothing!
