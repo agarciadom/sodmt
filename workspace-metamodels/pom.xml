@@ -12,6 +12,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub agarciadomi Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/agarciadomi/sodmt</url>
+        </repository>
+    </distributionManagement>
     <modules>
         <module>bundles</module>
         <module>features</module>
