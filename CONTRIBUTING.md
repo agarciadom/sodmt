@@ -16,8 +16,9 @@ After a while, you should have a fully set up workbench.
 
 ## 	Basic project structure
 
-* [`case-study-multimodule`](./case-study-multimodule) contains a multimodule Maven project with a basic [Spring Roo](https://projects.spring.io/spring-roo/) website with some simple web services that we can test.
 * [`docs`](./docs) contains a number of miscellaneous documents and early experiments used to disseminate the research, study the capabilities of `glpsol`, and examine how likely the worst case of the graph-based algorithm really is.
+* [`example-isa95`](./example-isa95) contains a multimodule Maven project with a basic [Spring Roo](https://projects.spring.io/spring-roo/) website implementing a simplified ERP for a manufacturing company, inspired by ISA-95. This website includes a scheduling web service, which can be tested with SODM+T, and is backed by a PostgreSQL database.
+* [`example-orders`](./example-orders) contains another multimodule Maven project, this time with a set of web services for managing invoices, orders, shipments and warehouses. This is a simpler project, using only an in-memory H2 database, but it also contains manually written ContiPerf and The Grinder tests that were taken as a base to develop the automated performance test generators in SODM+T.
 * [`workspace-metamodels`](./workspace-metamodels) contains the code of SODM+T in the form of a [structured environment](http://blog.vogella.com/2015/12/15/pom-less-tycho-builds-for-structured-environments/), following the usual Eclipse folder conventions.
 * [`workspace-models`](./workspace-models) has a set of sample models developed with SODM+T: the [README](./README.md) has more information about them.
 

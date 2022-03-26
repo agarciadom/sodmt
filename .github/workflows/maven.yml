@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build-webapp:
+  build-roo:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,10 +17,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build sample webapp with Maven
+    - name: Build ISA-95 mini-ERP webapp with Maven
       run: |
-        cd case-study-multimodule
+        cd example-isa95
         mvn -B verify
+    - name: Build Orders Web Services with Maven
+      run: |
+        cd example-orders
+        mvn -pl '!grinder' -B verify
     - name: Surefire Report
       if: ${{ always() }}
       uses: ScaCap/action-surefire-report@v1.0.5
