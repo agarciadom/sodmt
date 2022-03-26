@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -38,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PerformanceRequirementLinksImpl extends EObjectImpl implements PerformanceRequirementLinks {
+public class PerformanceRequirementLinksImpl extends MinimalEObjectImpl.Container implements PerformanceRequirementLinks {
 	/**
 	 * The default value of the '{@link #getSamplesPerTest() <em>Samples Per Test</em>}' attribute.
 	 * <!-- begin-user-doc -->

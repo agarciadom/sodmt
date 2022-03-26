@@ -112,6 +112,15 @@ public interface LinksPackage extends EPackage {
 	int PERFORMANCE_REQUIREMENT_LINKS_FEATURE_COUNT = 4;
 
 	/**
+	 * The number of operations of the '<em>Performance Requirement Links</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMANCE_REQUIREMENT_LINKS_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link es.uca.modeling.eol.marte.weaving.links.impl.PerformanceRequirementLinkImpl <em>Performance Requirement Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,6 +174,15 @@ public interface LinksPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERFORMANCE_REQUIREMENT_LINK_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Performance Requirement Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERFORMANCE_REQUIREMENT_LINK_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link es.uca.modeling.eol.marte.weaving.links.TimeLimitMetric <em>Time Limit Metric</em>}' enum.

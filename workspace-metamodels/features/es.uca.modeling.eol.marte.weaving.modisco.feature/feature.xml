@@ -103,12 +103,18 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.modisco.java.discoverer"/>
       <import plugin="org.eclipse.modisco.infra.discovery.core"/>
       <import plugin="org.eclipse.papyrus.marte.static.profile"/>
+      <import plugin="es.uca.modeling.eol.marte"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.uml2.types"/>
       <import plugin="org.eclipse.uml2.uml" version="4.0.0" match="greaterOrEqual"/>
-      <import feature="es.uca.modeling.eol.marte.feature" version="1.0.0.qualifier"/>
-      <import plugin="es.uca.modeling.eol.marte"/>
       <import plugin="org.eclipse.modisco.java" version="1.5.0" match="greaterOrEqual"/>
+      <import feature="es.uca.modeling.eol.marte.feature" version="1.0.0.qualifier"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.uml2.uml.edit"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
    </requires>
 
    <plugin
@@ -120,6 +126,20 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="es.uca.modeling.eol.marte.weaving.modisco"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.modeling.eol.marte.weaving.modisco.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uca.modeling.eol.marte.weaving.modisco.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

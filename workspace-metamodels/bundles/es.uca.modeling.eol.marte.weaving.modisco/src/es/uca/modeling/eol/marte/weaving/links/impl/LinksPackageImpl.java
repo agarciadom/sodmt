@@ -101,8 +101,8 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage {
 		// Initialize simple dependencies
 		JavaPackage.eINSTANCE.eClass();
 		UMLPackage.eINSTANCE.eClass();
-		TypesPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theLinksPackage.createPackageContents();
@@ -306,7 +306,7 @@ public class LinksPackageImpl extends EPackageImpl implements LinksPackage {
 
 		// Add supertypes to classes
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(performanceRequirementLinksEClass, PerformanceRequirementLinks.class, "PerformanceRequirementLinks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerformanceRequirementLinks_SamplesPerTest(), ecorePackage.getEIntegerObject(), "samplesPerTest", "1000", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerformanceRequirementLinks_Threads(), ecorePackage.getEIntegerObject(), "threads", "5", 0, 1, PerformanceRequirementLinks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

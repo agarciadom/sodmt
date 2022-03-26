@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/es.uca.modeling.eol.marte.weaving.modisco/src"
-    modelPluginID="es.uca.modeling.eol.marte.weaving.modisco" modelName="Links" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.modisco.java/model/java.genmodel#//java platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types">
-  <foreignModel>links.emf</foreignModel>
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uca.modeling.eol.marte.weaving.modisco/src"
+    modelPluginID="es.uca.modeling.eol.marte.weaving.modisco" modelName="Links" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.modisco.java/model/java.genmodel#//java ../../org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>links.ecore</foreignModel>
   <genPackages prefix="Links" basePackage="es.uca.modeling.eol.marte.weaving" disposableProviderFactory="true"
       fileExtensions="modisco_perfreq" ecorePackage="links.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="links.ecore#//TimeLimitMetric">

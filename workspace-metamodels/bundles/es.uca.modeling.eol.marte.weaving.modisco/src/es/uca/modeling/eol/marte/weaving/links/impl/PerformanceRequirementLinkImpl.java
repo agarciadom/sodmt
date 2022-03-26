@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.modisco.java.ClassDeclaration;
@@ -41,7 +40,7 @@ import org.eclipse.uml2.uml.ExecutableNode;
  *
  * @generated
  */
-public class PerformanceRequirementLinkImpl extends EObjectImpl implements PerformanceRequirementLink {
+public class PerformanceRequirementLinkImpl extends MinimalEObjectImpl.Container implements PerformanceRequirementLink {
 	/**
 	 * The default value of the '{@link #getMetric() <em>Metric</em>}' attribute.
 	 * <!-- begin-user-doc -->

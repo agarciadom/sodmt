@@ -14,10 +14,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="PerformanceRequirementLink">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="#//TimeLimitMetric"
         defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="execNode" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ExecutableNode"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="klazz" eType="ecore:EClass http://www.eclipse.org/MoDisco/Java/0.2.incubation/java#//ClassDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execNode" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//ExecutableNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="klazz" eType="ecore:EClass ../../org.eclipse.modisco.java/model/java.ecore#//ClassDeclaration"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="testMethods" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/MoDisco/Java/0.2.incubation/java#//MethodDeclaration"/>
+        eType="ecore:EClass ../../org.eclipse.modisco.java/model/java.ecore#//MethodDeclaration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TimeLimitMetric">
     <eLiterals name="MAX"/>
