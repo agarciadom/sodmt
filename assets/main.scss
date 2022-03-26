@@ -1,0 +1,20 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.pdf-slides {
+    text-align: center;
+}
+
+.pdf-slides canvas {
+    border: 1px solid black;
+}
+
+.pdf-slides button {
+    margin: 0 .5em 0 .5em;
+}
+
+.pdf-slides {
+    margin-bottom: 1em;
+}
