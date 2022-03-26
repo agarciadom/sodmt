@@ -9,13 +9,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated links -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="es.uca.modeling.sodmt.wizards"
             name="%_UI_Wizard_category"/>
       <wizard
             id="es.uca.modeling.eol.marte.weaving.links.presentation.LinksModelWizardID"
             name="%_UI_LinksModelWizard_label"
             class="es.uca.modeling.eol.marte.weaving.links.presentation.LinksModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="es.uca.modeling.sodmt.wizards"
             icon="icons/full/obj16/LinksModelFile.gif">
          <description>%_UI_LinksModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
