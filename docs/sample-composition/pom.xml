@@ -8,7 +8,20 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <slf4j.version>1.6.4</slf4j.version>
     <cxf.version>2.5.0</cxf.version>
+    <jetty.version>7.1.5.v20100705</jetty.version>
   </properties>
+  <repositories>
+    <repository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/15563244/packages/maven</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <dependencyManagement>
     <dependencies>
       <!-- HIBERNATE -->
@@ -58,7 +71,7 @@
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-webapp</artifactId>
-        <version>7.1.5.v20100705</version>
+        <version>${jetty.version}</version>
       </dependency>
       <!-- JUNIT -->
       <dependency>

@@ -51,7 +51,7 @@ class TestRunner:
         self.tests = (
             test_service(
                 name="OrdersImplService",
-                url="http://localhost:8080/orders",
+                url="http://172.17.0.1:8080/orders",
                 operations=(
                     ("list", {"maximum": 150}),
                     ("query", {"maximum": 150}),

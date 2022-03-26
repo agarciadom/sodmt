@@ -1,71 +1,75 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>es.uca.sodmt.orders</groupId>
     <artifactId>parent</artifactId>
     <version>1-SNAPSHOT</version>
   </parent>
-
   <artifactId>grinder</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Orders :: Web Services :: Grinder Tests</name>
   <description>Performance tests based on The Grinder</description>
-
   <properties>
-      <grinder.version>1.0.0-RC3</grinder.version>
+    <grinder.version>1.0.0-RC3</grinder.version>
   </properties>
-
   <build>
-      <plugins>
-          <plugin>
-              <artifactId>maven-clean-plugin</artifactId>
-              <version>2.5</version>
-              <configuration>
-                  <filesets>
-                      <fileset>
-                          <directory>cachedir</directory>
-                      </fileset>
-                      <fileset>
-                          <directory>.</directory>
-                          <includes>
-                              <include>velocity*.log</include>
-                          </includes>
-                      </fileset>
-                  </filesets>
-              </configuration>
-          </plugin>
-          <plugin>
-              <groupId>com.fides</groupId>
-              <artifactId>grinderplugin</artifactId>
-              <version>${grinder.version}</version>
-              <executions>
-                  <execution>
-                      <id>run-tests</id>
-                      <phase>integration-test</phase>
-                      <goals>
-                          <goal>agent</goal>
-                      </goals>
-                  </execution>
-                  <execution>
-                      <id>generate-report</id>
-                      <phase>post-integration-test</phase>
-                      <goals>
-                          <goal>report</goal>
-                      </goals>
-                  </execution>
-              </executions>
-              <dependencies>
-                  <dependency>
-                      <groupId>es.uca.webservices</groupId>
-                      <artifactId>test-generator</artifactId>
-                      <version>1.0</version>
-                  </dependency>
-              </dependencies>
-          </plugin>
-      </plugins>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>cachedir</directory>
+            </fileset>
+            <fileset>
+              <directory>.</directory>
+              <includes>
+                <include>velocity*.log</include>
+              </includes>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.fides</groupId>
+        <artifactId>grinderplugin</artifactId>
+        <version>${grinder.version}</version>
+        <executions>
+          <execution>
+            <id>run-tests</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>generate-report</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>es.uca.webservices</groupId>
+            <artifactId>test-generator</artifactId>
+            <version>1.1.0-SNAPSHOT</version>
+          </dependency>
+          <dependency>
+            <groupId>net.sf.jopt-simple</groupId>
+            <artifactId>jopt-simple</artifactId>
+            <version>3.2</version>
+          </dependency>
+          <dependency>
+            <groupId>logkit</groupId>
+            <artifactId>logkit</artifactId>
+            <version>2.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
   </build>
-
 </project>
