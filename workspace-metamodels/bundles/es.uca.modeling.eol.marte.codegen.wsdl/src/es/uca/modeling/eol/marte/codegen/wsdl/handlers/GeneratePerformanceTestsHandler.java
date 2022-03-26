@@ -109,6 +109,8 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 
 	private void populateProject(IProject project, EmfModel weavingModel, PerformanceRequirementLinks allLinks) throws Exception {
 		generateCode(weavingModel, project.getFile("pom.xml"));
+		File fGrinderShell = generateCode(weavingModel, project.getFile("run-grinder.sh"));
+		fGrinderShell.setExecutable(true);
 		generateCode(weavingModel, createTestResourceFolder(project, "jython").getFile("tests.py"));
 		generateCode(weavingModel, createTestResourceFolder(project, "config").getFile("grinder.properties"));
 
@@ -205,10 +207,11 @@ public class GeneratePerformanceTestsHandler extends AbstractHandler {
 		}
 	}
 
-	private void generateCode(EmfModel weavingModel, IFile targetIFile) throws URISyntaxException, EolRuntimeException, Exception {
+	private File generateCode(EmfModel weavingModel, IFile targetIFile) throws URISyntaxException, EolRuntimeException, Exception {
 		final String pathToEGL = "/egl/" + targetIFile.getName() + ".egl";
 		final File targetFile = new File(targetIFile.getLocationURI());
 		generateCode(weavingModel, pathToEGL, targetFile);
+		return targetFile;
 	}
 
 	private void generateCode(final EmfModel weavingModel, final String pathToEGL, final File targetFile)
