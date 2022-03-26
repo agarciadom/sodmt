@@ -64,10 +64,10 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
                 earliest.setTime(new SimpleDateFormat("yyyy/MM/dd").parse("2013/10/01"));
 
                 final List<EquipmentCapability> results = EquipmentCapability.findEarliestAvailable(equipment, earliest);
-                assertTrue(results.size() > 0);
+                assertTrue("There should be one or more available pieces of equipment", results.size() > 0);
                 for (EquipmentCapability cap : results) {
-                        assertSame(equipment, cap.getEquipment());
-                        assertTrue(cap.getStartTime().after(earliest));
+                        assertSame("The equipment should be the same object", equipment, cap.getEquipment());
+                        assertTrue("The capability start time should be after the threshold", cap.getStartTime().after(earliest));
                 }
         }
 
