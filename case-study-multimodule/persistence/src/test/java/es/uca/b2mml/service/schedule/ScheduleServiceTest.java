@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.joda.time.DateTime;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -43,6 +44,19 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
         @Autowired
         private ScheduleService scheduleService;
 
+        @Before
+        public void setUp() {
+                if (System.getenv("GITHUB_ACTION") != null) {
+                        // This is *only* needed in Github Actions: for some reason, add-duplicates.sql
+                        // will not be run automatically by hbm2ddl.import_files.
+                        try {
+                                executeSqlScript("add-duplicates.sql", false);
+                        } catch (Exception ex) {
+                                // Nothing to do
+                        }
+                }
+        }
+
         @Test
         public void listEarliestAvailableEquipmentByClass() throws Exception {
                 final EquipmentClass eqClass = EquipmentClass.findByName("EQC-RectifyingLines");
@@ -64,11 +78,17 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
                 earliest.setTime(new SimpleDateFormat("yyyy/MM/dd").parse("2013/10/01"));
 
                 final List<EquipmentCapability> results = EquipmentCapability.findEarliestAvailable(equipment, earliest);
-                assertTrue(results.size() > 0);
+                assertTrue("There should be one or more available pieces of equipment", results.size() > 0);
                 for (EquipmentCapability cap : results) {
-                        assertSame(equipment, cap.getEquipment());
-                        assertTrue(cap.getStartTime().after(earliest));
+                        assertSame("The equipment should be the same object", equipment, cap.getEquipment());
+                        assertTrue("The capability start time should be after the threshold", cap.getStartTime().after(earliest));
                 }
+        }
+
+        @Test
+        public void findStartTimeSet() throws Exception {
+                List<EquipmentCapability> results = EquipmentCapability.findStartTimeSet();
+                assertTrue(results.size() > 0);
         }
 
         @Test

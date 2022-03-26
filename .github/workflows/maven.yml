@@ -7,9 +7,27 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-webapp:
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build sample webapp with Maven
+      run: |
+        cd case-study-multimodule
+        mvn -B verify
+    - name: Surefire Report
+      if: ${{ always() }}
+      uses: ScaCap/action-surefire-report@v1.0.5
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  build-tooling:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -21,8 +39,4 @@ jobs:
     - name: Build tooling with Maven
       run: |
         cd workspace-metamodels
-        mvn -B verify
-    - name: Build sample webapp with Maven
-      run: |
-        cd case-study-multimodule
         mvn -B verify

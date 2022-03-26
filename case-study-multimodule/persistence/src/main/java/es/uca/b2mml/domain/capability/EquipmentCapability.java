@@ -53,6 +53,10 @@ import es.uca.b2mml.domain.equip.EquipmentClass;
 	@NamedQuery(
 		name="ecapability.findByDateRangeAndParentsAndEquipmentClass",
 		query="SELECT e FROM EquipmentCapability e WHERE e.type = :availableType AND e.quantity.quantityValue > 0 AND :equipmentClassId IN (SELECT c.id FROM e.equipment.classes c) AND e.equipment.parent.id IN :acceptableParentIds AND ((:startTime >= e.startTime AND :startTime < e.endTime) OR (:endTime > e.startTime AND :endTime <= e.endTime))"
+	),
+	@NamedQuery(
+		name="ecapability.findStartTimeSet",
+		query="SELECT e FROM EquipmentCapability e WHERE e.type = :availableType AND e.startTime IS NOT NULL ORDER BY e.startTime ASC"
 	)
 })
 public class EquipmentCapability extends ChildCapability {
@@ -170,6 +174,13 @@ public class EquipmentCapability extends ChildCapability {
 			.setParameter("startTime", rangeStart)
 			.setParameter("endTime", rangeEnd)
 			.setParameter("equipmentClassId", equipmentClass.getId())
+			.getResultList();
+	}
+
+	public static List<EquipmentCapability> findStartTimeSet() {
+		final TypedQuery<EquipmentCapability> query = entityManager().createNamedQuery("ecapability.findStartTimeSet", EquipmentCapability.class);
+		return query
+			.setParameter("availableType", CapabilityType.AVAILABLE)
 			.getResultList();
 	}
 
