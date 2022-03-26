@@ -15,8 +15,8 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub agarciadomi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/agarciadomi/sodmt</url>
+            <name>GitHub agarciadom Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/agarciadom/sodmt</url>
         </repository>
     </distributionManagement>
     <modules>
