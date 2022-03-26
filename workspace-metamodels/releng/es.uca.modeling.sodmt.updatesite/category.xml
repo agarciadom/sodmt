@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/es.uca.modeling.eol.marte.feature_1.0.3.qualifier.jar" id="es.uca.modeling.eol.marte.feature" version="1.0.3.qualifier">
+   <feature url="features/es.uca.modeling.eol.marte.feature_1.0.4.qualifier.jar" id="es.uca.modeling.eol.marte.feature" version="1.0.4.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.eol.marte.weaving.modisco.feature_1.0.3.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.modisco.feature" version="1.0.3.qualifier">
+   <feature url="features/es.uca.modeling.eol.marte.weaving.modisco.feature_1.0.4.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.modisco.feature" version="1.0.4.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.3.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.3.qualifier">
+   <feature url="features/es.uca.modeling.eol.marte.weaving.wsdl.feature_1.0.4.qualifier.jar" id="es.uca.modeling.eol.marte.weaving.wsdl.feature" version="1.0.4.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
    <feature url="features/kybele.etsii.urjc.es.ucm.feature_1.0.0.jar" id="kybele.etsii.urjc.es.ucm.feature" version="1.0.0">
       <category name="es.uca.webservices.sodmt.updatesite.sodm"/>
    </feature>
-   <feature url="features/es.uca.modeling.performance.sodmt.feature_1.0.3.qualifier.jar" id="es.uca.modeling.performance.sodmt.feature" version="1.0.3.qualifier">
+   <feature url="features/es.uca.modeling.performance.sodmt.feature_1.0.4.qualifier.jar" id="es.uca.modeling.performance.sodmt.feature" version="1.0.4.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
-   <feature url="features/es.uca.modeling.papyrus.feature_1.0.3.qualifier.jar" id="es.uca.modeling.papyrus.feature" version="1.0.3.qualifier">
+   <feature url="features/es.uca.modeling.papyrus.feature_1.0.4.qualifier.jar" id="es.uca.modeling.papyrus.feature" version="1.0.4.qualifier">
       <category name="es.uca.webservices.sodmt.updatesite.sodmt"/>
    </feature>
    <category-def name="es.uca.webservices.sodmt.updatesite.sodmt" label="SODM+T"/>

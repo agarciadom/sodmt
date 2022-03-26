@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SODM+T Ad-hoc Performance Models (Common scripts)
 Bundle-SymbolicName: es.uca.modeling.performance.sodmt.eol;singleton:=true
-Bundle-Version: 1.0.3.qualifier
+Bundle-Version: 1.0.4.qualifier
 Require-Bundle: org.eclipse.epsilon.eol.engine,
  org.eclipse.epsilon.ewl.gmf,
  org.eclipse.epsilon.ewl.engine,

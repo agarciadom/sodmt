@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Performance tests for the MARTE inference algorithms
 Bundle-SymbolicName: es.uca.modeling.eol.marte.performance
-Bundle-Version: 1.0.3.qualifier
+Bundle-Version: 1.0.4.qualifier
 Bundle-Vendor: University of Cádiz
 Fragment-Host: es.uca.modeling.eol.marte;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11

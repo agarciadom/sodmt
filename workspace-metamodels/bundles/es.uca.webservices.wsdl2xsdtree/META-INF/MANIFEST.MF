@@ -13,7 +13,7 @@ Bundle-Name: WSDL2XSDTree
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-SymbolicName: es.uca.webservices.wsdl2xsdtree
 Bundle-Vendor: Universidad de Cádiz
-Bundle-Version: 1.0.3.qualifier
+Bundle-Version: 1.0.4.qualifier
 Class-Path: xml-utils-1.3-SNAPSHOT.jar saxon-9.1.0.8.jar saxon-9.1.0.8-d
  om.jar wsdl4j-1.6.2.jar commons-io-2.1.jar jopt-simple-3.2.jar slf4j-ap
  i-1.6.2.jar slf4j-log4j12-1.6.2.jar log4j-1.2.16.jar
