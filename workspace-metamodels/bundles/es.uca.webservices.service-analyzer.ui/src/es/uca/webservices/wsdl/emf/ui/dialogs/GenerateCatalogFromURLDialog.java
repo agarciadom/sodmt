@@ -84,7 +84,7 @@ public class GenerateCatalogFromURLDialog extends TitleAreaDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(600, 230);
+		return new Point(600, 300);
 	}
 
 	@Override
