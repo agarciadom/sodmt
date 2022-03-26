@@ -7,6 +7,8 @@ permalink: /requirement-design/
 Once you have [installed](/installation/) SODM+T, you can start designing performance test cases with it.
 You may want to use the simpler service process / service composition diagrams built into SODM+T, or you may want to use Papyrus UML diagrams using the MARTE GQAM profile.
 
+*Note:* currently, only MARTE models can be used to automatically generate ContiPerf / The Grinder tests.
+
 # SODM+T Service Process/Composition Diagrams
 
 SODM+T includes two notations inspired by UML activity diagrams, simplified to the elements strictly needed to generate its performance tests: service processes and service compositions.
