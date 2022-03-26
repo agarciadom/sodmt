@@ -72,6 +72,12 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
         }
 
         @Test
+        public void findStartTimeSet() throws Exception {
+                List<EquipmentCapability> results = EquipmentCapability.findStartTimeSet();
+                assertTrue(results.size() > 0);
+        }
+
+        @Test
         public void listAvailableEquipmentByRange() throws Exception {
                 final Equipment equipment    = Equipment.findByEquipmentId("EQ-Rectifying Line #2");
                 final DateTime dateTimeStart = new DateTime(2013, 11, 1, 0, 0, 0, 0);
