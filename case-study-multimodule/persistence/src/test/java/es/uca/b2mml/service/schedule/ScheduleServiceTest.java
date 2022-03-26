@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.joda.time.DateTime;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -42,6 +43,19 @@ public class ScheduleServiceTest extends AbstractTransactionalJUnit4SpringContex
 
         @Autowired
         private ScheduleService scheduleService;
+
+        @Before
+        public void setUp() {
+                if (System.getenv("GITHUB_ACTION") != null) {
+                        // This is *only* needed in Github Actions: for some reason, add-duplicates.sql
+                        // will not be run automatically by hbm2ddl.import_files.
+                        try {
+                                executeSqlScript("add-duplicates.sql", false);
+                        } catch (Exception ex) {
+                                // Nothing to do
+                        }
+                }
+        }
 
         @Test
         public void listEarliestAvailableEquipmentByClass() throws Exception {
