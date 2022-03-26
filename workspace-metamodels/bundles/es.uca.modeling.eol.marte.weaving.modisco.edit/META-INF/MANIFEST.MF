@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: es.uca.modeling.eol.marte.weaving.modisco.edit;singleton:=true
 Automatic-Module-Name: es.uca.modeling.eol.marte.weaving.modisco.edit
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.0.2.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: es.uca.modeling.eol.marte.weaving.links.provider.LinksEditPlugin$Implementation
 Bundle-Vendor: %providerName

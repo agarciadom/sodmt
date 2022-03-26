@@ -6,12 +6,12 @@
   <parent>
       <groupId>es.uca.modeling</groupId>
       <artifactId>parent</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.2-SNAPSHOT</version>
       <relativePath>../..</relativePath>
   </parent>
 
   <artifactId>es.uca.modeling.performance.sodmt.eol.tests</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.2-SNAPSHOT</version>
   <packaging>eclipse-test-plugin</packaging>
 
   <build>

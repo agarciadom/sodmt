@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SODM+T Ad-hoc Performance Models (EVL Tests)
 Bundle-SymbolicName: es.uca.modeling.performance.sodmt.evl.tests
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.0.2.qualifier
 Fragment-Host: es.uca.modeling.performance.sodmt.evl;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: es.uca.modeling.performance.sodmt.sprocess,

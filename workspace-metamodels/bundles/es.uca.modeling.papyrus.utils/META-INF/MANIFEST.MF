@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Papyrus Utilities
 Bundle-SymbolicName: es.uca.modeling.papyrus.utils; singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.0.2.qualifier
 Bundle-Activator: es.uca.modeling.papyrus.utils.Activator
 Bundle-Vendor: Universidad de Cadiz
 Require-Bundle: org.eclipse.ui,
