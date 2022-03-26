@@ -2,7 +2,7 @@
 <feature
       id="es.uca.modeling.eol.marte.weaving.wsdl.feature"
       label="SODM+T WSDL Weaving"
-      version="1.0.2.qualifier"
+      version="1.0.3.qualifier"
       provider-name="Universidad de Cádiz">
 
    <description url="https://github.com/agarciadom/sodmt">

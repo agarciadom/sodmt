@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: es.uca.modeling.eol.marte.weaving.wsdl.editor;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.0.3.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: es.uca.modeling.eol.marte.weaving.wsdl.links.presentation.LinksEditorPlugin$Implementation
 Bundle-Vendor: %providerName
