@@ -63,6 +63,8 @@
     <requirement
         name="org.eclipse.epsilon.emf.dt.feature.feature.group"/>
     <requirement
+        name="org.eclipse.epsilon.eugenia.feature.feature.group"/>
+    <requirement
         name="org.eclipse.epsilon.ewl.emf.feature.feature.group"/>
     <requirement
         name="org.eclipse.epsilon.ewl.gmf.feature.feature.group"/>
