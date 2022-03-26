@@ -47,6 +47,8 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Deploy to Packages
       if: ${{ success() && github.ref == 'refs/heads/master' }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       run: |
         cd workspace-metamodels
         mvn -B deploy -DskipTests
