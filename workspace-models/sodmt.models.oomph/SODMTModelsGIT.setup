@@ -63,7 +63,7 @@
     <requirement
         name="es.uca.modeling.eol.marte.weaving.wsdl.feature.feature.group"/>
     <repository
-        url="https://agarciadom.github.io/sodmt/updates/1.0.0/"/>
+        url="https://agarciadom.github.io/sodmt/updates/1.0.2/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
