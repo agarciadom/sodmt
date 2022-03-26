@@ -9,3 +9,4 @@ FilterByClassRule.java
 *.sprocess.tests
 
 log.roo
+jetty.log

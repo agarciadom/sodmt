@@ -5,9 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -34,10 +32,13 @@ public class OrderWebServiceTest extends WebServiceTest {
 	public void queryOrders() throws MissingOrder {
 		final OrderQueryResponse orderInfo = orders.query(getDBContents().getClosedOrder().getId());
 		final Set<SimpleOrderLine> lines = orderInfo.getLines();
+		final Set<Integer> actual = new HashSet<Integer>();
+		for (Iterator<SimpleOrderLine> itL = lines.iterator(); itL.hasNext(); ) {
+			actual.add(itL.next().getQty().intValue());
+		}
 
-		final Iterator<SimpleOrderLine> iterLines = lines.iterator();
-		assertEqualBigDecimals(BigDecimal.valueOf(9001L), iterLines.next().getQty());
-		assertEqualBigDecimals(BigDecimal.valueOf(42L), iterLines.next().getQty());
+		final Set<Integer> expected = new HashSet<Integer>(Arrays.asList(9001, 42));
+		assertEquals(expected, actual);
 	}
 
 	@Test
