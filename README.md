@@ -50,7 +50,7 @@ After this, you can study the remaining projects:
 
 This project also has a standard update site here, in case you would like to use your existing Eclipse installation:
 
-https://agarciadom.github.io/sodmt/updates/1.0.0/
+https://agarciadom.github.io/sodmt/updates/1.0.3/
 
 ## Selected publications
 
