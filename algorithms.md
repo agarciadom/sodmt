@@ -7,7 +7,7 @@ permalink: /algorithms/
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
 
-SODM+T includes two algorithms for computing local performance requirements from a global requirement and an optional set of local annotations.
+SODM+T includes several algorithms for computing local performance requirements from a global requirement and an optional set of local annotations.
 This page will give a brief illustration of how they work: for more details, please consult the [publications](/about) or the Github repository (see link above).
 
 # Throughput inference
