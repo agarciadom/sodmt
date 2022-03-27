@@ -5,25 +5,25 @@
 \begin{umlactivity}[node distance=5em,activity/.append style={text width=6.75em,inner sep=.2em}]
   % Activity diagram nodes
   \initial{ini}
-  \activity[below=1em of ini]{rq}{\gatmpthroughput<2>{10} RQ}
+  \activity[below=1em of ini]{rq}{\tmpthroughput<2>{10} RQ}
 
   \fork[right=1em of rq]{forkairline}
-  \activity[above right=.25em and 1em of forkairline.center]{qaa}{\gatmpthroughput<3>{10} QAA}
-  \activity[below right=.25em and 1em of forkairline.center]{qab}{\gatmpthroughput<3>{10} QAB}
+  \activity[above right=.25em and 1em of forkairline.center]{qaa}{\tmpthroughput<3>{10} QAA}
+  \activity[below right=.25em and 1em of forkairline.center]{qab}{\tmpthroughput<3>{10} QAB}
   \join[right=8.75em of forkairline.center]{joinairline}
 
   \node[draw,below=6em of rq,inner sep=.5em,anchor=center,rotate=-45] (dechotel) {};
-  \activity[above right=.25em and 6em of dechotel.center]{qhc}{\gatmpthroughput<4>{8} QHC}
-  \activity[below right=.25em and 6em of dechotel.center]{qhd}{\gatmpthroughput<4>{2} QHD}
+  \activity[above right=.25em and 6em of dechotel.center]{qhc}{\tmpthroughput<4>{8} QHC}
+  \activity[below right=.25em and 6em of dechotel.center]{qhd}{\tmpthroughput<4>{2} QHD}
   \join[right=14em of dechotel.center]{mergehotel}
 
-  \activity[right=1em of mergehotel]{book}{\gatmpthroughput<5>{10} B}
+  \activity[right=1em of mergehotel]{book}{\tmpthroughput<5>{10} B}
   \final[above=1em of book]{fin}
 
   % Global constraint
   \alt<1>{\tikzstyle{global}=[color=red]}{\tikzstyle{global}=[]}
   \node[draw,right=3em of joinairline,global] {%
-    \highlight<1>{\gathroughput[gascenario]{(10Hz, req)}}};
+    \highlight<1>{\throughput{10Hz}}};
 
   % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \draw[cflow]
@@ -38,8 +38,8 @@
   \draw[cflow] (qab) -| (joinairline);
 
   \draw[cflow]
-    (dechotel) edge node[above,black,align=center] {\highlight<1>{\gaprob{0.8}} \\ c}
-    (qhc) edge node[below,black,align=center] {\highlight<1>{\gaprob{0.2}} \\ !c} (qhd);
+    (dechotel) edge node[above,black,align=center] {\highlight<1>{\prob{0.8}} \\ c}
+    (qhc) edge node[below,black,align=center] {\highlight<1>{\prob{0.2}} \\ !c} (qhd);
 
   \draw[cflow] (qhc) -| (mergehotel);
   \draw[cflow] (qhd) -| (mergehotel);

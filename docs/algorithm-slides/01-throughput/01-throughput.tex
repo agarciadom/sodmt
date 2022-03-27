@@ -64,7 +64,7 @@
 
 \begin{frame}{Throughput inference}
   \begin{overprint}
-    \onslide<1> We add a global requirement (marked with \emph{req}) and
+    \onslide<1> We add a global requirement and
     annotate decision branches with their local probabilities.
 
     \onslide<2> Requests flow sequentially from the initial node.
@@ -74,10 +74,7 @@
 
     \onslide<4> Decisions send the request to a branch, under some probability.
 
-    \onslide<5> Merges bring together requests from different branches.
-
-    \onslide<6> Done: the inferred values are annotated with \emph{calc}, to
-    show they have been computed automatically.
+    \onslide<5> Merges bring together requests from different branches: we're done!
   \end{overprint}
   \begin{center}
     \input{throughput.tikz}

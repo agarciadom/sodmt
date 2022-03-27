@@ -101,6 +101,10 @@
 \newcommand*{\localann}[1]{\parbox{8em}{\centering\scriptsize#1}\vspace{.25em}}
 \newcommand*{\slacks}[1]{\parbox{8em}{\centering\scriptsize#1}\vspace{.25em}}
 
+\newcommand*{\throughput}[1]{\parbox{6.75em}{\centering\scriptsize throughput = #1}}
+\newcommand*{\prob}[1]{\parbox{5em}{\centering\scriptsize\{prob = #1\}}}
+\newcommand<>{\tmpthroughput}[2][]{\temporal#3{\throughput#1{?}}{\color{red}\throughput#1{#2}}{\throughput#1{#2}}}
+
 \newcommand<>{\gatmpthroughput}[2][]{
   \temporal#3{\gathroughput#1{?}}{\color{red}\gathroughput#1{#2}}{\gathroughput#1{#2}}
 }
