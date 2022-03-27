@@ -1,0 +1,96 @@
+% -*- mode: latex; TeX-master: "qsic-agd" -*-
+
+%\input{setup-drawings}
+
+% Trace from EOL:
+%
+% Visiting path: Sequence {InitialNode [], Action [name=RQ, ], ForkNode [], Action [name=QAA, ], JoinNode [], DecisionNode [], Action [name=QHD, ], MergeNode [], Action [name=B, ], FinalNode []}
+% Path total minimum time: 7.0
+% Path total weight: 5.0
+% Setting limit of RQ to 0.6: slack per WU is 0.6
+% Setting limit of QAA to 5.0: slack per WU is 0.6
+% Setting limit of QHD to 2.6: slack per WU is 0.6
+% Setting limit of B to 1.7999999999999998: slack per WU is 0.6
+%
+% Visiting path: Sequence {InitialNode [], Action [name=RQ, ], ForkNode [], Action [name=QAA, ], JoinNode [], DecisionNode [], Action [name=QHC, ], MergeNode [], Action [name=B, ], FinalNode []}
+% Path total minimum time: 5.0
+% Path total weight: 5.0
+% Setting limit of QHC to 2.6000000000000005: slack per WU is 2.6000000000000005
+%
+% Visiting path: Sequence {InitialNode [], Action [name=RQ, ], ForkNode [], Action [name=QAB, ], JoinNode [], DecisionNode [], Action [name=QHD, ], MergeNode [], Action [name=B, ], FinalNode []}
+% Path total minimum time: 2.0
+% Path total weight: 8.0
+% Setting limit of QAB to 1.6666666666666667: slack per WU is 1.6666666666666667
+% Visiting path: Sequence {InitialNode [], Action [name=RQ, ], ForkNode [], Action [name=QAB, ], JoinNode [], DecisionNode [], Action [name=QHC, ], MergeNode [], Action [name=B, ], FinalNode []}
+% Path total minimum time: 0.0
+% Path total weight: 8.0
+
+
+\begin{umlactivity}[%
+  node distance=5em,%
+  activity/.append style={text width=8em,inner sep=.2em},%
+  senttime/.style={draw,color=black,font=\scriptsize,fill=white,inner sep=.2em},%
+]
+  % Activity diagram nodes
+  \initial{ini}
+  \activity[below=.5em of ini]{rq}{\localann{\highlight<2-3>{(sRQ, req)}} RQ}
+
+  \fork[right=.5em of rq]{forkairline}
+  \activity[above right=.25em and .75em of forkairline.center]{qaa}{%
+    \localann{\highlight<2,4>{(5)}} QAA}
+  \activity[below right=.25em and .75em of forkairline.center]{qab}{%
+    \localann{\highlight<2-3>{(sAB), rep=3}} QAB}
+  \join[right=9.5em of forkairline.center]{joinairline}
+
+  \node[draw,below=7.25em of forkairline,inner sep=.5em,anchor=center,rotate=-45] (dechotel) {};
+  \activity[above right=.25em and .75em of dechotel.center]{qhc}{%
+    \localann{\highlight<2-3>{(sHC)}} QHC}
+  \activity[below right=.25em and .75em of dechotel.center]{qhd}{%
+    \localann{\highlight<2,5>{(2 + sHD)}} QHD}
+  \join[right=9.5em of dechotel.center]{mergehotel}
+
+  \activity[right=.5em of mergehotel]{book}%
+  {\localann{\highlight<2-3>{(3 $\times$ sB)}} B}
+  \final[above=.5em of book]{fin}
+
+  % Global constraint
+  \alt<1-2>{\tikzstyle{global}=[color=red]}{\tikzstyle{global}=[]}
+  \node[draw,right=1em of joinairline,global,align=center] {%
+    \highlight<1>{\scriptsize time limit = 10s}
+    \\[.5em]{}
+    \temporal<2>{%
+        \slacks{sRQ = ?, sAB = ?,\\{}sHC = ?, sHD = ?,\\{}sB = ?}%
+      }{%
+        \color{red}%
+        \slacks{sRQ = ?, sAB = ?,\\{}sHC = ?, sHD = ?,\\{}sB = ?}%
+      }{%
+        \slacks{%
+          sRQ = \computein<7>{0.6},
+          sAB = \computein<9>{1.67},
+          \\{}sHC = \computein<8>{2.6},
+          sHD = \computein<7>{0.6},
+          \\{}sB = \computein<7>{0.6}}%
+      }};
+
+  % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[cflow]
+    (ini) edge node (tinirq) {} (rq)
+    (rq) edge node (trqforkairline) {} (forkairline)
+    (mergehotel) edge node (tmergehotelbook) {} (book)
+    (book) edge node (tbookfin) {} (fin);
+
+  \draw[cflow] (dechotel) |- node (tdechotelqhc) {} (qhc);
+  \draw[cflow] (dechotel) |- node (tdechotelqhd) {} (qhd);
+  \draw[cflow] (forkairline) |- node (tforkairlineqaa) {} (qaa);
+  \draw[cflow] (forkairline) |- node (tforkairlineqab) {} (qab);
+  \draw[cflow] (qaa) -| node (tqaajoinairline) {} (joinairline);
+  \draw[cflow] (qab) -| node (tqabjoinairline) {} (joinairline);
+  \draw[cflow] (qhc) -| node (tqhcmergehotel) {} (mergehotel);
+  \draw[cflow] (qhd) -| node (tqhdmergehotel) {} (mergehotel);
+  \draw[cflow] (joinairline)
+    -| +(1em,-4.125em)
+    -| ($(-1.5em,0)+(dechotel)$)
+       node (tjoinairlinedechotel) {}
+    -- (dechotel);
+
+\end{umlactivity}

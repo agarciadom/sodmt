@@ -1,0 +1,103 @@
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\documentclass[xcolor=svgnames,hyperref]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyphenat}
+
+\input{../setup-drawings}
+
+\mode<presentation>{
+  \usecolortheme{whale}
+  \usecolortheme{orchid}
+  \useinnertheme{rounded}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamercovered{dynamic}
+}
+\title{SODM+T Exhaustive Time Limit Inference}
+\institute{Aston University}
+\author{Antonio García-Domínguez}
+\date{\today}
+
+\newenvironment{autowidthdesc}[1]{%
+  \begin{list}{}{\renewcommand\makelabel[1]{\structure{##1}\hfil}%
+      \settowidth\labelwidth{\makelabel{#1}}%
+      \setlength\leftmargin{\labelwidth+\labelsep}}}%
+  {\end{list}}
+
+\newcommand*{\twitter}[1]{\texttt{@#1}}
+\newcommand*{\evalue}[1]{e\textsuperscript{3}value\texttrademark{}\xspace}
+\newcommand*{\fichero}[1]{\texttt{#1}}
+\newcommand*{\ingles}[1]{\foreignlanguage{english}{\textit{#1}}}
+\newcommand*{\plugin}[1]{\textit{#1}}
+
+\renewcommand{\emph}[1]{\structure{#1}}
+\newcommand*{\email}[1]{\href{mailto:#1}{#1}}
+
+\newcommand<>{\highlight}[1]{\alt#2{{\color{red}#1}}{\color{black}#1}}
+\newcommand<>{\timelimit}[1]{%
+  % We need to always take up the same vertical space
+  \makebox[0pt][l]{\phantom{?}}%
+  \temporal#2{t = ?}{\color{red}t = #1s}{t = #1s}%
+}
+\newcommand<>{\appearin}[1]{\temporal#2{}{\color{red}#1}{#1}}
+\newcommand<>{\computein}[1]{\temporal#2{?}{{\color{red}#1}}{#1}}
+
+\pgfplotsset{compat=1.3}
+
+\begin{document}
+
+\section{Inference algorithms}
+
+\begin{frame}{Exhaustive time limit inference}
+  \begin{overprint}
+    \onslide<1> All paths from the initial node to the final nodes must finish
+    within 10 seconds. We will infer the resulting time limits for each activity.
+
+    \onslide<2> Activities are annotated with $m + w S$. $m$ is the
+    \emph{minimum time limit}, $w$ is the \emph{weight} and $S$ will be the
+    computed \emph{slack per unit of weight}. Some activities can be repeated.
+
+    \onslide<3> Most activities will have $m=0$. $w$ will be an
+    estimation of their relative computational cost.
+
+    \onslide<4> Other activities may have Service Level Agreements in
+    place, with a previously agreed time limit.
+
+    \onslide<5> Finally, some activities may combine a fixed part with the
+    variable part computed by the algorithm.
+
+    \onslide<6> We find all paths from the initial node to the final node,
+    adding up minimum times and weights into $(m, w)$ pairs: (7, 5), (5, 5), (2, 8), and (0, 8).
+
+    \onslide<7> We start with (7, 5), leaving the least slack per unit
+    of weight: $(10 - 7)/5 = 0.6$.
+
+    \onslide<8> We continue with (5, 5): annotated nodes are ``frozen'' in place,
+    leaving the slack per unit for QHC at $(10 - 7.4)/1 = 2.6$.
+
+    \onslide<9> Next is (2, 8): QAB is given $(10 - 0.6 - 2.6 - 1.8)/3 = (10 - 5)/3 = 1.67$ of slack
+    per unit of weight.
+
+    \onslide<10> We have already annotated all nodes, so we do nothing for the
+    fourth path. We are done!
+  \end{overprint}
+  \begin{center}
+    \input{tlimits.tikz}
+  \end{center}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% ispell-dictionary: american
+%%% End:
