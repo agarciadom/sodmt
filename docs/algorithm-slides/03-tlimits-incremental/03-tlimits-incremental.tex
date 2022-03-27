@@ -1,0 +1,125 @@
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\documentclass[xcolor=svgnames,hyperref]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyphenat}
+
+\input{../setup-drawings}
+
+\mode<presentation>{
+  \usecolortheme{whale}
+  \usecolortheme{orchid}
+  \useinnertheme{rounded}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamercovered{dynamic}
+}
+\title{SODM+T Incremental Time Limit Inference}
+\institute{Aston University}
+\author{Antonio García-Domínguez}
+\date{\today}
+
+\newenvironment{autowidthdesc}[1]{%
+  \begin{list}{}{\renewcommand\makelabel[1]{\structure{##1}\hfil}%
+      \settowidth\labelwidth{\makelabel{#1}}%
+      \setlength\leftmargin{\labelwidth+\labelsep}}}%
+  {\end{list}}
+
+\newcommand*{\twitter}[1]{\texttt{@#1}}
+\newcommand*{\evalue}[1]{e\textsuperscript{3}value\texttrademark{}\xspace}
+\newcommand*{\fichero}[1]{\texttt{#1}}
+\newcommand*{\ingles}[1]{\foreignlanguage{english}{\textit{#1}}}
+\newcommand*{\plugin}[1]{\textit{#1}}
+
+\renewcommand{\emph}[1]{\structure{#1}}
+\newcommand*{\email}[1]{\href{mailto:#1}{#1}}
+
+\newcommand<>{\highlight}[1]{\alt#2{{\color{red}#1}}{\color{black}#1}}
+\newcommand<>{\timelimit}[1]{%
+  % We need to always take up the same vertical space
+  \makebox[0pt][l]{\phantom{?}}%
+  \temporal#2{t = ?}{\color{red}t = #1s}{t = #1s}%
+}
+\newcommand<>{\appearin}[1]{\temporal#2{}{\color{red}#1}{#1}}
+\newcommand<>{\computein}[1]{\temporal#2{?}{{\color{red}#1}}{#1}}
+
+\pgfplotsset{compat=1.3}
+
+\begin{document}
+
+\section{Inference algorithms}
+
+\begin{frame}{Incremental time limit inference}
+  \begin{overprint}
+    \onslide<1> All paths from the initial node to the final nodes must finish
+    within 10 seconds. We will infer the resulting time limits for each activity.
+
+    \onslide<2> Activities are annotated with $m + w S$. $m$ is the
+    \emph{minimum time limit}, $w$ is the \emph{weight} and $S$ will be the
+    computed \emph{slack per unit of weight}.
+
+    \onslide<3> Most activities will have $m=0$. $w$ will be an
+    estimation of their relative computational cost.
+
+    \onslide<4> Other activities may have Service Level Agreements in
+    place, with a previously agreed time limit.
+
+    \onslide<5> Finally, some activities may combine a fixed part with the
+    variable part computed by the algorithm.
+
+    \onslide<6> We need to compute the total minimum time limit and
+    weight of the strictest subpath from each activity. We start from
+    the final node.
+
+    \onslide<7> We continue in reverse topological order.
+
+    \onslide<8> Between (0, 4) and (2, 4), (2, 4) is always stricter:
+    discard (0, 4) and send (2, 4) back to the join node.
+
+    \onslide<9> This time, we propagate (7, 4) back up. The strictest
+    path in the graph from the initial node to a final node is (7, 5).
+
+    \onslide<10> We send 10s into RQ. RQ uses up $0 + 1 (10-7)/5 =
+    0.6$s and sends the remaining 9.4s to the fork node.
+
+    \onslide<11> QAA uses up exactly 5s and sends the remaining 4.4s
+    into the join node.
+
+    \onslide<12> The join node does not use up any time.
+
+    \onslide<13> QHD receives 4.4s, uses up $2 + 1 (4.4-2)/4 = 2.6$s
+    and sends the rest to the merge node.
+
+    \onslide<14> B receives 1.8s and uses up the remaining $0 +
+    3(1.8-0)/3 = 1.8$s.
+
+    \onslide<15> We back up into QHC. At first, QHC uses up 1.1s and
+    sends 3.3s into the merge node.
+
+    \onslide<16> However, the merge node already received 1.8s: we
+    will dedicate the extra 1.5s to QHC.
+
+    \onslide<17> We back up into QAB. Again, QAB only uses up 3.18s
+    and sends too much time to the merge node.
+
+    \onslide<18> We reuse the extra 1.82s into QAB, and we are done.
+  \end{overprint}
+  \begin{center}
+    \input{tlimits.tikz}
+  \end{center}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% ispell-dictionary: american
+%%% End:
