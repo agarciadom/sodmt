@@ -1,0 +1,113 @@
+\usetikzlibrary{backgrounds,calc,chains,fit,positioning,shadows,shapes.geometric,shapes.multipart}
+
+\makeatletter
+\newcommand{\umlact@manual}{false}
+\pgfkeys{
+  /umlact/.cd,
+  node/.store in=\umlact@node,
+  users/.store in=\umlact@users,
+  time limit/.store in=\umlact@tl,
+  manual/.store in=\umlact@manual,
+  type/.is choice,
+  type/graph/.code={\gdef\umlact@stereotype{gpc}},
+  type/activity/.code={\gdef\umlact@stereotype{pc}},
+}
+\newenvironment{umlactivity}[1][]{
+  \begin{tikzpicture}[
+    graphicnode/.style={
+      draw,fill=black,color=black},
+    initial/.style={
+      graphicnode,shape=circle,inner sep=.2cm},
+    final/.style={
+      graphicnode,shape=circle,ultra thick,inner sep=.2cm},
+    decision/.style={
+      graphicnode,inner sep=.2cm,fill=white},
+    fork/.style={
+      graphicnode,inner sep=0,minimum width=0.75em,minimum height=2em},
+    activity/.style={
+      graphicnode,inner sep=0.8em,fill=white,rounded corners,text centered,
+      text width=4em
+    },
+    cflow/.style={->,color=gray,very thick},
+    condition/.style={auto,midway,color=black},
+    alink/.style={dashed,very thick},
+    #1
+  ]
+  \newcommand{\final}[2][]{
+    \node[final,fill=white,##1] (##2) {};
+    \node[final,inner sep=.125cm,##1,left=0 of ##2.center,anchor=center] (i##2) {};
+  }
+  \newcommand{\decision}[2][]{
+    \node[decision,##1,rotate=45] (##2) {};
+  }
+  \newcommand{\initial}[2][]{
+    \node[initial,##1] (##2) {};
+  }
+  \newcommand{\fork}[2][]{
+    \node[fork,##1] (##2) {};
+  }
+  \let\join=\fork
+  \newcommand{\activity}[3][]{
+    \node[activity,##1] (##2) {##3};
+  }
+  \newcommand{\perfannotation}[2][]{
+    \begingroup
+    \pgfkeys{/umlact/.cd,##2}
+    \node[draw,##1,fill=white,rectangle split,
+      rectangle split parts=4,
+      rectangle split draw splits=false,
+      rectangle split part align={center,left}]
+     (\umlact@node){
+       «\umlact@stereotype»
+       \nodepart{second}
+       concurrentUsers = \umlact@users
+       \nodepart{third}
+       timeLimit = \umlact@tl
+       \nodepart{fourth}
+       manual = \umlact@manual
+     };
+    \endgroup
+  }
+}{\end{tikzpicture}}
+
+\newcommand{\activitynode}[6][]{
+  \node[draw,rounded corners,rectangle split,rectangle split parts=3,#1] (#2)
+    {#3
+      \nodepart{second}
+      \parbox{4em}{\centering m = #4s \\ w = #5}
+      \nodepart{third}
+      #6}
+}
+\newcommand{\activitynodemm}[7][]{
+  \node[draw,rounded corners,rectangle split,rectangle split parts=3,#1] (#2)
+    {#3
+      \nodepart{second}
+      \parbox{4em}{\centering m = #4 \\ w = #5 \\ M\textsubscript{m} = #6}
+      \nodepart{third}
+      \makebox[0pt][l]{\phantom{?}}
+      #7}
+}
+\tikzstyle{cflow}=[thick,->]
+
+\newcommand*{\taggedvalues}[3][7em]{\parbox{#1}{\centering\scriptsize\guillemotleft{}#2\guillemotright{} \{#3\}}\vspace{.25em}}
+\newcommand*{\talltaggedvalues}[3][7em]{\parbox{#1}{\centering\scriptsize\guillemotleft{}#2\guillemotright{}\\{}\{#3\}}\vspace{.25em}}
+\newcommand*{\taggedvalue}[2]{\nohyphens{#1} = #2}
+\newcommand*{\gathroughput}[2][gastep]{\taggedvalues[6.75em]{#1}{\taggedvalue{throughput}{#2}}}
+\newcommand*{\gaprob}[2][gastep]{\taggedvalues[5em]{#1}{\taggedvalue{prob}{#2}}}
+\newcommand*{\garespt}[2][gascenario]{\talltaggedvalues[8em]{#1}{\taggedvalue{respT}{#2}}}
+\newcommand*{\gahostdem}[2][gastep]{\taggedvalues[8em]{#1}{\taggedvalue{hostDemand}{#2}}}
+\newcommand*{\gactx}[2][gaanalysiscontext]{\taggedvalues[8.5em]{#1}{\taggedvalue{contextParams}{#2}}}
+
+\newcommand<>{\gatmpthroughput}[2][]{
+  \temporal#3{\gathroughput#1{?}}{\color{red}\gathroughput#1{#2}}{\gathroughput#1{#2}}
+}
+\newcommand<>{\gatmphostdem}[2][]{
+  \temporal#3{\gahostdem#1{?}}{\color{red}\gahostdem#1{#2}}{\gahostdem#1{#2}}
+}
+
+\makeatother
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "qsic-agd"
+%%% End:

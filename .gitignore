@@ -11,3 +11,15 @@ FilterByClassRule.java
 log.roo
 jetty.log
 velocity.log
+
+# LaTeX
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc

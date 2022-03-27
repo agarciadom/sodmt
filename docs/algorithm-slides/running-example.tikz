@@ -1,0 +1,45 @@
+% -*- mode: latex; TeX-master: "qsic-agd" -*-
+
+%\input{setup-drawings}
+
+\begin{umlactivity}[node distance=5em]
+  % Activity diagram nodes
+  \initial{ini}
+  \activity[below=1em of ini]{rq}{Receive Query}
+
+  \fork[right=1em of rq]{forkairline}
+  \activity[above right=.5em and 2.5em of forkairline.center]{qaa}{Query Airline A}
+  \activity[below right=.5em and 2.5em of forkairline.center]{qab}{Query Airline B}
+  \join[right=10.25em of forkairline.center]{joinairline}
+
+  \node[draw,below=8em of forkairline,inner sep=.5em,anchor=center,rotate=-45] (dechotel) {};
+  \activity[above right=.5em and 2.5em of dechotel.center]{qhc}{Query Hotel C}
+  \activity[below right=.5em and 2.5em of dechotel.center]{qhd}{Query Hotel D}
+  \join[right=10.5em of dechotel.center]{mergehotel}
+
+  \activity[right=1em of mergehotel]{book}{Book}
+  \final[above=1em of book]{fin}
+
+  % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[cflow]
+    (ini) edge (rq)
+    (rq) edge (forkairline)
+    (forkairline) edge (qaa) edge (qab)
+    (joinairline) edge[<-] (qaa) edge[<-] (qab)
+    (dechotel) edge node[above,black] {c} (qhc) edge node[below,black] {!c} (qhd)
+    (mergehotel) edge[<-] (qhc) edge[<-] (qhd) edge (book)
+    (book) edge (fin);
+  \draw[cflow] (joinairline) -- +(0,-4.5em) -| (dechotel);
+
+  % % Inferred and manual restrictions %%%%%%%%%%%%%%%%%%%%%%%%
+  % \begin{scope}[every node/.style={%
+  %     draw,inner sep=.1em,fill=white}]
+  %   \node at (rq.south)   {\highlight<4>{0s, 1}};
+  %   \node at (qaa.south)  {\highlight<3>{5s, 0}};
+  %   \node at (qab.south)  {\highlight<4>{0s, 1}};
+  %   \node at (qhc.south)  {\highlight<4>{0s, 1}};
+  %   \node at (qhd.south)  {\highlight<2>{2s, 1}};
+  %   \node at (book.south) {\highlight<4>{0s, 3}};
+  % \end{scope}
+
+\end{umlactivity}

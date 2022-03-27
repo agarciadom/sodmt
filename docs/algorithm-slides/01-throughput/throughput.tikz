@@ -1,0 +1,48 @@
+% -*- mode: latex; TeX-master: "qsic-agd" -*-
+
+%\input{setup-drawings}
+
+\begin{umlactivity}[node distance=5em,activity/.append style={text width=6.75em,inner sep=.2em}]
+  % Activity diagram nodes
+  \initial{ini}
+  \activity[below=1em of ini]{rq}{\gatmpthroughput<2>{10} RQ}
+
+  \fork[right=1em of rq]{forkairline}
+  \activity[above right=.25em and 1em of forkairline.center]{qaa}{\gatmpthroughput<3>{10} QAA}
+  \activity[below right=.25em and 1em of forkairline.center]{qab}{\gatmpthroughput<3>{10} QAB}
+  \join[right=8.75em of forkairline.center]{joinairline}
+
+  \node[draw,below=6em of rq,inner sep=.5em,anchor=center,rotate=-45] (dechotel) {};
+  \activity[above right=.25em and 6em of dechotel.center]{qhc}{\gatmpthroughput<4>{8} QHC}
+  \activity[below right=.25em and 6em of dechotel.center]{qhd}{\gatmpthroughput<4>{2} QHD}
+  \join[right=14em of dechotel.center]{mergehotel}
+
+  \activity[right=1em of mergehotel]{book}{\gatmpthroughput<5>{10} B}
+  \final[above=1em of book]{fin}
+
+  % Global constraint
+  \alt<1>{\tikzstyle{global}=[color=red]}{\tikzstyle{global}=[]}
+  \node[draw,right=3em of joinairline,global] {%
+    \highlight<1>{\gathroughput[gascenario]{(10Hz, req)}}};
+
+  % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[cflow]
+    (ini) edge (rq)
+    (rq) edge (forkairline)
+    (mergehotel) edge (book)
+    (book) edge (fin);
+
+  \draw[cflow] (forkairline) |- (qaa);
+  \draw[cflow] (forkairline) |- (qab);
+  \draw[cflow] (qaa) -| (joinairline);
+  \draw[cflow] (qab) -| (joinairline);
+
+  \draw[cflow]
+    (dechotel) edge node[above,black,align=center] {\highlight<1>{\gaprob{0.8}} \\ c}
+    (qhc) edge node[below,black,align=center] {\highlight<1>{\gaprob{0.2}} \\ !c} (qhd);
+
+  \draw[cflow] (qhc) -| (mergehotel);
+  \draw[cflow] (qhd) -| (mergehotel);
+  \draw[cflow] (joinairline) -| +(1em,-3.85em) -| (dechotel);
+
+\end{umlactivity}

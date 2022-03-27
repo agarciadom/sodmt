@@ -1,0 +1,108 @@
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\documentclass[xcolor=svgnames,hyperref]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyphenat}
+
+\input{setup-drawings}
+
+\mode<presentation>{
+  \useoutertheme[subsection=false,footline=authorinstitutetitle]{miniframes}
+  \defbeamertemplate*{footline}{minipages theme}
+  {
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+      \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
+      \hfill%
+      {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      {\usebeamerfont{title in head/foot}\insertshorttitle}%
+      \hfill%
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+    \end{beamercolorbox}
+  }
+
+  \usecolortheme{whale}
+  \usecolortheme{orchid}
+  \useinnertheme{rounded}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamercovered{dynamic}
+}
+\title{SODM+T throughput inference}
+\institute{Aston  University}
+\author{Antonio García-Domínguez}
+\date{\today}
+
+\newenvironment{autowidthdesc}[1]{%
+  \begin{list}{}{\renewcommand\makelabel[1]{\structure{##1}\hfil}%
+      \settowidth\labelwidth{\makelabel{#1}}%
+      \setlength\leftmargin{\labelwidth+\labelsep}}}%
+  {\end{list}}
+
+\newcommand*{\twitter}[1]{\texttt{@#1}}
+\newcommand*{\evalue}[1]{e\textsuperscript{3}value\texttrademark{}\xspace}
+\newcommand*{\fichero}[1]{\texttt{#1}}
+\newcommand*{\ingles}[1]{\foreignlanguage{english}{\textit{#1}}}
+\newcommand*{\plugin}[1]{\textit{#1}}
+
+\renewcommand{\emph}[1]{\structure{#1}}
+\newcommand*{\email}[1]{\href{mailto:#1}{#1}}
+
+\newcommand<>{\highlight}[1]{\alt#2{{\color{red}#1}}{\color{black}#1}}
+\newcommand<>{\timelimit}[1]{%
+  % We need to always take up the same vertical space
+  \makebox[0pt][l]{\phantom{?}}%
+  \temporal#2{t = ?}{\color{red}t = #1s}{t = #1s}%
+}
+\newcommand<>{\appearin}[1]{\temporal#2{}{\color{red}#1}{#1}}
+\newcommand<>{\computein}[1]{\temporal#2{?}{{\color{red}#1}}{#1}}
+
+\pgfplotsset{compat=1.3}
+
+\begin{document}
+
+\section{Inference algorithms}
+
+\begin{frame}{Running example: travel search engine}
+  \begin{center}
+    \input{../running-example.tikz}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Throughput inference}
+  \begin{overprint}
+    \onslide<1> We add a global requirement (marked with \emph{req}) and
+    annotate decision branches with their local probabilities.
+
+    \onslide<2> Requests flow sequentially from the initial node.
+
+    \onslide<3> Forks clone the same request into several concurrent ones, and
+    joins wait for all incoming paths.
+
+    \onslide<4> Decisions send the request to a branch, under some probability.
+
+    \onslide<5> Merges bring together requests from different branches.
+
+    \onslide<6> Done: the inferred values are annotated with \emph{calc}, to
+    show they have been computed automatically.
+  \end{overprint}
+  \begin{center}
+    \input{throughput.tikz}
+  \end{center}
+\end{frame}
+
+\end{document}
