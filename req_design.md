@@ -52,7 +52,7 @@ Three options will be listed:
 
 * "Infer time limits (GLPK)" is the oldest approach, which uses the [`glpsol`](https://www.gnu.org/software/glpk/) solver by generating constraints across all paths from the initial node. You will need to install `glpsol` yourself.
 * "Infer time limits (old algorithm)" is the next approach, which implements an EOL-based algorithm distributing slack across all paths: you do not need to install anything for this one.
-* "Infer performance annotations" is the latest EOL-based graph-based incremental algorithm, which discards irrelevant subpaths as soon as possible and can therefore handle diagrams with many more paths. This is also self-contained.
+* "Infer performance annotations" is the latest EOL-based graph-based incremental algorithm, which discards irrelevant subpaths as soon as possible and can therefore handle diagrams with many more paths. This is also self-contained. This option also computes the throughputs of the various nodes.
 
 If you use any of these options, you will notice that a new local performance constraint will be automatically added to the diagram and linked to "a":
 
