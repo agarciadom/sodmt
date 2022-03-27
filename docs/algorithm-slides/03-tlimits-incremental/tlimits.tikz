@@ -9,43 +9,41 @@
 ]
   % Activity diagram nodes
   \initial{ini}
-  \activity[below=.5em of ini]{rq}{\gahostdem{\{\highlight<2-3>{(sRQ, req)}\}} RQ}
+  \activity[below=.5em of ini]{rq}{\localann{\highlight<2-3>{(sRQ)}} RQ}
 
   \fork[right=.5em of rq]{forkairline}
   \activity[above right=.25em and .75em of forkairline.center]{qaa}{%
-    \gahostdem{\{\highlight<2,4>{(5, req)}\}} QAA}
+    \localann{\highlight<2,4>{(5)}} QAA}
   \activity[below right=.25em and .75em of forkairline.center]{qab}{%
-    \gahostdem{\{\highlight<2-3>{(sAB,$\,$req)}\},rep=3} QAB}
+    \localann{\highlight<2-3>{(sAB, rep=3)}} QAB}
   \join[right=9.5em of forkairline.center]{joinairline}
 
   \node[draw,below=7.25em of forkairline,inner sep=.5em,anchor=center,rotate=-45] (dechotel) {};
   \activity[above right=.25em and .75em of dechotel.center]{qhc}{%
-    \gahostdem{\{\highlight<2-3>{(sHC, req)}\}} QHC}
+    \localann{\highlight<2-3>{(sHC)}} QHC}
   \activity[below right=.25em and .75em of dechotel.center]{qhd}{%
-    \gahostdem{\{\highlight<2,5>{(2 + sHD, req)}\}} QHD}
+    \localann{\highlight<2,5>{(2 + sHD)}} QHD}
   \join[right=9.5em of dechotel.center]{mergehotel}
 
   \activity[right=.5em of mergehotel]{book}%
-  {\gahostdem{\{\highlight<2-3>{(3 $\times$ sB, req)}\}} B}
+  {\localann{\highlight<2-3>{(3 $\times$ sB)}} B}
   \final[above=.5em of book]{fin}
 
   % Global constraint
   \alt<1-2>{\tikzstyle{global}=[color=red]}{\tikzstyle{global}=[]}
   \node[draw,right=1em of joinairline,global,align=center] {%
-    \highlight<1>{\garespt[gascenario]{(10s, req)}}
-    \\{}
+    \highlight<1>{\scriptsize time limit = 10s}
+    \\[.5em]{}
     \temporal<2>{%
-      \gactx{\{\\{}
-        sRQ = ?, sAB = ?, sHC = ?, sHD = ?, sB = ?\}}}{%
+      \slacks{sRQ = ?, sAB = ?,\\{}sHC = ?, sHD = ?,\\{}sB = ?}}{%
       \color{red}
-      \gactx{\{\\{}
-        sRQ = ?, sAB = ?, sHC = ?, sHD = ?, sB = ?\}}}{%
-      \gactx{\{\\{}
+      \slacks{sRQ = ?, sAB = ?,\\{}sHC = ?, sHD = ?,\\{}sB = ?}}{%
+      \slacks{%
         sRQ = \computein<10>{0.6},
-        sAB = \computein<17-18>{\alt<17>{1.06}{1.66}},
-        sHC = \computein<15-16>{\alt<15>{1.1}{2.6}},
+        sAB = \computein<17-18>{\alt<17>{1.06}{1.67}},
+        \\{}sHC = \computein<15-16>{\alt<15>{1.1}{2.6}},
         sHD = \computein<13>{0.6},
-        sB = \computein<14>{0.6}\}}}};
+        \\{}sB = \computein<14>{0.6}}}};
 
   % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \draw[cflow]
