@@ -30,10 +30,14 @@
   node distance=5em,%
   activity/.append style={text width=8em,inner sep=.2em},%
   senttime/.style={draw,color=black,font=\scriptsize,fill=white,inner sep=.2em},%
+  path1/.style={color=red,solid},%
+  path2/.style={color=blue,dotted},%
+  path3/.style={color=DarkGreen,dashed},%
+  path4/.style={color=Purple,dashdotted},%
 ]
   % Activity diagram nodes
   \initial{ini}
-  \activity[below=.5em of ini]{rq}{\localann{\highlight<2-3>{(sRQ, req)}} RQ}
+  \activity[below=.5em of ini]{rq}{\localann{\highlight<2-3>{(sRQ)}} RQ}
 
   \fork[right=.5em of rq]{forkairline}
   \activity[above right=.25em and .75em of forkairline.center]{qaa}{%
@@ -55,7 +59,7 @@
 
   % Global constraint
   \alt<1-2>{\tikzstyle{global}=[color=red]}{\tikzstyle{global}=[]}
-  \node[draw,right=1em of joinairline,global,align=center] {%
+  \node[draw,right=1.5em of joinairline,global,align=center] {%
     \highlight<1>{\scriptsize time limit = 10s}
     \\[.5em]{}
     \temporal<2>{%
@@ -73,24 +77,85 @@
       }};
 
   % Original control flows %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \draw[cflow]
-    (ini) edge node (tinirq) {} (rq)
-    (rq) edge node (trqforkairline) {} (forkairline)
-    (mergehotel) edge node (tmergehotelbook) {} (book)
-    (book) edge node (tbookfin) {} (fin);
+  \only<1-5>{
+    \draw[cflow]
+      (ini) edge node (tinirq) {} (rq)
+      (rq) edge node (trqforkairline) {} (forkairline)
+      (mergehotel) edge node (tmergehotelbook) {} (book)
+      (book) edge node (tbookfin) {} (fin);
 
-  \draw[cflow] (dechotel) |- node (tdechotelqhc) {} (qhc);
-  \draw[cflow] (dechotel) |- node (tdechotelqhd) {} (qhd);
-  \draw[cflow] (forkairline) |- node (tforkairlineqaa) {} (qaa);
-  \draw[cflow] (forkairline) |- node (tforkairlineqab) {} (qab);
-  \draw[cflow] (qaa) -| node (tqaajoinairline) {} (joinairline);
-  \draw[cflow] (qab) -| node (tqabjoinairline) {} (joinairline);
-  \draw[cflow] (qhc) -| node (tqhcmergehotel) {} (mergehotel);
-  \draw[cflow] (qhd) -| node (tqhdmergehotel) {} (mergehotel);
-  \draw[cflow] (joinairline)
-    -| +(1em,-4.125em)
-    -| ($(-1.5em,0)+(dechotel)$)
-       node (tjoinairlinedechotel) {}
-    -- (dechotel);
-
+    \draw[cflow] (dechotel) |- node (tdechotelqhc) {} (qhc);
+    \draw[cflow] (dechotel) |- node (tdechotelqhd) {} (qhd);
+    \draw[cflow] (forkairline) |- node (tforkairlineqaa) {} (qaa);
+    \draw[cflow] (forkairline) |- node (tforkairlineqab) {} (qab);
+    \draw[cflow] (qaa) -| node (tqaajoinairline) {} (joinairline);
+    \draw[cflow] (qab) -| node (tqabjoinairline) {} (joinairline);
+    \draw[cflow] (qhc) -| node (tqhcmergehotel) {} (mergehotel);
+    \draw[cflow] (qhd) -| node (tqhdmergehotel) {} (mergehotel);
+    \draw[cflow] (joinairline)
+      -| +(1em,-4.125em)
+      -| ($(-1.5em,0)+(dechotel)$)
+         node (tjoinairlinedechotel) {}
+      -- (dechotel);
+  }
+  \only<6,7>{
+    \draw[cflow,path1] (ini) edge (rq);
+    \draw[cflow,path1] (rq) edge (forkairline);
+    \draw[cflow,path1] (forkairline) |- (qaa);
+    \draw[cflow,path1] (qaa) -| ($(joinairline.north)+(-.25em,0em)$);
+    \draw[cflow,path1] (joinairline)
+      -| +(1em,-4.125em)
+      -| ($(-1.75em,0)+(dechotel)$)
+         node (tjoinairlinedechotel) {}
+      -- (dechotel);
+    \draw[cflow,path1] (dechotel) |- ($(qhd.west)+(0em,.25em)$);
+    \draw[cflow,path1] (qhd) -| ($(mergehotel.south)+(-.25em,0em)$);
+    \draw[cflow,path1] (mergehotel) edge (book);
+    \draw[cflow,path1] (book) edge (fin);
+  }
+  \only<6,9>{
+    \draw (ini) edge[in=65,out=-35,cflow,path2] (rq);
+    \draw ($(rq.east)+(0em,-.4em)$) edge[cflow,path2] ($(forkairline.west)+(0em,-.4em)$);
+    \draw[cflow,path2] (forkairline) |- (qab);
+    \draw[cflow,path2] (qab) -| ($(joinairline.south)+(-.25em,0em)$);
+    \draw[cflow,path2] ($(joinairline.east)+(0em,-.25em)$)
+      -| +(.3em,-3.6em)
+      -| ($(-2em,0)+(dechotel)$)
+         node (tjoinairlinedechotel) {}
+      -- (dechotel);
+    \draw[cflow,path2] (dechotel.south) |- ($(qhd.west)+(0em,-.25em)$);
+    \draw[cflow,path2] ($(qhd.east)+(0em,-.25em)$) -| ($(mergehotel.south)+(.25em,0em)$);
+    \draw[cflow,path2] ($(mergehotel.east)+(0em,-.4em)$) -- ($(book.west)+(0em,-.4em)$);
+    \draw ($(book.north)+(.4em,0em)$) edge[cflow,path2,in=-65] (fin);
+  }
+  \only<6,10>{
+    \draw (ini) edge[in=115,out=-145,cflow,path3] (rq);
+    \draw ($(rq.east)+(0em,.4em)$) edge[cflow,path3] ($(forkairline.west)+(0em,.4em)$);
+    \draw[cflow,path3] ($(forkairline.south)+(-.25em,0em)$) |- ($(qab.west)+(0em,-.4em)$);
+    \draw[cflow,path3] ($(qab.east)+(0em,-.4em)$) -| ($(joinairline.south)+(.25em,0em)$);
+    \draw[cflow,path3] ($(joinairline.east)+(0em,.25em)$)
+      -| +(.9em,-4.7em)
+      -| ($(-1.5em,0)+(dechotel)$)
+         node (tjoinairlinedechotel) {}
+      -- (dechotel);
+    \draw[cflow,path3] (dechotel) |- ($(qhc.west)+(0em,-.25em)$);
+    \draw[cflow,path3] (qhc.east) -| ($(mergehotel.north)+(-.25em,0em)$);
+    \draw[cflow,path3] ($(mergehotel.east)+(0em,.4em)$) -- ($(book.west)+(0em,.4em)$);
+    \draw ($(book.north)+(-.4em,0em)$) edge[cflow,path3,in=-115,out=115] (fin);
+  }
+  \only<6,8>{
+    \draw (ini) edge[in=90,out=-175,cflow,path4] ($(rq.north)+(-1.25em,0em)$);
+    \draw ($(rq.east)+(0em,.8em)$) edge[cflow,path4] ($(forkairline.west)+(0em,.8em)$);
+    \draw[cflow,path4] ($(forkairline.north)+(-.25em,0em)$) |- ($(qaa.west)+(0em,.4em)$);
+    \draw[cflow,path4] ($(qaa.east)+(0em,.4em)$) -| ($(joinairline.north)+(.25em,0em)$);
+    \draw[cflow,path4] ($(joinairline.east)+(0em,.5em)$)
+      -| +(1.2em,-5.25em)
+      -| ($(-1.25em,0)+(dechotel)$)
+         node (tjoinairlinedechotel) {}
+      -- (dechotel);
+    \draw[cflow,path4] (dechotel.west) |- ($(qhc.west)+(0em,.25em)$);
+    \draw[cflow,path4] ($(qhc.east)+(0em,.25em)$) -| ($(mergehotel.north)+(.25em,0em)$);
+    \draw[cflow,path4] ($(mergehotel.east)+(0em,.8em)$) -- ($(book.west)+(0em,.8em)$);
+    \draw ($(book.north)+(-.8em,0em)$) edge[cflow,path4,in=-135,out=115] (fin);
+  }
 \end{umlactivity}

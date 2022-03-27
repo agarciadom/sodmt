@@ -75,13 +75,13 @@
     variable part computed by the algorithm.
 
     \onslide<6> We find all paths from the initial node to the final node,
-    adding up minimum times and weights into $(m, w)$ pairs: (7, 5), (5, 5), (2, 8), and (0, 8).
+    adding up min times and weights into $(m, w)$ pairs: red/solid (7, 5), purple/dashdotted (5, 5), blue/dotted (2, 8), and green/dashed (0, 8).
 
     \onslide<7> We start with (7, 5), leaving the least slack per unit
-    of weight: $(10 - 7)/5 = 0.6$.
+    of weight: $(10 - 7)/5 = 0.6$. RQ has 0.6s, QAA has 5s, QHD has 2.6s, and B has 1.8s.
 
     \onslide<8> We continue with (5, 5): annotated nodes are ``frozen'' in place,
-    leaving the slack per unit for QHC at $(10 - 7.4)/1 = 2.6$.
+    leaving the slack per unit of weight for QHC to be $(10 - 7.4)/1 = 2.6$.
 
     \onslide<9> Next is (2, 8): QAB is given $(10 - 0.6 - 2.6 - 1.8)/3 = (10 - 5)/3 = 1.67$ of slack
     per unit of weight.
