@@ -52,6 +52,8 @@ This project also has a standard update site here, in case you would like to use
 
 https://agarciadom.github.io/sodmt/updates/1.0.3/
 
+Please note that this is not a browsable link: you will need to use it from the Eclipse "Help - Install New Software..." menu.
+
 ## Selected publications
 
 * A. García-Domínguez, I. Medina-Bulo and M. Marcos Bárcena, "Performance Test Case Generation for Java and WSDL-based Web Services from MARTE", International Journal on Advances in Internet Technology, vol. 5, no. 3–4, p. 173–185, December 2012, ISSN 1942-2652. [PDF](http://www.iariajournals.org/internet_technology/inttech_v5_n34_2012_paged.pdf)
