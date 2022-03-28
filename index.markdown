@@ -5,7 +5,7 @@
 layout: home
 ---
 
-SODM+T is an extension of the [SODM](doi.org/10.1007/978-3-540-30480-7_6) methodology for model web information systems, focusing on the design and generation of automated performance tests for the services in a service composition workflow.
+SODM+T is an extension of the [SODM](//doi.org/10.1007/978-3-540-30480-7_6) methodology for model web information systems, focusing on the design and generation of automated performance tests for the services in a service composition workflow.
 
 ![Screenshot of a SODM+T service process diagram](images/sodmt-spdiag.png)
 
