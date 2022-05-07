@@ -23,7 +23,7 @@ public class WarehousesWebServicePerformanceMethodTest extends WarehousesWebServ
     public ContiPerfRule i = new ContiPerfRule();
 
 	@PerfTest(invocations = 1000, threads = 5)
-	@Required(throughput = 10, average = 10)
+	@Required(throughput = 10, average = 20)
 	@Override
 	@Test
 	public void listWarehouses() {
