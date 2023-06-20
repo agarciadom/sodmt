@@ -32,7 +32,7 @@ After some time, the new installation will start on its own: Eclipse will clone 
 
 ## Basic usage
 
-For a full discussion, please check the PhD thesis and viva slides (both mostly in English) from the University of Cádiz's institutional repository, [here](http://rodin.uca.es/xmlui/handle/10498/15965).
+For a full discussion, please check the [PhD thesis and viva slides](https://rodin.uca.es/handle/10498/15965) (both mostly in English) from the University of Cádiz's institutional repository.
 
 Please start by opening the `ws.profile/model.profile.di` and `wsdl.profile/model.profile.di` files, to set up the WS and WSDL Papyrus profiles before opening any other models.
 
